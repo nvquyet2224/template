@@ -51,4 +51,5 @@ if(isTouchDevice  && isMobile.all !== null){
 }
 
 if(isIE9 || isIE10 || isIE11){ $('html,body').addClass('isIE')}
-if(isIE9 || isIE10 || isIE11){ $('html,body').addClass('fixJumpy')}
+//if(isIE9 || isIE10 || isIE11){ $('html,body').addClass('fixJumpy')}
+

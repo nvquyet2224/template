@@ -7,8 +7,13 @@ body{background-color:#fff;left:0;top:0;bottom:0;right:0;-webkit-animation:Start
 
 .useFull{position:fixed;overflow:hidden;}
 .content{position:relative;display:block;width:100%;height:auto;opacity:0}
-.useFull .content, .useFull.fixJumpy .content{height:100%;overflow:hidden}
+.useFull .content{height:100%;overflow:hidden}
 
+/*Ie 10/11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	html{overflow:hidden;height:100%}
+	body{height:100%;overflow:hidden;overflow-y:auto}
+}
 
 @-webkit-keyframes Start{
 	from{visibility:hidden}

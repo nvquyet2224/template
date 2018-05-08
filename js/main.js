@@ -517,11 +517,12 @@ $(document).ready(function () {
 	
 
     //SCROLL ANIMATION
-	var $obj = $('body.fixJumpy').length ? $('.fixJumpy .content') : $(document);
+	var $obj = $('body.isIE').length ? $('body') : $(document);
+	
 	$obj.bind('scroll', function() {
 		
 		var scrollY = $obj.scrollTop();
-		var target = $('.banner-slider');
+		var target = $('.banner');
 		var curTop = $obj.scrollTop();
 		       
         if(timex){
@@ -538,7 +539,7 @@ $(document).ready(function () {
             
 			onScroll();
 			
-			$(target).css({'-webkit-transform': 'translate3d(0,' + scrollY * 0.3 + 'px, 0)','transform': 'translate3d(0,' + scrollY * 0.3 + 'px, 0)'});
+			$(target).css({'-webkit-transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)','transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)'});
 			
 			pauseSlider();
 			
