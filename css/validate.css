@@ -1,0 +1,9 @@
+.inputContainer { position:relative;float:left;}
+.formError { position:absolute;top:-30px;left:20px;display:block;cursor: pointer;z-index:5000;}
+.formErrorContent {background-color:rgba(209,0,8,1);position: relative;display:inline-block;color: #fff;width: auto;height:auto;max-width:250px;font-family: Arial, Helvetica, sans-serif;font-size:13px;line-height:1.2;padding:8px 12px;-webkit-border-radius:10px;border-radius: 10px;z-index:5001;text-align:left}
+.formErrorContent::after{content:'';position:absolute;left:20px;bottom:-10px;width: 0;height: 0;border-style: solid;border-width: 10px 7px 0 7px;border-color: rgba(209,0,8,1) transparent transparent transparent;}
+
+.greenPopup .formErrorContent {background-color: #33be40;}
+.blackPopup .formErrorContent {background-color: #393939;color: #fff;}
+.ajaxSubmit { padding:20px;background-color:#55ea55;display: none }
+
