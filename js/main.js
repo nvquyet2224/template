@@ -25,7 +25,13 @@ $.fn.isInViewport = function() {
 	var elementBottom = elementTop + $(this).outerHeight();
 	var viewportTop = $(window).scrollTop();
 	var viewportBottom = viewportTop + $(window).height();
+	
+	if( elementBottom < (viewportTop + $(window).height() + 200) ){
+		lazyLoad(this);
+	}
+	
 	return elementBottom > viewportTop && elementTop < viewportBottom;
+	
 };
 
 var timex;
@@ -40,6 +46,32 @@ var windscroll = $(document).scrollTop();
 var qStop = false;
 var pStop = false;
 var step = 0;
+
+
+function lazyLoad(byThis){
+	
+	if($(window).width() > 1100){
+		
+		$(byThis).find('img[data-pc]').each(function(index,img){
+			img.setAttribute('src', img.getAttribute('data-pc'));
+			img.onload = function() {
+				img.removeAttribute('data-pc');
+			};
+		});
+		
+				
+	}else{
+		
+		$(byThis).find('img[data-sp]').each(function(index,img){
+			img.setAttribute('src', img.getAttribute('data-sp'));
+			img.onload = function() {
+				img.removeAttribute('data-sp');
+			};
+		});
+		
+	}
+	
+}
 
 	
 function scrollDelay(){
@@ -147,10 +179,9 @@ function onScroll(){
 
     var aniArr = $('.title, .section-content');
 	$(aniArr).each(function() {
+
 		if($(this).isInViewport()){
 			$(this).addClass("on-show");//play repeat
-            //$(this).addClass("on-play");//play one time
-			
 		}else{
 			$(this).removeClass("on-show");
 		}
@@ -482,9 +513,9 @@ $(document).ready(function () {
     
     if( $('#fullpage').length){
        FullPage();
-
     }
    
+    onScroll();
 	
 	//Loaded
 	var loaded = 0;
@@ -558,6 +589,7 @@ $(window).on("orientationchange",function(){
 
 $(window).resize(function () {
     changeSize();
+	onScroll();
     
 });		
 
