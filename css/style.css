@@ -299,7 +299,7 @@ button{-webkit-transition:none;transition:none}
 
 /*BACKGROUND FIXED*/
 .has-bg-fix{z-index:0}
-.fix-bg{width:100vw;height:100vh;position:fixed;opacity:0}
+.fix-bg{width:100vw;height:100vh;position:fixed;opacity:0;background-attachment:scroll}
 .on-show .fix-bg{-webkit-animation:fadeIn;animation:fadeIn;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}
 
 
