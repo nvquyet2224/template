@@ -26,7 +26,7 @@ $.fn.isInViewport = function() {
 	var viewportTop = $(window).scrollTop();
 	var viewportBottom = viewportTop + $(window).height();
 	
-	if( elementBottom < (viewportTop + $(window).height() + 200) ){
+	if( elementBottom < (viewportTop + $(window).height()) ){
 		lazyLoad(this);
 	}
 	
