@@ -190,8 +190,8 @@ select::-ms-expand{display:none}
 
 
 /*PICS*/
-.pc-pic{display:block}
-.sp-pic{display:none}
+.pcPic{display:block}
+.spPic{display:none}
 
 
 
@@ -289,8 +289,8 @@ button{-webkit-transition:none;transition:none}
 /*COMMON*/
 
 /*PICS*/
-.pc-pic{display:none}
-.sp-pic{display:block}
+.pcPic{display:none}
+.spPic{display:block}
 
 
 /*NORMAL*/

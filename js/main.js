@@ -500,8 +500,6 @@ $(document).ready(function () {
        FullPage();
     }
    
-    //onScroll();
-	
 	//Loaded
 	var loaded = 0;
 	$('body').imagesLoaded().done( function( instance ) {
@@ -512,6 +510,7 @@ $(document).ready(function () {
 			
 			$('.content').stop().animate({'opacity':1}, 300 ,'linear', function () {
 				SlidesShow();
+				onScroll();
 				Start();
 			});   	
 		}
@@ -525,159 +524,178 @@ $(document).ready(function () {
 			
 			$('.content').stop().animate({'opacity':1}, 300 ,'linear', function () { 
 				SlidesShow();
+				onScroll();
 				Start();
 			});   	
 		}
         
     }, 3000);
 	
-
-    //SCROLL ANIMATION
-	/*var $obj = $('body.isIE').length ? $('body') : $(document);
 	
-	$obj.bind('scroll', function() {
-		
-		var scrollY = $obj.scrollTop();
-		var target = $('.banner');
-		var curTop = $obj.scrollTop();
-		       
-        if(timex){
-             window.cancelAnimationFrame(timex);
-        }
-        
-        timex = window.requestAnimationFrame(function () {
-            
-            if(curTop >= $(window).height()/2){
-                $('.to-top').addClass('show');
-            }else{
-                $('.to-top').removeClass('show');
-            }
-            
-			onScroll();
-			
-			$(target).css({'-webkit-transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)','transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)'});
-			
-			pauseSlider();
-			
-        });
-      
-		windscroll = curTop;
-        
-    });*/
-		
 });
 
+var active = false;
 
+function lazyLoad(){
+	
+	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
+	
+	if(winW > 1100){
+		var lazyImages = [].slice.call(document.querySelectorAll("img.pcPic.lazy"));
+	}else{
+		var lazyImages = [].slice.call(document.querySelectorAll("img.spPic.lazy"));
+	}
+	
+	if (active === false) {
+		active = true;
 
+		setTimeout(function() {
+			
+			lazyImages.forEach(function(lazyImage) {
 
+				if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+						
+						lazyImage.src = lazyImage.dataset.src;
+						//lazyImage.srcset = lazyImage.dataset.srcset;
+						lazyImage.classList.remove("lazy");
+						
+						lazyImages = lazyImages.filter(function(image) {
+							return image !== lazyImage;
+						});
+						
+						if (lazyImages.length === 0) {
+							//document.removeEventListener("scroll", lazyLoad);
+							//window.removeEventListener("resize", lazyLoad);
+							//window.removeEventListener("orientationchange", lazyLoad);
+						}
+						
+				}
+	
+			});
+			
+			active = false;
+			
+		}, 200);
+	}
+}
 
-var curBox = null;
+function setAnimate(elem){
+	elem.classList.add('on-show');
+}
 
 function onScroll(){
-	curBox.classList.add('show');
 	
-}
-
-var els  = [].slice.call(document.querySelectorAll(".section-content"));
-
-
-var doCument = window;
-if(document.documentElement.classList.contains('isIE')){
-	doCument = document.body;
-}
-
-doCument.addEventListener("scroll", function(){
+	lazyLoad();
+	
 	var winT = window.scrollTop  || document.documentElement.scrollTop || document.body.scrollTop;
 	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
 	var winH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 	var target = document.querySelector('.banner');
 	
-	var els  = [].slice.call(document.querySelectorAll(".section-content"));
-	 
-	els.forEach(function(elm) {
+	
+	//Set animations
+	var elements  = [].slice.call(document.querySelectorAll(".section-content"));
+	elements.forEach(function(elem) {
       	
-		curBox = elm;
-		var box = elm.getBoundingClientRect(); 
-		//console.log(box.top);
+		var rect = elem.getBoundingClientRect();
 		
-		if(box.top > winT){
-			//elm.classList.add('show');
-			curBox =  elm; 
-			requestAnimationFrame(onScroll);
+		//Check viewport
+		var elementTop = rect.top;
+		var elementBottom = elementTop + rect.height;
+		var viewportTop = winT;
+		var viewportBottom = viewportTop + winH;
+		
+		if( elementBottom > viewportTop && elementTop < viewportBottom){
+
+			window.requestAnimationFrame(function(){
+				setAnimate(elem);
+			});
 		}
 		
-	 	 //lazyBackgroundObserver.observe(lazyBackground);
-	  
     });
+	
+	if(target){
+		target.style.webkitTransform = 'translate3d(0px,' + winT * 0.2 + 'px, 0px)';
+		target.style.transform = 'translate3d(0px,' + winT * 0.2 + 'px, 0px)';
+	}
+	
+	if(winT > winH/2){
+		goTop.classList.add('show');
+		
+	}else{
+		goTop.classList.remove('show');
+	}
+	
+	
+	
+}
 
+/*
+document.addEventListener("DOMContentLoaded", function() {
+  
+  var lazyImages = [].slice.call(document.querySelectorAll("img.pcPic.lazy"));
+  var active = false;
 
-	//var box  =
-	
-	//box = element.getBoundingClientRect();
-	
-	//requestAnimationFrame(onScroll);
-	
-	
-	//if(timex){ window.cancelAnimationFrame(timex); }
-	
-	//timex = window.requestAnimationFrame(function () {
+	function lazyLoad(){
 		
-		/*if(winT >= winH/2){
-			goTop.classList.add('show');
-		}else{
-			goTop.classList.remove('show');
+		if (active === false) {
+		active = true;
+		
+		setTimeout(function() {
+			
+			lazyImages.forEach(function(lazyImage) {
+			
+				if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+						
+						lazyImage.src = lazyImage.dataset.src;
+						//lazyImage.srcset = lazyImage.dataset.srcset;
+						lazyImage.classList.remove("lazy");
+						
+						lazyImages = lazyImages.filter(function(image) {
+							return image !== lazyImage;
+						});
+						
+						if (lazyImages.length === 0) {
+							//document.removeEventListener("scroll", lazyLoad);
+							//window.removeEventListener("resize", lazyLoad);
+							//window.removeEventListener("orientationchange", lazyLoad);
+						}
+						
+				}
+
+			});
+			
+			active = false;
+			
+		}, 200);
 		}
-		
-		target.style.transform = 'translate3d(0px,' + winT * 0.3 + 'px, 0px)';
-		target.style.webkitTransform = 'translate3d(0px,' + winT * 0.3 + 'px, 0px)';
-		*/
-		
-		
-		//target.style.css
-		//target
-		//$(target).css({'-webkit-transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)','transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)'});
-		
-	//});
+	};
 	
-	//console.log(window.innerHeight);
-		
-		/*var scrollY = $obj.scrollTop();
-		var target = $('.banner');
-		var curTop = $obj.scrollTop();
-		
-		if(timex){
-		window.cancelAnimationFrame(timex);
-		}
-		
-		timex = window.requestAnimationFrame(function () {
-		
-		if(curTop >= $(window).height()/2){
-		$('.to-top').addClass('show');
-		}else{
-		$('.to-top').removeClass('show');
-		}
-		
-		onScroll();
-		
-		$(target).css({'-webkit-transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)','transform': 'translate3d(0px,' + scrollY * 0.3 + 'px, 0px)'});
-		
-		pauseSlider();
-		
-		});
-		
-		windscroll = curTop;
-		*/
-		
+	//lazyLoad();
 	
-	//console.log(curTop);
+	console.log('DOMContentLoaded');
 	
-});
+	
+	//document.addEventListener("scroll", onScroll);
+
+  //document.addEventListener("scroll", lazyLoad);
+  //window.addEventListener("resize", lazyLoad);
+  //window.addEventListener("orientationchange", lazyLoad);
+  
+});*/
+
+  
+if(document.documentElement.classList.contains('isIE')){
+	document.body.addEventListener("scroll", onScroll);
+}else{
+	document.addEventListener("scroll", onScroll);
+}
 
 window.addEventListener("resize", function(){
-	console.log('resize');
 	
 	if(!isMobile){
 	   console.log('not mobile');
+	   onScroll();
 	}
 	
 
@@ -685,37 +703,7 @@ window.addEventListener("resize", function(){
 
 window.addEventListener("orientationchange", function(){
 	console.log('rotate');
-
-});
-
-
-/*
-window.onorientationchange = changeSize;
-$(window).on("orientationchange",function(){
-    $('.nav, .popup-wrap').scrollTop(0);
-});
-
-$(window).resize(function () {
-    changeSize();
 	onScroll();
-    
-});		
 
-$(window).on('resize', function() {
+});
 
-    changeSize();
-  
-    if($(window).width() < 1100){
-        
-    }else{
-
-    }
-    
-    if(!isMobile){
-       console.log('resize');
-	   
-    }
-    
-    
-}, 250);
-*/
