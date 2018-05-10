@@ -2089,9 +2089,9 @@ if (typeof Object.create !== "function") {
           ===========================*/
         s.setGrabCursor = function(moving) {
             s.container[0].style.cursor = 'move';
-			if(!isFirefox){
-              s.container[0].style.cursor = moving ? '-webkit-grabbing' : '-webkit-grab';
-			}
+			//if(!isFirefox){
+              //s.container[0].style.cursor = moving ? '-webkit-grabbing' : '-webkit-grab';
+			//}
             s.container[0].style.cursor = moving ? '-moz-grabbin' : '-moz-grab';
             s.container[0].style.cursor = moving ? 'grabbing': 'grab';
         };

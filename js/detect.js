@@ -1,15 +1,30 @@
 var ua = navigator.userAgent;
-var match = ua.match('MSIE (.)');
-var versions = match && match.length > 1 ? match[1] : 'unknown';
-var isTouchDevice =  "ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch  || (navigator.msMaxTouchPoints>0) || (navigator.maxTouchPoints > 0);
-var IEMobile = ua.match(/IEMobile/i);
 var isFirefox = typeof InstallTrigger !== 'undefined';
-var isIE9 = /MSIE 9/i.test(ua); 
-var isIE10 = /MSIE 10/i.test(ua);
-var isIE11 = /rv:11.0/i.test(ua) && !IEMobile  ? true : false;
-var isIE = false || !!document.documentMode;
-var isEdge = !isIE && !!window.StyleMedia && !isIE11;
+var isEdge = /Edge/i.test(ua);
+var isIE = /MSIE 9|MSIE 10|rv:11.0/i.test(ua);
+var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
 
+if(isIE){ //$('html,body').classList('isIE')
+/*window.classList.add('isIE');*/
+//document.body.classList.add('isIE');
+document.documentElement.classList.add('isIE');
+
+}
+
+
+
+
+//var match = ua.match('MSIE (.)');
+//var versions = match && match.length > 1 ? match[1] : 'unknown';
+//var isTouchDevice =  "ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch  || (navigator.msMaxTouchPoints>0) || (navigator.maxTouchPoints > 0);
+//var isTouchDevice = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|playbook|silk|BlackBerry|BB10|Windows Phone|Tizen|Bada|webOS|IEMobile|Opera Mini)/);
+//var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0) || (navigator.maxTouchPoints));
+
+
+//if(isIE9 || isIE10 || isIE11){ $('html,body').addClass('fixJumpy')}
+
+
+/*
 var ios, android, blackBerry, UCBrowser, Operamini, firefox, windows, smartphone, tablet,touchscreen, all;
 var isMobile = {
   ios: (function(){
@@ -41,7 +56,8 @@ var isMobile = {
     return ua.match(/Android|BlackBerry|Tablet|Mobile|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
   }())
 };
-
+*/
+/*
 if(isTouchDevice  && isMobile.all !== null){
 	var TouchLenght = true;
 }else if(isMobile.tablet && isFirefox || isMobile.smartphone && isFirefox ){
@@ -49,7 +65,5 @@ if(isTouchDevice  && isMobile.all !== null){
 }else{
 	var TouchLenght = false;
 }
-
-if(isIE9 || isIE10 || isIE11){ $('html,body').addClass('isIE')}
-//if(isIE9 || isIE10 || isIE11){ $('html,body').addClass('fixJumpy')}
+*/
 
