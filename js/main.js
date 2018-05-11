@@ -662,9 +662,19 @@ document.addEventListener("DOMContentLoaded", function() {
 		}												
 																																															
 	});
-	
+
 	playBut.addEventListener('click', function(){
-		
+			
+		var vidPlay = jwplayer('bac_thay').setup({
+			playlist: [{																														
+				stereomode: 'monoscopic',
+				//file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
+				file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4',
+				//autostart: true,
+				//mute: false //optional, but recommended
+			}]
+		});
+
 		vidPlay.play();
 	});
 
