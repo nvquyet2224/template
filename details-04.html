@@ -78,67 +78,15 @@ else window.addEventListener('load', loadDeferredStyles);
 <!--CONTENT-->
 <div class="content normal">
 
-<div class="section-content banner">
-
-<div class="banner-slider" data-duration="5000">
-<div class="item-wrapper">
-
-<div class="item-container">
-<div class="banner-item"><img src="images/1.jpg" alt="banner"></div>
-</div>
-
-<div class="item-container">
-<div class="banner-item"><img src="images/2.jpg" alt="banner"></div>
-</div>
-
-<div class="item-container">
-<div class="banner-item"><img src="images/3.jpg" alt="banner"></div>
-</div>
-
-</div>
-</div>
-
-</div>
-
 <div class="section-content">
 <div class="section-details">
 
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
-
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
-
-</div>
-</div>
-
-<div class="section-content">
-<div class="section-details">
-
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
-
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
+<div class="video-box" id="bac_thay"></div>
+<div id="playBut">Click to play</div>
 
 </div>
 </div>
 
-<div class="section-content">
-<div class="section-details">
-
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
-
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
-
-</div>
-</div>
-
-<div class="section-content">
-<div class="section-details">
-
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
-
-<p>Công nghệ Chấm Lượng Tử đỉnh cao mang đến khả năng hấp thụ và biến ánh sáng thành các sắc màu thuần khiết, thực như cuộc sống. Độ sáng tăng cường mang đến khả năng tái tạo 1 tỷ sắc màu với 100% dải màu sắc, cho từng khung hình sắc nét chi tiết và sống động như thật.</p>
-
-</div>
-</div>
 
 </div>
 <!--CONTENT-->
@@ -191,8 +139,22 @@ else window.addEventListener('load', loadDeferredStyles);
 <script type="text/javascript" src="js/detect.js"></script>
 <script type="text/javascript" src="js/slide.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<!--SCRIPT-->
+<script src="https://content.vnsamsungcampaign.com/trainghiemqled_10052/js/jwplayer.min.js"></script>
+<script>jwplayer.key = "g9NRsm3qLj/uJnnKswNmW9uHTeya3DRmiVZj+qnMLcw=";</script>
 
+<script>
+
+var vidPlay = jwplayer('bac_thay').setup({
+	playlist: [{																														
+		stereomode: 'monoscopic',
+		//file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
+		file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
+	}]
+});
+
+</script>
+
+<!--SCRIPT-->
     
 </body>
 </html>

@@ -47,7 +47,7 @@ var qStop = false;
 var pStop = false;
 var step = 0;
 
-
+/*
 function lazyLoad(byThis){
 	
 	if($(window).width() > 1100){
@@ -72,6 +72,7 @@ function lazyLoad(byThis){
 	}
 	
 }
+*/
 
 	
 function scrollDelay(){
@@ -614,11 +615,15 @@ function onScroll(){
 		
     });
 	
+	
+	//Banner animation
 	if(target){
 		target.style.webkitTransform = 'translate3d(0px,' + winT * 0.2 + 'px, 0px)';
 		target.style.transform = 'translate3d(0px,' + winT * 0.2 + 'px, 0px)';
 	}
 	
+	
+	//Go top
 	if(winT > winH/2){
 		goTop.classList.add('show');
 		
@@ -630,76 +635,41 @@ function onScroll(){
 	
 }
 
-/*
 document.addEventListener("DOMContentLoaded", function() {
   
-  var lazyImages = [].slice.call(document.querySelectorAll("img.pcPic.lazy"));
-  var active = false;
-
-	function lazyLoad(){
-		
-		if (active === false) {
-		active = true;
-		
-		setTimeout(function() {
-			
-			lazyImages.forEach(function(lazyImage) {
-			
-				if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
-						
-						lazyImage.src = lazyImage.dataset.src;
-						//lazyImage.srcset = lazyImage.dataset.srcset;
-						lazyImage.classList.remove("lazy");
-						
-						lazyImages = lazyImages.filter(function(image) {
-							return image !== lazyImage;
-						});
-						
-						if (lazyImages.length === 0) {
-							//document.removeEventListener("scroll", lazyLoad);
-							//window.removeEventListener("resize", lazyLoad);
-							//window.removeEventListener("orientationchange", lazyLoad);
-						}
-						
-				}
-
-			});
-			
-			active = false;
-			
-		}, 200);
-		}
-	};
-	
-	//lazyLoad();
-	
 	console.log('DOMContentLoaded');
 	
 	
 	//document.addEventListener("scroll", onScroll);
-
-  //document.addEventListener("scroll", lazyLoad);
-  //window.addEventListener("resize", lazyLoad);
-  //window.addEventListener("orientationchange", lazyLoad);
-  
-});*/
-
-  
-if(document.documentElement.classList.contains('isIE')){
-	document.body.addEventListener("scroll", onScroll);
-}else{
-	document.addEventListener("scroll", onScroll);
-}
-
-window.addEventListener("resize", function(){
 	
-	if(!isMobile){
-	   console.log('not mobile');
-	   onScroll();
+	//document.addEventListener("scroll", lazyLoad);
+	//window.addEventListener("resize", lazyLoad);
+	//window.addEventListener("orientationchange", lazyLoad);
+	
+	
+	
+	if(document.documentElement.classList.contains('isIE')){
+		document.body.addEventListener("scroll", onScroll);
+	}else{
+		document.addEventListener("scroll", onScroll);
 	}
 	
+	window.addEventListener("resize", function(){
+		
+		if(!isMobile){
+		   console.log('not mobile');
+		   onScroll();																				
+		}												
+																																															
+	});
+	
+	playBut.addEventListener('click', function(){
+		
+		vidPlay.play();
+	});
 
 });
+
 
 window.addEventListener("orientationchange", function(){
 	console.log('rotate');
