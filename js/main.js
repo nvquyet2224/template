@@ -693,7 +693,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}]
 	});*/
 	
-	if(bac_thay != undefined){
+	if(window.bac_thay != undefined){
 		var vidPlay = jwplayer('bac_thay').setup({
 			playlist: [{																														
 				stereomode: 'monoscopic',
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		
 	}
 	
-	if(bac_thay1 != undefined){
+	if(window.bac_thay1 !== undefined){
 		var vidPlay = jwplayer('bac_thay').setup({
 			playlist: [{																														
 				stereomode: 'monoscopic',
