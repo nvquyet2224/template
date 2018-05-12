@@ -458,8 +458,8 @@ function FullPage(){
 
 
 function Start(){
-    CommonEvent();
-    inputHolder();
+    //CommonEvent();
+    //inputHolder();
     
     //onScroll();
     
@@ -648,7 +648,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	
 	
-	if(document.documentElement.classList.contains('isIE')){
+	/*if(document.documentElement.classList.contains('isIE')){
 		document.body.addEventListener("scroll", onScroll);
 	}else{
 		document.addEventListener("scroll", onScroll);
@@ -662,8 +662,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}												
 																																															
 	});
-
-
+	*/
 
 	var vidPlay;
 	if(window.video_same_domain != undefined){
@@ -696,18 +695,23 @@ document.addEventListener("DOMContentLoaded", function() {
 		
 	}
 	
+	if(window.video_git_domain != undefined){
+		vidPlay = jwplayer('video_git_domain').setup({
+			playlist: [{																														
+				stereomode: 'monoscopic',
+				file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
+			}]
+		});
+		
+	}
+	
 	if(window.playBut != undefined){
 		playBut.addEventListener('click', function(){
 			vidPlay.play();
 		});
 	}
 
-});
 
-
-window.addEventListener("orientationchange", function(){
-	console.log('rotate');
-	onScroll();
+	CommonEvent();
 
 });
-
