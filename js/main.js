@@ -662,67 +662,45 @@ document.addEventListener("DOMContentLoaded", function() {
 		}												
 																																															
 	});
-	
 
-	/*var vidPlay1 = jwplayer('bac_thay').setup({
-		playlist: [{																														
-			stereomode: 'monoscopic',
-			//file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
-			file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4',
-			//autostart: true,
-			//mute: false //optional, but recommended
-		}]
-	});*/
-	
-	
-	/*var vidPlay = jwplayer("bac_thay").setup({
-		  stereomode: 'monoscopic',
-		  file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4',
-		  //file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
-	});*/
-	
-	/*var vidPlay = jwplayer("bac_thay").setup({
-		"playlist": [{
-			"title":"One Playlist Item With Multiple Qualities",
-			"description":"Two Qualities - One Playlist Item",
-			"stereomode": "monoscopic",
-			"sources": [{
-				"file": "https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4",
-				"label": "HD"
-			}]
-		}]
-	});*/
-	
+
+
+	var vidPlay;
 	if(window.video_same_domain != undefined){
-		var vidPlay = jwplayer('video_same_domain').setup({
+		vidPlay = jwplayer('video_same_domain').setup({
 			playlist: [{																														
 				stereomode: 'monoscopic',
-				file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
-				//file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
-			}]
-		});
-		
-		playBut.addEventListener('click', function(){
-			vidPlay.play(0);
-		});
-		
-	}
-	
-	if(window.video_other_domain !== undefined){
-		var vidPlay = jwplayer('video_other_domain').setup({
-			playlist: [{																														
-				stereomode: 'monoscopic',
-				//file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
 				file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
 			}]
 		});
 		
-		playBut1.addEventListener('click', function(){
-			vidPlay.play(0);
+	}
+	
+	if(window.video_other_domain != undefined){
+		vidPlay = jwplayer('video_other_domain').setup({
+			playlist: [{																														
+				stereomode: 'monoscopic',
+				file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
+			}]
 		});
 		
 	}
 	
+	if(window.video_ss_domain != undefined){
+		vidPlay = jwplayer('video_ss_domain').setup({
+			playlist: [{																														
+				stereomode: 'monoscopic',
+				file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
+			}]
+		});
+		
+	}
+	
+	if(window.playBut != undefined){
+		playBut.addEventListener('click', function(){
+			vidPlay.play();
+		});
+	}
 
 });
 

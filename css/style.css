@@ -222,6 +222,7 @@ select::-ms-expand{display:none}
 .section-details{padding:150px 5%}
 #video_same_domain{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
 #video_other_domain{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
+#video_ss_domain{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
 #playBut{padding:10px 20px;margin:10px auto;text-align:center;background-color:#fff;border-radius:30px;display:block;width:180px;cursor:pointer}
 .jw-controls{display:none}
 
