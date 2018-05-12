@@ -662,21 +662,67 @@ document.addEventListener("DOMContentLoaded", function() {
 		}												
 																																															
 	});
+	
 
-	playBut.addEventListener('click', function(){
-			
+	/*var vidPlay1 = jwplayer('bac_thay').setup({
+		playlist: [{																														
+			stereomode: 'monoscopic',
+			//file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
+			file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4',
+			//autostart: true,
+			//mute: false //optional, but recommended
+		}]
+	});*/
+	
+	
+	/*var vidPlay = jwplayer("bac_thay").setup({
+		  stereomode: 'monoscopic',
+		  file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4',
+		  //file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
+	});*/
+	
+	/*var vidPlay = jwplayer("bac_thay").setup({
+		"playlist": [{
+			"title":"One Playlist Item With Multiple Qualities",
+			"description":"Two Qualities - One Playlist Item",
+			"stereomode": "monoscopic",
+			"sources": [{
+				"file": "https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4",
+				"label": "HD"
+			}]
+		}]
+	});*/
+	
+	if(bac_thay){
+		var vidPlay = jwplayer('bac_thay').setup({
+			playlist: [{																														
+				stereomode: 'monoscopic',
+				file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
+				//file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
+			}]
+		});
+		
+		playBut.addEventListener('click', function(){
+			vidPlay.play(0);
+		});
+		
+	}
+	
+	if(bac_thay1){
 		var vidPlay = jwplayer('bac_thay').setup({
 			playlist: [{																														
 				stereomode: 'monoscopic',
 				//file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
-				file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4',
-				//autostart: true,
-				//mute: false //optional, but recommended
+				file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
 			}]
 		});
-
-		vidPlay.play();
-	});
+		
+		playBut1.addEventListener('click', function(){
+			vidPlay.play(0);
+		});
+		
+	}
+	
 
 });
 

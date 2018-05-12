@@ -220,7 +220,9 @@ select::-ms-expand{display:none}
 .fix-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position: center center;-webkit-background-size:cover;background-size:cover;background-attachment:fixed}
 
 .section-details{padding:150px 5%}
-#bac_thay{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:0 auto}
+#bac_thay{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
+#diep_vien{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
+#xac_uop{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
 #playBut{padding:10px 20px;margin:10px auto;text-align:center;background-color:#fff;border-radius:30px;display:block;width:180px;cursor:pointer}
 .jw-controls{display:none}
 
