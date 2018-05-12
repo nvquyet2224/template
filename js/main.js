@@ -693,8 +693,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		}]
 	});*/
 	
-	if(window.bac_thay != undefined){
-		var vidPlay = jwplayer('bac_thay').setup({
+	if(window.video_same_domain != undefined){
+		var vidPlay = jwplayer('video_same_domain').setup({
 			playlist: [{																														
 				stereomode: 'monoscopic',
 				file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
@@ -708,8 +708,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		
 	}
 	
-	if(window.bac_thay1 !== undefined){
-		var vidPlay = jwplayer('bac_thay').setup({
+	if(window.video_other_domain !== undefined){
+		var vidPlay = jwplayer('video_other_domain').setup({
 			playlist: [{																														
 				stereomode: 'monoscopic',
 				//file: 'https://content.vnsamsungcampaign.com/trainghiemqled_10052/video/vr-bac-thay.mp4'
