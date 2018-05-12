@@ -1,9 +1,9 @@
 @charset "utf-8";
 
 
-body{background-color:#fff;left:0;top:0;bottom:0;right:0;-webkit-animation:Start 1s steps(1, end) 0s 1 normal both;animation:Start 1s steps(1, end) 0s 1 normal both}
+body{width:100%;left:0;top:0;bottom:0;right:0;background-color:#fff;-webkit-animation:Start .7s steps(1, end) 0s 1 normal both;animation:Start .7s steps(1, end) 0s 1 normal both}
 
-.header, .catalog-but{display:none}
+.header, .footer, .popup-content, .full-album, .go-down, .to-top, .loadicon{display:none}
 
 .useFull{position:fixed;overflow:hidden;}
 .content{position:relative;display:block;width:100%;height:auto;opacity:0}
@@ -19,6 +19,7 @@ body{background-color:#fff;left:0;top:0;bottom:0;right:0;-webkit-animation:Start
 	from{visibility:hidden}
 	to{visibility:visible}
 }
+
 @keyframes Start{
 	from{visibility:hidden}
 	to{visibility:visible}

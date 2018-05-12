@@ -52,7 +52,7 @@ button{position:relative;display:inline-block;width:auto;height:auto;border:none
 .player-vid:hover{box-shadow:0 0 30px 0 rgba(255,255,255,0.5)}
 .player-vid.hide{display:none;opacity:0}
 
-.to-top{position:fixed;right:20px;bottom:20px;width:60px;height:60px;background-color:#fff;-webkit-border-radius:50%;border-radius:50%;cursor:pointer;z-index:-10;opacity:0;transition:opacity 0.3s ease-in-out,z-index 0.05s ease-in-out}
+.to-top{width:60px;height:60px;position:fixed;right:35px;bottom:20px;display:block;background-color:#fff;-webkit-border-radius:50%;border-radius:50%;cursor:pointer;z-index:-10;opacity:0;transition:opacity 0.3s ease-in-out,z-index 0.05s ease-in-out}
 .to-top.show{opacity:1;z-index:60}
 
 
@@ -138,10 +138,12 @@ select::-ms-expand{display:none}
 
 
 /*LAYOUT*/
-.header{display:block;width:100%}
-.header span{position:fixed;left:0;top:0;width:100%;height:76px;background-color:#fff;z-index:1}
+.header{display:block;width:100%;height:auto}
+.header > span{width:100%;height:76px;position:fixed;left:0;top:0;background-color:#fff;z-index:90}
+.isIE .header > span{width:calc(100% - 16px)}
+.header.fixed > span{}
 
-.nav-but{width:40px;height:40px;position:fixed;right:10px;top:18px;background-color:#000;z-index:100;color:#fff}
+.nav-but{width:40px;height:40px;position:fixed;right:20px;top:20px;background-color:#000;z-index:100;color:#fff}
 .nav-but.active{background-color:#fff}
     
 .nav-overlay{width:100%;height:0;position:fixed;left:0;bottom:0;background-color:rgba(0,0,0,0.9);-webkit-transition:height 0.6s ease-in-out;transition:height 0.6s ease-in-out;z-index:95}
@@ -160,9 +162,6 @@ select::-ms-expand{display:none}
 .nav li a{display:block;padding:15px 20px;color:#fff;font-size:16px;text-transform:uppercase}    
 
 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-.header span{width:calc(100% - 16px)}
-}
 
 
 /*POPUP CONTENT*/
@@ -179,7 +178,6 @@ select::-ms-expand{display:none}
 
 /*COMMON*/
 /*FULLPAGE*/
-.section{}
 .fp-tableCell{padding-top:76px}
 .content-section{width:100%;height:auto;position:relative}
 .section:nth-child(odd) .fullpage-content{background-color:#19f08e}
@@ -189,20 +187,24 @@ select::-ms-expand{display:none}
 .fullpage-details img{width:auto;height:auto;max-width:100%}
 
 
-/*PICS*/
-.pcPic{display:block}
-.spPic{display:none}
 
 
 
-
-/*NORMAL*/
+/*NORMAL PAGE*/
 .normal{padding-top:76px}
 .section-content{width:100%;height:auto;position:relative;background-color:#22a6e4}
 .section-content:nth-child(odd){background-color:#19f08e}
 .section-details{position:relative;padding:10%;text-align:center}
-.section-details img{width:auto;height:auto;max-width:100%}
+.section-details img{width:auto;height:auto;max-width:100%;margin:20px auto}
 
+
+
+
+
+
+/*PICS*/
+.pcPic{display:block}
+.spPic{display:none}
 
 
 
@@ -216,18 +218,34 @@ select::-ms-expand{display:none}
 
 
 
-/*BACKGROUND FIXED*/
-.fix-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position: center center;-webkit-background-size:cover;background-size:cover;background-attachment:fixed}
 
-.section-details{padding:150px 5%}
+/*VIDEO FULL*/
+.video-details{width:100%;height:auto;position:relative;padding-top:45%;overflow:hidden;z-index:1}
+.video-full{background-color:#000;width:100%;height:auto;position:absolute;left:0;top:50%;transform:translate3d(0px,-50%,0px);-webkit-transform:translate3d(0px,-50%,0px)}
+
+#mutebtn{width:44px;height:40px;position:absolute;right:20px;top:20px;cursor:pointer;z-index:-1;opacity:0;}
+#mutebtn.show{opacity:1;z-index:181;}
+#mutebtn::before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:url(../images/sound-icon.png) no-repeat center center;background-size:contain;transition:opacity 0.3s ease-in-out;-webkit-transition:opacity 0.3s ease-in-out}
+#mutebtn::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:url(../images/mute-icon.png) no-repeat center center;background-size:contain;opacity:0;transition:opacity 0.3s ease-in-out;-webkit-transition:opacity 0.3s ease-in-out}
+#mutebtn.muted::before{opacity:0}
+#mutebtn.muted::after{opacity:1}
+
+
+
+/*VIDEO 3D*/
 #video_same_domain{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
 #video_other_domain{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
 #video_ss_domain{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
 #video_git_domain{position:relative;display:block;width:100% !important;height:auto !important;padding-top:50%;background-color:#000;margin:20px auto}
-
-
 #playBut{padding:10px 20px;margin:10px auto;text-align:center;background-color:#fff;border-radius:30px;display:block;width:180px;cursor:pointer}
 .jw-controls{display:none}
+
+
+
+
+/*BACKGROUND FIXED*/
+.fix-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position: center center;-webkit-background-size:cover;background-size:cover;background-attachment:fixed}
+
 
 
 
@@ -268,6 +286,8 @@ button{-webkit-transition:none;transition:none}
 
 
 /*LAYOUT*/
+body{-webkit-overflow-scrolling:touch}
+
 /*.nav-but{position:fixed;right:10px;top:18px;display:block;width:40px;height:40px;background-color:#000;z-index:100;color:#fff}
 .nav-but.active{background-color:#fff}
     
@@ -298,7 +318,7 @@ button{-webkit-transition:none;transition:none}
 
 /*PICS*/
 .pcPic{display:none}
-.spPic{display:block}
+.spPic{display:block;margin:20px auto}
 
 
 /*NORMAL*/
@@ -327,27 +347,21 @@ button{-webkit-transition:none;transition:none}
    
 }
 
-/*Ie 10/11*/
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) and  (max-width:1100px){
-/*BACKGROUND FIXED*/
 .has-bg-fix{z-index:1}
 .fix-bg{width:100%;height:100%;position:absolute;opacity:1}
 .on-show .fix-bg{opacity:1;animation:none;-webkit-animation:none;animation-duration:0s;-webkit-animation-duration:0s}
-
 }
 
-/*Ie 10/11*/
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) and  (max-width:1100px) and (orientation :landscape){
-/*FULLPAGE*/
 .useFull{overflow-y:auto}
 .useFull .content{height:auto}
-
-/*BACKGROUND FIXED*/
 .has-bg-fix{z-index:1}
 .fix-bg{width:100%;height:100%;position:absolute;opacity:1;transition:none;-webkit-transition:none}
 .on-show .fix-bg{opacity:1}
-
 }
+
 
 
 @media screen and  (max-width:1100px) and (orientation :landscape){

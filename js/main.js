@@ -1,4 +1,4 @@
-
+/*
 (function ($) {
 	var methods = { on: $.fn.on, bind: $.fn.bind };
 	$.each(methods, function(k){
@@ -19,7 +19,6 @@
 	 };
 	});
 }(jQuery));
-
 $.fn.isInViewport = function() {
 	var elementTop = $(this).offset().top;
 	var elementBottom = elementTop + $(this).outerHeight();
@@ -33,6 +32,7 @@ $.fn.isInViewport = function() {
 	return elementBottom > viewportTop && elementTop < viewportBottom;
 	
 };
+*/
 
 var timex;
 var timerEnd;
@@ -47,34 +47,9 @@ var qStop = false;
 var pStop = false;
 var step = 0;
 
-/*
-function lazyLoad(byThis){
-	
-	if($(window).width() > 1100){
-		
-		$(byThis).find('img[data-pc]').each(function(index,img){
-			img.setAttribute('src', img.getAttribute('data-pc'));
-			img.onload = function() {
-				img.removeAttribute('data-pc');
-			};
-		});
-		
-				
-	}else{
-		
-		$(byThis).find('img[data-sp]').each(function(index,img){
-			img.setAttribute('src', img.getAttribute('data-sp'));
-			img.onload = function() {
-				img.removeAttribute('data-sp');
-			};
-		});
-		
-	}
-	
-}
-*/
+var imgLoading = false; //Image loading
 
-	
+
 function scrollDelay(){
 	doWheel = true;
 }  
@@ -119,25 +94,15 @@ function SlidesShow() {
 	
 }
 
-function linkLoad(){
+function directLink(){
 	
-    $(document).on('click', '#home-page .quick-register, .direct-link, #catalog-details-page .logo-block a, .nav li a', function(e) {
+    $(document).on('click', '.nav li a', function(e) {
         e.preventDefault();
         var url =  $(this).attr("href");
-       
-        if($(this).attr('data-area')){
-            
-            var area= $(this).attr('data-area');
-            localStorage.setItem("area", area);
-           
-         }
-        
-        $('body').stop().animate({'opacity':0},100,'linear',function(){ window.location = url; });
-        
+       	$('body').stop().animate({'opacity':0},100,'linear',function(){ window.location = url; });
         return false;
         
 	});
-	
 	
 }
 
@@ -461,8 +426,6 @@ function Start(){
     //CommonEvent();
     //inputHolder();
     
-    //onScroll();
-    
     //Detect page
     if($('#home-page').length){
         
@@ -473,7 +436,7 @@ function Start(){
 }
 
 window.onbeforeunload = function() {
-    $('.fixJumpy .content').scrollTop(0);
+    //$('.fixJumpy .content').scrollTop(0);
 	window.scrollTo(0,0);
 	
 }
@@ -496,102 +459,88 @@ function pauseSlider(){
 
 
 $(document).ready(function () {
-    
+    console.log('ready');
+	
+	//Make video auto play by js [make sure for all most browser or device]
+	if(window.myVideo != undefined){
+		myVideo.play();
+		mutebtn.classList.add('show');
+		mutebtn.classList.add('muted');
+		
+		//myVideo.paused can use to check state
+		mutebtn.addEventListener("click", function() {
+			if(mutebtn.classList.contains('muted')){
+				myVideo.muted = false;
+				mutebtn.classList.remove('muted');
+			}else{
+				myVideo.muted = true;
+				mutebtn.classList.add('muted');
+			}
+		});
+	
+	}
+	
+	//Call lazy image
+	lazyLoad();
+	
     if( $('#fullpage').length){
        FullPage();
     }
    
-	//Loaded
-	var loaded = 0;
-	$('body').imagesLoaded().done( function( instance ) {
-		
-		if(loaded == 0){
-			loaded = 1;
-			window.scrollTo(0,0);
-			
-			$('.content').stop().animate({'opacity':1}, 300 ,'linear', function () {
-				SlidesShow();
-				onScroll();
-				Start();
-			});   	
-		}
-		
-	});
-	  
-    setTimeout(function(){
-        if(loaded == 0){
-			loaded = 1;
-			window.scrollTo(0,0);
-			
-			$('.content').stop().animate({'opacity':1}, 300 ,'linear', function () { 
-				SlidesShow();
-				onScroll();
-				Start();
-			});   	
-		}
-        
-    }, 3000);
-	
-	
 });
 
-var active = false;
-
+//Lazayload image [Làm cách này vì không muốn phụ thuộc vào section [để tối giảm vòng for]]
 function lazyLoad(){
 	
 	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
+	var imgClass = winW > 1100 ? 'img.pcPic.lazy' : 'img.spPic.lazy';
 	
-	if(winW > 1100){
-		var lazyImages = [].slice.call(document.querySelectorAll("img.pcPic.lazy"));
-	}else{
-		var lazyImages = [].slice.call(document.querySelectorAll("img.spPic.lazy"));
-	}
+	var lazyImages = [].slice.call(document.querySelectorAll(imgClass));
 	
-	if (active === false) {
-		active = true;
+	if (imgLoading === false) {
+		imgLoading = true;
 
 		setTimeout(function() {
 			
 			lazyImages.forEach(function(lazyImage) {
+		
+				if (lazyImage.getBoundingClientRect().top <= window.innerHeight * 2) {
+					
+					lazyImage.src = lazyImage.getAttribute('data-src');
+					lazyImage.classList.remove("lazy");
 
-				if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
-						
-						lazyImage.src = lazyImage.dataset.src;
-						//lazyImage.srcset = lazyImage.dataset.srcset;
-						lazyImage.classList.remove("lazy");
-						
-						lazyImages = lazyImages.filter(function(image) {
-							return image !== lazyImage;
-						});
-						
-						if (lazyImages.length === 0) {
-							//document.removeEventListener("scroll", lazyLoad);
-							//window.removeEventListener("resize", lazyLoad);
-							//window.removeEventListener("orientationchange", lazyLoad);
-						}
-						
 				}
 	
 			});
 			
-			active = false;
+			imgLoading = false;
 			
 		}, 200);
+		
 	}
+	
 }
+
 
 function setAnimate(elem){
 	elem.classList.add('on-show');
 }
 
+
+//Scroll animation
 function onScroll(){
 	
-	lazyLoad();
+	//console.log('onScroll');
 	
 	var winT = window.scrollTop  || document.documentElement.scrollTop || document.body.scrollTop;
 	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
 	var winH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 	var target = document.querySelector('.banner');
+	
+	
+	//Load image fist to be sure animatin smooth	
+	lazyLoad();
+	
 	
 	
 	//Set animations
@@ -616,10 +565,42 @@ function onScroll(){
     });
 	
 	
+	//Stop playing video [myVideo]
+	var vid = document.querySelector(".video-details");
+	
+	if(vid){
+		console.log(vid);
+		var rect = vid.getBoundingClientRect();
+		var elementTop = rect.top;
+		var elementBottom = elementTop + rect.height;
+		var viewportTop = winT;
+		var viewportBottom = viewportTop + winH;
+		
+		if( elementBottom > viewportTop && elementTop < viewportBottom){
+			myVideo.play();
+		}else{
+			//Make sure video must be playing
+			if(myVideo.paused == false){
+				myVideo.pause();
+			}
+		}
+		
+	}
+	
+	
 	//Banner animation
 	if(target){
-		target.style.webkitTransform = 'translate3d(0px,' + winT * 0.2 + 'px, 0px)';
-		target.style.transform = 'translate3d(0px,' + winT * 0.2 + 'px, 0px)';
+		target.style.webkitTransform = 'translate3d(0px,' + winT * 0.25 + 'px, 0px)';
+		target.style.transform = 'translate3d(0px,' + winT * 0.25 + 'px, 0px)';
+	}
+	
+	
+	//Header fixed
+	if(winT > 120){
+		headPage.classList.add('fixed');
+		
+	}else{
+		headPage.classList.remove('fixed');
 	}
 	
 	
@@ -635,35 +616,41 @@ function onScroll(){
 	
 }
 
+
+//Resize
+function onResize(){
+	console.log('resize');	
+	
+	if(!isMobile){
+		
+		
+	}
+	
+}
+
+
+//Rotate
+function onRotate(){
+	console.log('rotate');
+}
+
+
+//DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function() {
   
 	console.log('DOMContentLoaded');
 	
+	SlidesShow();
+	CommonEvent();
+	directLink();
 	
-	//document.addEventListener("scroll", onScroll);
-	
-	//document.addEventListener("scroll", lazyLoad);
-	//window.addEventListener("resize", lazyLoad);
-	//window.addEventListener("orientationchange", lazyLoad);
-	
+	$('.content').stop().animate({'opacity':1}, 500 ,'linear', function () {
+		onScroll();	
+		//Start();
+	});   	
 	
 	
-	/*if(document.documentElement.classList.contains('isIE')){
-		document.body.addEventListener("scroll", onScroll);
-	}else{
-		document.addEventListener("scroll", onScroll);
-	}
-	
-	window.addEventListener("resize", function(){
-		
-		if(!isMobile){
-		   console.log('not mobile');
-		   onScroll();																				
-		}												
-																																															
-	});
-	*/
-
+	//Video 360
 	var vidPlay;
 	if(window.video_same_domain != undefined){
 		vidPlay = jwplayer('video_same_domain').setup({
@@ -710,8 +697,18 @@ document.addEventListener("DOMContentLoaded", function() {
 			vidPlay.play();
 		});
 	}
-
-
-	CommonEvent();
+	
+	
+	//Document Listener
+	if(document.documentElement.classList.contains('isIE')){
+		document.body.addEventListener("scroll", onScroll);
+	}else{
+		document.addEventListener("scroll", onScroll);
+	}
+	window.addEventListener("resize", onResize);
+	window.addEventListener("orientationchange", onRotate);
+	
+	
+	
 
 });
