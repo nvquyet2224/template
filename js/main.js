@@ -48,6 +48,7 @@ var pStop = false;
 var step = 0;
 
 var imgLoading = false; //Image loading
+var bgLoading = false;  //Image loading background
 
 
 function scrollDelay(){
@@ -483,6 +484,9 @@ $(document).ready(function () {
 	//Call lazy image
 	lazyLoad();
 	
+	//Call lazy image background
+	lazyBg();
+	
     if( $('#fullpage').length){
        FullPage();
     }
@@ -521,9 +525,41 @@ function lazyLoad(){
 	
 }
 
+//Lazayload background [Làm cách này vì không muốn phụ thuộc vào section [để tối giảm vòng for]]
+function lazyBg(){
+	
+	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
+	var bgClass = winW > 1100 ? '.pcBg.lazy' : '.spBg.lazy';
+	
+	var lazyBgs = [].slice.call(document.querySelectorAll(bgClass));
+	
+	if (bgLoading === false) {
+		bgLoading = true;
+
+		setTimeout(function() {
+			
+			lazyBgs.forEach(function(lazyBg) {
+				
+				if (lazyBg.getBoundingClientRect().top <= window.innerHeight * 2) {
+					lazyBg.style.backgroundImage = 'url('+ lazyBg.getAttribute('data-src') +')';
+					lazyBg.classList.remove("lazy");
+				}
+	
+			});
+			
+			bgLoading = false;
+			
+		}, 50);
+		
+	}
+	
+}
 
 function setAnimate(elem){
+	
 	elem.classList.add('on-show');
+	
+	
 }
 
 
@@ -541,6 +577,8 @@ function onScroll(){
 	//Load image fist to be sure animatin smooth	
 	lazyLoad();
 	
+	//Load image background fist to be sure animatin smooth	
+	lazyBg();
 	
 	
 	//Set animations
@@ -556,11 +594,14 @@ function onScroll(){
 		var viewportBottom = viewportTop + winH;
 		
 		if( elementBottom > viewportTop && elementTop < viewportBottom){
-
 			window.requestAnimationFrame(function(){
 				setAnimate(elem);
 			});
+			
+		}else if(elementBottom > viewportTop){
+			elem.classList.remove('on-show');
 		}
+		
 		
     });
 	
@@ -569,7 +610,6 @@ function onScroll(){
 	var vid = document.querySelector(".video-details");
 	
 	if(vid){
-		console.log(vid);
 		var rect = vid.getBoundingClientRect();
 		var elementTop = rect.top;
 		var elementBottom = elementTop + rect.height;
