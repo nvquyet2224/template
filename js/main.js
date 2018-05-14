@@ -490,7 +490,7 @@ function lazyLoad(){
 			
 			lazyImages.forEach(function(lazyImage) {
 		
-				if (lazyImage.getBoundingClientRect().top <= window.innerHeight * 3) {
+				if (lazyImage.getBoundingClientRect().top <= window.innerHeight * 1.5) {
 					
 					lazyImage.src = lazyImage.getAttribute('data-src');
 					lazyImage.classList.remove("lazy");
@@ -501,7 +501,7 @@ function lazyLoad(){
 			
 			imgLoading = false;
 			
-		}, 200);
+		}, 100);
 		
 	}
 	
@@ -522,7 +522,7 @@ function lazyBg(){
 			
 			lazyBgs.forEach(function(lazyBg) {
 				
-				if (lazyBg.getBoundingClientRect().top <= window.innerHeight * 3) {
+				if (lazyBg.getBoundingClientRect().top <= window.innerHeight * 1.5) {
 					lazyBg.style.backgroundImage = 'url('+ lazyBg.getAttribute('data-src') +')';
 					lazyBg.classList.remove("lazy");
 				}
@@ -531,7 +531,7 @@ function lazyBg(){
 			
 			bgLoading = false;
 			
-		}, 200);
+		}, 100);
 		
 	}
 	
