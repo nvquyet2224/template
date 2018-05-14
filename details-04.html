@@ -39,6 +39,11 @@
 <link href="css/animate.css" rel="stylesheet" type="text/css">
 <link href="css/slide.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/pop-up.css" rel="stylesheet" type="text/css">
+
+
 </noscript>
 <script>
 var loadDeferredStyles = function() {
@@ -124,6 +129,36 @@ else window.addEventListener('load', loadDeferredStyles);
 </div>
 <!--POPUP-->
 
+<!--FACEBOOK MODAL-->
+
+<div class="modal fade default-modal modal-tooltip modal-bottom" id="default-modal" tabindex="-1" data-modal="true">
+<div class="modal-dialog popup-content" role="document">
+<i class="glyphicon glyphicon-arrow-up"></i>
+<div class="modal-content clearfix">
+<div class="modal-inner text-center">
+<h2>Thông báo</h2>
+<p>Vui lòng truy cập website www.lamchucuocchoi.vn bằng trình duyệt mobile để đc trải nghiệm tốt nhất!</p>
+<p class="click">Click <i class="glyphicon glyphicon-option-vertical"></i> </p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade default-modal modal-tooltip modal-bottom" id="default-modal" tabindex="-1" data-modal="true">
+<div class="modal-dialog popup-content" role="document">
+<i class="glyphicon glyphicon-arrow-down"></i>
+<div class="modal-content clearfix">
+<div class="modal-inner text-center">
+<h2>Thông báo</h2>
+<p>Vui lòng truy cập website www.lamchucuocchoi.vn bằng trình duyệt mobile để đc trải nghiệm tốt nhất!</p>
+<p class="click">Click <i class="glyphicon glyphicon-option-vertical"></i> </p>
+</div>
+</div>
+</div>
+</div>
+    
+<!--FACEBOOK MODAL-->
+
 <!--ALBUM-->
 <div class="full-album"></div>
 <!--ALBUM-->
@@ -141,6 +176,37 @@ else window.addEventListener('load', loadDeferredStyles);
 <script type="text/javascript" src="js/detect.js"></script>
 <script type="text/javascript" src="js/slide.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script>
+
+
+var isFacebookApp = function() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+}
+
+console.log(isFacebookApp());
+
+if (isFacebookApp()) {
+	
+	var userAgent = window.navigator.userAgent.toLowerCase();
+	var ios = /iphone|ipod|ipad/.test(userAgent);
+	
+	if(ios) {
+		$('#default-modal').addClass("modal-bottom");
+		$('#arrow-icon-id').addClass("glyphicon-arrow-down");
+	} else {
+		$('#default-modal').addClass("modal-top");
+		$('#arrow-icon-id').addClass("glyphicon-arrow-up");
+	}
+	
+	$('#default-modal').modal('show');
+	
+};
+	
+</script>
 <!--SCRIPT-->
     
 </body>
