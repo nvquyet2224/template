@@ -36,11 +36,9 @@
 <!--render css-->
 <noscript id="noscript-block">
 <link href="css/fonts.css" rel="stylesheet" type="text/css">
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="css/animate.css" rel="stylesheet" type="text/css">
 <link href="css/slide.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
-
 </noscript>
 <script>
 var loadDeferredStyles = function() {
@@ -136,7 +134,7 @@ else window.addEventListener('load', loadDeferredStyles);
 <div class="modal-inner">
 
 <h2>Thông báo</h2>
-<p>Vui lòng truy cập website www.lamchucuocchoi.vn bằng trình duyệt mobile để đc trải nghiệm tốt nhất!</p>
+<p>Vui lòng truy cập website bằng trình duyệt mobile để đc trải nghiệm tốt nhất!</p>
 </div>
 
 </div>
@@ -184,7 +182,8 @@ if (isFacebookApp()) {
 		$('.glyphicon').addClass("glyphicon-arrow-up");
 	}
 	
-	$('#default-modal').fadeIn(100);
+	$('#default-modal').fadeIn();
+	
 	
 }
 		
