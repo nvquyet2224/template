@@ -179,14 +179,19 @@ select::-ms-expand{display:none}
 /*MODAL APP*/
 #default-modal{position:fixed;left:0;top:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:1050;display:none}
 .modal-content{position:absolute;width:100%;height:auto;padding:10px}
-.modal-content.modal-top{top:10px;}
-.modal-content.modal-bottom{bottom:10px}
 
-.modal-inner{width:100%;height:auto;border:1px solid #fff;padding:40px;text-align:center}
-.modal-inner h2{font-size:20px;color:#fff;text-transform:uppercase}
+.modal-top .modal-content{top:10px;}
+.modal-bottom .modal-content{bottom:10px}
+
+.modal-inner{width:100%;height:auto;position:relative;background-color:#000;border:1px solid #fff;padding:40px;text-align:center;color:#fff;}
+.modal-inner h2{font-size:20px;text-transform:uppercase}
 .modal-inner p{font-size:14px;text-transform:uppercase}
 
+.modal-bottom .modal-inner::before{content:'';position:absolute;width:0;height:0;border-color:transparent;border-style:solid;bottom:-21px;right:4px;border-width:21px 18px 0;border-top-color:#fff}
+.modal-bottom .modal-inner::after{content:'';position:absolute;width:0;height:0;border-color:transparent;border-style:solid;bottom:-20px;right:6px;border-width:20px 16px 0;border-top-color:#000}
 
+.modal-top .modal-inner::before{content:'';position:absolute;width:0;height:0;border-color:transparent;border-style:solid;top:-21px;right:4px;border-width:0 18px 21px 18px;border-bottom-color:#fff}
+.modal-top .modal-inner::after{content:'';position:absolute;width:0;height:0;border-color:transparent;border-style:solid;top:-20px;right:6px;border-width:0 16px 20px 16px;border-bottom-color:#000}
 
 
 /*COMMON*/
@@ -255,9 +260,9 @@ select::-ms-expand{display:none}
 
 
 /*BACKGROUND*/
-.fix-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position: center center;background-size:cover;background-attachment:fixed}
+.fix-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position:center center;background-size:cover;background-attachment:fixed}
 
-.scroll-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position: center center;background-size:cover;background-attachment:scroll}
+.scroll-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position:center center;background-size:cover;background-attachment:scroll}
 .pcBg{display:block}
 .spBg{display:none}
 
@@ -370,13 +375,13 @@ button{-webkit-transition:none;transition:none}
 }
 
 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) and  (max-width:1100px){
+@media screen and (-ms-high-contrast:active), (-ms-high-contrast:none) and  (max-width:1100px){
 .has-bg-fix{z-index:1}
 .fix-bg{width:100%;height:100%;position:absolute;opacity:1}
 .on-show .fix-bg{opacity:1;animation:none;-webkit-animation:none;animation-duration:0s;-webkit-animation-duration:0s}
 }
 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) and  (max-width:1100px) and (orientation :landscape){
+@media screen and (-ms-high-contrast:active), (-ms-high-contrast:none) and  (max-width:1100px) and (orientation :landscape){
 .useFull{overflow-y:auto}
 .useFull .content{height:auto}
 .has-bg-fix{z-index:1}
