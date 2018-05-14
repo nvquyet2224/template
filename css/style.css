@@ -176,6 +176,11 @@ select::-ms-expand{display:none}
 .active .close-pop{display:block;z-index:1;-webkit-animation:fadeIn;animation:fadeIn;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-delay:0.2s;animation-delay:0.2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}
 
 
+/*MODAL APP*/
+#default-modal{position:fixed;left:0;top:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:1050;display:none}
+
+
+
 /*COMMON*/
 /*FULLPAGE*/
 .fp-tableCell{padding-top:76px}
@@ -247,6 +252,8 @@ select::-ms-expand{display:none}
 .scroll-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position: center center;background-size:cover;background-attachment:scroll}
 .pcBg{display:block}
 .spBg{display:none}
+
+
 
 
 
