@@ -19,37 +19,20 @@
 	 };
 	});
 }(jQuery));
-$.fn.isInViewport = function() {
-	var elementTop = $(this).offset().top;
-	var elementBottom = elementTop + $(this).outerHeight();
-	var viewportTop = $(window).scrollTop();
-	var viewportBottom = viewportTop + $(window).height();
-	
-	if( elementBottom < (viewportTop + $(window).height()) ){
-		lazyLoad(this);
-	}
-	
-	return elementBottom > viewportTop && elementTop < viewportBottom;
-	
-};
 */
 
 var timex;
-var timerEnd;
-var scrolling  = false;
-var loading = true;
-var video = false;
-var doWheel = true;
-var doTouch = true;
-var introVideo = null;
-var windscroll = $(document).scrollTop();
-var qStop = false;
-var pStop = false;
-var step = 0;
 
+
+
+var video = false;
+var doWheel = true;		//delay mouse wheel
+var doTouch = true;		//delay touch
 var imgLoading = false; //Image loading
 var bgLoading = false;  //Image loading background
 
+
+//var windscroll = $(document).scrollTop();
 
 function scrollDelay(){
 	doWheel = true;
@@ -114,7 +97,6 @@ function popLoad(url) {
         $('.popup-content').html(data);
 
         $('.popup-content').stop().animate({'opacity': 1}, 500, 'linear', function() {
-            loading = false;
         });
             
     }});
@@ -549,7 +531,7 @@ function lazyBg(){
 			
 			bgLoading = false;
 			
-		}, 50);
+		}, 100);
 		
 	}
 	
@@ -582,7 +564,7 @@ function onScroll(){
 	
 	
 	//Set animations
-	var elements  = [].slice.call(document.querySelectorAll(".section-content"));
+	var elements  = [].slice.call(document.querySelectorAll(".ani-item, .section-content"));
 	elements.forEach(function(elem) {
       	
 		var rect = elem.getBoundingClientRect();
@@ -593,13 +575,15 @@ function onScroll(){
 		var viewportTop = winT;
 		var viewportBottom = viewportTop + winH;
 		
-		if( elementBottom > viewportTop && elementTop < viewportBottom){
+		//if( (elementBottom > viewportTop) && (elementTop < viewportBottom) ){
+		if((elementTop + 80) < winH && (elementTop + 80) > 76) {
+			
 			window.requestAnimationFrame(function(){
 				setAnimate(elem);
 			});
 			
 		}else if(elementBottom > viewportTop){
-			elem.classList.remove('on-show');
+			//elem.classList.remove('on-show');
 		}
 		
 		
@@ -618,6 +602,7 @@ function onScroll(){
 		
 		if( elementBottom > viewportTop && elementTop < viewportBottom){
 			myVideo.play();
+			
 		}else{
 			//Make sure video must be playing
 			if(myVideo.paused == false){

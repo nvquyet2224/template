@@ -126,15 +126,15 @@ else window.addEventListener('load', loadDeferredStyles);
 
 <!--FACEBOOK MODAL-->
 
-<div id="defaultModal" class="modal-bottom">
+<div id="defaultModal" class="modal-top">
 <div class="modal-content">
 
-<i class="glyphicon"></i>
+<i class="glyphicon glyphicon-arrow-up"></i>
 
 <div class="modal-inner">
 
 <h2>Thông báo</h2>
-<p>Vui lòng truy cập website bằng trình duyệt mobile để đc trải nghiệm tốt nhất!</p>
+<p>Vui lòng truy cập website bằng trình duyệt chrome để được trải nghiệm tốt nhất!</p>
 </div>
 
 </div>
@@ -173,16 +173,13 @@ if (isFacebookApp()) {
 	var userAgent = window.navigator.userAgent.toLowerCase();
 	var ios = /iphone|ipod|ipad/.test(userAgent);
 	
-	if(ios) {
-		defaultModal.classList.add('modal-bottom');
-		//$('#default-modal').addClass("modal-bottom");
-	} else {
-		defaultModal.classList.add('modal-top');
-		//$('.glyphicon').addClass("glyphicon-arrow-up");
+	if(!ios) {
+		defaultModal.style.display = "block";
+		defaultModal.classList.add('fade');
 	}
-	defaultModal.style.display = "block";
+	
 }
-
+		
 </script>
 <!--SCRIPT-->
     
