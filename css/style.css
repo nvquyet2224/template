@@ -178,6 +178,14 @@ select::-ms-expand{display:none}
 
 /*MODAL APP*/
 #default-modal{position:fixed;left:0;top:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:1050;display:none}
+.modal-content{position:absolute;width:100%;height:auto;padding:10px}
+.modal-content.modal-top{top:10px;}
+.modal-content.modal-bottom{bottom:10px}
+
+.modal-inner{width:100%;height:auto;border:1px solid #fff;padding:40px;text-align:center}
+.modal-inner h2{font-size:20px;color:#fff;text-transform:uppercase}
+.modal-inner p{font-size:14px;text-transform:uppercase}
+
 
 
 

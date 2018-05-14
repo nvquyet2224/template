@@ -126,7 +126,17 @@ else window.addEventListener('load', loadDeferredStyles);
 
 <!--FACEBOOK MODAL-->
 
-<div id="default-modal" tabindex="-1" data-modal="true">
+<div id="default-modal" tabindex="-1">
+<div class="modal-content">
+<div class="modal-inner">
+
+<h2>Thông báo</h2>
+<p>Vui lòng truy cập website www.lamchucuocchoi.vn bằng trình duyệt mobile để đc trải nghiệm tốt nhất!</p>
+<p class="click">Click <i class="glyphicon glyphicon-option-vertical"></i> </p>
+</div>
+
+</div>
+</div>
 
 <!--
 <div class="modal-dialog popup-content" role="document">
@@ -167,7 +177,6 @@ else window.addEventListener('load', loadDeferredStyles);
 
 <script>
 
-
 var isFacebookApp = function() {
     var ua = navigator.userAgent || navigator.vendor || window.opera;
     return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
@@ -189,7 +198,6 @@ if (isFacebookApp()) {
 	}
 	
 	$('#default-modal').fadeIn(100);
-	
 	
 	//$('#default-modal').modal('show');
 	
