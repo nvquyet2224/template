@@ -126,7 +126,7 @@ else window.addEventListener('load', loadDeferredStyles);
 
 <!--FACEBOOK MODAL-->
 
-<div id="default-modal" tabindex="-1">
+<div id="defaultModal" class="modal-bottom">
 <div class="modal-content">
 
 <i class="glyphicon"></i>
@@ -174,19 +174,15 @@ if (isFacebookApp()) {
 	var ios = /iphone|ipod|ipad/.test(userAgent);
 	
 	if(ios) {
-		$('#default-modal').addClass("modal-bottom");
-		$('.glyphicon').addClass("glyphicon-arrow-down");
-		
+		defaultModal.classList.add('modal-bottom');
+		//$('#default-modal').addClass("modal-bottom");
 	} else {
-		$('#default-modal').addClass("modal-top");
-		$('.glyphicon').addClass("glyphicon-arrow-up");
+		defaultModal.classList.add('modal-top');
+		//$('.glyphicon').addClass("glyphicon-arrow-up");
 	}
-	
-	$('#default-modal').fadeIn();
-	
-	
+	defaultModal.style.display = "block";
 }
-		
+
 </script>
 <!--SCRIPT-->
     
