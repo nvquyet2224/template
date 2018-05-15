@@ -512,7 +512,7 @@ function lazyLoad(){
 			
 			imgLoading = false;
 			
-		}, 50);
+		}, 200);
 		
 	}
 	
@@ -542,7 +542,7 @@ function lazyBg(){
 			
 			bgLoading = false;
 			
-		}, 50);
+		}, 200);
 		
 	}
 	
