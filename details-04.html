@@ -53,10 +53,11 @@ else window.addEventListener('load', loadDeferredStyles);
 </script>
 
 <!--HEADER-->
-<header id="headPage" class="header">
+<header class="header">
 <span></span>
 
 <div class="navigation">
+<div class="nav-outer">
 <div class="nav">
 <ul>
 <li><a href="index.html">Trang chủ</a></li>
@@ -70,9 +71,9 @@ else window.addEventListener('load', loadDeferredStyles);
 </ul>
 </div>
 </div>
+</div>
 
-<div class="nav-but" id="navBut"></div>
-<div class="nav-overlay"></div>
+<div class="nav-but"></div>
     
 </header>
 <!--HEADER-->
@@ -124,25 +125,29 @@ else window.addEventListener('load', loadDeferredStyles);
 </div>
 <!--POPUP-->
 
-<!--FACEBOOK MODAL-->
-
+<!--MODAL APP-->
 <div id="defaultModal" class="modal-top">
 <div class="modal-content">
-
-<i class="glyphicon glyphicon-arrow-up"></i>
 
 <div class="modal-inner">
 
 <h2>Thông báo</h2>
-<p>Vui lòng truy cập website bằng trình duyệt chrome để được trải nghiệm tốt nhất!</p>
+<p>Vui lòng truy cập website bằng trình duyệt <br>Chrome để được trải nghiệm tốt nhất</p>
+
+<div class="app-help">
+<ul>
+<li>Click</li>
+<li><img src="images/app-dot.png" alt="message"/></li>
+<li><img src="images/app-arrow1.png" alt="message"/></li>
+<li><img src="images/app-arrow2.png" alt="message"/><span>Mở bằng Chrome</span></li>
+</ul>
+</div>
+
 </div>
 
 </div>
 </div>
-
-</div>
-
-<!--FACEBOOK MODAL-->
+<!--MODAL APP-->
 
 <!--ALBUM-->
 <div class="full-album"></div>
@@ -150,7 +155,7 @@ else window.addEventListener('load', loadDeferredStyles);
     
 <!--FACILITIES-->
 <div class="go-down"></div>
-<div class="to-top" id="goTop"></div>
+<div class="to-top"></div>
 <!--FACILITIES-->
     
 <!--SCRIPT-->
@@ -161,26 +166,6 @@ else window.addEventListener('load', loadDeferredStyles);
 <script type="text/javascript" src="js/detect.js"></script>
 <script type="text/javascript" src="js/slide.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<script>
-
-var isFacebookApp = function() {
-    var ua = navigator.userAgent || navigator.vendor || window.opera;
-    return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-}
-
-if (isFacebookApp()) {
-	
-	var userAgent = window.navigator.userAgent.toLowerCase();
-	var ios = /iphone|ipod|ipad/.test(userAgent);
-	
-	if(!ios) {
-		defaultModal.style.display = "block";
-		defaultModal.classList.add('fade');
-	}
-	
-}
-		
-</script>
 <!--SCRIPT-->
     
 </body>
