@@ -21,12 +21,14 @@
 }(jQuery));
 */
 
-var timex;
-var video = false;
-var doWheel = true;		//delay mouse wheel
-var doTouch = true;		//delay touch
-var imgLoading = false; //Image loading
-var bgLoading = false;  //Image loading background
+var timex,
+	timerImg,
+	timerBg,
+	video = false,
+	doWheel = true,
+	doTouch = true,
+	imgLoading = false,
+	bgLoading = false;  //Image loading background
 
 var doCument = document.querySelectorAll('html, body'),
 	header = document.querySelector('.header'),
@@ -41,6 +43,11 @@ var doCument = document.querySelectorAll('html, body'),
 	openPop = document.querySelector('.show-pop'),
 	closePop = document.querySelector('.close-pop');
 
+var imgClass,
+	lazyImages,
+	bgClass,
+	lazyBgs;
+	
 	
 	
 //var windscroll = $(document).scrollTop();
@@ -57,6 +64,14 @@ var isFacebookApp = function() {
 	var ua = navigator.userAgent || navigator.vendor || window.opera;
 	return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
 }
+
+function clearAllTimeOut(){
+	var highestTimeoutId = setTimeout(";");
+	for (var i = 0 ; i < highestTimeoutId ; i++) {
+		clearTimeout(i); 
+	}	
+}
+
 
 
 function SlidesShow() {
@@ -488,7 +503,7 @@ function pauseSlider(){
 
 
 $(document).ready(function () {
-    console.log('ready');
+    //console.log('ready');
 	
 	if (isFacebookApp()) {
 		
@@ -527,12 +542,6 @@ $(document).ready(function () {
 	
 	}
 	
-	//Call lazy image
-	lazyLoad();
-	
-	//Call lazy image background
-	lazyBg();
-	
     if( $('#fullpage').length){
        FullPage();
     }
@@ -540,24 +549,33 @@ $(document).ready(function () {
 });
 
 //Lazayload image [Làm cách này vì không muốn phụ thuộc vào section [để tối giảm vòng for]]
-function lazyLoad(){
-	
-	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
-	var imgClass = winW > 1100 ? 'img.pcPic.lazy' : 'img.spPic.lazy';
-	
-	var lazyImages = [].slice.call(document.querySelectorAll(imgClass));
-	
-	if (imgLoading === false) {
+function imgLazyLoad(){
+	//console.log('imgLazyLoad');
+	if (imgLoading === false && lazyImages.length > 0) {
 		imgLoading = true;
 
+		
 		setTimeout(function() {
 			
 			lazyImages.forEach(function(lazyImage) {
 		
-				if (lazyImage.getBoundingClientRect().top <= window.innerHeight * 1.5) {
+				if (lazyImage.getBoundingClientRect().top <= window.innerHeight * 3) {
 					
 					lazyImage.src = lazyImage.getAttribute('data-src');
 					lazyImage.classList.remove("lazy");
+					
+					lazyImages = lazyImages.filter(function(image) {
+					  	return image !== lazyImage;
+					});
+					
+					if (lazyImages.length === 0) {
+						
+						if(document.documentElement.classList.contains('isIE')){
+							document.body.removeEventListener("scroll", imgLazyLoad);
+						}else{
+							document.removeEventListener("scroll", imgLazyLoad);
+						}
+					}
 
 				}
 	
@@ -572,23 +590,32 @@ function lazyLoad(){
 }
 
 //Lazayload background [Làm cách này vì không muốn phụ thuộc vào section [để tối giảm vòng for]]
-function lazyBg(){
-	
-	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
-	var bgClass = winW > 1100 ? '.pcBg.lazy' : '.spBg.lazy';
-	
-	var lazyBgs = [].slice.call(document.querySelectorAll(bgClass));
-	
+function bgLazyLoad(){
+	//console.log('bgLazyLoad');
 	if (bgLoading === false) {
 		bgLoading = true;
-
+		
 		setTimeout(function() {
 			
 			lazyBgs.forEach(function(lazyBg) {
 				
-				if (lazyBg.getBoundingClientRect().top <= window.innerHeight * 1.5) {
+				if (lazyBg.getBoundingClientRect().top <= window.innerHeight * 3) {
 					lazyBg.style.backgroundImage = 'url('+ lazyBg.getAttribute('data-src') +')';
 					lazyBg.classList.remove("lazy");
+									
+					lazyBgs = lazyBgs.filter(function(bgLazy) {
+					  	return bgLazy !== lazyBg;
+					});
+					
+					if (lazyBgs.length === 0) {
+						
+						if(document.documentElement.classList.contains('isIE')){
+							document.body.removeEventListener("scroll", bgLazyLoad);
+						}else{
+							document.removeEventListener("scroll", bgLazyLoad);
+						}
+					}
+					
 				}
 	
 			});
@@ -618,14 +645,6 @@ function onScroll(){
 	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
 	var winH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 	var target = document.querySelector('.banner');
-	
-	
-	//Load image fist to be sure animatin smooth	
-	lazyLoad();
-	
-	//Load image background fist to be sure animatin smooth	
-	lazyBg();
-	
 	
 	//Set animations
 	var elements  = [].slice.call(document.querySelectorAll(".ani-item, .section-content"));
@@ -708,7 +727,7 @@ function onScroll(){
 
 //Resize
 function onResize(){
-	console.log('resize');
+	//console.log('resize');
 	
 	
 	//DONT REMOVE
@@ -732,7 +751,9 @@ function onResize(){
 
 //Rotate
 function onRotate(){
-	console.log('rotate');
+	//console.log('rotate');
+	
+	clearAllTimeOut();
 	
 	setTimeout(function(){
 		if(navigation.classList.contains('active')){
@@ -753,11 +774,19 @@ document.addEventListener("DOMContentLoaded", function() {
 	CommonEvent();
 	directLink();
 	
+	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
+	imgClass = winW > 1100 ? 'img.pcPic.lazy' : 'img.spPic.lazy';
+	lazyImages = [].slice.call(document.querySelectorAll(imgClass));
+	
+	bgClass = winW > 1100 ? '.pcBg.lazy' : '.spBg.lazy';
+	lazyBgs = [].slice.call(document.querySelectorAll(bgClass));
+	
+	
 	//Load image fist to be sure animatin smooth	
-	lazyLoad();
+	imgLazyLoad();
 	
 	//Load image background fist to be sure animatin smooth	
-	lazyBg();
+	bgLazyLoad();
 	
 	setTimeout(function(){
 		window.scrollTo(0,0);
@@ -821,8 +850,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	//Document Listener
 	if(document.documentElement.classList.contains('isIE')){
 		document.body.addEventListener("scroll", onScroll);
+		document.body.addEventListener("scroll", imgLazyLoad);
+		document.body.addEventListener("scroll", bgLazyLoad);
 	}else{
 		document.addEventListener("scroll", onScroll);
+		document.addEventListener("scroll", imgLazyLoad);
+		document.addEventListener("scroll", bgLazyLoad);
 	}
 
 	window.addEventListener("resize", onResize);
