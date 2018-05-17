@@ -418,7 +418,6 @@ function Start(){
            
     }
 	
-	
 	$('.tab-but').on('click', function(e){
 		OverflowContent();
 		$('.tab-box li').removeClass('current');
@@ -501,7 +500,7 @@ $(document).ready(function () {
 	
 	
 	//Overflow Content
-	if(ctnWrap){ OverflowContent(); }
+	if(ctnWrap.length){ OverflowContent(); }
 	
 	
 	//Fullpage
@@ -878,7 +877,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	setTimeout(function(){
 		window.scrollTo(0,0);
 		SlidesShow();
-		if(ctnWrap){ OverflowContent(); }
+		if(ctnWrap.length){ OverflowContent(); }
 	
 		$('.content').stop().animate({'opacity':1}, 500 ,'linear', function () {
 			OnScroll();
