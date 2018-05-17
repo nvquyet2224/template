@@ -1,4 +1,30 @@
 
+
+(function ($) {
+	
+	var methods = { on: $.fn.on, bind: $.fn.bind };
+	$.each(methods, function(k){
+		$.fn[k] = function () {
+			var args = [].slice.call(arguments),
+			delay = args.pop(),
+			fn = args.pop(),
+			timer;
+			args.push(function () {
+				  var self = this,
+				  arg = arguments;
+				  clearTimeout(timer);
+				  timer = setTimeout(function(){
+				  	fn.apply(self, [].slice.call(arg));
+				  }, delay);
+			});
+			
+			return methods[k].apply(this, isNaN(delay) ? arguments : args);
+		};
+	});
+	
+}(jQuery));
+
+
 var timex,
 	timerPc,
 	timerSp,
@@ -8,18 +34,18 @@ var timex,
 	
 
 //Layout variables
-var doCument = $('html, body'),
-	header = $('.header'),
-	navBut = $('.nav-but'),
+var doCument = document.querySelectorAll('html, body'),
+	header = document.querySelector('.header'),
+	navBut = document.querySelector('.nav-but'),
 	navigation = document.querySelector('.navigation'),
 	navCnt = document.querySelector('.nav'),
 	navBox = document.querySelector('.nav ul'),
-	toTop = $('.to-top'),
+	toTop = document.querySelector('.to-top'),
 	popCnt = document.querySelector('.popup-content'),
 	popWrp = document.querySelector('.popup-wrap'),
 	popBox = document.querySelector('.popup-box'),
-	openPop = $('.show-pop'),
-	closePop = $('.close-pop');
+	openPop = document.querySelector('.show-pop'),
+	closePop = document.querySelector('.close-pop');
 
 
 //Lazy variables
@@ -36,9 +62,9 @@ var imgClass,
 
 
 //Overflow variables	
-var ctnWrap = $('.overflow-content'),
-	ctnBox	= $('.overflow-box'),
-	ctnItem	= $('.overflow-item');
+var ctnWrap = document.querySelector('.overflow-content'),
+	ctnBox	= document.querySelector('.overflow-box'),
+	ctnItem	= [].slice.call(document.querySelectorAll('.overflow-item'));
 	
 	
 var myDocument;	
@@ -122,7 +148,8 @@ function popLoad(url) {
         
         $('.popup-content').html(data);
 
-        $('.popup-content').stop().animate({'opacity': 1}, 500, 'linear', function() {});
+        $('.popup-content').stop().animate({'opacity': 1}, 500, 'linear', function() {
+        });
             
     }});
 
@@ -149,7 +176,28 @@ function inputHolder(){
 				
 }
 
+function ChangeSize() {
 
+    var Portrait = $(window).height() >= $(window).width();
+    var Landscape = $(window).height() < $(window).width();
+    var Ratio = $(window).height() / $(window).width();
+    
+	
+    if($(window).width() > 1100){
+        
+        if(Ratio > 0.61){
+            $('.content').addClass('square');
+        }else{
+            $('.content').removeClass('square');
+        }
+
+    }else{
+        $('.content').removeClass('square');
+        
+        
+    }
+    
+}
 
 //CALENDAR: xét calendar box
 function DatePicker() {
@@ -176,6 +224,21 @@ function DatePicker() {
     });
     
    		
+}
+
+function ScrollBox() {
+    if($(window).width() <= 1100){
+        $('.boxScroll').getNiceScroll().remove();
+    }else{
+        $('.boxScroll').css({'overflow-x':'hidden','overflow-y':'hidden'});
+        $('.boxScroll').getNiceScroll().show();
+        $('.boxScroll').niceScroll({touchbehavior:false, horizrailenabled: false, cursordragontouch:false,grabcursorenabled: false});
+        $('.boxScroll').animate({scrollTop: "0px"});
+    }
+}
+
+function ScrollHide() {
+    $('.boxScroll').getNiceScroll().remove();
 }
 
 function textMove(){
@@ -251,19 +314,18 @@ function ShowFull(url,num) {
 function CommonEvent(){
    
     //NAV CLICK EVENT
-  	navBut.on("click", function(e) {
+  	navBut.addEventListener("click", function(event) {
 		
-		if(navBut.hasClass('active')){
-			navBut.removeClass('active');
-			doCument.removeClass('no-scroll');
-			
+		if(this.classList.contains('active')){
+			this.classList.remove('active');
+			doCument[0].classList.remove('no-scroll');
+			doCument[1].classList.remove('no-scroll');
 			navigation.classList.remove('active');
 			navigation.style.height = "0px";
-			
 		}else{
-			navBut.addClass('active');
-			doCument.addClass('no-scroll');
-			
+			this.classList.add('active');
+			doCument[0].classList.add('no-scroll');
+			doCument[1].classList.add('no-scroll');		
 			navigation.classList.add('active');
 			navigation.style.height = window.innerHeight + "px";
 		}
@@ -286,8 +348,8 @@ function CommonEvent(){
 	
 	
     //GOTOP EVENT
-	toTop.on("click", function(event) {
-		doCument.animate({ scrollTop: 0 }, 400);
+	toTop.addEventListener("click", function(event) {
+		$('html,body').animate({ scrollTop: 0 }, 400);
 	});
     
 	
@@ -307,16 +369,17 @@ function CommonEvent(){
 	
 	
 	//POPUP CLICK EVENTS
-	openPop.on("click", function(event) {
-		doCument.addClass('no-scroll');
-		
-		popCnt.style.height = window.innerHeight + "px";
-		//Show scroll after finished animation
-		setTimeout(function(){ popCnt.classList.add('active'); },310);
-	});
+	if(openPop){
+		openPop.addEventListener("click", function(event) {
+			doCument[0].classList.add('no-scroll');
+			popCnt.style.height = window.innerHeight + "px";
+			//Show scroll after finished animation
+			setTimeout(function(){ popCnt.classList.add('active'); },310);
+		});
+	}
 	
-	closePop.on("click", function(event) {
-		doCument.removeClass('no-scroll');
+	closePop.addEventListener("click", function(event) {
+		doCument[0].classList.remove('no-scroll');
 		popCnt.classList.remove('active');
 		popCnt.style.height = "0px";
 		
@@ -400,10 +463,14 @@ function FullPage(){
 
 
 function OverflowContent(){
-	var itemW = ctnWrap.width();
+	console.log('OverflowContent');
+	var itemW = ctnWrap.clientWidth;
 	var itemN = ctnItem.length;
-	ctnBox.css({'width': itemW * itemN});
-	ctnItem.css({'width': itemW});
+	
+	ctnBox.style.width = itemW * itemN + "px";
+	ctnItem.forEach(function(elem) {
+		elem.style.width = itemW + "px";	
+	});
 	
 }
 
@@ -418,19 +485,25 @@ function Start(){
            
     }
 	
-	
 	$('.tab-but').on('click', function(e){
+		console.log('aa');
+		 e.preventDefault();
 		OverflowContent();
+		
 		$('.tab-box li').removeClass('current');
 		$(this).parent().addClass('current');
 		var index = $(this).parent().index();
-		var translateX = -index * ctnWrap.width();
-		ctnBox.css({'transform': 'translate3d('+ translateX +'px,0px, 0px)', '-webkit-transform':'translate3d('+ translateX +'px,0px, 0px)'});
+		var translateX = -index * ctnWrap.clientWidth;
+		ctnBox.style.transform = 'translate3d('+ translateX +'px,0px, 0px)';
+		
 		detectCenter();
+		
+		return false;
 		
 	});
 	
 	
+	//tab-but
 	
 }
 
@@ -611,10 +684,7 @@ function OnScroll(){
 	var winT = window.scrollTop  || document.documentElement.scrollTop || document.body.scrollTop;
 	var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
 	var winH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-	
-	
-	
-	var target = $('.banner');
+	var target = document.querySelector('.banner');
 	
 	//Set animations
 	var elements  = [].slice.call(document.querySelectorAll(".ani-item, .section-content"));
@@ -667,26 +737,27 @@ function OnScroll(){
 	
 	
 	//Banner animation
-	if(target.length){
-		target.css({'transform': 'translate3d(0px,' + winT * 0.25 + 'px, 0px)', '-webkit-transform': 'translate3d(0px,' + winT * 0.25 + 'px, 0px)'})
+	if(target){
+		target.style.webkitTransform = 'translate3d(0px,' + winT * 0.25 + 'px, 0px)';
+		target.style.transform = 'translate3d(0px,' + winT * 0.25 + 'px, 0px)';
 	}
 	
 	
 	//Header fixed
 	if(winT > 120){
-		header.addClass('fixed');
+		header.classList.add('fixed');
 		
 	}else{
-		header.removeClass('fixed');
+		header.classList.remove('fixed');
 	}
 	
 	
 	//Go top
 	if(winT > winH/2){
-		toTop.addClass('show');
+		toTop.classList.add('show');
 		
 	}else{
-		toTop.removeClass('show');
+		toTop.classList.remove('show');
 	}
 	
 	
@@ -697,6 +768,7 @@ function OnScroll(){
 //Resize
 function OnResize(){
 	//console.log('resize');
+	
 	
 	//NAV + POPUP DONT REMOVE
 	if(navigation.classList.contains('active')){
@@ -736,7 +808,7 @@ function OnResize(){
 		}
 	
 		//Overfolow content
-		if(ctnWrap.length){ $('.current .tab-but').trigger('click') }
+		if(ctnWrap){ $('.current .tab-but').trigger('click') }
 			
 	}
 	
@@ -759,7 +831,7 @@ function onRotate(){
 		
 		
 		//Overflow content		
-		if(ctnWrap.length){ $('.current .tab-but').trigger('click');}
+		if(ctnWrap){ OverflowContent(); }
 				
 		//LAZY DONT REMOVE
 		var winW = window.innerWidth  || document.documentElement.clientWidth || document.body.clientWidth;
@@ -868,6 +940,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	myDocument.addEventListener("scroll", ImgLazyLoad);
 	myDocument.addEventListener("scroll", BgLazyLoad);
 	
+	//window.addEventListener("resize", OnResize);
+	//window.addEventListener("orientationchange", onRotate);
 	  
 	//Load image fist to be sure animatin smooth	
 	ImgLazyLoad();
@@ -889,12 +963,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 });
 
-
-$(window).on("orientationchange", onRotate);
-
-$(window).resize(function () {
-	if(ctnWrap.length){ $('.current .tab-but').trigger('click');}
-});		
 
 $(window).on('resize', OnResize, 250);
 

@@ -221,15 +221,25 @@ select::-ms-expand{display:none}
 
 
 
+/*TAB CONTROLS*/
+.tab-content{width:100%;height:auto;position:relative;}
+.tab-box{width:100%;height:auto;position:relative;text-align:center;padding:10px 0}
+.tab-box ul{display:inline-block;width:auto;height:auto;overflow:hidden}
+.tab-box li{width:auto;height:auto;position:relative;display:block;float:left;margin:0 1px;color:#fff;}
+
+.tab-but{display:block;position:relative;width:auto;height:auto;font-size:14px;padding:10px 20px;text-transform:uppercase;background-color:rgba(0,0,0,0.5);-webkit-border-radius:30px;border-radius:30px;cursor:pointer;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}
+.tab-box li.current .tab-but, .tab-box li:not(.current):hover .tab-but{background-color:#000}
+.tab-box li.current::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%}
+
 
 
 /*OVERFLOW CONTENT*/
 .overflow-content{width:100%;height:auto;overflow:hidden;position:relative;}
-.overflow-box{width:auto;height:auto;min-width:100%;position:relative;display:block;overflow:hidden}
-.overflow-item{width:auto;height:auto;float:left;display:block}
+.overflow-box{width:100%;height:auto;position:relative;display:block;overflow:hidden;transition:transform .6s ease;-webkit-transition:transform .6s ease}
+.overflow-item{width:100%;height:auto;display:block;float:left}
 .overflow-item:nth-child(odd){background-color:#22a6e4}
 .overflow-item:nth-child(even){background-color:#19f08e}
-
+.overflow-item > div{width:90%;height:auto;position:relative;display:block;max-width:900px;margin:0 auto;padding:5% 0;text-align:center}
 
 
 
@@ -288,7 +298,7 @@ select::-ms-expand{display:none}
 .player-vid:hover{box-shadow:0 0 30px 0 rgba(255,255,255,0.5)}
 .player-vid.hide{display:none;opacity:0}
 
-.to-top{width:60px;height:60px;position:fixed;right:35px;bottom:20px;display:block;background-color:#fff;-webkit-border-radius:50%;border-radius:50%;cursor:pointer;z-index:-10;opacity:0;transition:opacity 0.3s ease-in-out,z-index 0.05s ease-in-out}
+.to-top{width:60px;height:60px;position:fixed;right:20px;bottom:20px;display:block;background-color:#fff;-webkit-border-radius:50%;border-radius:50%;cursor:pointer;z-index:-10;opacity:0;transition:opacity 0.3s ease-in-out,z-index 0.05s ease-in-out}
 .to-top.show{opacity:1;z-index:60}
 
 
@@ -435,6 +445,13 @@ button{-webkit-transition:none;transition:none}
 @media screen and (max-width:840px){
 /*LAYOUT*/
 .nav-outer{width:90%}
+
+/*TAB CONTROLS*/
+.tab-box{width:90%;margin:0 auto; overflow:hidden;overflow-x:auto;}
+.tab-box ul{white-space:nowrap;font-size:0}
+.tab-box li{float:none;display:inline-block;vertical-align:top}
+.tab-but{-webkit-transition:none;transition:none}
+.tab-box li:not(.current):hover .tab-but{background-color:rgba(0,0,0,0.5)}
 
 
 }
