@@ -4,57 +4,60 @@
 <head>
     <meta charset="utf-8">
     <title>Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <link rel="manifest" href="manifest.json">
+
+    <style type="text/css">
+        .mdl-grid{
+            width: 100%;
+        }
+        #token_div{
+            background-color: #ddd;
+            padding: 14px
+        }
+    </style>
 </head>
 
 <body>
 
-    <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+<div class="mdl-grid">
+<h1>Test get token</h1>
+<h2 id="token_text"></h2>
+<div id="token_div">
+<h4>Instance ID Token</h4>
+<p id="token" style="word-break: break-all;"></p>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+onclick="deleteToken()">Delete Token</button>
+</div>
 
-            <!-- Container for the Table of content -->
-            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                    <!-- div to display the generated Instance ID token -->
-                    <div id="token_div" style="display: none;">
-                        <h4>Instance ID Token</h4>
-                        <p id="token" style="word-break: break-all;"></p>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                onclick="deleteToken()">Delete Token</button>
-                    </div>
-                    <!-- div to display the UI to allow the request for permission to
-                         notify the user. This is shown if the app has not yet been
-                         granted permission to notify. -->
-                    <div id="permission_div" style="display: none;">
-                        <h4>Needs Permission</h4>
-                        <p id="token"></p>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                onclick="requestPermission()">Request Permission</button>
-                    </div>
-                    <!-- div to display messages received by this app. -->
-                    <div id="messages"></div>
-                </div>
-            </div>
+<div id="permission_div" style="display: none;">
+<h4>Needs Permission</h4>
+<p id="token"></p>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+onclick="requestPermission()">Request Permission</button>
+</div>
 
-        </div>
-    </main>
+<div id="messages"></div>
+
+</div>
 
 <script>
 
-    /*
-    var config = {
+    /*var config = {
         apiKey: "AIzaSyAhx6aA1P1cliR2DxLSlB_rc1f0c8MfqO8",
         authDomain: "real-word-153106.firebaseapp.com",
         databaseURL: "https://real-word-153106.firebaseio.com",
         projectId: "real-word-153106",
         storageBucket: "real-word-153106.appspot.com",
         messagingSenderId: "1062413907913"
-    };*/
+    };
+    */
 
     var config = {
-        messagingSenderId: "103953800507"
+      messagingSenderId: "333870676596"
     };
+
     firebase.initializeApp(config);
 
     const messaging = firebase.messaging();
@@ -64,9 +67,20 @@
         messaging.useServiceWorker(registration);
     });
 
-    //WHYYYYYYYYYYYYYYYYYYYYYY
-    //messaging.usePublicVapidKey('AIzaSyAhx6aA1P1cliR2DxLSlB_rc1f0c8MfqO8');
-    //messaging.usePublicVapidKey('1062413907913');
+    //messaging.usePublicVapidKey(publicKey);
+
+    /*
+    const publicKey = new Uint8Array([0x04,0xe1,0xfc,0x9d,0x34,0x00,0xe6,0x26,0x61,0x97,0x6d,0xfe,0x34,0x2c,0xc6,0x1b,0xda,0x6b,0xbc,0xe6,0x79,0x04,0x4d,0x0c,0x25,0x70,0x56,0xf8,0x65,0x24,0x40,0x8b,0xd1,0x55,0x35,0x41,0xdf,0x62,0x71,0x99,0x7d,0x15,0xd6,0x3e,0xb3,0xd2,0xbe,0xeb,0x9d,0x3e,0xfe,0x6e,0x08,0xba,0x7f,0x68,0x39,0x7c,0xc3,0xe9,0x02,0x1e,0x5b,0xae,0xa3]);
+    navigator.serviceWorker.ready.then(function (serviceWorkerRegistration) {
+        serviceWorkerRegistration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: publicKey
+        })
+            .then(function (subscription) {
+                return sendSubscriptionToServer(subscription);
+            });
+    });
+    */
 
     // IDs of divs that display Instance ID token UI or request permission UI.
     const tokenDivId = 'token_div';
@@ -185,7 +199,10 @@
     function deleteToken() {
         // Delete Instance ID token.
         // [START delete_token]
+        token_text.innerHTML = 'delete';
+
         messaging.getToken().then(function(currentToken) {
+            token_text.innerHTML = 'delete getToken';
             messaging.deleteToken(currentToken).then(function() {
                 console.log('Token deleted.');
                 setTokenSentToServer(false);
@@ -198,6 +215,7 @@
             });
             // [END delete_token]
         }).catch(function(err) {
+            token_text.innerHTML = 'delete Can not get';
             console.log('Error retrieving Instance ID token. ', err);
             showToken('Error retrieving Instance ID token. ', err);
         });
