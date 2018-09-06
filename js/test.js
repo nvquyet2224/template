@@ -28125,8 +28125,8 @@ window.onload = function() {
                 classes: false,
                 custom: {
                     families: ['Spectral', 'hk'],
-                    urls: [path + '/asset/css/font.css?3']
-                },
+                    urls: [path + '/asset/css/font.css?3']                },
+
                 loading: function() {},
                 active: function() {
                     tim = setTimeout(function() {
@@ -31257,7 +31257,7 @@ var background = {
                 for (var n = items.children.length - 1; n >= 0; n--) {
                     var it = items.children[n];
                     it.alpha = 0;
-                }
+                }	
             }
         }
     },

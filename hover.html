@@ -60,7 +60,7 @@
 
 <div class="projects">
 
-<div class="project">
+<div class="project project1">
 <div class="thumb"><img src="images/projects.jpeg" /></div>
 <div class="description">
 <h5>Pixi Lights</h5>
@@ -68,7 +68,7 @@
 </div>
 </div>
 
-<div class="project">
+<div class="project project2">
 <div class="thumb"><img src="images/projects.jpeg" /></div>
 <div class="description">
 <h5>Pixi Lights</h5>
@@ -86,8 +86,8 @@
 
 <script>
 	
-	$(".project").mouseenter(function(){
-		$(".project").mousemove(function(e) {
+	$(".project1").mouseenter(function(){
+		$(".project1").mousemove(function(e) {
 			var a = e.pageX - $(this).offset().left,
 				t = e.pageY - $(this).offset().top,
 				i = a / $(this).width(),
@@ -112,6 +112,36 @@
 			ease: Quad.easeOut
 		});
 	});
+
+
+	$(".project2").mouseenter(function(){
+		$(".project2").mousemove(function(e) {
+			var a = e.pageX - $(this).offset().left,
+				t = e.pageY - $(this).offset().top,
+				i = a / $(this).width(),
+				o = t / $(this).height(),
+				s = -15 + 30 * i,
+				n = 15 - 30 * o;
+			TweenMax.to($(this), 1, {
+				rotationY: s,
+				rotationX: n,
+				rotationZ: 0,
+				transformPerspective: 1200,
+				ease: Quad.easeOut
+			})
+		});
+		
+	}).mouseleave(function(){
+		$(this).unbind("mousemove"), TweenMax.to($(this), 1, {
+			rotationY: 0,
+			rotationX: 0,
+			rotationZ: 0,
+			transformPerspective: 1200,
+			ease: Quad.easeOut
+		});
+	});
+
+
 
 
 </script>
