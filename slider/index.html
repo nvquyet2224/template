@@ -70,7 +70,7 @@
 		imgLoad.onload = function(){
 			count++;
 			if(count ==  spriteImages.length) {
-				document.body.classList.remove('loading');
+				setTimeout(function(){ document.body.classList.remove('loading'); },1500);
 			}
 		}
 		imgLoad.src = img.getAttribute('src');
