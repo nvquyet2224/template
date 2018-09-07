@@ -342,7 +342,7 @@
       
         // CLICK
         if ( options.interactionEvent === 'click' || options.interactionEvent === 'both'  ) {
-            //alert('ahihi');
+            
           slidesContainer.pointerup = function( mouseData ){
             if ( options.dispatchPointerOver === true ) {
               TweenMax.to( displacementFilter.scale, 1, { x: 0, y: 0, onComplete: function() {

@@ -21,34 +21,12 @@ body {
 }
 
 /* Color schemes */
-.demo-1 {
-	--color-text: #fff;
-	--color-bg: #000;
-	--color-link: #8fe8ff;
-	--color-link-hover: #fff;
-	--color-info: #72af3a;
-	--color-nav: #fff;
-}
-
-.demo-2 {
-	--color-text: #fff;
-    --color-bg: #000;
-    --color-link: #9cf9db;
-    --color-link-hover: #fff;
-    --color-info: #f3a145;
-    --color-nav: #fff;
-}
-
-.demo-3 {
-	--color-text: #fff;
-	--color-bg: #a9b1b7;
-	--color-link: #201b18;
-	--color-link-hover: #224d94;
-	--color-info: #fff473;
-	--color-nav: #fff;
-}
-
-.demo-4 {
+.demo-1, 
+.demo-2,
+.demo-3,
+.demo-4,
+.demo-5,
+.demo-6{
 	--color-text: #81838c;
     --color-bg: #000;
     --color-link: #96e23e;
@@ -57,27 +35,8 @@ body {
     --color-nav: #fff;
 }
 
-.demo-5 {
-    --color-text: #fff;
-    --color-bg: #000;
-    --color-link: #fff;
-    --color-link-hover: #2a3cbb;
-    --color-info: #f7fb40;
-    --color-nav: #fff;
-}
-
-/* Fade effect */
-.js body {
-	opacity: 0;
-	transition: opacity 0.3s;		
-}
-
-.js body.render {
-	opacity: 1;
-}
-
 /* Page Loader */
-.js .loading::before {
+.loading::before {
 	content: '';
 	position: fixed;
 	z-index: 100000;
@@ -88,7 +47,7 @@ body {
 	background: var(--color-bg);
 }
 
-.js .loading::after {
+.loading::after {
 	content: '';
 	position: fixed;
 	z-index: 100000;
@@ -250,7 +209,7 @@ main {
 	content: '#';
 }
 
-a.demo--current {
+a.current {
 	pointer-events: none;
 }
 
@@ -293,7 +252,7 @@ a.demo--current {
 		border-radius: 50%;
 		background: var(--color-link);
 	}
-	a.demo--current {
+	a.current {
 		background: var(--color-link-hover);
 	}
 	.demo span {
@@ -303,7 +262,7 @@ a.demo--current {
 		display: none;
 		margin: 0 1em 0 0;
 	}
-	.demo--current span {
+	.current span {
 		display: block;
 	}
 }
