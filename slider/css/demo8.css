@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Meddon');
+
+main {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;  
+  background: #000;
+}
+
+#view {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ctn-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  cursor: pointer;
+   
+  .efet-text {
+    font-family: 'Meddon', cursive;
+    color: #fff;
+    font-size: 140px;
+    cursor: pointer;
+    margin-top: -8vh;
+  }
+}
