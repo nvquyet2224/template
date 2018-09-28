@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head>
+<meta charset='UTF-8'>
+<style class="cp-pen-styles">
+html, body{
+	padding:0;
+	margin:0;	
+}
+.wave {
+  position: relative;
+  width: 100%;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  overflow: hidden;
+  background-position: top left;
+  background-size: 100%;
+}
+.wave img {
+  width: 100%;
+  opacity: 0;
+}
+.wave #ripples {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  bottom: 0;
+  height: 100%;
+}
+
+div[class^='ripple-'] {
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  left: 0px;
+  z-index: 6;
+  animation-name: water;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  opacity: 0.2;
+}
+
+.ripple-1 {
+  height: 0.3%;
+  top: 60%;
+  animation-delay: -1.2s;
+  animation-duration: 0.66s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 54%;
+}
+
+.ripple-2 {
+  height: 0.6%;
+  top: 62%;
+  animation-delay: -1.6s;
+  animation-duration: 0.57s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 56%;
+}
+
+.ripple-3 {
+  height: 0.9%;
+  top: 64%;
+  animation-delay: -2s;
+  animation-duration: 0.73s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 58%;
+}
+
+.ripple-4 {
+  height: 1.2%;
+  top: 66%;
+  animation-delay: -1.8s;
+  animation-duration: 1.14s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 60%;
+}
+
+.ripple-5 {
+  height: 1.5%;
+  top: 68%;
+  animation-delay: -1s;
+  animation-duration: 1.05s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 62%;
+}
+
+.ripple-6 {
+  height: 1.8%;
+  top: 70%;
+  animation-delay: -1s;
+  animation-duration: 1.46s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 64%;
+}
+
+.ripple-7 {
+  height: 2.1%;
+  top: 72%;
+  animation-delay: -0.4s;
+  animation-duration: 1.37s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 66%;
+}
+
+.ripple-8 {
+  height: 2.4%;
+  top: 74%;
+  animation-delay: -2s;
+  animation-duration: 1.53s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 68%;
+}
+
+.ripple-9 {
+  height: 2.7%;
+  top: 76%;
+  animation-delay: -1.6s;
+  animation-duration: 1.94s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 70%;
+}
+
+.ripple-10 {
+  height: 3%;
+  top: 78%;
+  animation-delay: -0.4s;
+  animation-duration: 1.85s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 72%;
+}
+
+.ripple-11 {
+  height: 3.3%;
+  top: 80%;
+  animation-delay: -1.2s;
+  animation-duration: 2.01s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 74%;
+}
+
+.ripple-12 {
+  height: 3.6%;
+  top: 82%;
+  animation-delay: -0.8s;
+  animation-duration: 2.17s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 76%;
+}
+
+.ripple-13 {
+  height: 3.9%;
+  top: 84%;
+  animation-delay: -1s;
+  animation-duration: 2.58s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 78%;
+}
+
+.ripple-14 {
+  height: 4.2%;
+  top: 86%;
+  animation-delay: -2s;
+  animation-duration: 2.49s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 80%;
+}
+
+.ripple-15 {
+  height: 4.5%;
+  top: 88%;
+  animation-delay: -1.4s;
+  animation-duration: 2.65s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 82%;
+}
+
+.ripple-16 {
+  height: 4.8%;
+  top: 90%;
+  animation-delay: -1s;
+  animation-duration: 2.81s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 84%;
+}
+
+.ripple-17 {
+  height: 5.1%;
+  top: 92%;
+  animation-delay: -0.4s;
+  animation-duration: 2.97s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 86%;
+}
+
+.ripple-18 {
+  height: 5.4%;
+  top: 94%;
+  animation-delay: -1.2s;
+  animation-duration: 3.38s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 88%;
+}
+
+.ripple-19 {
+  height: 5.7%;
+  top: 96%;
+  animation-delay: -1.4s;
+  animation-duration: 3.54s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 90%;
+}
+
+.ripple-20 {
+  height: 6%;
+  top: 98%;
+  animation-delay: -0.6s;
+  animation-duration: 3.45s;
+  background: url(images/about-eco-bg-bottom.jpg) top center no-repeat;
+  background-size: 100%;
+  background-position: 0 92%;
+}
+
+@keyframes water {
+  from {
+    transform: rotateX(0deg);
+    filter: blur(2px);
+  }
+  to {
+    transform: rotateX(180deg);
+    filter: blur(6px);
+  }
+}
+</style></head><body>
+<div class="wave">
+  <img src="images/about-eco-bg-bottom.jpg">
+  <div id="ripples">
+  <div class="ripple-1"></div>
+  <div class="ripple-2"></div>
+  <div class="ripple-3"></div>
+  <div class="ripple-4"></div>
+  <div class="ripple-5"></div>
+  <div class="ripple-6"></div>
+  <div class="ripple-7"></div>
+  <div class="ripple-8"></div>
+  <div class="ripple-9"></div>
+  <div class="ripple-10"></div>
+  <div class="ripple-11"></div>
+  <div class="ripple-12"></div>
+  <div class="ripple-13"></div>
+  <div class="ripple-14"></div>
+  <div class="ripple-15"></div>
+  <div class="ripple-16"></div>
+  <div class="ripple-17"></div>
+  <div class="ripple-18"></div>
+  <div class="ripple-19"></div>
+  <div class="ripple-20"></div>
+  </div>
+</div>
+
+</body></html>
