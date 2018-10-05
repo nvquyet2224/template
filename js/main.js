@@ -1,2 +1,1071 @@
-function execSearch(){var e=$("#qsearch").val(),a=($("#href_search").val(),$("#defaultvalue").val());if(e==a)return!1;if(""!=e){var o="search.html";return window.location=o,!1}}function Search(){$(document).on("click",".search-but",function(){if($(this).hasClass("active"))$(".search-form, .search-but").removeClass("active"),execSearch();else{$(".search-form, .search-but").addClass("active");var e=$('.form-row-search input[type="text"]').attr("data-holder");$('.form-row-search input[type="text"]').val(e)}$(".login-overlay.active").length&&$(".login-overlay, .login-box").removeClass("active")}),$("#search").keydown(function(e){13==e.keyCode&&execSearch()})}function NavClick(){$(".nav-but").on("click",function(){if($(this).hasClass("active")){if($(".slide-bg").length){var e=$(".slide-bg")[0].swiper;e.startAutoplay()}$(".nav-overlay, .navigation, .nav-but").removeClass("active"),$("html, body").removeClass("no-scroll"),$(".nav").scrollTop(0)}else{if($(".slide-bg").length){var e=$(".slide-bg")[0].swiper;e.stopAutoplay()}$(".nav").scrollTop(0),$(".nav-overlay, .navigation, .nav-but").addClass("active"),$("html, body").addClass("no-scroll")}return!1})}function StopTime(){timex>0&&(clearTimeout(timex),timex=0),timerf>0&&(clearTimeout(timerf),timerf=0)}function addMove(){$(".left-box").removeClass("play"),$(".left-box span.move").removeClass("move"),StopTime(),$(".move .left-box").hasClass("type-01")?timerf=setTimeout(function(){$(".type-01").addClass("play")},0):$(".move .left-box").hasClass("type-02")&&(timerf=setTimeout(function(){$(".type-02").addClass("play")},900)),$(".move .left-box span").each(function(e){var a=$(this);timex=setTimeout(function(){$(a).addClass("move")},40*(e+1))})}function AniText(){$(".title-page").addClass("show"),$(".title-page h1").children().children().each(function(e){var a=$(this);setTimeout(function(){$(a).addClass("move")},80*(e+1))})}function SlidePicture(){if($(".slider-home").length){var e=$(".slider-home").attr("data-time");$(".bg-home").length<=1&&($(".pagination").css({display:"none"}),e=!1);new Swiper(".slide-bg",{autoplay:e,speed:800,loop:!1,slidesPerView:1,pagination:".pagination",nextButton:".button-next",prevButton:".button-prev",paginationClickable:!0,autoplayDisableOnInteraction:!1,effect:"fade",onInit:function(){},onTransitionStart:function(){},onTransitionEnd:function(){}})}if($(".slider-inner").length){var e=$(".slider-inner").attr("data-time");$(".bg-inner").length<=1&&($(".slider-inner .pagination").css({display:"none"}),e=!1);new Swiper(".slide-bg",{autoplay:e,speed:1e3,loop:!1,paginationClickable:!0,pagination:".pagination",effect:"fade",onInit:function(){},onTransitionStart:function(){},onTransitionEnd:function(){}})}$(".inspi-box").length&&$(".inspi-slider").BTQSlider({itemsCustom:[[0,1],[621,2]],slideSpeed:800,paginationSpeed:800,autoPlay:!1,navigation:!0,stopOnHover:!0,autoHeight:!1}),$(".why-aconcept-box").length&&$(".why-aconcept-slider").BTQSlider({itemsCustom:[[0,1],[621,2]],slideSpeed:800,paginationSpeed:800,autoPlay:!1,navigation:!0,stopOnHover:!0,autoHeight:!1}),$(".our-design-box").length&&$(".our-design-slider").BTQSlider({singleItem:!0,slideSpeed:800,paginationSpeed:800,navigation:!0,pagination:!0,autoHeight:!0,afterAction:function(){}}),$(".catalogue-box").length&&$($(".catalogue-slider")).BTQSlider({itemsCustom:[[0,1],[621,2]],slideSpeed:800,paginationSpeed:800,autoPlay:!1,navigation:!0,stopOnHover:!0,autoHeight:!1}),$(".video-box").length&&$(".video-slider").BTQSlider({singleItem:!0,slideSpeed:800,paginationSpeed:800,navigation:!0,pagination:!0,autoHeight:!0,afterAction:function(){if($(".player-vid.hide").trigger("click"),isYouTube)for(var e=0;e<player.length;e++)try{player[e].pauseVideo()}catch(a){}}}),$(".interior-box").length&&$(".interior-slider").BTQSlider({singleItem:!0,slideSpeed:800,paginationSpeed:800,navigation:!0,pagination:!1,touchDrag:!1,afterAction:function(){}}),$(".interior-list-slider").length&&$(".interior-list-slider").each(function(e,a){$(a).BTQSlider({itemsCustom:[[0,2],[421,3],[621,4],[800,5]],slideSpeed:800,paginationSpeed:800,touchDrag:!0,autoPlay:!1,navigation:!0,stopOnHover:!0,afterInit:function(){Check()}})}),$(".service-outer").length&&$(".service-slider").BTQSlider({singleItem:!0,slideSpeed:800,paginationSpeed:800,navigation:!0,stopOnHover:!0,autoHeight:!0,afterAction:function(){}}),$(".detail-pics").length&&($(".thumb-slider").BTQSlider({itemsCustom:[[0,3],[521,4]],slideSpeed:800,paginationSpeed:800,autoPlay:!1,navigation:!1,pagination:!1,stopOnHover:!0}),$(".detail-slider").BTQSlider({singleItem:!0,slideSpeed:800,paginationSpeed:800,navigation:!1,autoHeight:!0,afterAction:function(){this.$BTQItems.removeClass("selected"),this.$BTQItems.eq(this.currentItem).addClass("selected"),$(".thumb-pic").removeClass("current"),$(".thumb-slider .slide-item:nth-child("+(this.currentItem+1)+") .thumb-pic").addClass("current"),$(".thumb-slider").trigger("BTQ.goTo",this.currentItem-1)}}),$(".thumb-pic").on("click",function(e){e.preventDefault();var a=$(this).parent().data("slide-item");return $(".detail-slider").trigger("BTQ.goTo",a),!1})),$(".wishclick-box").length&&$(".wishclick-slider").BTQSlider({itemsCustom:[[0,2],[421,3],[621,4],[800,5]],slideSpeed:800,paginationSpeed:800,autoPlay:!1,navigation:!0,stopOnHover:!0}),$(".rate-box").length&&$(".rate-slider").BTQSlider({itemsCustom:[[0,2],[421,2],[621,3],[800,4]],slideSpeed:800,paginationSpeed:800,autoPlay:!1,navigation:!0}),$(".news-link").length&&($(".link-page").length<=1&&$(".progress-nav").addClass("hide-nav"),$(window).width()>1100&&$(".news-link").BTQSlider({itemsCustom:[[300,3]],slideSpeed:600,paginationSpeed:600,navigation:!0})),$(".video-box").on("swipeleft",function(){doTouch&&(doTouch=!1,$(".video-box .slide-item").children().length>1&&$(".video-box").trigger("BTQ.next"),setTimeout(turnWheelTouch,500))}).on("swiperight",function(){doTouch&&(doTouch=!1,$(".video-box .slide-item").children().length>1&&$(".video-box").trigger("BTQ.prev"),setTimeout(turnWheelTouch,500))}),setTimeout(Check,100)}function Check(){if($(".detail-thumbs").length){var e=$(".thumb-pic").length;$(window).width()>520?e>=4?$(".detail-thumbs").removeClass("TA-center"):$(".detail-thumbs").addClass("TA-center"):e>=3?$(".detail-thumbs").removeClass("TA-center"):$(".detail-thumbs").addClass("TA-center"),1==e&&$(".detail-thumbs").css({display:"none"})}if($(".inspi-box").length){var e=$(".inspi-item").length;e>=2?$(".inspi-box").removeClass("TA-center"):$(".inspi-box").addClass("TA-center")}if($(".why-aconcept-box").length){var e=$(".why-aconcept-item").length;e>=2?$(".why-aconcept-box").removeClass("TA-center"):$(".why-aconcept-box").addClass("TA-center")}if($(".wishclick-box").length){var e=$(".wishclick-box .product-item").length;$(window).width()>=800?e>=5?$(".wishclick-box").removeClass("TA-center"):$(".wishclick-box").addClass("TA-center"):621<=$(window).width()&&$(window).width()<800?e>=4?$(".wishclick-box").removeClass("TA-center"):$(".wishclick-box").addClass("TA-center"):420<=$(window).width()&&$(window).width()<621&&e>=3?$(".wishclick-box").removeClass("TA-center"):$(".wishclick-box").addClass("TA-center")}if($(".rate-box").length){var e=$(".rate-box .product-item").length;$(window).width()>=800?e>=4?$(".rate-box").removeClass("TA-center"):$(".rate-box").addClass("TA-center"):621<=$(window).width()&&$(window).width()<800?e>=4?$(".rate-box").removeClass("TA-center"):$(".rate-box").addClass("TA-center"):420<=$(window).width()&&$(window).width()<621&&e>=3?$(".rate-box").removeClass("TA-center"):$(".rate-box").addClass("TA-center")}if($(".catalogue-box").length){var e=$(".catalogue-item").length;e>=2?$(".catalogue-box").removeClass("TA-center"):$(".catalogue-box").addClass("TA-center")}$(".news-link").length&&$(".news-link").each(function(){var e=$(this).find(".link-page").length;$(window).width()>=700?e>=3?$(this).parent().removeClass("TA-center"):$(this).parent().addClass("TA-center"):370<=$(window).width()&&$(window).width()<700&&e>=2?$(this).parent().removeClass("TA-center"):$(this).parent().addClass("TA-center")}),$(".interior-list-slider").length&&$(".interior-list-slider").each(function(){var e=$(this).find(".slide-item").length;$(window).width()>=800?e>=5?$(this).parent().removeClass("TA-center"):$(this).parent().addClass("TA-center"):621<=$(window).width()&&$(window).width()<800?e>=4?$(this).parent().removeClass("TA-center"):$(this).parent().addClass("TA-center"):420<=$(window).width()&&$(window).width()<621&&e>=3?$(this).parent().removeClass("TA-center"):$(this).parent().addClass("TA-center")})}function VideoLoad(e){$.ajax({url:e,cache:!1,success:function(e){function a(){t.play()}function o(){t.pause()}if($(".allvideo").append(e),$("#view-video").length)var t=document.getElementById("view-video");$(".loadicon").fadeOut(300,"linear",function(){$("#view-video").length&&a(),$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show")});var i=$("#view-video").length;$(".close-video").on("click",function(){0!=i&&o(),$(".allvideo").fadeOut(500,"linear",function(){if($(".overlay-dark").removeClass("show"),$(".allvideo .video-list").remove(),$("html, body").removeClass("no-scroll"),$(".to-scrollV").length){var e=$(".to-scrollV").offset().top;$(".to-scrollV").removeClass("to-scrollV"),$(window).width()<1100&&$("html, body").scrollTop(e-60)}})})}})}function AlbumLoad(e,a){$.ajax({url:e,cache:!1,success:function(e){function o(){clearTimeout(timex),$(".pic-name").removeClass("move"),$(".pic-name h3").children().children().removeClass("move"),$(".pic-name small").children().children().removeClass("move"),$(".item-active").find(".pic-name").addClass("move"),$(".move h3, .move  small").children().children().each(function(e){var a=$(this);setTimeout(function(){$(a).addClass("move")},20*(e+1))})}if($(".all-album").append(e),$(".all-album .album-load").length>1&&$(".all-album .album-load").last().remove(),$(".pic-name > h3").lettering("words").children("span").lettering().children("span").lettering(),$(".pic-name > small").lettering("words").children("span").lettering().children("span").lettering(),$(window).width()>1100)var t=1;else if($(window).width()>740&&$(window).width()<=1100)var t=2;else var t=3;new Swiper(".album-center",{zoom:!0,zoomMax:t,lazyLoading:!0,watchSlidesVisibility:!0,preloadImages:!1,slidesPerView:1,speed:600,grabCursor:!0,nextButton:".next-pic",prevButton:".prev-pic",spaceBetween:0,centeredSlides:!0,keyboardControl:!0,mousewheelControl:!0,onInit:function(e){e.slideTo(a,0,!0),o(),t>1&&$(".container-zoom img").addClass("zoomscale")},onTransitionStart:function(){},onTransitionEnd:function(){$(".container-zoom img").removeClass("zoomin"),$(".close-album, .slide-pic-nav").removeClass("level-index-out"),o()}});$(".album-load").animate({opacity:1},100,"linear",function(){$(".album-pic-center").length>1&&$(".slide-pic-nav").css({display:"block"}),$(".loadicon").fadeOut(300,"linear",function(){$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show")})}),$(".close-album").on("click",function(){return $(".all-album").fadeOut(500,"linear",function(){$(".overlay-dark").removeClass("show"),$(".album-load").remove()}),$("html, body").removeClass("no-scroll"),!1});var i=document.querySelector(".all-album");i.addEventListener("touchmove",function(e){e.preventDefault()})}})}function NewsLoad(e){$.ajax({url:e,cache:!1,success:function(e){$(".load-data").html(e),detectBut(),$(".load-text a, .load-text p a").click(function(e){e.preventDefault();var a=$(this).attr("href");return window.open(a,"_blank"),!1}),$(".load-text img").addClass("zoom-pic"),ZoomPic(),$(".load-bg").animate({opacity:1},300,"linear",function(){$(".load-details").addClass("fadeinup"),$(".loadicon").fadeOut(300,"linear",function(){$(".news-link").removeClass("no-link"),$(".load-data").css({"min-height":$(window).height()/2}),isFirst=!1,$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show")})})}})}function popupLoad(e){$.ajax({url:e,cache:!1,success:function(e){$(".details-content").remove(),$("body").prepend(e),$(".details-content").stop().animate({opacity:1},600,"linear",function(){$(".details-center").addClass("fadeinup"),$(".loadicon").fadeOut(300,"linear",function(){$(".details-content").impulse({effect:"easeOutQuad"}),$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show")})}),$(".close-popup, .details-content span").on("click",function(){return $(".details-content").stop().animate({opacity:0},600,"linear",function(){$(".details-content").remove(),$(".overlay-dark").removeClass("show"),$("html, body").removeClass("no-scroll")}),!1})}})}function SearchProduct(){var e=($("#category-select").val(),$("#category-select").val(),$("#category-select").val(),$("#category-select").val(),$("#category-select option:selected").attr("data-name"));$(".item-sub li").removeClass("current"),$(".item-sub li a[data-name='"+e+"']").parent().addClass("current"),window.location.hash=e;var a=e+".html";"cushions-throw"==e?a="cushions-all.html":"rugs"==e?a="rugs-all.html":"tealight-holder"==e?a="tealight-holder-all.html":"others"==e&&(a="others-all.html"),$.ajax({url:a,cache:!1,success:function(e){$(".product-load").html(e),$(".product-load").animate({opacity:1},300,"linear",function(){onScroll()}),isFirst=!1}})}function FocusText(){$(".pass-mask").on("click",function(){$(this).addClass("hide"),$(this).next().focus()}),$("input, textarea").focus(function(){$(this).attr("data-holder")==$(this).val()&&$(this).val("")}).focusout(function(){""==$(this).val()&&($(this).prev().removeClass("hide"),$(this).val($(this).attr("data-holder")))})}function AnimationDelay(){var e=Itemx.split(",");$(e).each(function(e,a){$(a).each(function(e){var a=50,o=350,t=Math.floor(e+1)*((o-a)/2-a);$(this).css({"-webkit-animation-delay":t+"ms","animation-delay":t+"ms"})})})}function LinkPage(){$(document).on("click",".nav li a, .welcom-go, .designers-go, .direct-link, .product-item a, .line-item a",function(e){e.preventDefault();var a=$(this).attr("href"),o=$(this).attr("data-name");if(o)if($("#category-select").length&&$("#category-select option[data-name='"+o+"']").length){var t=$("#category-select option[data-name='"+o+"']").index();$("#category-select").prop("selectedIndex",t).change()}else $(".container").stop().animate({opacity:0},300,"linear",function(){window.location=a});else $(".container").stop().animate({opacity:0},300,"linear",function(){window.location=a});return!1})}function onScroll(){var e=$(".title, .ani-item, .filter-outer, .line-intro, .product-list .product-item, .bottom, .footer-content");$(e).each(function(){$(this).isInViewport()&&$(this).addClass("on-show")})}function userChange(e){if(e.value){var a=e.value.substr(e.value.lastIndexOf(".")+1);if(a=a.toLowerCase(),"png"==a||"jpg"==a||"gif"==a||"jpeg"==a){var o=new FileReader;o.onload=function(e){$(".user-pic").css({"background-image":"url("+e.target.result+")"})},o.readAsDataURL(e.files[0])}else{var t="<h3>File Upload phải là hình !</h3>";$("body").prepend("<div class='message-overlay'><div class='message-box'>"+t+"</div></div>"),setTimeout(function(){$(".message-overlay").stop().animate({opacity:0},300,"linear",function(){$(".message-overlay").remove()})},5e3)}}}function onChange(e){if(e.value){var a=e.value.substr(e.value.lastIndexOf(".")+1);if(a=a.toLowerCase(),"png"==a||"jpg"==a||"gif"==a||"jpeg"==a){$(e).parent().hide();var o='<div class="client-item"><span class="client-del">x</span></div>';$(".client-up").append(o);var t=new FileReader;t.onload=function(e){$(".client-item:last-child").css({"background-image":"url("+e.target.result+")"})},t.readAsDataURL(e.files[0]),$(".appendInput").append('<div class="file-up"><input name="fileInput[]" type="file" onchange="onChange(this);"><span class="file-name">Chọn ảnh</span><span class="file-mark">Brown</span></div>')}else{var i="<h3>File Upload phải là hình !</h3>";$("body").prepend("<div class='message-overlay'><div class='message-box'>"+i+"</div></div>"),setTimeout(function(){$(".message-overlay").stop().animate({opacity:0},300,"linear",function(){$(".message-overlay").remove()})},5e3)}}}function ContentLoad(){ResizeWindows(),LinkPage(),FocusText(),Search(),NavClick(),Option();var e=$("body").attr("id");if("promotion-page"==e)e="news-page";else if("dining-tables-page"==e||"dining-chairs-page"==e||"barstools-page"==e||"sideboards-page"==e||"sofa-page"==e||"sofa-beds-page"==e||"armchairs-page"==e||"coffee-side-tables-page"==e||"beds-page"==e||"night-stands-page"==e||"storing-working-page"==e||"coming-soon-page"==e||"new-arrival-page"==e){var a=e.split("-page")[0];$(".item-sub li a[data-name='"+a+"']").parent().addClass("current"),e="furniture-page"}else if("floor-lamps-page"==e||"table-lamps-page"==e||"pendant-page"==e||"glass-art-page"==e||"painting-page"==e||"canvas-print-page"==e||"cushions-throw-page"==e||"rugs-page"==e||"tealight-holder-page"==e||"others-page"==e){var a=e.split("-page")[0];$(".item-sub li a[data-name='"+a+"']").parent().addClass("current"),e="accessories-page"}$('.nav li[data-page= "'+e+'"]').addClass("current"),$(".slider-home, .slider-inner").addClass("show"),setTimeout(function(){$(".header").addClass("show"),$(".header, section, .slider-inner + .outer-nav").addClass("show-sp"),AniText(),onScroll();var e=$(".cart-text").html();e>0&&$(".cart-text").addClass("color")},1e3),$("#home-page").length?(setTimeout(function(){$(".scroll-down").addClass("play").addClass("show")},400),$(".scroll-down").on("click",function(){if($(window).width()>1100){var e=$(".slider-home").height();$("html, body").stop().animate({scrollTop:e},1e3,"easeInOutExpo")}})):($(".logo").css({cursor:"pointer"}),$(".logo").on("click",function(){$(".nav > ul > li:first-child a").trigger("click")})),$("#furniture-page, #accessories-page, #dining-tables-page, #dining-chairs-page, #barstools-page, #sideboards-page, #sofa-page, #sofa-beds-page, #armchairs-page, #coffee-side-tables-page, #beds-page, #night-stands-page, #storing-working-page, #coming-soon-page, #new-arrival-page, #floor-lamps-page, #table-lamps-page, #pendant-page, #glass-art-page, #painting-page, #canvas-print-page, #cushions-throw-page, #rugs-page, #tealight-holder-page, #others-page").length&&($(".order-but").on("click",function(e){e.preventDefault();var a=$(this).attr("href"),o={group:$(this).attr("data-group"),code:$(this).attr("data-code"),name:$(this).attr("data-name"),brief:$(this).attr("data-brief"),ref:$(this).attr("data-ref"),price:$(this).attr("data-price"),image:$(this).attr("data-image"),url:$(this).attr("data-url")};return localStorage.setItem("newRow",JSON.stringify(o)),$(".container").stop().animate({opacity:0},300,"linear",function(){window.location=a}),!1}),$(".zoom-but").on("click",function(e){e.preventDefault();var a=$(this).parent().find("img");return Zoom(a),!1}),$("#category-select").prop("selectedIndex",0).change()),$("#our-designer-page").length&&$(".designer-go").on("click",function(e){e.preventDefault();var a=108,o=$(".register-content").offset().top-a;return $("html, body").stop().animate({scrollTop:o},1e3,"easeInOutExpo"),!1}),$("#news-page").length&&($(".link-page").on("click",function(e){e.preventDefault(),$(".news-link").addClass("no-link"),$(".loadicon").hasClass("loader")||($(".loadicon").show(),$(".loadicon").addClass("loader"),DrawLoad()),$(".link-page").removeClass("current"),$(this).addClass("current");var a=$(".slide-item").index($(".slide-item .link-page.current").parent());$(".news-link").trigger("BTQ.goTo",a);var o=$(this).find("a").attr("href");if($(".news-content").length&&0==isFirst){var t=108,i=$(".relation-wrap").offset().top-t;$("html, body").stop().animate({scrollTop:i},1e3,"easeInOutExpo",function(){$(".load-data").css({"min-height":$(".load-data").innerHeight()}),$(".load-bg").animate({opacity:0},300,"linear",function(){NewsLoad(o)})})}else $(".load-bg").animate({opacity:0},300,"linear",function(){NewsLoad(o)});return!1}),window.location.hash?LocationHash():$(".news-link").find(".link-page").first().trigger("click")),$(".sub-nav.tab li a").on("click",function(e){e.preventDefault();var a=108;$("#our-designer-page").length&&(a=380);var o=$(this).attr("data-name");$(".sub-nav.tab li").removeClass("current"),$(this).parent().addClass("current"),$(".scroll-post").removeClass("active");var t=$(".scroll-post[data-post='"+o+"']").offset().top-a;return $('.scroll-post[data-post= "'+o+'"]').addClass("active"),$("html, body").animate({scrollTop:t},1500,"easeInOutExpo",function(){scrolling=!0}),!1});var o=Number(localStorage.cartCount)||0;$(".cart-text").html(o),$("#account-page").length&&$(".update-account").on("click",function(e){e.preventDefault();var a=$(this).attr("href");return $("html, body").addClass("no-scroll"),$(".loadicon").hasClass("loader")||($(".loadicon").show(),$(".loadicon").addClass("loader"),DrawLoad(),$(".overlay-dark").addClass("show"),popupLoad(a)),!1}),scrolling=!0}function Zoom(e){$("html, body").addClass("no-scroll"),zoomPC=!0,$(this).parent().addClass("to-scrollZ"),$(".loadicon").hasClass("loader")||($(".loadicon").show(),$(".loadicon").addClass("loader"),DrawLoad()),$(".all-pics").addClass("show"),$(".all-pics").append('<div class="full size-large"  style="display:block"></div>'),$(".overlay-dark").addClass("show");var a=$(e).attr("src");$(".all-pics").find(".full").append('<img src ="'+a+'" alt="pic" />'),$(".all-pics").find(".full").append("<span></span>"),$("body").append('<div class="close-pics"></div>'),$(".all-pics").append('<div class="close-pics-small"></div>'),$(".all-pics img").on("load",function(){$(".all-pics").addClass("show"),0!=TouchLenght&&isTouchDevice?($(".full").addClass("pinch-zoom"),$(".pinch-zoom").each(function(){new Pic.PinchZoom($(this),{})})):($(".full").addClass("dragscroll"),$(".dragscroll").draptouch()),$(".full img").length>1&&$(".full img").last().remove(),$(".loadicon").fadeOut(400,"linear",function(){0!=TouchLenght&&isTouchDevice||detectMargin(),$(".full img").addClass("fadein"),$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show")})}),$(window).width()>1100&&$(".full span").on("click",function(){$(".close-pics").trigger("click")}),$(".close-pics-small, .close-pics").on("click",function(){zoomPC=!1,$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show"),$(".full").fadeOut(300,"linear",function(){if($(".overlay-dark").removeClass("show"),$(".all-pics .full,  .all-pics .pinch-zoom-container").remove(),$(".close-pics-small, .close-pics").remove(),$(".all-pics").removeClass("show"),!$(".house").length&&($("html, body").removeClass("no-scroll"),$(".to-scrollZ").length)){var e=$(".to-scrollZ").offset().top;$(".to-scrollZ").removeClass("to-scrollZ"),$(window).width()<1100&&$("html, body").scrollTop(e-60)}})})}function ZoomPic(){$("img").on("click",function(){if($(this).hasClass("zoom-pic")){if($(window).width()>740)return!1;$("html, body").addClass("no-scroll"),$(this).parent().addClass("to-scrollZ"),$(".loadicon").hasClass("loader")||($(".loadicon").show(),$(".loadicon").addClass("loader"),DrawLoad()),$(".all-pics").addClass("show"),$(".all-pics").append('<div class="full"  style="display:block"></div>'),$(".overlay-dark").addClass("show");var e=$(this).attr("src");$(".all-pics").find(".full").append('<img src ="'+e+'" alt="pic" />'),$(".all-pics").find(".full").append("<span></span>"),$("body").append('<div class="close-pics"></div>'),$(".all-pics").append('<div class="close-pics-small"></div>'),$(".all-pics img").on("load",function(){$(".all-pics").addClass("show"),0!=TouchLenght&&isTouchDevice?($(".full").addClass("pinch-zoom"),$(".pinch-zoom").each(function(){new Pic.PinchZoom($(this),{})})):($(".full").addClass("dragscroll"),$(".dragscroll").draptouch()),$(".full img").length>1&&$(".full img").last().remove(),$(".loadicon").fadeOut(400,"linear",function(){0!=TouchLenght&&isTouchDevice||detectMargin(),$(".full img").addClass("fadein"),$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show")})}),$(window).width()>1100&&$(".full span").on("click",function(){$(".close-pics").trigger("click")}),$(".close-pics-small, .close-pics").on("click",function(){$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show"),$(".full").fadeOut(300,"linear",function(){if($(".overlay-dark").removeClass("show"),$(".all-pics .full,  .all-pics .pinch-zoom-container").remove(),$(".close-pics-small, .close-pics").remove(),$(".all-pics").removeClass("show"),!$(".house").length&&($("html, body").removeClass("no-scroll"),$(".to-scrollZ").length)){var e=$(".to-scrollZ").offset().top;$(".to-scrollZ").removeClass("to-scrollZ"),$(window).width()<1100&&$("html, body").scrollTop(e-60)}})})}return!1})}function Option(){$("a.player, .view-video").on("click",function(e){e.preventDefault(),$(this).parent().addClass("to-scrollV"),$(".popup-video img").length&&($(".popup-pics, .popup-video").removeClass("fadeinup").addClass("fadeout"),$(".close-popup").removeClass("fadeinup").addClass("fadeout"));var a=$(this).attr("href");return $(".loadicon").hasClass("loader")||($(".loadicon").show(),$(".loadicon").addClass("loader"),DrawLoad()),$("html, body").addClass("no-scroll"),$(".overlay-dark").addClass("show"),$(".allvideo").fadeIn(700,"linear",function(){VideoLoad(a)}),!1}),$(".all-album, .allvideo").mousewheel(function(){return!1}),$(".view-album, .album-view, .zoom-album").on("click",function(e){e.preventDefault();var a=$(this).attr("href"),o=$(this).attr("data-go")||-1;return $(".loadicon").hasClass("loader")||($(".loadicon").show(),$(".loadicon").addClass("loader"),DrawLoad()),$("html, body").addClass("no-scroll"),$(".overlay-dark").addClass("show"),$(".all-album").fadeIn(700,"linear",function(){AlbumLoad(a,o)}),!1}),$(".zoom:not(.album), .zoom-mobile").on("click",function(){$(this).hasClass("zoom-pc")&&(zoomPC=!0),$("html, body").addClass("no-scroll"),$(".loadicon").hasClass("loader")||($(".loadicon").show(),$(".loadicon").addClass("loader"),DrawLoad()),$(".all-pics").addClass("show"),$(".all-pics").append('<div class="full"  style="display:block"></div>'),$(".overlay-dark").addClass("show");var e=$(this).parent().find("img").attr("src")||$(this).parent().find("img").attr("data-src"),a=e.replace("_s","_l");return $(".all-pics").find(".full").append('<img src ="'+a+'" alt="pic" />'),$(".all-pics").find(".full").append("<span></span>"),$("body").append('<div class="close-pics"></div>'),$(".all-pics").append('<div class="close-pics-small"></div>'),$(".all-pics img").on("load",function(){$(".all-pics").addClass("show"),0!=TouchLenght&&isTouchDevice?($(".full").addClass("pinch-zoom"),$(".pinch-zoom").each(function(){new Pic.PinchZoom($(this),{})})):($(".full").addClass("dragscroll"),$(".dragscroll").draptouch()),$(".full img").length>1&&$(".full img").last().remove(),$(".loadicon").fadeOut(400,"linear",function(){0!=TouchLenght&&isTouchDevice||detectMargin(),$(".full img").addClass("fadein"),$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show")})}),$(window).width()>1100&&$(".full span").on("click",function(){$(".close-pics").trigger("click")}),$(".close-pics, .close-pics-small").on("click",function(){zoomPC=!1,$(".full").fadeOut(300,"linear",function(){$(".loadicon").removeClass("loader"),$(".loadicon").removeClass("show"),$(".overlay-dark").removeClass("show"),$(".all-pics .full, .all-pics .text-length, .all-pics .pinch-zoom-container").remove(),$(".close-pics, .close-pics-small").remove(),$(".all-pics").removeClass("show"),$("html, body").removeClass("no-scroll")})}),!1}),$(".go-top").on("click",function(){$("html, body").stop().animate({scrollTop:0},"slow")})}function turnWheelTouch(){doWheel=!0,doTouch=!0}function StopBanner(){if($(".slide-bg.slide-container-horizontal").length){var e=$(".slide-bg")[0].swiper;windscroll>=100?$(".slide-bg .item-container").length>=2&&e.stopAutoplay():$(".slide-bg .item-container").length>=2&&(e.startAutoplay(),e.slideNext())}}function detectBut(){if($(window).width()<=1100&&$(".sub-nav li.current").length){var e=$(".sub-nav ul").offset().left,a=$(".sub-nav li.current").offset().left,o=($(window).width()/100*10,$(window).width()/2-$(".sub-nav li.current").width()/2);$(".sub-nav").stop().animate({scrollLeft:a-o-e},"slow")}if($(window).width()<=1100&&$(".link-page").hasClass("current")){var t=$(".link-page.current").parent().parent(),e=$(".news-link").offset().left,a=$(".link-page.current").offset().left,i=$(".scroll-slide").width()/2-$(".link-page.current").width()/2;$(t).stop().animate({scrollLeft:a-i-e},"slow")}$(window).width()<=1100&&$(".sub-inner li.current").length&&$(".sub-inner li.current").each(function(e,a){var o=$(a).parent().offset().left,t=$(a).offset().left,i=($(window).width()/100*10,$(window).width()/2-$(a).width()/2);$(a).parent().parent().stop().animate({scrollLeft:t-i-o},"slow")})}function detectZoom(){var e=$(".full img").width(),a=($(".full img").height(),$(window).height(),$(window).width());e>a?($(".show-zoom").addClass("show"),$(".full img").addClass("fullsize")):$(".full img").removeClass("fullsize")}function detectMargin(){var e=$(".full img").width(),a=$(".full  img").height(),o=$(window).height(),t=$(window).width();t>e?$(".full img").css({"margin-left":t/2-e/2}):$(".full img").css({"margin-left":0}),o>a?$(".full img").css({"margin-top":o/2-a/2}):$(".full img").css({"margin-top":0})}function LocationHash(){var e=window.location.hash;e=e.slice(1),$("#news-page").length&&$(".link-page a[data-details='"+e+"']").trigger("click")}!function(e){var a={on:e.fn.on,bind:e.fn.bind};e.each(a,function(o){e.fn[o]=function(){var e,t=[].slice.call(arguments),i=t.pop(),l=t.pop();return t.push(function(){var a=this,o=arguments;clearTimeout(e),e=setTimeout(function(){l.apply(a,[].slice.call(o))},i)}),a[o].apply(this,isNaN(i)?arguments:t)}})}(jQuery),$.fn.isInViewport=function(){var e=$(this).offset().top,a=e+$(this).outerHeight(),o=$(window).scrollTop(),t=o+$(window).height();return a>o&&t>e},Number.prototype.formatMoney=function(e,a,o){var t=this,e=isNaN(e=Math.abs(e))?2:e,a=void 0==a?".":a,o=void 0==o?",":o,i=0>t?"-":"",l=parseInt(t=Math.abs(+t||0).toFixed(e))+"",n=(n=l.length)>3?n%3:0;return i+(n?l.substr(0,n)+o:"")+l.substr(n).replace(/(\d{3})(?=\d)/g,"$1"+o)+(e?a+Math.abs(t-l).toFixed(e).slice(2):"")};var timex,timerf,scrolling=!1,doWheel=!0,doTouch=!0,isFirst=!0,login=!1,ftpVideo=[],Itemx=".header .nav li, .sub-nav li",windscroll=$(document).scrollTop(),zoomPC=!1;$(document).ready(function(){for(var e=document.querySelectorAll(".video-full"),a=0;a<e.length;a++)e[a].addEventListener("playing",function(){var e=this.getAttribute("data-video");$(".player-vid[data-video='"+e+"']").addClass("hide")}),e[a].addEventListener("pause",function(){var e=this.getAttribute("data-video");$(".player-vid[data-video='"+e+"']").removeClass("hide")}),ftpVideo.push(e[a]);$(".player-vid").on("click",function(e){e.stopPropagation();for(var a=$(this),o=a.attr("data-video"),t=0;t<ftpVideo.length;t++)o==ftpVideo[t].getAttribute("data-video")&&ftpVideo[t].paused?ftpVideo[t].play():ftpVideo[t].pause();return!1}),$(".box-video-center").on("click",function(){$(this).find(".player-vid").trigger("click")}),$("#price-select").length&&$("#price-select, #material-select, #color-select, #category-select").change(function(){if(isFirst)$(".product-load").animate({opacity:0},300,"linear",function(){SearchProduct()});else{var e=$(".product-list-content").offset().top-108;$("html, body").stop().animate({scrollTop:e},1e3,"easeInOutExpo",function(){$(".product-load").animate({opacity:0},300,"linear",function(){SearchProduct()})})}}),$(".login-but").on("click",function(){$(".login-overlay").hasClass("active")?($(".login-box").removeClass("active"),$(".login-overlay").stop().animate({opacity:0},300,"linear",function(){$(".login-overlay").removeClass("active")})):($(".login-overlay").addClass("active"),$(".login-overlay").stop().animate({opacity:1},300,"linear",function(){$(".login-box").addClass("active")})),$(".search-form.active").length&&$(".search-form, .search-but").removeClass("active")}),$(document).on("click",".login-overlay",function(){
-$(".login-box").removeClass("active"),$(".login-overlay").stop().animate({opacity:0},300,"linear",function(){$(".login-overlay").removeClass("active")})}),$(".product-content").on("click",".like-but",function(){if(login=!0){var e=Number($(".like-circle").attr("data-like"))+1,a=e.formatMoney(0,",",",");$(".like-circle").attr("data-like",e);var o=a.split(",").length,t="",i=a.split(",")[0];2==o?(t="K",i=e/1e3):3==o?(t="M",i=e/1e6):4==o&&(t="B",i=e/1e9),i=i.toString().split(".");var l=i[0];if(i.length>1){var n=i[1][0];"0"!=n&&(l=l+","+n)}l+=t,$(".like-circle").html(l)}else $(".login-overlay").addClass("active"),$(".login-overlay").stop().animate({opacity:1},500,"linear",function(){$(".login-box").addClass("active")})}),$(".container").on("click",function(){$(".search-but").hasClass("active")&&$(".search-form, .search-but").removeClass("active")});var o=document.querySelector(".header .nav");o.addEventListener("touchmove",function(e){$(".header .nav ul").innerHeight()>$(window).height()&&e.stopPropagation()});var t=document.querySelector(".header .navigation");t.addEventListener("touchmove",function(e){e.preventDefault()});var i=document.querySelector(".nav-overlay");i.addEventListener("touchmove",function(e){e.preventDefault()}),$(".nav-overlay").on("click",function(){$(window).width()<=1100&&$(".nav-but.active").trigger("click")}),$(document).bind("scroll",function(){var e=$(".slide-bg"),a=$(window).scrollTop(),o=$(document).scrollTop();$(".bottom").offset().top,$(".slider-home, .slider-inner").height();window.requestAnimationFrame(function(){if(o>=200?$(".header, .scroll-down").addClass("hide"):120>=o&&$(".header, .scroll-down").removeClass("hide"),windscroll>=$(window).height()/2?$(".go-top").addClass("show"):$(".go-top").removeClass("show"),$(".outer-nav, .filter-outer").length){var t=$(window).width()>1100?80:0,i=$(".slider-home, .slider-inner").innerHeight()-t;windscroll>=i?$(".outer-nav, .filter-outer").addClass("fixed"):$(".outer-nav, .filter-outer").removeClass("fixed")}if(scrolling){if($(".scroll-post").each(function(){if($(this).offset().top-o<$(window).height()-40){$(this).addClass("active");var e=$(".scroll-post.active").last(),a=e.attr("data-post");a&&($(".sub-nav li").removeClass("current"),$('.sub-nav li a[data-name="'+a+'"]').parent().addClass("current"),detectBut())}else $(this).removeClass("active")}),$(".box-video-center").length){var l=o-$(".box-video-center").offset().top;if(0>l&&(l=-l),l>$(window).height()&&($(".player-vid.hide").trigger("click"),isYouTube))for(var n=0;n<player.length;n++)try{player[n].pauseVideo()}catch(s){}}onScroll()}$(window).width()>1100&&$(e).css({"-webkit-transform":"translate3d(0,"+.3*a+"px, 0)",transform:"translate3d(0,"+.3*a+"px, 0)"}),StopBanner()}),windscroll=o}),Check(),setTimeout(function(){0==Loadx&&(Loadx=1,Done())},1500)}),window.onorientationchange=ResizeWindows,$(window).on("orientationchange",function(){$(window).width()<=1100&&(ScrollHoz(),$(".full.dragscroll").length&&$(window).width()>740&&($("html, body").removeClass("no-scroll"),$(".close-pics-small").trigger("click")),setTimeout(detectBut,100))}),$(window).resize(function(){ResizeWindows()}),$(window).on("resize",function(){ResizeWindows(),$(window).width()>1100?($(".nav-but").hasClass("active")&&$("html, body").removeClass("no-scroll"),$(".dragscroll").length&&(detectMargin(),$(".dragscroll").draptouch()),$(".full.dragscroll").length&&!zoomPC&&($("html, body").removeClass("no-scroll"),$(".close-pics-small").trigger("click")),$(".scroll-slide, .sub-nav").hasClass("dragscroll")&&($(".scroll-slide, .sub-nav").removeClass("dragscroll draptouch-active draptouch-moving-left draptouch-moving-down"),$(".scroll-slide, .sub-nav").css({overflow:"visible"})),$(".news-link").length&&($(".news-link").hasClass("slide-slidebox")||(SlidePicture(),setTimeout(function(){if($("#progress-page").length)$(".link-page.current").trigger("click");else{var e=$(".news-link .slide-item").index($(".link-page.current").parent());$(".news-link").trigger("BTQ.goTo",e)}},100)))):(0!=TouchLenght&&isTouchDevice||(ScrollHoz(),$(".zoom-pic").length&&$(window).width()>740&&($("html, body").removeClass("no-scroll"),$(".close-pics-small").trigger("click")),$(".news-link").length&&$(".news-link").hasClass("slide-slidebox")&&$(".news-link").each(function(e,a){$(a).data("BTQSlider").destroy()})),$(".dragscroll").length&&(detectMargin(),$(".dragscroll").draptouch())),0!=TouchLenght&&isTouchDevice||(detectBut(),$(".news-link").length&&setTimeout(function(){$("#progress-page").length&&$(".link-page.current").trigger("click")},100)),Check()},250),window.onbeforeunload=function(){window.scrollTo(0,0),$("#price-select, #material-select, #color-select, #category-select").prop("selectedIndex",0)},$(window).bind("popstate",function(e){e.preventDefault()}),(iOS||isFirefox)&&$(window).bind("pageshow",function(e){e.originalEvent.persisted&&window.location.reload()});
+//Layout variables
+var doCument = $('html, body'),
+	header = $('.header'),
+	navBut = $('.nav-but'),
+	navigation = document.querySelector('.navigation'),
+	navCnt = document.querySelector('.nav'),
+	navBox = document.querySelector('.nav ul'),
+	accountBut = $('.account-but'),
+	toTop = $('.to-top'),
+	popCnt = document.querySelector('.popup-content'),
+	popWrp = document.querySelector('.popup-wrap'),
+	popBox = document.querySelector('.popup-box'),
+	openPop = $('.show-pop'),
+	closePop = $('.close-pop'),
+	cart = document.querySelector('.cart-shopping'),
+	cartNum = document.querySelector('.cart-text'),
+	cartJSON = [];
+		
+//Lazy variables
+var imgClass,
+	lazyImages,
+	bgClass,
+	lazyBgs;
+	var first = true;
+	var isClick = false;
+
+//Overflow variables	
+var ctnWrap,
+	ctnBox,
+	ctnItem;
+	
+var loading = true;	
+
+function DirectLink(){
+	
+    $(document).on('click', '.direct-link', function(e) {
+        e.preventDefault();
+		var url =  $(this).attr("href");
+       	$('body').stop().animate({'opacity':0},100,'linear',function(){ window.location = url; });
+        return false;
+        
+	});
+	
+}
+
+
+function inputHolder(){
+    
+	 //mask input
+    $('.mask-input').on('click', function(){
+        $(this).parent().addClass('hide');
+        $(this).next().focus();
+    });
+
+    $('input, textarea').focus(function (e) {
+       $(this).parent().find('.nameformError').remove();
+	   $(this).parent().addClass('hide').removeClass('show-error');
+	   if($(this).attr('data-holder') == $(this).val()) {
+            $(this).val("");
+       }
+    }).focusout(function (e) {
+        if ($(this).val() == "") {
+			$(this).parent().removeClass('hide');
+            $(this).val($(this).attr('data-holder'));
+        }
+    });
+				
+}
+
+//DONT REMOVE
+function CommonEvent(){
+   
+    //NAV CLICK EVENT
+  	navBut.on("click", function(e) {
+		
+		if(navBut.hasClass('active')){
+			navBut.removeClass('active');
+			doCument.removeClass('no-scroll');
+			navigation.classList.remove('active');
+			navigation.style.height = "0px";
+			
+		}else{
+			navBut.addClass('active');
+			doCument.addClass('no-scroll');
+			navigation.classList.add('active');
+			navigation.style.height = window.innerHeight + "px";
+		}
+		
+	});
+	
+    //GOTOP EVENT
+	toTop.on("click", function(event) {
+		doCument.animate({ scrollTop: 0 }, 400);
+	});
+
+	
+   //NAV TOUCH EVENTS
+	navigation.addEventListener("touchmove", function(event) {
+		if($(window).height() > 500) {
+			event.preventDefault();
+		}
+	});
+
+	navCnt.addEventListener("touchmove", function(event) {
+		
+		if(navBox.clientHeight > navCnt.clientHeight){
+			event.stopPropagation();	
+		}
+		 
+	});
+	
+	
+	//POPUP TOUCH EVENTS
+	if(popCnt) {
+        popCnt.addEventListener("touchmove", function(event) {
+			if($(window).height() > 500) {
+				event.preventDefault();	
+			}
+            
+        });
+
+        popWrp.addEventListener("touchmove", function(event) {
+
+            if(popBox.clientHeight > popWrp.clientHeight){
+                event.stopPropagation();
+            }
+
+        });
+	}
+
+	//POPUP CLICK EVENTS
+	openPop.on("click", function(event) {
+		doCument.addClass('no-scroll');
+		popCnt.style.height = window.innerHeight + "px";
+		//Show scroll after finished animation
+		setTimeout(function(){ popCnt.classList.add('active'); },310);
+	});
+	
+	closePop.on("click", function(event) {
+		doCument.removeClass('no-scroll');
+		popCnt.classList.remove('active');
+		popCnt.style.height = "0px";
+		
+	});
+	$(document).on('click', '.success-order .more', function(){
+		doCument.removeClass('no-scroll');
+		popCnt.classList.remove('active');
+		popCnt.style.height = "0px";
+	});
+    //Focus text
+    inputHolder();
+
+    //Select event
+    selectEvent();
+	
+
+}
+
+function change_alias(alias) {
+	var str = alias;
+	str = str.toLowerCase();
+	str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
+	str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
+	str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
+	str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
+	str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
+	str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
+	str = str.replace(/đ/g,"d");
+	str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+	str = str.replace(/ + /g," ");
+	str = str.trim();
+	return str;
+}
+
+function getDistrict(cityId, disBox){
+	 
+	 //Sort district follow city
+	 
+	 //example url
+	 var url = '';
+	 if(cityId == 1) {
+		 url = 'hcm.html';
+	 }else if(cityId == 2) {
+		 url = 'binhduong.html';
+	 }
+
+	 if(cityId == 0) { //Default value
+		 $(disBox).find('span').text('Quận/Huyện(*)');
+		 $(disBox).find('input').val('Tìm kiếm ...');
+		 $(disBox).find('ul').html('<li data-district="0">Quận/Huyện(*)</li>');
+	 }else { 
+		$.ajax({url: url, cache: false, success: function(data) {
+			$(disBox).find('span').text('Quận/Huyện(*)');
+			$(disBox).find('input').val('Tìm kiếm ...');
+			$(disBox).find('ul').html(data);
+			
+		}});
+	 }
+    
+}
+
+function getTown(cityId, districtId, townBox){
+	 
+	 //Sort town follow city + district
+	 
+	 //example url
+	 var url = '';
+	 if(cityId == 1) {
+		 url = 'town.html';
+	 }else if(cityId == 2) {
+		 url = 'town-bd.html';
+	 }
+	 
+	 if(cityId == 0 || districtId == 0) { //Default value
+		 $(townBox).find('span').text('Phường/Xã(*)');
+		 $(townBox).find('input').val('Tìm kiếm ...');
+		 $(townBox).find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+	 }else { 
+		$.ajax({url: url, cache: false, success: function(data) {
+		 $(townBox).find('span').text('Phường/Xã(*)');
+		 $(townBox).find('input').val('Tìm kiếm ...');
+		 $(townBox).find('ul').html(data);
+		}});
+	 }
+}
+
+function selectEvent() {
+	
+  //Sort lis
+  $(document).on('keyup', '.select-sort input', function (e) {
+	e.stopPropagation();
+    var that = $(this);
+	var text_search = change_alias(that.val());
+	var box = $(this).parent().parent().parent();
+	var list = box.find('ul');
+	
+	if(e.keyCode == 13){
+		if(box.find('li.selected').length){
+			box.find('.select-header span').text(box.find('li.selected').text());
+			box.removeClass('open');
+			box.parent().removeClass('hide');
+			
+			if(box.find('li.selected').attr('data-city')){
+				var cityId = box.find('li.selected').attr('data-city');
+				var disBox = null;
+				var townBox = null;
+				
+				//Find district follow block
+				if(box.hasClass('is-city')) {
+					disBox = $('.is-district');
+					townBox = $('.is-town');
+				}else if(box.hasClass('is-city-edit')) {
+					disBox = $('.is-district-edit');
+					townBox = $('.is-town-edit');
+					
+				}
+				
+				disBox.parent().removeClass('hide');
+				townBox.parent().removeClass('hide');
+				
+				//Reset town
+				townBox.find('span').text('Phường/Xã(*)');
+				townBox.find('input').val('Tìm kiếm ...');
+				townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+				
+				getDistrict(cityId, disBox);
+				
+			}else if(box.find('li.selected').attr('data-district')) {
+				var townBox = null;
+				var cityId = null;
+				var districtId = null;
+				
+				//Find district follow block
+				if(box.hasClass('is-district')) {
+					townBox = $('.is-town');
+					cityId = $('.is-city li.selected').attr('data-city') || 0;
+                	districtId = $('.is-district li.selected').attr('data-district') || 0;
+				
+				}else if(box.hasClass('is-district-edit')) {
+					townBox = $('.is-town-edit');
+					cityId = $('.is-city-edit li.selected').attr('data-city') || 0;
+                	districtId = $('.is-district-edit li.selected').attr('data-district') || 0;
+				}
+				
+				
+				townBox.parent().removeClass('hide');
+				//Reset town
+				townBox.find('span').text('Phường/Xã(*)');
+				townBox.find('input').val('Tìm kiếm ...');
+				townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+				
+				getTown(cityId, districtId, townBox);
+				
+			}
+			
+		}
+		
+	}else if(e.keyCode == 38){
+		e.preventDefault();
+		var prev = box.find('li.selected').prevAll('li').not('.hide').first();
+		if(prev.length){
+			box.find('li').removeClass('selected');
+			prev.addClass('selected');
+			var top = list.scrollTop();
+			list.scrollTop(top - 30);
+		}else {
+			list.scrollTop(0);
+			box.find('li').removeClass('selected');
+			box.find('li:first-child').addClass('selected');
+		}
+		
+		return false;
+		
+	}else if(e.keyCode == 40){
+		e.preventDefault();
+		var next = box.find('li.selected').nextAll('li').not('.hide').first();
+		if(next.length){
+			box.find('li').removeClass('selected');
+			next.addClass('selected');
+			var top = list.scrollTop();
+			list.scrollTop(top + 30);
+		}else {
+			list.scrollTop(0);
+			box.find('li').removeClass('selected');
+			box.find('li:first-child').addClass('selected');
+		}
+		return false;
+	}else{
+		if(text_search == ''){
+		  box.find('li').removeClass('hide').removeClass('selected');
+		  $(list).scrollTop(0);
+		} else {
+		  box.find('li').removeClass('selected');
+		  box.find('li').each(function (index, elm) {
+			var text = change_alias($(elm).text());
+			if(text.indexOf(text_search) > -1){
+			  $(elm).removeClass('hide');
+			  box.find('li:not(.hide)').first().addClass('selected');
+			}else {
+			  $(elm).addClass('hide');
+			}
+		  })
+		}
+	}
+		
+
+  });
+  
+  
+  //Open list check box
+  $(document).on('click', '.select-header', function () {
+    var box = $(this).parent();
+	box.parent().removeClass('show-error');
+	box.parent().find('.nameformError').remove();
+	
+    if (box.hasClass('open')) {
+		box.removeClass('open');
+    } else {
+		$('.select-list').removeClass('open');
+		box.addClass('open');
+    }
+  });
+
+  //Check box
+  $(document).on('click', '.select-box li', function () {
+    var that = $(this);
+    var box = $(this).parent().parent().parent();
+	
+	if (!that.hasClass('selected')) {
+		box.find('li').removeClass('selected');
+		that.addClass('selected');
+		box.removeClass('open');
+		box.find('.select-header span').html(that.text());
+		box.parent().removeClass('hide');
+		
+		if(that.attr('data-city')){
+			var cityId = that.attr('data-city');
+			var disBox = null;
+			var townBox = null;
+			
+			//Find district follow block
+			if(box.hasClass('is-city')) {
+				disBox = $('.is-district');
+				townBox = $('.is-town');
+			}else if(box.hasClass('is-city-edit')) {
+				disBox = $('.is-district-edit');
+				townBox = $('.is-town-edit');
+			}
+			
+			disBox.parent().removeClass('hide');
+			townBox.parent().removeClass('hide');
+				
+			//Reset town
+			townBox.find('span').text('Phường/Xã(*)');
+			townBox.find('input').val('Tìm kiếm ...');
+			townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+			
+			getDistrict(cityId, disBox);
+			
+		}else if(that.attr('data-district')) { 
+			var townBox = null;
+			var cityId = null;
+			var districtId = null;
+			
+			//Find district follow block
+			if(box.hasClass('is-district')) {
+				townBox = $('.is-town');
+				cityId = $('.is-city li.selected').attr('data-city') || 0;
+				districtId = $('.is-district li.selected').attr('data-district') || 0;
+			
+			}else if(box.hasClass('is-district-edit')) {
+				townBox = $('.is-town-edit');
+				cityId = $('.is-city-edit li.selected').attr('data-city') || 0;
+				districtId = $('.is-district-edit li.selected').attr('data-district') || 0;
+			}
+			
+			townBox.parent().removeClass('hide');
+				
+			//Reset town
+			townBox.find('span').text('Phường/Xã(*)');
+			townBox.find('input').val('Tìm kiếm ...');
+			townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+			
+			getTown(cityId, districtId, townBox);
+		
+		}
+		
+	}
+	
+	
+  });
+  
+  $(document).on('click touchstart', function(event) {
+    if ($(".select-list").has(event.target).length == 0 && !$(".select-list").is(event.target)){
+      $(".select-list").removeClass("open");
+    }
+  });
+
+}
+
+//VALIDATION FUNC
+function hideerror(){
+    $(".nameformError").remove();
+}
+function hidemsg(){
+    $(".feedback-message").remove();
+}
+
+//Login validate [ Lập trình edit cho phù hợp ]
+function loginValidate(){
+	var result = true;
+	if($('#user_name').val() == '') {
+		$('#user_name').parent().find('.nameformError').remove();
+		$('#user_name').parent().addClass('show-error');
+		$('#user_name').after('<div class="nameformError">*Thông tin không hợp lệ. Vui lòng nhập lại!</div>');
+		result = false;
+	}
+	if($('#user_phone').val() == '') {
+		$('#user_phone').parent().find('.nameformError').remove();
+		$('#user_phone').parent().addClass('show-error');
+		$('#user_phone').after('<div class="nameformError">*Số điện thoại phải là số!</div>');
+		result = false;
+	}
+	if($('#user_vinid').val() == '') {
+		$('#user_vinid').parent().find('.nameformError').remove();
+		$('#user_vinid').parent().addClass('show-error');
+		$('#user_vinid').after('<div class="nameformError">*Số thẻ phải là số!</div>');
+		result = false;
+	}
+	if($('#user_email').val() == '') {
+		$('#user_email').parent().find('.nameformError').remove();
+		$('#user_email').parent().addClass('show-error');
+		$('#user_email').after('<div class="nameformError">*Email không đúng định dạng!</div>');
+		result = false;
+	}
+	return result;
+	
+}
+
+//Order validate [ Lập trình edit cho phù hợp ]
+function orderValidate(){
+	var result = true;
+	
+	
+	//THÔNG TIN GIAO HÀNG
+	if($('#order_user_name').val() == '') {
+		$('#order_user_name').parent().find('.nameformError').remove();
+		$('#order_user_name').parent().addClass('show-error');
+		$('#order_user_name').after('<div class="nameformError">*Thông tin không hợp lệ. Vui lòng nhập lại!</div>');
+		result = false;
+	}
+	if($('#order_user_phone').val() == '') {
+		$('#order_user_phone').parent().find('.nameformError').remove();
+		$('#order_user_phone').parent().addClass('show-error');
+		$('#order_user_phone').after('<div class="nameformError">*Số điện thoại phải là số!</div>');
+		result = false;
+	}
+	if($('#order_user_email').val() == '') {
+		$('#order_user_email').parent().find('.nameformError').remove();
+		$('#order_user_email').parent().addClass('show-error');
+		$('#order_user_email').after('<div class="nameformError">*Email không đúng định dạng!</div>');
+		result = false;
+	}
+	if($('#order_address').val() == '') {
+		$('#order_address').parent().find('.nameformError').remove();
+		$('#order_address').parent().addClass('show-error');
+		$('#order_address').after('<div class="nameformError">*Địa chỉ không được rỗng!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-city li.selected').length || $('.is-city li.selected').attr('data-city') == '0') {
+		$('.is-city').parent().find('.nameformError').remove();
+		$('.is-city').parent().addClass('show-error');
+		$('.is-city').after('<div class="nameformError">Bạn phải chọn Thành phố!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-district li.selected').length || $('.is-district li.selected').attr('data-district') == '0') {
+		$('.is-district').parent().find('.nameformError').remove();
+		$('.is-district').parent().addClass('show-error');
+		$('.is-district').after('<div class="nameformError">Bạn phải chọn Quận huyện!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-town li.selected').length || $('.is-town li.selected').attr('data-town') == '0') {
+		$('.is-town').parent().find('.nameformError').remove();
+		$('.is-town').parent().addClass('show-error');
+		$('.is-town').after('<div class="nameformError">Bạn phải chọn Phường xã!</div>');
+		result = false;
+	}
+	
+	
+	//LỰA CHỌN CỬA HÀNG GẦN NHẤT
+	//[CÁI NÀY NẾU CẦN THIẾT THÌ CÓ THỂ UN COMMENT]
+	/*if(!$('.is-distribution-hcm li.selected').length || $('.is-distribution-hcm li.selected').attr('data-center') == '0') {
+		$('.is-distribution-hcm').parent().find('.nameformError').remove();
+		$('.is-distribution-hcm').parent().addClass('show-error');
+		$('.is-distribution-hcm').after('<div class="nameformError">Bạn phải chọn Trung Tâm!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-distribution-hn li.selected').length || $('.is-distribution-hn li.selected').attr('data-center') == '0') {
+		$('.is-distribution-hn').parent().find('.nameformError').remove();
+		$('.is-distribution-hn').parent().addClass('show-error');
+		$('.is-distribution-hn').after('<div class="nameformError">Bạn phải chọn Trung Tâm!</div>');
+		result = false;
+	}*/
+	
+	
+	//THÔNG TIN NGƯỜI MUA
+	//[CÁI NÀY NẾU CẦN THIẾT THÌ CÓ THỂ UN COMMENT]
+	/*
+	if($('#order_edit_user_name').val() == '') {
+		$('#order_edit_user_name').parent().find('.nameformError').remove();
+		$('#order_edit_user_name').parent().addClass('show-error');
+		$('#order_edit_user_name').after('<div class="nameformError">*Thông tin không hợp lệ. Vui lòng nhập lại!</div>');
+		result = false;
+	}
+	if($('#order_edit_user_phone').val() == '') {
+		$('#order_edit_user_phone').parent().find('.nameformError').remove();
+		$('#order_edit_user_phone').parent().addClass('show-error');
+		$('#order_edit_user_phone').after('<div class="nameformError">*Số điện thoại phải là số!</div>');
+		result = false;
+	}
+	if($('#order_edit_user_email').val() == '') {
+		$('#order_edit_user_email').parent().find('.nameformError').remove();
+		$('#order_edit_user_email').parent().addClass('show-error');
+		$('#order_edit_user_email').after('<div class="nameformError">*Email không đúng định dạng!</div>');
+		result = false;
+	}
+	if($('#order_edit_address').val() == '') {
+		$('#order_edit_address').parent().find('.nameformError').remove();
+		$('#order_edit_address').parent().addClass('show-error');
+		$('#order_edit_address').after('<div class="nameformError">*Địa chỉ không được rỗng!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-city-edit li.selected').length || $('.is-city-edit li.selected').attr('data-city') == '0') {
+		$('.is-city-edit').parent().find('.nameformError').remove();
+		$('.is-city-edit').parent().addClass('show-error');
+		$('.is-city-edit').after('<div class="nameformError">Bạn phải chọn Thành phố!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-district-edit li.selected').length || $('.is-district-edit li.selected').attr('data-district') == '0') {
+		$('.is-district-edit').parent().find('.nameformError').remove();
+		$('.is-district-edit').parent().addClass('show-error');
+		$('.is-district-edit').after('<div class="nameformError">Bạn phải chọn Quận huyện!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-town-edit li.selected').length || $('.is-town-edit li.selected').attr('data-town') == '0') {
+		$('.is-town-edit').parent().find('.nameformError').remove();
+		$('.is-town-edit').parent().addClass('show-error');
+		$('.is-town-edit').after('<div class="nameformError">Bạn phải chọn Phường xã!</div>');
+		result = false;
+	}*/
+	
+	
+	//XUẤT HÓA ĐON
+	//[CÁI NÀY NẾU CẦN THIẾT THÌ CÓ THỂ UN COMMENT]
+	/*
+	if($('#order_tax').val() == '') {
+		$('#order_tax').parent().find('.nameformError').remove();
+		$('#order_tax').parent().addClass('show-error');
+		$('#order_tax').after('<div class="nameformError">Bạn phải nhập Mã số thuế!</div>');
+		result = false;
+	}
+	
+	if($('#order_company_name').val() == '') {
+		$('#order_company_name').parent().find('.nameformError').remove();
+		$('#order_company_name').parent().addClass('show-error');
+		$('#order_company_name').after('<div class="nameformError">Bạn phải nhập Tên công ty!</div>');
+		result = false;
+	}
+	
+	if($('#order_company_address').val() == '') {
+		$('#order_company_address').parent().find('.nameformError').remove();
+		$('#order_company_address').parent().addClass('show-error');
+		$('#order_company_address').after('<div class="nameformError">Bạn phải nhập Địa chỉ công ty!</div>');
+		result = false;
+	}*/
+	
+	
+	return result;
+	
+}
+
+function cartProgress(){
+
+	if($('#cart-page').length) {
+		
+		//Tăng quantity
+		$(document).on('click', '.add-but', function(){
+			
+		});
+		
+		//Giảm quantity
+		$(document).on('click', '.sub-but', function(){
+			
+		});
+		
+		//Xóa dòng
+		$(document).on('click', '.delete-but', function(){
+			
+			//Code here
+			$('.message-box').removeClass('hide');
+			setTimeout(function(){
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+			 },310);
+			
+		});
+		
+		//Delete item cart
+		$(document).on('click', '.confirm_delete', function(){
+			//Code here
+		});
+		
+		//Cancel Delete item cart
+		$(document).on('click', '.confirm_cancel', function(){
+			closePop.trigger('click');
+		});
+		
+	}
+		
+}
+
+//Product load
+function productLoad(url) {
+    $.ajax({url: url, cache: false, success: function(data) {
+        $('.product-box').html(data);
+		onScroll();
+        $('.product-box').stop().animate({'opacity': 1}, 500, 'linear', function() {
+			loading = true;	
+		});
+    }});
+
+}
+
+
+
+function Start(){
+	
+    //SET ACTIVE PAGE
+    var page = $('body').attr('id');
+    $(".nav li[data-active='" + page + "']").addClass('active');
+	
+	
+	//Go to focus-box
+	$(document).on('click', '.go-focus-box', function(){
+		var delTop = 66;
+		if($('#products-page').length && $(window).width() > 1100) {
+			delTop = 40;
+		}
+		var top = $('.focus-box').offset().top - delTop;
+		doCument.stop().animate({ scrollTop: top }, 400);
+	});
+	
+	
+	//LOGIN PAGE EVENTS
+	$(document).on('click', '#login_but', function(){
+		$('.success-login, .message-box').addClass('hide');
+
+		if(loginValidate()){
+			//Code here
+			setTimeout(function(){
+				$('.success-login').removeClass('hide');
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+				
+				//Popup tự đóng sau 3s
+				setTimeout(function(){ 
+					closePop.trigger('click');
+					//redirect to products
+					window.location = 'products.html';
+				
+				},3000);
+				
+			 },310);
+			
+			document.getElementById("login_form").reset();
+			$('.field').removeClass('hide');
+			
+		}else{
+			//Error here
+			$('.message-box').removeClass('hide');
+			
+			setTimeout(function(){
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+				
+				//Popup tự đóng sau 3s
+				setTimeout(function(){ closePop.trigger('click') },3000);
+				
+			},310);
+			
+		}
+		
+	});
+	
+	//Logout
+	$(document).on('click', '#logout_but', function(){
+		//Code here
+	});
+	
+	
+	//PRODUCTS PAGE
+	$(document).on('click', '.filter-but', function(){
+		if(loading) {
+			loading = false;
+			var url = $(this).attr('data-url');
+			$('.filter-box li').removeClass('active');
+			$(this).parent().addClass('active');
+			$('.product-box').stop().animate({'opacity': 0}, 300, 'linear', function() {
+				productLoad(url);	
+			});
+		}
+	});
+	
+	
+	
+	//CART PAGE
+	$(document).on('click', '.add-to-cart', function(){
+		//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+		doCument.addClass('no-scroll');
+		popCnt.style.height = window.innerHeight + "px";
+		//Show scroll after finished animation
+		setTimeout(function(){ popCnt.classList.add('active'); },310);
+		
+	});
+	
+	$(document).on('click', '.btn.grey', function(){
+		
+		var url = $(this).attr('href');
+		var obj = {
+			id: $(this).attr('data-id'),
+			image: $(this).attr('data-image'),
+			name: $(this).attr('data-name'),
+			promotion: $(this).attr('data-promotion'),
+			price: $(this).attr('data-price'),
+			oprice: $(this).attr('data-oprice'),
+			accumulating: $(this).attr('data-accumulating'),
+			quantity:1
+		};
+		
+		addCart(obj);
+		
+		setTimeout(function(){
+			this.loadicon = url;
+		},300);
+		
+		
+	});
+	
+	
+	
+	//ORDER PAGE
+	//Show customer info
+	$(document).on('click', 'input.byCompany, input.byCustomer', function(e){
+		if(this.checked) {
+			if(this.classList.contains('byCompany')) {
+				$('.is-company').addClass('active');
+				setTimeout(function(){
+					$('.is-company').addClass('on');
+				},0);
+				  
+			}else if(this.classList.contains('byCustomer')){
+				$('.is-customer').addClass('active');
+				setTimeout(function(){
+					$('.is-customer').addClass('on');
+				},0);
+			}
+		}else {
+			if(this.classList.contains('byCompany')) {
+				$('.is-company').removeClass('active').removeClass('on');
+			}else if(this.classList.contains('byCustomer')){
+				$('.is-customer').removeClass('active').removeClass('on');
+			}
+		}
+		
+		  
+	});
+	
+	
+	//Payment next [order page]
+	$(document).on('click', '#order_but', function(e){
+		e.preventDefault();
+		
+		if(orderValidate()){
+			//Code here
+			$('.message-box').removeClass('hide');
+			setTimeout(function(){
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+				
+			},310);
+			
+		}else{
+			var top = $('.order-box').offset().top - 80;
+			doCument.stop().animate({ scrollTop: top }, 400);
+			
+		}
+		
+		return false;
+		
+	});
+	
+}
+
+
+//Lazayload images
+function ImgLazyLoad(){
+	
+	var winH = $(window).height();
+	
+	lazyImages.each(function(index,lazyImage){
+		
+		if($(lazyImage)[0].getBoundingClientRect().top <= winH * 2){
+			
+			var src = $(lazyImage).attr("data-img-src");
+			$(lazyImage).attr('src', src);
+			$(lazyImage).removeClass('lazy');
+			
+		}else{
+			return false;	
+		}
+		
+	});
+	
+	
+}
+
+//Lazayload background
+function BgLazyLoad(){
+	
+	var winH = $(window).height();
+	
+	lazyBgs.each(function(index,lazyBg){
+		
+		if($(lazyBg)[0].getBoundingClientRect().top <= winH * 2){
+			
+			var src = $(lazyBg).attr("data-img-src");
+			$(lazyBg).css({'background-image': 'url('+ src +')'});
+			$(lazyBg).removeClass('lazy');
+			
+		}else{
+			return false;	
+		}
+		
+	});
+	
+}
+
+ 
+//Scroll animation
+function onScroll(){
+	
+	//Win variable
+	var winT = $(window).scrollTop();
+	var winW = $(window).width();
+	var winH = $(window).height();
+	
+	//Lazy images
+	imgClass = winW > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
+	lazyImages = $(imgClass);
+	if(lazyImages.length){ ImgLazyLoad(); }
+	
+	//Lazy background
+	bgClass = winW > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
+	lazyBgs = $(bgClass);
+	if(lazyBgs.length){ BgLazyLoad(); }
+	
+
+	if(winT > winH/2){
+		toTop.addClass('show');
+	}else{
+		toTop.removeClass('show');
+	}
+	
+	
+}
+
+
+//On resize
+function onResize(){
+
+}
+
+
+//End resize
+function endResize(){
+	
+	var winW = $(window).width();
+	
+	if(navigation) {
+		if(navigation.classList.contains('active')){
+			navigation.style.height = window.innerHeight + "px";
+		}
+	}
+	
+    if(popCnt) {
+        if (popCnt.classList.contains('active')) {
+           popCnt.style.height = window.innerHeight + "px";
+        }
+    }
+	
+	if(!isMobile){
+		
+		//lazy images
+		imgClass = winW > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
+		lazyImages = $(imgClass);
+		ImgLazyLoad();
+
+		//lazy background
+		bgClass = winW > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
+		lazyBgs = $(bgClass);
+		BgLazyLoad();
+	
+	}
+
+	if(winW > 1100) {
+
+   	}
+	
+}
+
+
+//Rotate
+function onRotate(){
+
+	//NAV + POPUP DONT REMOVE
+	setTimeout(function(){
+		var wWidth = $(window).width();
+
+		if(navigation) {
+			if(navigation.classList.contains('active')){
+				navigation.style.height = window.innerHeight + "px";
+			}
+		}
+		
+        if(popCnt) {
+            if (popCnt.classList.contains('active')) {
+                popCnt.style.height = window.innerHeight + "px";
+            }
+			
+        }
+		
+		//lazy images
+		imgClass = wWidth > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
+		lazyImages = $(imgClass);
+		ImgLazyLoad();
+		
+		
+		//lazy background
+		bgClass = wWidth > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
+		lazyBgs = $(bgClass);
+		BgLazyLoad();
+		
+	},200);
+	
+	
+}
+
+
+$(document).ready(function () {
+	
+	
+	var wWidth = $(window).width();
+	
+	//Code giả lập user đã login thì add class isLogin
+	$('body').addClass('isLogin');
+	
+	//Setup cart
+	cartProgress();
+	
+	//common events
+	CommonEvent();
+	
+	//redirect events
+	DirectLink();
+
+	//lazy images
+	imgClass = wWidth > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
+	lazyImages = $(imgClass);
+	ImgLazyLoad();
+	
+	//lazy background
+	bgClass = wWidth > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
+	lazyBgs = $(bgClass);
+	BgLazyLoad();
+
+	//Star page
+	setTimeout(function(){
+		window.scrollTo(0,0);
+		onScroll();
+		$('.loadicon').fadeOut(300, function(){
+			$('.content').stop().animate({'opacity':1}, 500 ,'linear', function () {
+				Start();
+			});
+		});
+	}, 1500);	
+	
+});
+
+$(window).on("orientationchange", onRotate);
+$(window).resize(onResize);		
+$(window).on('resize', endResize, 250);
+$(window).scroll(onScroll);
+
+if(iOS) {
+	$(window).bind("pageshow", function(event) {
+		if (event.originalEvent.persisted) {
+			window.location.reload();
+		}
+	});
+}
+
+

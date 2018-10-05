@@ -1,0 +1,41 @@
+/*ANIMATION*/
+@-webkit-keyframes fadeIn{
+    0%{opacity:0}
+    100%{opacity:1}
+}
+
+@keyframes fadeIn{
+    0%{opacity:0}
+    100%{opacity:1}
+}
+
+@-webkit-keyframes goDown {
+    from {
+        -webkit-transform: translate3d(0, -8px, 0);
+		transform: translate3d(0, -8px, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, 8px, 0);
+		transform: translate3d(0, 8px, 0)
+    }
+}
+
+@keyframes goDown {
+   from {
+        -webkit-transform: translate3d(0, -8px, 0);
+		transform: translate3d(0, -8px, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, 8px, 0);
+		transform: translate3d(0, 8px, 0)
+    }
+}
+
+/*animate*/
+@-webkit-keyframes zezoRotateY {
+	to {-webkit-transform:rotateY(0deg);transform:rotateY(0deg)}
+}
+@keyframes zezoRotateY {
+	to {-webkit-transform:rotateY(0deg);transform:rotateY(0deg)}
+}
+
