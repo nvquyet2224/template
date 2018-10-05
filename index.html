@@ -9,21 +9,20 @@
 <meta http-equiv="Content-Language" content="vi">
 <meta name="google" content="notranslate">
 <meta name="robots" content="index, follow">
-<meta name="author" content="AConcept Vietnam">
+<meta name="author" content="VinID">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name = "format-detection" content = "telephone=no">
 
-<title>AConcept Vietnam</title>
-<meta name="description" content="AConcept Vietnam">
-<meta name="keywords" content="AConcept Vietnam">
+<title>VinID</title>
+<meta name="description" content="VinID">
+<meta name="keywords" content="VinID">
 <meta property="og:url" content="home.html">
-<meta property="og:title" content="AConcept Vietnam">
-<meta property="og:description" content="AConcept Vietnam">
+<meta property="og:title" content="VinID">
+<meta property="og:description" content="VinID">
 <meta property="og:type" content="website">
 <meta property="og:image" content="../images/social-share.png">
 <meta property="og:locale" content="vi_VN">
-<style>body{width:100%;overflow-x:hidden}.header, .footer, .container, .login-box{visibility: hidden;}</style>
 <!-- android -->
 <meta name="mobile-web-app-capable" content="yes">
 <meta http-equiv="cleartype" content="on">
@@ -31,35 +30,43 @@
 <!-- iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="AConcept Vietnam">
+<meta name="apple-mobile-web-app-title" content="VinID">
 
 
 
 <!-- Google Plus -->
-<meta itemprop="name" content="AConcept Vietnam">
-<meta itemprop="description" content="AConcept Vietnam">
+<meta itemprop="name" content="VinID">
+<meta itemprop="description" content="VinID">
 <meta itemprop="image" content="../images/social-share.png">
 
-<link rel="icon" href="../images/favicon.ico">
+<link rel="icon" href="images/favicon.ico">
 
 <link rel="alternate" href="" hreflang="vi-vn">
 <link rel="alternate" href="" hreflang="en-gb">
 <link href="" rel="canonical">
+<!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0; url=detect.html" />
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	window.top.location = 'detect.html';
+	/* ]]> */
+	</script>
+<![endif]-->
 </head>
-<body id="furniture-page">
+<body id="home-page">
 <!--CSS WRAP-->
-<div id="render-block"></div>
+<div id="render-styles"></div>
 <!--CSS WRAP-->
-<noscript id="noscript-block">
-<link rel="stylesheet" type="text/css" href="css/fonts.css" >
+<noscript id="deferred-styles">
+<link rel="stylesheet" type="text/css" href="css/fonts.css">
+<link rel="stylesheet" type="text/css" href="css/slide.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/animate.css">
-<link rel="stylesheet" type="text/css" href="css/common.css">
-<link rel="stylesheet" type="text/css" href="css/style.css" >
 </noscript>
 <script>
 var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
+var addStylesNode = document.getElementById("deferred-styles");
+var replacement = document.getElementById("render-styles");
 replacement.innerHTML = addStylesNode.textContent;
 document.body.appendChild(replacement)
 addStylesNode.parentElement.removeChild(addStylesNode);
@@ -70,176 +77,469 @@ if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
 else window.addEventListener('load', loadDeferredStyles);
 </script>
 
+<!--LOAD-PAGE-->
+<div class="all-pics"></div>
+<div class="all-album"></div>
+<div class="allvideo"></div>
+<div class="overlay-album"></div>
+<div class="overlay-video"></div>
+<div class="overlay-dark"></div>
+<!--LOAD-PAGE-->
 
-<!--WRAP-->
-<div class="content">
 
 <!--HEADER-->
 <header class="header">
-<span class="bg-white"></span>
-<span class="bg-black"></span>
-<div class="logo"><a href="index.html"><img src="./images/logo.png" alt="VinID"/></a></div>
+<span></span>
+<!--TOP-->
+<div class="top">
 
-<!--nav-->
-<div class="navigation">
-<div class="nav-outer">
+<!--logo-->
+<div class="company-header">
+<div class="logo">
+<svg xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" viewBox="0 0 284 92" >
+<path style="fill:#000;" d="M23.8,20.8H24l6.1,17.9H17.5L23.8,20.8z M18.5,8.8L0,57.5h10.9l3.8-10.9h18.2l3.7,10.9h11.1L29.5,8.8
+	H18.5z"></path>
+<path style="fill:#000;" d="M79.2,23.9c-1.3-6.6-6.6-9.9-13.1-9.9c-11.1,0-15.8,9.1-15.8,18.9c0,10.6,4.7,19.5,15.9,19.5
+	c8.2,0,12.9-5.8,13.5-13.5h6.2c-1.2,11.6-8.4,18.7-20.2,18.7c-14.5,0-21.6-10.7-21.6-24.3c0-13.5,7.7-24.6,22.1-24.6
+	c9.7,0,17.8,5.2,19.2,15.2C85.4,23.9,79.2,23.9,79.2,23.9z"></path>
+<path style="fill:#000;" d="M104.9,22.2c10.7,0,16.4,7.8,16.4,17.7c0,9.9-5.7,17.6-16.4,17.6s-16.4-7.8-16.4-17.6
+	C88.5,30,94.2,22.2,104.9,22.2 M104.9,52.7c5.8,0,10.5-4.6,10.5-12.7c0-8.2-4.7-12.8-10.5-12.8c-5.8,0-10.5,4.6-10.5,12.8
+	C94.4,48.1,99.1,52.7,104.9,52.7"></path>
+<path style="fill:#000;" d="M123.9,23.8h5.2v5.4h0.1c2.4-4.2,6.1-6.1,11-6.1c8.9,0,11.6,5.1,11.6,12.3v22.2h-5.6V34.7
+	c0-4.1-2.6-6.8-6.9-6.8c-6.7,0-10,4.5-10,10.6v19.1h-5.6C123.9,57.5,123.9,23.8,123.9,23.8z"></path>
+<path style="fill:#000;" d="M179.3,33.8c-0.8-4.2-3.8-6.7-8.4-6.7c-8,0-10.5,6.3-10.5,13.2c0,6.2,2.8,12.4,9.9,12.4
+	c5.4,0,8.6-3.1,9.3-8.2h5.7c-1.2,8.2-6.4,13.1-14.9,13.1c-10.3,0-15.8-7.2-15.8-17.2c0-10.1,5.2-18.1,15.9-18.1
+	c7.6,0,13.8,3.6,14.6,11.6L179.3,33.8L179.3,33.8z"></path>
+<path style="fill:#000;" d="M218.2,46.1c-1.5,7.4-6.9,11.5-14.4,11.5c-10.8,0-15.9-7.4-16.2-17.8c0-10.1,6.7-17.6,15.9-17.6
+	c12,0,15.6,11.2,15.3,19.3h-25.3c-0.2,5.9,3.1,11.1,10.5,11.1c4.6,0,7.8-2.2,8.8-6.6L218.2,46.1L218.2,46.1z M212.9,36.7
+	c-0.3-5.3-4.3-9.5-9.7-9.5c-5.8,0-9.3,4.4-9.7,9.5H212.9z"></path>
+<path style="fill:#000;" d="M221.3,23h5.6v4.6h0.1c1.8-3.7,6.1-5.4,10.8-5.4c10.4,0,15.6,8.2,15.6,17.8s-5.1,17.6-15.4,17.6
+	c-3.5,0-8.4-1.3-10.9-5.3h-0.1v17.4h-5.6V23z M237,27.1c-7.4,0-10.3,6.4-10.3,12.7c0,6.7,3,12.8,10.7,12.8c7.6,0,10.1-6.5,10.1-13.1
+	C247.4,33.3,244.1,27.1,237,27.1"></path>
+<path style="fill:#000;" d="M263.6,23.8h6.7v4.9h-6.7v21c0,2.6,0.7,3,4.2,3h2.5v4.9h-4.3c-5.7,0-8-1.2-8-7.4V28.7h-5.7v-4.9h5.7
+	V13.6h5.6L263.6,23.8L263.6,23.8z"></path>
+<path style="fill:#000;" d="M277.1,0c3.7,0,6.8,2.9,6.8,6.7c0,3.9-3.1,6.8-6.8,6.8c-3.7,0-6.8-2.9-6.8-6.8
+	C270.3,2.9,273.4,0,277.1,0 M277.1,12.5c3.1,0,5.5-2.5,5.5-5.8c0-3.2-2.4-5.7-5.5-5.7c-3.2,0-5.6,2.5-5.6,5.7
+	C271.6,10,274,12.5,277.1,12.5 M274.5,2.8h3c1.9,0,2.8,0.7,2.8,2.3c0,1.4-0.9,2-2.1,2.1l2.3,3.5h-1.3L277,7.3h-1.3v3.4h-1.2
+	L274.5,2.8L274.5,2.8z M275.7,6.3h1.3c1.1,0,2.1-0.1,2.1-1.3c0-1-0.9-1.2-1.7-1.2h-1.6L275.7,6.3L275.7,6.3z"></path>
+<path style="fill:#000;" d="M88.7,72.3H90v2.1h-1.3V72.3z M88.7,76.3H90v10.5h-1.3V76.3z"></path>
+<path style="fill:#000;" d="M92,76.3h1.3v1.8h0c0.5-1.3,1.9-2.1,3.4-2.1c3,0,3.9,1.6,3.9,4.1v6.8h-1.3v-6.6
+	c0-1.8-0.6-3.2-2.7-3.2c-2,0-3.3,1.6-3.3,3.6v6.2H92V76.3z"></path>
+<path style="fill:#000;" d="M108.9,79.4c-0.1-1.6-1.3-2.3-2.8-2.3c-1.1,0-2.5,0.4-2.5,1.8c0,1.1,1.3,1.6,2.2,1.8l1.7,0.4
+	c1.5,0.2,3,1.1,3,2.9c0,2.3-2.3,3.2-4.2,3.2c-2.5,0-4.1-1.1-4.3-3.7h1.3c0.1,1.7,1.4,2.6,3.1,2.6c1.2,0,2.9-0.5,2.9-2
+	c0-1.2-1.1-1.6-2.3-1.9l-1.7-0.4c-1.7-0.4-2.9-1-2.9-2.8c0-2.1,2.1-3,4-3c2.1,0,3.8,1.1,3.9,3.4H108.9z"></path>
+<path style="fill:#000;" d="M112,76.3h1.2v2h0c0.6-1.4,2.1-2.3,3.8-2.3c3.2,0,4.7,2.6,4.7,5.6c0,3-1.5,5.6-4.7,5.6
+	c-1.6,0-3.1-0.8-3.7-2.3h0v5.9H112V76.3z M117,77.1c-2.8,0-3.7,2.1-3.7,4.5c0,2.2,1,4.5,3.7,4.5c2.5,0,3.5-2.3,3.5-4.5
+	C120.5,79.4,119.5,77.1,117,77.1"></path>
+<path style="fill:#000;" d="M123.3,72.3h1.3v2.1h-1.3V72.3z M123.3,76.3h1.3v10.5h-1.3V76.3z"></path>
+<path style="fill:#000;" d="M126.7,76.3h1.2v2.5h0c0.7-1.7,2.1-2.7,4-2.6v1.3c-2.3-0.1-3.9,1.6-3.9,3.8v5.6h-1.3V76.3z"></path>
+<path style="fill:#000;" d="M133.1,81.9c0,1.9,1,4.1,3.5,4.1c1.9,0,2.9-1.1,3.3-2.7h1.3c-0.6,2.4-1.9,3.8-4.6,3.8
+	c-3.4,0-4.8-2.6-4.8-5.6c0-2.8,1.4-5.6,4.8-5.6c3.4,0,4.7,3,4.6,5.9L133.1,81.9L133.1,81.9z M139.9,80.8c-0.1-1.9-1.3-3.8-3.4-3.8
+	c-2.1,0-3.3,1.8-3.5,3.8C133.1,80.8,139.9,80.8,139.9,80.8z"></path>
+<path style="fill:#000;" d="M151.8,86.9h-1.2v-2h0c-0.5,1.4-2.2,2.3-3.8,2.3c-3.2,0-4.7-2.6-4.7-5.6c0-3,1.5-5.6,4.7-5.6
+	c1.6,0,3.1,0.8,3.7,2.3h0v-6h1.3L151.8,86.9L151.8,86.9z M146.8,86.1c2.7,0,3.7-2.3,3.7-4.5c0-2.2-1-4.5-3.7-4.5
+	c-2.5,0-3.5,2.3-3.5,4.5C143.4,83.8,144.4,86.1,146.8,86.1"></path>
+<path style="fill:#000;" d="M157,72.3h1.3v6h0c0.6-1.5,2.1-2.3,3.7-2.3c3.2,0,4.7,2.6,4.7,5.6c0,3-1.5,5.6-4.7,5.6
+	c-1.7,0-3.2-0.9-3.8-2.3h0v2H157L157,72.3L157,72.3z M162,77.1c-2.7,0-3.7,2.3-3.7,4.5s1,4.5,3.7,4.5c2.5,0,3.5-2.3,3.5-4.5
+	C165.5,79.4,164.5,77.1,162,77.1"></path>
+<path style="fill:#000;" d="M166.7,76.3h1.4l3.5,9l3.2-9h1.3l-4.6,12.2c-0.7,1.8-1.2,2.3-2.8,2.3c-0.5,0-0.8,0-1-0.1v-1.1
+	c0.3,0.1,0.6,0.1,0.9,0.1c1.1,0,1.4-0.7,1.8-1.7l0.4-1.2L166.7,76.3z"></path>
+<path style="fill:#000;" d="M180.9,81.9c0,1.9,1,4.1,3.5,4.1c1.9,0,2.9-1.1,3.3-2.7h1.3c-0.6,2.4-1.9,3.8-4.6,3.8
+	c-3.4,0-4.8-2.6-4.8-5.6c0-2.8,1.4-5.6,4.8-5.6c3.4,0,4.7,3,4.6,5.9L180.9,81.9L180.9,81.9z M187.7,80.8c-0.1-1.9-1.3-3.8-3.4-3.8
+	c-2.1,0-3.3,1.8-3.5,3.8C180.9,80.8,187.7,80.8,187.7,80.8z"></path>
+<path style="fill:#000;" d="M193.2,81.4 189.4,76.3 191,76.3 194,80.3 197,76.3 198.6,76.3 194.8,81.4 198.9,86.9 
+	197.3,86.9 194,82.4 190.7,86.9 189.1,86.9z "></path>
+<path style="fill:#000;" d="M199.7,76.3h1.2v2h0c0.6-1.4,2.1-2.3,3.8-2.3c3.2,0,4.7,2.6,4.7,5.6c0,3-1.5,5.6-4.7,5.6
+	c-1.6,0-3.1-0.8-3.7-2.3h0v5.9h-1.3L199.7,76.3L199.7,76.3z M204.7,77.1c-2.8,0-3.7,2.1-3.7,4.5c0,2.2,1,4.5,3.7,4.5
+	c2.5,0,3.5-2.3,3.5-4.5C208.2,79.4,207.2,77.1,204.7,77.1"></path>
+<path style="fill:#000;" d="M211.8,81.9c0,1.9,1,4.1,3.5,4.1c1.9,0,2.9-1.1,3.3-2.7h1.3c-0.6,2.4-1.9,3.8-4.6,3.8
+	c-3.4,0-4.8-2.6-4.8-5.6c0-2.8,1.4-5.6,4.8-5.6c3.4,0,4.7,3,4.6,5.9L211.8,81.9L211.8,81.9z M218.6,80.8c-0.1-1.9-1.3-3.8-3.4-3.8
+	c-2.1,0-3.3,1.8-3.5,3.8C211.8,80.8,218.6,80.8,218.6,80.8z"></path>
+<path style="fill:#000;" d="M221.2,76.3h1.2v2.5h0c0.7-1.7,2.1-2.7,4-2.6v1.3c-2.3-0.1-3.9,1.6-3.9,3.8v5.6h-1.3V76.3z"></path>
+<path style="fill:#000;" d="M227.3,72.3h1.3v2.1h-1.3V72.3z M227.3,76.3h1.3v10.5h-1.3V76.3z"></path>
+<path style="fill:#000;" d="M231.4,81.9c0,1.9,1,4.1,3.5,4.1c1.9,0,2.9-1.1,3.3-2.7h1.3c-0.6,2.4-1.9,3.8-4.6,3.8
+	c-3.4,0-4.8-2.6-4.8-5.6c0-2.8,1.4-5.6,4.8-5.6c3.4,0,4.7,3,4.6,5.9L231.4,81.9L231.4,81.9z M238.2,80.8c-0.1-1.9-1.3-3.8-3.4-3.8
+	c-2.1,0-3.3,1.8-3.5,3.8C231.4,80.8,238.2,80.8,238.2,80.8z"></path>
+<path style="fill:#000;" d="M240.8,76.3h1.3v1.8h0c0.5-1.3,1.9-2.1,3.4-2.1c3,0,3.9,1.6,3.9,4.1v6.8h-1.3v-6.6
+	c0-1.8-0.6-3.2-2.7-3.2c-2,0-3.3,1.6-3.3,3.6v6.2h-1.3V76.3z"></path>
+<path style="fill:#000;" d="M258.8,79.6c-0.4-1.6-1.3-2.5-3-2.5c-2.5,0-3.7,2.2-3.7,4.5c0,2.2,1.2,4.5,3.7,4.5
+	c1.6,0,2.9-1.2,3.1-3h1.3c-0.3,2.5-2,4.1-4.4,4.1c-3.2,0-5-2.6-5-5.6c0-3,1.8-5.6,5-5.6c2.2,0,4,1.2,4.3,3.6H258.8z"></path>
+<path style="fill:#000;" d="M262.3,81.9c0,1.9,1,4.1,3.5,4.1c1.9,0,2.9-1.1,3.3-2.7h1.3c-0.6,2.4-1.9,3.8-4.6,3.8
+	c-3.4,0-4.8-2.6-4.8-5.6c0-2.8,1.4-5.6,4.8-5.6c3.4,0,4.7,3,4.6,5.9L262.3,81.9L262.3,81.9z M269.1,80.8c-0.1-1.9-1.3-3.8-3.4-3.8
+	c-2.1,0-3.3,1.8-3.5,3.8C262.3,80.8,269.1,80.8,269.1,80.8z"></path>
+</svg>
 
-<div class="user">
-<ul>
-<li class="account-name">
-<span class="login-show">Nguyễn Ngọc Minh</span>
-<span class="login-hide">user name</span>
-</li>
-<li>
-<a class="login-show" id="logout_but" href="javascript:void(0)">Đăng Xuất</a>
-<a class="login-hide" href="index.html">Đăng Nhập</a>
-</li>
-</ul>
 </div>
-
+</div>
+<!--logo-->
+    
+<!--menu-->
+<div class="navigation">
 <div class="nav">
 <ul>
-<li data-active="cart-page"><a class="direct-link" href="cart.html">Giỏ hàng</a></li>
-<li data-active="condition-page"><a class="direct-link" href="condition.html">T&amp;C</a></li>
-<li class="hotline"><a href="tel:19202932"><span>Hotline</span> 1920 2932</a></li>
+<li data-page="home-page"><a href="home.html">Trang chủ</a></li>
+<li data-page="about-page"><a href="about.html">About us</a></li>
+
+<li data-page="furniture-page"><a href="furniture.html">Furniture</a>
+<div class="sub-menu">
+<div class="outer-menu">
+<div class="all-sub">
+
+<div class="item-sub">
+<ul>
+<li><h2>NEW COLLECTION</h2></li>
+<li><a href="new-collection.html#coming-soon" data-name="coming-soon">COMING SOON</a></li>
+<li><a href="new-collection.html#new-arrival" data-name="new-arrival">NEW ARRIVAL</a></li>
+</ul>
+</div>
+
+<div class="item-sub">
+<ul>
+<li><h2>DINING ROOM</h2></li>
+<li><a href="dining-room.html#dining-tables" data-name="dining-tables">DINING TABLES</a></li>
+<li><a href="dining-room.html#dining-chairs" data-name="dining-chairs">DINING CHAIRS</a></li>
+<li><a href="dining-room.html#barstools" data-name="barstools">BARSTOOLS</a></li>
+<li><a href="dining-room.html#sideboards" data-name="sideboards">SIDEBOARDS</a></li>
+</ul>
+</div>
+
+<div class="item-sub">
+<ul>
+<li><h2>LIVING ROOM</h2></li>
+<li><a href="living-room.html#sofa" data-name="sofa">SOFA</a></li>
+<li><a href="living-room.html#sofa-beds" data-name="sofa-beds">SOFA BEDS</a></li>
+<li><a href="living-room.html#armchairs" data-name="armchairs">ARMCHAIRS</a></li>
+<li><a href="living-room.html#coffee-side-tables" data-name="coffee-side-tables">COFFEE SIDE TABLES</a></li>
+</ul>
+</div>
+
+<div class="item-sub">
+<ul>
+<li><h2>BEDROOM</h2></li>
+<li><a href="bedroom.html#beds" data-name="beds">BEDS</a></li>
+<li><a href="bedroom.html#night-stands" data-name="night-stands">NIGHT STANDS</a></li>
+<li><a href="bedroom.html#storing-working" data-name="storing-working">STORING WORKING</a></li>
 </ul>
 </div>
 
 </div>
 </div>
-<!--nav-->
+</div>
+</li>
 
-<!--cart-->
+<li data-page="accessories-page"><a href="accessories.html">Accessories</a>
+
+<div class="sub-menu">
+<div class="outer-menu">
+<div class="all-sub">
+
+<div class="item-sub">
+<ul>
+<li><h2>Lamps & Pendants</h2></li>
+<li><a href="lamps-pendants.html#floor-lamps" data-name="floor-lamps">Floor lamps</a></li>
+<li><a href="lamps-pendants.html#table-lamps" data-name="table-lamps">Table lamps</a></li>
+<li><a href="lamps-pendants.html#pendant" data-name="pendant">Pendant</a></li>
+</ul>
+</div>
+
+<div class="item-sub">
+<ul>
+<li><h2>GALLERY</h2></li>
+<li><a href="gallery.html#glass-art" data-name="glass-art">Glass Art</a></li>
+<li><a href="gallery.html#painting" data-name="painting">Painting</a></li>
+<li><a href="gallery.html#canvas-print" data-name="canvas-print">Canvas Print</a></li>
+</ul>
+</div>
+
+<div class="item-sub">
+<ul>
+<li><a href="cushions-throw.html#cushions-throw" data-name="cushions-throw">Cushions & Throw</a></li>
+<li><a href="rugs.html#rugs" data-name="rugs">Rugs</a></li>
+<li><a href="tealight-holder.html#tealight-holder" data-name="tealight-holder">Tealight Holder</a></li>
+<li><a href="others.html#others" data-name="others">Others</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+
+</li>
+
+<li data-page="our-stores-page"><a href="our-stores.html">OUR Stores</a></li>
+<li data-page="services-page"><a href="services.html">Services</a></li>
+<li data-page="inspiration-page"><a href="inspiration.html">Inspiration</a></li>
+<li data-page="news-page"><a href="news.html">News</a></li>
+</ul>
+</div>
+</div>
+<!--menu-->
+
+</div>
+<!--TOP-->
+
+<!--RIGHT-->
+<div class="right">
+
+<ul>
+<li><a class="search-but" href="javascript:void(0);"></a></li>
+<li>
 <a class="cart-shopping" href="cart.html">
-<span class="cart-icon">Giỏ hàng</span>
+<span class="cart-icon"></span>
 <span class="cart-text">0</span>
 </a>
-<!--cart-->
-
-<div class="nav-but"><span></span><span></span><span></span></div>
-
-</header>
-<!--HEADER-->
-
-<!--CONTENT-->
-<div class="banner-content">
-<div class="banner-bg spBg lazy" data-img-src="./images/banner-bg.jpg"></div>
-<div class="banner-bg pcBg lazy" data-img-src="./images/banner-bg-pc.jpg"></div>
-<div class="banner-shadow hide-pc"></div>
-<div class="banner-details">
-
-<div class="banner-box">
-<div class="banner-title">
-<h2><img src="./images/slogan.png" alt="Ưu Đãi Đặc Quyền" /></h2>
-<h3><span class="shap shap-01"></span>CHO CHỦ THẺ<span class="vin-logo"><img src="./images/logo-large.png" alt="VinID" /></span><span class="shap hide-pc shap-02"></span></h3>
+</li>
+<li><a class="login-but" href="javascript:void(0);"></a></li>
+<li><a class="language-but vi" href="javascript:void(0);">VI</a></li>
+</ul>
+    
 </div>
-<div class="banner-txt">
-<p>Đăng nhập bằng thẻ VinID để nhận hoàn tiền 10% <br>khi mua các sản phẩm<span class="samsung-logo"><img src="./images/logo-samsung.png" alt="samsung" /></span></p>
-<p>1/10/2018 – 31/12/2018</p>
-<a class="btn go-focus-box" href="javascript:void(0);"><span>Mua Sắm Ngay</span></a>
-</div>
-<div class="banner-pic"><img class="cmPic lazy" src="/" data-img-src="./images/banner-pic.png" alt="banner" /></div>
-<div class="shap-more">
-<span class="more-01"></span>
-<span class="more-02"></span>
-<span class="more-03"></span>
-<span class="more-04"></span>
-<span class="more-05"></span>
-<span class="more-06"></span>
-</div>
-</div>
+<!--RIGHT-->
 
-</div>
-</div>
-
-<div class="middle-content focus-box">
-<div class="middle-details">
-
-<div class="login-box">
-
-<div class="login-pic"><img class="cmPic lazy" src="/" data-img-src="./images/card.png" alt="pic"></div>
-
-<div class="login-txt">
-<h2>Đăng Nhập VinID</h2>
-<p>Ưu đãi hoàn tiền đến 10% cho chủ thẻ VinID khi mua các sản phẩm Samsung. Đăng nhập ngay! </p>
-</div>
-
-<div class="login-form">
-<form action="#" id="login_form">
-
-<div class="field-box">
-
-<div class="field">
-<span class="mask-input">Họ và tên</span>
-<input id="user_name" name="user_name" type="text" value="">
-</div>
-
-<div class="field">
-<span class="mask-input">Số điện thoại</span>
-<input id="user_phone" name="user_phone" type="tel" value="">
-</div>
-
-<div class="field">
-<span class="mask-input">Số thẻ VinID</span>
-<input id="user_vinid" name="user_vinid" type="text" value="">
-</div>
-
-<div class="field">
-<span class="mask-input">Email</span>
-<input id="user_email" name="user_email" type="text" value="">
-</div>
-
-</div>
-
-<div class="box-btn">
-<button type="button" class="login-but" id="login_but">Đăng Nhập</button>
-</div>
+<!--search-->    
+<div class="search-form">
+<div class="form-row-search">
+<form action="#" id="search">
+<input  id="qsearch" type="text" data-holder="Search..."  value="Search...">
 
 </form>
 </div>
+</div>
+<!--search-->
+
+<div class="nav-overlay"></div>
+<div class="nav-but"></div>
+
+</header>
+<!--HEADER-->
+    
+<!--CONTAINER-->
+<div class="container">
+
+<!--SLIDER-->
+<section class="slider-home" data-time="8000">
+<div class="slide-bg">
+<div class="pagination"></div>
+<div class="bg-nav">
+<div class="button-next"></div>
+<div class="button-prev"></div>
+</div>
+<div class="item-wrapper">
+
+<div class="item-container">
+<div class="bg-home" style="background-image:url(images/banner-bg.jpg)"></div>
+</div>
+
+<div class="item-container">
+<div class="bg-home" style="background-image:url(images/banner-bg.jpg)"></div>
+</div>
 
 </div>
+</div>
+</section>
+<!--SLIDER--> 
 
-</div>
-</div>
 <!--CONTENT-->
 
-<!--POPUP-->
-<div class="popup-content">
-<div class="popup-wrap">
-<div class="popup-box">
-<div class="close-pop in-box"></div>
+<!--welcome-->
+<section class="welcome-content">
+<div class="title"><h2>welcome to</h2><div class="title-logo"><img src="images/logo.png" alt="aconcept"></div></div>
+<div class="welcome-box">
 
-<div class="success-login">
-<div class="success-login-pic">
-<img src="./images/card.png" alt="pic">
-</div>
-<div class="success-login-txt">
-<h2>Đăng Nhập <br>Thành Công</h2>
-<p>Rinh thả ga các sản phẩm Samsung về nhà với đặc quyền ưu đãi VinID. Bắt đầu mua sắm ngay!</p>
-
-</div>
-<span class="circle-icon"></span>
+<div class="welcome-item ani-item">
+<a class="welcom-go" href="living-room.html">
+<div class="welcome-pic"><div class="cover-pic" style="background-image:url(images/1.jpg)"></div></div>
+<div class="welcome-txt"><h3>LIVING ROOM</h3></div>
+</a>
 </div>
 
-<div class="message-box hide">
-<div class="message-txt">
-<h2>Đăng Nhập <br>Thất Bại</h2>
-<p>﻿﻿Chúng tôi vô cùng xin lỗi về vấn đề này!</p>
+<div class="welcome-item ani-item">
+<a class="welcom-go" href="dining-room.html">
+<div class="welcome-pic"><div class="cover-pic" style="background-image:url(images/1.jpg)"></div></div>
+<div class="welcome-txt"><h3>DINING ROOM</h3></div>
+</a>
 </div>
+
+<div class="welcome-item ani-item">
+<a class="welcom-go" href="bedroom.html">
+<div class="welcome-pic"><div class="cover-pic" style="background-image:url(images/1.jpg)"></div></div>
+<div class="welcome-txt"><h3>BEDROOM</h3></div>
+</a>
+</div>
+
+<div class="welcome-item ani-item">
+<a class="welcom-go" href="accessories.html">
+<div class="welcome-pic"><div class="cover-pic" style="background-image:url(images/1.jpg)"></div></div>
+<div class="welcome-txt"><h3>ACCESSORIES</h3></div>
+</a>
 </div>
 
 </div>
-</div>
-</div>
-<!--POPUP-->
+<div class="flow-line ani-item"></div>
+</section>
+<!--welcome-->
 
-<!--FACILITIES-->
-<div class="to-top"></div>
-<!--FACILITIES-->
+<!--inspiration-->
+<section class="inspi-content">
+
+<div class="title"><h2>inspiration</h2></div>
+    
+<div class="inspi-txt ani-item">
+<p>Followed by our leading quote "Inspired by experience", AConcept offers unique products that deliver optimal performance with flexible adjustment as well as a sense of urban lifestyle. The mixtures of different materials and designs give customers more options in choosing their furnitures.</p>
+</div>
+
+<div class="inspi-box center-no-paging ani-item">
+<div class="inspi-slider">
+<div class="inspi-item">
+<a class="zoom-album" href="album.html" data-go="0">
+<div class="cover-pic" style="background-image:url(images/1.jpg)"></div>
+<span class="zoom-mask"></span>
+</a>
+</div>
+<div class="inspi-item">
+<a class="zoom-album" href="album.html" data-go="1">
+<div class="cover-pic" style="background-image:url(images/1.jpg)"></div>
+<span class="zoom-mask"></span>
+</a>
+</div>
+<div class="inspi-item">
+<a class="zoom-album" href="album.html" data-go="2">
+<div class="cover-pic" style="background-image:url(images/1.jpg)"></div>
+<span class="zoom-mask"></span>
+</a>
+</div>
+<div class="inspi-item">
+<a class="zoom-album" href="album.html" data-go="3">
+<div class="cover-pic" style="background-image:url(images/1.jpg)"></div>
+<span class="zoom-mask"></span>
+</a>
+</div>
+</div>
+</div>
+    
+</section>
+<!--inspiration-->
+
+<!--designers-->
+<section class="designers-content">
+
+<div class="title"><h2>MEET OUR <strong>DESIGNERS</strong></h2></div>
+<div class="designers-bg ani-item" style="background-image:url(images/banner-bg-pc.jpg)"></div>
+<div class="designers-txt ani-item">
+<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
+<p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+<a href="our-designer.html" class="designers-go">go</a>
+</div>
+    
+</section>
+<!--designers-->
+
+<!--general-->
+<section class="general-content">
+
+<div class="flow-line ani-item"></div>
+
+<div class="general-box">
+
+<div class="general-item ani-item">
+<a class="direct-link" href="about.html">
+<div class="general-pic"><div class="cover-pic" style="background-image:url(images/1.jpg)"></div></div>
+<div class="general-txt">
+<div class="general-outer">
+<div class="general-inr">
+<h3>Come visit us</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+</div>
+</div>
+</div>
+<span class="visit-mask"></span>
+</a>
+</div>
+
+<div class="general-item ani-item">
+<a class="direct-link" href="dining-tables-brick-details.html">
+<div class="general-pic"><div class="cover-pic" style="background-image:url(images/1.jpg)"></div></div>
+<div class="general-txt">
+<div class="general-outer">
+<div class="general-inr">
+<h3>New Product</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+</div>
+</div>
+</div>
+</a>
+</div>
+
+<div class="general-item ani-item">
+<a href="../document/aconcept.pdf" target="_blank">
+<div class="general-pic"><div class="cover-pic" style="background-image:url(images/1.jpg)"></div></div>
+<div class="general-txt">
+<div class="general-outer">
+<div class="general-inr">
+<h3>catalogue</h3>
+<span class="cata-year">2018</span>
+<span class="cata-cap">download here</span>
+</div>
+</div>
+<span class="cata-mask"></span>
+</div>
+</a>
+</div>
 
 </div>
-<!--WRAP-->
+
+<div class="flow-line ani-item"></div>
+
+</section>
+<!--general-->
+
+<!--CONTENT-->
+
+<!--BOTTOM-->
+<section class="bottom">
+
+<div class="bottom-box">
+
+<div class="store-box">
+
+<h3>Ho Chi Minh Office & Store</h3>
+<ul>
+<li class="location"><p>206 Nam Ky Khoi Nghia street, Ward 06, District 3, HCMC, Vietnam</p></li>
+<li class="location"><p>279 Nguyen Van Troi street, Ward 10, Phu Nhuan District, HCMC, Vietnam</p></li>
+</ul>
+
+<h3>HA NOI Store</h3>
+<ul>
+<li class="location"><p>10 Chuong Duong Do street, Hoan Kiem District, Ha Noi, Vietnam </p></li>
+</ul>
+
+<h3>DA NANG Store</h3>
+<ul>
+<li class="location"><p>75 Hoang Dieu street, Hai Chau District, Da Nang, Vietnam </p></li>
+</ul>
+
+</div>
+
+<div class="support-box">
+<div class="subscrible">
+<h3>Get access to special offers, events and much more</h3>
+<p>Please leave your email address here</p>
+<div class="input-text">
+<input type="text" data-holder="Email" value="Email"/>
+<div class="outer-but"><button type="button">Subscribe</button></div>
+</div>
+</div>
+<div class="hotline"><a href="tel:+84 28 39303312">+84 28 39303312</a></div>
+</div>
+
+<!--COMPANY-->
+</div>
+
+</section>
+<!--/BOTTOM-->
+
+</div>
+<!--CONTAINER-->
 
 <!--FOOTER-->
 <footer class="footer">
@@ -255,21 +555,71 @@ else window.addEventListener('load', loadDeferredStyles);
 </div>
 
 <div class="copyright">
-<p>2018 © <strong>AConcept Vietnam</strong>. All rights reserved. <a href="http://www.btq.vn" target="_blank">Developed by 3graphic</a></p>
+<p>2018 © <strong>VinID</strong>. All rights reserved. <a href="http://www.btq.vn" target="_blank">Developed by 3graphic</a></p>
 </div>
 
 </section>
 </footer>
 <!--FOOTER-->
 
+<!--LOAD-->
+<div class="loadicon">
+
+<svg class="load-present" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"width="180px" height="100px" viewBox="0 0 180 100" >
+<path class="stroke-line" d="M17.8,41.4h0.1l4,11.6h-8.2L17.8,41.4z M14.4,33.6l-12,31.6h7.1l2.5-7.1h11.8l2.4,7.1h7.2L21.5,33.6H14.4z"></path>
+<path class="stroke-line" d="M53.8,43.5c-0.8-4.3-4.3-6.4-8.5-6.4C38.1,37,35,42.9,35,49.3C35,56.2,38.1,62,45.3,62c5.3,0,8.4-3.8,8.8-8.8h4
+	c-0.8,7.5-5.5,12.1-13.1,12.1c-9.4,0-14-7-14-15.8c0-8.8,5-16,14.4-16c6.3,0,11.6,3.4,12.5,9.9C57.8,43.5,53.8,43.5,53.8,43.5z"></path>
+<path class="stroke-line" d="M70.5,42.4c7,0,10.7,5.1,10.7,11.5s-3.7,11.4-10.7,11.4s-10.7-5.1-10.7-11.4C59.8,47.4,63.5,42.4,70.5,42.4
+	 M70.5,62.2c3.8,0,6.8-3,6.8-8.3c0-5.3-3.1-8.3-6.8-8.3s-6.8,3-6.8,8.3C63.7,59.2,66.7,62.2,70.5,62.2"></path>
+<path class="stroke-line" d="M82.8,43.4h3.4v3.5h0.1c1.6-2.7,4-4,7.1-4c5.8,0,7.5,3.3,7.5,8v14.4h-3.6V50.5c0-2.7-1.7-4.4-4.5-4.4
+	c-4.4,0-6.5,2.9-6.5,6.9v12.4h-3.6C82.8,65.3,82.8,43.4,82.8,43.4z"></path>
+<path class="stroke-line" d="M118.8,49.9c-0.5-2.7-2.5-4.4-5.5-4.4c-5.2,0-6.8,4.1-6.8,8.6c0,4,1.8,8.1,6.4,8.1c3.5,0,5.6-2,6-5.3h3.7
+	c-0.8,5.3-4.2,8.5-9.7,8.5c-6.7,0-10.3-4.7-10.3-11.2c0-6.6,3.4-11.8,10.3-11.8c4.9,0,9,2.3,9.5,7.5L118.8,49.9L118.8,49.9z"></path>
+<path class="stroke-line" d="M144.1,57.9c-1,4.8-4.5,7.5-9.4,7.5c-7,0-10.3-4.8-10.5-11.6c0-6.6,4.4-11.4,10.3-11.4c7.8,0,10.1,7.3,9.9,12.5
+	h-16.4c-0.1,3.8,2,7.2,6.8,7.2c3,0,5.1-1.4,5.7-4.3L144.1,57.9L144.1,57.9z M140.7,51.8c-0.2-3.4-2.8-6.2-6.3-6.2
+	c-3.8,0-6,2.9-6.3,6.2H140.7z"></path>
+<path class="stroke-line" d="M146.1,42.9h3.6v3h0.1c1.2-2.4,4-3.5,7-3.5c6.8,0,10.1,5.3,10.1,11.6s-3.3,11.4-10,11.4c-2.3,0-5.5-0.8-7.1-3.4
+	h-0.1v11.3h-3.6L146.1,42.9L146.1,42.9z M156.3,45.5c-4.8,0-6.7,4.2-6.7,8.3c0,4.4,1.9,8.3,7,8.3c4.9,0,6.6-4.2,6.6-8.5
+	C163.1,49.6,160.9,45.5,156.3,45.5"></path>
+<path class="stroke-line" d="M173.6,43.4h4.4v3.2h-4.4v13.6c0,1.7,0.5,1.9,2.7,1.9h1.6v3.2h-2.8c-3.7,0-5.2-0.8-5.2-4.8v-14h-3.7v-3.2h3.7
+	v-6.6h3.6L173.6,43.4L173.6,43.4z"></path>
+</svg>
+
+</div>     
+<!--LOAD-->
+    
+<!--LOGIN-->
+<div class="login-overlay"></div>
+<div class="login-box">
+<div class="login-block">
+<form id="login_form" action="#">
+
+<div class="input-text">
+<div class="col size_6"><input type="text" data-holder="Email" value="Email"></div>
+<div class="col size_6">
+<span class="pass-mask">Password</span>
+<input type="password" data-holder="Password" value="Password">
+</div>
+</div>
+
+<div class="input-but">
+<div class="btnLogin"><button type="submit" id="login_but">Sign in</button></div>
+</div>
+    
+</form>
+</div>
+</div>
+<!--LOGIN-->
+
 <div class="scroll-down"><span>scroll down</span></div>
 <div class="go-top"></div>
 
 <!--SCRIPT-->
-<script type="text/javascript"  src="js/jquery.js"></script>
-<script type="text/javascript"  src="js/base.js"></script>
-<script type="text/javascript"  src="js/detect.js"></script>
-<script type="text/javascript"  src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/detect.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
 <!--SCRIPT-->
 
 </body>
