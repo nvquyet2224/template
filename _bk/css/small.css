@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+
+body{width:100%;left:0;top:0;bottom:0;right:0;background-color:#fff;-webkit-animation:Start .7s steps(1, end) 0s 1 normal both;animation:Start .7s steps(1, end) 0s 1 normal both}
+
+.header, .footer, .popup-content, .full-album, .go-down, .to-top, .loadicon{display:none}
+
+.useFull{position:fixed;overflow:hidden;}
+.content{position:relative;display:block;width:100%;height:auto;opacity:0}
+.useFull .content{height:100%;overflow:hidden}
+
+/*Ie 10/11
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	html{overflow:hidden;height:100%}
+	body{height:100%;overflow:hidden;overflow-y:auto}
+}
+*/
+
+@-webkit-keyframes Start{
+	from{visibility:hidden}
+	to{visibility:visible}
+}
+
+@keyframes Start{
+	from{visibility:hidden}
+	to{visibility:visible}
+}
+

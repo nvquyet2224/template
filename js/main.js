@@ -1,10 +1,3 @@
-
-var timex,
-	video = false,
-	doWheel = true,
-	doTouch = true;
-	
-
 //Layout variables
 var doCument = $('html, body'),
 	header = $('.header'),
@@ -12,93 +5,35 @@ var doCument = $('html, body'),
 	navigation = document.querySelector('.navigation'),
 	navCnt = document.querySelector('.nav'),
 	navBox = document.querySelector('.nav ul'),
+	accountBut = $('.account-but'),
 	toTop = $('.to-top'),
 	popCnt = document.querySelector('.popup-content'),
 	popWrp = document.querySelector('.popup-wrap'),
 	popBox = document.querySelector('.popup-box'),
 	openPop = $('.show-pop'),
-	closePop = $('.close-pop');
-
-
+	closePop = $('.close-pop'),
+	cart = document.querySelector('.cart-shopping'),
+	cartNum = document.querySelector('.cart-text'),
+	cartJSON = [];
+		
 //Lazy variables
 var imgClass,
 	lazyImages,
 	bgClass,
 	lazyBgs;
-
+	var first = true;
+	var isClick = false;
 
 //Overflow variables	
 var ctnWrap,
 	ctnBox,
 	ctnItem;
 	
-	
-var myDocument;	
-
-
-//Func Check facebook app
-var isFacebookApp = function() {
-	var ua = navigator.userAgent || navigator.vendor || window.opera;
-	return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-}
-
-
-function scrollDelay(){
-	doWheel = true;
-}  
-
-function clearAllTimeOut(){
-	var highestTimeoutId = setTimeout(";");
-	for (var i = 0 ; i < highestTimeoutId ; i++) {
-		clearTimeout(i); 
-	}	
-}
-
-
-
-function SlidesShow() {
-	
-	//Banner
-	if($('.banner').length){
-		
-		var duration =  $('.banner-slider').attr('data-duration');
-		
-		var repeat = true;
-		if($('.banner-item').length <= 1) {
-			 $('.pagination, .bg-nav').css({'display': 'none'});
-			 duration = false;
-			 repeat = false;
-		}
-		
-		var banner = new Swiper('.banner-slider', {
-			autoplay: duration,
-			speed: 800,
-			loop:repeat,
-			slidesPerView: 1,
-			pagination: '.pagination',
-			nextButton: '.button-next',
-			prevButton: '.button-prev',
-			paginationClickable: true,
-			autoplayDisableOnInteraction: false,
-			effect: "fade",
-			onInit: function (swiper) {
-				$('.item-container').removeClass('move');
-				$('.item-container').eq(swiper.activeIndex).addClass('move');								
-			},
-			onTransitionStart: function (swiper) {
-			},
-			onTransitionEnd: function (swiper) {
-				$('.item-container').removeClass('move');
-				$('.item-container').eq(swiper.activeIndex).addClass('move');
-			}
-		});
-	}
-	
-}
+var loading = true;	
 
 function DirectLink(){
 	
-    $(document).on('click', '.nav li a', function(e) {
+    $(document).on('click', '.direct-link', function(e) {
         e.preventDefault();
 		var url =  $(this).attr("href");
        	$('body').stop().animate({'opacity':0},100,'linear',function(){ window.location = url; });
@@ -108,132 +43,28 @@ function DirectLink(){
 	
 }
 
-//Load popup
-function popLoad(url) {
-    $.ajax({url: url, cache: false, success: function(data) {
-        $('.popup-content').html(data);
-        $('.popup-content').stop().animate({'opacity': 1}, 500, 'linear', function() {});
-    }});
-
-}
 
 function inputHolder(){
     
-    //date-mask
-    $('.date-mask').on('click', function(){
-        $(this).addClass('hide');
-        $('.ui-datepicker-trigger').trigger('click');
+	 //mask input
+    $('.mask-input').on('click', function(){
+        $(this).parent().addClass('hide');
+        $(this).next().focus();
     });
-    
+
     $('input, textarea').focus(function (e) {
-        if($(this).attr('data-holder') == $(this).val()) {
+       $(this).parent().find('.nameformError').remove();
+	   $(this).parent().addClass('hide').removeClass('show-error');
+	   if($(this).attr('data-holder') == $(this).val()) {
             $(this).val("");
-        }
+       }
     }).focusout(function (e) {
         if ($(this).val() == "") {
-            $(this).prev().removeClass('hide');
+			$(this).parent().removeClass('hide');
             $(this).val($(this).attr('data-holder'));
         }
     });
 				
-}
-
-
-
-//CALENDAR: xét calendar box
-function DatePicker() {
-    
-    var InputDate = $('#picker01');
-    $(InputDate).each(function(index, element) {
-
-        var customize = $(element).attr('data-customize') || false;
-
-        $(element).datepicker({showOn:"both", dateFormat: 'dd/mm/yy', changeMonth: customize, changeYear: customize,buttonImageOnly: true,buttonText: "Select date", showButtonPanel: true,
-        beforeShow: function(Open){
-        setTimeout(function() {   
-        if ($(window).width() <= 1100) {
-            $('.overlay-calendar').addClass('show');
-        }
-        $('.ui-datepicker-close').on('click',function() { 
-            $('.overlay-calendar').removeClass('show'); 
-        });
-
-        }, 50);
-        }
-        }).datepicker("setDate", new Date(), $.datepicker.regional[ "vi" ]);
-
-    });
-    
-   		
-}
-
-function textMove(){
-    
-}
-
-
-//VALIDATION FUNC
-function hideerror(){
-	$(".formError").remove();
-}
-function hidemsg(){
-    $(".contact-success").remove();
-    $(".register-success").remove();
-}
-
-
-function ShowFull(url,num) {
-     $.ajax({url: url, cache: false, success: function(data) {
-				
-        $('.full-album').html(data);
-
-        var slideAlbum = new Swiper('.full-box', {
-                lazyLoading: true,
-                watchSlidesVisibility: true,
-                preloadImages: false,
-                slidesPerView: 1,
-                speed: 600,
-                grabCursor: true,
-                nextButton: '.full-next',
-                prevButton: '.full-prev',
-                spaceBetween: 0,
-                centeredSlides: true, 
-                keyboardControl: true,
-                mousewheelControl: true,
-                onInit: function (swiper) {
-                swiper.slideTo(num, 0, true);
-                  
-                },	
-                onTransitionStart: function (swiper) {
-
-                },
-                onTransitionEnd: function (swiper) {
-                    
-                }, 
-
-        });
-
-        $('.full-load').animate({'opacity':1}, 100, 'linear', function() {
-            
-            if ($('.full-pic').length > 1) {
-                $('.full-nav').css({'display': 'block'});
-            }
-
-        });
-
-        $('.full-close').on("click" ,function() {
-            
-            $('.full-album').fadeOut(500, 'linear', function() {
-                $('.full-load').remove();
-            });
-            
-            $('html, body').removeClass('no-scroll');
-
-            return false;
-
-        });
-
-   }});
 }
 
 //DONT REMOVE
@@ -245,24 +76,29 @@ function CommonEvent(){
 		if(navBut.hasClass('active')){
 			navBut.removeClass('active');
 			doCument.removeClass('no-scroll');
-			
 			navigation.classList.remove('active');
 			navigation.style.height = "0px";
 			
 		}else{
 			navBut.addClass('active');
 			doCument.addClass('no-scroll');
-			
 			navigation.classList.add('active');
 			navigation.style.height = window.innerHeight + "px";
 		}
 		
 	});
 	
+    //GOTOP EVENT
+	toTop.on("click", function(event) {
+		doCument.animate({ scrollTop: 0 }, 400);
+	});
+
 	
    //NAV TOUCH EVENTS
 	navigation.addEventListener("touchmove", function(event) {
-		event.preventDefault();
+		if($(window).height() > 500) {
+			event.preventDefault();
+		}
 	});
 
 	navCnt.addEventListener("touchmove", function(event) {
@@ -274,31 +110,27 @@ function CommonEvent(){
 	});
 	
 	
-    //GOTOP EVENT
-	toTop.on("click", function(event) {
-		doCument.animate({ scrollTop: 0 }, 400);
-	});
-    
-	
-	
 	//POPUP TOUCH EVENTS
-	popCnt.addEventListener("touchmove", function(event) {
-		event.preventDefault();
-	});
-	
-	popWrp.addEventListener("touchmove", function(event) {
-		
-		if(popBox.clientHeight > popWrp.clientHeight){
-			event.stopPropagation();	
-		}
-		
-	});
-	
-	
+	if(popCnt) {
+        popCnt.addEventListener("touchmove", function(event) {
+			if($(window).height() > 500) {
+				event.preventDefault();	
+			}
+            
+        });
+
+        popWrp.addEventListener("touchmove", function(event) {
+
+            if(popBox.clientHeight > popWrp.clientHeight){
+                event.stopPropagation();
+            }
+
+        });
+	}
+
 	//POPUP CLICK EVENTS
 	openPop.on("click", function(event) {
 		doCument.addClass('no-scroll');
-		
 		popCnt.style.height = window.innerHeight + "px";
 		//Show scroll after finished animation
 		setTimeout(function(){ popCnt.classList.add('active'); },310);
@@ -310,137 +142,724 @@ function CommonEvent(){
 		popCnt.style.height = "0px";
 		
 	});
-		
-		
-		
-		
-    //Album full
-    $('.full-album').on('wheel', function(event){ 
-        return false;
-    });
-    
-	//Example click
-    $('.show-full').on("click", function(e){
+	$(document).on('click', '.success-order .more', function(){
+		doCument.removeClass('no-scroll');
+		popCnt.classList.remove('active');
+		popCnt.style.height = "0px";
+	});
+    //Focus text
+    inputHolder();
 
-        e.preventDefault();
-
-        var url = $(this).attr('href');
-
-        var index = $(this).attr('data-full') || -1;
-
-        $('html, body').addClass('no-scroll');
-        
-        $('.full-album').fadeIn(700, 'linear', function() {
-            ShowFull(url,index);
-        });
-
-        return false;
-
-    });
-    
+    //Select event
+    selectEvent();
 	
+
 }
 
-function FullPage(){
-	
-	$('html,body').addClass('useFull');
+function change_alias(alias) {
+	var str = alias;
+	str = str.toLowerCase();
+	str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
+	str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
+	str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
+	str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
+	str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
+	str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
+	str = str.replace(/đ/g,"d");
+	str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+	str = str.replace(/ + /g," ");
+	str = str.trim();
+	return str;
+}
 
-    $('#fullpage').fullpage({
-        lockAnchors: false,
-        slidesNavigation: true,
-        scrollingSpeed:800,
-        autoScrolling:true,
-		responsiveHoz:true,
-        scrollBar: false,
-        fitToSection: true,
-        onLeave: function(index, nextIndex, direction){
-            
-			//Clock touch
-			if($('.navigation.active').length || ($(window).width() > $(window).height() && $(window).width() <= 1100) ){
-                return false;
-            }
-            
-			//Open something
-			$('.to-top').removeClass('show');
+function getDistrict(cityId, disBox){
+	 
+	 //Sort district follow city
+	 
+	 //example url
+	 var url = '';
+	 if(cityId == 1) {
+		 url = 'hcm.html';
+	 }else if(cityId == 2) {
+		 url = 'binhduong.html';
+	 }
+
+	 if(cityId == 0) { //Default value
+		 $(disBox).find('span').text('Quận/Huyện(*)');
+		 $(disBox).find('input').val('Tìm kiếm ...');
+		 $(disBox).find('ul').html('<li data-district="0">Quận/Huyện(*)</li>');
+	 }else { 
+		$.ajax({url: url, cache: false, success: function(data) {
+			$(disBox).find('span').text('Quận/Huyện(*)');
+			$(disBox).find('input').val('Tìm kiếm ...');
+			$(disBox).find('ul').html(data);
 			
-			if(nextIndex > 1){
-                //$('.to-top').addClass('show');
+		}});
+	 }
+    
+}
+
+function getTown(cityId, districtId, townBox){
+	 
+	 //Sort town follow city + district
+	 
+	 //example url
+	 var url = '';
+	 if(cityId == 1) {
+		 url = 'town.html';
+	 }else if(cityId == 2) {
+		 url = 'town-bd.html';
+	 }
+	 
+	 if(cityId == 0 || districtId == 0) { //Default value
+		 $(townBox).find('span').text('Phường/Xã(*)');
+		 $(townBox).find('input').val('Tìm kiếm ...');
+		 $(townBox).find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+	 }else { 
+		$.ajax({url: url, cache: false, success: function(data) {
+		 $(townBox).find('span').text('Phường/Xã(*)');
+		 $(townBox).find('input').val('Tìm kiếm ...');
+		 $(townBox).find('ul').html(data);
+		}});
+	 }
+}
+
+function selectEvent() {
+	
+  //Sort lis
+  $(document).on('keyup', '.select-sort input', function (e) {
+	e.stopPropagation();
+    var that = $(this);
+	var text_search = change_alias(that.val());
+	var box = $(this).parent().parent().parent();
+	var list = box.find('ul');
+	
+	if(e.keyCode == 13){
+		if(box.find('li.selected').length){
+			box.find('.select-header span').text(box.find('li.selected').text());
+			box.removeClass('open');
+			box.parent().removeClass('hide');
+			
+			if(box.find('li.selected').attr('data-city')){
+				var cityId = box.find('li.selected').attr('data-city');
+				var disBox = null;
+				var townBox = null;
 				
-            }else{
-                //$('.to-top').removeClass('show');
-            }
+				//Find district follow block
+				if(box.hasClass('is-city')) {
+					disBox = $('.is-district');
+					townBox = $('.is-town');
+				}else if(box.hasClass('is-city-edit')) {
+					disBox = $('.is-district-edit');
+					townBox = $('.is-town-edit');
+					
+				}
+				
+				disBox.parent().removeClass('hide');
+				townBox.parent().removeClass('hide');
+				
+				//Reset town
+				townBox.find('span').text('Phường/Xã(*)');
+				townBox.find('input').val('Tìm kiếm ...');
+				townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+				
+				getDistrict(cityId, disBox);
+				
+			}else if(box.find('li.selected').attr('data-district')) {
+				var townBox = null;
+				var cityId = null;
+				var districtId = null;
+				
+				//Find district follow block
+				if(box.hasClass('is-district')) {
+					townBox = $('.is-town');
+					cityId = $('.is-city li.selected').attr('data-city') || 0;
+                	districtId = $('.is-district li.selected').attr('data-district') || 0;
+				
+				}else if(box.hasClass('is-district-edit')) {
+					townBox = $('.is-town-edit');
+					cityId = $('.is-city-edit li.selected').attr('data-city') || 0;
+                	districtId = $('.is-district-edit li.selected').attr('data-district') || 0;
+				}
+				
+				
+				townBox.parent().removeClass('hide');
+				//Reset town
+				townBox.find('span').text('Phường/Xã(*)');
+				townBox.find('input').val('Tìm kiếm ...');
+				townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+				
+				getTown(cityId, districtId, townBox);
+				
+			}
 			
-			//index: cur section index
-			//nextIndex: the next section will be move to
-			$('.section:nth-child('+ index +')').addClass('out-show').removeClass('on-show');
-			$('.section:nth-child('+ nextIndex +')').removeClass('out-show').addClass('on-show');
-			
-        },
-		afterLoad:function(anchorLink, index){
-			$('.section:nth-child('+ index +')').addClass('on-show');
 		}
 		
+	}else if(e.keyCode == 38){
+		e.preventDefault();
+		var prev = box.find('li.selected').prevAll('li').not('.hide').first();
+		if(prev.length){
+			box.find('li').removeClass('selected');
+			prev.addClass('selected');
+			var top = list.scrollTop();
+			list.scrollTop(top - 30);
+		}else {
+			list.scrollTop(0);
+			box.find('li').removeClass('selected');
+			box.find('li:first-child').addClass('selected');
+		}
+		
+		return false;
+		
+	}else if(e.keyCode == 40){
+		e.preventDefault();
+		var next = box.find('li.selected').nextAll('li').not('.hide').first();
+		if(next.length){
+			box.find('li').removeClass('selected');
+			next.addClass('selected');
+			var top = list.scrollTop();
+			list.scrollTop(top + 30);
+		}else {
+			list.scrollTop(0);
+			box.find('li').removeClass('selected');
+			box.find('li:first-child').addClass('selected');
+		}
+		return false;
+	}else{
+		if(text_search == ''){
+		  box.find('li').removeClass('hide').removeClass('selected');
+		  $(list).scrollTop(0);
+		} else {
+		  box.find('li').removeClass('selected');
+		  box.find('li').each(function (index, elm) {
+			var text = change_alias($(elm).text());
+			if(text.indexOf(text_search) > -1){
+			  $(elm).removeClass('hide');
+			  box.find('li:not(.hide)').first().addClass('selected');
+			}else {
+			  $(elm).addClass('hide');
+			}
+		  })
+		}
+	}
+		
 
-    });
-    
+  });
+  
+  
+  //Open list check box
+  $(document).on('click', '.select-header', function () {
+    var box = $(this).parent();
+	box.parent().removeClass('show-error');
+	box.parent().find('.nameformError').remove();
+	
+    if (box.hasClass('open')) {
+		box.removeClass('open');
+    } else {
+		$('.select-list').removeClass('open');
+		box.addClass('open');
+    }
+  });
+
+  //Check box
+  $(document).on('click', '.select-box li', function () {
+    var that = $(this);
+    var box = $(this).parent().parent().parent();
+	
+	if (!that.hasClass('selected')) {
+		box.find('li').removeClass('selected');
+		that.addClass('selected');
+		box.removeClass('open');
+		box.find('.select-header span').html(that.text());
+		box.parent().removeClass('hide');
+		
+		if(that.attr('data-city')){
+			var cityId = that.attr('data-city');
+			var disBox = null;
+			var townBox = null;
+			
+			//Find district follow block
+			if(box.hasClass('is-city')) {
+				disBox = $('.is-district');
+				townBox = $('.is-town');
+			}else if(box.hasClass('is-city-edit')) {
+				disBox = $('.is-district-edit');
+				townBox = $('.is-town-edit');
+			}
+			
+			disBox.parent().removeClass('hide');
+			townBox.parent().removeClass('hide');
+				
+			//Reset town
+			townBox.find('span').text('Phường/Xã(*)');
+			townBox.find('input').val('Tìm kiếm ...');
+			townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+			
+			getDistrict(cityId, disBox);
+			
+		}else if(that.attr('data-district')) { 
+			var townBox = null;
+			var cityId = null;
+			var districtId = null;
+			
+			//Find district follow block
+			if(box.hasClass('is-district')) {
+				townBox = $('.is-town');
+				cityId = $('.is-city li.selected').attr('data-city') || 0;
+				districtId = $('.is-district li.selected').attr('data-district') || 0;
+			
+			}else if(box.hasClass('is-district-edit')) {
+				townBox = $('.is-town-edit');
+				cityId = $('.is-city-edit li.selected').attr('data-city') || 0;
+				districtId = $('.is-district-edit li.selected').attr('data-district') || 0;
+			}
+			
+			townBox.parent().removeClass('hide');
+				
+			//Reset town
+			townBox.find('span').text('Phường/Xã(*)');
+			townBox.find('input').val('Tìm kiếm ...');
+			townBox.find('ul').html('<li data-town="0">Phường/Xã(*)</li>');
+			
+			getTown(cityId, districtId, townBox);
+		
+		}
+		
+	}
+	
+	
+  });
+  
+  $(document).on('click touchstart', function(event) {
+    if ($(".select-list").has(event.target).length == 0 && !$(".select-list").is(event.target)){
+      $(".select-list").removeClass("open");
+    }
+  });
 
 }
 
+//VALIDATION FUNC
+function hideerror(){
+    $(".nameformError").remove();
+}
+function hidemsg(){
+    $(".feedback-message").remove();
+}
 
-function OverflowContent(){
-	var itemW = ctnWrap.width();
-	var itemN = ctnItem.length;
-	ctnBox.css({'width': itemW * itemN});
-	ctnItem.css({'width': itemW});
+//Login validate [ Lập trình edit cho phù hợp ]
+function loginValidate(){
+	var result = true;
+	if($('#user_name').val() == '') {
+		$('#user_name').parent().find('.nameformError').remove();
+		$('#user_name').parent().addClass('show-error');
+		$('#user_name').after('<div class="nameformError">*Thông tin không hợp lệ. Vui lòng nhập lại!</div>');
+		result = false;
+	}
+	if($('#user_phone').val() == '') {
+		$('#user_phone').parent().find('.nameformError').remove();
+		$('#user_phone').parent().addClass('show-error');
+		$('#user_phone').after('<div class="nameformError">*Số điện thoại phải là số!</div>');
+		result = false;
+	}
+	if($('#user_vinid').val() == '') {
+		$('#user_vinid').parent().find('.nameformError').remove();
+		$('#user_vinid').parent().addClass('show-error');
+		$('#user_vinid').after('<div class="nameformError">*Số thẻ phải là số!</div>');
+		result = false;
+	}
+	if($('#user_email').val() == '') {
+		$('#user_email').parent().find('.nameformError').remove();
+		$('#user_email').parent().addClass('show-error');
+		$('#user_email').after('<div class="nameformError">*Email không đúng định dạng!</div>');
+		result = false;
+	}
+	return result;
 	
 }
+
+//Order validate [ Lập trình edit cho phù hợp ]
+function orderValidate(){
+	var result = true;
+	
+	
+	//THÔNG TIN GIAO HÀNG
+	if($('#order_user_name').val() == '') {
+		$('#order_user_name').parent().find('.nameformError').remove();
+		$('#order_user_name').parent().addClass('show-error');
+		$('#order_user_name').after('<div class="nameformError">*Thông tin không hợp lệ. Vui lòng nhập lại!</div>');
+		result = false;
+	}
+	if($('#order_user_phone').val() == '') {
+		$('#order_user_phone').parent().find('.nameformError').remove();
+		$('#order_user_phone').parent().addClass('show-error');
+		$('#order_user_phone').after('<div class="nameformError">*Số điện thoại phải là số!</div>');
+		result = false;
+	}
+	if($('#order_user_email').val() == '') {
+		$('#order_user_email').parent().find('.nameformError').remove();
+		$('#order_user_email').parent().addClass('show-error');
+		$('#order_user_email').after('<div class="nameformError">*Email không đúng định dạng!</div>');
+		result = false;
+	}
+	if($('#order_address').val() == '') {
+		$('#order_address').parent().find('.nameformError').remove();
+		$('#order_address').parent().addClass('show-error');
+		$('#order_address').after('<div class="nameformError">*Địa chỉ không được rỗng!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-city li.selected').length || $('.is-city li.selected').attr('data-city') == '0') {
+		$('.is-city').parent().find('.nameformError').remove();
+		$('.is-city').parent().addClass('show-error');
+		$('.is-city').after('<div class="nameformError">Bạn phải chọn Thành phố!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-district li.selected').length || $('.is-district li.selected').attr('data-district') == '0') {
+		$('.is-district').parent().find('.nameformError').remove();
+		$('.is-district').parent().addClass('show-error');
+		$('.is-district').after('<div class="nameformError">Bạn phải chọn Quận huyện!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-town li.selected').length || $('.is-town li.selected').attr('data-town') == '0') {
+		$('.is-town').parent().find('.nameformError').remove();
+		$('.is-town').parent().addClass('show-error');
+		$('.is-town').after('<div class="nameformError">Bạn phải chọn Phường xã!</div>');
+		result = false;
+	}
+	
+	
+	//LỰA CHỌN CỬA HÀNG GẦN NHẤT
+	//[CÁI NÀY NẾU CẦN THIẾT THÌ CÓ THỂ UN COMMENT]
+	/*if(!$('.is-distribution-hcm li.selected').length || $('.is-distribution-hcm li.selected').attr('data-center') == '0') {
+		$('.is-distribution-hcm').parent().find('.nameformError').remove();
+		$('.is-distribution-hcm').parent().addClass('show-error');
+		$('.is-distribution-hcm').after('<div class="nameformError">Bạn phải chọn Trung Tâm!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-distribution-hn li.selected').length || $('.is-distribution-hn li.selected').attr('data-center') == '0') {
+		$('.is-distribution-hn').parent().find('.nameformError').remove();
+		$('.is-distribution-hn').parent().addClass('show-error');
+		$('.is-distribution-hn').after('<div class="nameformError">Bạn phải chọn Trung Tâm!</div>');
+		result = false;
+	}*/
+	
+	
+	//THÔNG TIN NGƯỜI MUA
+	//[CÁI NÀY NẾU CẦN THIẾT THÌ CÓ THỂ UN COMMENT]
+	/*
+	if($('#order_edit_user_name').val() == '') {
+		$('#order_edit_user_name').parent().find('.nameformError').remove();
+		$('#order_edit_user_name').parent().addClass('show-error');
+		$('#order_edit_user_name').after('<div class="nameformError">*Thông tin không hợp lệ. Vui lòng nhập lại!</div>');
+		result = false;
+	}
+	if($('#order_edit_user_phone').val() == '') {
+		$('#order_edit_user_phone').parent().find('.nameformError').remove();
+		$('#order_edit_user_phone').parent().addClass('show-error');
+		$('#order_edit_user_phone').after('<div class="nameformError">*Số điện thoại phải là số!</div>');
+		result = false;
+	}
+	if($('#order_edit_user_email').val() == '') {
+		$('#order_edit_user_email').parent().find('.nameformError').remove();
+		$('#order_edit_user_email').parent().addClass('show-error');
+		$('#order_edit_user_email').after('<div class="nameformError">*Email không đúng định dạng!</div>');
+		result = false;
+	}
+	if($('#order_edit_address').val() == '') {
+		$('#order_edit_address').parent().find('.nameformError').remove();
+		$('#order_edit_address').parent().addClass('show-error');
+		$('#order_edit_address').after('<div class="nameformError">*Địa chỉ không được rỗng!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-city-edit li.selected').length || $('.is-city-edit li.selected').attr('data-city') == '0') {
+		$('.is-city-edit').parent().find('.nameformError').remove();
+		$('.is-city-edit').parent().addClass('show-error');
+		$('.is-city-edit').after('<div class="nameformError">Bạn phải chọn Thành phố!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-district-edit li.selected').length || $('.is-district-edit li.selected').attr('data-district') == '0') {
+		$('.is-district-edit').parent().find('.nameformError').remove();
+		$('.is-district-edit').parent().addClass('show-error');
+		$('.is-district-edit').after('<div class="nameformError">Bạn phải chọn Quận huyện!</div>');
+		result = false;
+	}
+	
+	if(!$('.is-town-edit li.selected').length || $('.is-town-edit li.selected').attr('data-town') == '0') {
+		$('.is-town-edit').parent().find('.nameformError').remove();
+		$('.is-town-edit').parent().addClass('show-error');
+		$('.is-town-edit').after('<div class="nameformError">Bạn phải chọn Phường xã!</div>');
+		result = false;
+	}*/
+	
+	
+	//XUẤT HÓA ĐON
+	//[CÁI NÀY NẾU CẦN THIẾT THÌ CÓ THỂ UN COMMENT]
+	/*
+	if($('#order_tax').val() == '') {
+		$('#order_tax').parent().find('.nameformError').remove();
+		$('#order_tax').parent().addClass('show-error');
+		$('#order_tax').after('<div class="nameformError">Bạn phải nhập Mã số thuế!</div>');
+		result = false;
+	}
+	
+	if($('#order_company_name').val() == '') {
+		$('#order_company_name').parent().find('.nameformError').remove();
+		$('#order_company_name').parent().addClass('show-error');
+		$('#order_company_name').after('<div class="nameformError">Bạn phải nhập Tên công ty!</div>');
+		result = false;
+	}
+	
+	if($('#order_company_address').val() == '') {
+		$('#order_company_address').parent().find('.nameformError').remove();
+		$('#order_company_address').parent().addClass('show-error');
+		$('#order_company_address').after('<div class="nameformError">Bạn phải nhập Địa chỉ công ty!</div>');
+		result = false;
+	}*/
+	
+	
+	return result;
+	
+}
+
+function cartProgress(){
+
+	if($('#cart-page').length) {
+		
+		//Tăng quantity
+		$(document).on('click', '.add-but', function(){
+			
+		});
+		
+		//Giảm quantity
+		$(document).on('click', '.sub-but', function(){
+			
+		});
+		
+		//Xóa dòng
+		$(document).on('click', '.delete-but', function(){
+			
+			//Code here
+			$('.message-box').removeClass('hide');
+			setTimeout(function(){
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+			 },310);
+			
+		});
+		
+		//Delete item cart
+		$(document).on('click', '.confirm_delete', function(){
+			//Code here
+		});
+		
+		//Cancel Delete item cart
+		$(document).on('click', '.confirm_cancel', function(){
+			closePop.trigger('click');
+		});
+		
+	}
+		
+}
+
+//Product load
+function productLoad(url) {
+    $.ajax({url: url, cache: false, success: function(data) {
+        $('.product-box').html(data);
+		onScroll();
+        $('.product-box').stop().animate({'opacity': 1}, 500, 'linear', function() {
+			loading = true;	
+		});
+    }});
+
+}
+
+
 
 function Start(){
-    
-	//Detect page
-    if($('#home-page').length){
-        
-    }else{
-           
-    }
 	
-	$('.tab-but').on('click', function(e){
-		OverflowContent();
-		$('.tab-box li').removeClass('current');
-		$(this).parent().addClass('current');
-		var index = $(this).parent().index();
-		var translateX = -index * ctnWrap.width();
-		ctnBox.css({'transform': 'translate3d('+ translateX +'px,0px, 0px)', '-webkit-transform':'translate3d('+ translateX +'px,0px, 0px)'});
-		detectCenter();
+    //SET ACTIVE PAGE
+    var page = $('body').attr('id');
+    $(".nav li[data-active='" + page + "']").addClass('active');
+	
+	
+	//Go to focus-box
+	$(document).on('click', '.go-focus-box', function(){
+		var delTop = 66;
+		if($('#products-page').length && $(window).width() > 1100) {
+			delTop = 40;
+		}
+		var top = $('.focus-box').offset().top - delTop;
+		doCument.stop().animate({ scrollTop: top }, 400);
+	});
+	
+	
+	//LOGIN PAGE EVENTS
+	$(document).on('click', '#login_but', function(){
+		$('.success-login, .message-box').addClass('hide');
+
+		if(loginValidate()){
+			//Code here
+			setTimeout(function(){
+				$('.success-login').removeClass('hide');
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+				
+				//Popup tự đóng sau 3s
+				setTimeout(function(){ 
+					closePop.trigger('click');
+					//redirect to products
+					window.location = 'products.html';
+				
+				},3000);
+				
+			 },310);
+			
+			document.getElementById("login_form").reset();
+			$('.field').removeClass('hide');
+			
+		}else{
+			//Error here
+			$('.message-box').removeClass('hide');
+			
+			setTimeout(function(){
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+				
+				//Popup tự đóng sau 3s
+				setTimeout(function(){ closePop.trigger('click') },3000);
+				
+			},310);
+			
+		}
+		
+	});
+	
+	//Logout
+	$(document).on('click', '#logout_but', function(){
+		//Code here
+	});
+	
+	
+	//PRODUCTS PAGE
+	$(document).on('click', '.filter-but', function(){
+		if(loading) {
+			loading = false;
+			var url = $(this).attr('data-url');
+			$('.filter-box li').removeClass('active');
+			$(this).parent().addClass('active');
+			$('.product-box').stop().animate({'opacity': 0}, 300, 'linear', function() {
+				productLoad(url);	
+			});
+		}
+	});
+	
+	
+	
+	//CART PAGE
+	$(document).on('click', '.add-to-cart', function(){
+		//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+		doCument.addClass('no-scroll');
+		popCnt.style.height = window.innerHeight + "px";
+		//Show scroll after finished animation
+		setTimeout(function(){ popCnt.classList.add('active'); },310);
+		
+	});
+	
+	$(document).on('click', '.btn.grey', function(){
+		
+		var url = $(this).attr('href');
+		var obj = {
+			id: $(this).attr('data-id'),
+			image: $(this).attr('data-image'),
+			name: $(this).attr('data-name'),
+			promotion: $(this).attr('data-promotion'),
+			price: $(this).attr('data-price'),
+			oprice: $(this).attr('data-oprice'),
+			accumulating: $(this).attr('data-accumulating'),
+			quantity:1
+		};
+		
+		addCart(obj);
+		
+		setTimeout(function(){
+			this.loadicon = url;
+		},300);
+		
 		
 	});
 	
 	
 	
-}
-
-
-//Gotop when reload
-window.onbeforeunload = function() {
-	window.scrollTo(0,0);
+	//ORDER PAGE
+	//Show customer info
+	$(document).on('click', 'input.byCompany, input.byCustomer', function(e){
+		if(this.checked) {
+			if(this.classList.contains('byCompany')) {
+				$('.is-company').addClass('active');
+				setTimeout(function(){
+					$('.is-company').addClass('on');
+				},0);
+				  
+			}else if(this.classList.contains('byCustomer')){
+				$('.is-customer').addClass('active');
+				setTimeout(function(){
+					$('.is-customer').addClass('on');
+				},0);
+			}
+		}else {
+			if(this.classList.contains('byCompany')) {
+				$('.is-company').removeClass('active').removeClass('on');
+			}else if(this.classList.contains('byCustomer')){
+				$('.is-customer').removeClass('active').removeClass('on');
+			}
+		}
+		
+		  
+	});
+	
+	
+	//Payment next [order page]
+	$(document).on('click', '#order_but', function(e){
+		e.preventDefault();
+		
+		if(orderValidate()){
+			//Code here
+			$('.message-box').removeClass('hide');
+			setTimeout(function(){
+				//Kiểm tra dữ liệu hợp lệ [ giả lập login thành công ]
+				doCument.addClass('no-scroll');
+				popCnt.style.height = window.innerHeight + "px";
+				//Show scroll after finished animation
+				setTimeout(function(){ popCnt.classList.add('active'); },310);
+				
+			},310);
+			
+		}else{
+			var top = $('.order-box').offset().top - 80;
+			doCument.stop().animate({ scrollTop: top }, 400);
+			
+		}
+		
+		return false;
+		
+	});
 	
 }
 
-function PauseSlider(){
-  if($('.banner-slider.slide-container-horizontal').length){
-	   var banner = $('.banner-slider')[0].swiper;
-		if(windscroll >= 100) {
-			if($('.banner-slider .item-container').length >= 2){
-				banner.stopAutoplay();
-			}
-	   }else {
-		   if($('.banner-slider .item-container').length >= 2){
-				banner.startAutoplay();
-				banner.slideNext();
-		   }
-	   }
-	}
-}
 
 //Lazayload images
 function ImgLazyLoad(){
@@ -449,9 +868,9 @@ function ImgLazyLoad(){
 	
 	lazyImages.each(function(index,lazyImage){
 		
-		if($(lazyImage)[0].getBoundingClientRect().top <= winH * 3){
+		if($(lazyImage)[0].getBoundingClientRect().top <= winH * 2){
 			
-			var src = $(lazyImage).attr("data-src");
+			var src = $(lazyImage).attr("data-img-src");
 			$(lazyImage).attr('src', src);
 			$(lazyImage).removeClass('lazy');
 			
@@ -471,9 +890,9 @@ function BgLazyLoad(){
 	
 	lazyBgs.each(function(index,lazyBg){
 		
-		if($(lazyBg)[0].getBoundingClientRect().top <= winH * 3){
+		if($(lazyBg)[0].getBoundingClientRect().top <= winH * 2){
 			
-			var src = $(lazyBg).attr("data-src");
+			var src = $(lazyBg).attr("data-img-src");
 			$(lazyBg).css({'background-image': 'url('+ src +')'});
 			$(lazyBg).removeClass('lazy');
 			
@@ -483,23 +902,9 @@ function BgLazyLoad(){
 		
 	});
 	
-	
 }
 
-
-function detectCenter() {
-	var winW = $(window).width();
-	
-	if(winW <= 1100 && $('.tab-box li.current').length){
-		  var Left  = $('.tab-box ul').offset().left;
-		  var XLeft = $('.tab-box li.current').offset().left;
-		  var Percent = winW/100 * 10;
-		  var Middle =  winW/2 - $('.tab-box li.current').width()/2;
-		  $('.tab-box').stop().animate({scrollLeft: (XLeft-Middle) - Left}, 'slow');
-	}
-		
-}
-
+ 
 //Scroll animation
 function onScroll(){
 	
@@ -507,100 +912,31 @@ function onScroll(){
 	var winT = $(window).scrollTop();
 	var winW = $(window).width();
 	var winH = $(window).height();
-	var target = $('.banner');
-	
 	
 	//Lazy images
-	imgClass = winW > 1100 ? '.pcPic.lazy' : '.spPic.lazy';
+	imgClass = winW > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
 	lazyImages = $(imgClass);
 	if(lazyImages.length){ ImgLazyLoad(); }
 	
 	//Lazy background
-	bgClass = winW > 1100 ? '.pcBg.lazy' : '.spBg.lazy';
+	bgClass = winW > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
 	lazyBgs = $(bgClass);
 	if(lazyBgs.length){ BgLazyLoad(); }
 	
-	
-	
-	//Set animations
-	var elements  = $(".ani-item, .section-content");
-	
-	elements.each(function() {
-      	
-			var elm = $(this);
-			var rect = elm[0].getBoundingClientRect();
-			
-			//Check viewport
-			var elementTop = rect.top;
-			var elementBottom = elementTop + rect.height;
-			var viewportTop = winT;
-			var viewportBottom = viewportTop + winH;
 
-			if((elementTop + 80) < winH && (elementTop + 80) > 76) {
-				
-				window.requestAnimationFrame(function(){
-					elm.addClass('on-show');
-				});
-				
-			}else if(elementBottom > viewportTop){
-				
-			}
-		
-		
-    });
-
-	
-	//Stop playing video [myVideo]
-	var vid = $(".video-details");
-	if(vid.length){
-		var rect = vid[0].getBoundingClientRect();
-		var elementTop = rect.top;
-		var elementBottom = elementTop + rect.height;
-		var viewportTop = winT;
-		var viewportBottom = viewportTop + winH;
-		
-		if( elementBottom > viewportTop && elementTop < viewportBottom){
-			myVideo.play();
-			
-		}else{
-			//Make sure video must be playing
-			if(myVideo.paused == false){
-				myVideo.pause();
-			}
-		}
-		
-	}
-	
-	
-	//Banner animation
-	if(target.length){
-		target.css({'transform': 'translate3d(0px,' + winT * 0.25 + 'px, 0px)', '-webkit-transform': 'translate3d(0px,' + winT * 0.25 + 'px, 0px)'})
-	}
-	
-	
-	//Header fixed
-	if(winT > 120){
-		header.addClass('fixed');
-		
-	}else{
-		header.removeClass('fixed');
-	}
-	
-	//Go top
 	if(winT > winH/2){
 		toTop.addClass('show');
-		
 	}else{
 		toTop.removeClass('show');
 	}
+	
 	
 }
 
 
 //On resize
 function onResize(){
-	if(ctnWrap.length){ $('.current .tab-but').trigger('click');}
-	
+
 }
 
 
@@ -609,68 +945,71 @@ function endResize(){
 	
 	var winW = $(window).width();
 	
-	//NAV + POPUP DONT REMOVE
-	if(navigation.classList.contains('active')){
-		navigation.style.height = window.innerHeight + "px";
+	if(navigation) {
+		if(navigation.classList.contains('active')){
+			navigation.style.height = window.innerHeight + "px";
+		}
 	}
 	
-	if(popCnt.classList.contains('active')){
-		popCnt.style.height = window.innerHeight + "px";
-	}
-	
+    if(popCnt) {
+        if (popCnt.classList.contains('active')) {
+           popCnt.style.height = window.innerHeight + "px";
+        }
+    }
 	
 	if(!isMobile){
-		//LAZY DONT REMOVE
 		
 		//lazy images
-		imgClass = winW > 1100 ? '.pcPic.lazy' : '.spPic.lazy';
+		imgClass = winW > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
 		lazyImages = $(imgClass);
 		ImgLazyLoad();
-		
-		
+
 		//lazy background
-		bgClass = winW > 1100 ? '.pcBg.lazy' : '.spBg.lazy';
+		bgClass = winW > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
 		lazyBgs = $(bgClass);
 		BgLazyLoad();
-		
-		
-		//Overfolow content
-		if(ctnWrap.length){ $('.current .tab-but').trigger('click') }
-			
+	
 	}
+
+	if(winW > 1100) {
+
+   	}
 	
 }
 
 
 //Rotate
 function onRotate(){
-	
-	
+
 	//NAV + POPUP DONT REMOVE
 	setTimeout(function(){
-		if(navigation.classList.contains('active')){
-			navigation.style.height = window.innerHeight + "px";
+		var wWidth = $(window).width();
+
+		if(navigation) {
+			if(navigation.classList.contains('active')){
+				navigation.style.height = window.innerHeight + "px";
+			}
 		}
 		
-		if(popCnt.classList.contains('active')){
-			popCnt.style.height = window.innerHeight + "px";
-		}
-		
-		
-		//Overflow content		
-		if(ctnWrap.length){ $('.current .tab-but').trigger('click');}
+        if(popCnt) {
+            if (popCnt.classList.contains('active')) {
+                popCnt.style.height = window.innerHeight + "px";
+            }
+			
+        }
 		
 		//lazy images
-		lazyImages = $('.spPic.lazy');
+		imgClass = wWidth > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
+		lazyImages = $(imgClass);
 		ImgLazyLoad();
 		
 		
 		//lazy background
-		lazyBgs = $('.spBg.lazy');
+		bgClass = wWidth > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
+		lazyBgs = $(bgClass);
 		BgLazyLoad();
 		
-		
-	},30);
+	},200);
 	
 	
 }
@@ -678,9 +1017,14 @@ function onRotate(){
 
 $(document).ready(function () {
 	
+	
 	var wWidth = $(window).width();
 	
-	//REGISTER EVENTS
+	//Code giả lập user đã login thì add class isLogin
+	$('body').addClass('isLogin');
+	
+	//Setup cart
+	cartProgress();
 	
 	//common events
 	CommonEvent();
@@ -688,84 +1032,26 @@ $(document).ready(function () {
 	//redirect events
 	DirectLink();
 
-	
-	//REGISTER VARIABLE
-	
 	//lazy images
-	imgClass = wWidth > 1100 ? '.pcPic.lazy' : '.spPic.lazy';
+	imgClass = wWidth > 1100 ? '.pcPic.lazy, .cmPic.lazy' : '.spPic.lazy, .cmPic.lazy';
 	lazyImages = $(imgClass);
 	ImgLazyLoad();
 	
-	
 	//lazy background
-	bgClass = wWidth > 1100 ? '.pcBg.lazy' : '.spBg.lazy';
+	bgClass = wWidth > 1100 ? '.pcBg.lazy, .cmBg.lazy' : '.spBg.lazy, .cmBg.lazy';
 	lazyBgs = $(bgClass);
 	BgLazyLoad();
-	
-	
-	//Overflow content
-	ctnWrap = $('.overflow-content');
-	ctnBox	= $('.overflow-box');
-	ctnItem	= $('.overflow-item');
 
-	
-	
-	//Auto play video
-	if(window.myVideo != undefined){
-		myVideo.play();
-		mutebtn.classList.add('show');
-		mutebtn.classList.add('muted');
-		
-		//myVideo.paused can use to check state
-		mutebtn.addEventListener("click", function() {
-			if(mutebtn.classList.contains('muted')){
-				myVideo.muted = false;
-				mutebtn.classList.remove('muted');
-			}else{
-				myVideo.muted = true;
-				mutebtn.classList.add('muted');
-			}
-		});
-	
-	}
-	
-	
-	//Video 360
-	var vidPlay;
-	if(window.video_same_domain != undefined){
-		vidPlay = jwplayer('video_same_domain').setup({
-			playlist: [{																														
-				stereomode: 'monoscopic',
-				file:'https://nvquyet2224.github.io/template/video/vr-bac-thay.mp4'
-			}]
-		});
-		
-	}
-	
-	
-	//Overflow content by tab
-	if(ctnWrap.length){ OverflowContent(); }
-	
-	
-	
-	//Fullpage
-    if( $('#fullpage').length){ FullPage(); }
-	
-	
-	//Show data
+	//Star page
 	setTimeout(function(){
 		window.scrollTo(0,0);
-		SlidesShow();
-		if(ctnWrap.length){ OverflowContent(); }
-	
-		$('.content').stop().animate({'opacity':1}, 250 ,'linear', function () {
-			onScroll();
-			Start();
+		onScroll();
+		$('.loadicon').fadeOut(300, function(){
+			$('.content').stop().animate({'opacity':1}, 500 ,'linear', function () {
+				Start();
+			});
 		});
-		
-	},1000);
-	
-	
+	}, 1500);	
 	
 });
 
@@ -774,6 +1060,12 @@ $(window).resize(onResize);
 $(window).on('resize', endResize, 250);
 $(window).scroll(onScroll);
 
-
+if(iOS) {
+	$(window).bind("pageshow", function(event) {
+		if (event.originalEvent.persisted) {
+			window.location.reload();
+		}
+	});
+}
 
 

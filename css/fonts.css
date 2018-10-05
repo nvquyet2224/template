@@ -1,10 +1,80 @@
+@font-face {
+	font-family: 'SamsungOne';
+	src: url(../fonts/SamsungOne-400.eot);
+	src: url(../fonts/SamsungOne-400.eot?#iefix) format("embedded-opentype"), url(../fonts/SamsungOne-400.woff2) format("woff2"), url(../fonts/SamsungOne-400.woff) format("woff"), url(../fonts/SamsungOne-400.ttf) format("truetype");
+	font-weight: normal;
+	font-style: normal
+}
 
-@font-face{
-	font-family:'Glyphicons Halflings';
-	src:url(../fonts/glyphicons-halflings-regular.eot);
-	src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),
-	url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'),
-	url(../fonts/glyphicons-halflings-regular.woff) format('woff'),
-	url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),
-	url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')
+@font-face {
+    font-family: 'SamsungOne600';
+    src: url('../fonts/SamsungOne-600.eot');
+    src: url('../fonts/SamsungOne-600.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/SamsungOne-600.woff2') format('woff2'),
+        url('../fonts/SamsungOne-600.woff') format('woff'),
+        url('../fonts/SamsungOne-600.ttf') format('truetype'),
+        url('../fonts/SamsungOne-600.svg#SamsungOne600') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'SamsungOne700';
+	src: url(../fonts/SamsungOne-700.eot);
+	src: url(../fonts/SamsungOne-700.eot?#iefix) format("embedded-opentype"), url(../fonts/SamsungOne-700.woff2) format("woff2"), url(../fonts/SamsungOne-700.woff) format("woff"), url(../fonts/SamsungOne-700.ttf) format("truetype");
+	font-weight: bold;
+	font-style: normal
+}
+
+@font-face {
+    font-family: 'SamsungOne800';
+    src: url('../fonts/SamsungOne-800.eot');
+    src: url('../fonts/SamsungOne-800.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/SamsungOne-800.woff2') format('woff2'),
+        url('../fonts/SamsungOne-800.woff') format('woff'),
+        url('../fonts/SamsungOne-800.ttf') format('truetype'),
+        url('../fonts/SamsungOne-800.svg#SamsungOne800') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'SamsungSharpSans';
+	src: url(../fonts/SamsungSharpSansBd.eot);
+	src: url(../fonts/SamsungSharpSansBd.eot?#iefix) format("embedded-opentype"), url(../fonts/SamsungSharpSansBd.woff) format("woff");
+	font-weight: bold;
+	font-style: normal
+}
+@font-face {
+    font-family: 'iCielSamsungSharpSansBold';
+    src: url(../fonts/iCielSamsungSharpSans-Bold.eot);
+    src: url(../fonts/iCielSamsungSharpSans-Bold.eot?#iefix) format('embedded-opentype'),
+         url(../fonts/iCielSamsungSharpSans-Bold.woff) format('woff'),
+         url(../fonts/iCielSamsungSharpSans-Bold.ttf) format('truetype'),
+         url(../fonts/iCielSamsungSharpSans-Bold.svg#iCielSamsungSharpSansBold) format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'iCielSamsungSharpSansMedium';
+    src: url(../fonts/iCielSamsungSharpSans-Medium.eot);
+    src: url(../fonts/iCielSamsungSharpSans-Medium.eot?#iefix) format('embedded-opentype'),
+         url(../fonts/iCielSamsungSharpSans-Medium.woff) format('woff'),
+         url(../fonts/iCielSamsungSharpSans-Medium.ttf) format('truetype'),
+         url(../fonts/iCielSamsungSharpSans-Medium.svg#iCielSamsungSharpSansMedium) format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'iCielSamsungSharpSansRegular';
+    src: url(../fonts/iCielSamsungSharpSansRegular.eot);
+    src: url(../fonts/iCielSamsungSharpSansRegular.eot?#iefix) format('embedded-opentype'),
+         url(../fonts/iCielSamsungSharpSansRegular.woff) format('woff'),
+         url(../fonts/iCielSamsungSharpSansRegular.ttf) format('truetype'),
+         url(../fonts/iCielSamsungSharpSansRegular.svg#iCielSamsungSharpSansRegular) format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }

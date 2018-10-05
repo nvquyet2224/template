@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="canonical" href="cart.html">
+<meta name="theme-color" content="#1d376c"/>
+<meta name="google" content="notranslate">
+<meta name="robots" content="index, follow">
+<meta name="author" content="VinID">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>VinID</title>
+<meta name="description" content="VinID">
+<meta name="keywords" content="VinID">
+<meta property="og:title" content="title"/>
+<meta property="og:description" content="VinID"/>
+<meta property="og:url" content="cart.html"/>
+<meta property="og:image" content="images/social-share.jpg"/>
+<meta property="og:type" content="website"/>
+<style>body{visibility: hidden}</style>
+<link href="css/small.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="images/favicon.ico">
+</head>
+
+<body id="cart-page">
+
+<!--LOAD-->
+<div class="loadicon"></div>
+<!--LOAD-->
+
+<!--render css-->
+<div id="render-block"></div>
+<!--render css-->
+<noscript id="noscript-block">
+<link href="css/fonts.css" rel="stylesheet" type="text/css">
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</noscript>
+<script>
+var loadDeferredStyles = function() {
+var addStylesNode = document.getElementById("noscript-block");
+var replacement = document.getElementById("render-block");
+replacement.innerHTML = addStylesNode.textContent;
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+else window.addEventListener('load', loadDeferredStyles);
+</script>
+
+<!--WRAP-->
+<div class="content">
+
+<!--HEADER-->
+<header class="header">
+<span class="bg-white"></span>
+<span class="bg-black"></span>
+<div class="logo"><a href="index.html"><img src="./images/logo.png" alt="VinID"/></a></div>
+
+<!--nav-->
+<div class="navigation">
+<div class="nav-outer">
+
+<div class="user">
+<ul>
+<li class="account-name">
+<span class="login-show">Nguyễn Ngọc Minh</span>
+<span class="login-hide">user name</span>
+</li>
+<li>
+<a class="login-show" id="logout_but" href="javascript:void(0)">Đăng Xuất</a>
+<a class="login-hide" href="index.html">Đăng Nhập</a>
+</li>
+</ul>
+</div>
+
+<div class="nav">
+<ul>
+<li data-active="cart-page"><a class="direct-link" href="cart.html">Giỏ hàng</a></li>
+<li data-active="condition-page"><a class="direct-link" href="condition.html">T&amp;C</a></li>
+<li class="hotline"><a href="tel:19202932"><span>Hotline</span> 1920 2932</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+<!--nav-->
+
+<!--cart-->
+<a class="cart-shopping" href="cart.html">
+<span class="cart-icon">Giỏ hàng</span>
+<span class="cart-text">0</span>
+</a>
+<!--cart-->
+
+<div class="nav-but"><span></span><span></span><span></span></div>
+
+</header>
+<!--HEADER-->
+
+<!--CONTENT-->
+<div class="normal-content">
+<div class="normal-details">
+
+<div class="cart-box">
+<h2>Giỏ hàng của bạn</h2>
+
+<!--load by JSON-->
+<div class="cart-list">
+
+<div class="cart-item">
+<div class="cart-pic"><img src="./images/tv-07.jpg" alt="pic"></div>
+<div class="cart-txt">
+<div class="cart-name">
+<h3>Smart TV Premium UHD 55 inch NU8000</h3></div>
+<div class="cart-price"><span class="money red-large">18.400.000đ</span></div>
+<div class="cart-tool">
+<div class="quantity-box"><span class="add-but"></span>
+<input class="quantity" type="text" value="1" readonly=""><span class="sub-but"></span></div>
+<div class="delete-box"><a class="delete-but" href="javascript:void(0)"><span class="delete-icon"></span>Xóa sản phẩm</a></div>
+</div>
+</div>
+</div>
+
+<div class="cart-item">
+<div class="cart-pic"><img src="./images/tv-02.jpg" alt="pic"></div>
+<div class="cart-txt">
+<div class="cart-name">
+<h3>Smart TV UHD 4K 50 inch NU7400</h3></div>
+<div class="cart-price"><span class="money red-large">19.900.000đ</span></div>
+<div class="cart-tool">
+<div class="quantity-box"><span class="add-but"></span>
+<input class="quantity" type="text" value="1" readonly=""><span class="sub-but"></span></div>
+<div class="delete-box"><a class="delete-but" href="javascript:void(0)"><span class="delete-icon"></span>Xóa sản phẩm</a></div>
+</div>
+</div>
+</div>
+
+<ul class="cart-info">
+<li>
+<p>Thành tiền</p>
+<p class="money red-large"><span class="amount">34.800.000</span>đ</p>
+</li>
+<li>
+<p>Hoàn vào VinID</p>
+<p class="money-minus"><span>3.480.000</span>đ</p>
+</li>
+<li class="vat-note">(Giá đã bao gồm VAT)</li>
+</ul>
+</div>
+<!--load by JSON-->
+
+<div class="box-btn">
+<a class="payment-but" href="order.html">Thanh toán</a>
+<a class="more" href="products.html">Tiếp tục mua sắm</a>
+</div>
+
+</div>
+
+</div>
+</div>
+<!--CONTENT-->
+
+<!--POPUP-->
+<div class="popup-content">
+<div class="popup-wrap">
+<div class="popup-box">
+<div class="close-pop in-box"></div>
+
+<div class="message-box confirm-cart hide">
+<div class="message-txt">
+<p>Bạn có muốn xóa sản phẩm này ra khỏi giỏ hàng hay không ?</p>
+</div>
+<div class="box-btn">
+<button class="confirm_delete">Có</button>
+<button class="confirm_cancel">Không</button>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+<!--POPUP-->
+
+<!--FACILITIES-->
+<div class="to-top"></div>
+<!--FACILITIES-->
+
+</div>
+<!--WRAP-->
+
+<!--SCRIPT-->
+<script src="js/jquery.js"></script>
+<script src="js/base.js"></script>
+<script src="js/detect.js"></script>
+<script src="js/main.js"></script>
+<script src="js/frontend-only-test-status.js"></script>
+<!--SCRIPT-->
+
+</body>
+</html>

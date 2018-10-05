@@ -1,20 +1,15 @@
 @charset "utf-8";
 
+body{left:0;top:0;bottom:0;right:0;margin:0;padding:0;overflow-x:hidden;background-color:#fff;-webkit-animation:Start 0.5s steps(1, end) 0s 1 normal both;animation:Start 0.5s steps(1, end) 0s 1 normal both}
 
-body{width:100%;left:0;top:0;bottom:0;right:0;background-color:#fff;-webkit-animation:Start .7s steps(1, end) 0s 1 normal both;animation:Start .7s steps(1, end) 0s 1 normal both}
 
-.header, .footer, .popup-content, .full-album, .go-down, .to-top, .loadicon{display:none}
+.header, .footer, .popup-content, .full-album, .go-down, .to-top{display:none}
+.content{width:100%;height:auto;padding:75px 0 0 0;opacity:0}
 
-.useFull{position:fixed;overflow:hidden;}
-.content{position:relative;display:block;width:100%;height:auto;opacity:0}
-.useFull .content{height:100%;overflow:hidden}
+.loadicon{position:fixed;left:0;top:0;display:inline-block;width:100%;height:100%;background-color:#fff;z-index:9999}
+.loadicon::before{content:'';position:absolute;left:50%;top:50%;margin:-40px 0 0 -40px;width:80px;height:80px;background:url(../images/loading.svg) no-repeat center center}
+.loadicon.is-processing{display:block !important;background-color:transparent}
 
-/*Ie 10/11
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-	html{overflow:hidden;height:100%}
-	body{height:100%;overflow:hidden;overflow-y:auto}
-}
-*/
 
 @-webkit-keyframes Start{
 	from{visibility:hidden}
