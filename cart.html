@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<link rel="canonical" href="index.html">
+<link rel="canonical" href="cart.html">
 <meta name="theme-color" content="#1d376c"/>
 <meta name="google" content="notranslate">
 <meta name="robots" content="index, follow">
@@ -17,7 +17,7 @@
 <meta name="keywords" content="VinID">
 <meta property="og:title" content="title"/>
 <meta property="og:description" content="VinID"/>
-<meta property="og:url" content="index.html"/>
+<meta property="og:url" content="cart.html"/>
 <meta property="og:image" content="images/social-share.jpg"/>
 <meta property="og:type" content="website"/>
 <style>@charset "utf-8";.loadicon,body{left:0;top:0;background-color:#fff}body{visibility:hidden;bottom:0;right:0;margin:0;padding:0;overflow-x:hidden;-webkit-animation:Start .5s steps(1,end) 0s 1 normal both;animation:Start .5s steps(1,end) 0s 1 normal both}.footer,.full-album,.go-down,.header,.popup-content,.to-top{display:none}.content{width:100%;height:auto;padding:75px 0 0;opacity:0}.loadicon{position:fixed;display:inline-block;width:100%;height:100%;z-index:9999}.loadicon::before{content:'';position:absolute;left:50%;top:50%;margin:-40px 0 0 -40px;width:80px;height:80px;background:url(images/loading.svg) center center no-repeat}.loadicon.is-processing{display:block!important;background-color:transparent}@-webkit-keyframes Start{from{visibility:hidden}to{visibility:visible}}@keyframes Start{from{visibility:hidden}to{visibility:visible}}
@@ -25,7 +25,7 @@
 <link rel="icon" href="images/favicon.ico">
 </head>
 
-<body id="home-page">
+<body id="cart-page">
 
 <!--LOAD-->
 <div class="loadicon"></div>
@@ -103,80 +103,60 @@ else window.addEventListener('load', loadDeferredStyles);
 <!--HEADER-->
 
 <!--CONTENT-->
-<div class="banner-content">
-<div class="banner-bg spBg lazy" data-img-src="./images/banner-bg.jpg"></div>
-<div class="banner-bg pcBg lazy" data-img-src="./images/banner-bg-pc.jpg"></div>
-<div class="banner-shadow hide-pc"></div>
-<div class="banner-details">
+<div class="normal-content">
+<div class="normal-details">
 
-<div class="banner-box">
-<div class="banner-title">
-<h2><img src="./images/slogan.png" alt="Ưu Đãi Đặc Quyền" /></h2>
-<h3><span class="shap shap-01"></span>CHO CHỦ THẺ<span class="vin-logo"><img src="./images/logo-large.png" alt="VinID" /></span><span class="shap hide-pc shap-02"></span></h3>
+<div class="cart-box">
+<h2>Giỏ hàng của bạn</h2>
+
+<!--load by JSON-->
+<div class="cart-list">
+
+<div class="cart-item">
+<div class="cart-pic"><img src="./images/tv-07.jpg" alt="pic"></div>
+<div class="cart-txt">
+<div class="cart-name">
+<h3>Smart TV Premium UHD 55 inch NU8000</h3></div>
+<div class="cart-price"><span class="money red-large">18.400.000đ</span></div>
+<div class="cart-tool">
+<div class="quantity-box"><span class="add-but"></span>
+<input class="quantity" type="text" value="1" readonly=""><span class="sub-but"></span></div>
+<div class="delete-box"><a class="delete-but" href="javascript:void(0)"><span class="delete-icon"></span>Xóa sản phẩm</a></div>
 </div>
-<div class="banner-txt">
-<p>Đăng nhập bằng thẻ VinID để nhận hoàn tiền 10% <br>khi mua các sản phẩm<span class="samsung-logo"><img src="./images/logo-samsung.png" alt="samsung" /></span></p>
-<p>1/10/2018 – 31/12/2018</p>
-<a class="btn go-focus-box" href="javascript:void(0);"><span>Mua Sắm Ngay</span></a>
-</div>
-<div class="banner-pic"><img class="cmPic lazy" src="/" data-img-src="./images/banner-pic.png" alt="banner" /></div>
-<div class="shap-more">
-<span class="more-01"></span>
-<span class="more-02"></span>
-<span class="more-03"></span>
-<span class="more-04"></span>
-<span class="more-05"></span>
-<span class="more-06"></span>
 </div>
 </div>
 
+<div class="cart-item">
+<div class="cart-pic"><img src="./images/tv-02.jpg" alt="pic"></div>
+<div class="cart-txt">
+<div class="cart-name">
+<h3>Smart TV UHD 4K 50 inch NU7400</h3></div>
+<div class="cart-price"><span class="money red-large">19.900.000đ</span></div>
+<div class="cart-tool">
+<div class="quantity-box"><span class="add-but"></span>
+<input class="quantity" type="text" value="1" readonly=""><span class="sub-but"></span></div>
+<div class="delete-box"><a class="delete-but" href="javascript:void(0)"><span class="delete-icon"></span>Xóa sản phẩm</a></div>
 </div>
 </div>
-
-<div class="middle-content focus-box">
-<div class="middle-details">
-
-<div class="login-box">
-
-<div class="login-pic"><img class="cmPic lazy" src="/" data-img-src="./images/card.png" alt="pic"></div>
-
-<div class="login-txt">
-<h2>Đăng Nhập VinID</h2>
-<p>Ưu đãi hoàn tiền đến 10% cho chủ thẻ VinID khi mua các sản phẩm Samsung. Đăng nhập ngay! </p>
 </div>
 
-<div class="login-form">
-<form action="#" id="login_form">
-
-<div class="field-box">
-
-<div class="field">
-<span class="mask-input">Họ và tên</span>
-<input id="user_name" name="user_name" type="text" value="">
+<ul class="cart-info">
+<li>
+<p>Thành tiền</p>
+<p class="money red-large"><span class="amount">34.800.000</span>đ</p>
+</li>
+<li>
+<p>Hoàn vào VinID</p>
+<p class="money-minus"><span>3.480.000</span>đ</p>
+</li>
+<li class="vat-note">(Giá đã bao gồm VAT)</li>
+</ul>
 </div>
-
-<div class="field">
-<span class="mask-input">Số điện thoại</span>
-<input id="user_phone" name="user_phone" type="tel" value="">
-</div>
-
-<div class="field">
-<span class="mask-input">Số thẻ VinID</span>
-<input id="user_vinid" name="user_vinid" type="text" value="">
-</div>
-
-<div class="field">
-<span class="mask-input">Email</span>
-<input id="user_email" name="user_email" type="text" value="">
-</div>
-
-</div>
+<!--load by JSON-->
 
 <div class="box-btn">
-<button type="button" class="login-but" id="login_but">Đăng Nhập</button>
-</div>
-
-</form>
+<a class="payment-but" href="order.html">Thanh toán</a>
+<a class="more" href="products.html">Tiếp tục mua sắm</a>
 </div>
 
 </div>
@@ -191,23 +171,15 @@ else window.addEventListener('load', loadDeferredStyles);
 <div class="popup-box">
 <div class="close-pop in-box"></div>
 
-<div class="success-login">
-<div class="success-login-pic">
-<img src="./images/card.png" alt="pic">
-</div>
-<div class="success-login-txt">
-<h2>Đăng Nhập <br>Thành Công</h2>
-<p>Rinh thả ga các sản phẩm Samsung về nhà với đặc quyền ưu đãi VinID. Bắt đầu mua sắm ngay!</p>
-
-</div>
-<span class="circle-icon"></span>
-</div>
-
-<div class="message-box hide">
+<div class="message-box confirm-cart hide">
 <div class="message-txt">
-<h2>Đăng Nhập <br>Thất Bại</h2>
-<p>﻿﻿Chúng tôi vô cùng xin lỗi về vấn đề này!</p>
+<p>Bạn có muốn xóa sản phẩm này ra khỏi giỏ hàng hay không ?</p>
 </div>
+<div class="box-btn">
+<button class="confirm_delete">Có</button>
+<button class="confirm_cancel">Không</button>
+</div>
+
 </div>
 
 </div>
