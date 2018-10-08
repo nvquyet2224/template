@@ -1022,7 +1022,6 @@ $(document).ready(function () {
 	
 	//Code giả lập user đã login thì add class isLogin
 	$('body').addClass('isLogin');
-	$('body').addClass('show');
 	
 	//Setup cart
 	cartProgress();
@@ -1045,8 +1044,10 @@ $(document).ready(function () {
 
 	//Star page
 	setTimeout(function(){
+		$('body').addClass('show');
 		window.scrollTo(0,0);
 		onScroll();
+		
 		$('.loadicon').fadeOut(300, function(){
 			$('.content').stop().animate({'opacity':1}, 500 ,'linear', function () {
 				Start();
