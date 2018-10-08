@@ -87,7 +87,7 @@ button.is-processing::after, a.payment-but.is-processing::after, a.payment-next.
 
 
 .btn{position:relative;display:inline-block;padding:0 15px;width:auto;height:40px;line-height:38px;border:1px solid #c7c7c7;font-family:'SamsungOne600';font-weight:normal;font-style:normal;font-size:16px;color:#333;text-transform:uppercase;border-radius:5px;-webkit-border-radius:5px;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}
-.btn.grey{color:#fff;background-color:#0057a4;border:1px solid #0057a4;}
+.btn.grey{color:rgba(255,255,255,0.8);background-color:#0057a4;border:1px solid #0057a4;}
 
 button:hover, a.payment-but:hover, a.payment-next:hover, .btn:hover{opacity:0.5}
 

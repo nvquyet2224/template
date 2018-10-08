@@ -321,25 +321,23 @@ background:linear-gradient(90deg, rgba(32,116,220,1) 0%, rgba(32,116,220,1) 1%, 
 .product-name h3{font-size:16px;line-height:1.2}
 .product-price{margin-bottom:30px;display:none}
 .product-info{margin-bottom:20px}
-.product-info li{overflow:hidden;margin-bottom:10px}
-.product-info li:last-child{margin-bottom:0}
-.product-info span{float:left}
+.product-info li{overflow:hidden}
+.product-info span{float:left;color:#a40000}
 
 .product-info span:first-child{width:50%;font-size:15px;text-align:left}
 .product-info span:last-child{width:50%;text-align:right}
-
-.product-info li:last-child span:first-child{color:#a40000}
-.product-info li:first-child .money{font-size:17px}
-
+.product-info li .money{font-size:17px}
 .product-but li{margin-bottom:14px}
-.product-but li:last-child{margin-bottom:0}
-.product-but .btn{display:block;width:100%;text-align:center;}
 
+.product-but .btn{display:block;width:100%;text-align:center;}
 .money del{color:#a3a3a3;font-size:16px;}
 .red-large{color:#de0303;font-size:24px}
 .red-small{color:#a40000;font-size:16px}
 .product-name{height:40px;overflow:hidden}
 .product-price, .product-info, .product-but{padding:0 10px}
+
+.refund-box{position:relative;display:block;width:100%;height:auto;padding:5px 0 0 10px}
+.refund-box li{position:relative;display:block;width:100%;height:auto;padding:8px 0 8px 40px;background:url(../images/icon-cart.png) no-repeat left center;font-family:'SamsungOne600';font-weight:normal;font-style:normal;font-size:14px;text-align:left}
 
 
 
@@ -747,15 +745,17 @@ button{-webkit-transition:none;transition:none}
 .product-name h3{font-size:24px}
 .product-price{margin-bottom:30px}
 .product-info li{margin-bottom:10px}
-.product-info span:first-child{font-size:20px}
-.product-but li{margin-bottom:30px}
+.product-but li{margin-bottom:15px}
 .money del{font-size:22px}
 .red-large{font-size:32px}
-.product-info li:first-child .money, .red-small{font-size:22px}
+.product-info li money, .red-small{font-size:22px}
 
 .product-price, .product-info, .product-but{padding:0 10px}
 .product-but .btn{font-size:22px;height:56px;line-height:52px}
 
+.product-info span:first-child{font-size:18px}
+.product-info li .money{font-size:20px}
+.refund-box li{font-size:15px}
 
 
 /*CART*/
@@ -879,6 +879,8 @@ button{-webkit-transition:none;transition:none}
 .product-filter{border-bottom:1px solid #ddd;margin-bottom:10px}
 
 .product-item .product-inr{border-right:1px solid transparent !important}
+.product-info span:first-child, .product-info li .money{font-size:17px}
+
 
 
 /*CART*/
@@ -1075,14 +1077,21 @@ button{-webkit-transition:none;transition:none}
 .promotion{min-height:28px}
 .promotion span{font-size:14px}
 .product-item .red-large{font-size:16px}
-.product-info span:first-child, .product-info li:first-child .money, .red-small{font-size:14px}
+.product-info span:first-child, .product-info li .money, .red-small{font-size:13px}
+
 .product-price, .product-info, .product-but{padding:0 10px}
 .product-name, .product-price, .product-info{margin-bottom:15px}
 .product-but li{margin-bottom:10px}
 .product-but .btn{font-size:13px;padding:0 10px;height:40px;line-height:36px}
 .product-box{padding-bottom:30px}
+.refund-box{padding:5px 0 0 10px}
+.refund-box li{background-size:26px 22px;font-size:11px;padding:5px 0 5px 32px}
 
 .filter-box li span{font-size:18px}
+
+
+
+
 
 
 }
@@ -1217,12 +1226,14 @@ button{-webkit-transition:none;transition:none}
 
 /*PRODUCTS*/
 .product-item .red-large{font-size:14px}
-.product-info span:first-child, .product-info li:first-child .money, .red-small{font-size:13px}
+.product-info span:first-child, .product-info li .money, .red-small{font-size:13px}
 .product-but .btn{font-size:12px}
 .product-price, .product-info, .product-but{padding:0}
 
 .filter-box li{margin-right:10px}
 .filter-box li span{font-size:17px}
+.refund-box{padding:5px 0 0 0}
+.refund-box li{font-size:10px}
 
 /*CONDITION*/
 .table-wrap th, .table-wrap td{font-size:12px}
