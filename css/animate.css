@@ -1,10 +1,9 @@
 /*ANIMATION*/
 @-webkit-keyframes Start{
-	from{visibility:hidden}
 	to{visibility:visible}
 }
+
 @keyframes Start{
-	from{visibility:hidden}
 	to{visibility:visible}
 }
 
