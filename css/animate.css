@@ -1,4 +1,13 @@
 /*ANIMATION*/
+@-webkit-keyframes Start{
+	from{visibility:hidden}
+	to{visibility:visible}
+}
+@keyframes Start{
+	from{visibility:hidden}
+	to{visibility:visible}
+}
+
 @-webkit-keyframes fadeIn{
     0%{opacity:0}
     100%{opacity:1}

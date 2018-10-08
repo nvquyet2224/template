@@ -24,7 +24,7 @@
 .header, .footer, .popup-content, .full-album, .go-down, .to-top{display:none}
 .content{width:100%;height:auto;padding:75px 0 0 0;opacity:0}
 .loadicon{position:fixed;left:0;top:0;display:inline-block;width:100%;height:100%;background-color:#fff;z-index:9999}
-.loadicon::before{content:'';position:absolute;left:50%;top:50%;margin:-40px 0 0 -40px;width:80px;height:80px;background:url(../images/loading.svg) no-repeat center center}
+.loadicon::before{content:'';position:absolute;left:50%;top:50%;margin:-40px 0 0 -40px;width:80px;height:80px;background:url(images/loading.svg) no-repeat center center}
 .loadicon.is-processing{display:block !important;background-color:transparent}
 </style>
 <link rel="icon" href="images/favicon.ico">
@@ -226,6 +226,8 @@ else window.addEventListener('load', loadDeferredStyles);
 </div>
 <!--WRAP-->
 
+<link defer href="css/small.css" rel="stylesheet" type="text/css">
+
 <!--SCRIPT-->
 <script src="js/jquery.js"></script>
 <script src="js/base.js"></script>
@@ -233,6 +235,5 @@ else window.addEventListener('load', loadDeferredStyles);
 <script src="js/main.js"></script>
 <script src="js/frontend-only-test-status.js"></script>
 <!--SCRIPT-->
-<style>body{visibility:visible}</style>
 </body>
 </html>
