@@ -1022,6 +1022,7 @@ $(document).ready(function () {
 	
 	//Code giả lập user đã login thì add class isLogin
 	$('body').addClass('isLogin');
+	$('body').addClass('show');
 	
 	//Setup cart
 	cartProgress();

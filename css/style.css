@@ -3,7 +3,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 html{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:none}
 body{line-height:1;color:#000;font-family:'SamsungOne700';-webkit-text-size-adjust:none}
-
+body.show{-webkit-animation:Start 0.5s steps(1, end) 0s 1 normal both;animation:Start 0.5s steps(1, end) 0s 1 normal both}
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 *, *:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 
