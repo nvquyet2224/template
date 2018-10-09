@@ -294,20 +294,27 @@
 <p>Footer here</p>
 </footer>
 
-
-<noscript id="required-styles">
+<noscript id="required-styles1">
 <link rel="stylesheet" type="text/css" href="css/fonts.css">
 <link rel="stylesheet" type="text/css" href="css/slide.css">
 <link rel="stylesheet" type="text/css" href="css/animation.css">
 </noscript>
 
-<noscript id="specific-styles">
+<noscript id="required-styles2">
+<link rel="stylesheet" type="text/css" href="css/slide.css">
+</noscript>
+
+<noscript id="required-styles3">
+<link rel="stylesheet" type="text/css" href="css/animation.css">
+</noscript>
+
+<noscript id="required-styles4">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </noscript>
 
 <script type="text/javascript">
-var loadRequiredStyles = function () {
-    var addStylesNode = document.getElementById("required-styles");
+var loadRequiredStyles1 = function () {
+    var addStylesNode = document.getElementById("required-styles1");
     var replacement = document.createElement("div");
     replacement.innerHTML = addStylesNode.textContent;
     document.body.appendChild(replacement)
@@ -315,13 +322,13 @@ var loadRequiredStyles = function () {
 };
 var raf = requestAnimationFrame || mozRequestAnimationFrame ||
     webkitRequestAnimationFrame || msRequestAnimationFrame;
-if (raf) raf(function () {window.setTimeout(loadRequiredStyles, 0); });
-else window.addEventListener('load', loadRequiredStyles);
+if (raf) raf(function () {window.setTimeout(loadRequiredStyles1, 0); });
+else window.addEventListener('load', loadRequiredStyles1);
 </script>
 
 <script type="text/javascript">
-var loadSpecificStyles = function () {
-    var addStylesNode = document.getElementById("specific-styles");
+var loadRequiredStyles2 = function () {
+    var addStylesNode = document.getElementById("required-styles2");
     var replacement = document.createElement("div");
     replacement.innerHTML = addStylesNode.textContent;
     document.body.appendChild(replacement)
@@ -329,10 +336,37 @@ var loadSpecificStyles = function () {
 };
 var raf = requestAnimationFrame || mozRequestAnimationFrame ||
     webkitRequestAnimationFrame || msRequestAnimationFrame;
-if (raf) raf(function () { window.setTimeout(loadSpecificStyles, 0); });
-else window.addEventListener('load', loadSpecificStyles);
+if (raf) raf(function () {window.setTimeout(loadRequiredStyles2, 0); });
+else window.addEventListener('load', loadRequiredStyles2);
 </script>
 
+<script type="text/javascript">
+var loadRequiredStyles3 = function () {
+    var addStylesNode = document.getElementById("required-styles3");
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(function () {window.setTimeout(loadRequiredStyles3, 0); });
+else window.addEventListener('load', loadRequiredStyles3);
+</script>
+
+<script type="text/javascript">
+var loadRequiredStyles4 = function () {
+    var addStylesNode = document.getElementById("required-styles4");
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(function () {window.setTimeout(loadRequiredStyles4, 0); });
+else window.addEventListener('load', loadRequiredStyles4);
+</script>
 
 <!--SCRIPT-->
 <script type="text/javascript" src="js/jquery.js"></script>
