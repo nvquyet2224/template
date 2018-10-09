@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="useFull">
+
+<head>
+<style>
+	html,body{padding:0;margin:0;width:100%;height:100%;overflow:hidden}
+	.container{width:100%;height:100%;position:absolute;left:0;top:0}
+	#btnReset{position:fixed;right:20px;bottom:20px;font-size:15px;text-transform:uppercase;padding:10px;cursor:pointer}
+
+</style>
+
+<script>
+xmlns="http://www.w3.org/2000/svg"
+xlinkns="http://www.w3.org/1999/xlink"
+var D=document; var count=3
+function startup(evt){
+   //B=D.getElementById("B")
+   //D.getElementById("A").beginElement()
+   //var t=2000
+   //window.setTimeout("B.beginElement()",t)
+}
+
+function rebuild(evt){
+	//var Q=evt.target
+	//T=document.getElementById(Q.id+"T")
+	//T.firstChild.nodeValue=count++
+	//Q.beginElement();
+}
+</script>
+
+</head>
+
+<body>
+<div class="container">
+
+<svg xmlns="http://www.w3.org/2000/svg" onload="startup(evt)" width="100%" height="100%">
+
+<g>
+
+<path id="curve" stroke="red" fill="none" stroke-width="5" d="M 110,150 C 300,80 400,300 450,100  500,-100 -90,220 110,150z"></path>
+
+<ellipse cx="0" cy="0" rx="20" ry="12" fill="#aaa" 
+ stroke="#666" stroke-width="2" opacity="0">
+ <set attributeName="opacity" to=".8" begin="M.begin" />
+ <animateMotion id="M" dur="2s" begin="1" rotate="auto" 
+ repeatCount="indefinite" >
+ <mpath xlink:href="#curve"/>
+ </animateMotion>
+</ellipse>
+
+</g>
+
+<rect x="0" y="0" height="100%" id="Canvas" width="100%" fill="none"/>
+<path id="P" d="M 0 200 C 100 0 200 400 300 200" fill="none" stroke="#804" stroke-width="3">
+<animate attributeName="d" dur="1s" repeatCount="indefinite"
+values=" M -10 200 C 150 100 300 300 450 200; M -10 200 C 150 300 300 100 450 200; M -10 200 C 150 100 300 300 450 200"/>
+</path>
+<g>
+<animateMotion dur="4s" id="A" rotate="auto" begin="indefinite" onend="rebuild(evt)">
+<mpath xlink:href="#P"/></animateMotion>
+<ellipse fill="yellow" cx="0" cy="0" rx="22" ry="14" stroke="#804" stroke-width="5"/>
+<text id="AT" x="-10" y="7" font-size="12pt">1</text>
+</g>
+<g opacity="0">
+<set attributeName="opacity" to="1" begin="B.begin" />
+<set attributeName="opacity" to="0" begin="B.end" />
+<animateMotion dur="3.3s" id="B" rotate="auto" begin="indefinite" onend="rebuild(evt)">
+<mpath xlink:href="#P"/></animateMotion>
+<ellipse fill="cyan" cx="0" cy="0" rx="22" ry="14" stroke="#804" stroke-width="5"/>
+<text id="BT" x="-10" y="7" font-size="12pt">2</text>
+</g>
+
+</svg>
+
+<button id="btnReset" onClick="resetClip()">Reset</button>
+</div>
+</body>
+</html>

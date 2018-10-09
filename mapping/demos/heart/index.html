@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Displacement Map</title>
+	<style>
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		img {
+			display: none;
+		}
+		.hidden {
+			display: none;
+		}
+		canvas {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+
+<img id="img-map" src="img/map.png"/>
+<img id="img-source" src="img/background.jpg"/>
+<img id="img-overlay" src="img/heart.png"/>
+
+<canvas id="source" class="hidden" width="400" height="400"></canvas>
+<canvas id="map" class="hidden" width="178" height="170"></canvas>
+
+<canvas id="target" width="400" height="400"></canvas>
+
+<canvas id="overlay" class="hidden" width="400" height="400"></canvas>
+
+<script src="js/libs/easeljs-0.4.1.min.js"></script>
+<script src="js/libs/tweenjs-0.2.0.min.js"></script>
+<script src="js/libs/dat.gui.js"></script>
+<script src="js/libs/jquery.js"></script>
+<script src="js/displacement.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="useFull">
+
+<head>
+<style>
+	html,body{padding:0;margin:0;width:100%;height:100%;overflow:hidden}
+	svg{position:fixed;left:0;top:0}
+</style>
+</head>
+
+<body>
+
+<svg id="SVG" xmlns="http://www.w3.org/2000/svg" onload="receive(evt)" width="100%" height="100%"></svg>
+
+<script>
+var xmlns="http://www.w3.org/2000/svg";
+var SVGRoot;
+function receive(evt){
+ SVGRoot=evt.target;
+// var s="MakeC(evt.clientX,evt.clientY)";
+ //SVGRoot.setAttributeNS(null,"onclick",s);
+ RandomC();
+}
+
+function RemoveC(evt) {
+	id = evt.target.id;
+	elm = SVGRoot.getElementById(id);
+	SVGRoot.removeChild(elm);
+}
+
+//function MoveC(id) {
+function MoveC(evt) {
+	id = evt.target.id;
+	
+	elm = SVGRoot.getElementById(id);
+	
+	cx = parseInt(elm.getAttributeNS(null, 'cx'));
+	cy = parseInt(elm.getAttributeNS(null, 'cy'));
+	
+	dx = Math.floor(Math.random() * 10) + 1;
+	dy = Math.floor(Math.random() * 10) + 1;
+	
+	cx = cx + dx;
+	cy = cy + dy;
+	
+	elm.setAttributeNS(null,"cx",cx);
+	elm.setAttributeNS(null,"cy",cy);
+	
+}
+
+var count = 1;
+function MakeC(x,y){
+ var R=document.createElementNS(xmlns,"circle");
+ R.setAttributeNS(null,"fill","#9c3");
+ R.setAttributeNS(null,"stroke","black");
+ 
+ //s="top.SVGRoot.removeChild(evt.target)";
+ //R.setAttributeNS(null,"onclick",s);
+ 
+ id = "cir_" + count;
+ events = "top.MoveC(evt)";
+ //evt = "top.MoveC(id)";
+ R.setAttributeNS(null,"onclick",events);
+ 
+ R.setAttributeNS(null,"id",id);
+ R.setAttributeNS(null,"cx",x);
+ R.setAttributeNS(null,"cy",y);
+
+ r=12+Math.random()*25;
+
+ R.setAttributeNS(null,"r",r);
+ SVGRoot.appendChild(R);
+ 
+ count++;
+ 
+}
+
+function RandomC(){
+	var num = 100;
+	var w = window.innerWidth - 120;
+	var h = window.innerHeight - 120;
+	
+	for(var i=0;i<num;i++){
+		var x = Math.floor(Math.random() * w) + 60;	
+		var y = Math.floor(Math.random() * h) + 60;
+		MakeC(x,y);
+	}
+}
+</script>
+
+</body>
+</html>

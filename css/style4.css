@@ -1,0 +1,842 @@
+/*MEDIA*/
+
+@media screen and (max-width:1660px) {
+/*BANNER*/
+.banner-title h2 img{max-width:340px}
+.banner-txt p{font-size:14px}
+
+}
+
+@media screen and (max-width:1600px) {
+/*LAYOUT*/
+.user{right:23%}
+.cart-shopping{right:36%}
+
+/*BANNER*/
+#home-page .shap-more{top:0;width:55vw}
+
+
+}
+
+@media screen and (max-width:1500px) {
+/*BANNER*/
+.banner-title{padding-top:24px}
+.banner-pic{top:24px}
+.banner-title h2 img{max-width:340px}
+.banner-title h3{font-size:18px}
+.banner-txt p{font-size:13px}
+
+}
+
+@media screen and (max-width:1380px) {
+/*LAYOUT*/
+.logo{left:7%}
+.nav li.hotline{right:7%}
+.user{right:22%}
+.cart-shopping{right:36%}
+
+}
+
+@media screen and (max-width:1360px) {
+/*BANNER*/
+.banner-title{left:18vw}
+.banner-txt{left:17.93vw}
+.banner-title, .banner-txt{width:310px}
+.banner-title h3{font-size:16px}
+.banner-txt p{font-size:12px}
+.banner-box .btn{font-size:12px;margin-top:10px}
+
+}
+
+@media screen and (max-width:1300px) {
+/*LAYOUT*/
+.logo{left:5%}
+.nav li.hotline{right:5%}
+.user{right:21%}
+.cart-shopping{right:36%}
+
+
+/*BANNER*/
+#home-page .more-02{left:30%}
+#home-page .banner-txt p{font-size:15px}
+
+
+/*PRODUCTS*/
+.product-filter{padding:48px 40px 26px 40px}
+.product-box{padding:0 20px 40px 20px}
+
+
+
+
+/*CART*/
+.cart-name{width:180px}
+.cart-name h3{font-size:15px}
+.cart-price{width:140px;margin-left:10px}
+.cart-price .red-large{font-size:20px}
+.cart-price del{font-size:16px}
+.cart-info li p.red-large{font-size:25px}
+
+}
+
+@media screen and (max-width:1200px) {
+/*BANNER*/
+.banner-title{padding-top:15px}
+.banner-pic{top:15px}
+
+
+}
+
+@media screen and (min-width:1101px) and (max-height:900px) {
+/*BANNER*/
+#home-page .banner-txt p{font-size:15px}
+
+/*LOGIN*/
+.login-txt{margin-bottom:20px}
+.login-txt h2{font-size:36px}
+.login-txt p{font-size:18px}
+.login-box .field{margin-bottom:24px}
+.login-box .nameformError{font-size:12px}	
+}
+
+
+@media screen and (min-width:1101px) and (max-height:780px) {
+/*BANNER*/
+#home-page .banner-pic{bottom:3vw;max-width:720px}
+
+
+/*LOGIN*/
+.login-box{bottom:3vw;max-width:500px}
+.login-txt h2{font-size:30px;margin-bottom:26px}
+.login-txt h2::after{bottom:-12px}
+.login-txt p{font-size:16px}
+}
+
+@media screen and (min-width:1101px) and (max-height:740px) {
+/*BANNER*/
+#home-page .banner-pic{bottom:2vw}
+
+/*LOGIN*/
+.login-box{max-width:476px}
+.login-pic img{width:38%}	
+
+
+}
+
+@media screen and (min-width:1101px) and (max-height:640px) {
+/*BANNER*/
+#home-page .banner-pic{bottom:2vw;max-width:560px}
+#home-page .banner-txt p{font-size:13px;margin-bottom:5px}
+#home-page .banner-title{padding:2vw 0 0 0}
+
+/*LOGIN*/
+.login-txt{padding:0 5%;margin-bottom:15px}
+.login-txt h2{font-size:22px}
+.login-txt p{font-size:15px}
+.login-form{padding:0 5% 7% 5%}
+.login-box .field{margin-bottom:10px}
+.login-pic img{width:36%}
+.login-box .nameformError{top:70%;left:10px;background-color:#fff;padding:0 7px 5px 7px;-webkit-border-radius:30px;border-radius:30px;font-size:10px}
+.login-box .box-btn{padding-top:5px}
+
+}
+
+
+@media screen and (max-width:1100px){
+/*BUTTON*/
+button{-webkit-transition:none;transition:none}
+
+
+/*LAYOUT*/
+.bg-white{height:98px}
+#home-page .bg-white, #products-page .bg-white{background-color:#fff}
+
+.logo{height:98px;line-height:98px;left:5%;top:0;}
+.logo img{max-width:108px}
+
+.nav-but{position:fixed;right:5%;top:33px;width:47px;height:32px;display:block;cursor:pointer;z-index:160}
+.nav-but span:nth-child(1){position:absolute;left:0;top:14px;width:100%;height:4px;-webkit-border-radius:30px;border-radius:30px;background-color:#222c45;-webkit-transition:opacity 0.3s ease-in-out;transition:opacity 0.3s ease-in-out}
+.nav-but span:nth-child(1)::before{content:'';position:absolute;left:0;top:-14px;width:100%;height:100%;background-color:#222c45;-webkit-border-radius:30px;border-radius:30px;}
+.nav-but span:nth-child(1)::after{content:'';position:absolute;left:0;bottom:-14px;width:100%;height:100%;background-color:#222c45;-webkit-border-radius:30px;border-radius:30px;}
+.nav-but span:nth-child(2), .nav-but span:nth-child(3){position:absolute;left:0;top:0;width:100%;height:100%;-webkit-transform-origin:50%;transform-origin:50%;opacity:0;-webkit-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:opacity 0.2s ease-in-out, transform 0.3s linear;transition:opacity 0.2s ease-in-out, transform 0.3s linear}
+.nav-but span:nth-child(2)::before, .nav-but span:nth-child(3)::before{content:'';position:absolute;left:0;top:14px;width:100%;height:4px;background-color:#222c45}
+.nav-but.active span:nth-child(1){opacity:0}
+.nav-but.active span:nth-child(2){opacity:1;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.nav-but.active span:nth-child(3){opacity:1;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
+
+.cart-shopping{position:fixed;right:130px;top:25px;width:48px;height:43px;display:block}
+.cart-icon{width:100%;height:100%;-webkit-background-size:contain;background-size:contain;font-size:0;}
+.cart-text{left:12px;bottom:2px;width:24px;height:24px;line-height:24px}
+
+.navigation{position:fixed;left:0;top:98px;width:100%;height:0;opacity:0;overflow:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;visibility:hidden;background-color:rgba(0,0,0,0.5);z-index:8;-webkit-transition:height 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0.01s, opacity 0.3s ease-in-out 0.01s;transition:height 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0.01s, opacity 0.3s ease-in-out 0.01s}
+.user{position:relative;right:auto;top:auto;width:100%;height:auto;border-bottom:2px solid #d3d3d3;padding:30px 0 30px 47px}
+.user li.account-name{display:inline-block;width:auto;max-width:70%;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;padding:18px 0 12px 87px;-webkit-background-size:contain;background-size:contain}
+.account-name span{font-family:'SamsungOne800';font-weight:900;font-style:normal;font-size:39px;max-width:inherit;text-overflow:unset;overflow:visible}
+
+.user a.login-hide{top:auto}
+.user li:nth-child(2){float:right;padding:15px 42px 0 0}
+.user a{font-family:'SamsungOne600';font-weight:normal;font-style:normal;font-size:30px;color:#0057a4;text-decoration:underline}
+.nav-outer{position:relative;display:block;width:100%;height:auto;background-color:#eeeeee}
+.nav-outer::before{content:'';position:absolute;left:0;top:0;width:100%;height:1px;box-shadow:0 0 10px rgba(0,0,0,0.3)}
+.nav{position:relative;display:block;width:100%;height:auto;padding:20px 0}
+.nav li{position:relative;display:block;margin-bottom:1px;}
+.nav a{display:block;padding:31px 133px;font-family:'SamsungOne600';font-weight:normal;font-style:normal;font-size:36px;color:#232d46}
+.nav li.hotline{position:relative;right:auto;top:auto;padding:0;background:none}
+.nav li.hotline a, .nav li.hotline a span{font-family:'SamsungOne600';font-weight:normal;font-style:normal;font-size:36px;color:#232d46}
+.navigation.active{visibility:visible;opacity:1}
+
+.user a{-webkit-transition:none;transition:none}
+.user a:hover{opacity:1}
+
+.content{padding:98px 0 0 0}
+
+
+
+/*HIDE*/
+.hide-pc{display:block}
+.hide-sp{display:none}
+
+/*PICS*/
+.pcPic{display:none}
+.spPic{display:block}
+
+
+/*BACKGROUND*/
+.pcBg{display:none}
+.spBg{display:block}
+
+/*POPUP CONTENT*/
+.popup-wrap{-webkit-overflow-scrolling:touch}
+.popup-wrap > *{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+.close-pop, .close-pop-extra{width:40px;height:40px;right:10px;top:10px}
+
+
+
+/*HOME PAGE*/
+#home-page .content{padding:98px 0 0 0}
+#home-page .header{display:block}
+
+/*BANNER*/
+.banner-content{width:100%;height:auto;position:relative;background-color:#eeeeee;padding:0}
+#products-page .banner-content{padding:0}
+.banner-details{width:100%;height:auto;position:relative;left:auto;bottom:auto;max-width:inherit}
+.banner-bg{position:absolute;left:0;top:0;width:100%;height:100%;background-position:center bottom;background-size:100%;background-repeat:no-repeat}
+.banner-shadow{display:none}
+.banner-box{position:relative;display:block;width:100%;height:auto;color:#fff;margin:0 auto;max-width:750px;padding:30px 5%;text-align:center;z-index:1}
+#home-page .banner-title, .banner-title{padding:0;left:auto;top:auto;right:auto;bottom:auto;width:100%;margin:0}
+.banner-title h2{line-height:0;overflow:hidden;margin-bottom:13px}
+.banner-title h2 img{display:inline-block;width:auto;height:auto;max-width:70.2vw}
+#home-page .banner-title h3, .banner-title h3{position:relative;display:inline-block;font-size:30px;color:#9f1e25;line-height:1;margin-bottom:17px}
+#home-page .banner-pic, .banner-pic{width:100%;height:auto;line-height:0;overflow:hidden;text-align:right;position:relative;left:auto;bottom:auto;right:auto;top:auto;max-width:inherit}
+.banner-pic img{display:inline-block;width:auto;height:auto;max-width:89%}
+#home-page .banner-txt, .banner-txt{padding:0 0 40px 0;left:auto;width:100%}
+#home-page .banner-txt p, .banner-txt p{font-size:22px;color:#222c45;margin-bottom:10px}
+.banner-box .btn{font-size:22px;height:55px;line-height:51px;padding:0 35px}
+
+.vin-logo{width:auto;height:auto;max-width:20.6vw;line-height:0;display:inline-block;overflow:hidden;vertical-align:middle;margin:-10px 0 0 20px}
+.vin-logo img{width:auto;height:auto;max-width:100%}
+.shap{position:absolute;}
+.shap-01{max-width:52px}
+.shap-01::before{content:'';position:relative;display:block;width:100%;height:auto;padding-top:103%;}
+.shap-02{top:0;max-width:73px}
+.shap-02::before{content:'';position:relative;display:block;width:100%;height:auto;padding-top:67%}
+.samsung-logo{width:auto;height:auto;max-width:18vw;line-height:inherit;overflow:hidden;display:inline-block;vertical-align:bottom;margin:0 12px}
+.samsung-logo img{width:auto;height:auto;max-width:100%}
+
+#home-page .banner-box .btn{display:inline-block}
+#home-page .banner-content{min-height:auto}
+#home-page .content{height:auto}
+#home-page .shap{display:block}
+
+/*LOGIN*/
+.login-box{position:relative;right:auto;bottom:auto;display:block;width:84%;height:auto;max-width:630px;margin:0 auto;padding:50px 0;text-align:center}
+.login-txt{position:relative;display:block;width:100%;height:auto;margin-bottom:49px}
+.login-txt h2{position:relative;font-size:60px;margin-bottom:66px}
+.login-txt h2::after{content:'';position:absolute;left:50%;bottom:-25px;width:100px;height:4px;background-color:#0057a4;margin:0 0 0 -50px}
+.login-txt p{font-size:28px;color:#333}
+.login-txt p br{display:block}
+.login-pic{position:relative;display:block;width:100%;height:auto;margin-bottom:10px;line-height:0;overflow:hidden;text-align:center}
+.login-pic img{display:inline-block;width:80%;height:auto;max-width:380px}
+.login-form{position:relative;display:block;width:100%;height:auto}
+.login-box .box-btn{padding-top:10px}
+.login-txt, .login-form{padding:0}
+.login-box .nameformError{position:relative;left:auto;top:auto;margin-top:5px}
+
+
+
+/*PRODUCTS*/
+.banner-content + .normal-content{margin-top:auto;background-color:#fff}
+.shap-more{display:none}
+
+.catalog-list::before{display:none}
+.catalog-item::before{bottom:-33px;margin:0 0 0 -12px;border:24px solid #0057a4;border-right:12px solid transparent;border-left:12px solid transparent;border-top:0;opacity:0}
+.catalog-item a::before{height:calc(100% + 37px);z-index:2;opacity:0}
+.catalog-pic::before{padding-top:54%}
+.catalog-name{padding:10px 0}
+.catalog-name h2{font-size:18px}
+
+.catalog-item::before, .catalog-item a::before, .catalog-item a::after, .filter-box li span.filter-but{-webkit-transition:none;transition:none}
+.catalog-item:not(.active):hover::before, .catalog-item:not(.active):hover a::before{opacity:0}
+.catalog-item:not(.active):hover a::after{opacity:1}
+
+.product-filter{padding:60px 0 20px 40px;text-align:left}
+.filter-box li{margin-right:80px}
+.filter-box li span{font-size:28px}
+.filter-box li:not(.active):hover span.filter-but{text-decoration:underline;font-family:'SamsungOne600';font-weight:normal;font-style:normal}
+
+
+.product-box{padding:0}
+.product-item{width:50%;margin-bottom:0;-webkit-transition:none;transition:none}
+.product-item:hover{box-shadow:none}
+.product-inr{padding:40px;border-right:1px solid #ddd;border-top:1px solid #ddd}
+.product-item:nth-child(2n) .product-inr{border-right:1px solid transparent}
+.promotion{min-height:42px}
+.promotion span{font-size:28px}
+.product-name{height:56px;margin-bottom:20px}
+.product-name h3{font-size:24px}
+.product-price{margin-bottom:30px}
+.product-info li{margin-bottom:10px}
+.product-but li{margin-bottom:15px}
+.money del{font-size:22px}
+.red-large{font-size:32px}
+.product-info li money, .red-small{font-size:22px}
+
+.product-price, .product-info, .product-but{padding:0 10px}
+.product-but .btn{font-size:22px;height:56px;line-height:52px}
+
+.product-info span:first-child{font-size:18px}
+.product-info li .money{font-size:20px}
+.refund-box li{font-size:15px}
+
+
+/*CART*/
+.cart-box{width:100%;padding:50px 5%}
+.cart-box h2{font-size:36px}
+
+.cart-item{float:none;width:100%;padding:40px 0}
+.cart-pic{width:26%;padding:0 12px}
+
+.cart-txt{position:relative;float:left;width:74%;height:auto;padding:0 0 0 10px}
+.cart-name{position:relative;display:block;width:100%;height:auto;margin-bottom:26px}
+.cart-name h3{font-size:26px}
+
+.cart-price{position:relative;display:block;width:100%;height:auto;margin:0 0 26px 0}
+.cart-price .red-large{font-size:32px}
+.cart-price del{font-size:24px;float:right}
+
+.cart-tool{position:relative;display:block;width:100%;height:auto;clear:both}
+.cart-tool::after{content:'';position:relative;display:block;width:100%;height:0;clear:both}
+.quantity-box{display:block;width:50%;float:left;position:relative;right:auto;top:auto;text-align:left}
+.quantity-box .quantity{width:62px;height:36px;font-size:22px;line-height:32px}
+.add-but, .sub-but{width:34px;height:34px}
+.delete-box{width:50%;float:left;text-align:right;margin-top:-2px;position:relative;left:auto;top:auto}
+.delete-but{font-size:18px}
+.delete-icon{width:36px;height:38px;margin-right:10px;top:auto}
+
+.cart-info{position:relative;width:100%;right:auto;top:auto;height:auto;padding:30px 0 60px 0;background-color:transparent}
+.cart-info::before{content:'';position:absolute;left:0;top:0;width:100%;height:2px;background-color:#d6d6d6}
+.cart-info li{line-height:1.2;margin-bottom:10px}
+.cart-info li p{font-size:26px}
+.cart-info li p.red-large{font-size:32px}
+.cart-info li p.money-minus{font-size:30px}
+.vat-note{color:#7f7f7f;font-size:24px}
+.cart-box .box-btn{position:relative;right:auto;top:auto;width:100%;text-align:center}
+.cart-box .payment-but{margin-bottom:40px}
+.cart-box .more{font-size:28px}
+
+
+
+/*ORDER*/
+.order-box{max-width:inherit;padding:50px 0 0 0}
+.order_left, .order_right{float:none;width:100%;max-width:inherit}
+.order-box h2{font-size:36px;padding-bottom:9px}
+.order-block.mb40{margin-bottom:40px}
+
+.order-block{width:90%;max-width:630px;margin:0 auto}
+.order_right .order-block:last-child{margin-top:96px;padding:40px 5% 80px 5%;background-color:#ebebeb;max-width:inherit;width:100%}
+.order_right .order-block:last-child > *{margin:0 auto;max-width:630px}
+.order_left .order-block:nth-child(2) .field, .order_right .order-block:nth-child(1) .field, .order_right .order-block:nth-child(2) .field, .order_right .order-block:nth-child(3) .field{max-width:inherit}
+
+
+
+
+}
+
+@media screen and (max-width:840px) and (orientation :landscape){
+/*LAYOUT*/
+.user{padding:15px 5%}	
+.account-name{font-size:20px;padding:15px 0 15px 44px;-webkit-background-size:30px;background-size:30px}
+.user li:nth-child(2){padding:18px 0 0 0}
+.user a{font-size:16px}
+.nav a{padding:15px 20px 15px 62px;font-size:18px}
+
+
+/*login success*/
+.success-login{padding:30px 0 10px 0}
+.success-login h2{font-size:26px}
+.success-login p{font-size:14px}
+.success-login-txt{margin-bottom:0}
+.circle-icon{margin:20px 0}
+
+
+/*error*/
+.message-box{padding:40px 0}
+.message-box.confirm-cart{padding:50px}
+.message-txt{margin-bottom:0}
+.message-box h2{font-size:26px}
+.message-box p{font-size:18px}
+
+
+
+/*order success*/
+.success-order{padding:10px 50px 40px 50px}
+.success-order h2{font-size:26px;margin:0 0 20px 0}
+.success-order .payment-but{font-size:18px;line-height:50px;height:50px}
+.success-order .more{margin-bottom:0;font-size:18px}
+
+
+}
+
+
+@media screen and (max-width:600px) and (orientation :landscape){
+/*LAYOUT*/
+.user{padding:9px 5% 5px 5%}	
+.account-name{padding:14px 0 8px 44px}
+.user li:nth-child(2){padding:15px 0 0 0}
+.nav a{padding:10px 20px 10px 62px}
+
+}
+
+@media screen and (max-width:840px) {
+/*LAYOUT*/
+.cart-shopping{right:98px}
+
+/*PRODUCTS*/
+.product-inr{padding:37px 20px}
+.product-filter{padding:0 0 20px 20px}
+.catalog-name h2{font-size:26px}
+
+.catalog-box{background-color:#fff}
+.catalog-list{padding:15px 10px}
+.catalog-item{width:50%;padding:10px}
+.catalog-item::before, .catalog-item a::before{display:none}
+.catalog-name{padding:10px 0}
+.catalog-name h2{font-size:30px}
+
+.product-box{padding-bottom:70px}
+.product-box::before{content:'';position:absolute;left:50%;top:0;width:1px;height:100%;background-color:#ddd}
+
+.product-item:nth-child(1) .product-inr, .product-item:nth-child(2)  .product-inr{border-top:none}
+.product-filter{border-bottom:1px solid #ddd;margin-bottom:10px}
+
+.product-item .product-inr{border-right:1px solid transparent !important}
+.product-info span:first-child, .product-info li .money{font-size:17px}
+
+
+
+/*CART*/
+.empty-cart h3{font-size:19px}
+
+
+
+/*CONDITION*/
+.condition-box{max-width:inherit}
+.condition-title h2{font-size:32px}
+.condition-box h3{font-size:30px}
+.condition-box p{font-size:18px}
+.table-wrap th, .table-wrap td{font-size:18px;padding:10px}
+
+
+/*POPUP*/
+.is-condition .popup-box{width:100%}
+.is-condition .popup-wrap::before, .is-condition .popup-wrap::after{margin:0 -10px}
+
+
+}
+
+@media screen and (max-width:840px)  and (orientation :portrait){
+/*POPUP CONTENT*/
+.popup-box{max-width:712px}
+.close-pop.in-box, .close-pop-extra,{right:26px;top:26px}
+.close-pop::before, .close-pop-extra::before{-webkit-background-size:cover;background-size:cover}
+
+.more{font-size:28px}
+
+
+/*login success*/
+.success-login h2{font-size:60px;margin-bottom:70px}
+.success-login h2 br{display:block}
+.success-login h2::after{bottom:-30px}
+.success-login p{font-size:28px;padding:0 5%}
+.circle-icon{width:128px;height:128px}
+.circle-icon::after{-webkit-background-size:64px;background-size:64px;}
+
+/*error*/
+.message-box{padding:50px 0}
+.message-box h2{font-size:60px;margin-bottom:70px}
+.message-box h2 br{display:block}
+.message-box h2::after{bottom:-30px}
+.message-box p{font-size:28px;padding:0 5%}
+
+.message-box.confirm-cart{padding:50px}
+.message-box.confirm-cart p{padding:0}
+
+
+/*order success*/
+.success-order{padding:125px 40px 115px 40px}
+.success-order h2{font-size:36px;color:#333;text-transform:capitalize;line-height:1.3;margin:30px 0 110px 0}
+.success-order .more{display:inline-block;margin-bottom:40px;font-size:28px}
+.success-order button{margin-bottom:40px}
+
+}
+
+
+@media screen and  (max-width:740px){
+/*LAYOUT*/
+.user{padding:15px 5%}	
+.user li.account-name{padding:15px 0 15px 44px;-webkit-background-size:30px;background-size:30px}
+.account-name span{font-size:20px;}
+.user li:nth-child(2){padding:20px 0 0 0}
+.user a{font-size:16px}
+.nav a{padding:15px 20px 15px 80px;font-size:18px}
+.nav li.hotline a, .nav li.hotline a span{font-size:18px}
+
+
+/*PRODUCTS*/
+.catalog-name h2{font-size:26px}
+
+
+/*ERROR PAGE*/
+.txt-404 h2{font-size:180px}
+.txt-404 h3{font-size:40px}
+
+
+	
+}
+
+@media screen and  (max-width:700px){
+/*LOGIN*/
+.login-txt h2{font-size:58px}
+.login-txt p{font-size:26px}
+
+
+/*ORDER*/
+.order-box h2{font-size:34px}
+
+/*CART*/
+.cart-box h2{font-size:34px;margin-bottom:15px}
+.cart-item{padding:30px 0}
+.cart-pic{padding:0 5px}
+.cart-txt{padding:0 0 0 10px}
+.cart-name {margin-bottom:15px}
+.cart-name h3{font-size:22px}
+.cart-price .red-large{font-size:22px}
+.cart-price del{font-size:18px}
+.delete-but{font-size:16px}
+.cart-info li p.red-large{font-size:28px}
+.cart-info li p.money-minus{font-size:26px}
+.cart-info li p, .vat-note{font-size:20px}
+
+
+/*PRODUCTS*/
+.filter-box li{margin-right:5%}
+
+}
+
+@media screen and  (max-width:660px){
+/*BANNER*/
+#home-page .banner-title h2 img, .banner-title h2 img{width:70.2%}
+#home-page .banner-title h3, .banner-title h3{font-size:24px}
+.banner-title h3 span img{width:120px}
+
+	
+}
+
+
+@media screen and  (max-width:600px){
+/*BANNER*/
+#home-page .banner-txt p, .banner-txt p{font-size:18px}
+.banner-box .btn{font-size:14px;height:46px;line-height:42px}
+
+
+/*LOGIN*/
+.login-box{width:90%}
+.login-txt h2{font-size:40px}
+.login-txt p{font-size:18px}
+.login-txt{margin-bottom:30px}
+
+
+/*POPUP*/
+.close-pop.in-box, .close-pop-extra{width:30px;height:30px;right:15px;top:15px}
+.circle-icon{margin:20px 0;width:80px;height:80px}
+.circle-icon::after{-webkit-background-size:46px;background-size:46px;}
+
+
+/*login success*/
+.success-login h2{font-size:30px;margin-bottom:40px}
+.success-login h2::after{bottom:-20px}
+.success-login p{font-size:15px}
+.success-login-txt{margin-bottom:0}
+
+
+/*error*/
+.message-box h2{font-size:30px;margin-bottom:40px}
+.message-txt{margin-bottom:0}
+.message-box h2::after{bottom:-20px}
+.message-box p{font-size:14px;padding:0 10%}
+#order-page .message-box p{padding:0 10%}
+
+/*order success*/
+.success-order{padding:40px 5vw 20px 5vw}
+.success-order h2{font-size:30px;margin:10px 0 40px 0}
+.success-order button{font-size:20px}
+.success-order .more, .more{font-size:20px}
+
+
+/*ORDER*/
+.order-box{padding:30px 0 0 0}
+.order-box h2{font-size:22px}
+.check-box.line{padding-bottom:18px}
+.check-box.line h2{top:2px}
+
+
+/*CART*/
+.cart-box{padding:30px 5%}
+.cart-box h2{font-size:22px}
+.cart-txt{float:none;width:100%;padding:0}
+.cart-pic{width:34%;padding:0}
+.cart-price, .cart-name{float:right;width:66%;padding:0 0 0 15px;margin-bottom:15px}
+.cart-name h3, .cart-price del{font-size:15px}
+.cart-info li p.money-minus, .cart-price .red-large, .cart-info li p.red-large{font-size:17px}
+
+.cart-info li p, .vat-note{font-size:15px}
+.cart-tool{clear:both;width:100%;padding-top:30px}
+.quantity-box .quantity{font-size:18px;width:50px}
+.delete-but{font-size:15px}
+.cart-box .more{font-size:15px}
+
+
+/*PRODUCTS*/
+.catalog-list{padding:15px 5px}
+.catalog-item{padding:5px}
+.catalog-name{padding:10px 0}
+.catalog-name h2{font-size:22px}
+
+.product-inr{padding:20px 10px}
+.product-name{height:32px;padding:0 10px}
+.product-name h3{font-size:13px}
+.promotion{min-height:28px}
+.promotion span{font-size:14px}
+.product-item .red-large{font-size:16px}
+.product-info span:first-child, .product-info li .money, .red-small{font-size:13px}
+
+.product-price, .product-info, .product-but{padding:0 10px}
+.product-name, .product-price, .product-info{margin-bottom:15px}
+.product-but li{margin-bottom:10px}
+.product-but .btn{font-size:13px;padding:0 10px;height:40px;line-height:36px}
+.product-box{padding-bottom:30px}
+.refund-box{padding:5px 0 0 10px}
+.refund-box li{background-size:26px 22px;font-size:11px;padding:5px 0 5px 32px}
+
+.filter-box li span{font-size:18px}
+
+
+
+
+
+
+}
+
+@media screen and  (max-width:520px){
+/*LAYOUT*/
+.user{padding:15px 5%}	
+.user li.account-name{padding:15px 0 15px 44px;-webkit-background-size:30px;background-size:30px}
+.user li.account-name span{font-size:20px;}
+.user li:nth-child(2){padding:18px 0 0 0}
+.user a{font-size:16px}
+.nav a{padding:15px 20px 15px 62px;font-size:18px}
+.nav li.hotline a, .nav li.hotline a span{font-size:18px}
+
+.bg-white{height:50px}
+
+.logo{height:50px;line-height:50px}
+.logo img{height:21px;width:auto;max-width:inherit}
+
+.cart-shopping{top:13px;right:58px;width:26px;height:23px}
+.cart-icon{padding:0}
+.cart-text{left:0;bottom:-3px;width:26px;height:20px;line-height:20px;font-size:10px;}
+
+.nav-but{top:17px;width:25px;height:17px}
+.nav-but span:nth-child(1){top:7px;height:3px}
+.nav-but span:nth-child(1)::before{top:-7px}
+.nav-but span:nth-child(1)::after{bottom:-7px}
+.nav-but span:nth-child(2)::before, .nav-but span:nth-child(3)::before{top:7px;height:3px}
+
+
+.navigation{top:50px}
+
+#home-page .content, .content{padding-top:50px}
+
+	
+/*BANNER*/
+#home-page .banner-title h3, .banner-title h3{font-size:15px;text-align:center;display:block;margin-bottom:6px}
+#home-page .banner-title h2, .banner-title h2{margin-bottom:7px}
+.vin-logo{width:21.3%;margin:-5px 0 0 7px;max-width:inherit}
+.banner-title h3 span img{width:100%;height:auto;max-width:inherit}
+.shap-01, .shap-02{top:-5px;margin-right:15px}
+#home-page .banner-txt, .banner-txt{padding-bottom:20px}
+#home-page .banner-title h2 img, .banner-title h2 img{width:70.6%;max-width:inherit}
+#home-page .banner-txt p, .banner-txt p{font-size:12px;margin-bottom:3px}
+.samsung-logo{width:18.13%;height:auto;max-width:inherit;margin:0 4px}
+.samsung-logo img{width:100%;height:auto}
+.banner-box{padding:10px 0 15px 0}
+.banner-box .btn{font-size:11px;height:34px;line-height:30px;padding:0 17px;margin-top:3px}
+.banner-pic img{width:88%;height:auto;max-width:inherit;margin-right:2%}
+
+.shap-01{right:auto;left:14.4%;top:-2px;width:7.5vw;margin-right:0;}
+.shap-02{width:9.2vw;right:11.7%;margin-right:0;max-width:inherit;left:auto;top:0;}
+
+
+/*LOGIN*/
+.login-box{width:100%;padding:25px 0 50px 0}
+.login-pic{margin-bottom:0}
+.login-pic img{width:38.2%}
+.login-txt h2{font-size:30px;margin-bottom:32px}
+.login-txt h2::after{bottom:-15px}
+.login-txt p{font-size:14px}
+.login-form{padding:0 8%}
+.login-box .field{margin-bottom:20px}
+.login-box .nameformError{font-size:10px}
+.login-txt{margin-bottom:25px}
+.login-txt p {padding:0 10%}
+
+/*login success*/
+.success-login h2{font-size:30px}
+.success-login-txt p{font-size:14px}
+
+
+
+/*PRODUCTS*/
+.catalog-name{padding:8px 0}
+.catalog-name h2{font-size:15px}
+.product-inr{padding:15px 10px}
+.product-filter{padding:0 0 15px 10px}
+.filter-box li{margin-right:15px}
+.filter-box li span{font-size:18px}
+
+
+/*POPUP*/
+.circle-icon{width:64px;height:64px}
+.circle-icon::after{-webkit-background-size:36px;background-size:36px;}
+
+
+/*order success*/
+.success-order h2{font-size:18px}
+.success-order .more, .more{font-size:15px}
+
+
+
+/*ORDER*/
+.order-block{width:84%}
+.order-box h2{font-size:18px}
+.order_right .order-block:last-child{margin-top:50px;padding:25px 5% 50px 5%}
+.order-txt p{font-size:14px}
+
+/*CART*/
+.cart-box h2{font-size:18px}
+.cart-info li p.money-minus, .cart-price .red-large, .cart-info li p.red-large{font-size:16px}
+.cart-name h3, .cart-price del{font-size:13px}
+.add-but, .sub-but{width:26px;height:26px}
+.quantity-box .quantity{width:44px;font-size:14px;height:30px;line-height:26px}
+.delete-but{font-size:11px}
+.delete-icon{width:28px;height:30px;margin-right:4px}
+.cart-info li p, .vat-note{font-size:13px}
+
+
+/*CONDITION*/
+.condition-box{padding:30px 5% 60px 5%}
+.condition-title h2{font-size:16px}
+.condition-box h3{font-size:15px}
+.condition-box p{font-size:14px}
+.table-wrap th, .table-wrap td{font-size:12px;padding:5px}
+
+
+
+/*ERROR PAGE*/
+.txt-404 h2{font-size:87px}
+.txt-404 h3{font-size:24px;margin:-10px 0 30px 0}
+.txt-404 p{font-size:17px;margin:-10px 0 30px 0;padding:0 15%}
+
+}
+
+@media screen and  (max-width:390px){
+
+/*error*/
+.message-box.confirm-cart{padding:60px 20px}
+
+
+/*PRODUCTS*/
+.product-item .red-large{font-size:14px}
+.product-info span:first-child, .product-info li .money, .red-small{font-size:13px}
+.product-but .btn{font-size:12px}
+.product-price, .product-info, .product-but{padding:0}
+
+.filter-box li{margin-right:10px}
+.filter-box li span{font-size:17px}
+.refund-box{padding:5px 0 0 0}
+.refund-box li{font-size:10px}
+
+/*CONDITION*/
+.table-wrap th, .table-wrap td{font-size:12px}
+
+}
+
+@media screen and  (max-width:370px){
+/*LAYOUT*/
+.user li.account-name{padding:15px 0 15px 42px}
+.user li.account-name span{font-size:17px;}
+.user li:nth-child(2){padding:15px 0 0 0}
+.user a{font-size:14px}
+.nav a{padding:15px 20px 15px 58px}
+
+/*login success*/
+.success-login{padding:40px 10px 20px 10px}
+
+
+/*PRODUCTS*/
+.catalog-name{padding:10px 0}
+.catalog-name h2{font-size:13px}
+
+.filter-box li{margin-right:7px}
+.filter-box li span{font-size:15px}
+
+
+/*CART*/
+.empty-cart h3{font-size:16px}
+
+}
+
+@media screen and  (max-width:350px){
+/*BANNER*/
+#home-page .banner-txt p, .banner-txt p{font-size:11px}
+
+/*ORDER*/
+.cart-box h2, .order-box h2{font-size:16px}
+
+/*order success*/
+.success-order h2{font-size:24px}
+
+/*error*/
+#order-page .message-box p{padding:0 5%;font-size:17px}
+
+/*PRODUCTS*/
+.product-info span:first-child{width:44%}
+.product-info span:last-child{width:56%}
+
+
+/*CONDITION*/
+.table-wrap th, .table-wrap td{padding:5px;font-size:11px}
+
+/*ERROR PAGE*/
+.txt-404 p{font-size:15px}
+
+}

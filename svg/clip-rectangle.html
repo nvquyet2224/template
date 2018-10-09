@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="useFull">
+
+<head>
+<style>
+	html,body{padding:0;margin:0;width:100%;height:100%;overflow:hidden}
+	.container{width:100%;height:100%;position:absolute;left:0;top:0}
+	#btnReset{position:fixed;right:20px;bottom:20px;font-size:15px;text-transform:uppercase;padding:10px;cursor:pointer}
+
+</style>
+
+<script>
+
+//Create clipPath rectange
+var svgDoc = null;
+var svgns = 'http://www.w3.org/2000/svg';
+var xlinkns = 'http://www.w3.org/1999/xlink';
+var imgclip,
+	imgH,
+	imgW,
+	viewClip,
+	rows = 5,
+	cols = 4,
+	count = 0,
+	offsetx = 0,
+	offsety=0;
+	
+var finalX=new Array();
+var finalY=new Array();
+var first = [];
+
+function startup(evt) {
+	svgDoc = evt.target.ownerDocument;
+	imgClip = svgDoc.getElementById("clipImg");
+	imgW = imgClip.getAttribute("width");
+	imgH = imgClip.getAttribute("height");
+	
+	//Will add all clip mask into it
+	viewClip = svgDoc.getElementById("clipView");
+	carve();
+	
+}
+
+//Create rectangles
+function carve(){
+	for(var i=0;i<rows;i++) {
+		for(var j=0;j<cols;j++)	 {
+			id = "I" + (i*cols+j);
+			//Width and Height cell
+			x = Math.ceil(j*imgW/cols);
+			y = Math.ceil(i*imgH/rows);
+			build(id,x,y);
+		}
+	}
+}
+
+//Create 1 clip
+function build(id,x,y) {
+	
+	//Randoom position
+	screenW = window.innerWidth - 250;
+	screenH = window.innerHeight - 250;
+	ranx = Math.floor(Math.random() * screenW) + 60;	
+	rany = Math.floor(Math.random() * screenH) + 60;
+	
+	//Create virtual image [ each image virtual have 1 clipPath] || this image is copyried from main image
+	imgClipVir =  imgClip.cloneNode("false");
+	imgClipVir.setAttribute("id", id);
+	imgClipVir.setAttribute("x", -x);
+	imgClipVir.setAttribute("y", -y);
+	imgClipVir.setAttribute("onmousedown","trap(evt)");
+	//imgClipVir.setAttribute("transform","translate("+(x)+" "+(y)+")");
+	imgClipVir.setAttribute("transform","translate("+ ranx +" "+ rany +")");
+	
+	//Create clipPath [ create from svgDoc]
+	clipId = "CP" + id;
+	pathClip=svgDoc.createElementNS(svgns,"clipPath");
+	pathClip.setAttribute("id", clipId);
+	
+	//Create shap for pathClip [can rectange or circle, etc]
+	recClip = svgDoc.createElementNS(svgns,"rect");
+	recClip.setAttribute("x",0)
+	recClip.setAttribute("y",0)
+	recClip.setAttribute("width",Math.ceil(imgW/cols)-1);
+	recClip.setAttribute("height",Math.ceil(imgH/rows)-1);
+	
+	//Add rect shap to pathClip
+	pathClip.appendChild(recClip);
+	
+	
+	//Add pathClip to viewClip area
+	viewClip.appendChild(pathClip);
+	
+	
+	//Create collection imgClipVir with pathClip by [set attribute clip-path for imgClipVir]
+	imgClipVir.setAttribute("clip-path","url(#"+clipId+")");
+	
+	//Add virtual image to viewClip area
+	viewClip.appendChild(imgClipVir);
+	
+	point = {
+		id: id,
+		x: x,
+		y: y
+	}
+	
+	first.push(point);
+	
+	finalX[id]=ranx;
+	finalY[id]=rany;
+	
+}
+
+function trap(evt) {
+	id = evt.target.id;
+	x=evt.clientX;
+	y=evt.clientY;
+	offsetx=x-finalX[id];
+	offsety=y-finalY[id];
+	viewClip.setAttribute("onmousemove","moving(evt,'"+id+"',"+offsetx+","+offsety+")");
+	viewClip.setAttribute("onmouseup","viewClip.setAttribute('onmousemove',null)");
+}
+
+function moving(evt,id,x,y) {
+	imgClipVir=svgDoc.getElementById(id);
+	imgClipVir.setAttribute("transform","translate("+(evt.clientX - x)+" "+(evt.clientY - y)+")");
+	finalX[id]=evt.clientX - x;
+	finalY[id]=evt.clientY - y;
+}
+
+
+function resetClip() {
+	for(var i=0;i<first.length;i++) {
+		var id = first[i].id;
+		
+		imgClipVir=svgDoc.getElementById(id);
+		imgClipVir.setAttribute("transform","translate("+ first[i].x +" "+ first[i].y +")");
+		finalX[id]=first[i].x;
+		finalY[id]=first[i].y;
+	}
+}
+
+</script>
+
+</head>
+
+<body>
+<div class="container">
+<svg xmlns="http://www.w3.org/2000/svg" onload="startup(evt)" width="100%" height="100%">
+<defs><image id="clipImg" xlink:href='bg2.jpg' width="600" height="400" /></defs>
+<g id="clipView">
+<rect id="bg" x="0" y="0" height="100%" width="100%" fill="#799"/>
+</g>
+
+</svg>
+<button id="btnReset" onClick="resetClip()">Reset</button>
+</div>
+</body>
+</html>

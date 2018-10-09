@@ -1,9 +1,10 @@
-@charset "utf-8";html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{margin:0;padding:0;border:0;vertical-align:baseline}
+@charset "utf-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{margin:0;padding:0;border:0;vertical-align:baseline}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display:block}
 
 html{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:-moz-none;-ms-user-select:none}
 body{line-height:1;color:#000;font-family:'SamsungOne700';-webkit-text-size-adjust:none}
-body.show{-webkit-animation:Start 0.5s steps(1, end) 0s 1 normal both;animation:Start 0.5s steps(1, end) 0s 1 normal both}
+
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 *, *:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 
@@ -28,13 +29,19 @@ p{font-size:100%;line-height:1.6;font-style:normal;font-weight:normal;-webkit-te
 
 .no-scroll{overflow:hidden}
 
+body{left:0;top:0;bottom:0;right:0;margin:0;padding:0;overflow-x:hidden;background-color:#fff}
+.header, .footer, .popup-content, .full-album, .go-down, .to-top{display:none}
+.loadicon{position:fixed;left:0;top:0;display:inline-block;width:100%;height:100%;background-color:#fff;z-index:9999}
+.loadicon::before{content:'';position:absolute;left:50%;top:50%;margin:-40px 0 0 -40px;width:80px;height:80px;background:url(../images/loading.svg) no-repeat center center}
+.loadicon.is-processing{display:block !important;background-color:transparent}
+.content{width:100%;height:auto;padding:75px 0 0 0}
+
+
 
 /*LAYOUT*/
 .header{position:fixed;left:0;top:0;width:100%;height:auto;display:block;z-index:5}
 .bg-white{position:fixed;left:0;top:0;width:100%;height:75px;background-color:#eeeeee;box-shadow:0 0 30px rgba(0,0,0,0.2)}
 .bg-black{display:none}
-
-#home-page .header{display:none}
 
 .logo{position:fixed;width:auto;height:75px;line-height:75px;left:11.4%;top:0;text-align:center;}
 .logo a{display:inline-block;width:auto;height:auto;line-height:1;vertical-align:middle}
@@ -69,6 +76,8 @@ span.login-hide{opacity:0;visibility:hidden}
 .animate .cart-icon{-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:rotateY(-180deg);transform:rotateY(-180deg);-webkit-animation:zezoRotateY .4s ease-in-out forwards;animation:zezoRotateY .4s ease-in-out forwards}
 .animate .cart-text{-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:rotateY(180deg);transform:rotateY(180deg);-webkit-animation:zezoRotateY .5s ease-in-out forwards;animation:zezoRotateY .5s ease-in-out forwards}
 
+.wrap{padding-top:200px}
+.wrap p{text-align:center;text-transform:uppercase;font-size:60px}
 
 
 /*POPUP CONTENT*/
@@ -222,7 +231,6 @@ background:linear-gradient(90deg, rgba(32,116,220,1) 0%, rgba(32,116,220,1) 1%, 
 .more-05::before{padding-top:79%}
 .more-06{right:25%;top:105%;width:33px;background:url(../images/shap06.png) no-repeat center center / contain;}
 .more-06::before{padding-top:94%}
-
 
 #home-page .content{height:100vh;overflow:hidden}
 #home-page .banner-content{min-height:100vh}
@@ -1290,4 +1298,3 @@ button{-webkit-transition:none;transition:none}
 .txt-404 p{font-size:15px}
 
 }
-

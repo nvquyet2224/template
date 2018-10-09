@@ -1,0 +1,310 @@
+/*COMMON*/
+.section-title {display:block;width:100%;height:auto;margin-bottom:30px}
+.section-title h2{position:relative;font-size:50px;text-align:center;line-height:1.2}
+.section-title p{text-align:center;font-size:17px}
+
+/*NORMAL PAGE*/
+.normal-content{width:100%;height:auto;position:relative;}
+.normal-details{width:100%;height:auto;position:relative}
+
+
+/*HIDE*/
+.hide-pc{display:none}
+.hide-sp{}
+
+/*PICS*/
+.pcPic{display:block}
+.spPic{display:none}
+
+
+/*BACKGROUND*/
+.scroll-bg{width:100%;height:100%;position:absolute;left:0;top:0;background-repeat:no-repeat;background-position:center center;background-size:cover;background-attachment:scroll}
+.pcBg{display:block}
+.spBg{display:none}
+
+
+/*FACILITIES*/
+.to-top{width:40px;height:40px;display:block;position:fixed;right:3.2%;z-index:4;bottom:20px;background:url(../images/to-top.png) no-repeat center center;background-color:rgba(32,116,220,.5);-webkit-border-radius:50%;border-radius:50%;cursor:pointer;-webkit-background-size:cover;background-size:cover;opacity:0;visibility:hidden;-webkit-transition:0.3s ease-in-out;transition:0.3s ease-in-out}
+.to-top.show{opacity:1;visibility:visible}
+
+
+/*HOME PAGE*/
+#home-page .content{padding:0}
+
+
+/*BANNER*/
+.banner-content{width:100%;height:auto;padding-top:55.5%;position:relative}
+.banner-details{position:absolute;width:100%;height:100%;left:0;top:0}
+
+#products-page .banner-content{padding-top:27.77%}
+
+.banner-bg{position:absolute;left:0;top:0;width:100%;height:100%;background-position:center center;background-repeat:no-repeat;-webkit-background-size:cover;background-size:cover;}
+.banner-shadow{display:none}
+
+
+.banner-box{position:relative;display:block;width:100%;height:100%;z-index:1;text-align:center}
+.banner-title{position:relative;left:21.6vw;width:23.66vw;padding:30px 0 0 0}
+.banner-title h2{line-height:0;overflow:hidden;margin-bottom:13px;text-align:center}
+.banner-title h2 img{display:inline-block;width:100%;height:auto;max-width:400px}
+
+.banner-title h3{font-size:18px;color:#9f1e25;text-transform:uppercase;line-height:1}
+.vin-logo{width:29.4%;height:auto;display:inline-block;vertical-align:middle;margin:-8px 0 0 10px}
+.vin-logo img{display:block;width:100%;height:auto;max-width:126px}
+
+.banner-txt{position:relative;left:20.93vw;width:25vw}
+.banner-txt p{font-size:16px;color:#222c45;margin:5px 0 0 0}
+
+.samsung-logo{width:20%;height:auto;display:inline-block;vertical-align:bottom;margin:0 5px -1px 5px;max-width:100px}
+.samsung-logo img{width:100%;height:auto}
+
+.banner-pic{width:36.25vw;height:auto;position:absolute;right:9.7vw;top:30px;line-height:0;overflow:hidden;text-align:right}
+.banner-pic img{display:block;width:100%;height:auto}
+
+.banner-box .btn{padding:0 15px;margin-top:15px;-webkit-border-radius:10px;border-radius:10px;height:40px;line-height:36px;border:2px solid #0057a4;font-size:14px;color:#0057a4}
+.banner-box .btn span{position:relative;top:2px}
+.banner-txt p, .banner-box .btn{font-family:'iCielSamsungSharpSansBold';font-weight:normal;font-style:normal;}
+
+.shap{position:absolute;}
+.shap-01{width:7vw;height:auto;max-width:31px;background:url(../images/shap-01.png) no-repeat center center / contain;right:100%;margin-right:30px}
+.shap-01::before{content:'';position:relative;display:block;width:100%;height:auto;padding-top:103%;}
+.shap-02{width:9.7vw;height:auto;max-width:73px;background:url(../images/shap-02.png) no-repeat center center / contain;left:100%;margin-left:5.5vw}
+.shap-02::before{content:'';position:relative;display:block;width:100%;height:auto;padding-top:67%}
+
+.shap-more{position:absolute;left:0;top:0;width:52vw;height:70%;z-index:-1}
+.shap-more span{position:absolute}
+.shap-more span::before{content:'';position:relative;display:block;width:100%;height:auto}
+
+.more-01{left:4.5%;top:12%;width:26px;background:url(../images/shap01.png) no-repeat center center / contain;}
+.more-01::before{padding-top:127%}
+.more-02{left:33%;top:47%;width:32px;background:url(../images/shap02.png) no-repeat center center / contain;}
+.more-02::before{padding-top:100%}
+.more-03{left:42%;top:90%;width:24px;background:url(../images/shap03.png) no-repeat center center / contain;}
+.more-03::before{padding-top:137.5%}
+.more-04{right:1.5%;top:15%;width:60px;background:url(../images/shap04.png) no-repeat center center / contain;}
+.more-04::before{padding-top:66.66%}
+.more-05{right:15%;top:67%;width:33px;background:url(../images/shap05.png) no-repeat center center / contain;}
+.more-05::before{padding-top:79%}
+.more-06{right:25%;top:105%;width:33px;background:url(../images/shap06.png) no-repeat center center / contain;}
+.more-06::before{padding-top:94%}
+
+#home-page .content{height:100vh;overflow:hidden}
+#home-page .banner-content{min-height:100vh}
+#home-page .banner-title, #home-page .banner-txt{left:16vw;width:31.25vw}
+#home-page .banner-title{padding-top:3vw}
+#home-page .banner-title h2 img{width:78%;max-width:inherit}
+#home-page .banner-title h2{margin-bottom:15px}
+#home-page .banner-title h3{font-size:21px;margin-bottom:10px}
+#home-page .banner-txt p{font-size:19px}
+#home-page .banner-pic{position:fixed;width:50vw;right:auto;top:auto;bottom:5vw;left:5vw;max-width:900px}
+#home-page .go-focus-box{display:none}
+
+#home-page .shap{display:none}
+#home-page .more-02{left:34%;top:19%}
+#home-page .more-03{left:65%;top:50%}
+#home-page .more-04{right:10%;top:21%}
+#home-page .more-05{right:10%;top:10%}
+#home-page .more-06{right:21%;top:40%}
+#home-page .shap-more{width:54vw}
+
+
+/*LOGIN*/
+.login-box{position:fixed;right:5vw;bottom:5vw;display:block;width:34.7vw;height:auto;background-color:rgba(255,255,255,0.9);z-index:2;text-align:center}
+.login-txt, .login-form{position:relative;display:block;width:100%;height:auto}
+.login-txt{padding:0 10%;margin-bottom:30px;}
+.login-txt h2{position:relative;font-size:42px;margin-bottom:40px}
+.login-txt h2::after{content:'';position:absolute;left:50%;bottom:-17px;width:100px;height:4px;background-color:#0057a4;margin:0 0 0 -50px}
+.login-txt p{font-family:'SamsungOne600';line-height:1.4;font-size:24px;color:#2e2f31}
+.login-txt p br{display:none}
+.login-pic{position:relative;display:block;width:100%;height:auto;line-height:0;overflow:hidden;text-align:center}
+.login-pic img{display:inline-block;width:41.6%;height:auto}
+.login-form{padding:0 10% 10% 10%}
+.login-box .box-btn{padding-top:20px}
+.login-box .field{margin-bottom:30px}
+.login-box .nameformError{font-size:13px}
+
+
+
+
+/*PRODUCTS*/
+.banner-content + .normal-content{margin-top:-40px;background-color:#f7f7f7;z-index:1}
+
+.catalog-box{position:relative;width:100%;height:auto;background-color:#000}
+.catalog-list{position:relative;display:block;width:100%;height:auto;max-width:1306px;margin:0 auto}
+.catalog-list::after{content:'';position:relative;display:block;width:100%;height:0;clear:both}
+.catalog-list::before{content:'';position:absolute;width:calc(100% - 26px);height:4px;background-color:#0057a4;left:13px;bottom:-28px;z-index:1;}
+
+.catalog-item{position:relative;display:block;float:left;width:25%;height:auto;padding:0 13px}
+.catalog-item a{position:relative;display:block;width:auto;height:auto;}
+.catalog-item a::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}
+
+.catalog-pic{position:relative;width:100%;height:auto;background-repeat:no-repeat;background-position:center top;-webkit-background-size:cover;background-size:cover}
+.catalog-pic::before{content:'';position:relative;display:block;width:100%;height:auto;padding-top:50%}
+.catalog-name{position:absolute;left:0;bottom:0;width:100%;z-index:1;background-color:rgba(0,0,0,0.8);padding:10px 0 7px 0}
+.catalog-name h2{color:#fff;font-size:18px;text-align:center;line-height:1.2}
+
+.catalog-item a::before{content:'';position:absolute;left:0;top:0;width:100%;height:calc(100% + 28px);border:4px solid #0057a4;z-index:2;opacity:0}
+.catalog-item::before{content:'';position:absolute;left:50%;bottom:-26px;margin:0 0 0 -12px;border:21px solid #0057a4;border-right:12px solid transparent;border-left:12px solid transparent;border-top:0;z-index:3;opacity:0}
+
+.catalog-item.active::before, .catalog-item.active a::before{opacity:1}
+.catalog-item.active a::after{opacity:0}
+
+.catalog-item::before, .catalog-item a::before{-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}
+.catalog-item:not(.active):hover::before, .catalog-item:not(.active):hover a::before{opacity:1}
+.catalog-item:not(.active):hover a::after{opacity:0}
+
+
+
+.product-filter{position:relative;width:100%;height:auto;max-width:1280px;margin:0 auto;padding:68px 110px 26px 110px;background-color:#fff;text-align:right}
+.filter-box{position:relative;display:block;width:100%;height:auto}
+.filter-box li{position:relative;display:inline-block;width:auto;height:auto;vertical-align:top;margin-right:25px}
+.filter-box li:last-child{margin:0}
+
+.filter-box li span, .product-name h3{font-family:'SamsungOne600';font-weight:normal;font-style:normal;}
+.promotion span, .filter-box li.active span.filter-but, .red-large, .red-small{font-family:'SamsungOne800';font-weight:900;font-style:normal;}
+.product-info span:first-child, .money del{font-family:'SamsungOne';font-weight:normal;font-style:normal}
+
+.filter-box li span{position:relative;display:block;width:auto;height:auto;font-size:18px;color:#4c4c4c;line-height:1.4}
+.filter-box li span.filter-but{cursor:pointer;color:#0057a4;text-decoration:underline;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}
+.filter-box li.active span.filter-but{text-decoration:none}
+.filter-box li.active::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%}
+.filter-box li:not(.active):hover span.filter-but{text-decoration:none;font-family:'SamsungOne800';font-weight:900;font-style:normal}
+
+.product-box{position:relative;display:block;width:100%;height:auto;max-width:1280px;min-height:70vh;margin:0 auto;padding:0 90px 40px 90px;background-color:#fff}
+.product-box::after{content:'';position:relative;display:block;width:100%;height:0;clear:both}
+.product-item{position:relative;display:block;float:left;width:25%;height:auto;text-align:center;margin:0 0 22px 0;box-shadow:0 0 60px rgba(204,204,204,0);-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;cursor:pointer}
+.product-item:hover{box-shadow:0 0 60px rgba(204,204,204,1)}
+.product-inr{position:relative;display:block;padding:20px 20px 30px 20px}
+.promotion, .product-pic, .product-name, .product-price, .product-info, .product-but{position:relative;display:block;width:100%;height:auto}
+.promotion{margin-bottom:10px;text-align:left;min-height:32px;display:none}
+.promotion span{display:inline-block;padding:7px 15px;font-size:18px;background:-webkit-linear-gradient(0deg, rgba(0,87,164,1) 0%, rgba(0,87,164,1) 1%, rgba(0,156,166,1) 100%);background:linear-gradient(90deg, rgba(0,87,164,1) 0%, rgba(0,87,164,1) 1%, rgba(0,156,166,1) 100%);background-color:#009ca6;-webkit-border-radius:5px;border-radius:5px;color:#fff}
+
+.product-pic{line-height:0;overflow:hidden;margin-bottom:15px}
+.product-pic img{width:100%;height:auto}
+.product-name{margin-bottom:15px}
+.product-name h3{font-size:16px;line-height:1.2}
+.product-price{margin-bottom:30px;display:none}
+.product-info{margin-bottom:20px}
+.product-info li{overflow:hidden}
+.product-info span{float:left;color:#a40000}
+
+.product-info span:first-child{width:50%;font-size:15px;text-align:left}
+.product-info span:last-child{width:50%;text-align:right}
+.product-info li .money{font-size:17px}
+.product-but li{margin-bottom:14px}
+
+.product-but .btn{display:block;width:100%;text-align:center;}
+.money del{color:#a3a3a3;font-size:16px;}
+.red-large{color:#de0303;font-size:24px}
+.red-small{color:#a40000;font-size:16px}
+.product-name{height:40px;overflow:hidden}
+.product-price, .product-info, .product-but{padding:0 10px}
+
+.refund-box{position:relative;display:block;width:100%;height:auto;padding:5px 0 0 10px}
+.refund-box li{position:relative;display:block;width:100%;height:auto;padding:8px 0 8px 40px;background:url(../images/icon-cart.png) no-repeat left center;font-family:'SamsungOne600';font-weight:normal;font-style:normal;font-size:14px;text-align:left}
+
+
+
+
+/*CART*/
+.cart-box{position:relative;display:block;width:90%;height:auto;max-width:1200px;margin:0 auto;padding:50px 0}
+.cart-box h2{font-size:24px;color:#333;text-transform:uppercase;margin-bottom:20px}
+.cart-list{position:relative;display:block;width:100%;height:auto;overflow:hidden}
+
+.cart-item{position:relative;display:block;width:62.5%;height:auto;float:left;padding:50px 0;overflow:hidden;border-top:2px dotted #d6d6d6}
+.cart-item:first-child{border-top:2px solid #d6d6d6}
+
+.cart-pic{position:relative;float:left;width:24%;height:auto;line-height:0;overflow:hidden;padding:0 10px}
+.cart-pic img{display:block;width:100%;height:auto}
+
+.cart-txt{position:relative;float:left;width:76%;height:auto;padding:0 0 0 10px}
+.cart-name{position:relative;display:block;width:220px;height:auto;float:left}
+.cart-name h3{font-family:'SamsungOne600';font-weight:normal;font-style:normal;color:#000;font-size:18px;line-height:1.4}
+
+.cart-price{position:relative;display:block;width:100%;height:auto;float:left;width:160px;margin-left:20px}
+.cart-price .red-large{font-size:24px;color:#000}
+.cart-price del{font-family:'SamsungOne';font-weight:normal;font-style:normal;font-size:18px;color:#7f7f7f;display:none;margin-top:3px}
+
+.quantity-box{position:absolute;width:140px;right:0;top:0;text-align:right}
+.quantity-box .quantity{display:inline-block;width:50px;height:28px;line-height:24px;padding:0 10px;background-color:#fff !important;border:2px solid #ececec;font-family:'SamsungOne600';font-weight:normal;font-style:normal;color:#000;font-size:18px;text-align:center;-webkit-border-radius:0;border-radius:0;margin:0 10px;vertical-align:middle;pointer-events:none}
+.add-but, .sub-but{display:inline-block;width:30px;height:30px;vertical-align:middle;cursor:pointer}
+.add-but{background:url(../images/add.png) no-repeat center center / contain}
+.sub-but{background:url(../images/sub.png) no-repeat center center / contain}
+
+.delete-box{position:absolute;width:180px;top:100%;left:10px;margin-top:17px}
+.delete-but{display:block;color:#000;text-decoration:underline;font-family:'SamsungOne';font-weight:normal;font-style:normal;font-size:14px}
+.delete-icon{position:relative;top:2px;display:inline-block;width:22px;height:24px;margin-right:7px;background:url(../images/delete.png) no-repeat center bottom / contain;vertical-align:bottom}
+.cart-info{position:absolute;right:0;top:0;width:33.3333%;height:auto;display:block;padding:35px 30px 0 30px;background-color:#f3f3f3;height:172px;-webkit-border-radius:10px;border-radius:10px}
+.cart-info li{position:relative;margin-bottom:5px}
+.cart-info li::after{content:'';position:relative;display:block;width:100%;clear:both;height:0}
+.cart-info li p{font-family:'SamsungOne600';font-weight:normal;font-style:normal;font-size:18px}
+.cart-info li p:first-child{float:left}
+.cart-info li p:last-child{position:relative;top:-5px;text-align:right;font-family:'SamsungOne800';font-weight:900;font-style:normal}
+.cart-info li p.red-large{font-size:28px;color:#000}
+.cart-info li p.money-minus{font-size:24px;color:#a40000}
+.vat-note{font-family:'SamsungOne600';font-weight:normal;font-style:normal;text-align:right;color:#aaa;font-size:16px}
+
+
+.cart-box .box-btn{position:absolute;right:0;top:310px;width:33.3333%;height:auto;display:block;text-align:center}
+.cart-box .payment-but{margin-bottom:30px}
+
+.confirm-cart{padding:50px}
+.confirm-cart .message-txt{margin-bottom:20px}
+.confirm-cart button{display:inline-block;width:auto;width:106px;margin:0 2px;vertical-align:top;height:auto;line-height:1;padding:21px 0 15px 0;font-size:18px}
+.condition-but{color:#0057a4}
+
+
+
+.empty-cart{min-height:auto;text-align:center;padding:50px 5% !important}
+.empty-cart h2{display:none}
+.empty-cart h3{font-size:16px;text-transform:uppercase;padding-bottom:40px}
+.empty-cart .box-btn{position:relative;right:auto;top:auto;padding:0;margin:0 auto}
+.empty-cart .payment-but{display:none}
+
+
+/*ORDER*/
+.order-box{position:relative;display:block;width:100%;height:auto;margin:0 auto;max-width:942px;padding:50px 0 220px 0}
+.order-box::after{content:'';position:relative;display:block;width:100%;height:0;clear:both}
+.order-block{position:relative;display:block;width:100%}
+
+.order-box h2{font-size:24px;color:#333;text-transform:uppercase;margin-bottom:30px;padding-bottom:16px;line-height:1.2}
+.order-block.mb40{margin-bottom:40px}
+.order-box .line{border-bottom:2px solid #d6d6d6;}
+
+.is-customer, .is-company{display:none;opacity:0;-webkit-transition:opacity .15s linear;transition:opacity .15s linear;}
+.is-customer.active, .is-company.active{display:block}
+.is-customer.on, .is-company.on{opacity:1}
+
+.request-edit::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;z-index:1}
+.request-edit.allow-edit::after{height:0}
+
+.order_left, .order_right{position:relative;display:block;width:43%;height:auto;max-width:400px}
+.order_left{float:left}
+.order_right{float:right}
+
+
+.order-block .box-btn{text-align:center}
+.order-block .box-btn .payment-next{margin-bottom:20px}
+.order-txt{display:block;margin-bottom:22px}
+.order-txt p{font-family:'SamsungOne600';font-size:18px;line-height:1.4}
+
+/*CONDITION*/
+.condition-content .condition-box{padding:0;max-width:inherit;}
+.condition-box{width:100%;padding:50px 5% 100px 5%;max-width:1140px;margin:0 auto}
+.condition-title{display:block;margin-bottom:30px}
+.condition-title h2{font-size:24px;margin-bottom:10px;line-height:1.2;color:#333;text-align:center}
+.condition-box h3{font-size:22px;margin:10px 0;line-height:1.2;color:#333}
+.condition-box h3 span{font-family:'SamsungOne600';font-weight:normal;font-style:normal}
+.condition-box p{font-size:16px;line-height:1.6;margin-bottom:20px;font-family:'SamsungOne600';color:#2e2f31}
+.condition-box a{color:#0057a4}
+.condition-content .condition-detail{text-align:left}
+.table-wrap{display:block;width:100%;height:auto;padding:20px 0;overflow:hidden}
+.table-wrap table{width:100%;border-top:1px dotted #ddd;border-left:1px dotted #ddd;border-collapse:separate}
+.table-wrap th, .table-wrap td{padding:10px 20px;font-family:'SamsungOne600';color:#2e2f31;font-weight:normal;font-style:normal;font-size:16px;line-height:1.4;border-right:1px dotted #ddd;border-bottom:1px dotted #ddd}
+
+
+
+/*ERROR PAGE*/
+.txt-404{display:block;width:90%;height:auto;margin:0 auto;max-width:900px;text-align:center;padding:50px 0}
+.txt-404 h2{font-size:208px;color:#0057a4;line-height:1.05}
+.txt-404 h3{font-size:45px;color:#0057a4;line-height:1.29;text-transform:uppercase;margin:-20px 0 30px 0}
+.txt-404 p{font-family:'SamsungOne600';font-size:20px;font-weight:normal;font-style:normal;color:#000;line-height:1.5;margin:-25px 0 40px 0;}
