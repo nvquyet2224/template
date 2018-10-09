@@ -50,44 +50,6 @@
 </div>
 <!--loading-->
 
-<noscript id="required-styles">
-<link rel="stylesheet" type="text/css" href="css/fonts.css">
-<link rel="stylesheet" type="text/css" href="css/slide.css">
-<link rel="stylesheet" type="text/css" href="css/animation.css">
-</noscript>
-
-<noscript id="specific-styles">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-</noscript>
-
-<script type="text/javascript">
-var loadRequiredStyles = function () {
-    var addStylesNode = document.getElementById("required-styles");
-    var replacement = document.createElement("div");
-    replacement.innerHTML = addStylesNode.textContent;
-    document.body.appendChild(replacement)
-    addStylesNode.parentElement.removeChild(addStylesNode);
-};
-var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-    webkitRequestAnimationFrame || msRequestAnimationFrame;
-if (raf) raf(function () {window.setTimeout(loadRequiredStyles, 0); });
-else window.addEventListener('load', loadRequiredStyles);
-</script>
-
-<script type="text/javascript">
-var loadSpecificStyles = function () {
-    var addStylesNode = document.getElementById("specific-styles");
-    var replacement = document.createElement("div");
-    replacement.innerHTML = addStylesNode.textContent;
-    document.body.appendChild(replacement)
-    addStylesNode.parentElement.removeChild(addStylesNode);
-};
-var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-    webkitRequestAnimationFrame || msRequestAnimationFrame;
-if (raf) raf(function () { window.setTimeout(loadSpecificStyles, 0); });
-else window.addEventListener('load', loadSpecificStyles);
-</script>
-
 <!--page-->
 
 <header class="header">
@@ -331,6 +293,45 @@ else window.addEventListener('load', loadSpecificStyles);
 <footer class="footer">
 <p>Footer here</p>
 </footer>
+
+
+<noscript id="required-styles">
+<link rel="stylesheet" type="text/css" href="css/fonts.css">
+<link rel="stylesheet" type="text/css" href="css/slide.css">
+<link rel="stylesheet" type="text/css" href="css/animation.css">
+</noscript>
+
+<noscript id="specific-styles">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</noscript>
+
+<script type="text/javascript">
+var loadRequiredStyles = function () {
+    var addStylesNode = document.getElementById("required-styles");
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(function () {window.setTimeout(loadRequiredStyles, 0); });
+else window.addEventListener('load', loadRequiredStyles);
+</script>
+
+<script type="text/javascript">
+var loadSpecificStyles = function () {
+    var addStylesNode = document.getElementById("specific-styles");
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(function () { window.setTimeout(loadSpecificStyles, 0); });
+else window.addEventListener('load', loadSpecificStyles);
+</script>
 
 
 <!--SCRIPT-->
