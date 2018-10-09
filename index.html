@@ -43,10 +43,16 @@
 </head>
 <body id="home-page">
 
-<!--page-->
-<div class="wrap">
+<!--loading-->
+<div class="loadicon">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="200px" height="25px" viewBox="0 0 128 16">
+<g><path fill="#0057a4" fill-opacity="1" d="M-42.7,3.84A4.16,4.16,0,0,1-38.54,8a4.16,4.16,0,0,1-4.16,4.16A4.16,4.16,0,0,1-46.86,8,4.16,4.16,0,0,1-42.7,3.84Zm12.8-.64A4.8,4.8,0,0,1-25.1,8a4.8,4.8,0,0,1-4.8,4.8A4.8,4.8,0,0,1-34.7,8,4.8,4.8,0,0,1-29.9,3.2Zm12.8-.64A5.44,5.44,0,0,1-11.66,8a5.44,5.44,0,0,1-5.44,5.44A5.44,5.44,0,0,1-22.54,8,5.44,5.44,0,0,1-17.1,2.56Z"/><animateTransform attributeName="transform" type="translate" values="23 0;36 0;49 0;62 0;74.5 0;87.5 0;100 0;113 0;125.5 0;138.5 0;151.5 0;164.5 0;178 0" calcMode="discrete" dur="1000ms" repeatCount="indefinite"/></g></svg>
+</div>
+<!--loading-->
 
-<div class="header">
+<!--page-->
+
+<header class="header">
 <span class="bg-white"></span>
 <span class="bg-black"></span>
 <div class="logo"><a href="index.html"><img src="./images/logo.png" alt="VinID"/></a></div>
@@ -85,7 +91,9 @@
 
 <div class="nav-but"><span></span><span></span><span></span></div>
 
-</div>
+</header>
+
+<div class="wrap">
 
 <div class="container">
 <div class="table-wrap">
@@ -279,45 +287,60 @@
 </div>
 </div>
 
-<div class="footer">
-<p>Footer here</p>
-</div>
-
 </div>
 <!--page-->
 
-<!--loading-->
-<div class="loadicon">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="200px" height="25px" viewBox="0 0 128 16">
-<g><path fill="#0057a4" fill-opacity="1" d="M-42.7,3.84A4.16,4.16,0,0,1-38.54,8a4.16,4.16,0,0,1-4.16,4.16A4.16,4.16,0,0,1-46.86,8,4.16,4.16,0,0,1-42.7,3.84Zm12.8-.64A4.8,4.8,0,0,1-25.1,8a4.8,4.8,0,0,1-4.8,4.8A4.8,4.8,0,0,1-34.7,8,4.8,4.8,0,0,1-29.9,3.2Zm12.8-.64A5.44,5.44,0,0,1-11.66,8a5.44,5.44,0,0,1-5.44,5.44A5.44,5.44,0,0,1-22.54,8,5.44,5.44,0,0,1-17.1,2.56Z"/><animateTransform attributeName="transform" type="translate" values="23 0;36 0;49 0;62 0;74.5 0;87.5 0;100 0;113 0;125.5 0;138.5 0;151.5 0;164.5 0;178 0" calcMode="discrete" dur="1000ms" repeatCount="indefinite"/></g></svg>
-</div>
-<!--loading-->
+<footer class="footer">
+<p>Footer here</p>
+</footer>
 
-<div id="render-block"></div>
-<noscript id="noscript-block">
+<noscript id="required-styles">
 <link rel="stylesheet" type="text/css" href="css/fonts.css">
 <link rel="stylesheet" type="text/css" href="css/slide.css">
 <link rel="stylesheet" type="text/css" href="css/animation.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
 </noscript>
-<script>
-var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
-replacement.innerHTML = addStylesNode.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-else window.addEventListener('load', loadDeferredStyles);
-</script>
-    
+
+<noscript id="specific-styles">
+<link rel="stylesheet" type="text/css" href="css/style1.css">
+<link rel="stylesheet" type="text/css" href="css/style2.css">
+</noscript>
+
+
 <!--SCRIPT-->
-<script src="js/jquery.js"></script>
-<script src="js/base.js"></script>
-<script src="js/detect.js"></script>
-<script src="js/slide.js"></script>
-<script src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript">
+var loadRequiredStyles = function () {
+    var addStylesNode = document.getElementById("required-styles");
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(function () {window.setTimeout(loadRequiredStyles, 0); });
+else window.addEventListener('load', loadRequiredStyles);
+</script>
+
+<script type="text/javascript">
+var loadSpecificStyles = function () {
+    var addStylesNode = document.getElementById("specific-styles");
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+};
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(function () { window.setTimeout(loadSpecificStyles, 0); });
+else window.addEventListener('load', loadSpecificStyles);
+</script>
+
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/detect.js"></script>
+<script type="text/javascript" src="js/slide.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 <!--SCRIPT-->
 
 </body>
