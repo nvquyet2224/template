@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="useFull">
+
+<head>
+<meta charset="utf-8">
+<title>Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<style type="text/css">
+	body{
+		margin:0;
+		padding:0;
+		width:100vw;
+		height:100vh;
+		overflow:hidden;
+		cursor:pointer;
+	}
+	
+	circle{
+		stroke:#00FCA3;
+		stroke-width:4px;
+		fill:none;
+	}
+	circle:nth-child(1) {
+		stroke-opacity:0.3;
+	}
+	circle:nth-child(2) {
+		stroke-dasharray:238.76104;
+		stroke-dashoffset:50;
+		stroke-linejoin:round;
+	}
+	
+</style>
+</head>
+
+<body>
+
+<div class="circle">
+<svg width="84" height="84">
+<circle r="38" cy="41" cx="41"></circle>
+<circle r="38" cy="41" cx="41" stroke-linejoin="round" stroke-linecap="round" class="circle-progress" style="animation: donut-show-5 900ms ease 0s 1 normal forwards running;"></circle>
+</svg>
+<div class="percent">
+<span class="int">7</span><span class="dec">.12</span>
+</div>
+</div>
+
+</body>
+</html>

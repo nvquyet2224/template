@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'sqled';
+  src:  url('../fonts/sqled.eot?w6bggd');
+  src:  url('../fonts/sqled.eot?w6bggd#iefix') format('embedded-opentype'),
+    url('../fonts/sqled.ttf?w6bggd') format('truetype'),
+    url('../fonts/sqled.woff?w6bggd') format('woff'),
+    url('../fonts/sqled.svg?w6bggd#sqled') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="sqled-"], [class*=" sqled-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'sqled' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.sqled-icon-user:before {
+  content: "\e909";
+}
+.sqled-icon-360:before {
+  content: "\e906";
+}
+.sqled-icon-bed:before {
+  content: "\e908";
+}
+.sqled-icon-dot-dot-dot-menu:before {
+  content: "\e902";
+}
+.sqled-icon-down:before {
+  content: "\e900";
+}
+.sqled-icon-close:before {
+  content: "\e901";
+}
+.sqled-icon-hanoi:before {
+  content: "\e903";
+}
+.sqled-icon-hcmcity:before {
+  content: "\e904";
+}
+.sqled-icon-location:before {
+  content: "\e905";
+}
+.sqled-icon-tivi-big:before {
+  content: "\e907";
+}

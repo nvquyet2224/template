@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="useFull">
+
+<head>
+<meta charset="utf-8">
+<title>Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<style type="text/css">
+	body{
+		margin:0;
+		padding:0;
+		width:100vw;
+		height:100vh;
+		overflow:hidden;
+		cursor:pointer;
+	}
+	.main{
+		background-color:#000;
+		width:100%;
+		height:100%;
+	}
+	circle{display:block;position:relative;}
+	
+</style>
+</head>
+
+<body>
+
+<div class="main">
+<canvas id="canvas"></canvas>
+</div>
+
+<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>-->
+<script src='js/TweenMax.min.js'></script>
+
+<script>
+
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	
+	var isClick = true;
+	var imgBg = new Image();
+	var imgMask = new Image();
+	var botMask = new Image();
+	
+	imgBg.onload = function () {
+	};
+	imgBg.src = "images/banner.jpg";
+	
+	imgMask.onload = function () {
+
+	};
+	imgMask.src = "images/banner.jpg";
+
+	botMask.onload = function () {
+		draw();
+	};
+	botMask.src = "images/banner.jpg";
+	
+	var scale = 1;
+	function draw() {
+		ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+		ctx.scale(2,1);
+		ctx.drawImage(imgBg,0,0,window.innerWidth * scale, window.innerWidth * 0.66667 * scale);
+		ctx.save();
+		
+		ctx.scale(1,1);
+		ctx.beginPath();
+		ctx.rect(0,0,window.innerWidth,200);
+		ctx.clip();
+		ctx.closePath();
+		ctx.drawImage(imgMask,0,0,window.innerWidth, window.innerWidth * 0.66667);
+		ctx.restore();
+
+		ctx.scale(1,1);
+		ctx.beginPath();
+		ctx.rect(0,window.innerHeight - 200,window.innerWidth,200);
+		ctx.clip();
+		ctx.closePath();
+		ctx.drawImage(botMask,0,0,window.innerWidth, window.innerWidth * 0.66667);
+		console.log('by click');
+	}
+	
+	TweenMax.ticker.addEventListener("tick", function(){
+	});
+
+	window.addEventListener("click", function(e) {
+		if(isClick) {
+			console.log('asasa');
+			isClick = false;
+			scale = 1.2;
+			draw();
+			//TweenMax.to(imgBg, 1, {y:200, ease:Back.easeOut, onUpdate:draw});
+			
+		}else {
+			isClick	 = true;
+		}
+	});
+	
+
+</script>
+
+</body>
+</html>
