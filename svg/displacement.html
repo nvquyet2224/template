@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head>
+<meta charset='UTF-8'>
+<style>html,body{padding:0;margin:0;width:100%;height:100%;overflow:hidden}
+.fill-box{padding:50px}
+svg{ margin:5px; border:1px solid #555;display:inline-block;vertical-align:middle}
+h2{text-transform:uppercase;margin:0;padding:0}
+</style>
+
+</head>
+<body>
+
+<div class="fill-box">
+<p><a href="http://srufaculty.sru.edu/david.dailey/svg/newstuff/filterDisplacementMap9.svg" target="_blank">http://srufaculty.sru.edu/david.dailey/svg/newstuff/filterDisplacementMap9.svg</a></p>
+
+<h2>Filter with feImage</h2>
+<svg width="300" height="300">
+	<defs>
+        <filter id="wave" primitiveUnits="objectBoundingBox">
+            <feImage id="waveShap" result="water" xlink:href=""></feImage>
+            <feDisplacementMap scale="0.01" xChannelSelector="R" yChannelSelector="R" in2="water" in="SourceGraphic"></feDisplacementMap>
+        </filter>
+    </defs>
+	<image id="bg" xlink:href="images/beagle400.jpg" width="300" height="300" filter="url(#wave)"></image>
+</svg>
+
+<svg>
+<linearGradient id="l" gradientTransform="rotate(30 .5 .5)">
+<stop offset=".0" stop-color="black"/>
+<stop offset=".1" stop-color="white"/>
+<stop offset=".2" stop-color="black"/>
+<stop offset=".3" stop-color="grey"/>
+<stop offset=".4" stop-color="black"/>
+<stop offset=".7" stop-color="white"/>
+<stop offset=".9" stop-color="black"/>
+</linearGradient>
+<rect fill="url(#l)" width="200" height="200"/>
+
+<radialGradient id="r" fx=".9">
+<stop offset=".1" stop-color="white"/>
+<stop offset=".6" stop-color="black" stop-opacity="0.5" />
+<stop offset=".9" stop-color="white"/>
+<stop offset="1" stop-color="black"/>
+</radialGradient>
+<rect fill="url(#r)" y="60" width="200" height="80"/>
+
+</svg>
+
+
+<svg xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="100%" height="100%" 
+>
+<image xlink:href="images/beagle400.jpg" x="25%" y="25%" height="30%" width="15%"/>
+<radialGradient id="q" fy=".55" gradientTransform="translate(0,-0.1) scale(1,1.2)">
+<animate attributeName="fx" dur="2s" values=".3;.7;.3" 
+ repeatCount="indefinite"/>
+	<stop offset="0" stop-color="red" stop-opacity=".4"/>
+	<stop offset=".3" stop-color="#f0f" stop-opacity="0"/>
+	<stop offset=".5" stop-color="#f90" stop-opacity=".3"/>
+	<stop offset="1" stop-color="brown"/>
+</radialGradient>
+<image xlink:href="images/beagle400.jpg" x="40%" y="25%" height="30%" width="15%"/>
+<rect id="BB" x="40%" y="25%" height="30%" width="15%" fill="url(#q)"/>
+
+</svg>
+
+</div>
+
+<script>
+	var xlink = "http://www.w3.org/1999/xlink";
+	var waveShap = document.querySelector("#waveShap");
+	var displacement = 0;
+	var speed = 0.2;
+
+	function createWave(w,h,step) {
+		  var wave = "data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='"+ w +"' height='"+ h +"'><defs><radialGradient id='rg' r='.9'>";
+		  for (var i = 0; i < (step + 1); i++) {
+			var dis = (i - 2) * step + displacement + "%";
+			var clr =  (i % 2) == 0 ? 'f00' : '000';
+			wave += "<stop offset='"+ dis + "' stop-color='%23"+ clr +"'></stop>";
+		  }
+		  wave += "</radialGradient></defs><rect id='witness' width='"+ w +"' height='"+ h +"' fill='url(%23rg)'></rect></svg>";
+		
+		  return wave;
+	}
+
+	function AnimateOffset() {
+		var wave = createWave(300,300,10);
+		waveShap.setAttributeNS(xlink, "href", wave);
+		if (displacement <= 20) {
+			displacement += speed;
+		} else {
+			displacement = 0;
+		}
+		
+		window.requestAnimationFrame(AnimateOffset);
+	}
+	window.requestAnimationFrame(AnimateOffset);
+	
+</script>
+
+</body>
+</html>
