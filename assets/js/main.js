@@ -214,7 +214,7 @@ function SlidesShow() {
 	if($('.slider-home').length){
 			
 		var Banner = new Swiper('.slide-bg', {
-			autoplay: 5000,
+			autoplay: false,
 			speed: 800,
 			loop:false,
 			slidesPerView: 1,
