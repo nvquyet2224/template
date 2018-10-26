@@ -26,7 +26,7 @@
 <div id="render-block"></div>
 <!--render css-->
 <noscript id="noscript-block">
-<link rel="stylesheet" href="./assets/css/style1.css">
+<link rel="stylesheet" href="./assets/css/style2.css">
 <link rel="stylesheet" href="./assets/css/slide.css">
 </noscript>
 <script>
@@ -381,26 +381,6 @@ Chia sẻ ảnh #GoodHairDay của bạn trên Facebook</p></div>
 <iframe id="myVideo" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 </div>
-
-
-<!--render css-->
-<div id="render-block1"></div>
-<!--render css-->
-<noscript id="noscript-block1">
-<link rel="stylesheet" href="./assets/css/style2.css">
-</noscript>
-<script>
-var loadDeferredStyles1 = function() {
-var addStylesNode1 = document.getElementById("noscript-block1");
-var replacement1 = document.getElementById("render-block1");
-replacement1.innerHTML = addStylesNode1.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles1, 0); });
-else window.addEventListener('load', loadDeferredStyles1);
-</script>
-
 
 <script src="./assets/js/jquery.js"></script>
 <script src="./assets/js/slide.js"></script>
