@@ -75,15 +75,11 @@ header{
 	margin-top:20px;
 }
 #header-link a{
-	/*will-change:opacity, transform;
-	pointer-events:none;
-	-webkit-transform:translate(0, -20%);
-	transform:translate(0, -20%);
-	-webkit-transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 	opacity:0;
 	display:inline-block;
 	margin-right:3%;
+	-webkit-transform:translate3d(0,-20%,0);
+	transform:translate3d(0,-20%,0);
 }
 #header-link a:last-child{
 	margin-right:0;
@@ -3001,8 +2997,16 @@ body.mask #items-area{
 	}
 }
 @media all and (max-width:1100px){
+	header, #page{
+		width:100%;
+		min-width:inherit;
+	}
 	#header-link{
 		display:none;	
+	}
+	#header-link a, #header-link a span, #header-link a span img, #header-link a p{
+		-webkit-transition:none;
+		transition:none;
 	}
 	body.fixed-scroll #header-link .moist, 
 	body.fixed-scroll #header-link .smooth,
@@ -3015,18 +3019,10 @@ body.mask #items-area{
 		animation-duration:0s;
 		-webkit-animation-delay:0s;
 		animation-delay:0s;
-		-webkit-animation-timing-function:none;
-		animation-timing-function:none;
+		-webkit-animation-timing-function:unset;
+		animation-timing-function:unset;
 		-webkit-animation-fill-mode:none;
 		animation-fill-mode:none;
-	}
-	#header-link a span, #header-link a span img, #header-link a p{
-		-webkit-transition:none;
-		transition:none;
-	}
-	header, #page{
-		width:100%;
-		min-width:inherit;
 	}
 	#page > div .section-inner, body.compare #content-head .section-inner, .modal-inner{
 		width: 90%;
