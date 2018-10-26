@@ -11,6 +11,17 @@
 	-webkit-animation-fill-mode:forwards;
 	animation-fill-mode:forwards;
 }
+
+@-webkit-keyframes fadeInDown{
+  0%{opacity:0;-webkit-transform:translate3d(0, -20%, 0);transform:translate3d(0, -20%, 0);}
+  100%{opacity:1;-webkit-transform:none;transform:none;}
+}
+@keyframes fadeInDown{
+  0%{opacity:0;-webkit-transform:translate3d(0, -20%, 0);transform:translate3d(0, -20%, 0);}
+  100%{opacity:1;-webkit-transform:none;transform:none;}
+}
+
+
 /*header*/
 body.page-fixed{
 	overflow:hidden;
@@ -64,14 +75,14 @@ header{
 	margin-top:20px;
 }
 #header-link a{
-	will-change:opacity, transform;
-	display:inline-block;
-	opacity:0;
+	/*will-change:opacity, transform;
 	pointer-events:none;
 	-webkit-transform:translate(0, -20%);
 	transform:translate(0, -20%);
 	-webkit-transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
+	opacity:0;
+	display:inline-block;
 	margin-right:3%;
 }
 #header-link a:last-child{
@@ -99,12 +110,12 @@ header{
 	font-size:1.4rem;
 	color:#242424;
 }
+#header-link a:hover span img{
+	opacity:0;
+}
 #header-link .moist span{
 	background:url("../img/common/triangle-red.svg") top left no-repeat;
 	background-size:contain;
-}
-#header-link .moist:hover span img{
-	opacity:0;
 }
 #header-link .moist:hover p{
 	color:#e60517;
@@ -113,18 +124,12 @@ header{
 	background:url("../img/common/triangle-blue.svg") top left no-repeat;
 	background-size:contain;
 }
-#header-link .smooth:hover span img{
-	opacity:0;
-}
 #header-link .smooth:hover p{
 	color:#00a6c0;
 }
 #header-link .volume span{
 	background:url("../img/common/triangle-pink.svg") top left no-repeat;
 	background-size:contain;
-}
-#header-link .volume:hover span img{
-	opacity:0;
 }
 #header-link .volume:hover p{
 	color:#ff5ecf;
@@ -133,18 +138,12 @@ header{
 	background:url("../img/common/triangle-y.svg") top left no-repeat;
 	background-size:contain;
 }
-#header-link .list:hover span img{
-	opacity:0;
-}
 #header-link .list:hover p{
 	color:#d6b43c;
 }
 #header-link .store span{
 	background:url("../img/common/triangle-y.svg") top left no-repeat;
 	background-size:contain;
-}
-#header-link .store:hover span img{
-	opacity:0;
 }
 #header-link .store:hover p{
 	color:#d6b43c;
@@ -210,35 +209,70 @@ header a.navi-button:hover .bar3{
 	transform:translate(-4px, 0) rotate(0);
 }
 body.fixed-scroll header{
-	background:#FFF;
+	background:#fff;
 	-webkit-transition:background 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
 	transition:background 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
 }
-body.fixed-scroll #header-link a{
-	pointer-events:all;
-	opacity:1;
-	-webkit-transform:translate(0, 0);
-	transform:translate(0, 0);
-}
+body.fixed-scroll #header-link a{}
 body.fixed-scroll #header-link .moist{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	-webkit-animation:fadeInDown;
+	animation:fadeInDown;
+	-webkit-animation-duration:0.3s;
+	animation-duration:0.3s;
+	-webkit-animation-delay:0.1s;
+	animation-delay:0.1s;
+	-webkit-animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	-webkit-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
 }
 body.fixed-scroll #header-link .smooth{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 200ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 200ms;
+	-webkit-animation:fadeInDown;
+	animation:fadeInDown;
+	-webkit-animation-duration:0.3s;
+	animation-duration:0.3s;
+	-webkit-animation-delay:0.2s;
+	animation-delay:0.2s;
+	-webkit-animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	-webkit-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
 }
 body.fixed-scroll #header-link .volume{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 300ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 300ms;
+	-webkit-animation:fadeInDown;
+	animation:fadeInDown;
+	-webkit-animation-duration:0.3s;
+	animation-duration:0.3s;
+	-webkit-animation-delay:0.3s;
+	animation-delay:0.3s;
+	-webkit-animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	-webkit-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
 }
 body.fixed-scroll #header-link .list{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
+	-webkit-animation:fadeInDown;
+	animation:fadeInDown;
+	-webkit-animation-duration:0.3s;
+	animation-duration:0.3s;
+	-webkit-animation-delay:0.4s;
+	animation-delay:0.4s;
+	-webkit-animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	-webkit-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
 }
 body.fixed-scroll #header-link .store{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
+	-webkit-animation:fadeInDown;
+	animation:fadeInDown;
+	-webkit-animation-duration:0.3s;
+	animation-duration:0.3s;
+	-webkit-animation-delay:0.5s;
+	animation-delay:0.5s;
+	-webkit-animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	animation-timing-function:cubic-bezier(0.215, 0.61, 0.355, 1);
+	-webkit-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
 }
 body.fixed-scroll header a.logo-area{
 	background:url("../img/tsubaki-y.svg") top left no-repeat;
@@ -2969,6 +3003,26 @@ body.mask #items-area{
 @media all and (max-width:1100px){
 	#header-link{
 		display:none;	
+	}
+	body.fixed-scroll #header-link .moist, 
+	body.fixed-scroll #header-link .smooth,
+	body.fixed-scroll #header-link .volume,
+	body.fixed-scroll #header-link .list,
+	body.fixed-scroll #header-link .store{
+		-webkit-animation:none;
+		animation:none;
+		-webkit-animation-duration:0s;
+		animation-duration:0s;
+		-webkit-animation-delay:0s;
+		animation-delay:0s;
+		-webkit-animation-timing-function:none;
+		animation-timing-function:none;
+		-webkit-animation-fill-mode:none;
+		animation-fill-mode:none;
+	}
+	#header-link a span, #header-link a span img, #header-link a p{
+		-webkit-transition:none;
+		transition:none;
 	}
 	header, #page{
 		width:100%;
