@@ -1,1 +1,0 @@
-!function(n){setTimeout(function(){n(".loadicon").fadeOut(300,function(){n(".wrap").stop().animate({opacity:1},500,"linear",function(){})})},1e3)}(jQuery);
