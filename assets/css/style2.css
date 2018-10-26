@@ -1,14 +1,4 @@
 
-@media all and (max-width:1200px) {
-	#header-link {
-		width:830px;
-		right:7.27734375%;
-	}
-	#header-link a{
-		margin-right:1.5%;
-	}
-}
-
 @media all and (max-width:1100px) {
 	#header-link {
 		display:none;	
@@ -806,6 +796,7 @@
 		text-align:center;
 		letter-spacing:0.1rem;
 		line-height:1.4;
+
 		-webkit-font-smoothing:antialiased;
 		-moz-osx-font-smoothing:grayscale;
 	}
