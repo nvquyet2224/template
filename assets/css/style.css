@@ -371,7 +371,7 @@ display:none !important;
 }
 
 
-/*header*/
+/*header
 body.page-fixed {
 	overflow:hidden;
 	height:100%;
@@ -987,9 +987,9 @@ a.newlist .image-area {
 	background-repeat:no-repeat;
 	background-size:contain;
 }
+*/
 
-
-/*footer*/
+/*footer
 #topto {
 	padding-top:20px;
 	padding-bottom:60px;
@@ -1180,7 +1180,7 @@ a.newlist .image-area {
 
 .footer-silicone .blank:hover::after {
 	opacity:0.7;
-}
+}*/
 
 
 /*products-link*/
