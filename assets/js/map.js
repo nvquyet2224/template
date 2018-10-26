@@ -1,10 +1,9 @@
-
-
 var byClick =false;
 var markers = [];
 var centerInfo = [];
 var map = null;
 var goCenter = false;
+var acencyHtml = '';
 
 var locations = [
 	{
@@ -502,6 +501,7 @@ function initMap(){
 	for (var i = 0; i < locations.length; i++) {
 		
 		var infobox = "<div class='infobox'><div class='infobox-inr'>"+ locations[i].html +"</div></div>";
+		acencyHtml += '<div class="agency">'+ locations[i].html +'</div>';
 		
 		var marker = new google.maps.Marker({
 				cityId: locations[i].cityId,
@@ -525,6 +525,8 @@ function initMap(){
 		markers.push(marker);
 	}
 	
+	$('.list-agency').html(acencyHtml);
+	
 }
 
 
@@ -535,30 +537,37 @@ function centerMap(lat, long) {
 
 function sortByCity(cityId){
 	
+	acencyHtml = '';
 	for(var i = 0; i < markers.length; i++) {
 		
 		if(cityId == 0) {
 			markers[i].setVisible(true);
+			acencyHtml += '<div class="agency">'+ locations[i].html +'</div>';
 		}else {
 			if(markers[i].cityId != cityId) {
 				markers[i].setVisible(false);
 			}else {
 				markers[i].setVisible(true);
+				acencyHtml += '<div class="agency">'+ locations[i].html +'</div>';
 			}	
 			
 		}
 		
 	}
+	$('.list-agency').html(acencyHtml);
 	
 }
 
 function sortByDistrict(districtId, cityId){
 	goCenter = false;
+	acencyHtml = '';
+	
 	for(var i = 0; i < markers.length; i++) {
 		if(districtId == 0) {
 			
 			if(cityId == 0) {
 				markers[i].setVisible(true);
+				acencyHtml += '<div class="agency">'+ locations[i].html +'</div>';
 				if(!goCenter) {
 					goCenter = true;
 					map.setCenter(markers[i].position);
@@ -567,6 +576,7 @@ function sortByDistrict(districtId, cityId){
 			}else {
 				if(markers[i].cityId == cityId) {
 					markers[i].setVisible(true);
+					acencyHtml += '<div class="agency">'+ locations[i].html +'</div>';
 					if(!goCenter) {
 						goCenter = true;
 						map.setCenter(markers[i].position);
@@ -582,6 +592,7 @@ function sortByDistrict(districtId, cityId){
 				markers[i].setVisible(false);
 			}else {
 				markers[i].setVisible(true);
+				acencyHtml += '<div class="agency">'+ locations[i].html +'</div>';
 				if(!goCenter) {
 					goCenter = true;
 					map.setCenter(markers[i].position);
@@ -591,7 +602,7 @@ function sortByDistrict(districtId, cityId){
 		}
 		
 	}
-	
+	$('.list-agency').html(acencyHtml);
 }
 
 function sortByStreet(street, cityId, districtId){
@@ -646,6 +657,3 @@ function sortByStreet(street, cityId, districtId){
 	}
 	
 }
-
-
-
