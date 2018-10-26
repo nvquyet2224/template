@@ -1099,7 +1099,7 @@ body.mask #title-area{
 }
 #lineup h2, #cm-area h2, #cm-sick h2, #sns-area h2, #campaign h2{
     color:#d6b43c;
-    text-align:center;
+    text-align:center;	
     position:relative;
     line-height:0.8;
     letter-spacing:0.2rem;
@@ -4687,8 +4687,6 @@ body.mask #items-area{
 		padding:0;
 	}
 }
-
-
 @media all and (max-width:540px){
 	/*title area*/
 	body.mask #title-area .image-area{
@@ -4724,7 +4722,6 @@ body.mask #items-area{
 		transform:scale(1.25);
 	}
 }
-
 @media all and (max-width:390px){
 	/*items area*/
 	.circle{
@@ -4737,7 +4734,6 @@ body.mask #items-area{
 		right:25px;
 	}
 }
-
 @media all and (max-width:350px){
 	/*items area*/
 	.circle{

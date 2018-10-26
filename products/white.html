@@ -21,36 +21,17 @@
 <style>body{opacity:0}</style>
 </head>
 <body class="white">
-
-<!--render css-->
-<div id="render-block"></div>
-<!--render css-->
-<noscript id="noscript-block">
-<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
-</noscript>
-<script>
-var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
-replacement.innerHTML = addStylesNode.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-else window.addEventListener('load', loadDeferredStyles);
-</script>
-
 <!--facebook-->
 <div id="fb-root"></div>
 <script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+(function (d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s);
+js.id = id;
+js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 <div id="cfacebook">
 <a href="javascript:void(0)" class="chat_fb">
@@ -63,7 +44,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 <!--facebook-->
-
 <header>
 <div class="header-inner">
 <a class="logo-area" href="../"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></a>
@@ -102,13 +82,10 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </header>
-
 <div id="page">
-
 <div id="content-head-classic">
 <div class="section-inner"><a href="../"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></a></div>
 </div>
-
 <div id="title-area">
 <div class="section-inner">
 <h1 class="hide-pc">Phục Hồi Hư Tổn</h1>
@@ -122,7 +99,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-
 <div id="common-features" class="features-box">
 <div class="modal-inner">
 <h2>Đặc trưng phổ biến* của sản phẩm TSUBAKI<span class="sub">*Óng ả - cấp ẩm – phục hồi</span></h2>
@@ -155,7 +131,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-
 <div id="items-area">
 <div class="section-inner">
 <div class="items prev">
@@ -282,11 +257,9 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-
 <div id="topto">
 <div class="section-inner"><a class="scrollto" data-scrollto="#page">Về đầu trang</a></div>
 </div>
-
 <div id="products-link">
 <div class="section-inner">
 <a class="menu-link newlist menu-moist" href="../products/moist.html"><p>Dưỡng Ẩm và Giữ Nếp</p>
@@ -303,7 +276,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </a>
 </div>
 </div>
-
 <div id="footer-sharearea">
 <div class="section-inner">
 <ul>
@@ -321,11 +293,8 @@ data-show-facepile="true" data-show-posts="false"></div>
 </ul>
 </div>
 </div>
-
 <div id="footer-tsubaki"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></div>
-
 </div>
-
 <div class="modal features-box" id="modal-area">
 <div class="overlay"></div>
 <div class="modal-inner">
@@ -360,7 +329,24 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-
+<!--render css-->
+<div id="render-block"></div>
+<!--render css-->
+<noscript id="noscript-block">
+<link href="../assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+</noscript>
+<script>
+var loadDeferredStyles = function() {
+var addStylesNode = document.getElementById("noscript-block");
+var replacement = document.getElementById("render-block");
+replacement.innerHTML = addStylesNode.textContent;
+};
+var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+else window.addEventListener('load', loadDeferredStyles);
+</script>
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>

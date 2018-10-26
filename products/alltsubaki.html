@@ -21,36 +21,17 @@
 <style>body{opacity:0}</style>
 </head>
 <body class="alltsubaki">
-
-<!--render css-->
-<div id="render-block"></div>
-<!--render css-->
-<noscript id="noscript-block">
-<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
-</noscript>
-<script>
-var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
-replacement.innerHTML = addStylesNode.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-else window.addEventListener('load', loadDeferredStyles);
-</script>
-
 <!--facebook-->
 <div id="fb-root"></div>
 <script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+(function (d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s);
+js.id = id;
+js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 <div id="cfacebook">
 <a href="javascript:void(0)" class="chat_fb">
@@ -63,7 +44,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 <!--facebook-->
-
 <header>
 <div class="header-inner">
 <a class="logo-area" href="../"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></a>
@@ -102,15 +82,12 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </header>
-
 <div id="page">
-
 <div id="content-head">
 <div class="section-inner">
 <h1>Danh sách sản phẩm của TSUBAKI</h1>
 </div>
 </div>
-
 <div id="link-area">
 <div class="section-inner">
 <div class="wrap">
@@ -228,29 +205,35 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-
 <div id="footer-sharearea">
 <div class="section-inner">
 <ul>
-<li class="footer-facebook">
-<a class="footer-fb" href="javascript:void(0);" target="_blank"><img src="../assets/img/fb.svg" alt="facebook"><p>Every #goodhairday trên Facebook</p></a>
-</li>
-<li class="footer-sns share-area">
-<div class="footer-in">
-<a class="shareIN" href="javascript:void(0);" target="_blank"><img class="color" src="../assets/img/in_color.svg" alt="twitter"><img class="mono" src="../assets/img/in.svg" alt="twitter"></a>
-</div>
-</li>
-<li class="footer-silicone">
-<a class="blank" href="javascript:void(0)" target="_blank"><p>Về Silicon</p></a>
-</li>
+<li class="footer-facebook"><a class="footer-fb" href="javascript:void(0);" target="_blank"><img src="../assets/img/fb.svg" alt="facebook"><p>Every #goodhairday trên Facebook</p></a></li>
+<li class="footer-sns share-area"><div class="footer-in"><a class="shareIN" href="javascript:void(0);" target="_blank"><img class="color" src="../assets/img/in_color.svg" alt="twitter"><img class="mono" src="../assets/img/in.svg" alt="twitter"></a></div></li>
+<li class="footer-silicone"><a class="blank" href="javascript:void(0)" target="_blank"><p>Về Silicon</p></a></li>
 </ul>
 </div>
 </div>
-
 <div id="footer-tsubaki"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></div>
-
 </div>
-
+<!--render css-->
+<div id="render-block"></div>
+<!--render css-->
+<noscript id="noscript-block">
+<link href="../assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+</noscript>
+<script>
+var loadDeferredStyles = function() {
+var addStylesNode = document.getElementById("noscript-block");
+var replacement = document.getElementById("render-block");
+replacement.innerHTML = addStylesNode.textContent;
+};
+var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+else window.addEventListener('load', loadDeferredStyles);
+</script>
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>

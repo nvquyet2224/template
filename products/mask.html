@@ -21,36 +21,17 @@
 <style>body{opacity:0}</style>
 </head>
 <body class="mask">
-
-<!--render css-->
-<div id="render-block"></div>
-<!--render css-->
-<noscript id="noscript-block">
-<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
-</noscript>
-<script>
-var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
-replacement.innerHTML = addStylesNode.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-else window.addEventListener('load', loadDeferredStyles);
-</script>
-
 <!--facebook-->
 <div id="fb-root"></div>
 <script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+(function (d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s);
+js.id = id;
+js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 <div id="cfacebook">
 <a href="javascript:void(0)" class="chat_fb">
@@ -63,7 +44,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 <!--facebook-->
-
 <header>
 <div class="header-inner">
 <a class="logo-area" href="../"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></a>
@@ -102,13 +82,10 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </header>
-
 <div id="page">
-
 <div id="content-head-classic">
 <div class="section-inner"><a href="../"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></a></div>
 </div>
-
 <div id="title-area">
 <div class="section-inner">
 <h1 class="hide-pc">Mặt Nạ Tóc Cao Cấp Phục Hồi Hư Tổn</h1>
@@ -127,7 +104,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-
 <div id="items-area">
 <div class="section-inner">
 <div class="items prev">
@@ -135,7 +111,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 <h3 class="lazy">Mặt Nạ Tóc cao cấp Phục Hồi Hư Tổn TSUBAKI</h3>
 <div class="wrap lazy">
 <div class="image-area"><img src="../assets/img/mask/products-pc.jpg" alt="Mặt Nạ Tóc cao cấp Phục Hồi Hư Tổn TSUBAKI"></div>
-
 <div class="text-area">
 <div class="text">
 <p>Công thức phục hồi tiên tiến vượt bậc và các thành phần giàu dưỡng chất thấm sâu giúp mái tóc suôn mượt và mềm mại như dưỡng tóc ở salon mà không mất thời gian chờ đợi.</p>
@@ -166,12 +141,10 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-
 <div id="technology-area">
 <div class="section-inner">
 <h2>CÔNG NGHỆ THẨM THẤU TIÊN TIẾN</h2>
 <div class="wrap">
-
 <div class="technology-box">
 <span class="num">1</span>
 <h3>Mở rộng đường dẫn các thành phần làm đẹp vào tóc (CMC)</h3>
@@ -181,7 +154,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 <div class="image-area"><img src="../assets/img/mask/image1.png" alt="Mở rộng đường dẫn các thành phần làm đẹp vào tóc (CMC)"></div>
 </div>
-
 <div class="technology-box">
 <span class="num">2</span>
 <h3>Đưa trực tiếp các dưỡng chất làm đẹp vào tóc</h3>
@@ -190,7 +162,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 <div class="image-area"><img src="../assets/img/mask/component-pc.jpg" alt="Đưa trực tiếp các dưỡng chất làm đẹp vào tóc"></div>
 </div>
-
 <div class="technology-box">
 <span class="num">3</span>
 <h3>Giữ lại và khóa chặt các thành phần làm đẹp vào tóc</h3>
@@ -200,15 +171,10 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 <div class="image-area"><img src="../assets/img/mask/image3.png" alt="Hấp thụ và giữ các dưỡng chất làm đẹp"></div>
 </div>
-
 </div>
 </div>
 </div>
-
-<div id="topto">
-<div class="section-inner"><a class="scrollto" data-scrollto="#page">Về đầu trang</a></div>
-</div>
-
+<div id="topto"><div class="section-inner"><a class="scrollto" data-scrollto="#page">Về đầu trang</a></div></div>
 <div id="products-link">
 <div class="section-inner">
 <a class="menu-link newlist menu-moist" href="../products/moist.html"><p>Dưỡng Ẩm và Giữ Nếp</p>
@@ -225,7 +191,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </a>
 </div>
 </div>
-
 <div id="footer-sharearea">
 <div class="section-inner">
 <ul>
@@ -243,11 +208,26 @@ data-show-facepile="true" data-show-posts="false"></div>
 </ul>
 </div>
 </div>
-
 <div id="footer-tsubaki"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></div>
-
 </div>
-
+<!--render css-->
+<div id="render-block"></div>
+<!--render css-->
+<noscript id="noscript-block">
+<link href="../assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+</noscript>
+<script>
+var loadDeferredStyles = function() {
+var addStylesNode = document.getElementById("noscript-block");
+var replacement = document.getElementById("render-block");
+replacement.innerHTML = addStylesNode.textContent;
+};
+var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+else window.addEventListener('load', loadDeferredStyles);
+</script>
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
