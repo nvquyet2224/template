@@ -12,55 +12,6 @@
 	animation-fill-mode:forwards;
 }
 
-/*products-link*/
-#products-link{
-	text-align:center;
-	margin-bottom:40px;
-	line-height:0;
-}
-#products-link .line{
-	width:1px;
-	display:block;
-	margin:0 auto 60px;
-	background:#808080;
-	height:0;
-	padding-top:30px;
-}
-#products-link a.menu-link{
-	width:238px;
-	display:inline-block;
-}
-#products-link a.menu-link p{
-	line-height:1.5;
-	font-size:11px;
-	font-size:1.1rem;
-	left:22px;
-}
-#products-link a.menu-link p::before{
-	width:6px;
-	left:-12px;
-}
-#products-link a.newlist{
-	padding-top:88px;
-}
-#products-link a.newlist .image-area{
-	width:90px;
-	padding-top:88px;
-	margin-right:5px;
-}
-/*page*/
-#page{
-	min-width:1024px;
-	width:100%;
-	overflow-x:hidden;
-}
-#page > div{
-	width:100%;
-}
-#page > div .section-inner{
-	width:1024px;
-	margin:0 auto;
-}
 /*arrow link*/
 a.arrow-link{
 	text-align:center;
@@ -2095,17 +2046,6 @@ body.mask #items-area{
 	}
 }
 @media all and (max-width:1100px){
-	#header-link{
-		display:none;	
-	}
-	header, #page{
-		width:100%;
-		min-width:inherit;
-	}
-	#page > div .section-inner, body.compare #content-head .section-inner, .modal-inner{
-		width: 90%;
-	
-	}
 	
 	/*hero banner*/
 	#hero-box .products{
@@ -2283,11 +2223,6 @@ body.mask #items-area{
 	.shop-area .links a:hover{
 		opacity:1;
 	}
-	/*product link*/
-	#page #products-link .section-inner{width:96%}
-	#products-link a.menu-link{
-		width: 24%;
-	}
 	/*func*/
 	#items-area .item .funcs{
 		width:100%;
@@ -2332,31 +2267,6 @@ body.mask #items-area{
 	}
 	.hide-pc{
 		display:block;
-	}
-	/*products-link*/
-	#products-link{
-		font-size:0;
-	}
-	#products-link a.menu-link{
-		width:calc(50% - 3px);
-		margin:0 0 3px 0;
-	}
-	#products-link a.newlist{
-		padding-top:102px;
-	}
-	#products-link a.newlist .image-area{
-		padding-top:100px;
-		width:106px;
-	}
-	#products-link a.menu-link p{
-		font-size:2vw;
-	}
-	#products-link a.menu-link p{
-		left:40px;
-	}
-	#products-link a.menu-link p::before{
-		width:10px;
-		left:-20px;
 	}
 	/*arrow link*/
 	.arrow-link{
@@ -3304,48 +3214,6 @@ body.mask #items-area{
 	.hero-pic{
 		-webkit-background-size:cover;
 		background-size:cover;	
-	}
-	/*products-link*/
-	#products-link{
-		margin-bottom:13.3333333333%;
-	}
-	#products-link a.menu-link{
-		width:100%;
-		margin:0 auto 5.223880597%;
-	}
-	#products-link a.menu-link:last-child{
-		margin:0 auto;
-	}
-	#products-link a.newlist{
-		padding-top:28%;
-	}
-	#products-link a.newlist .image-area{
-		width:29%;
-		padding-top:28%;
-		margin-right:4.4776119403%;
-	}
-	#products-link a.menu-link p{
-		font-size:18.75px;
-		font-size:4vw;
-		display:block;
-		width:85%;
-		letter-spacing:0.12rem;
-		left:12.4328358209%;
-	}
-	#products-link a.menu-link p::before{
-		position:absolute;
-		display:block;
-		top:50%;
-		content:'';
-		width:3.5820895522%;
-		-webkit-transform:translate(0, -50%);
-		transform:translate(0, -50%);
-		height:0;
-		left:-6.4626865672%;
-		line-height:0;
-		padding-top:4.776119403%;
-		background:url(../img/common/triangle-g.svg) center left no-repeat;
-		background-size:contain;
 	}
 	/*cm-area*/
 	#page #cm-area .section-inner{
