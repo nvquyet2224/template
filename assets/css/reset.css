@@ -126,8 +126,8 @@ body.navi-opened #navi-area{
 	pointer-events:all;
 }
 body.navi-opened #navi-area .menu-inner{
-	-webkit-transition:display 0ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
-	transition:display 0ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
+	/*-webkit-transition:display 0ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
+	transition:display 0ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;*/
 	display:block;
 }
 header{
@@ -139,8 +139,8 @@ header{
 	position:fixed;
 	z-index:10;
 	height:60px;
-	-webkit-transition:background 150ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:background 150ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:background 150ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:background 150ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 #header-link{
 	font-size:0;
@@ -157,8 +157,8 @@ header{
 	pointer-events:none;
 	-webkit-transform:translate(0, -20%);
 	transform:translate(0, -20%);
-	-webkit-transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 140ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 	margin-right:3%;
 }
 #header-link a:last-child{
@@ -169,19 +169,19 @@ header{
 	line-height:0;
 	width:8px;
 	margin-right:6px;
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 #header-link a span img{
 	width:100%;
 	opacity:1;
-	-webkit-transition:opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 #header-link a p{
 	display:inline-block;
-	-webkit-transition:color 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:color 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:color 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:color 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 	font-size:14px;
 	font-size:1.4rem;
 	color:#242424;
@@ -249,14 +249,14 @@ header{
 	position:absolute;
 	top:18px;
 	left:30px;
-	-webkit-transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 .header-inner a.logo-area img{
 	width:124px;
 	height:21px;
-	-webkit-transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 header a.navi-button{
 	display:block;
@@ -276,7 +276,8 @@ header a.navi-button span{
 	will-change:transform;
 	-webkit-transform-origin:50%;
 	transform-origin:50%;
-	transition:all 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	transition:all 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;*/
 	z-index:1;
 }
 header a.navi-button .bar1{
@@ -297,9 +298,9 @@ header a.navi-button:hover .bar3{
 	transform:translate(-4px, 0) rotate(0);
 }
 body.fixed-scroll header{
-	background:#FFF;
-	-webkit-transition:background 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
-	transition:background 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	background:#fff;
+	/*-webkit-transition:background 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	transition:background 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;*/
 }
 body.fixed-scroll #header-link a{
 	pointer-events:all;
@@ -308,24 +309,24 @@ body.fixed-scroll #header-link a{
 	transform:translate(0, 0);
 }
 body.fixed-scroll #header-link .moist{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;*/
 }
 body.fixed-scroll #header-link .smooth{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 200ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 200ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 200ms;
+	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 200ms;*/
 }
 body.fixed-scroll #header-link .volume{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 300ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 300ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 300ms;
+	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 300ms;*/
 }
 body.fixed-scroll #header-link .list{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
+	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;*/
 }
 body.fixed-scroll #header-link .store{
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
+	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;*/
 }
 body.fixed-scroll header a.logo-area{
 	background:url("../img/tsubaki-y.svg") top left no-repeat;
@@ -535,12 +536,12 @@ body.volume #content-head{
 	background:#d6b43c;
 	-webkit-transform-origin:0 0;
 	transform-origin:0 0;
-	-webkit-transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-	transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	/*-webkit-transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;*/
 }
 #navi-area .menu-inner .menu-home::before{
-	-webkit-transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-	transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+	/*-webkit-transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+	transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;*/
 	-webkit-transform:scaleX(0);
 	transform:scaleX(0);
 }
@@ -634,8 +635,8 @@ a.menu-link{
 	margin:0 3px 0 0;
 	width:318px;
 	box-sizing:border-box;
-	-webkit-transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-	transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	/*-webkit-transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	transition:all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;*/
 }
 a.menu-link:last-child{
 	margin-right:0;
@@ -711,8 +712,8 @@ a.newlist .image-area{
 	letter-spacing:0.06rem;
 	font-size:18px;
 	font-size:1.8rem;
-	-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 #topto a::before, #topto a::after{
 	content:'';
@@ -723,8 +724,8 @@ a.newlist .image-area{
 	background:#242424;
 	-webkit-transform-origin:0 100%;
 	transform-origin:0 100%;
-	-webkit-transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-	transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	/*-webkit-transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	transition:all 50ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;*/
 	margin:auto;
 	top:0;
 	left:0;
@@ -733,8 +734,8 @@ a.newlist .image-area{
 #topto a::after{
 	-webkit-transform:scaleY(0);
 	transform:scaleY(0);
-	-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
-	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	/*-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;*/
 }
 #topto a:hover{
 	color:#777;
@@ -807,8 +808,8 @@ a.newlist .image-area{
 	bottom:7px;
 	height:1px;
 	background:#a6a6a6;
-	-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 #footer-sharearea li a:hover p::after{
 	-webkit-transform:scaleX(1);
@@ -838,8 +839,8 @@ a.newlist .image-area{
 	margin:-10px 0 0 -10px;;
 	width:20px;
 	height:auto;
-	-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
-	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	/*-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;
+	transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 100ms;*/
 }
 .footer-in .color{
 	opacity:0;
@@ -868,8 +869,8 @@ a.newlist .image-area{
     display:inline-block;
     margin-left:11px;
 	vertical-align:middle;
-	-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
-	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	/*-webkit-transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;
+	transition:all 400ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms;*/
 }
 .footer-silicone .blank:hover::after{
 	opacity:0.7;
