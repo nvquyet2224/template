@@ -343,6 +343,7 @@ function Start(){
 	}
 	
 	selectEvent();
+	onScroll();
 
 }
 
@@ -403,10 +404,11 @@ function onRotate(){
 	onScroll();
 }
 
-$(function() {
+//$(function() {
+$(document).ready(function () {
 	//Star page
 	setTimeout(function(){
-		onScroll();
+		//onScroll();
 		$('body').stop().animate({'opacity':1}, 500 ,'linear', function () {
 			SlidesShow();
 			Start();

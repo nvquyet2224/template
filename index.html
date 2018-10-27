@@ -21,7 +21,7 @@
 <style>body{opacity:0}</style>
 </head>
 <body class="index">
-<!--facebook
+<!--facebook-->
 <div id="fb-root"></div>
 <script>
 (function (d, s, id) {
@@ -43,7 +43,8 @@ data-height="400" data-small-header="false" data-adapt-container-width="true" da
 data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
-facebook-->
+<!--facebook-->
+
 <header>
 <div class="header-inner">
 <a class="logo-area" href="./"><img src="./assets/img/tsubaki.svg" alt="TSUBAKI"></a>
@@ -82,6 +83,27 @@ facebook-->
 </div>
 </div>
 </header>
+
+<!--render css-->
+<div id="render-block"></div>
+<!--render css-->
+<noscript id="noscript-block">
+<link href="./assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="./assets/css/style.css" rel="stylesheet" type="text/css">
+<link href="./assets/css/slide.css" rel="stylesheet" type="text/css">
+</noscript>
+<script>
+var loadDeferredStyles = function() {
+var addStylesNode = document.getElementById("noscript-block");
+var replacement = document.getElementById("render-block");
+replacement.innerHTML = addStylesNode.textContent;
+};
+var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+else window.addEventListener('load', loadDeferredStyles);
+</script>
+
 <div id="page">
 <div id="hero-box" class="slider-home">
 <div class="slide-bg">
@@ -110,16 +132,16 @@ facebook-->
 <div class="item-container">
 <div class="hero-item">
 <a href="javascript:void(0);">
-<div class="hero-pic pc" data-style="background-image:url(./assets/img/top/key/pc_top_mv.jpg)"></div>
-<div class="hero-pic sp" data-style="background-image:url(./assets/img/top/key/sp_top_mv.jpg)"></div>
+<div class="hero-pic pc" style="background-image:url(./assets/img/top/key/pc_top_mv.jpg)"></div>
+<div class="hero-pic sp" style="background-image:url(./assets/img/top/key/sp_top_mv.jpg)"></div>
 </a>
 </div>
 </div>
 <div class="item-container">
 <div class="hero-item">
 <a href="javascript:void(0);">
-<div class="hero-pic pc" data-style="background-image:url(./assets/img/top/key/pc_zero-sec-salon.jpg)"></div>
-<div class="hero-pic sp" data-style="background-image:url(./assets/img/top/key/sp_zero-sec-salon.jpg)"></div>
+<div class="hero-pic pc" style="background-image:url(./assets/img/top/key/pc_zero-sec-salon.jpg)"></div>
+<div class="hero-pic sp" style="background-image:url(./assets/img/top/key/sp_zero-sec-salon.jpg)"></div>
 </a>
 </div>
 </div>
@@ -132,8 +154,8 @@ facebook-->
 <p class="lazy">5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* <br>Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong</p>
 <div class="note lazy">* Thành phần nuôi dưỡng tóc khỏe đẹp</div>
 <div class="components-image lazy">
-<img class="pc" src="/"  data-src="./assets/img/top/components.jpg" alt="5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong">
-<img class="sp" src="/"  data-src="./assets/img/5_components_sp.png" alt="5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong">
+<img class="pc" src="./assets/img/top/components.jpg" alt="5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong">
+<img class="sp" src="./assets/img/5_components_sp.png" alt="5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong">
 </div>
 </div>
 </div>
@@ -148,7 +170,7 @@ facebook-->
 <div class="type moist">
 <p class="type-name lazy hide-pc" data-offset="-50">Dưỡng Ẩm và Giữ Nếp</p>
 <div class="lineup moist lazy">
-<div class="image-area"><img src="/"  data-src="./assets/img/top/prod_moist.png" alt="Dưỡng Ẩm và Giữ Nếp"></div>
+<div class="image-area"><img src="./assets/img/top/prod_moist.png" alt="Dưỡng Ẩm và Giữ Nếp"></div>
 <div class="text-area">
 <div class="type-name lazy hide-sp" data-offset="-50">Dưỡng Ẩm và Giữ Nếp</div>
 <div class="lineup-text">
@@ -161,7 +183,7 @@ facebook-->
 <div class="type smooth">
 <p class="type-name lazy hide-pc" data-offset="-50">Suôn Mượt Mềm Mại</p>
 <div class="lineup lazy">
-<div class="image-area"><img src="/"  data-src="./assets/img/top/prod_smooth.png" alt="Suôn Mượt Mềm Mại"></div>
+<div class="image-area"><img src="./assets/img/top/prod_smooth.png" alt="Suôn Mượt Mềm Mại"></div>
 <div class="text-area">
 <div class="type-name lazy hide-sp" data-offset="-50">Suôn Mượt Mềm Mại</div>
 <div class="lineup-text">
@@ -174,7 +196,7 @@ facebook-->
 <div class="type volume">
 <p class="type-name lazy hide-pc" data-offset="-50">Bồng Bềnh Chắc Khỏe</p>
 <div class="lineup lazy">
-<div class="image-area"><img src="/"  data-src="./assets/img/top/prod_volume.png" alt="Bồng Bềnh Chắc Khỏe"></div>
+<div class="image-area"><img src="./assets/img/top/prod_volume.png" alt="Bồng Bềnh Chắc Khỏe"></div>
 <div class="text-area">
 <div class="type-name lazy hide-sp" data-offset="-50">Bồng Bềnh Chắc Khỏe</div>
 <div class="lineup-text">
@@ -188,7 +210,7 @@ facebook-->
 <p class="type-name lazy hide-pc">Danh sách sản phẩm của TSUBAKI</p>
 <div class="lineup lazy">
 <div class="image-area">
-<img src="/"  data-src="./assets/img/top/prods.jpg" alt="Danh sách sản phẩm của TSUBAKI">
+<img src="./assets/img/top/prods.jpg" alt="Danh sách sản phẩm của TSUBAKI">
 </div>
 <div class="text-area">
 <div class="type-name lazy hide-sp">Danh sách sản phẩm của TSUBAKI</div>
@@ -204,7 +226,7 @@ facebook-->
 <h2>Những vấn đề của tóc</h2>
 <div class="wrap">
 <div class="sick lineup lazy">
-<div class="image-area"><img src="/"  data-src="./assets/img/top/sick_products.png" alt="Những vấn đề của tóc"></div>
+<div class="image-area"><img src="./assets/img/top/sick_products.png" alt="Những vấn đề của tóc"></div>
 <div class="text-area">
 <ul>
 <li><a class="arrow-link" href="./products/moist.html">
@@ -263,9 +285,9 @@ facebook-->
 <h3 class="sp">Everyday #GoodHairDay trên Facebook</h3>
 <div class="lazy" id="sns-image-area">
 <div class="sns-slider">
-<div class="sns-ịtem"><img src="/"  data-src="./assets/img/top/sns/01.png" alt="pic"></div>
-<div class="sns-ịtem"><img src="/"  data-src="./assets/img/top/sns/02.png" alt="pic"></div>
-<div class="sns-ịtem"><img src="/"  data-src="./assets/img/top/sns/03.png" alt="pic"></div>
+<div class="sns-ịtem"><img src="./assets/img/top/sns/01.png" alt="pic"></div>
+<div class="sns-ịtem"><img src="./assets/img/top/sns/02.png" alt="pic"></div>
+<div class="sns-ịtem"><img src="./assets/img/top/sns/03.png" alt="pic"></div>
 </div>
 </div>
 <div class="text-area">
@@ -283,13 +305,13 @@ Chia sẻ ảnh #GoodHairDay của bạn trên Facebook</p></div>
 <div class="campaign-box">
 <div class="campaign-slider">
 <div class="campaign-item">
-<a href="javascript:void(0);"><img src="/"  data-src="./assets/img/campaign/campaign1.jpg" alt="pic"></a>
+<a href="javascript:void(0);"><img src="./assets/img/campaign/campaign1.jpg" alt="pic"></a>
 </div>
 <div class="campaign-item">
-<a href="javascript:void(0);"><img src="/"  data-src="./assets/img/campaign/campaign2.jpg" alt="pic"></a>
+<a href="javascript:void(0);"><img src="./assets/img/campaign/campaign2.jpg" alt="pic"></a>
 </div>
 <div class="campaign-item">
-<a href="javascript:void(0);"><img src="/"  data-src="./assets/img/campaign/campaign3.jpg" alt="pic"></a>
+<a href="javascript:void(0);"><img src="./assets/img/campaign/campaign3.jpg" alt="pic"></a>
 </div>
 </div>
 </div>
@@ -308,31 +330,14 @@ Chia sẻ ảnh #GoodHairDay của bạn trên Facebook</p></div>
 </div>
 <div id="footer-tsubaki"><img src="./assets/img/tsubaki.svg" alt="TSUBAKI"></div>
 </div>
-<!--render css-->
-<div id="render-block"></div>
-<!--render css-->
-<noscript id="noscript-block">
-<link href="./assets/css/reset.css" rel="stylesheet" type="text/css">
-<link href="./assets/css/style.css" rel="stylesheet" type="text/css">
-<link href="./assets/css/slide.css" rel="stylesheet" type="text/css">
-</noscript>
-<script>
-var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
-replacement.innerHTML = addStylesNode.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-else window.addEventListener('load', loadDeferredStyles);
-</script>
+
 <div class="modal" id="video-modal">
 <div class="overlay"></div>
 <div class="modal-inner"><a class="close-button"></a>
 <iframe id="myVideo" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 </div>
+
 <script src="./assets/js/jquery.js"></script>
 <script src="./assets/js/slide.js"></script>
 <script src="./assets/js/main.js"></script>

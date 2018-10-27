@@ -1,3 +1,4 @@
+
 .sp{display:none !important;}
 .hide-pc{display:none}
 .lazy{opacity:0;}
@@ -11,16 +12,6 @@
 	-webkit-animation-fill-mode:forwards;
 	animation-fill-mode:forwards;
 }
-
-@-webkit-keyframes fadeInDown{
-  0%{opacity:0;-webkit-transform:translate3d(0, -20%, 0);transform:translate3d(0, -20%, 0);}
-  100%{opacity:1;-webkit-transform:none;transform:none;}
-}
-@keyframes fadeInDown{
-  0%{opacity:0;-webkit-transform:translate3d(0, -20%, 0);transform:translate3d(0, -20%, 0);}
-  100%{opacity:1;-webkit-transform:none;transform:none;}
-}
-
 
 /*header*/
 body.page-fixed{
@@ -2642,18 +2633,7 @@ body.mask #items-area{
 	line-height:0;
 	margin-bottom:0;
 }
-.sns-slider{
-	position:relative;
-	display:block;
-	width:100%;
-	height:auto;
-}
-.sns-ịtem{
-	position:relative;
-	display:block;
-	width:100%;
-	height:auto;
-}
+.sns-slider, .sns-ịtem,
 .sns-ịtem img{
 	position:relative;
 	display:block;
@@ -2745,28 +2725,6 @@ body.mask #items-area{
 	line-height:0;
 }
 /*hero banner*/
-#hero-box{
-	height:100%;
-	overflow:hidden;
-	background:none;
-	position:relative;
-}
-@-webkit-keyframes fadeInUp{
-  0%{opacity:0;-webkit-transform:translate3d(0, 40px, 0);transform:translate3d(0, 40px, 0);}
-  100%{opacity:1;-webkit-transform:none;transform:none;}
-}
-@keyframes fadeInUp{
-  0%{opacity:0;-webkit-transform:translate3d(0, 40px, 0);transform:translate3d(0, 40px, 0);}
-  100%{opacity:1;-webkit-transform:none;transform:none;}
-}
-@-webkit-keyframes fadeIn{
-  0%{ opacity:0;}
-  100%{ opacity:1;}
-}
-@keyframes fadeIn{
-  0%{ opacity:0;}
-  100%{opacity:1}
-}
 .slider-home{position:relative;display:block;width:100%;height:auto;overflow:hidden;text-align:center;z-index:1}
 .slide-bg{position:relative;display:block;width:100%;height:auto}
 .pagination{height:32px}
@@ -2899,90 +2857,35 @@ body.mask #items-area{
 	-webkit-animation-fill-mode:forwards;
 	animation-fill-mode:forwards;	
 }
-/*facebook box*/
-#cfacebook{
-    padding:8px 0px 8px 8px;
-    position:fixed;
-	width:250px;
-    bottom:5px;
-    right:0px;
-    height:62px;
-    overflow:hidden;
-    z-index:9;
-    border:1px solid #b0212e;
-    border-right-width:0px;
-    border-top-left-radius:33px;
-    border-bottom-left-radius:33px;
-    -webkit-transition:all 0.3s ease-in-out;
-    transition:all 0.3s ease-in-out;
-	box-shadow:0 0 0 1px rgba(255,255,255,0.5);
+
+
+/*animation*/
+@-webkit-keyframes fadeInDown{
+  0%{opacity:0;-webkit-transform:translate3d(0, -20%, 0);transform:translate3d(0, -20%, 0);}
+  100%{opacity:1;-webkit-transform:none;transform:none;}
 }
-#cfacebook.active{
-    height:332px
+@keyframes fadeInDown{
+  0%{opacity:0;-webkit-transform:translate3d(0, -20%, 0);transform:translate3d(0, -20%, 0);}
+  100%{opacity:1;-webkit-transform:none;transform:none;}
 }
-#cfacebook a{
-    letter-spacing:0.2px;
-    color:#fff;
-    padding-left:16px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-right:24px;
-    border-top-left-radius:25px;
-    border-bottom-left-radius:25px;
-    overflow:hidden;
-    background-color:#b0212e;
-    display:block;
-    height:44px;
-	font-size:16px;
-	box-shadow:0 0 0 1px rgba(255,255,255,0.5);
-    -webkit-transition:all 0.3s ease-in-out;
-    transition:all 0.3s ease-in-out;
+@-webkit-keyframes fadeInUp{
+  0%{opacity:0;-webkit-transform:translate3d(0, 40px, 0);transform:translate3d(0, 40px, 0);}
+  100%{opacity:1;-webkit-transform:none;transform:none;}
 }
-#cfacebook .facebook-mesage{
-    vertical-align:middle;
-    display:inline-block;
-    height:24px;
-    width:24px;
-    margin-right:12px;
-    background-image:url('../img/message.svg');
-    background-size:contain;
-    background-repeat:no-repeat;
+@keyframes fadeInUp{
+  0%{opacity:0;-webkit-transform:translate3d(0, 40px, 0);transform:translate3d(0, 40px, 0);}
+  100%{opacity:1;-webkit-transform:none;transform:none;}
 }
-#cfacebook .facebook-down{
-    vertical-align:middle;
-    display:inline-block;
-    height:8px;
-    width:17px;
-    margin-left:14px;
-    background-image:url('../img/down.svg');
-    background-size:contain;
-    background-repeat:no-repeat;
+@-webkit-keyframes fadeIn{
+  0%{ opacity:0;}
+  100%{ opacity:1;}
 }
-#cfacebook .fchat{
-    float:left;
-	opacity:0;
-    width:100%;
-    height:270px;
-    overflow:hidden;
-    background-color:#fff;
-    border-bottom-left-radius:25px;
-	-webkit-transition-delay:0.1s;
-	transition-delay:0.1s;
-	-webkit-transition:opacity 0.05s ease-in-out;
-	transition:opacity 0.05s ease-in-out;
+@keyframes fadeIn{
+  0%{ opacity:0;}
+  100%{opacity:1}
 }
-#cfacebook.active .fchat{
-	opacity:1;
-}
-#cfacebook .fchat .fb-page{
-    margin-top:-130px;
-    float:left;
-}
-#cfacebook.active .chat_fb{
-    border-bottom-left-radius:0px;
-    -webkit-transition:all 0.3s ease-in-out;
-    transition:all 0.3s ease-in-out;
-}
+
+/*responsive*/
 @media all and (min-width:1100px) and (max-height:860px){
 	.modal .modal-inner{
 		margin:2% auto;
@@ -4562,82 +4465,7 @@ body.mask #items-area{
 		-webkit-background-size:cover;
 		background-size:cover;	
 	}
-	/*facebook*/
-	#cfacebook{
-        width:57px;
-    }
-    #cfacebook.active{
-        width:246px;
-    }
-    #cfacebook .chat_fb i{
-        display:none;
-    }
-    #cfacebook .chat_fb{
-        padding-right:10px;
-    }
-    #cfacebook.active .chat_fb i{
-        display:inline-block;
-    }
-    #cfacebook .chat_fb .facebook-mesage{
-        display:inline-block;
-        margin-right:0px;
-    }
-	/*footer*/
-	#topto{
-		padding-bottom:10.6666666667%;
-	}
-	#topto .section-inner{
-		position:relative;
-		padding-top:12.6865671642%;
-	}
-	#topto a{
-		font-size:15.5555555556px;
-		font-size:3.7333333333vw;
-	}
-	#footer-sharearea{
-		padding-bottom:8%;
-	}
-	#footer-sharearea ul{
-		padding:0
-	}
-	#footer-sharearea li{
-		width:100%;
-		display:block;
-		height:auto;
-		border-right:none;
-		text-align:left;
-		padding:4.4626865672% 4.4776119403%;
-		border-bottom:1px solid #a6a6a6; 
-	}
-	#footer-sharearea li:last-child{
-		border-bottom:none;
-	}
-	#footer-sharearea li p{
-		font-size:20px;
-		font-size:3.2vw;
-	}
-	.footer-fb img{
-		width:4%;
-	}
-	.footer-in a{
-		width:6.5671641791%;
-		height:auto;
-	}
-	.footer-in img{
-		position:relative;
-		left:auto;
-		top:auto;
-		margin:0;
-		width:100%;
-	}
-	#footer-sharearea li a.blank::after{
-		content:'';
-		width:3.8805970149%;
-		position:relative;
-		top:3px;
-		padding-top:3.8805970149%;
-		margin-left:3.7313432836%;
-	}
+	
 	/*products-link*/
 	#products-link{
 		margin-bottom:13.3333333333%;
