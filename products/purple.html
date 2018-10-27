@@ -44,6 +44,26 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 <!--facebook-->
+
+<!--render css-->
+<div id="render-block"></div>
+<!--render css-->
+<noscript id="noscript-block">
+<link href="../assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+</noscript>
+<script>
+var loadDeferredStyles = function() {
+var addStylesNode = document.getElementById("noscript-block");
+var replacement = document.getElementById("render-block");
+replacement.innerHTML = addStylesNode.textContent;
+};
+var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+else window.addEventListener('load', loadDeferredStyles);
+</script>
+
 <header>
 <div class="header-inner">
 <a class="logo-area" href="../"><img src="../assets/img/tsubaki.svg" alt="TSUBAKI"></a>
@@ -327,24 +347,6 @@ data-show-facepile="true" data-show-posts="false"></div>
 </div>
 </div>
 </div>
-<!--render css-->
-<div id="render-block"></div>
-<!--render css-->
-<noscript id="noscript-block">
-<link href="../assets/css/reset.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
-</noscript>
-<script>
-var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
-replacement.innerHTML = addStylesNode.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-else window.addEventListener('load', loadDeferredStyles);
-</script>
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
