@@ -1,345 +1,82 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="TSUBAKI">
-<meta name="keywords" content="TSUBAKI">
-<meta name="thumbnail" content="./assets/img/top/main_products.png">
-<meta property="og:type" content="website">
-<meta property="og:url" content="index.html">
-<meta property="og:title" content="TSUBAKI">
-<meta property="og:site_name" content="TSUBAKI">
-<meta property="og:description" content="TSUBAKI">
-<meta property="og:image" content="./assets/img/ogp.jpg">
-<meta property="og:image:type" content="image/jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<title>TSUBAKI</title>
-<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-<link rel="icon" type="image/x-icon" href="./favicon.ico">
-<style>body{opacity:0}</style>
+<title>Image editor</title>
+
+<link type="text/css" href="css/tui-color-picker.css" rel="stylesheet">
+
+<script type="text/javascript" src="./js/tui-code-snippet.min.js"></script>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/fabric.js"></script>
+<script type="text/javascript" src="./js/FileSaver.min.js"></script>
+<script type="text/javascript" src="./js/tui-color-picker.js"></script>
+<script type="text/javascript" src="./js/tui-image-editor.js"></script>
+<script type="text/javascript" src="./js/theme/white-theme.js"></script>
+<script type="text/javascript" src="./js/theme/black-theme.js"></script>
+
+<style>
+ body {
+	 margin:0;
+	 padding:0;
+ }
+</style>
 </head>
-<body class="index">
-<!--facebook-->
-<div id="fb-root"></div>
-<script>
-(function (d, s, id) {
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) return;
-js = d.createElement(s);
-js.id = id;
-js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-<div id="cfacebook">
-<a href="javascript:void(0)" class="chat_fb">
-<i class="facebook-mesage"></i> <i> Hỗ trợ trực tuyến</i> <i class="facebook-down"> </i>
-</a>
-<div class="fchat">
-<div class="fb-page" data-tabs="messages" data-href="https://www.facebook.com/chongnanganessasheiseidonhatban" data-width="237"
-data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
-data-show-facepile="true" data-show-posts="false"></div>
-</div>
-</div>
-<!--facebook-->
+<body>
 
-<header>
-<div class="header-inner">
-<a class="logo-area" href="./"><img src="./assets/img/tsubaki.svg" alt="TSUBAKI"></a>
-<div id="header-link">
-<a class="moist" href="./products/moist.html"><span><img src="./assets/img/common/triangle-g.svg" alt="Dưỡng Ẩm và Giữ Nếp"></span><p>Dưỡng Ẩm và Giữ Nếp</p></a>
-<a class="smooth" href="./products/smooth.html"><span><img src="./assets/img/common/triangle-g.svg" alt="Suôn Mượt Mềm Mại"></span><p>Suôn Mượt Mềm Mại</p></a>
-<a class="volume" href="./products/volume.html"><span><img src="./assets/img/common/triangle-g.svg" alt="Bồng Bềnh Chắc Khỏe"></span><p>Bồng Bềnh Chắc Khỏe</p></a>
-<a class="list" href="./products/alltsubaki.html"><span><img src="./assets/img/common/triangle-g.svg" alt="Danh sách sản phẩm TSUBAKI"></span><p>Danh sách sản phẩm TSUBAKI</p></a>
-<a class="store" href="./stores.html"><span><img src="./assets/img/common/triangle-g.svg" alt="Vị trí cửa hàng"></span><p>Vị trí cửa hàng</p></a>
+<div id="tui-image-editor-container" style="height: 800px">
+    <canvas></canvas>
 </div>
-<a class="navi-button"><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span></a>
-<div id="navi-area">
-<div class="menu-inner">
-<p class="menu-title">MENU</p>
-<a class="menu-home" href="./"><span><img src="./assets/img/common/triangle-y.svg" alt="TRANG CHỦ"></span>TRANG CHỦ</a>
-<h2>DÒNG SẢN PHẨM</h2>
-<div class="wrap">
-<a class="menu-link newlist" href="./products/moist.html"><p>Dưỡng Ẩm và Giữ Nếp</p><div class="image-area" style="background-image:url(./assets/img/common/navi/navi-moist.png)"></div></a>
-<a class="menu-link newlist" href="./products/smooth.html"><p>Suôn Mượt Mềm Mại</p><div class="image-area" style="background-image:url(./assets/img/common/navi/navi-smooth.png)"></div></a>
-<a class="menu-link newlist" href="./products/volume.html"><p>Bồng Bềnh Chắc Khỏe</p><div class="image-area" style="background-image:url(./assets/img/common/navi/navi-volume.png)"></div></a>
-</div>
-<div class="wrap nav-mask">
-<a class="menu-link prevlist menu-mask" href="./products/mask.html"><p>Mặt Nạ Tóc</p><div class="image-area" style="background-image:url(./assets/img/common/navi/navi-mask.png)"></div></a>
-</div>
-<div class="wrap">
-<a class="menu-link prevlist" href="./products/red.html"><p>Siêu Cấp Ẩm</p><div class="image-area" style="background-image:url(./assets/img/common/navi/navi-red.png)"></div></a>
-<a class="menu-link prevlist" href="./products/white.html"><p>Phục Hồi Hư Tổn</p><div class="image-area" style="background-image:url(./assets/img/common/navi/navi-white.png)"></div></a>
-<a class="menu-link prevlist" href="./products/purple.html"><p>Ngăn Rụng Tóc</p><div class="image-area" style="background-image:url(./assets/img/common/navi/navi-purple.png)"></div></a>
-</div>
-<div class="wrap">
-<a class="menu-link prevlist" href="./products/alltsubaki.html"><p>Danh sách sản phẩm TSUBAKI</p></a>
-<a class="menu-link prevlist" href="./products/compare.html"><p>So sánh giữa các loại sản phẩm</p></a>
-<a class="menu-link prevlist" href="./stores.html"><p>Vị trí cửa hàng</p></a>
-</div>
-</div>
-</div>
-</div>
-</header>
 
-<!--render css-->
-<div id="render-block"></div>
-<!--render css-->
-<noscript id="noscript-block">
-<link href="./assets/css/reset.css" rel="stylesheet" type="text/css">
-<link href="./assets/css/style.css" rel="stylesheet" type="text/css">
-<link href="./assets/css/slide.css" rel="stylesheet" type="text/css">
-</noscript>
 <script>
-var loadDeferredStyles = function() {
-var addStylesNode = document.getElementById("noscript-block");
-var replacement = document.getElementById("render-block");
-replacement.innerHTML = addStylesNode.textContent;
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-else window.addEventListener('load', loadDeferredStyles);
+
+	var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {
+		includeUI: {
+			loadImage: {
+				path: 'img/sampleImage2.png',
+				name: 'SampleImage'
+			},
+			theme: blackTheme, // or whiteTheme
+			initMenu: 'filter',
+			menuBarPosition: 'bottom'
+		},
+		cssMaxWidth: 700,
+		cssMaxHeight: 500
+	});
+	
+	window.onresize = function() {
+		imageEditor.ui.resizeEditor();
+	}
 </script>
 
-<div id="page">
-<div id="hero-box" class="slider-home">
-<div class="slide-bg">
-<div class="item-wrapper">
-<div class="item-container">
-<div class="hero-item">
-<a href="javascript:void(0);">
-<div class="section-inner">
-<div class="image-area"></div>
-<div class="title">
-<h1>tóc khỏe đẹp</h1>
-<h2>chuẩn nhật</h2>
-</div>
-<div class="products"><img src="./assets/img/top/main_products.png" alt="tóc khỏe đẹp chuẩn nhật"></div>
-<div id="components">
-<div class="lead">
-<p>5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* <br>Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong</p>
-<span class="note">*Thành phần nuôi dưỡng tóc khỏe đẹp</span>
-</div>
-<div class="five-components"><img src="./assets/img/top/5components_sp.png" alt="5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong"></div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="item-container">
-<div class="hero-item">
-<a href="javascript:void(0);">
-<div class="hero-pic pc" style="background-image:url(./assets/img/top/key/pc_top_mv.jpg)"></div>
-<div class="hero-pic sp" style="background-image:url(./assets/img/top/key/sp_top_mv.jpg)"></div>
-</a>
-</div>
-</div>
-<div class="item-container">
-<div class="hero-item">
-<a href="javascript:void(0);">
-<div class="hero-pic pc" style="background-image:url(./assets/img/top/key/pc_zero-sec-salon.jpg)"></div>
-<div class="hero-pic sp" style="background-image:url(./assets/img/top/key/sp_zero-sec-salon.jpg)"></div>
-</a>
-</div>
-</div>
-</div>
-<div class="pagination"></div>
-</div>
-</div>
-<div id="components-detail">
-<div class="section-inner">
-<p class="lazy">5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* <br>Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong</p>
-<div class="note lazy">* Thành phần nuôi dưỡng tóc khỏe đẹp</div>
-<div class="components-image lazy">
-<img class="pc" src="./assets/img/top/components.jpg" alt="5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong">
-<img class="sp" src="./assets/img/5_components_sp.png" alt="5 Dưỡng Chất Thiết Yếu 100% Từ Thiên Nhiên* Thấm Sâu Và Nuôi Dưỡng Tóc Từ Bên Trong">
-</div>
-</div>
-</div>
-<div id="lineup">
-<div class="section-inner">
-<h2>DÒNG SẢN PHẨM</h2>
-<h3>3 dòng phù hợp cho việc chăm sóc tóc chắc khỏe từ bên trong</h3>
-<div class="lead">
-<p>Dầu gội, dầu xả, kem xả phục hồi và xịt dưỡng tóc cho mỗi nhu cầu chăm sóc</p>
-</div>
-<div class="wrap">
-<div class="type moist">
-<p class="type-name lazy hide-pc" data-offset="-50">Dưỡng Ẩm và Giữ Nếp</p>
-<div class="lineup moist lazy">
-<div class="image-area"><img src="./assets/img/top/prod_moist.png" alt="Dưỡng Ẩm và Giữ Nếp"></div>
-<div class="text-area">
-<div class="type-name lazy hide-sp" data-offset="-50">Dưỡng Ẩm và Giữ Nếp</div>
-<div class="lineup-text">
-<p>Dành cho tóc khô, xơ và không vào nếp với phức hợp giàu dưỡng chất thiết yếu thấm sâu vào lõi tóc giúp tóc ẩm mượt tự nhiên và dễ dàng vào nếp</p>
-</div>
-<a href="./products/moist.html"><p>Xem thông tin chi tiết</p></a>
-</div>
-</div>
-</div>
-<div class="type smooth">
-<p class="type-name lazy hide-pc" data-offset="-50">Suôn Mượt Mềm Mại</p>
-<div class="lineup lazy">
-<div class="image-area"><img src="./assets/img/top/prod_smooth.png" alt="Suôn Mượt Mềm Mại"></div>
-<div class="text-area">
-<div class="type-name lazy hide-sp" data-offset="-50">Suôn Mượt Mềm Mại</div>
-<div class="lineup-text">
-<p>Dành cho tóc xơ rối giúp duy trì mái tóc suôn mượt, mềm mại. Với phức hợp giàu dưỡng chất thiết yếu bổ sung dưỡng chất từ chân tóc, giúp thẳng mượt, óng ả.</p>
-</div>
-<a href="./products/smooth.html"><p>Xem thông tin chi tiết</p></a>
-</div>
-</div>
-</div>
-<div class="type volume">
-<p class="type-name lazy hide-pc" data-offset="-50">Bồng Bềnh Chắc Khỏe</p>
-<div class="lineup lazy">
-<div class="image-area"><img src="./assets/img/top/prod_volume.png" alt="Bồng Bềnh Chắc Khỏe"></div>
-<div class="text-area">
-<div class="type-name lazy hide-sp" data-offset="-50">Bồng Bềnh Chắc Khỏe</div>
-<div class="lineup-text">
-<p>Dành cho tóc bết dầu và thiếu sức sống để duy trì mái tóc bồng bềnh và khỏe khoắn. Với phức hợp giàu dưỡng chất thiết yếu bổ sung dưỡng chất từ chân tóc đồng thời làm sạch da đầu và giúp tóc trở nên chắc khỏe hơn.</p>
-</div>
-<a href="./products/volume.html"><p>Xem thông tin chi tiết</p></a>
-</div>
-</div>
-</div>
-<div class="type prev">
-<p class="type-name lazy hide-pc">Danh sách sản phẩm của TSUBAKI</p>
-<div class="lineup lazy">
-<div class="image-area">
-<img src="./assets/img/top/prods.jpg" alt="Danh sách sản phẩm của TSUBAKI">
-</div>
-<div class="text-area">
-<div class="type-name lazy hide-sp">Danh sách sản phẩm của TSUBAKI</div>
-<a href="./products/alltsubaki.html"><p>Xem thông tin chi tiết</p></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="cm-sick">
-<div class="section-inner">
-<h2>Những vấn đề của tóc</h2>
-<div class="wrap">
-<div class="sick lineup lazy">
-<div class="image-area"><img src="./assets/img/top/sick_products.png" alt="Những vấn đề của tóc"></div>
-<div class="text-area">
-<ul>
-<li><a class="arrow-link" href="./products/moist.html">
-<span><img src="./assets/img/common/triangle-b.svg" alt="&gt;">
-<img class="color" src="./assets/img/common/triangle-y.svg" alt="&gt;"></span>
-<p>Tóc khô, xơ và không vào nếp</p></a></li>
-<li><a class="arrow-link" href="./products/smooth.html">
-<span><img src="./assets/img/common/triangle-b.svg" alt="&gt;">
-<img class="color" src="./assets/img/common/triangle-y.svg" alt="&gt;"></span>
-<p>Tóc xơ rối khó chải</p></a></li>
-<li><a class="arrow-link" href="./products/volume.html">
-<span><img src="./assets/img/common/triangle-b.svg" alt="&gt;">
-<img class="color" src="./assets/img/common/triangle-y.svg" alt="&gt;"></span>
-<p>Tóc bết dầu và thiếu sức sống</p></a></li>
-<li><a class="arrow-link" href="./products/mask.html">
-<span><img src="./assets/img/common/triangle-b.svg" alt="&gt;">
-<img class="color" src="./assets/img/common/triangle-y.svg" alt="&gt;"></span>
-<p>Tóc hư tổn nặng</p></a></li>
-<li><a class="arrow-link" href="./products/red.html">
-<span><img src="./assets/img/common/triangle-b.svg" alt="&gt;">
-<img class="color" src="./assets/img/common/triangle-y.svg" alt="&gt;"></span>
-<p>Tóc khô đến cực kì khô</p></a></li>
-<li><a class="arrow-link" href="./products/white.html">
-<span><img src="./assets/img/common/triangle-b.svg" alt="&gt;">
-<img class="color" src="./assets/img/common/triangle-y.svg" alt="&gt;"></span>
-<p>Tóc hư tổn do uốn – nhuộm</p></a></li>
-<li><a class="arrow-link" href="./products/purple.html">
-<span><img src="./assets/img/common/triangle-b.svg" alt="&gt;">
-<img class="color" src="./assets/img/common/triangle-y.svg" alt="&gt;"></span>
-<p>Da đầu yếu và tóc gãy rụng nhiều</p></a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="cm-area">
-<div class="section-inner">
-<h2>TVC</h2>
-<div class="cm-box">
-<div class="cm-wrap">
-<a class="brand60 modal-button" data-modal="#video-modal" data-key="avy6Kvyp-Xo">
-<div class="thumb">
-<video src="./assets/video/brand15.mp4" autoplay loop poster="./assets/img/top/cm/15.jpg" muted playsinline></video>
-<div class="cover"></div>
-<div class="play-mark"><img src="./assets/img/common/play.svg" alt="▶"></div>
-</div></a>
-<p class="cm-title">&lt; Tóc Khỏe Đẹp Chuẩn Nhật &gt;</p>
-</div>
-</div>
-</div>
-</div>
-<div id="sns-area">
-<div class="section-inner">
-<h2>TÀI KHOẢN SNS</h2>
-<h3 class="sp">Everyday #GoodHairDay trên Facebook</h3>
-<div class="lazy" id="sns-image-area">
-<div class="sns-slider">
-<div class="sns-ịtem"><img src="./assets/img/top/sns/01.png" alt="pic"></div>
-<div class="sns-ịtem"><img src="./assets/img/top/sns/02.png" alt="pic"></div>
-<div class="sns-ịtem"><img src="./assets/img/top/sns/03.png" alt="pic"></div>
-</div>
-</div>
-<div class="text-area">
-<h3 class="pc">Everyday #GoodHairDay trên Facebook</h3>
-<div class="message">
-<p>Mọi thứ trở nên tốt hơn khi sở hữu mái tóc khỏe đẹp suốt ngày dài. Chúng tôi hy vọng mỗi ngày đều sẽ là #GoodHairDay của bạn. TSUBAKI luôn ở bên ủng hộ bạn.
-Chia sẻ ảnh #GoodHairDay của bạn trên Facebook</p></div>
-<a class="button" href="https://www.instagram.com/tsubaki_shiseido/" target="_blank"><p>#GoodHairDay trên Facebook TSUBAKI</p></a>
-</div>
-</div>
-</div>
-<div id="campaign">
-<div class="section-inner">
-<h2>QUẢNG CÁO</h2>
-<div class="campaign-box">
-<div class="campaign-slider">
-<div class="campaign-item">
-<a href="javascript:void(0);"><img src="./assets/img/campaign/campaign1.jpg" alt="pic"></a>
-</div>
-<div class="campaign-item">
-<a href="javascript:void(0);"><img src="./assets/img/campaign/campaign2.jpg" alt="pic"></a>
-</div>
-<div class="campaign-item">
-<a href="javascript:void(0);"><img src="./assets/img/campaign/campaign3.jpg" alt="pic"></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="topto"><div class="section-inner"><a class="scrollto" data-scrollto="#page">Về đầu trang</a></div></div>
-<div id="footer-sharearea">
-<div class="section-inner">
-<ul>
-<li class="footer-facebook"><a class="footer-fb" href="javascript:void(0);" target="_blank"><img src="./assets/img/fb.svg" alt="facebook"><p>Every #goodhairday trên Facebook</p></a></li>
-<li class="footer-sns share-area">
-<div class="footer-in"><a class="shareIN" href="javascript:void(0);" target="_blank"><img class="color" src="./assets/img/in_color.svg" alt="twitter"><img class="mono" src="./assets/img/in.svg" alt="twitter"></a></div></li>
-<li class="footer-silicone"><a class="blank" href="javascript:void(0)" target="_blank"><p>Về Silicon</p></a></li>
-</ul>
-</div>
-</div>
-<div id="footer-tsubaki"><img src="./assets/img/tsubaki.svg" alt="TSUBAKI"></div>
-</div>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.7/fabric.js"></script>
+<script type="text/javascript" src="https://uicdn.toast.com/tui.code-snippet/v1.4.0/tui-code-snippet.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/nhnent/tui.color-picker/v2.2.0/dist/tui-color-picker.js"></script>
+<script type="text/javascript" src="../dist/tui-image-editor.js"></script>
+<script type="text/javascript" src="./js/theme/white-theme.js"></script>
+<script type="text/javascript" src="./js/theme/black-theme.js"></script>
+<script>
 
-<div class="modal" id="video-modal">
-<div class="overlay"></div>
-<div class="modal-inner"><a class="close-button"></a>
-<iframe id="myVideo" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
-</div>
+// Image editor
+var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {
+includeUI: {
+loadImage: {
+path: 'img/sampleImage2.png',
+name: 'SampleImage'
+},
+theme: blackTheme, // or whiteTheme
+initMenu: 'filter',
+menuBarPosition: 'bottom'
+},
+cssMaxWidth: 700,
+cssMaxHeight: 500
+});
 
-<script src="./assets/js/jquery.js"></script>
-<script src="./assets/js/slide.js"></script>
-<script src="./assets/js/main.js"></script>
+window.onresize = function() {
+imageEditor.ui.resizeEditor();
+}
+</script>-->
+
 </body>
 </html>
