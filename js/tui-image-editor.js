@@ -5344,7 +5344,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            _tuiCodeSnippet2.default.forEach(this._els.download, function (element) {
 	                element.addEventListener('click', function () {
-	                    _this3._actions.main.download();
+	                    console.log(_this3);
+						_this3._actions.main.download();
+						
 	                });
 	            });
 	        }
