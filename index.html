@@ -3,90 +3,375 @@
 <head>
 <meta charset="UTF-8">
 <title>Image editor</title>
-<link rel="icon" href="./img/favicon.ico">
+<link rel="icon" href="favicon.ico">
 
-<link type="text/css" href="./css/bootstrap.min.css" rel="stylesheet">
-<link type="text/css" href="./css/prettify-jsdoc.css" rel="stylesheet">
-<link type="text/css" href="./css/prettify-tomorrow.css" rel="stylesheet">
-<link type="text/css" href="./css/tui-doc.css" rel="stylesheet">
-<link type="text/css" href="./css/tui-image-editor.css" rel="stylesheet">
-<link type="text/css" href="./css/tui-color-picker.css" rel="stylesheet">
-<!--<link type="text/css" href="./css/service-basic.css" rel="stylesheet">-->
-
-<script type="text/javascript" src="./js/tui-code-snippet.min.js"></script>
-<script type="text/javascript" src="./js/jquery.min.js"></script>
-<script type="text/javascript" src="./js/fabric.js"></script>
-<script type="text/javascript" src="./js/FileSaver.min.js"></script>
-<script type="text/javascript" src="./js/tui-color-picker.js"></script>
-<script type="text/javascript" src="./js/theme/white-theme.js"></script>
-<script type="text/javascript" src="./js/theme/black-theme.js"></script>
-<script type="text/javascript" src="./js/tui-image-editor.js"></script>
-<!--<script type="text/javascript" src="./js/tui-doc.js"></script>-->
+<script type="text/javascript" src="fabric.js"></script>
+<script type="text/javascript" src="FileSaver.js"></script>
 
 <style>
  body {
 	 margin:0;
 	 padding:0;
-	 height:100vh;
+ }
+ .fabric-content {
+	 position:relative;
+	 width:800px;
+	 height:auto;
+	 margin:200px auto 0 auto;
+	 padding:20px;
+	 display:block;
+	 border:2px solid #ddd;
+	 text-align:center;
+	
+ }
+ .fabric-box{
+	position:relative;
+	width:auto;
+	height:auto;
+ }
+.canvas-container{
+	margin:0 auto;
+	border:1px solid #ddd;
+}
+ ul, li {
+	 list-style-type:none;
+ }
+ li {
+	 width:auto;
+	 height:auto;
+	 display:inline-block;
+	 padding:10px;
+	 background-color:#ddd;
+	 border-radius:10px;
+	 cursor:pointer;
+ }
+ .hide{
+	 display:none;
+ }
+ .tools {
+	 padding:10px 0;
  }
 </style>
 </head>
 <body>
 
-<div id="tui-image-editor-container" class="tui-image-editor-container bottom">
-    <canvas></canvas>
+<div class="fabric-content">
+<div class="fabric-box">
+<canvas id="fabric-canvas"></canvas>
+</div>
+
+<div class="tools">
+<ul>
+<li id="btnCircle">Circle</li>
+<li id="btnEllipse">Ellipse</li>
+<li id="btnLine" class="hide">Line</li>
+<li id="btnPolygon" class="hide">Polygon</li>
+<li id="btnPolyline" class="hide">Polyline</li>
+<li id="btnRectangle">Rect</li>
+<li id="btnTriangle">Triangle</li>
+
+<li id="btnDelete">Delete</li>
+<li id="btnDeleteAll">Delete all</li>
+
+<li id="btnChangeBg">Change Background</li>
+<li id="btnDownload">Download</li>
+
+</ul>
+
+</div>
 </div>
 
 <script>
 
-	var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {
-		includeUI: {
-			loadImage: {
-				path: 'img/sampleImage2.png',
-				name: 'SampleImage'
-			},
-			theme: blackTheme, // or whiteTheme
-			initMenu: 'filter',
-			menuBarPosition: 'bottom'
-		},
-		cssMaxWidth: 700,
-		cssMaxHeight: 500
+	//Canvas
+	//var canvas = new fabric.Canvas('fabric-canvas');
+	var canvas = new fabric.Canvas('fabric-canvas', { 
+		width: 600, 
+		height: 400,
+		hoverCursor: 'pointer',
+		selection: true,
+    	selectionBorderColor: 'green',
+    	backgroundColor: null
 	});
 	
-	window.onresize = function() {
-		imageEditor.ui.resizeEditor();
+	//var ctx = canvas.getContext('2d');
+	
+
+	////////////////////////////////////////////////
+	//////////////// COMMON FUNCTIONS///////////////
+	////////////////////////////////////////////////
+	function b64toBlob(dataURI) {
+		var byteString = atob(dataURI.split(',')[1]);
+		var ab = new ArrayBuffer(byteString.length);
+		var ia = new Uint8Array(ab);
+		for (var i = 0; i < byteString.length; i++) {
+			ia[i] = byteString.charCodeAt(i);
+		}
+		return new Blob([ab], { type: 'image/png'});
 	}
+	
+	/////////////////////////////////////////////////
+	//////////////// FUNCTIONS ///////////////////////
+	/////////////////////////////////////////////////
+	
+	//create Circle object
+	function Circle() {
+		var circle = new fabric.Circle({
+		  radius: 50, fill: 'green', left: 100, top: 100
+		});
+		canvas.add(circle);
+	}
+	//create Ellipse object
+	function Ellipse() {
+		var ellipse = new fabric.Ellipse({
+		  rx: 60, ry: 40, fill: 'blue', left: 100, top: 100
+		});
+		canvas.add(ellipse);
+	}
+	//create Line object
+	function Line() {
+		var line = new fabric.Line({
+		  x1: 30, y1: 30, x2:60, y2:60, fill: 'blue', left: 30, top: 30
+		});
+		canvas.add(line);
+	}
+	//create Polygon object
+	function Polygon() {
+	}
+	//create Polyline object
+	function Polyline() {
+	}
+	//create Rect object
+	function Rect() {
+		var rect = new fabric.Rect({
+		  left: 100,
+		  top: 100,
+		  fill: 'red',
+		  width: 40,
+		  height: 40
+		});
+		
+		canvas.add(rect);
+	}
+	//create Triangle object
+	function Triangle() {
+		var triangle = new fabric.Triangle({
+		  width: 40, height: 60, fill: 'blue', left: 50, top: 50
+		});
+		canvas.add(triangle);
+	}
+	
+	function setBgFromUrl(imageUrl) {
+		//Define 
+		canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
+			backgroundImageOpacity: 0.5,
+			backgroundImageStretch: false
+		});
+	}
+	
+	
+	function setBgFromFile(imageUrl) {
+		
+		// Create a new instance of the Image class
+		var img = new Image();
+		
+		// When the image loads, set it as background image
+		img.onload = function() {
+			var bg = new fabric.Image(img);
+			canvas.setBackgroundImage(bg);
+			canvas.renderAll();
+		};
+		
+		img.src = imageUrl;
+		
+	}
+	
+	/////////////////////////////////////////////////
+	//////////////// EVENTS ///////////////////////
+	/////////////////////////////////////////////////
+	
+	//Circle button
+	btnCircle.addEventListener("click", function(){
+		Circle();
+	});
+	//Ellipse button
+	btnEllipse.addEventListener("click", function(){
+		Ellipse();
+	});
+	//Line button
+	btnLine.addEventListener("click", function(){
+		Line();
+	});
+	//Line button
+	btnPolygon.addEventListener("click", function(){
+		Polygon();
+	});
+	//Polyline button
+	btnPolyline.addEventListener("click", function(){
+		Polyline();
+	});
+	//Rect button
+	btnRectangle.addEventListener("click", function(){
+		Rect();
+	});
+	//Triangle button
+	btnTriangle.addEventListener("click", function(){
+		Triangle();
+	});
+	
+	
+	//Delete button
+	btnDelete.addEventListener("click", function(){
+		//Delete active object
+		 var objActive  = canvas.getActiveObject();
+		 canvas.remove(objActive);
+	});
+	//DeleteAll button
+	btnDeleteAll.addEventListener("click", function(){
+		//Delete active object
+		//canvas.clear();
+		//canvas.discardActiveObject().renderAll();
+		/*var objects = this.getObjects(),
+		index, somethingRemoved = false;
+		
+		for (var i = 0, length = arguments.length; i < length; i++) {
+		index = objects.indexOf(arguments[i]);
+		
+		// only call onObjectRemoved if an object was actually removed
+		if (index !== -1) {
+		somethingRemoved = true;
+		objects.splice(index, 1);
+		this._onObjectRemoved && this._onObjectRemoved(arguments[i]);
+		}
+		}
+		
+		this.renderOnAddRemove && somethingRemoved && this.renderAll();
+		return this;*/
+		
+	});
+	//Change background button
+	btnChangeBg.addEventListener("click", function(){
+		setBgFromFile('banner1.jpg');
+	});
+	
+	//Download button
+	btnDownload.addEventListener("click", function(){
+		
+		var Obj = canvas.toJSON();
+		if(Obj.objects.length) {
+			console.log(Obj);
+		}else {
+			console.log('Canvas is empty');
+		}
+		
+		var dataURL = canvas.toDataURL();
+		blob = b64toBlob(dataURL);
+		var imageName = 'demo.png';
+		saveAs(blob, imageName);
+
+	});
+	
+	
+	//////////////////////////////////////////
+	//////////////// CANVAS STAR /////////////
+	//////////////////////////////////////////
+	setBgFromUrl('banner.jpg');
+	
+	//canvas.renderAll();
+	
+
+	/*var fab_video;
+	function getVideoElement(url) {
+		var videoE = document.createElement('video');
+		videoE.width = 640;
+		videoE.height = 360;
+		videoE.muted = true;
+		videoE.crossOrigin = "anonymous";
+		var source = document.createElement('source');
+		source.src = url;
+		source.type = 'video/mp4';
+		videoE.appendChild(source);
+		return videoE;
+	}
+	
+	function setVideoBg(url) {
+		var videoE = getVideoElement(url);
+		fab_video = new fabric.Image(videoE, {left: 0, top: 0});
+		canvas.add(fab_video);
+		//fab_video.getElement().play();
+
+		fabric.util.requestAnimFrame(function render() {
+		   canvas.renderAll();
+		   fabric.util.requestAnimFrame(render);
+		});
+		
+	}
+	setVideoBg('big_buck_bunny.mp4');*/
+
+
+	/*
+	// create a rectangle object
+	function createRectangle() {
+		var rect = new fabric.Rect({
+		  left: 100,
+		  top: 100,
+		  fill: 'red',
+		  width: 100,
+		  height: 100
+		});
+		
+		canvas.add(rect);
+	}
+	
+	//create a rectangle object
+	function createCircle() {
+		var circle = new fabric.Circle({
+		  radius: 20, fill: 'green', left: 100, top: 100
+		});
+		
+		canvas.add(circle);
+	}
+	
+	//create a Triangle object
+	function createTriangle() {
+		var triangle = new fabric.Triangle({
+		  width: 20, height: 30, fill: 'blue', left: 50, top: 50
+		});
+		
+		canvas.add(triangle);
+		
+	}
+	
+	//btnRectangle
+	btnRectangle.addEventListener("click", function(){
+		createRectangle();
+	});
+	
+	//btnCircle
+	btnCircle.addEventListener("click", function(){
+		createCircle();
+	});
+	
+	//btnTriangle
+	btnTriangle.addEventListener("click", function(){
+		createTriangle();
+	});
+	
+	
+	//btnSave
+	btnSave.addEventListener("click", function(){
+		//fab_video.getElement().play();
+		console.log(canvas.toJSON());
+	});
+	
+	//btnPause
+	btnPause.addEventListener("click", function(){
+		//fab_video.getElement().pause();
+	});
+	*/
 	
 </script>
 
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.7/fabric.js"></script>
-<script type="text/javascript" src="https://uicdn.toast.com/tui.code-snippet/v1.4.0/tui-code-snippet.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/nhnent/tui.color-picker/v2.2.0/dist/tui-color-picker.js"></script>
-<script type="text/javascript" src="../dist/tui-image-editor.js"></script>
-<script type="text/javascript" src="./js/theme/white-theme.js"></script>
-<script type="text/javascript" src="./js/theme/black-theme.js"></script>
-<script>
-
-// Image editor
-var imageEditor = new tui.ImageEditor('#tui-image-editor-container', {
-includeUI: {
-loadImage: {
-path: 'img/sampleImage2.png',
-name: 'SampleImage'
-},
-theme: blackTheme, // or whiteTheme
-initMenu: 'filter',
-menuBarPosition: 'bottom'
-},
-cssMaxWidth: 700,
-cssMaxHeight: 500
-});
-
-window.onresize = function() {
-imageEditor.ui.resizeEditor();
-}
-</script>-->
 
 </body>
 </html>
