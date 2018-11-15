@@ -5,8 +5,8 @@
 <title>Image editor</title>
 <link rel="icon" href="favicon.ico">
 
-<script type="text/javascript" src="fabric.js"></script>
 <script type="text/javascript" src="FileSaver.js"></script>
+<script type="text/javascript" src="fabric.js"></script>
 
 <style>
  body {
@@ -28,15 +28,97 @@
 	position:relative;
 	width:auto;
 	height:auto;
+	display:inline-block;
+	overflow:hidden;
  }
+
+.gif-box{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+}
+.gif-box::before,
+.gif-box::after {
+	content:'';
+	position:relative;
+	display:inline-block;
+	width:0;
+	height:100%;
+	vertical-align:middle;
+	margin:0 -20px;
+}
+.gif-box img {
+	display:inline-block;
+	vertical-align:middle;
+	width:auto;
+	height:auto;	
+}
+
+.fabric-box > img{
+	position:absolute;
+	pointer-events:none;
+}
+.fabric-box.saving img {
+	opacity:0;
+}
+
+
 .canvas-container{
 	margin:0 auto;
 	border:1px solid #ddd;
 }
+
+
+/*upload tools*/
+.upload-tools{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+}
+.upload-tools div {
+	position:relative;
+	width:120px;
+	height:46px;
+	display:inline-block;
+	vertical-align:middle;
+	margin:10px 5px;
+	padding:10px;
+	line-height:24px;
+	border:1px solid #ddd;
+	-webkit-border-radius:30px;
+	border-radius:30px;
+	font-size:16px;
+	text-align:center;
+	text-transform:uppercase;
+	cursor:pointer;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.upload-tools div input{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	font-size:0;
+	opacity:0;
+	cursor:pointer;
+}
+
+
  ul, li {
 	 list-style-type:none;
+	 margin:0;
+	 padding:0;
+	 -webkit-box-sizing:border-box;
+	 box-sizing:border-box;
  }
- li {
+ .tools li,
+ .paint-tools li,
+ .tools-top li {
 	 width:auto;
 	 height:auto;
 	 display:inline-block;
@@ -46,21 +128,183 @@
 	 cursor:pointer;
  }
  .hide{
-	 display:none;
+	 display:none !important;
  }
  .tools {
 	 padding:10px 0;
  }
+ 
+ 
+ /*paint*/
+ .paint-tools{
+	 position:fixed;
+	 right:0;
+	 bottom:0;
+	 width:200px;
+	 height:auto;
+	 padding:10px;
+ }
+  .paint-tools ul {
+	  width:100%;
+	  overflow:hidden;
+  }
+ .paint-tools li {
+	 float:left;
+	 width:49%;
+	 margin:0 1% 1% 0;
+ }
+ 
+ /*sticker*/
+ .sticker-box{
+	 position:fixed;
+	 left:0;
+	 top:0;
+	 width:80px;
+	 height:auto;
+ }
+.sticker-box ul {
+	width:100%;
+	padding:60px 0 0 30px;
+}
+
+.sticker-box li {
+	display:inline-block;
+	width:100%;
+	margin:10px auto;
+	text-align:center;
+	cursor:pointer;
+	
+}
+.sticker-box li img {
+	display:inline-block;
+	width:auto;
+	height:auto;
+	max-width:60%;
+}
+
+
+/*text tools*/
+.text-tools{
+	position:fixed;
+	right:0;
+	bottom:180px;
+	padding:20px;
+	width:300px;
+	height:auto;
+	text-align:right;
+	background-color:#f2f2f2;
+	-webkit-border-radius:30px;
+	border-radius:30px;
+}
+.box {
+  float: left;
+  margin: 1em;
+}
+.after-box {
+  clear: left;
+}
+.text-tools div {
+	margin:5px 0;
+}
+ 
 </style>
 </head>
 <body>
 
 <div class="fabric-content">
-<div class="fabric-box">
-<canvas id="fabric-canvas"></canvas>
+
+<div class="upload-tools">
+<div>Gif<input type="file" onChange="loadGif(this)" id="gifLoad" accept="image/gif"></div>
+<div>Vdo<input type="file" onChange="loadVideo(this)" id="vidLoad" accept="video/*"></div>
+<div>Jpg<input type="file" onChange="loadFile(this)" id="fileLoad" accept="image/png, image/jpeg"></div>
 </div>
 
-<div class="tools">
+
+<div class="fabric-box">
+<div class="gif-box"><img id="imgGif" src="data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="gif mask"></div>
+<canvas id="canvas"></canvas>
+</div>
+
+<div class="text-tools">
+<div id="text-wrapper">
+
+<div id="text-controls">
+<input type="color" value="" id="text-color" size="10">
+<label for="font-family" style="display:inline-block">Font family:</label>
+<select id="font-family">
+<option value="arial">Arial</option>
+<option value="helvetica" selected>Helvetica</option>
+<option value="myriad pro">Myriad Pro</option>
+<option value="delicious">Delicious</option>
+<option value="verdana">Verdana</option>
+<option value="georgia">Georgia</option>
+<option value="courier">Courier</option>
+<option value="comic sans ms">Comic Sans MS</option>
+<option value="impact">Impact</option>
+<option value="monaco">Monaco</option>
+<option value="optima">Optima</option>
+<option value="hoefler text">Hoefler Text</option>
+<option value="plaster">Plaster</option>
+<option value="engagement">Engagement</option>
+</select>
+<br>
+<label for="text-align" style="display:inline-block">Text align:</label>
+<select id="text-align">
+<option value="left">Left</option>
+<option value="center">Center</option>
+<option value="right">Right</option>
+<option value="justify">Justify</option>
+</select>
+<div>
+<label for="text-bg-color">Background color:</label>
+<input type="color" value="" id="text-bg-color" size="10">
+</div>
+<!--<div>
+<label for="text-lines-bg-color">Background text color:</label>
+<input type="color" value="" id="text-lines-bg-color" size="10">
+</div>-->
+<div>
+<label for="text-stroke-color">Stroke color:</label>
+<input type="color" value="" id="text-stroke-color">
+</div>
+<div>
+
+
+<label for="text-stroke-width">Stroke width:</label>
+<input type="range" value="1" min="1" max="5" id="text-stroke-width">
+</div>
+<div>
+<label for="text-font-size">Font size:</label>
+<input type="range" value="" min="1" max="120" step="1" id="text-font-size">
+</div>
+<div>
+<label for="text-line-height">Line height:</label>
+<input type="range" value="" min="0" max="10" step="0.1" id="text-line-height">
+</div>
+</div>
+
+<div id="text-controls-additional">
+<input type='checkbox' name='fonttype' id="text-cmd-bold">
+Bold
+
+<input type='checkbox' name='fonttype' id="text-cmd-italic">
+Italic
+
+<input type='checkbox' name='fonttype' id="text-cmd-underline" >
+Underline
+
+<input type='checkbox' name='fonttype'  id="text-cmd-linethrough">
+Linethrough
+
+<input type='checkbox' name='fonttype'  id="text-cmd-overline" >
+Overline
+
+</div>
+
+</div>
+</div>
+
+<div class="paint-tools">
 <ul>
 <li id="btnCircle">Circle</li>
 <li id="btnEllipse">Ellipse</li>
@@ -69,309 +313,34 @@
 <li id="btnPolyline" class="hide">Polyline</li>
 <li id="btnRectangle">Rect</li>
 <li id="btnTriangle">Triangle</li>
+<li id="btnSuperscript">Superscript</li>
+</ul>
+</div>
 
+<div class="tools">
+<ul>
 <li id="btnDelete">Delete</li>
 <li id="btnDeleteAll">Delete all</li>
-
 <li id="btnChangeBg">Change Background</li>
 <li id="btnDownload">Download</li>
-
 </ul>
-
-</div>
 </div>
 
-<script>
-
-	//Canvas
-	//var canvas = new fabric.Canvas('fabric-canvas');
-	var canvas = new fabric.Canvas('fabric-canvas', { 
-		width: 600, 
-		height: 400,
-		hoverCursor: 'pointer',
-		selection: true,
-    	selectionBorderColor: 'green',
-    	backgroundColor: null
-	});
-	
-	//var ctx = canvas.getContext('2d');
-	
-
-	////////////////////////////////////////////////
-	//////////////// COMMON FUNCTIONS///////////////
-	////////////////////////////////////////////////
-	function b64toBlob(dataURI) {
-		var byteString = atob(dataURI.split(',')[1]);
-		var ab = new ArrayBuffer(byteString.length);
-		var ia = new Uint8Array(ab);
-		for (var i = 0; i < byteString.length; i++) {
-			ia[i] = byteString.charCodeAt(i);
-		}
-		return new Blob([ab], { type: 'image/png'});
-	}
-	
-	/////////////////////////////////////////////////
-	//////////////// FUNCTIONS ///////////////////////
-	/////////////////////////////////////////////////
-	
-	//create Circle object
-	function Circle() {
-		var circle = new fabric.Circle({
-		  radius: 50, fill: 'green', left: 100, top: 100
-		});
-		canvas.add(circle);
-	}
-	//create Ellipse object
-	function Ellipse() {
-		var ellipse = new fabric.Ellipse({
-		  rx: 60, ry: 40, fill: 'blue', left: 100, top: 100
-		});
-		canvas.add(ellipse);
-	}
-	//create Line object
-	function Line() {
-		var line = new fabric.Line({
-		  x1: 30, y1: 30, x2:60, y2:60, fill: 'blue', left: 30, top: 30
-		});
-		canvas.add(line);
-	}
-	//create Polygon object
-	function Polygon() {
-	}
-	//create Polyline object
-	function Polyline() {
-	}
-	//create Rect object
-	function Rect() {
-		var rect = new fabric.Rect({
-		  left: 100,
-		  top: 100,
-		  fill: 'red',
-		  width: 40,
-		  height: 40
-		});
-		
-		canvas.add(rect);
-	}
-	//create Triangle object
-	function Triangle() {
-		var triangle = new fabric.Triangle({
-		  width: 40, height: 60, fill: 'blue', left: 50, top: 50
-		});
-		canvas.add(triangle);
-	}
-	
-	function setBgFromUrl(imageUrl) {
-		//Define 
-		canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
-			backgroundImageOpacity: 0.5,
-			backgroundImageStretch: false
-		});
-	}
-	
-	
-	function setBgFromFile(imageUrl) {
-		
-		// Create a new instance of the Image class
-		var img = new Image();
-		
-		// When the image loads, set it as background image
-		img.onload = function() {
-			var bg = new fabric.Image(img);
-			canvas.setBackgroundImage(bg);
-			canvas.renderAll();
-		};
-		
-		img.src = imageUrl;
-		
-	}
-	
-	/////////////////////////////////////////////////
-	//////////////// EVENTS ///////////////////////
-	/////////////////////////////////////////////////
-	
-	//Circle button
-	btnCircle.addEventListener("click", function(){
-		Circle();
-	});
-	//Ellipse button
-	btnEllipse.addEventListener("click", function(){
-		Ellipse();
-	});
-	//Line button
-	btnLine.addEventListener("click", function(){
-		Line();
-	});
-	//Line button
-	btnPolygon.addEventListener("click", function(){
-		Polygon();
-	});
-	//Polyline button
-	btnPolyline.addEventListener("click", function(){
-		Polyline();
-	});
-	//Rect button
-	btnRectangle.addEventListener("click", function(){
-		Rect();
-	});
-	//Triangle button
-	btnTriangle.addEventListener("click", function(){
-		Triangle();
-	});
-	
-	
-	//Delete button
-	btnDelete.addEventListener("click", function(){
-		//Delete active object
-		 var objActive  = canvas.getActiveObject();
-		 canvas.remove(objActive);
-	});
-	//DeleteAll button
-	btnDeleteAll.addEventListener("click", function(){
-		//Delete active object
-		//canvas.clear();
-		//canvas.discardActiveObject().renderAll();
-		/*var objects = this.getObjects(),
-		index, somethingRemoved = false;
-		
-		for (var i = 0, length = arguments.length; i < length; i++) {
-		index = objects.indexOf(arguments[i]);
-		
-		// only call onObjectRemoved if an object was actually removed
-		if (index !== -1) {
-		somethingRemoved = true;
-		objects.splice(index, 1);
-		this._onObjectRemoved && this._onObjectRemoved(arguments[i]);
-		}
-		}
-		
-		this.renderOnAddRemove && somethingRemoved && this.renderAll();
-		return this;*/
-		
-	});
-	//Change background button
-	btnChangeBg.addEventListener("click", function(){
-		setBgFromFile('banner1.jpg');
-	});
-	
-	//Download button
-	btnDownload.addEventListener("click", function(){
-		
-		var Obj = canvas.toJSON();
-		if(Obj.objects.length) {
-			console.log(Obj);
-		}else {
-			console.log('Canvas is empty');
-		}
-		
-		var dataURL = canvas.toDataURL();
-		blob = b64toBlob(dataURL);
-		var imageName = 'demo.png';
-		saveAs(blob, imageName);
-
-	});
-	
-	
-	//////////////////////////////////////////
-	//////////////// CANVAS STAR /////////////
-	//////////////////////////////////////////
-	setBgFromUrl('banner.jpg');
-	
-	//canvas.renderAll();
-	
-
-	/*var fab_video;
-	function getVideoElement(url) {
-		var videoE = document.createElement('video');
-		videoE.width = 640;
-		videoE.height = 360;
-		videoE.muted = true;
-		videoE.crossOrigin = "anonymous";
-		var source = document.createElement('source');
-		source.src = url;
-		source.type = 'video/mp4';
-		videoE.appendChild(source);
-		return videoE;
-	}
-	
-	function setVideoBg(url) {
-		var videoE = getVideoElement(url);
-		fab_video = new fabric.Image(videoE, {left: 0, top: 0});
-		canvas.add(fab_video);
-		//fab_video.getElement().play();
-
-		fabric.util.requestAnimFrame(function render() {
-		   canvas.renderAll();
-		   fabric.util.requestAnimFrame(render);
-		});
-		
-	}
-	setVideoBg('big_buck_bunny.mp4');*/
+<div class="sticker-box">
+<ul>
+<li onClick="CreateSticker('img/explosion.png')"><img src="img/explosion.png" alt="explosion"></li>
+<li onClick="CreateSticker('img/articuno.gif')"><img src="img/articuno.gif" alt="explosion"></li>
+<li onClick="CreateSticker('img/blastoise.gif')"><img src="img/blastoise.gif" alt="blastoise"></li>
+<li onClick="CreateSticker('img/lebron.gif')"><img src="img/lebron.gif" alt="lebron"></li>
+<li onClick="CreateSticker('img/mew.gif')"><img src="img/mew.gif" alt="mew"></li>
+</ul>
+</div>
 
 
-	/*
-	// create a rectangle object
-	function createRectangle() {
-		var rect = new fabric.Rect({
-		  left: 100,
-		  top: 100,
-		  fill: 'red',
-		  width: 100,
-		  height: 100
-		});
-		
-		canvas.add(rect);
-	}
-	
-	//create a rectangle object
-	function createCircle() {
-		var circle = new fabric.Circle({
-		  radius: 20, fill: 'green', left: 100, top: 100
-		});
-		
-		canvas.add(circle);
-	}
-	
-	//create a Triangle object
-	function createTriangle() {
-		var triangle = new fabric.Triangle({
-		  width: 20, height: 30, fill: 'blue', left: 50, top: 50
-		});
-		
-		canvas.add(triangle);
-		
-	}
-	
-	//btnRectangle
-	btnRectangle.addEventListener("click", function(){
-		createRectangle();
-	});
-	
-	//btnCircle
-	btnCircle.addEventListener("click", function(){
-		createCircle();
-	});
-	
-	//btnTriangle
-	btnTriangle.addEventListener("click", function(){
-		createTriangle();
-	});
-	
-	
-	//btnSave
-	btnSave.addEventListener("click", function(){
-		//fab_video.getElement().play();
-		console.log(canvas.toJSON());
-	});
-	
-	//btnPause
-	btnPause.addEventListener("click", function(){
-		//fab_video.getElement().pause();
-	});
-	*/
-	
-</script>
+</div>
 
+
+<script type="text/javascript" src="main.js"></script>
 
 </body>
 </html>
