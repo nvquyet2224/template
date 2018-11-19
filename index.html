@@ -13,6 +13,7 @@
 	 margin:0;
 	 padding:0;
  }
+ 
  .fabric-content {
 	 position:relative;
 	 width:800px;
@@ -54,16 +55,19 @@
 	vertical-align:middle;
 	width:auto;
 	height:auto;	
+	max-width:100%;
 }
 
 .fabric-box > img{
 	position:absolute;
 	pointer-events:none;
 }
-.fabric-box.saving img {
+.fabric-box.hide-mask img {
 	opacity:0;
 }
-
+.fabric-box img.is-hide {
+	opacity:0;
+}
 
 .canvas-container{
 	margin:0 auto;
@@ -219,7 +223,6 @@
 <div>Jpg<input type="file" onChange="loadFile(this)" id="fileLoad" accept="image/png, image/jpeg"></div>
 </div>
 
-
 <div class="fabric-box">
 <div class="gif-box"><img id="imgGif" src="data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="gif mask"></div>
 <canvas id="canvas"></canvas>
@@ -228,10 +231,15 @@
 <div class="text-tools">
 <div id="text-wrapper">
 
-<div id="text-controls">
-<input type="color" value="" id="text-color" size="10">
-<label for="font-family" style="display:inline-block">Font family:</label>
-<select id="font-family">
+<ul>
+<li>
+<label for="fillColor">Color:</label>
+<input type="color" value="" id="fillColor" size="10">
+</li>
+
+<li>
+<label for="fontFamily">Fonts</label>
+<select id="fontFamily">
 <option value="arial">Arial</option>
 <option value="helvetica" selected>Helvetica</option>
 <option value="myriad pro">Myriad Pro</option>
@@ -247,59 +255,63 @@
 <option value="plaster">Plaster</option>
 <option value="engagement">Engagement</option>
 </select>
-<br>
-<label for="text-align" style="display:inline-block">Text align:</label>
-<select id="text-align">
+</li>
+
+<li>
+<label for="textAlign">Text align:</label>
+<select id="textAlign">
 <option value="left">Left</option>
 <option value="center">Center</option>
 <option value="right">Right</option>
 <option value="justify">Justify</option>
 </select>
-<div>
-<label for="text-bg-color">Background color:</label>
-<input type="color" value="" id="text-bg-color" size="10">
-</div>
-<!--<div>
-<label for="text-lines-bg-color">Background text color:</label>
-<input type="color" value="" id="text-lines-bg-color" size="10">
-</div>-->
-<div>
-<label for="text-stroke-color">Stroke color:</label>
-<input type="color" value="" id="text-stroke-color">
-</div>
-<div>
+</li>
 
+<li>
+<label for="fontSize">Font size:</label>
+<input type="range" value="" min="1" max="120" step="1" id="fontSize">
+</li>
 
-<label for="text-stroke-width">Stroke width:</label>
-<input type="range" value="1" min="1" max="5" id="text-stroke-width">
-</div>
-<div>
-<label for="text-font-size">Font size:</label>
-<input type="range" value="" min="1" max="120" step="1" id="text-font-size">
-</div>
-<div>
-<label for="text-line-height">Line height:</label>
-<input type="range" value="" min="0" max="10" step="0.1" id="text-line-height">
-</div>
-</div>
+<li>
+<label for="lineHeight">Line height:</label>
+<input type="range" value="" min="0" max="10" step="0.1" id="lineHeight">
+</li>
 
-<div id="text-controls-additional">
-<input type='checkbox' name='fonttype' id="text-cmd-bold">
-Bold
+<li>
+<label for="strokeColor">Stroke color:</label>
+<input type="color" value="" id="strokeColor">
+</li>
 
-<input type='checkbox' name='fonttype' id="text-cmd-italic">
-Italic
+<li>
+<label for="strokeWidth">Stroke width:</label>
+<input type="range" value="1" min="1" max="100" id="strokeWidth">
+</li>
 
-<input type='checkbox' name='fonttype' id="text-cmd-underline" >
-Underline
+<li>
+<label>Bold</label>
+<input type='checkbox' name='fonttype' id="textBold">
+</li>
 
-<input type='checkbox' name='fonttype'  id="text-cmd-linethrough">
-Linethrough
+<li>
+<label>Italic</label>
+<input type='checkbox' name='fonttype' id="textItalic">
+</li>
 
-<input type='checkbox' name='fonttype'  id="text-cmd-overline" >
-Overline
+<li>
+<label>Underline</label>
+<input type='checkbox' name='fonttype' id="textUnderline">
+</li>
 
-</div>
+<li>
+<label>Linethrough</label>
+<input type='checkbox' name='fonttype' id="textLinethrough">
+</li>
+
+<li>
+<label>Overline</label>
+<input type='checkbox' name='fonttype' id="textOverline">
+</li>
+</ul>
 
 </div>
 </div>
@@ -321,7 +333,6 @@ Overline
 <ul>
 <li id="btnDelete">Delete</li>
 <li id="btnDeleteAll">Delete all</li>
-<li id="btnChangeBg">Change Background</li>
 <li id="btnDownload">Download</li>
 </ul>
 </div>
@@ -336,10 +347,13 @@ Overline
 </ul>
 </div>
 
+<!--<video controls loop>
+    <source src="data/intro.mp4" type=video/mp4>
+</video>-->
 
 </div>
 
-
+<script src="bluebird.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 
 </body>

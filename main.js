@@ -10,12 +10,63 @@
 	});
 	var ctx = canvas.getContext('2d');
 	
-	var video, videoBg, sticker, stickerMask;
-	
+	var video, videoBg, creating = false;
 	var fabricCnt = document.querySelector('.fabric-content');
 	var fabricBox = document.querySelector('.fabric-box');
 	var imgGif = document.getElementById('imgGif');
 	var isGif = false;
+	
+	
+	window.onkeyup = function(e) {
+		var key = e.keyCode ? e.keyCode : e.which;
+		
+		if (key == 46) {
+			canvas.getActiveObjects().forEach(function(obj){
+				if(obj.typegif == 'gif') {
+					fabricBox.removeChild(document.getElementById(obj.id));
+				}
+				canvas.remove(obj);
+			});
+			canvas.discardActiveObject().renderAll();
+		}
+	}
+	
+	var drawing = false;
+	var down = false;
+
+	canvas.on('mouse:down', function(options) {
+		down = true;
+		drawing = false;
+	});
+	
+	canvas.on('mouse:move', function(options) {
+		
+		if(down) {
+			canvas.getActiveObjects().forEach(function(obj){
+				if(obj.typegif == 'gif') {
+					document.getElementById(obj.id).classList.add('is-hide');
+					obj.set({opacity:1});
+					drawing = true;
+				}
+			});
+		}
+	});
+	
+	canvas.on('mouse:up', function(options) {
+		
+		if(down) {
+			canvas.getActiveObjects().forEach(function(obj){
+				if(obj.typegif == 'gif') {
+					UpdateMask(obj);
+					document.getElementById(obj.id).classList.remove('is-hide');
+					obj.set({opacity:0});
+				}
+			});
+		}
+		
+		down = false;
+			
+	});
 	
 	////////////////////////////////////////////////
 	//////////////// COMMON FUNCTIONS///////////////
@@ -37,7 +88,12 @@
 	//create Circle object
 	function Circle() {
 		var circle = new fabric.Circle({
-		  radius: 50, fill: 'green', left: 100, top: 100
+		  	radius: 50, 
+			strokeWidth:3,
+			stroke:'#ffbb3b',
+			fill: 'rgba(0,0,0,0)', 
+			left: 100, 
+			top: 100
 		});
 		canvas.add(circle);
 	}
@@ -45,7 +101,13 @@
 	//create Ellipse object
 	function Ellipse() {
 		var ellipse = new fabric.Ellipse({
-		  rx: 60, ry: 40, fill: 'blue', left: 100, top: 100
+		  rx: 60, 
+		  ry: 40,
+		  strokeWidth:3,
+		  stroke:'#ffbb3b',
+		  fill: 'rgba(0,0,0,0)', 
+		  left: 100, 
+		  top: 100
 		});
 		canvas.add(ellipse);
 	}
@@ -73,44 +135,56 @@
 		var rect = new fabric.Rect({
 		  left: 100,
 		  top: 100,
-		  fill: 'red',
-		  width: 40,
-		  height: 40
+		  strokeWidth:3,
+		  stroke:'#ffbb3b',
+		  fill: 'rgba(0,0,0,0)', 
+		  width: 80,
+		  height: 80
 		});
-		
 		canvas.add(rect);
 	}
 	
 	//Create a Sticker mask
-	function createStickerMask(url, id) {
-		stickerMask = document.createElement("img");
-		stickerMask.setAttribute("src", url);
-		stickerMask.setAttribute("id", id);
-		stickerMask.style.top = sticker.top + 'px';
-		stickerMask.style.left = sticker.left + 'px';
-		stickerMask.style.width = sticker.width + 'px';
-		stickerMask.style.height = sticker.height + 'px';
-		stickerMask.style.transformOrigin = 'left top 0';
-		stickerMask.style.transform  = 'scaleX('+ sticker.scaleX +') scaleY('+ sticker.scaleY +') rotate('+  sticker.angl +'deg)';
-		fabricBox.appendChild(stickerMask);
+	function createMask(url, sticker) {
+		var mask = document.createElement("img");
+		mask.setAttribute("src", url);
+		mask.setAttribute("id", sticker.id);
+		mask.style.top = sticker.top + 'px';
+		mask.style.left = sticker.left + 'px';
+		mask.style.width = sticker.width + 'px';
+		mask.style.height = sticker.height + 'px';
+		mask.style.transformOrigin = 'left top 0';
+		mask.style.transform  = 'scaleX('+ sticker.scaleX +') scaleY('+ sticker.scaleY +') rotate('+  sticker.angl +'deg)';
+		fabricBox.appendChild(mask);
+		creating = false;
 	}
 
 
 	//create Sticker object
 	function CreateSticker(url) {
-
-		var stickerId = 'sticker_' + Math.floor(Date.now() / 1000)
-		var img = new Image();
-	
-		// When the image loads, set it as background image
-		img.onload = function() {
-			sticker = new fabric.Image(img);
-			sticker.set({id: stickerId, objtype: 'sticker', left: 50, top: 50, opacity:0});
-			createStickerMask(url, stickerId);
-			canvas.add(sticker);
-		};
 		
-		img.src = url;
+		if(!creating) {
+			
+			creating = true;
+			
+			setTimeout(function(){
+				
+				var id = 'sticker_' +  Math.floor(Date.now() / 50);
+				var img = new Image();
+				
+				// When the image loads, set it as background image
+				img.onload = function() {
+					var sticker = new fabric.Image(img);
+					sticker.set({id: id, typegif: 'gif', left: 50, top: 50, opacity:1});
+					createMask(url, sticker);
+					canvas.add(sticker);
+				};
+				
+				img.src = url;	
+					
+			},70);
+			
+		}
 		
 	}
 	
@@ -141,11 +215,21 @@
 		
 		var img = new Image();
 		img.onload = function() {
-//			.set('flipX, true);
-			var imgBg = new fabric.Image(img, {
-				//flipY: true
+			
+			var ratio = img.height / img.width;
+			var hByCanvas = ratio * canvas.width;
+			
+			var bg = new fabric.Image(img);
+			bg.set({
+				scaleX: canvas.width / img.width,
+				scaleY: hByCanvas / img.height,
+				top:canvas.height/2,
+				originX: 'left',
+				originY: 'center',
 			});
-			canvas.setBackgroundImage(imgBg);
+
+			canvas.setBackgroundImage(bg);
+			
 		};
 		img.src = url;
 		
@@ -164,20 +248,42 @@
 			
 			var reader = new FileReader();
 			var file = input.files[0];
+			
 			reader.onload = function (e) {
-				
+					
 				var data = e.target.result;
 				fabric.Image.fromURL(data, function (img) {
-					img.set({
-						opacity:0
-					});
-					canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-					   scaleX: canvas.width / img.width,
-					   scaleY: canvas.height / img.height
-					});
+					
+					var ratioCanvas = canvas.height/canvas.width;
+					var ratio =  img.height/img.width;
+					//variable use to set height follow width
+					var height = ratio * canvas.width;
+					
+					if(ratio > ratioCanvas && img.width < canvas.width){
+						img.set({
+							opacity:0,
+							left:canvas.width/2,
+							top:canvas.height/2,
+							originX: 'center',
+							originY: 'center',
+						});	
+					}else {
+						img.set({
+							opacity:0,
+							scaleX: canvas.width / img.width,
+							scaleY: height / img.height,
+							top:canvas.height/2,
+							originX: 'left',
+							originY: 'center',
+						});
+					}
+					
+					canvas.setBackgroundImage(img);
+					
 				});
 				imgGif.src = data;
 			}
+			
 			reader.readAsDataURL(file);
 			isGif = true;
 			
@@ -195,13 +301,11 @@
 		document.getElementById('vidLoad').value = '';
 	}
 	
-	//Load video file
-	function loadVideo(input) {
-
-		if(input.files && input.files[0]) {
-			
-			var src = URL.createObjectURL(input.files[0]);
-			
+	
+	//Load video element to draw on canvas
+	function getVideoElement(url) {
+		return new Promise(function(resolve){
+			// create the video element
 			if(video) {
 				fabricCnt.removeChild(document.getElementById('fabric_vid'));
 				video = null;
@@ -209,34 +313,59 @@
 			
 			}
 			
-			video = document.createElement("video");
-			video.src = src;
-			video.width = canvas.width;
-			video.height = canvas.height;
+			video = document.createElement('video');
 			video.setAttribute("id", 'fabric_vid');
 			video.style.display = 'none';
 			video.muted = true;
 			video.controls = false;
 			
+			// place a listener on it
+			video.addEventListener( "loadedmetadata", function () {
+				// retrieve dimensions
+				var height = this.videoHeight;
+				var width = this.videoWidth;
+				// send back result
+				resolve({
+					height : height,
+					width : width
+				});
+			}, false );
+			
 			video.onended = function(e) {
 				console.log('end video');
-				//videoBg.getElement().play();
+				video.play(); //play loop
 			};
 			
-			video.onloadeddata = function() {
-				videoBg = new fabric.Image(video);
-				
-				videoBg.set({
-					scaleX: canvas.width / videoBg.width,
-					scaleY: canvas.height / videoBg.height
-				});
-				
-				videoBg.getElement().play();
-				canvas.setBackgroundImage(videoBg);
-			};
-			
+			// start download meta-datas
+			video.src = URL.createObjectURL(url);
 			fabricCnt.appendChild(video);
 			
+		});
+	}
+
+	//Load video file
+	function loadVideo(input) {
+
+		if(input.files && input.files[0]) {
+			
+			getVideoElement(input.files[0]).then(function(dimensions){
+				
+				//variable use to set height follow with
+				var ratio = dimensions.height/ dimensions.width;
+				
+				video.width = dimensions.width;
+				video.height = dimensions.height;
+				var hByCanvas = ratio * canvas.width;
+				
+				videoBg = new fabric.Image(video);
+				videoBg.set({
+					scaleX: canvas.width/video.width,
+					scaleY: hByCanvas/video.height
+				});
+				video.play();
+				canvas.setBackgroundImage(videoBg);
+				
+			});
 			
 		}else {
 			console.log('Empty files');
@@ -255,15 +384,35 @@
 			
 			var reader = new FileReader();
 			var file = input.files[0];
+			
 			reader.onload = function (e) {
-				
 				var data = e.target.result;
 				fabric.Image.fromURL(data, function (img) {
-					img.set({
-						scaleX: canvas.width / img.width,
-						scaleY: canvas.height / img.height
-					});
+					
+					var ratioCanvas = canvas.height/canvas.width;
+					var ratio =  img.height/img.width;
+					//variable use to set height follow width
+					var height = ratio * canvas.width;
+					
+					if(ratio > ratioCanvas && img.width < canvas.width){
+						img.set({
+							left:canvas.width/2,
+							top:canvas.height/2,
+							originX: 'center',
+							originY: 'center',
+						});	
+					}else {
+						img.set({
+							scaleX: canvas.width / img.width,
+							scaleY: height / img.height,
+							top:canvas.height/2,
+							originX: 'left',
+							originY: 'center',
+						});
+					}
+					
 					canvas.setBackgroundImage(img);
+					
 				});
 				
 			}
@@ -332,51 +481,34 @@
 	});
 	
 	
-	//Delete button
-	btnDelete.addEventListener("click", function(e){
-		e.preventDefault();
-		
-		var obj = canvas.getActiveObject();
-		
-		if(obj) {
-			if(obj.objtype == 'sticker') {
+	//Devare button
+	btnDelete.addEventListener("click", function(){
+		//devare all selected object
+		canvas.getActiveObjects().forEach(function(obj){
+			if(obj.typegif == 'gif') {
 				fabricBox.removeChild(document.getElementById(obj.id));
 			}
 			canvas.remove(obj);
-		}
-		 
-	});
-	//DeleteAll button
-	btnDeleteAll.addEventListener("click", function(){
-		
-		//e.preventDefault();
-		var objects = canvas.getObjects();
-		
-		if(objects.length) {
-			var index = objects.length;
-			
-			while(index >= 0) {
-				var obj = objects[index - 1];
-				if(obj && obj.objtype == 'sticker') {
-					var element = document.getElementById(obj.id);
-					fabricBox.removeChild(element);
-				}
-				canvas.remove(obj);
-				index--;
-			}
-			
-		}
-	});
-	//Change background button
-	btnChangeBg.addEventListener("click", function(){
-		setBgFromFile('banner1.jpg');
+		});
+		canvas.discardActiveObject().renderAll();
 	});
 	
+	//DevareAll button
+	btnDeleteAll.addEventListener("click", function(){
+		canvas.getObjects().forEach(function(obj){
+			if(obj.typegif == 'gif') {
+				fabricBox.removeChild(document.getElementById(obj.id));
+			}
+			canvas.remove(obj);
+		});
+		canvas.renderAll();
+	});
+
 	//Download button
 	btnDownload.addEventListener("click", function(){
 		
 		//open sticker and hide maskticker
-		fabricBox.classList.add('saving');
+		fabricBox.classList.add('hide-mask');
 		
 		if(isGif) {
 			canvas.backgroundImage.set({
@@ -387,7 +519,7 @@
 		var objs = canvas.getObjects();
 		
 		for(var i = 0; i < objs.length; i++) {
-			if(objs[i].objtype == 'sticker') {
+			if(objs[i].typegif == 'gif') {
 				objs[i].set({ opacity: 1 });
 			}
 		}
@@ -399,11 +531,11 @@
 		
 		//hide sticker and open maskticker
 		for(var i = 0; i < objs.length; i++) {
-			if(objs[i].objtype == 'sticker') {
+			if(objs[i].typegif == 'gif') {
 				objs[i].set({ opacity: 0 });
 			}
 		}
-		fabricBox.classList.remove('saving');
+		fabricBox.classList.remove('hide-mask');
 		
 		if(isGif) {
 			canvas.backgroundImage.set({
@@ -425,34 +557,48 @@
 	setBgFromUrl('banner.jpg');
 		
 	fabric.util.requestAnimFrame(function render() {
-		updateCurStick();
+		//UpdateSticker();
 		canvas.renderAll();
 	  	fabric.util.requestAnimFrame(render);
+		
 	});
 	
-	
-	
-	function updateCurStick() {
-		
-		var obj = canvas.getActiveObject();
-		
-		if(obj && obj.objtype == 'sticker') {
-			sticker = obj;
-			stickerMask = document.getElementById(sticker.id);
-			stickerMask.style.top = sticker.top + 'px';
-			stickerMask.style.left = sticker.left + 'px';
-			stickerMask.style.transform  = 'scaleX('+ sticker.scaleX +') scaleY('+ sticker.scaleY +') rotate('+  sticker.angle +'deg)';
-		}
-		
+	function UpdateSticker() {
+		canvas.getActiveObjects().forEach(function(obj){
+			if(obj.typegif == 'gif') {
+				UpdateMask(obj);
+			}
+		});
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	function UpdateMask(obj) {
+		
+		var mask = document.getElementById(obj.id);
+		var _left, _top, _transform;
+		
+		if(obj.group) {
+			
+			_top	= obj.top + obj.group.top + obj.group.height/2 + 'px';
+			_left	=  obj.left + obj.group.left + obj.group.width/2 + 'px';
+			_scaleX = obj.group.scaleX == 1 ? obj.scaleX : obj.group.scaleX;
+			_scaleY = obj.group.scaleY == 1 ? obj.scaleY : obj.group.scaleY;
+			_angle	= obj.group.angle == 0 ? obj.angle : obj.group.angle;
+			_transform = 'scaleX('+ _scaleX +') scaleY('+ _scaleY +') rotate('+  _angle +'deg)';
+			
+		}else {
+			_top = obj.top + 'px';
+			_left = obj.left + 'px';
+			_transform = 'scaleX('+ obj.scaleX +') scaleY('+ obj.scaleY +') rotate('+  obj.angle +'deg)';
+		}
+		
+		mask.style.width = obj.width + 'px';
+		mask.style.height = obj.height + 'px';
+		mask.style.transformOrigin = 'left top 0';
+		mask.style.transform  = _transform;
+		mask.style.top =  _top;
+		mask.style.left =   _left;
+		
+	}
 	
 	
 	
@@ -463,132 +609,135 @@
 	fabric.Object.prototype.transparentCorners = false;
 	fabric.Object.prototype.padding = 5;
 	
-	//var $ = function(id){return document.getElementById(id)};
 	
 	
-	//  var canvas = this.__canvas = new fabric.Canvas('c');
-	//	canvas.setHeight(300);
-	//	canvas.setWidth(500);
-   
-	/*function Addtext() { 
-		canvas.add(new fabric.IText('Tap and Type', { 
-		  left: 50,
-		  top: 100,
-		  fontFamily: 'arial black',
-		  fill: '#333',
-			fontSize: 50
-		}));
-	}*/
-	
-	document.getElementById('text-color').onchange = function() {
-		//canvas.getActiveObject().setFill(this.value);
-		//canvas.renderAll();
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
+	document.getElementById('fillColor').onchange = function() {
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			obj.set({
 				fill: this.value
 			});
 		}
-	};
+		
+	};			
 	
-	document.getElementById('text-bg-color').onchange = function() {
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
-				textBackgroundColor: this.value
+	document.getElementById('strokeWidth').onchange = function() {
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			var stroke = parseInt(this.value) || 0;
+			obj.set({
+				strokeWidth: stroke
 			});
 		}
-	};
+		
+	};			
 	
-	document.getElementById('text-stroke-color').onchange = function() {
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
+	document.getElementById('strokeColor').onchange = function() {
+		var obj = canvas.getActiveObject();
+		if(obj) {
+			obj.set({
 				stroke: this.value
 			});
 		}
 	};	
 	
-	document.getElementById('text-stroke-width').onchange = function() {
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
-				strokeWidth: this.value
-			});
-		}
-	};				
-	
-	document.getElementById('font-family').onchange = function() {
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
+	document.getElementById('fontFamily').onchange = function() {
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			obj.set({
 				fontFamily: this.value
 			});
 		}
 	};
 	
-	document.getElementById('text-font-size').onchange = function() {
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
+	document.getElementById('fontSize').onchange = function() {
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			obj.set({
 				fontSize: this.value
 			});
 		}
 	};
 	
-	document.getElementById('text-line-height').onchange = function() {
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
-				lineHeight: this.value
-			});
-		}
-	};
-	
-	document.getElementById('text-align').onchange = function() {
-		if(canvas.getActiveObject()) {
-			canvas.getActiveObject().set({
+	document.getElementById('textAlign').onchange = function() {
+		var obj = canvas.getActiveObject();
+		if(obj) {
+			obj.set({
 				textAlign: this.value
 			});
 		}
 	};
 	
-	
-	/*
-	radios5 = document.getElementsByName("fonttype");
-	
-	for(var i = 0, max = radios5.length; i < max; i++) {
-		radios5[i].onclick = function() {
+	document.getElementById('lineHeight').onchange = function() {
+		var obj = canvas.getActiveObject();
 		
-			if(document.getElementById(this.id).checked == true) {
-				if(this.id == "text-cmd-bold") {
-					canvas.getActiveObject().set("fontWeight", "bold");
-				}
-				if(this.id == "text-cmd-italic") {
-					canvas.getActiveObject().set("fontStyle", "italic");
-				}
-				if(this.id == "text-cmd-underline") {
-					canvas.getActiveObject().set("textDecoration", "underline");
-				}
-				if(this.id == "text-cmd-linethrough") {
-					canvas.getActiveObject().set("textDecoration", "line-through");
-				}
-				if(this.id == "text-cmd-overline") {
-					canvas.getActiveObject().set("textDecoration", "overline");
-				}
-			} else {
-				if(this.id == "text-cmd-bold") {
-					canvas.getActiveObject().set("fontWeight", "");
-				}
-				if(this.id == "text-cmd-italic") {
-					canvas.getActiveObject().set("fontStyle", "");
-				}  
-				if(this.id == "text-cmd-underline") {
-					canvas.getActiveObject().set("textDecoration", "");
-				}
-				if(this.id == "text-cmd-linethrough") {
-					canvas.getActiveObject().set("textDecoration", "");
-				}  
-				if(this.id == "text-cmd-overline") {
-					canvas.getActiveObject().set("textDecoration", "");
-				}
-			}
-			
-			//canvas.renderAll();
+		if(obj) {
+			obj.set({
+				lineHeight: this.value
+			});
 		}
-	}
-	*/
+	};
+	
+	document.getElementById('textBold').onchange = function() {
+		var obj = canvas.getActiveObject();
+		var value = this.checked ? 'bold' : 'normal';
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			obj.set({
+				fontWeight: value
+			});
+		}
+	};
+	
+	document.getElementById('textItalic').onchange = function() {
+		var obj = canvas.getActiveObject();
+		var value = this.checked ? 'italic' : 'normal';
+		var obj = canvas.getActiveObject();
+		if(obj) {
+			obj.set({
+				fontStyle: value
+			});
+		}
+	};
+	
+	document.getElementById('textUnderline').onchange = function() {
+		var obj = canvas.getActiveObject();
+		var value = this.checked ? true : false;
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			obj.set({
+				underline: value
+			});
+		}
+	};
+	
+	document.getElementById('textLinethrough').onchange = function() {
+		var obj = canvas.getActiveObject();
+		var value = this.checked ? true : false;
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			obj.set({
+				linethrough: value
+			});
+		}
+	};
+	
+	document.getElementById('textOverline').onchange = function() {
+		var obj = canvas.getActiveObject();
+		var value = this.checked ? true : false;
+		var obj = canvas.getActiveObject();
+		
+		if(obj) {
+			obj.set({
+				overline: value
+			});
+		}
+	};
 	
