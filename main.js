@@ -10,7 +10,7 @@
 	});
 	var ctx = canvas.getContext('2d');
 	
-	var video, videoBg, creating = false;
+	var video, videoBg, canCreating = true;
 	var fabricCnt = document.querySelector('.fabric-content');
 	var fabricBox = document.querySelector('.fabric-box');
 	var imgGif = document.getElementById('imgGif');
@@ -33,10 +33,22 @@
 	
 	var drawing = false;
 	var down = false;
-
+	
+	canvas.on({
+		'object:selected': function() {
+		  	console.log('selected');
+		},
+		'selection:cleared': function() {
+		  console.log('cleared');
+		}
+		
+	});
+  
+  
 	canvas.on('mouse:down', function(options) {
 		down = true;
 		drawing = false;
+		console.log('mousedown');
 	});
 	
 	canvas.on('mouse:move', function(options) {
@@ -142,50 +154,6 @@
 		  height: 80
 		});
 		canvas.add(rect);
-	}
-	
-	//Create a Sticker mask
-	function createMask(url, sticker) {
-		var mask = document.createElement("img");
-		mask.setAttribute("src", url);
-		mask.setAttribute("id", sticker.id);
-		mask.style.top = sticker.top + 'px';
-		mask.style.left = sticker.left + 'px';
-		mask.style.width = sticker.width + 'px';
-		mask.style.height = sticker.height + 'px';
-		mask.style.transformOrigin = 'left top 0';
-		mask.style.transform  = 'scaleX('+ sticker.scaleX +') scaleY('+ sticker.scaleY +') rotate('+  sticker.angl +'deg)';
-		fabricBox.appendChild(mask);
-		creating = false;
-	}
-
-
-	//create Sticker object
-	function CreateSticker(url) {
-		
-		if(!creating) {
-			
-			creating = true;
-			
-			setTimeout(function(){
-				
-				var id = 'sticker_' +  Math.floor(Date.now() / 50);
-				var img = new Image();
-				
-				// When the image loads, set it as background image
-				img.onload = function() {
-					var sticker = new fabric.Image(img);
-					sticker.set({id: id, typegif: 'gif', left: 50, top: 50, opacity:1});
-					createMask(url, sticker);
-					canvas.add(sticker);
-				};
-				
-				img.src = url;	
-					
-			},70);
-			
-		}
-		
 	}
 	
 	//create Triangle object
@@ -501,7 +469,7 @@
 			}
 			canvas.remove(obj);
 		});
-		canvas.renderAll();
+		canvas.discardActiveObject();
 	});
 
 	//Download button
@@ -543,7 +511,6 @@
 			});
 		}
 		
-		
 		//get info each object to json
 		console.log(canvas.toJSON());
 		
@@ -554,13 +521,19 @@
 	//////////////////////////////////////////
 	//////////////// CANVAS STAR /////////////
 	//////////////////////////////////////////
-	setBgFromUrl('banner.jpg');
+	setBgFromUrl('sampleImage2.png');
 		
+			
+   // function render(){
+	//	canvas.renderAll();
+		//fabric.util.requestAnimFrame(render);
+	//}		
+	//fabric.util.requestAnimFrame(render);
+	
 	fabric.util.requestAnimFrame(function render() {
 		//UpdateSticker();
 		canvas.renderAll();
 	  	fabric.util.requestAnimFrame(render);
-		
 	});
 	
 	function UpdateSticker() {
@@ -610,6 +583,150 @@
 	fabric.Object.prototype.padding = 5;
 	
 	
+	
+	
+	
+	//STICKER
+	var arrSticker = document.querySelectorAll('.sticker-box li');
+	for(var i=0; i < arrSticker.length; i++) {
+		arrSticker[i].onclick = function(){
+			var url =  this.getAttribute('data-url');
+			CreateSticker(url);
+		};
+	}
+	
+	//create Sticker object
+	function CreateSticker(url) {
+		
+		if(canCreating) {
+			
+			canCreating = false;
+		
+			var id = 'sticker_' +  Math.floor(Date.now());
+			var img = new Image();
+			var gifFile = url.indexOf(".gif");
+			
+			//When the image loads, set it as background image
+			img.onload = function() {
+				var sticker = new fabric.Image(img);
+				
+				if(gifFile > 0) {
+					sticker.set({id: id, typegif: 'gif', left: 50, top: 50, opacity:0});
+					createMask(url, sticker);	
+				}else {
+					sticker.set({left: 50, top: 50});
+					canCreating = true;
+				}
+				canvas.add(sticker);
+			};
+
+			img.src = url;	
+
+		}
+		
+	}
+	
+	//Create a Sticker mask
+	function createMask(url, sticker) {
+		var mask = document.createElement("img");
+		mask.setAttribute("src", url);
+		mask.setAttribute("id", sticker.id);
+		mask.style.top = sticker.top + 'px';
+		mask.style.left = sticker.left + 'px';
+		mask.style.width = sticker.width + 'px';
+		mask.style.height = sticker.height + 'px';
+		mask.style.transformOrigin = 'left top 0';
+		mask.style.transform  = 'scaleX('+ sticker.scaleX +') scaleY('+ sticker.scaleY +') rotate('+  sticker.angl +'deg)';
+		fabricBox.appendChild(mask);
+		canCreating = true;
+	}
+
+
+
+	//FILTER
+	function checkFilter(contrast, obj) {
+		var result = -1;
+		for(var i = 0; i < obj.filters.length; i++) {
+			if(obj.filters[i].contrast == contrast) {
+				result = i;
+				break;
+			}
+		}
+		return result;
+	}
+	var arrFilter = document.querySelectorAll('.filter-box li');
+	for(var i=0; i < arrFilter.length; i++) {
+		arrFilter[i].onclick = function(){
+			
+			var type =  this.getAttribute('data-filter');
+			var obj = canvas.backgroundImage;
+			
+			if(obj) {
+				// add filter
+				if(type == 'grayscale') {
+					var index = checkFilter(1,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.Grayscale({contrast:1}));
+					}
+				}
+				if(type == 'invert') {
+					var index = checkFilter(2,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.Invert({contrast:2}));
+					}
+				}
+				if(type == 'sepia') {
+					var index = checkFilter(3,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.Sepia({contrast:3}));
+					}
+				}
+				if(type == 'sepia2') {
+					var index = checkFilter(4,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.Sepia({contrast:4}));
+					}
+				}
+				if(type == 'blur') {
+					var index = checkFilter(5,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.Convolute({contrast:5,matrix: [ 1/9, 1/9, 1/9, 1/9, 1/9, 1/9, 1/9, 1/9, 1/9 ]}));
+					}
+				}
+				if(type == 'sharpen') {
+					var index = checkFilter(6,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.Convolute({contrast:6, matrix: [1, 1, 1, 1, 0.7, -1, -1, -1, -1]}));
+					}
+				}
+				if(type == 'emboss') {
+					var index = checkFilter(7,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.Convolute({contrast:7,matrix: [ 1, 1, 1, 1, 0.7, -1,-1,  -1, -1 ]}));
+					}
+				}
+				
+				if(type == 'remove-color') {
+					var index = checkFilter(8,obj);
+					if(index == -1){
+						obj.filters.push(new fabric.Image.filters.RemoveColor({
+							contrast:8,
+							distance:document.getElementById('distance-color').value
+						}));
+					}else {
+						obj.filters[index].distance = document.getElementById('distance-color').value;
+					}
+				}
+				
+				//console.log(obj.filters);
+
+				obj.applyFilters();
+			}
+		};
+	}
+	
+	
+
 	
 	document.getElementById('fillColor').onchange = function() {
 		var obj = canvas.getActiveObject();

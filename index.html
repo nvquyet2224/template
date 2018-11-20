@@ -13,7 +13,6 @@
 	 margin:0;
 	 padding:0;
  }
- 
  .fabric-content {
 	 position:relative;
 	 width:800px;
@@ -23,6 +22,7 @@
 	 display:block;
 	 border:2px solid #ddd;
 	 text-align:center;
+	 background-color:#000
 	
  }
  .fabric-box{
@@ -81,6 +81,7 @@
 	display:block;
 	width:100%;
 	height:auto;
+	color:#fff;
 }
 .upload-tools div {
 	position:relative;
@@ -186,6 +187,35 @@
 	max-width:60%;
 }
 
+
+
+/*filter*/
+.filter-box{
+	position:fixed;
+	width:100%;
+	height:auto;
+	left:0;
+	top:0;
+	padding:20px 0;
+}
+.filter-box li {
+	display:inline-block;
+	vertical-align:top;
+	padding:5px 7px;
+	margin:5px;
+	cursor:pointer;
+	text-align:left;
+	font-size:13px;
+}
+
+.filter-box li label, .filter-box li input {
+	display:inline-block;
+	width:auto;
+	vertical-align:middle	
+}
+.filter-box li input {
+	cursor:pointer;
+}
 
 /*text tools*/
 .text-tools{
@@ -339,22 +369,44 @@
 
 <div class="sticker-box">
 <ul>
-<li onClick="CreateSticker('img/explosion.png')"><img src="img/explosion.png" alt="explosion"></li>
-<li onClick="CreateSticker('img/articuno.gif')"><img src="img/articuno.gif" alt="explosion"></li>
-<li onClick="CreateSticker('img/blastoise.gif')"><img src="img/blastoise.gif" alt="blastoise"></li>
-<li onClick="CreateSticker('img/lebron.gif')"><img src="img/lebron.gif" alt="lebron"></li>
-<li onClick="CreateSticker('img/mew.gif')"><img src="img/mew.gif" alt="mew"></li>
+<li data-url="img/explosion.png"><img src="img/explosion.png" alt="explosion"></li>
+<li data-url="img/articuno.gif"><img src="img/articuno.gif" alt="explosion"></li>
+<li data-url="img/blastoise.gif"><img src="img/blastoise.gif" alt="blastoise"></li>
+<li data-url="img/lebron.gif"><img src="img/lebron.gif" alt="lebron"></li>
+<li data-url="img/mew.gif"><img src="img/mew.gif" alt="mew"></li>
 </ul>
 </div>
 
-<!--<video controls loop>
-    <source src="data/intro.mp4" type=video/mp4>
-</video>-->
+<div class="filter-box">
+<ul>
+<li data-filter="grayscale">Grayscale</li>
+<li data-filter="invert">Invert</li>
+<li data-filter="sepia">Sepia</li>
+<li data-filter="sepia2">Sepia2</li>
+<li data-filter="blur">Blur</li>
+<li data-filter="sharpen">Sharpen</li>
+<li data-filter="emboss">Emboss</li>
+<li data-filter="remove-color">RemoveColor
+<div>
+<label for="distance-color">Distance</label>
+<input type="range" value="0.02" min="0" max="0.9" step="0.01" id="distance-color">
+</div>
+</li>
+
+<li data-filter="gradient">Gradient
+<div>
+<label for="gradient-threshold">value</label>
+<input type="range" value="100" min="0" max="225" step="1" id="gradient-threshold">
+</div>
+</li>
+
+</ul>
+</div>
 
 </div>
 
 <script src="bluebird.min.js"></script>
-<script type="text/javascript" src="main.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>
