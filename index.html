@@ -31,6 +31,7 @@
 	height:auto;
 	display:inline-block;
 	overflow:hidden;
+	-webkit-perspective: 800;
  }
 
 .gif-box{
@@ -57,10 +58,30 @@
 	height:auto;	
 	max-width:100%;
 }
+.mask{
+	position:absolute;
+	pointer-events:none;
+	border:1px solid #ddd;
+	transform-style: preserve-3D;
+}
+.hide-mask .mask{
+	opacity:0;
+}
+.mask.is-hide {
+	opacity:0;
+}
+.mask img{
+	display:block;
+	width:100%;
+	height:100%;
+}
 
+/*
 .fabric-box > img{
 	position:absolute;
 	pointer-events:none;
+	border:1px solid #ddd;
+	transform-style: preserve-3D;
 }
 .fabric-box.hide-mask img {
 	opacity:0;
@@ -68,6 +89,7 @@
 .fabric-box img.is-hide {
 	opacity:0;
 }
+*/
 
 .canvas-container{
 	margin:0 auto;

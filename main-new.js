@@ -1277,40 +1277,25 @@
 				});
 			}
 		});
-			
+		
+		var down = false;			
 		canvas.on('mouse:down', function(e) {
-			//down = true;
-			//drawing = false;
+			down  = true;
 		});
 		
 		canvas.on('mouse:up', function(e) {
-			
-			/*if(down) {
-				canvas.getActiveObjects().forEach(function(obj){
-					if(obj.typegif == 'gif') {
-						UpdateMask(obj);
-						document.getElementById(obj.id).classList.remove('is-hide');
-						obj.set({opacity:0});
-					}
-				});
-			}
-			down = false;*/
+			if(down) {
+				down = false;
+				updateSticker();
 				
+			}
 		});
 		
 		canvas.on('mouse:move', function(e) {
-			/*if(down) {
-				canvas.getActiveObjects().forEach(function(obj){
-					if(obj.typegif == 'gif') {
-						document.getElementById(obj.id).classList.add('is-hide');
-						obj.set({opacity:1});
-						drawing = true;
-					}
-				});
-			}*/
-			updateSticker();
+			if(down) {
+				updateSticker();
+			}
 		});
-		
 		
 		
 		//Add stiker
@@ -1327,21 +1312,24 @@
 			
 			if(canAdd) {
 				canAdd = false;
-				var id = 'sticker_' +  Math.floor(Date.now());
-				var flag = url.indexOf(".gif");
+				var id = 'sticker_' +  Math.floor(Date.now()), 
+					flag = url.indexOf(".gif");
 				
 				fabric.Image.fromURL(url, function(img) {
 					var options = { left: 50, top: 50 }
 					if(flag > 0) {
 						options = { id: id,  typegif: 'gif', left: 50, top: 50, opacity:1 }
-						var mask = document.createElement("img");
+						var mask = document.createElement("div");
 						var width = img.width * 0.6 + 'px';
 						var height = img.height * 0.6 + 'px';
 						var origin = 'left top 0px';
 						var style = 'top: 50px; left: 50px; width: '+ width +'; height: '+ height +'; transform-origin:'+ origin +'';
-						mask.setAttribute("src", url);
+						mask.setAttribute("class", 'mask');
 						mask.setAttribute("id", id);
 						mask.setAttribute("style", style);
+						var maskImg = document.createElement("img");
+						maskImg.setAttribute("src", url);
+						mask.appendChild(maskImg);
 						fabricBox.appendChild(mask);
 					}
 					var sticker = img.set(options).scale(0.6);
@@ -1355,70 +1343,54 @@
 		
 		function updateSticker() {
 			
+			
 			var objects = canvas.getActiveObjects();
 			if(objects) {
-				
+				//console.log(canvas.group());
+//				console.log(canvas.getActiveObject().toActiveSelection());
 				objects.forEach(function(obj){
 					if(obj.typegif == 'gif') {
 
-						var mask = document.getElementById(obj.id),
-							group = obj.group;
-						
-						var	top,
-							left,
-							width,
-							height,
-							angle,
-							origin = 'left top 0px';
+						var mask = $(obj.id),
+							maskImg = mask.getElementsByTagName('img')[0],
+							group = obj.group, top, left, width,
+							height, transform, origin = 'left top';
 							
-						//var style = '';
-						
 						if(group) {
-							
-							angle = obj.angle + 'deg' || '0deg';
 							width = obj.scaleX * obj.width * group.scaleX;
 							height = obj.scaleY * obj.height * group.scaleY;
-							top = obj.top + group.top + group.height/2;
-							left = obj.left + group.left + group.width/2;
+							
+							top  = obj.top * group.scaleY + group.top + (group.height * group.scaleY)/2;
+							left = obj.left * group.scaleX + group.left + (group.width * group.scaleX)/2;
+
+							var total = obj.angle + group.angle;
+							transform = 'rotate('+ total +'deg) skewX('+ obj.skewX +'deg) skewY('+ obj.skewY +'deg)';
+							
+							var maskStyle = '';
+							(obj.flipX || group.flipX) && (maskStyle += 'scaleX(-1) ');
+							(obj.flipY || group.flipY) && (maskStyle += 'scaleY(-1) ');
+							maskStyle !='' && (maskStyle = 'transform:' + maskStyle);
+							maskImg.setAttribute('style', maskStyle);
 							
 						}else {
-							top = obj.top + 'px';
-							left = obj.left + 'px';
-							width = obj.scaleX * obj.width + 'px';
-							height = obj.scaleY * obj.height + 'px';
-							angle =  obj.angle + 'deg' || '0deg';
+							top = obj.top;
+							left = obj.left;
+							width = obj.scaleX * obj.width;
+							height = obj.scaleY * obj.height;
+							//transform = 'rotate('+ obj.angle +'deg)';
+							transform = 'rotate('+ obj.angle +'deg) skewX('+ obj.skewX +'deg) skewY('+ obj.skewY +'deg)';
+							var maskStyle = '';
+							obj.flipX && (maskStyle += 'scaleX(-1) ');
+							obj.flipY && (maskStyle += 'scaleY(-1) ');
+							maskStyle !='' && (maskStyle = 'transform:' + maskStyle);
+							maskImg.setAttribute('style', maskStyle);
 						}
-						
-						var style = 'top:'+ top +'px; left: '+ left +'px; width: '+ width +'px; height: '+ height +'px; transform-origin: '+ origin +'; transform: rotate('+ angle +')';
+						var style = 'top:'+ top +'px; left: '+ left +'px; width: '+ width +'px; height: '+ height +'px; transform-origin: '+ origin +'; transform: '+ transform +'';
 						mask.setAttribute('style', style);
 					}
 				});
 			}
 			
-			/*
-			var mask = document.getElementById(obj.id);
-			var _left, _top, _transform;
-			
-			if(obj.group) {
-				_top	= obj.top + obj.group.top + obj.group.height/2 + 'px';
-				_left	=  obj.left + obj.group.left + obj.group.width/2 + 'px';
-				_scaleX = obj.group.scaleX == 1 ? obj.scaleX : obj.group.scaleX;
-				_scaleY = obj.group.scaleY == 1 ? obj.scaleY : obj.group.scaleY;
-				_angle	= obj.group.angle == 0 ? obj.angle : obj.group.angle;
-				_transform = 'scaleX('+ _scaleX +') scaleY('+ _scaleY +') rotate('+  _angle +'deg)';
-				
-			}else {
-				_top = obj.top + 'px';
-				_left = obj.left + 'px';
-				_transform = 'scaleX('+ obj.scaleX +') scaleY('+ obj.scaleY +') rotate('+  obj.angle +'deg)';
-			}
-			
-			mask.style.width = obj.width + 'px';
-			mask.style.height = obj.height + 'px';
-			mask.style.transformOrigin = 'left top 0';
-			mask.style.transform  = _transform;
-			mask.style.top =  _top;
-			mask.style.left =   _left;*/
 			
 		}
 		//End Add Sticker
@@ -2050,11 +2022,11 @@
 			
 			//hide sticker and open maskticker
 			for(var i = 0; i < objs.length; i++) {
-				objs[i].typegif == 'gif' && objs[i].set({ opacity: 0 });
+				objs[i].typegif == 'gif' && objs[i].set({ opacity: 1 });
 			}
 			fabricBox.classList.remove('hide-mask');
 			
-			hasGif && canvas.backgroundImage.set({opacity:0});
+			hasGif && canvas.backgroundImage.set({opacity:1});
 			
 			//get info each object to json
 			console.log(canvas.toJSON());
