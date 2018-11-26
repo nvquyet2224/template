@@ -31,7 +31,6 @@
 	height:auto;
 	display:inline-block;
 	overflow:hidden;
-	-webkit-perspective: 800;
  }
 
 .gif-box{
@@ -61,8 +60,6 @@
 .mask{
 	position:absolute;
 	pointer-events:none;
-	border:1px solid #ddd;
-	transform-style: preserve-3D;
 }
 .hide-mask .mask{
 	opacity:0;
@@ -75,21 +72,6 @@
 	width:100%;
 	height:100%;
 }
-
-/*
-.fabric-box > img{
-	position:absolute;
-	pointer-events:none;
-	border:1px solid #ddd;
-	transform-style: preserve-3D;
-}
-.fabric-box.hide-mask img {
-	opacity:0;
-}
-.fabric-box img.is-hide {
-	opacity:0;
-}
-*/
 
 .canvas-container{
 	margin:0 auto;
@@ -384,17 +366,18 @@
 <ul>
 <li id="btnCircle">Circle</li>
 <li id="btnEllipse">Ellipse</li>
-<li id="btnLine" class="hide">Line</li>
-<li id="btnPolygon" class="hide">Polygon</li>
-<li id="btnPolyline" class="hide">Polyline</li>
 <li id="btnRectangle">Rect</li>
 <li id="btnTriangle">Triangle</li>
+<li id="btnDrawing">Drawing</li>
 <li id="btnSuperscript">Superscript</li>
 </ul>
 </div>
 
 <div class="tools">
 <ul>
+<li id="btnUndo">Undo</li>
+<li id="btnRedo">Redo</li>
+
 <li id="btnDelete">Delete</li>
 <li id="btnDeleteAll">Delete all</li>
 <li id="btnDownload">Download</li>
