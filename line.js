@@ -85,3 +85,11 @@ var Line = (function() {
 }());
 
 var line = new Line(canvas);
+
+
+
+
+/*{"type":"circle","version":"2.4.3","originX":"left","originY":"top","left":3.26,"top":4.56,"width":40,"height":40,"fill":"blue","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":4,"scaleX":0.37,"scaleY":0.56,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","fillRule":"nonzero","paintFirst":"fill","globalCompositeOperation":"source-over","transformMatrix":null,"skewX":0,"skewY":0,"radius":20,"startAngle":0,"endAngle":6.283185307179586}]},"action":"scaleX","corner":"mr","scaleX":1.8741850527982127,"scaleY":1,"skewX":0,"skewY":0,"offsetX":71,"offsetY":21.183998347985437,"originX":"left","originY":"top","ex":184,"ey":146.15625,"lastX":184,"lastY":146.15625,"theta":0,"width":69,"mouseXSign":1,"mouseYSign":1,"shiftKey":false,"altKey":false,"original":{"scaleX":1.8741850527982127,"scaleY":1,"skewX":0,"skewY":0,"angle":0,"left":113,"flipX":false,"flipY":false,"top":124.97225165201456,"originX":"left","originY":"top"},"reset":false,"newScaleX":3.4495869812372906,"newScaleY":0.44132090467179746,"actionPerformed":true}}*/
+	
+
+

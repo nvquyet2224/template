@@ -59,9 +59,10 @@
 		var canvas = this.__canvas = new fabric.Canvas('canvas'),
 		f = fabric.Image.filters;
 		
-		/*
 		var activeGroup;
+		
 		//undo
+		
 		var config = {
 			canvasState             : [],
 			currentStateIndex       : -1,
@@ -166,11 +167,16 @@
 		var multiply = fabric.util.multiplyTransformMatrices;
 		var invert = fabric.util.invertTransform;
 
-		function updateSticker() {
-
-			canvas.getActiveObjects().forEach(function(obj){
+		function updateMinions() {
+			var minions = canvas.getActiveObjects();
+			
+			minions.forEach(function(obj){
+				
+				//if (!o.relationship) { return; }
 				
 				if(obj.typegif == 'gif') {
+					
+					//var relationship = o.relationship;
 					
 					relationship = obj.calcTransformMatrix();
 					var mCanvas = canvas.viewportTransform;
@@ -181,6 +187,9 @@
 					);
 					
 					opt = fabric.util.qrDecompose(newTransform);
+					
+					console.log(newTransform);
+					console.log(opt);
 					
 					var mask = $(obj.id);
 					var maskImg = mask.getElementsByTagName('img')[0];
@@ -236,52 +245,27 @@
 			});
 		
 		}
-		*/
-		
-		var undoDatas = [];
-		var redoDatas = [];
-		
-		var processing = true;
-		
-		function undo() {
-			var len = undoDatas.length;
-			if(len > 0) {
-				var obj = undoDatas[len - 1];
-				undoDatas.splice(len-1,1);
-				redoDatas.push(obj);
-				canvas.remove(obj);
-			}
-			console.log(undoDatas);
-		}
-		function redo() {
-			var len = redoDatas.length;
-			if(len > 0) {
-				var obj = redoDatas[len - 1];
-				redoDatas.splice(len-1,1);
-				undoDatas.push(obj);
-				canvas.add(obj);
-			}
-			
-		}
-		
-		
-		function updateCanvas(obj) {
-			undoDatas.push(obj);
-		}
 		
 		canvas.on({
 			'object:added': function(evt){
-				undoDatas.push(evt.target);
+				updateCanvasState();
 			}, 'object:modified': function(evt) {
-				//updateCanvasState();
-				undoDatas.push(evt.target);
+				updateCanvasState();
 			}, 'mouse:down': function(evt){
-				
+				/*activeGroup = canvas.getActiveObjects();
+				activeGroup.forEach(function(obj){
+					if(obj.typegif == 'gif'){
+						var mask = $(obj.id);
+						var maskImg = mask.getElementsByTagName('img')[0];
+						mask.classList.add('is-hide');
+						obj.set({ opacity: 1 });
+					}
+				});*/
 			}, 'mouse:up': function (evt) {
-				updateSticker();
+				updateMinions();
 			},
 			'mouse:move': function(evt) {
-				updateSticker();
+				updateMinions();
 				
 			}, 'object:selected': function(evt) {
 				if(evt.target.filters) {
@@ -315,6 +299,30 @@
 					el.disabled = true; 
 				});
 				
+				/*activeGroup.forEach(function(obj){
+					if(obj.typegif == 'gif'){
+						var mask = $(obj.id);
+						var maskImg = mask.getElementsByTagName('img')[0];
+						
+						var width  = obj.scaleX * obj.width, 
+							height = obj.scaleY * obj.height, 
+							transform = 'rotate('+ obj.angle +'deg) skewX('+ obj.skewX +'deg) skewY('+ obj.skewY +'deg)',
+							maskStyle = '';
+
+						obj.flipX && (maskStyle += 'scaleX(-1) ');
+						obj.flipY && (maskStyle += 'scaleY(-1) ');
+						maskStyle !='' && (maskStyle = 'transform:' + maskStyle);
+						maskImg.setAttribute('style', maskStyle);
+						
+						var style = 'top:'+ obj.top +'px; left: '+ obj.left +'px; width: '+ width +'px; height: '+ height +'px; transform-origin: left top; transform: '+ transform +'';
+						mask.setAttribute('style', style);
+						
+						mask.classList.remove('is-hide');
+						obj.set({ opacity: 0});
+					}
+				});*/
+				
+				
 			}
 			
 		});
@@ -337,10 +345,11 @@
 				canAdd = false;
 				var id = 'sticker_' +  Math.floor(Date.now()), 
 					flag = url.indexOf(".gif");
+					flag = 1;
 				fabric.Image.fromURL(url, function(img) {
 					var options = { left: 50, top: 50 }
 					if(flag > 0) {
-						options = { id: id,  typegif: 'gif', left: 50, top: 50, opacity:0}
+						options = { id: id,  typegif: 'gif', left: 50, top: 50, opacity:1}
 						var mask = document.createElement("div");
 						var width = img.width * 0.6 + 'px';
 						var height = img.height * 0.6 + 'px';
@@ -361,77 +370,6 @@
 				
 			}
 			
-		}
-		
-		function updateSticker() {
-
-			canvas.getActiveObjects().forEach(function(obj){
-				
-				if(obj.typegif == 'gif') {
-					
-					relationship = obj.calcTransformMatrix();
-					var mCanvas = canvas.viewportTransform;
-					
-					var newTransform = fabric.util.multiplyTransformMatrices(
-						mCanvas,
-						relationship
-					);
-					
-					opt = fabric.util.qrDecompose(newTransform);
-					
-					var mask = $(obj.id);
-					var maskImg = mask.getElementsByTagName('img')[0];
-					
-					var width, left, top, height, skewX; 
-					
-					width = opt.scaleX * obj.width;
-					height = Math.abs(opt.scaleY * obj.height);
-					
-					var origin = 'center center';
-					left = -width/2;
-					top = -height/2;
-					
-					skewX = Math.abs(opt.skewX);
-					
-					transform = 'translateX('+ opt.translateX +'px) translateY('+ opt.translateY +'px) rotate('+ opt.angle +'deg) skewX('+ skewX +'deg) skewY(0deg)',
-
-					maskStyle = '';
-					var flip = false;
-					
-					if(obj.group) {
-						
-						(obj.flipX || obj.flipY) && (flip = true);
-						(obj.flipX && obj.flipY) && (flip = false);
-						
-						if(flip) {
-							(obj.group.flipX && obj.group.flipY) && (flip = true);
-							(!obj.group.flipX && !obj.group.flipY) && (flip = true);
-							(obj.group.flipX && !obj.group.flipY) && (flip = false);
-							(!obj.group.flipX && obj.group.flipY) && (flip = false);
-						}else {
-							(obj.group.flipX || obj.group.flipY) && (flip = true);
-							(obj.group.flipX && obj.group.flipY) && (flip = false);
-						}
-							
-					}else {
-						(obj.flipX || obj.flipY) && (flip = true);
-						(obj.flipX && obj.flipY) && (flip = false);
-					}
-					
-					if(flip) {
-						maskStyle += 'transform: scaleY(-1)';
-					}else {
-						maskStyle += '';
-					}
-					maskImg.setAttribute('style', maskStyle);
-					
-					var style = 'left:'+ left +'px; top: '+ top +'px; width: '+ width +'px; height: '+ height +'px; transform-origin:'+ origin +'; transform: '+ transform +'';
-					mask.setAttribute('style', style);
-					
-				}
-				
-			});
-		
 		}
 		//End Add Sticker
 		
@@ -1078,7 +1016,7 @@
 			
 			//hide sticker and open maskticker
 			for(var i = 0; i < objs.length; i++) {
-				objs[i].typegif == 'gif' && objs[i].set({ opacity: 0 });
+				objs[i].typegif == 'gif' && objs[i].set({ opacity: 1 });
 			}
 			
 			hasGif && canvas.backgroundImage.set({opacity:1});
@@ -1092,17 +1030,25 @@
 		
 		
 		
-		fabric.util.addListener(fabric.window, 'load', function() {
-			var canvas = this.__canvas || this.canvas,
-			canvases = this.__canvases || this.canvases;
-			
-			canvas && canvas.calcOffset && canvas.calcOffset();
-			
-			if (canvases && canvases.length) {
-				for (var i = 0, len = canvases.length; i < len; i++) {
-					canvases[i].calcOffset();
-				}
-			}
-		});
 		
+		
+		
+		(function() {
+				
+				fabric.util.addListener(fabric.window, 'load', function() {
+					var canvas = this.__canvas || this.canvas,
+					canvases = this.__canvases || this.canvases;
+					
+					canvas && canvas.calcOffset && canvas.calcOffset();
+					
+					if (canvases && canvases.length) {
+						for (var i = 0, len = canvases.length; i < len; i++) {
+							canvases[i].calcOffset();
+						}
+					}
+				});
+				
+		})();
+			
+	
 	
