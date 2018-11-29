@@ -21,14 +21,7 @@
 		function applyFilter(index, filter) {
 			var obj = canvas.getActiveObject();
 			obj.filters[index] = filter;
-			var timeStart = +new Date();
 			obj.applyFilters();
-			var timeEnd = +new Date();
-			var dimString = canvas.getActiveObject().width + ' x ' +
-			canvas.getActiveObject().height;
-			$('bench').innerHTML = dimString + 'px ' +
-			parseFloat(timeEnd-timeStart) + 'ms';
-			canvas.renderAll();
 		}
 		
 		function getFilter(index) {
@@ -40,14 +33,7 @@
 			var obj = canvas.getActiveObject();
 			if (obj.filters[index]) {
 				obj.filters[index][prop] = value;
-				var timeStart = +new Date();
 				obj.applyFilters();
-				var timeEnd = +new Date();
-				var dimString = canvas.getActiveObject().width + ' x ' +
-				canvas.getActiveObject().height;
-				$('bench').innerHTML = dimString + 'px ' +
-				parseFloat(timeEnd-timeStart) + 'ms';
-				canvas.renderAll();
 			}
 		}
 		
@@ -58,227 +44,144 @@
 		
 		var canvas = this.__canvas = new fabric.Canvas('canvas'),
 		f = fabric.Image.filters;
-		
-		/*
-		var activeGroup;
-		//undo
-		var config = {
-			canvasState             : [],
-			currentStateIndex       : -1,
-			undoStatus              : false,
-			redoStatus              : false,
-			undoFinishedStatus      : 1,
-			redoFinishedStatus      : 1,
-			undoButton              : document.getElementById('btnUndo'),
-			redoButton              : document.getElementById('btnRedo'),
-		};
-
-		
-		function updateCanvasState() {
-			if((config.undoStatus == false && config.redoStatus == false)){
-				var jsonData = canvas.toJSON();
-				var canvasAsJson = JSON.stringify(jsonData);
-				if(config.currentStateIndex < config.canvasState.length-1){
-					var indexToBeInserted  = config.currentStateIndex+1;
-					config.canvasState[indexToBeInserted] = canvasAsJson;
-					var numberOfElementsToRetain = indexToBeInserted+1;
-					config.canvasState = config.canvasState.splice(0,numberOfElementsToRetain);
-				}else{
-					config.canvasState.push(canvasAsJson);
-				}
-				
-				config.currentStateIndex = config.canvasState.length-1;
-				
-				if((config.currentStateIndex == config.canvasState.length-1) && config.currentStateIndex != -1){
-					config.redoButton.disabled= "disabled";
-				}
-			}
-		}
-		
-		
-		function undo() {
-			if(config.undoFinishedStatus){
-				
-				if(config.currentStateIndex == -1){
-					config.undoStatus = false;
-				} else{
-					if (config.canvasState.length >= 1) {
-						config.undoFinishedStatus = 0;
-						if(config.currentStateIndex != 0){
-							config.undoStatus = true;
-							
-							canvas.loadFromJSON(config.canvasState[config.currentStateIndex-1],function(){
-								var jsonData = JSON.parse(config.canvasState[config.currentStateIndex-1]);
-								canvas.renderAll();
-								config.undoStatus = false;
-								config.currentStateIndex -= 1;
-								config.undoButton.removeAttribute("disabled");
-								if(config.currentStateIndex !== config.canvasState.length-1){
-									config.redoButton.removeAttribute('disabled');
-								}
-								config.undoFinishedStatus = 1;
-							});
-							
-						}
-						else if(config.currentStateIndex == 0){
-							//canvas.clear();
-							config.undoFinishedStatus = 1;
-							config.undoButton.disabled= "disabled";
-							config.redoButton.removeAttribute('disabled');
-							config.currentStateIndex -= 1;
-						}
-					}
-				}
-			}
-		}
-			
-		function redo() {
-			if(config.redoFinishedStatus){
-				if((config.currentStateIndex == config.canvasState.length-1) && config.currentStateIndex != -1){
-					config.redoButton.disabled= "disabled";
-				}else{
-					if (config.canvasState.length > config.currentStateIndex && config.canvasState.length != 0){
-						config.redoFinishedStatus = 0;
-						config.redoStatus = true;
-						canvas.loadFromJSON(config.canvasState[config.currentStateIndex+1],function(){
-							var jsonData = JSON.parse(config.canvasState[config.currentStateIndex+1]);
-							canvas.renderAll();
-							config.redoStatus = false;
-							config.currentStateIndex += 1;
-							
-							if(config.currentStateIndex != -1){
-								config.undoButton.removeAttribute('disabled');
-							}
-							
-							config.redoFinishedStatus = 1;
-							
-							if((config.currentStateIndex == config.canvasState.length-1) && config.currentStateIndex != -1){
-								config.redoButton.disabled= "disabled";
-							}
-						});
-					}
-				}
-			}
-		}
-		
-		
-		
-		var multiply = fabric.util.multiplyTransformMatrices;
-		var invert = fabric.util.invertTransform;
-
-		function updateSticker() {
-
-			canvas.getActiveObjects().forEach(function(obj){
-				
-				if(obj.typegif == 'gif') {
-					
-					relationship = obj.calcTransformMatrix();
-					var mCanvas = canvas.viewportTransform;
-					
-					var newTransform = fabric.util.multiplyTransformMatrices(
-						mCanvas,
-						relationship
-					);
-					
-					opt = fabric.util.qrDecompose(newTransform);
-					
-					var mask = $(obj.id);
-					var maskImg = mask.getElementsByTagName('img')[0];
-					
-					var width, left, top, height, skewX; 
-					
-					width = opt.scaleX * obj.width;
-					height = Math.abs(opt.scaleY * obj.height);
-					
-					var origin = 'center center';
-					left = -width/2;
-					top = -height/2;
-					
-					skewX = Math.abs(opt.skewX);
-					
-					transform = 'translateX('+ opt.translateX +'px) translateY('+ opt.translateY +'px) rotate('+ opt.angle +'deg) skewX('+ skewX +'deg) skewY(0deg)',
-
-					maskStyle = '';
-					var flip = false;
-					
-					if(obj.group) {
-						
-						(obj.flipX || obj.flipY) && (flip = true);
-						(obj.flipX && obj.flipY) && (flip = false);
-						
-						if(flip) {
-							(obj.group.flipX && obj.group.flipY) && (flip = true);
-							(!obj.group.flipX && !obj.group.flipY) && (flip = true);
-							(obj.group.flipX && !obj.group.flipY) && (flip = false);
-							(!obj.group.flipX && obj.group.flipY) && (flip = false);
-						}else {
-							(obj.group.flipX || obj.group.flipY) && (flip = true);
-							(obj.group.flipX && obj.group.flipY) && (flip = false);
-						}
-							
-					}else {
-						(obj.flipX || obj.flipY) && (flip = true);
-						(obj.flipX && obj.flipY) && (flip = false);
-					}
-					
-					if(flip) {
-						maskStyle += 'transform: scaleY(-1)';
-					}else {
-						maskStyle += '';
-					}
-					maskImg.setAttribute('style', maskStyle);
-					
-					var style = 'left:'+ left +'px; top: '+ top +'px; width: '+ width +'px; height: '+ height +'px; transform-origin:'+ origin +'; transform: '+ transform +'';
-					mask.setAttribute('style', style);
-					
-				}
-				
-			});
-		
-		}
-		*/
-		
+	
+		//Undo && Redo		
 		var undoDatas = [];
 		var redoDatas = [];
-		
 		var processing = true;
 		
-		function undo() {
-			var len = undoDatas.length;
-			if(len > 0) {
-				var obj = undoDatas[len - 1];
-				undoDatas.splice(len-1,1);
-				redoDatas.push(obj);
-				canvas.remove(obj);
+		function disable() {
+			if(undoDatas.length > 0) {
+				$('btnUndo').classList.add('active');
+			}else {
+				$('btnUndo').classList.remove('active');
 			}
-			console.log(undoDatas);
+			if(redoDatas.length > 0) {
+				$('btnRedo').classList.add('active');
+			}else {
+				$('btnRedo').classList.remove('active');
+			}
 		}
-		function redo() {
-			var len = redoDatas.length;
-			if(len > 0) {
-				var obj = redoDatas[len - 1];
-				redoDatas.splice(len-1,1);
-				undoDatas.push(obj);
-				canvas.add(obj);
+		
+		function undo() {
+			
+			if(undoDatas.length > 0) {
+				var obj  =  undoDatas.pop();
+				if(obj.kind == 'add') {
+					canvas.getObjects().forEach(function(o){
+						if(o.id == obj.id) { canvas.remove(o); obj.typegif && fabricBox.removeChild($(obj.id)); return false; }
+					});
+				
+				}else if(obj.kind == 'delete') {
+					//canvas.add(obj);
+					obj.canvas = canvas;
+					
+					canvas.add(obj);
+					obj.setCoords();
+					obj.typegif && (addMask(obj),updateMask(obj));
+					
+				}else if(obj.kind == 'modify') {
+					canvas.getObjects().forEach(function(o){
+						if(o.id == obj.id) { canvas.remove(o); return false; }
+					});
+					for(var i = undoDatas.length - 1; i >= 0; i--) { 
+						if(undoDatas[i].id == obj.id) { 
+							undoDatas[i].canvas = canvas;
+							canvas.add(undoDatas[i]); 
+							undoDatas[i].setCoords();
+						
+							undoDatas[i].typegif && updateMask(undoDatas[i]); 
+							break;
+						}
+					}
+				}
+				var object = fabric.util.object.clone(obj);
+				redoDatas.push(object);
+				disable();
 			}
+			//canvas.discardActiveObject();
+		}
+		
+		function redo() {
+			if(redoDatas.length) {
+				var obj = redoDatas.pop();
+				if(obj.kind =='add') {
+					//canvas.add(obj);
+					
+					obj.canvas = canvas;
+					canvas.add(obj);
+					obj.setCoords();
+					
+					obj.typegif && (addMask(obj),updateMask(obj));
+				}else if(obj.kind =='delete') {
+					canvas.getObjects().forEach(function(o){
+						if(o.id == obj.id) { canvas.remove(o); return false; }
+					});
+					obj.typegif && fabricBox.removeChild($(obj.id));
+				}else if(obj.kind =='modify') {
+					canvas.getObjects().forEach(function(o){
+						if(o.id == obj.id) { canvas.remove(o); return false; }
+					});
+					
+					obj.canvas = canvas;
+					canvas.add(obj);
+					obj.setCoords();
+					
+					
+					obj.typegif && updateMask(obj);
+				}
+				var object = fabric.util.object.clone(obj);
+				//object.initialize();
+				console.log(object);
+				undoDatas.push(object);
+				disable();
+				
+			}
+			//canvas.discardActiveObject();
 			
 		}
 		
+		var progress = true;
 		
-		function updateCanvas(obj) {
-			undoDatas.push(obj);
+		function progressLog(byThis,kind) {
+			
+			if(byThis._objects) {
+				byThis._objects.forEach(function(o){
+					var obj = fabric.util.object.clone(o);
+					obj.set({kind: kind});
+					(kind =='add' && obj.typegif) && addMask(obj);
+					undoDatas.push(obj);
+					disable();
+				});
+				
+			}else {
+				var obj = fabric.util.object.clone(byThis);
+				obj.set({kind: kind});
+				(kind =='add' && obj.typegif) && addMask(obj);
+				undoDatas.push(obj);
+				disable();
+			}
+			
+			//var obj = fabric.util.object.clone(byThis);
+				//obj.set({kind: kind});
+				//(kind =='add' && obj.typegif) && addMask(obj);
+				//undoDatas.push(obj);
+				//disable();
+				
 		}
 		
 		canvas.on({
 			'object:added': function(evt){
-				undoDatas.push(evt.target);
+				if(!evt.target.id) {
+					var id = 'obj_' +  Math.floor(Date.now());
+					evt.target.set({id:id});
+					progressLog(evt.target,'add');
+				}
 			}, 'object:modified': function(evt) {
-				//updateCanvasState();
-				undoDatas.push(evt.target);
+				progressLog(evt.target,'modify');
 			}, 'mouse:down': function(evt){
 				
 			}, 'mouse:up': function (evt) {
-				updateSticker();
 			},
 			'mouse:move': function(evt) {
 				updateSticker();
@@ -335,25 +238,11 @@
 			
 			if(canAdd) {
 				canAdd = false;
-				var id = 'sticker_' +  Math.floor(Date.now()), 
+				var id = 'obj_' +  Math.floor(Date.now()), 
 					flag = url.indexOf(".gif");
 				fabric.Image.fromURL(url, function(img) {
 					var options = { left: 50, top: 50 }
-					if(flag > 0) {
-						options = { id: id,  typegif: 'gif', left: 50, top: 50, opacity:0}
-						var mask = document.createElement("div");
-						var width = img.width * 0.6 + 'px';
-						var height = img.height * 0.6 + 'px';
-						var origin = 'left top';
-						var style = 'top: 50px; left: 50px; width: '+ width +'; height: '+ height +'; transform-origin:'+ origin +'';
-						mask.setAttribute("class", 'mask');
-						mask.setAttribute("id", id);
-						mask.setAttribute("style", style);
-						var maskImg = document.createElement("img");
-						maskImg.setAttribute("src", url);
-						mask.appendChild(maskImg);
-						fabricBox.appendChild(mask);
-					}
+					flag > 0 && (options = { typegif: 'gif', left: 50, top: 50, url: url, opacity:0});
 					var sticker = img.set(options).scale(0.6);
 					canvas.add(sticker);
 					canAdd = true;
@@ -364,74 +253,85 @@
 		}
 		
 		function updateSticker() {
-
 			canvas.getActiveObjects().forEach(function(obj){
-				
-				if(obj.typegif == 'gif') {
-					
-					relationship = obj.calcTransformMatrix();
-					var mCanvas = canvas.viewportTransform;
-					
-					var newTransform = fabric.util.multiplyTransformMatrices(
-						mCanvas,
-						relationship
-					);
-					
-					opt = fabric.util.qrDecompose(newTransform);
-					
-					var mask = $(obj.id);
-					var maskImg = mask.getElementsByTagName('img')[0];
-					
-					var width, left, top, height, skewX; 
-					
-					width = opt.scaleX * obj.width;
-					height = Math.abs(opt.scaleY * obj.height);
-					
-					var origin = 'center center';
-					left = -width/2;
-					top = -height/2;
-					
-					skewX = Math.abs(opt.skewX);
-					
-					transform = 'translateX('+ opt.translateX +'px) translateY('+ opt.translateY +'px) rotate('+ opt.angle +'deg) skewX('+ skewX +'deg) skewY(0deg)',
-
-					maskStyle = '';
-					var flip = false;
-					
-					if(obj.group) {
-						
-						(obj.flipX || obj.flipY) && (flip = true);
-						(obj.flipX && obj.flipY) && (flip = false);
-						
-						if(flip) {
-							(obj.group.flipX && obj.group.flipY) && (flip = true);
-							(!obj.group.flipX && !obj.group.flipY) && (flip = true);
-							(obj.group.flipX && !obj.group.flipY) && (flip = false);
-							(!obj.group.flipX && obj.group.flipY) && (flip = false);
-						}else {
-							(obj.group.flipX || obj.group.flipY) && (flip = true);
-							(obj.group.flipX && obj.group.flipY) && (flip = false);
-						}
-							
-					}else {
-						(obj.flipX || obj.flipY) && (flip = true);
-						(obj.flipX && obj.flipY) && (flip = false);
-					}
-					
-					if(flip) {
-						maskStyle += 'transform: scaleY(-1)';
-					}else {
-						maskStyle += '';
-					}
-					maskImg.setAttribute('style', maskStyle);
-					
-					var style = 'left:'+ left +'px; top: '+ top +'px; width: '+ width +'px; height: '+ height +'px; transform-origin:'+ origin +'; transform: '+ transform +'';
-					mask.setAttribute('style', style);
-					
-				}
-				
+				obj.typegif && updateMask(obj);
 			});
+		}
 		
+		function addMask(obj) {
+			var mask = document.createElement("div");
+			var width = obj.width * 0.6 + 'px';
+			var height = obj.height * 0.6 + 'px';
+			var origin = 'left top';
+			var style = 'top: 50px; left: 50px; width: '+ width +'; height: '+ height +'; transform-origin:'+ origin +'';
+			mask.setAttribute("class", 'mask');
+			mask.setAttribute("id", obj.id);
+			mask.setAttribute("style", style);
+			var maskImg = document.createElement("img");
+			maskImg.setAttribute("src", obj.url);
+			mask.appendChild(maskImg);
+			fabricBox.appendChild(mask);
+		}
+		
+		function updateMask(obj) {
+			relationship = obj.calcTransformMatrix();
+			var mCanvas = canvas.viewportTransform;
+			
+			var newTransform = fabric.util.multiplyTransformMatrices(
+				mCanvas,
+				relationship
+			);
+			
+			opt = fabric.util.qrDecompose(newTransform);
+			
+			var mask = $(obj.id);
+			var maskImg = mask.getElementsByTagName('img')[0];
+			
+			var width, left, top, height, skewX;
+			
+			width = opt.scaleX * obj.width;
+			height = Math.abs(opt.scaleY * obj.height);
+			
+			var origin = 'center center';
+			left = -width/2;
+			top = -height/2;
+			
+			skewX = Math.abs(opt.skewX);
+			
+			transform = 'translateX('+ opt.translateX +'px) translateY('+ opt.translateY +'px) rotate('+ opt.angle +'deg) skewX('+ skewX +'deg) skewY(0deg)',
+	
+			maskStyle = '';
+			var flip = false;
+			
+			if(obj.group) {
+				
+				(obj.flipX || obj.flipY) && (flip = true);
+				(obj.flipX && obj.flipY) && (flip = false);
+				
+				if(flip) {
+					(obj.group.flipX && obj.group.flipY) && (flip = true);
+					(!obj.group.flipX && !obj.group.flipY) && (flip = true);
+					(obj.group.flipX && !obj.group.flipY) && (flip = false);
+					(!obj.group.flipX && obj.group.flipY) && (flip = false);
+				}else {
+					(obj.group.flipX || obj.group.flipY) && (flip = true);
+					(obj.group.flipX && obj.group.flipY) && (flip = false);
+				}
+					
+			}else {
+				(obj.flipX || obj.flipY) && (flip = true);
+				(obj.flipX && obj.flipY) && (flip = false);
+			}
+			
+			if(flip) {
+				maskStyle += 'transform: scaleY(-1)';
+			}else {
+				maskStyle += '';
+			}
+			maskImg.setAttribute('style', maskStyle);
+			
+			var style = 'left:'+ left +'px; top: '+ top +'px; width: '+ width +'px; height: '+ height +'px; transform-origin:'+ origin +'; transform: '+ transform +'';
+			mask.setAttribute('style', style);
 		}
 		//End Add Sticker
 		
@@ -457,10 +357,6 @@
 		
 		function initCanvas() {
 			setBg();
-			fabric.Image.fromURL('bg.jpg', function(img) {
-				var oImg = img.set({ left: 50, top: 50}).scale(0.25);
-				canvas.add(oImg);
-			});
 		}
 		initCanvas();
 		
@@ -1026,16 +922,18 @@
 		
 		$('btnDelete').onclick = function() {
 			canvas.getActiveObjects().forEach(function(obj) {
-				obj.typegif == 'gif' && fabricBox.removeChild($(obj.id));
+				obj.typegif && fabricBox.removeChild($(obj.id));
 				canvas.remove(obj);
+				progressLog(obj,'delete');
 			});
 			canvas.discardActiveObject().renderAll();
 		};
 		
 		$('btnDeleteAll').onclick = function() {
 			canvas.getObjects().forEach(function(obj){
-				obj.typegif == 'gif' && fabricBox.removeChild($(obj.id));
+				obj.typegif && fabricBox.removeChild($(obj.id));
 				canvas.remove(obj);
+				progressLog(obj,'delete');
 			});
 			canvas.discardActiveObject();
 		};
@@ -1044,8 +942,9 @@
 			var key = e.keyCode ? e.keyCode : e.which;
 			if (key == 46) {
 				canvas.getActiveObjects().forEach(function(obj){
-					obj.typegif == 'gif' && fabricBox.removeChild($(obj.id));
+					obj.typegif && fabricBox.removeChild($(obj.id));
 					canvas.remove(obj);
+					progressLog(obj,'delete');
 				});
 				canvas.discardActiveObject().renderAll();
 			}
