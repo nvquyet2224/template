@@ -63,89 +63,9 @@
 			}
 		}
 		
-		function undo() {
-			
-			if(undoDatas.length > 0) {
-				var obj  =  undoDatas.pop();
-				if(obj.kind == 'add') {
-					canvas.getObjects().forEach(function(o){
-						if(o.id == obj.id) { canvas.remove(o); obj.typegif && fabricBox.removeChild($(obj.id)); return false; }
-					});
-				
-				}else if(obj.kind == 'delete') {
-					//canvas.add(obj);
-					obj.canvas = canvas;
-					
-					canvas.add(obj);
-					obj.setCoords();
-					obj.typegif && (addMask(obj),updateMask(obj));
-					
-				}else if(obj.kind == 'modify') {
-					canvas.getObjects().forEach(function(o){
-						if(o.id == obj.id) { canvas.remove(o); return false; }
-					});
-					for(var i = undoDatas.length - 1; i >= 0; i--) { 
-						if(undoDatas[i].id == obj.id) { 
-							undoDatas[i].canvas = canvas;
-							canvas.add(undoDatas[i]); 
-							undoDatas[i].setCoords();
-						
-							undoDatas[i].typegif && updateMask(undoDatas[i]); 
-							break;
-						}
-					}
-				}
-				var object = fabric.util.object.clone(obj);
-				redoDatas.push(object);
-				disable();
-			}
-			//canvas.discardActiveObject();
-		}
-		
-		function redo() {
-			if(redoDatas.length) {
-				var obj = redoDatas.pop();
-				if(obj.kind =='add') {
-					//canvas.add(obj);
-					
-					obj.canvas = canvas;
-					canvas.add(obj);
-					obj.setCoords();
-					
-					obj.typegif && (addMask(obj),updateMask(obj));
-				}else if(obj.kind =='delete') {
-					canvas.getObjects().forEach(function(o){
-						if(o.id == obj.id) { canvas.remove(o); return false; }
-					});
-					obj.typegif && fabricBox.removeChild($(obj.id));
-				}else if(obj.kind =='modify') {
-					canvas.getObjects().forEach(function(o){
-						if(o.id == obj.id) { canvas.remove(o); return false; }
-					});
-					
-					obj.canvas = canvas;
-					canvas.add(obj);
-					obj.setCoords();
-					
-					
-					obj.typegif && updateMask(obj);
-				}
-				var object = fabric.util.object.clone(obj);
-				//object.initialize();
-				console.log(object);
-				undoDatas.push(object);
-				disable();
-				
-			}
-			//canvas.discardActiveObject();
-			
-		}
-		
-		var progress = true;
-		
 		function progressLog(byThis,kind) {
 			
-			if(byThis._objects) {
+			/*if(byThis._objects) {
 				byThis._objects.forEach(function(o){
 					var obj = fabric.util.object.clone(o);
 					obj.set({kind: kind});
@@ -160,14 +80,107 @@
 				(kind =='add' && obj.typegif) && addMask(obj);
 				undoDatas.push(obj);
 				disable();
-			}
+			}*/
+			byThis.clone(function(object){
+				var options = {id: byThis.id, kind: kind}
+					byThis.typegif  && (options = {id: byThis.id, kind: kind, typegif: 'gif'} );
+					object.set(options);
+					(kind =='add' && object.typegif) && addMask(object);
+					undoDatas.push(object);
+					//console.log(undoDatas);
+					disable();
+			});
 			
-			//var obj = fabric.util.object.clone(byThis);
-				//obj.set({kind: kind});
-				//(kind =='add' && obj.typegif) && addMask(obj);
-				//undoDatas.push(obj);
-				//disable();
+		}
+		function getItemCanvas(id) {
+			var obj;
+			canvas.getObjects().forEach(function(o){
+				if(o.id == id) { 
+					obj = o;
+					return false; 
+				}
+			});
+			return obj;
+		}
+		function getItemUndo(id) {
+			console.log(undoDatas.length);
+			var obj;
+			for(var i = undoDatas.length - 1; i >= 0; i--) {
+				if(undoDatas[i].id == id) { 
+					obj = undoDatas[i];
+					break;
+				}
+			}
+			return obj;
+		}
+		
+		function setCoords() {
+			//setTimeout(function(){
+				//var ignoreZoom = false, skipAbsolute = false;
+				//canvas.forEachObject(function(o) {
+					//o.setCoords(ignoreZoom, skipAbsolute);
+				//});	
+			//},100);
+			
+		}
+		
+		function undo() {
+			
+			if(undoDatas.length > 0) {
+
+				var obj  =  undoDatas.pop();
+				obj.clone(function(object){
+					console.log(object);
+					if(object.kind == 'add') {
+						var o = getItemCanvas(object.id);
+						o && canvas.remove(o); 
+						object.typegif && fabricBox.removeChild($(object.id));
+						
+					}else if(object.kind == 'delete') {
+						var o = getItemCanvas(object.id);
+						o && canvas.remove(o);
+						canvas.add(object);
+						object.typegif && (addMask(object),updateMask(object));
+						
+					}else if(object.kind == 'modify') {
+						var o = getItemCanvas(obj.id);
+						o && canvas.remove(o);
+						var elm = getItemUndo(obj.id);
+						canvas.add(elm);
+						elm.typegif && updateMask(elm);
+					}
+					
+					redoDatas.push(object);
+					disable();
+				});
 				
+			}
+		}
+		
+		function redo() {
+			if(redoDatas.length) {
+				var obj = redoDatas.pop();
+				obj.clone(function(object){
+					if(object.kind =='add') {
+						var o = getItemCanvas(object.id);
+						o && canvas.remove(o);
+						canvas.add(object);
+						object.typegif && (addMask(object),updateMask(object));
+					}else if(object.kind =='delete') {
+						var o = getItemCanvas(obj.id);
+						o && canvas.remove(o);
+						object.typegif && fabricBox.removeChild($(object.id));
+						
+					}else if(object.kind =='modify') {
+						var o = getItemCanvas(obj.id);
+						o && canvas.remove(o);
+						canvas.add(object);
+						object.typegif && updateMask(object);
+					}
+					undoDatas.push(object);
+					disable();
+				});
+			}
 		}
 		
 		canvas.on({
@@ -268,7 +281,7 @@
 			mask.setAttribute("id", obj.id);
 			mask.setAttribute("style", style);
 			var maskImg = document.createElement("img");
-			maskImg.setAttribute("src", obj.url);
+			maskImg.setAttribute("src", obj.src);
 			mask.appendChild(maskImg);
 			fabricBox.appendChild(mask);
 		}
