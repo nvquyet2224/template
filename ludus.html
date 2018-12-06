@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Image editor</title>
+<link rel="icon" href="favicon.ico">
+<!--<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styles.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+<script src="js/FileSaver.js"></script>
+<script src="js/fabric.js"></script>-->
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/icon.css">
+<link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body class="-webkit- js">
+
+<div class="editor-wrapper">
+<div class="editor-header"></div>
+<div class="editor-content">
+
+<!--panels-->
+<div id="tools-panel" class="tools-panel">
+<div><button id="cursor-but" class="selected" data-panel="cursor"><i class="icon-cursor_icn"></i></button></div>
+<div><button id="pencil-but" data-target="pencil"><i class="icon-pen_icn"></i></button></div>
+<div class="horizon-line"></div>
+<div><button id="title-but" data-target="title"><i class="icon-text_icn"></i></button></div>
+<div><button id="text-but" data-target="text"><i class="icon-paragraph_icn"></i></button></div>
+<div><button id="rectangle-but" data-target="rectangle"><i class="icon-rect_icn"></i></button></div>
+<div><button id="circle-but" data-target="circle"><i class="icon-circle_icn"></i></button></div>
+<div><button id="arrow-but" data-target="arrow"><i class="icon-arrow_icn"></i></button></div>
+<div><button id="line-but" data-target="line"><i class="icon-line_icn"></i></button></div>
+<div><button id="image-but" data-target="image-modal"><i class="icon-pic_icn"></i></button></div>
+<div><button id="video-but" data-target="video-modal"><i class="icon-vid_icn"></i></button></div>
+<div><button id="code-but" data-target="code"><i class="icon-code_icn"></i></button></div>
+<div><button id="search-but" data-target="search"><i class="icon-search_icn"></i></button></div>
+</div>
+<!--panels-->
+
+<div class="drawer-content"></div>
+
+<!--effect-->
+<div class="objects-panel">
+<div class="objects-title">
+<h2><i class="icon-settings_icn"></i><span>Slide</span></h2>
+</div>
+
+<div class="objects-info slide">
+
+<div class="info-item">
+<ul>
+<li><div class="number-input-width"><strong>W</strong><input type="text" name="width" readonly="" tabindex="-1" autocomplete="off" value="1920"></div>
+<div class="number-input-height"><strong>H</strong><input type="text" name="height" readonly="" tabindex="-1" autocomplete="off" value="1080"></div></li>
+<li><strong>Background</strong><div class="colorpicker-background"><div class="color-value"></div></div></li>
+</ul>
+</div>
+
+<div class="info-item">
+<strong>Template</strong>
+<div class="apply-template"><button id="apply-but" data-target='apply-modal'><span>Apply template…</span></button></div>
+<div class="convert-template"><button id="convert-but" data-target='convert-modal'><span>Convert to template</span></button></div>
+</div>
+
+<div class="info-item">
+<strong>Transition</strong>
+
+<div class="transition-box">
+<button id="transition-but" class="transition-but">
+<span id="transition-text">None</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="transition-list" class="transition-list">
+<li class="normal" data-target="None">None</li>
+<li data-target="3D Cube">3D Cube</li>
+<li data-target="3D Flip">3D Flip</li>
+<li data-target="Closing Door">Closing Door</li>
+<li data-target="Corner Rotation">Corner Rotation</li>
+<li data-target="Cross Fade">Cross Fade</li>
+<li data-target="Horizontal Reveal">Horizontal Reveal</li>
+<li data-target="Horizontal Slide">Horizontal Slide</li>
+<li data-target="Scale Down">Scale Down</li>
+<li data-target="Scale Up">Scale Up</li>
+<li data-target="Squish">Squish</li>
+<li data-target="Vertical Drop">Vertical Drop</li>
+<li data-target="Vertical Reveal">Vertical Reveal</li>
+<li data-target="Vertical Slide">Vertical Slide</li>
+</ul>
+</div>
+
+<div class="duration-box">
+<strong>Duration (ms)</strong>
+<input type="text" for="duration-range" data-range="duration-range" autocomplete="off" value="50">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="duration-range"></span>
+<span class="fill-range" data-range="duration-range"></span>
+<span class="track-range" data-range="duration-range"></span>
+<input type="range" id="duration-range" name="duration-range" data-target="duration-range" min="0" max="2000" value="50" step="1">
+</div>
+
+</div>
+
+</div>
+
+<div class="export-box">
+<button id="export-but"><span>Export as JPG</span><i class="icon-arrow_next_icn"></i></button>
+</div>
+
+</div>
+<!--effect-->
+
+</div>
+</div>
+
+<!--popup-->
+<div class="modal" id="modal">
+<div class="overlay"></div>
+
+<div class="modal-inner" id="modal-box">
+
+<div data-modal='image-modal' class="modal-box image-modal">
+<div class="title">
+<h2>Add new image</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<div data-modal='video-modal' class="modal-box video-modal">
+<div class="title">
+<h2>Add new video</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<div data-modal='apply-modal' class="modal-box apply-modal">
+<div class="title">
+<h2>Apply a template</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<div data-modal='convert-modal' class="modal-box convert-modal">
+<div class="title">
+<h2>New template</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<button class="close-modal" id="close-modal"><i class="icon-closeBtn"></i></button>
+
+</div>
+
+</div>
+<!--/popup-->
+
+<script src="js/main.js"></script>
+<script>
+var _R = document.querySelector('[type=range]');
+document.documentElement.classList.add('js');
+_R.addEventListener('input', function (e) {
+	_R.style.setProperty('--val', +_R.value);
+}, false);
+</script>
+
+</body>
+</html>
