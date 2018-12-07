@@ -1,0 +1,34 @@
+
+.number-input {
+	display:inline-block;
+	position:relative;
+	max-width:160px;
+}
+
+.number-input input {
+	position:relative;
+	font-size:12px;
+    width:46px;
+    height:18px;
+    line-height:16px;
+    padding:0px 3px;
+    color:rgb(255, 255, 255);
+    background-color:rgb(10, 10, 10);
+    -webkit-border-radius:2px;
+	border-radius:2px;
+}
+
+.number-input::after{
+	content:'';
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:#f00;
+	display:block;
+}
+
+.number-input:: input + .number-input::after{
+	opacity:0;
+}

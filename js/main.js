@@ -5,44 +5,42 @@
 	
 	
 	//ranges
+	function rangeMask(range) {
+		target = range.getAttribute('data-target');
+		
+		//move track and fill belong this range
+		track =  document.querySelector('.track-range[data-range='+ target +']');
+		fill =  document.querySelector('.fill-range[data-range='+ target +']');
+		
+		ratioX = range.clientWidth/range.max;
+		offsetX = ratioX * range.value;
+		track.style.left = offsetX + 'px';
+		fill.style.left = offsetX + 'px';
+	}
+	
+	function rangeInput(range) {
+		//set value input belong this range
+		target = range.getAttribute('data-target');
+		var input = document.querySelector('.range-mask[data-range='+ target +']');
+		input.value = range.value;
+	}
+	
 	function rangesEvent() {
+		
 		var ranges = document.querySelectorAll('input[type="range"]');
 		for(var i = 0; i < ranges.length; i++) {
 			var range = ranges[i];
-			var target = range.getAttribute('data-target');
-			var input = document.querySelector('input[data-range='+ target +']');
-			var track =  document.querySelector('.track-range[data-range='+ target +']');
-			var fill =  document.querySelector('.fill-range[data-range='+ target +']');
-			input.value = range.value;
-			var ratio = range.clientWidth/range.max;
-			var offsetX = ratio * input.value;
-			track.style.left = offsetX + 'px';
-			fill.style.left = offsetX + 'px';
-				
+			rangeMask(range);
+			rangeInput(range);
+			
 			range.oninput = function() {
-				var that = this;
-				var target = that.getAttribute('data-target');
-				var input = document.querySelector('input[data-range='+ target +']');
-				var track =  document.querySelector('.track-range[data-range='+ target +']');
-				var fill =  document.querySelector('.fill-range[data-range='+ target +']');
-				input.value = that.value;
-				var ratio = that.clientWidth/that.max;
-				var offsetX = ratio * input.value;
-				track.style.left = offsetX + 'px';
-				fill.style.left = offsetX + 'px';
+				rangeMask(this);
+				rangeInput(this);
 			}
-				
+			
 			range.onchange = function() {
-				var that = this;
-				var target = that.getAttribute('data-target');
-				var input = document.querySelector('input[data-range='+ target +']');
-				var track =  document.querySelector('.track-range[data-range='+ target +']');
-				var fill =  document.querySelector('.fill-range[data-range='+ target +']');
-				input.value = that.value;
-				var ratio = that.clientWidth/that.max;
-				var offsetX = ratio * input.value;
-				track.style.left = offsetX + 'px';
-				fill.style.left = offsetX + 'px';
+				rangeMask(this);
+				rangeInput(this);
 			}
 			
 		}
@@ -50,21 +48,26 @@
 	}
 	
 	function rangesInputEvent() {
-		var ranges = document.querySelectorAll('input[data-range="duration-range"]');
+		var ranges = document.querySelectorAll('.range-mask');
 		for(var i = 0; i < ranges.length; i++) {
 			var range = ranges[i];
 			range.onkeydown  = function(event) {
 				event.preventDefault();
 				var that = this;
-				(event.keyCode == 38) && that.value++;
-				(event.keyCode == 40) && that.value--;
-				//$('duration-range').setAttribute('value',that.value++);
-				//$('duration-range').oninput();
-				
+				var target = that.getAttribute('data-range');
+				var range = $(target);
+				if(event.keyCode == 38) {
+					(that.value < parseInt(range.max)) && that.value++;
+				}else if(event.keyCode == 40) {
+					(that.value > parseInt(range.min)) && that.value--;
+				}
+				range.value = that.value;
+				range.setAttribute('value',that.value);
+				rangeMask(range);
 			}
-			
 		}
 	}
+	
 	
 	//reset selected
 	function resetSelect(id,element,tag) {
@@ -184,10 +187,30 @@
 		this.classList.contains('open') ? this.classList.remove('open') : this.classList.add('open');
 	};
 	
+	function filterEvent() {
+		filters = $('filter-list').getElementsByTagName('li');
+		for(var i = 0; i < filters.length; i++ ) {
+			var filter = filters[i];
+			filter.onclick = function(){ 
+				var that = this;
+				var target = that.getAttribute('data-target');
+				resetSelect('filter-list','li',true);
+				that.classList.add('selected');
+				$('filter-text').innerHTML = target;
+				$('filter-but').click();
+			};
+		}
+	}
+
+	$('filter-but').onclick = function() {
+		this.classList.contains('open') ? this.classList.remove('open') : this.classList.add('open');
+	};
+	
 	rangesEvent();
 	rangesInputEvent();
 	panelsEvent();
 	transitionsEvent();
+	filterEvent();
 	
 	
 

@@ -1,0 +1,11 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="alignHCentered">
+<path id="Rectangle 21 Copy" fill-rule="evenodd" clip-rule="evenodd" d="M0 0H16V5H0V0Z" transform="translate(2 3)" fill="#979797"/>
+<path id="Rectangle 21 Copy 10" fill-rule="evenodd" clip-rule="evenodd" d="M0 0H9.6V5H0V0Z" transform="translate(5.19922 12)" fill="#979797"/>
+<path id="Line 2" d="M0 0V13" transform="translate(10 3.5)" stroke="#353337" stroke-width="4" stroke-linecap="square"/>
+<g id="Line 2.1" transform="translate(10 3.5)">
+<path d="M0 0V13" stroke="#27252A" stroke-width="2" stroke-linecap="square"/>
+<path d="M0 0V13" stroke="#4E56FF" stroke-width="2" stroke-linecap="square"/>
+</g>
+</g>
+</svg>

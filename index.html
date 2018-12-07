@@ -4,539 +4,406 @@
 <meta charset="UTF-8">
 <title>Image editor</title>
 <link rel="icon" href="favicon.ico">
-
-<script type="text/javascript" src="FileSaver.js"></script>
-<script type="text/javascript" src="fabric.js"></script>
-
-<style>
- body {
-	 margin:0;
-	 padding:0;
- }
- .fabric-content {
-	 position:relative;
-	 width:800px;
-	 height:auto;
-	 margin:200px auto 0 auto;
-	 padding:20px;
-	 display:block;
-	 border:2px solid #ddd;
-	 text-align:center;
-	 background-color:#000
-	
- }
- .fabric-box{
-	position:relative;
-	width:auto;
-	height:auto;
-	display:inline-block;
-	overflow:hidden;
- }
-
-.gif-box{
-	position:absolute;
-	left:0;
-	top:0;
-	width:100%;
-	height:100%;
-}
-.gif-box::before,
-.gif-box::after {
-	content:'';
-	position:relative;
-	display:inline-block;
-	width:0;
-	height:100%;
-	vertical-align:middle;
-	margin:0 -20px;
-}
-.gif-box img {
-	display:inline-block;
-	vertical-align:middle;
-	width:auto;
-	height:auto;	
-	max-width:100%;
-}
-.mask{
-	position:absolute;
-	pointer-events:none;
-}
-.hide-mask .mask{
-	opacity:0;
-}
-.mask.is-hide {
-	opacity:0;
-}
-.mask img{
-	display:block;
-	width:100%;
-	height:100%;
-}
-
-.canvas-container{
-	margin:0 auto;
-	border:1px solid #ddd;
-}
-
-
-/*upload tools*/
-.upload-tools{
-	position:relative;
-	display:block;
-	width:100%;
-	height:auto;
-	color:#fff;
-}
-
-.upload-tools div {
-	position:relative;
-	width:120px;
-	height:46px;
-	display:inline-block;
-	vertical-align:middle;
-	margin:10px 5px;
-	padding:10px;
-	line-height:24px;
-	border:1px solid #ddd;
-	-webkit-border-radius:30px;
-	border-radius:30px;
-	font-size:16px;
-	text-align:center;
-	text-transform:uppercase;
-	cursor:pointer;
-	-webkit-box-sizing:border-box;
-	box-sizing:border-box;
-}
-
-.upload-tools div input{
-	position:absolute;
-	left:0;
-	top:0;
-	width:100%;
-	height:100%;
-	font-size:0;
-	opacity:0;
-	cursor:pointer;
-}
-
- ul, li {
-	 list-style-type:none;
-	 margin:0;
-	 padding:0;
-	 -webkit-box-sizing:border-box;
-	 box-sizing:border-box;
-	 -webkit-touch-callout:none;
-	 -webkit-user-select:none;
-	 -khtml-user-select:none;
-	 -moz-user-select:-moz-none;
-	 -ms-user-select:none
- }
- .tools li,
- .paint-tools li,
- .tools-top li {
-	 width:auto;
-	 height:auto;
-	 display:inline-block;
-	 padding:10px;
-	 background-color:#ddd;
-	 border-radius:10px;
-	 cursor:pointer;
- }
- #btnUndo,  #btnRedo{
-	opacity:0.5;
-	pointer-events:none;
- }
- #btnUndo.active,  #btnRedo.active{
-	 opacity:1;
-	 pointer-events:auto;
- }
- .hide{
-	 display:none !important;
- }
- .tools {
-	 padding:10px 0;
- }
- 
- 
- /*paint*/
- .paint-tools{
-	 position:fixed;
-	 right:0;
-	 bottom:0;
-	 width:200px;
-	 height:auto;
-	 padding:10px;
- }
-  .paint-tools ul {
-	  width:100%;
-	  overflow:hidden;
-  }
- .paint-tools li {
-	 float:left;
-	 width:49%;
-	 margin:0 1% 1% 0;
- }
- 
- /*sticker*/
- .sticker-box{
-	 position:fixed;
-	 left:360px;
-	 top:0;
-	 width:auto;
-	 height:auto;
- }
-.sticker-box ul {
-	width:auto;
-	padding:10 20px;
-}
-
-.sticker-box li {
-	display:inline-block;
-	width:60px;
-	margin:10px auto;
-	text-align:center;
-	cursor:pointer;
-	vertical-align:middle;
-	
-}
-.sticker-box li img {
-	display:inline-block;
-	width:auto;
-	height:auto;
-	max-width:60%;
-}
-
-
-/*filter*/
-.controls{
-	position:fixed;
-	left:0;
-	bottom:0;
-	width:300px;
-	height:auto;
-	padding:20px;
-	background-color:#f2f2f2;
-	text-align:left;
-	
-}
-.controls p {
-	width:48%;
-	display:inline-block;
-	vertical-align:top;
-	margin:3px 0;
-	font-size:14px;
-	
-}
-
-.controls label,
-.controls span,
-.controls input {
-	display:inline-block;
-	vertical-align:middle;
-}
-
-.controls p label{
-	display:inline-block;
-}
-
-
-
-/*text tools*/
-.text-tools{
-	position:fixed;
-	right:0;
-	bottom:180px;
-	padding:20px;
-	width:300px;
-	height:auto;
-	text-align:right;
-	background-color:#f2f2f2;
-	-webkit-border-radius:30px;
-	border-radius:30px;
-}
-.box {
-  float: left;
-  margin: 1em;
-}
-.after-box {
-  clear: left;
-}
-.text-tools div {
-	margin:5px 0;
-}
-
-.text-tools ul lable, .text-tools ul input{
-	display:inline-block;
-	vertical-align:middle;
-}
- 
-</style>
+<!--<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styles.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+<script src="js/FileSaver.js"></script>
+<script src="js/fabric.js"></script>-->
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/icon.css">
+<link rel="stylesheet" href="css/modal.css">
 </head>
+
 <body>
 
-<div class="fabric-content">
+<div class="editor-wrapper">
+<div class="editor-header"></div>
+<div class="editor-content">
 
-<div class="upload-tools">
-<div>Gif<input type="file" onChange="loadGif(this)" id="gifLoad" accept="image/gif"></div>
-<div>Vdo<input type="file" onChange="loadVideo(this)" id="vidLoad" accept="video/*"></div>
-<div>Jpg<input type="file" onChange="loadFile(this)" id="fileLoad" accept="image/png, image/jpeg"></div>
+<!--panels-->
+<div id="tools-panel" class="tools-panel">
+<div><button id="cursor-but" class="selected" data-panel="cursor"><i class="icon-cursor_icn"></i></button></div>
+<div><button id="pencil-but" data-target="pencil"><i class="icon-pen_icn"></i></button></div>
+<div class="horizon-line"></div>
+<div><button id="title-but" data-target="title"><i class="icon-text_icn"></i></button></div>
+<div><button id="text-but" data-target="text"><i class="icon-paragraph_icn"></i></button></div>
+<div><button id="rectangle-but" data-target="rectangle"><i class="icon-rect_icn"></i></button></div>
+<div><button id="circle-but" data-target="circle"><i class="icon-circle_icn"></i></button></div>
+<div><button id="arrow-but" data-target="arrow"><i class="icon-arrow_icn"></i></button></div>
+<div><button id="line-but" data-target="line"><i class="icon-line_icn"></i></button></div>
+<div><button id="image-but" data-target="image-modal"><i class="icon-pic_icn"></i></button></div>
+<div><button id="video-but" data-target="video-modal"><i class="icon-vid_icn"></i></button></div>
+<div><button id="code-but" data-target="code"><i class="icon-code_icn"></i></button></div>
+<div><button id="search-but" data-target="search"><i class="icon-search_icn"></i></button></div>
+</div>
+<!--panels-->
+
+<div class="drawer-content"></div>
+
+<!--effect-->
+<div class="objects-panel">
+<div class="objects-title">
+<h2><i class="icon-settings_icn"></i><span>Image</span></h2>
 </div>
 
-<div class="fabric-box">
-<div class="gif-box"><img id="imgGif" src="data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="gif mask"></div>
-<canvas id="canvas" width="640" height="360"></canvas>
-</div>
+<!--for slide-->
+<div class="objects-info slide">
 
-<div class="text-tools">
-<div id="text-wrapper">
-
+<div class="info-item no-stroke">
 <ul>
 <li>
-<label for="fillColor">Color:</label>
-<input type="color" value="" id="fillColor" size="10">
+<div class="number-input"><strong>W</strong></div>
+<div class="number-input"><strong>W</strong><input type="text" name="width" readonly="" tabindex="-1" autocomplete="off" value="1920"></div>
+<div class="number-input"><strong>H</strong><input type="text" name="height" readonly="" tabindex="-1" autocomplete="off" value="1080"></div>
 </li>
-
-<li>
-<label for="fontFamily">Fonts</label>
-<select id="fontFamily">
-<option value="arial">Arial</option>
-<option value="helvetica" selected>Helvetica</option>
-<option value="myriad pro">Myriad Pro</option>
-<option value="delicious">Delicious</option>
-<option value="verdana">Verdana</option>
-<option value="georgia">Georgia</option>
-<option value="courier">Courier</option>
-<option value="comic sans ms">Comic Sans MS</option>
-<option value="impact">Impact</option>
-<option value="monaco">Monaco</option>
-<option value="optima">Optima</option>
-<option value="hoefler text">Hoefler Text</option>
-<option value="plaster">Plaster</option>
-<option value="engagement">Engagement</option>
-</select>
-</li>
-
-<li>
-<label for="textAlign">Text align:</label>
-<select id="textAlign">
-<option value="left">Left</option>
-<option value="center">Center</option>
-<option value="right">Right</option>
-<option value="justify">Justify</option>
-</select>
-</li>
-
-<li>
-<label for="fontSize">Font size:</label>
-<input type="range" value="" min="1" max="120" step="1" id="fontSize">
-</li>
-
-<li>
-<label for="lineHeight">Line height:</label>
-<input type="range" value="1" min="0" max="20" step="0.1" id="lineHeight">
-</li>
-
-<li>
-<label for="strokeColor">Stroke color:</label>
-<input type="color" value="#ffffff" id="strokeColor">
-</li>
-
-<li>
-<label for="strokeWidth">Stroke width:</label>
-<input type="range" min="0" max="10" step="1" value="0" id="strokeWidth">
-</li>
-
-<li>
-<label>Bold</label>
-<input type='checkbox' name='fonttype' id="textBold">
-</li>
-
-<li>
-<label>Italic</label>
-<input type='checkbox' name='fonttype' id="textItalic">
-</li>
-
-<li>
-<label>Underline</label>
-<input type='checkbox' name='fonttype' id="textUnderline">
-</li>
-
-<li>
-<label>Linethrough</label>
-<input type='checkbox' name='fonttype' id="textLinethrough">
-</li>
-
-<li>
-<label>Overline</label>
-<input type='checkbox' name='fonttype' id="textOverline">
-</li>
-</ul>
-
-</div>
-</div>
-
-<div class="paint-tools">
-<ul>
-<li id="btnCircle">Circle</li>
-<li id="btnEllipse">Ellipse</li>
-<li id="btnRectangle">Rect</li>
-<li id="btnTriangle">Triangle</li>
-<li id="btnDrawing">Drawing</li>
-<li id="btnSuperscript">Superscript</li>
+<li><strong>Background</strong><div class="colorpicker-background"><div class="color-background"></div></div></li>
 </ul>
 </div>
 
-<div class="tools">
-<ul>
-<li id="btnUndo">Undo</li>
-<li id="btnRedo">Redo</li>
+<div class="info-item">
+<strong>Template</strong>
+<div class="apply-template"><button id="apply-but" data-target='apply-modal'><span>Apply template…</span></button></div>
+<div class="convert-template"><button id="convert-but" data-target='convert-modal'><span>Convert to template</span></button></div>
+</div>
 
-<li id="btnDelete">Delete</li>
-<li id="btnDeleteAll">Delete all</li>
-<li id="btnDownload">Download</li>
+<div class="info-item">
+<strong>Transition</strong>
+
+<div class="transition-box">
+<button id="transition-but" class="transition-but">
+<span id="transition-text">None</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="transition-list" class="transition-list">
+<li class="has-line" data-target="None">None</li>
+<li data-target="3D Cube" class="has-line">3D Cube</li>
+<li data-target="3D Flip">3D Flip</li>
+<li data-target="Closing Door">Closing Door</li>
+<li data-target="Corner Rotation">Corner Rotation</li>
+<li data-target="Cross Fade">Cross Fade</li>
+<li data-target="Horizontal Reveal">Horizontal Reveal</li>
+<li data-target="Horizontal Slide">Horizontal Slide</li>
+<li data-target="Scale Down">Scale Down</li>
+<li data-target="Scale Up">Scale Up</li>
+<li data-target="Squish">Squish</li>
+<li data-target="Vertical Drop">Vertical Drop</li>
+<li data-target="Vertical Reveal">Vertical Reveal</li>
+<li data-target="Vertical Slide">Vertical Slide</li>
 </ul>
 </div>
 
-<div class="sticker-box">
+<div class="duration-box">
+
+<div class="ranges-view">
+<strong>Duration (ms)</strong>
+<input type="text" class="range-mask" data-range="duration-range" value="50">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="duration-range"></span>
+<span class="fill-range" data-range="duration-range"></span>
+<span class="track-range" data-range="duration-range"></span>
+<input type="range" id="duration-range" data-target="duration-range" min="0" max="2000" value="50" step="1">
+</div>
+
+</div>
+
+<div class="preview-box">
+<div class="preview-overview"><strong>Preview</strong></div>
+</div>
+
+</div>
+
+<div class="info-item">
+<div class="export-box">
+<button id="export-but"><span>Export as JPG</span><i class="icon-arrow_next_icn"></i></button>
+</div>
+</div>
+
+
+</div>
+<!--/for slide-->
+
+<!--for object-->
+<div class="objects-info object">
+
+<div class="info-item no-space no-stroke">
+<div class="align-box">
+<button id="align-left" class="align-left"><span></span><span></span></button>
+<button id="align-h-center" class="align-h-center"><span></span><span></span></button>
+<button id="align-right" class="align-right"><span></span><span></span></button>
+<button id="align-top" class="align-top"><span></span><span></span></button>
+<button id="align-v-center" class="align-v-center"><span></span><span></span></button>
+<button id="align-bottom" class="align-bottom"><span></span><span></span></button>
+</div>
+</div>
+
+<div class="info-item">
 <ul>
-<li data-url="img/explosion.png"><img src="img/explosion.png" alt="explosion"></li>
-<li data-url="img/articuno.gif"><img src="img/articuno.gif" alt="explosion"></li>
-<li data-url="img/blastoise.gif"><img src="img/blastoise.gif" alt="blastoise"></li>
-<li data-url="img/lebron.gif"><img src="img/lebron.gif" alt="lebron"></li>
-<li data-url="img/mew.gif"><img src="img/mew.gif" alt="mew"></li>
+<li>
+<div class="number-input"><strong>X</strong><input type="text" name="width" autocomplete="off" value="98"></div>
+<div class="number-input"><strong>Y</strong><input type="text" name="height" autocomplete="off" value="82"></div>
+</li>
+<li>
+<div class="number-input"><strong>W</strong><input type="text" name="width" autocomplete="off" value="393"></div>
+<div class="number-input"><strong>H</strong><input type="text" name="height" autocomplete="off" value="396"></div>
+</li>
+<li>
+<div class="number-input"><img src="img/prop-angle.svg" alt="icon"><input type="text" name="angle" autocomplete="off" value="11.77"></div>
+<div class="number-input"><img src="img/prop-scale.svg" alt="icon"><input type="text" name="scale" autocomplete="off" value="33.84"></div>
+</li>
+
 </ul>
 </div>
 
-<div class="controls">
-<h3>Filters:</h3>
-<label>Use WebGl<input type="checkbox" id="webgl" checked></label>
-<div id="bench"></div>
-<p>
-<label><span>Grayscale:</span> <input type="checkbox" id="grayscale" disabled></label><br />
-<label><span>Avg.</span> <input type="radio" id="average" name="grayscale" ></label>
-<label><span>Lum.</span> <input type="radio" id="lightness" name="grayscale" ></label>
-<label><span>Light.</span> <input type="radio" id="luminosity" name="grayscale" ></label>
-</p>
-<p>
-<label><span>Invert:</span> <input type="checkbox" id="invert" disabled></label>
-</p>
-<p>
-<label>Colormatrix filters:</label>
-</p>
-<p>
-<label><span>Sepia:</span> <input type="checkbox" id="sepia" disabled></label>
-</p>
-<p>
-<label><span>Black/White:</span> <input type="checkbox" id="blackwhite" disabled></label>
-</p>
-<p>
-<label><span>Brownie:</span> <input type="checkbox" id="brownie" disabled></label>
-</p>
-<p>
-<label><span>Vintage:</span> <input type="checkbox" id="vintage" disabled></label>
-</p>
-<p>
-<label><span>Kodachrome:</span> <input type="checkbox" id="kodachrome" disabled></label>
-</p>
-<p>
-<label><span>Technicolor:</span> <input type="checkbox" id="technicolor" disabled></label>
-</p>
-<p>
-<label><span>Polaroid:</span> <input type="checkbox" id="polaroid" disabled></label>
-</p>
-<p>
-<label><span>Remove color:</span> <input type="checkbox" id="remove-color" disabled></label><br>
-<label>Color: <input type="color" id="remove-color-color" value="#00f900"></label><br>
-<br>
-<label>Distance: <input type="range" id="remove-color-distance" value="0.02" min="0" max="1" step="0.01" disabled></label>
-</p>
-<p>
-<label><span>Brightness:</span> <input type="checkbox" id="brightness" disabled></label>
-<br>
-<label>Value: <input type="range" id="brightness-value" value="0.1" min="-1" max="1" step="0.003921" disabled></label>
-</p>
-<p>
-<label><span>Gamma:</span> <input type="checkbox" id="gamma" disabled></label>
-<br>
-<label>Red: <input type="range" id="gamma-red" value="1" min="0.2" max="2.2" step="0.003921" disabled></label>
-<br>
-<label>Green: <input type="range" id="gamma-green" value="1" min="0.2" max="2.2" step="0.003921" disabled></label>
-<br>
-<label>Blue: <input type="range" id="gamma-blue" value="1" min="0.2" max="2.2" step="0.003921" disabled></label>
+<div class="info-item no-space">
+<div class="align-box">
+<button id="forward-but" class="forward"><span></span><span></span></button>
+<button id="backward-but" class="backward"><span></span><span></span></button>
+<button id="fliph-but" class="fliph"><span></span><span></span></button>
+<button id="flipv-but" class="flipv"><span></span><span></span></button>
+<button id="enlarge-but" class="enlarge"><span></span><span></span></button>
+<button id="lock-but" class="lock"><span></span><span></span></button>
+</div>
+</div>
 
-</p>
-<p>
-<label><span>Contrast:</span> <input type="checkbox" id="contrast" disabled></label>
-<br>
-<label>Value: <input type="range" id="contrast-value" value="0" min="-1" max="1" step="0.003921" disabled></label>
-</p>
-<p>
-<label><span>Saturation:</span> <input type="checkbox" id="saturation" disabled></label>
-<br>
-<label>Value: <input type="range" id="saturation-value" value="0" min="-1" max="1" step="0.003921" disabled></label>
-</p>
-<p>
-<label><span>Hue:</span> <input type="checkbox" id="hue" disabled></label>
-<br>
-<label>Value: <input type="range" id="hue-value" value="0" min="-2" max="2" step="0.002" disabled></label>
-</p>
-<p>
-<label><span>Noise:</span> <input type="checkbox" id="noise" disabled></label>
-<br>
-<label>Value: <input type="range" id="noise-value" value="100" min="0" max="1000" disabled></label>
-</p>
-<p>
-<label><span>Pixelate</span> <input type="checkbox" id="pixelate" disabled></label>
-<br>
-<label>Value: <input type="range" id="pixelate-value" value="4" min="2" max="20" disabled></label>
-</p>
-<p>
-<label><span>Blur:</span> <input type="checkbox" id="blur" disabled></label>
-<br>
-<label>Value: <input type="range" id="blur-value" value="0.1" min="0" max="1" step="0.01" disabled></label>
-</p>
-<p>
-<label><span>Sharpen:</span> <input type="checkbox" id="sharpen" disabled></label>
-</p>
-<p>
-<label><span>Emboss:</span> <input type="checkbox" id="emboss" disabled></label>
-</p>
-<p>
-<label><span>Blend Color:</span> <input type="checkbox" id="blend" disabled></label>
-<br>
-<label>Mode:</label>
-<select id="blend-mode" name="blend-mode">
-<option selected value="add">Add</option>
-<option value="diff">Diff</option>
-<option value="subtract">Subtract</option>
-<option value="multiply">Multiply</option>
-<option value="screen">Screen</option>
-<option value="lighten">Lighten</option>
-<option value="darken">Darken</option>
-<option value="overlay">Overlay</option>
-<option value="exclusion">Exclusion</option>
-<option value="tint">Tint</option>
-</select>
-<br>
-<label>Color: <input type="color" id="blend-color" value="#00f900"></label><br>
-<label>Alpha: <input type="range" id="blend-alpha" min="0" max="1" value="1" step="0.01"></label><br>
-</p>
-<label><span>Blend Image:</span> <input type="checkbox" id="blend-image" disabled></label>
-<br>
-<label>Mode:</label>
-<select id="blend-image-mode" name="blend-image-mode">
-<option selected value="multiply">Multiply</option>
-<option value="mask">Mask</option>
-</select>
-<br>
-<label>Alpha: <input type="range" id="blend-image-alpha" min="0" max="1" value="1" step="0.01"></label><br>
-</p>
+<div class="info-item">
+
+<div class="ranges-box">
+
+<div class="ranges-view">
+<strong>Opacity</strong>
+<input type="text" class="range-mask" data-range="opacity-range" value="100">
+</div>
+
+<div class="ranges">
+<span class="bg-range" data-range="opacity-range"></span>
+<span class="fill-range" data-range="opacity-range"></span>
+<span class="track-range" data-range="opacity-range"></span>
+<input type="range" id="opacity-range" data-target="opacity-range" min="0" max="100" value="100" step="1">
 </div>
 
 </div>
 
-<script src="bluebird.min.js"></script>
-<script src="main-new.js"></script>
+<strong>Filter</strong>
+<div class="filter-box">
+<button id="filter-but" class="filter-but">
+<span id="filter-text">Normal</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="filter-list" class="filter-list">
+<li data-target="Normal" class="has-line">Normal</li>
+
+<li data-target="Darken" class="has-line">Darken</li>
+<li data-target="Multiply">Multiply</li>
+<li data-target="Color Burn">Color Burn</li>
+
+<li data-target="Lighten" class="has-line">Lighten</li>
+<li data-target="Screen">Screen</li>
+<li data-target="Color Dodge">Color Dodge</li>
+
+<li data-target="Overlay" class="has-line">Overlay</li>
+<li data-target="Soft Light">Soft Light</li>
+<li data-target="Hard Light">Hard Light</li>
+
+<li data-target="Difference" class="has-line">Difference</li>
+<li data-target="Exclusion">Exclusion</li>
+
+<li data-target="Hue" class="has-line">Hue</li>
+<li data-target="Saturation">Saturation</li>
+<li data-target="Color">Color</li>
+<li data-target="Luminosity">Luminosity</li>
+
+</ul>
+</div>
+
+<div class="preview-box">
+<div class="preview-overview"><strong>Preview</strong></div>
+
+<div class="crop-box">
+<button id="crop-but" class="crop-but"><span>Crop</span></button>
+</div>
+
+<div class="view-box">
+<button class="view-but">
+<i class="icon-link_icn"></i><a target="_blank" rel="noopener noreferrer" href="http://res.cloudinary.com/hcdkt0ybc/image/upload/v1544170586/1c8deceb-ffca-4160-8964-e40404f768dc.png">View original</a>
+</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="info-item">
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" name="highquality"><span>High quality</span></label>
+</div>
+</div>
+</div>
+
+<div class="info-item">
+
+<div class="check-box">
+
+<div class="check-inner">
+<label><input type="checkbox" name="shadow"><span>Shadow</span></label>
+<div class="colorpicker-shadow">
+<div class="color-shadow" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+</div>
+</div>
+
+<div class="check-inner shadow-box">
+<div class="number-input"><strong>X</strong><input type="text" name="offsetX" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Y</strong><input type="text" name="offsetY" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Blur</strong><input type="text" name="blur" autocomplete="off" value="20"></div>
+</div>
+
+</div>
+
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" name="tint"><span>Color overlay</span></label>
+<div class="colorpicker-overlay">
+<div class="color-overlay" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+</div>
+</div>
+</div>
+
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" name="invert"><span>Invert colors</span></label>
+</div>
+</div>
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Contrast</strong>
+<input type="text" class="range-mask" data-range="contrast-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="contrast-range"></span>
+<span class="fill-range" data-range="contrast-range"></span>
+<span class="track-range" data-range="contrast-range"></span>
+<!--<input type="range" id="contrast-range" data-target="contrast-range" min="-100" max="100" value="0" step="1">-->
+<input type="range" id="contrast-range" data-target="contrast-range" min="0" max="100" value="0" step="1">
+</div>
+</div>
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Brightness</strong>
+<input type="text" class="range-mask" data-range="brightness-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="brightness-range"></span>
+<span class="fill-range" data-range="brightness-range"></span>
+<span class="track-range" data-range="brightness-range"></span>
+<!--<input type="range" id="brightness-range" data-target="brightness-range" min="-100" max="100" value="0" step="1">-->
+<input type="range" id="brightness-range" data-target="brightness-range" min="0" max="100" value="0" step="1">
+</div>
+</div>
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Saturation</strong>
+<input type="text" class="range-mask" data-range="saturation-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="saturation-range"></span>
+<span class="fill-range" data-range="saturation-range"></span>
+<span class="track-range" data-range="saturation-range"></span>
+<!--<input type="range" id="saturation-range" data-target="saturation-range" min="-100" max="200" value="0" step="1">-->
+<input type="range" id="saturation-range" data-target="saturation-range" min="0" max="200" value="0" step="1">
+</div>
+</div>
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Blur</strong>
+<input type="text" class="range-mask" data-range="blur-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="blur-range"></span>
+<span class="fill-range" data-range="blur-range"></span>
+<span class="track-range" data-range="blur-range"></span>
+<!--<input type="range" id="saturation-range" data-target="saturation-range" min="-100" max="200" value="0" step="1">-->
+<input type="range" id="blur-range" data-target="blur-range" min="0" max="50" value="0" step="1">
+</div>
+</div>
+
+</div>
+
+<div class="info-item">
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" name="hyperlink"><span>Hyperlink</span></label>
+</div>
+<div class="check-inner link-box">
+<input type="text" name="hyperlink" value="https://www.google.com/">
+</div>
+</div>
+</div>
+
+<div class="info-item">
+<button class="add-smart-block">
+<i id="add-smart-block" class="icon-plus_icn"></i>
+<span>Add Smart Block</span>
+</button>
+</div>
+
+
+</div>
+<!--/for object-->
+
+</div>
+<!--effect-->
+
+</div>
+</div>
+
+<!--popup-->
+<div class="modal" id="modal">
+<div class="overlay"></div>
+
+<div class="modal-inner" id="modal-box">
+
+<div data-modal='image-modal' class="modal-box image-modal">
+<div class="title">
+<h2>Add new image</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<div data-modal='video-modal' class="modal-box video-modal">
+<div class="title">
+<h2>Add new video</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<div data-modal='apply-modal' class="modal-box apply-modal">
+<div class="title">
+<h2>Apply a template</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<div data-modal='convert-modal' class="modal-box convert-modal">
+<div class="title">
+<h2>New template</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<button class="close-modal" id="close-modal"><i class="icon-closeBtn"></i></button>
+
+</div>
+
+</div>
+<!--/popup-->
+
+<script src="js/main.js"></script>
 
 </body>
 </html>

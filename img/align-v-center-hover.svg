@@ -1,0 +1,8 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="alignVCentered-white">
+<rect width="20" height="20" fill="black" fill-opacity="0" transform="translate(0 20) rotate(-90)"/>
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M12 12.5V14.6362H17V12.5H12ZM12 8.5H17V6.36328H12V8.5Z" fill="white" fill-opacity="0.5"/>
+<path id="Subtract_2" fill-rule="evenodd" clip-rule="evenodd" d="M3 12.5L3 17H8V12.5H3ZM3 8.5H8V4H3L3 8.5Z" fill="white" fill-opacity="0.5"/>
+<path id="Line 2.1" d="M3.5 10.5H16.5" stroke="white" stroke-width="2" stroke-linecap="square"/>
+</g>
+</svg>
