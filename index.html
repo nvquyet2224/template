@@ -18,7 +18,15 @@
 <body>
 
 <div class="editor-wrapper">
-<div class="editor-header"></div>
+
+<div class="editor-header">
+
+<div class="full-screen-but" id="full-screen-but">
+<span><i class="icon-fullScreen"></i></span>
+</div>
+
+</div>
+
 <div class="editor-content">
 
 <!--panels-->
@@ -39,7 +47,33 @@
 </div>
 <!--panels-->
 
-<div class="drawer-content"></div>
+<div class="drawer-content">
+
+<div class="drawer-top">
+</div>
+
+<div class="drawer-middle">
+<div class="middle-inner">
+
+<ul>
+<li><button><i class="icon-minus_icon"></i></button></li>
+<li class="zoom-per">41%</li>
+<li><button><i class="icon-plus_icn"></i></button></li>
+</ul>
+
+<ul>
+<li><button><i class="icon-undo_icn"></i></button></li>
+<li><button><i class="icon-redo_icn"></i></button></li>
+</ul>
+
+</div>
+</div>
+
+<div class="drawer-bottom">
+<div class="bottom-inner"></div>
+</div>
+
+</div>
 
 <!--effect-->
 <div class="objects-panel">
@@ -57,7 +91,11 @@
 <div class="number-input"><strong>W</strong><input type="text" name="width" readonly="" tabindex="-1" autocomplete="off" value="1920"></div>
 <div class="number-input"><strong>H</strong><input type="text" name="height" readonly="" tabindex="-1" autocomplete="off" value="1080"></div>
 </li>
-<li><strong>Background</strong><div class="colorpicker-background"><div class="color-background"></div></div></li>
+<li><strong>Background</strong>
+<div class="colorpicker-box">
+<div class="color-inner color-background"></div>
+</div>
+</li>
 </ul>
 </div>
 
@@ -125,7 +163,7 @@
 <!--/for slide-->
 
 <!--for object-->
-<div class="objects-info object">
+<div class="objects-info object" id="objects-panel">
 
 <div class="info-item no-space no-stroke">
 <div class="align-box">
@@ -185,7 +223,7 @@
 
 </div>
 
-<strong>Filter</strong>
+<!--<strong>Filter</strong>-->
 <div class="filter-box">
 <button id="filter-but" class="filter-but">
 <span id="filter-text">Normal</span>
@@ -213,11 +251,10 @@
 <li data-target="Saturation">Saturation</li>
 <li data-target="Color">Color</li>
 <li data-target="Luminosity">Luminosity</li>
-
 </ul>
 </div>
 
-<div class="preview-box">
+<div class="preview-box for-image">
 <div class="preview-overview"><strong>Preview</strong></div>
 
 <div class="crop-box">
@@ -234,7 +271,182 @@
 
 </div>
 
+<div class="info-item for-text">
+
+<strong>Font</strong>
+<div id="add-font-but" class="add-font-but">
+<i class="icon-plus_icn"></i><span>Add</span>
+</div>
+
+<div class="font-family-box">
+<button id="font-family-but" class="font-family-but">
+<span id="font-family-text">Alfa Slab One</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="font-family-list" class="font-family-list">
+<li data-target="Alfa Slab One" class="has-line selected">Alfa Slab One</li>
+<li data-target="Archivo Narrow">Archivo Narrow</li>
+<li data-target="Arvo">Arvo</li>
+<li data-target="Bitter">Bitter</li>
+<li data-target="Emblema One">Emblema One</li>
+<li data-target="Georgia">Georgia</li>
+<li data-target="Helvetica">Helvetica</li>
+<li data-target="Inconsolata">Inconsolata</li>
+<li data-target="Khand">Khand</li>
+<li data-target="Mr Dafoe">Mr Dafoe</li>
+<li data-target="Playfair Display">Playfair Display</li>
+<li data-target="Quattrocento">Quattrocento</li>
+<li data-target="Roboto">Roboto</li>
+<li data-target="Roboto Slab">Roboto Slab</li>
+<li data-target="Times New Roman">Times New Roman</li>
+<li data-target="Vollkorn">Vollkorn</li>
+<li data-target="Yellowtail">Yellowtail</li>
+</ul>
+</div>
+
+<div class="font-weight-box">
+<button id="font-weight-but" class="font-weight-but">
+<span id="font-weight-text">Thin</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="font-weight-list" class="font-weight-list">
+<li data-target="Thin" class="has-line selected">Thin</li>
+<li data-target="Light">Light</li>
+<li data-target="Regular">Regular</li>
+<li data-target="Medium">Medium</li>
+<li data-target="Bold">Bold</li>
+</ul>
+</div>
+
+<div class="text-align-box">
+<div class="align-hoz">
+<i class="icon-txt-left_icn"></i>
+<i class="icon-txt-center_icn"></i>
+<i class="icon-txt-right_icn"></i>
+<i class="icon-txt-justify_icn"></i>
+</div>
+<div class="align-ver">
+<i class="icon-txt-valign-top"></i>
+<i class="icon-txt-valign-middle"></i>
+<i class="icon-txt-valign-bottom"></i>
+</div>
+</div>
+
+<div class="text-decoration-box">
+<i class="icon-bold"></i>
+<i class="icon-italic"></i>
+<i class="icon-underline"></i>
+<i class="icon-lineThrough"></i>
+<i class="icon-uppercase"></i>
+<i class="icon-lowercase"></i>
+</div>
+
+<div class="text-style">
+<div class="number-input">
+<strong>Fill</strong>
+<div class="colorpicker-box">
+<div class="color-inner color-text-fill" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+</div>
+</div>
+<div class="number-input"><strong>Font size</strong><input type="text" name="fontSize" autocomplete="off" value="70"></div>
+<div class="number-input"><strong>Light height</strong><input type="text" name="lineHeight" autocomplete="off" value="1"></div>
+<div class="number-input"><strong>Letter spacing</strong><input type="text" name="charSpacing" autocomplete="off" value="0"></div>
+</div>
+
+</div>
+
+
+<div class="info-item for-arrow">
+
+<div class="check-box">
+
+<div class="check-inner">
+<label><input type="checkbox" name="start-arrow"><span>Start arrow</span></label>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" name="end-arrow"><span>End arrow</span></label>
+</div>
+
+</div>
+
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Thickness</strong>
+<input type="text" class="range-mask" data-range="thickness-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="thickness-range"></span>
+<span class="fill-range" data-range="thickness-range"></span>
+<span class="track-range" data-range="thickness-range"></span>
+<input type="range" id="thickness-range" data-target="thickness-range" min="2" max="50" value="12" step="1">
+</div>
+</div>
+
+
+</div>
+
 <div class="info-item">
+
+<div>
+<div class="container">
+    <div class="output" id="output"></div>
+
+    <div class="result-wrp">
+      <input type="color" id="color-picker" />
+      <span class="result" id="result"></span>
+    </div>
+  </div>
+</div>
+
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" name="color-fill"><span>Fill</span></label>
+<div class="colorpicker-box">
+<!--<div class="color-inner color-fill" style="background-color: rgba(221, 49, 49, 0.6);"></div>-->
+<!--<div class="color-inner color-fill" style="background-color: rgba(221, 49, 49, 0.6);"></div>-->
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" name="color-stroke" data-target="color-stroke"><span>Stroke</span></label>
+<div class="colorpicker-box">
+<div class="color-inner color-stroke" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+</div>
+</div>
+
+<div class="ranges-box hide" data-check="color-stroke">
+<div class="ranges-view">
+<strong>Stroke width</strong>
+<input type="text" class="range-mask" data-range="stroke-width-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="stroke-width-range"></span>
+<span class="fill-range" data-range="stroke-width-range"></span>
+<span class="track-range" data-range="stroke-width-range"></span>
+<input type="range" id="stroke-width-range" data-target="stroke-width-range" min="0" max="100" value="3" step="1">
+</div>
+</div>
+
+<div class="ranges-box for-rectangle">
+<div class="ranges-view">
+<strong>Border radius</strong>
+<input type="text" class="range-mask" data-range="border-radius-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="border-radius-range"></span>
+<span class="fill-range" data-range="border-radius-range"></span>
+<span class="track-range" data-range="border-radius-range"></span>
+<input type="range" id="border-radius-range" data-target="border-radius-range" min="0" max="100" value="0" step="1">
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="info-item for-image">
 <div class="check-box">
 <div class="check-inner">
 <label><input type="checkbox" name="highquality"><span>High quality</span></label>
@@ -247,13 +459,13 @@
 <div class="check-box">
 
 <div class="check-inner">
-<label><input type="checkbox" name="shadow"><span>Shadow</span></label>
-<div class="colorpicker-shadow">
-<div class="color-shadow" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+<label><input type="checkbox" name="color-shadow" data-target="color-shadow"><span>Shadow</span></label>
+<div class="colorpicker-box">
+<div class="color-inner color-shadow" style="background-color: rgba(221, 49, 49, 0.6);"></div>
 </div>
 </div>
 
-<div class="check-inner shadow-box">
+<div class="check-inner shadow-box hide" data-check="color-shadow">
 <div class="number-input"><strong>X</strong><input type="text" name="offsetX" autocomplete="off" value="10"></div>
 <div class="number-input"><strong>Y</strong><input type="text" name="offsetY" autocomplete="off" value="10"></div>
 <div class="number-input"><strong>Blur</strong><input type="text" name="blur" autocomplete="off" value="20"></div>
@@ -261,22 +473,23 @@
 
 </div>
 
-<div class="check-box">
+<div class="check-box for-image">
 <div class="check-inner">
-<label><input type="checkbox" name="tint"><span>Color overlay</span></label>
-<div class="colorpicker-overlay">
-<div class="color-overlay" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+<!--tint-->
+<label><input type="checkbox" name="color-overlay"><span>Color overlay</span></label>
+<div class="colorpicker-box">
+<div class="color-inner color-overlay" style="background-color: rgba(221, 49, 49, 0.6);"></div>
 </div>
 </div>
 </div>
 
-<div class="check-box">
+<div class="check-box for-image">
 <div class="check-inner">
 <label><input type="checkbox" name="invert"><span>Invert colors</span></label>
 </div>
 </div>
 
-<div class="ranges-box">
+<div class="ranges-box for-image">
 <div class="ranges-view">
 <strong>Contrast</strong>
 <input type="text" class="range-mask" data-range="contrast-range" value="0">
@@ -285,12 +498,11 @@
 <span class="bg-range" data-range="contrast-range"></span>
 <span class="fill-range" data-range="contrast-range"></span>
 <span class="track-range" data-range="contrast-range"></span>
-<!--<input type="range" id="contrast-range" data-target="contrast-range" min="-100" max="100" value="0" step="1">-->
-<input type="range" id="contrast-range" data-target="contrast-range" min="0" max="100" value="0" step="1">
+<input type="range" id="contrast-range" data-target="contrast-range" min="-100" max="100" value="0" step="1">
 </div>
 </div>
 
-<div class="ranges-box">
+<div class="ranges-box for-image">
 <div class="ranges-view">
 <strong>Brightness</strong>
 <input type="text" class="range-mask" data-range="brightness-range" value="0">
@@ -299,12 +511,11 @@
 <span class="bg-range" data-range="brightness-range"></span>
 <span class="fill-range" data-range="brightness-range"></span>
 <span class="track-range" data-range="brightness-range"></span>
-<!--<input type="range" id="brightness-range" data-target="brightness-range" min="-100" max="100" value="0" step="1">-->
-<input type="range" id="brightness-range" data-target="brightness-range" min="0" max="100" value="0" step="1">
+<input type="range" id="brightness-range" data-target="brightness-range" min="-100" max="100" value="0" step="1">
 </div>
 </div>
 
-<div class="ranges-box">
+<div class="ranges-box for-image">
 <div class="ranges-view">
 <strong>Saturation</strong>
 <input type="text" class="range-mask" data-range="saturation-range" value="0">
@@ -313,12 +524,11 @@
 <span class="bg-range" data-range="saturation-range"></span>
 <span class="fill-range" data-range="saturation-range"></span>
 <span class="track-range" data-range="saturation-range"></span>
-<!--<input type="range" id="saturation-range" data-target="saturation-range" min="-100" max="200" value="0" step="1">-->
-<input type="range" id="saturation-range" data-target="saturation-range" min="0" max="200" value="0" step="1">
+<input type="range" id="saturation-range" data-target="saturation-range" min="-100" max="200" value="0" step="1">
 </div>
 </div>
 
-<div class="ranges-box">
+<div class="ranges-box for-image">
 <div class="ranges-view">
 <strong>Blur</strong>
 <input type="text" class="range-mask" data-range="blur-range" value="0">
@@ -327,7 +537,6 @@
 <span class="bg-range" data-range="blur-range"></span>
 <span class="fill-range" data-range="blur-range"></span>
 <span class="track-range" data-range="blur-range"></span>
-<!--<input type="range" id="saturation-range" data-target="saturation-range" min="-100" max="200" value="0" step="1">-->
 <input type="range" id="blur-range" data-target="blur-range" min="0" max="50" value="0" step="1">
 </div>
 </div>
@@ -337,10 +546,10 @@
 <div class="info-item">
 <div class="check-box">
 <div class="check-inner">
-<label><input type="checkbox" name="hyperlink"><span>Hyperlink</span></label>
+<label><input type="checkbox" name="hyperlink" data-target="hyperlink"><span>Hyperlink</span></label>
 </div>
-<div class="check-inner link-box">
-<input type="text" name="hyperlink" value="https://www.google.com/">
+<div class="check-inner link-box hide" data-check="hyperlink">
+<input type="text" class="no-number" name="hyperlink" value="https://www.google.com/">
 </div>
 </div>
 </div>
@@ -351,7 +560,6 @@
 <span>Add Smart Block</span>
 </button>
 </div>
-
 
 </div>
 <!--/for object-->
@@ -403,6 +611,7 @@
 </div>
 <!--/popup-->
 
+<!--<script src="js/jscolor.js"></script>-->
 <script src="js/main.js"></script>
 
 </body>
