@@ -2,6 +2,51 @@
 (function() {
 	var $ = function(id){ return document.getElementById(id) }
 	var overlayModal =  document.querySelector('.overlay');
+	var colorPicker;
+	var zoom = 50;
+	var ctxW = 1920;
+	var ctxH = 1080;
+	
+	
+	
+	
+	//Canvas
+	
+	
+	// manually initialize 2 filter backend to give ability to switch:
+	var webglBackend;
+	try {
+		webglBackend = new fabric.WebglFilterBackend();
+	} catch (e) {
+		console.log(e)
+	}
+	
+	var canvas2dBackend = new fabric.Canvas2dFilterBackend();
+	fabric.filterBackend = fabric.initFilterBackend();
+	fabric.Object.prototype.transparentCorners = false;
+
+	fabric.Object.prototype.padding = 5;
+	fabric.Object.prototype.transparentCorners = false;
+
+	canvas = this.__canvas = new fabric.Canvas('canvas', {width:960, height: 540, backgroundColor: '#86c1b9'});
+	f = fabric.Image.filters;
+	
+	//var ctx = canvas.getContext('2d');
+		//ctx.fillStyle = 'red';
+	
+	fabric.util.requestAnimFrame(function render() {
+		canvas.renderAll();
+		fabric.util.requestAnimFrame(render);
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//ranges
@@ -162,34 +207,34 @@
 				switch(target) {
 					case 'pencil':
 						//code here
-						$('objects-panel').setAttribute('data-type','for-pencil');
+						$('objects-info').setAttribute('data-type','for-pencil');
 						break;
 					case 'title':
 						//code here
-						$('objects-panel').setAttribute('data-type','for-text');
+						$('objects-info').setAttribute('data-type','for-text');
 						break;
 					case 'text':
 						//code here
-						$('objects-panel').setAttribute('data-type','for-text');
+						$('objects-info').setAttribute('data-type','for-text');
 						break;
 					case 'rectangle':
 						//code here
-						$('objects-panel').setAttribute('data-type','for-rectangle');
+						$('objects-info').setAttribute('data-type','for-rectangle');
 						break;
 					case 'circle':
 						//code here
-						$('objects-panel').setAttribute('data-type','for-circle');
+						$('objects-info').setAttribute('data-type','for-circle');
 						break;
 					case 'arrow':
 						//code here
-						$('objects-panel').setAttribute('data-type','for-arrow');
+						$('objects-info').setAttribute('data-type','for-arrow');
 						break;
 					case 'line':
 						//code here
-						$('objects-panel').setAttribute('data-type','for-line');
+						$('objects-info').setAttribute('data-type','for-line');
 						break;
 					case 'image-modal':
-						$('objects-panel').setAttribute('data-type','for-image');
+						$('objects-info').setAttribute('data-type','for-image');
 						openModal(target);
 						break;
 					case 'video-modal':
@@ -209,7 +254,7 @@
 		}
 	}
 	
-	//objetcs panel
+	//APPLY - CONVERT EVENT
 	$('apply-but').onclick = function() {
 		var that = this;
 		var target = that.getAttribute('data-target');
@@ -222,10 +267,8 @@
 		openModal(target);
 	};
 	
-	$('full-screen-but').onclick = function(){//Full screen
-	}
 	
-	//Dropdown events
+	//DROPDOWN EVENTS
 	$('transition-but').onclick = function() {
 		this.classList.contains('open') ? this.classList.remove('open') : this.classList.add('open');
 	};
@@ -261,41 +304,87 @@
 	}
 	
 	
-	//Init Events
+	function colorEvent() {
+		colors = document.querySelectorAll('.colorpicker-but');
+
+		for(var i = 0; i < colors.length; i++) {
+			colors[i].onclick = function(){
+				var that = this;
+				colorPicker = that;
+				if(that.classList.contains('active')) {
+					that.classList.remove('active');
+				}else {
+					that.classList.add('active');
+				}
+			}
+		}
+		
+	}
+	
+	function colorInit() {
+		
+		colorpickers = document.querySelectorAll('.color-inner');
+		for(var i = 0; i < colorpickers.length; i++) {
+			var id = colorpickers[i].getAttribute('id');
+			var colorpicker = tui.colorPicker.create({
+				container: document.getElementById(id),
+				cssPrefixSvg:id + '-'
+			}).on('selectColor', function(obj) {
+				//console.log(obj);
+				//console.log(obj.color);
+				var target = colorPicker.getAttribute('data-color');
+				colorPicker.querySelector('span').style.background = obj.color;
+				
+				if(target == 'color-background') {
+					canvas.set({
+						backgroundColor: obj.color
+					})
+				}
+				
+			});
+		}
+		
+	}
+	
+	
+	//zoom in
+	$('zoom-in').onclick = function(){
+		zoom < 2000 && (zoom+= 25);
+		$('zoom-percent').innerHTML = zoom + '%';
+		canvas.setWidth(ctxW*zoom/100);
+		canvas.setHeight(ctxH*zoom/100);
+	};
+	
+	//zoom out
+	$('zoom-out').onclick = function(){
+		zoom > 25 && (zoom-= 25);
+		$('zoom-percent').innerHTML = zoom + '%';
+		canvas.setWidth(ctxW*zoom/100);
+		canvas.setHeight(ctxH*zoom/100);
+	};
+	
+	
+	
+	//START TOOLS
 	rangesEvent();
 	textInputEvent();
 	checkInputEvent();
 	panelsEvent();
+	colorEvent();
+	colorInit();
 	dropsEvent('transition,filter,font-family,font-weight');
 	
 	
-})();
-
-
-
-/*
-
-(function () {
-  var app = {
-    start: function() {
-      this.output = $('#output');
-      this.result = $('#result');
-      var self    = this,
-        initialColor = this.result.css('background');
-      var colorPicker = $('#color-picker').spectrum({
-        chooseText: 'ok',
-        color:      initialColor,
-        move:       function(col) { self.onMove(col.toHexString()); },
-        change:     function(col) { self.onChange(col.toHexString()); },
-        hide:       function(col) { self.onHide(col.toHexString()); }
-      });
-      this.broadcast(colorPicker.spectrum('get').toHexString());
-    }
-  };
 	
-	$(function () {
-   	app.start();
-	});
-  
+	
+	
+	//fabric.util.addListener(fabric.window, 'load', function() {
+		//console.log(canvas);
+	//});
+		
+		
+		
+	
+	
 })();
-		*/
+

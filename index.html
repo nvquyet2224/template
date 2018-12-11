@@ -4,16 +4,13 @@
 <meta charset="UTF-8">
 <title>Image editor</title>
 <link rel="icon" href="favicon.ico">
-<!--<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/styles.css">
-<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
-<script src="js/FileSaver.js"></script>
-<script src="js/fabric.js"></script>-->
 <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/icon.css">
 <link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/tui-color-picker.css">
 </head>
+
 
 <body>
 
@@ -47,18 +44,22 @@
 </div>
 <!--panels-->
 
+<!---->
 <div class="drawer-content">
 
-<div class="drawer-top">
+<div class="drawer-area" id="drawer-area">
+<div class="fabric-box">
+<canvas id="canvas"></canvas>
+</div>
 </div>
 
 <div class="drawer-middle">
 <div class="middle-inner">
 
 <ul>
-<li><button><i class="icon-minus_icon"></i></button></li>
-<li class="zoom-per">41%</li>
-<li><button><i class="icon-plus_icn"></i></button></li>
+<li><button id="zoom-out"><i class="icon-minus_icon"></i></button></li>
+<li class="zoom-per" id="zoom-percent">50%</li>
+<li><button id="zoom-in"><i class="icon-plus_icn"></i></button></li>
 </ul>
 
 <ul>
@@ -74,15 +75,16 @@
 </div>
 
 </div>
+<!---->
 
 <!--effect-->
-<div class="objects-panel">
+<div class="objects-panel" id="objects-panel" data-object="slide">
 <div class="objects-title">
 <h2><i class="icon-settings_icn"></i><span>Image</span></h2>
 </div>
 
 <!--for slide-->
-<div class="objects-info slide">
+<div class="objects-info slide" id="slide-info">
 
 <div class="info-item no-stroke">
 <ul>
@@ -93,7 +95,8 @@
 </li>
 <li><strong>Background</strong>
 <div class="colorpicker-box">
-<div class="color-inner color-background"></div>
+<div class="colorpicker-but" data-color="color-background"><span></span></div>
+<div id="color-background" class="color-inner"></div>
 </div>
 </li>
 </ul>
@@ -163,7 +166,7 @@
 <!--/for slide-->
 
 <!--for object-->
-<div class="objects-info object" id="objects-panel">
+<div class="objects-info object" id="objects-info">
 
 <div class="info-item no-space no-stroke">
 <div class="align-box">
@@ -345,7 +348,8 @@
 <div class="number-input">
 <strong>Fill</strong>
 <div class="colorpicker-box">
-<div class="color-inner color-text-fill" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+<div class="colorpicker-but" data-color="color-text-fill"><span></span></div>
+<div id="color-text-fill" class="color-inner"></div>
 </div>
 </div>
 <div class="number-input"><strong>Font size</strong><input type="text" name="fontSize" autocomplete="off" value="70"></div>
@@ -389,30 +393,20 @@
 
 <div class="info-item">
 
-<div>
-<div class="container">
-    <div class="output" id="output"></div>
-
-    <div class="result-wrp">
-      <input type="color" id="color-picker" />
-      <span class="result" id="result"></span>
-    </div>
-  </div>
-</div>
-
 <div class="check-box">
 <div class="check-inner">
-<label><input type="checkbox" name="color-fill"><span>Fill</span></label>
+<label><input type="checkbox"><span>Fill</span></label>
 <div class="colorpicker-box">
-<!--<div class="color-inner color-fill" style="background-color: rgba(221, 49, 49, 0.6);"></div>-->
-<!--<div class="color-inner color-fill" style="background-color: rgba(221, 49, 49, 0.6);"></div>-->
+<div class="colorpicker-but" data-color="color-fill"><span></span></div>
+<div id="color-fill" class="color-inner"></div>
 </div>
 </div>
 
 <div class="check-inner">
-<label><input type="checkbox" name="color-stroke" data-target="color-stroke"><span>Stroke</span></label>
+<label><input type="checkbox" data-target="color-stroke"><span>Stroke</span></label>
 <div class="colorpicker-box">
-<div class="color-inner color-stroke" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+<div class="colorpicker-but" data-color="color-stroke"><span></span></div>
+<div id="color-stroke" class="color-inner"></div>
 </div>
 </div>
 
@@ -459,9 +453,10 @@
 <div class="check-box">
 
 <div class="check-inner">
-<label><input type="checkbox" name="color-shadow" data-target="color-shadow"><span>Shadow</span></label>
+<label><input type="checkbox" data-target="color-shadow"><span>Shadow</span></label>
 <div class="colorpicker-box">
-<div class="color-inner color-shadow" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+<div class="colorpicker-but" data-color="color-shadow"><span></span></div>
+<div id="color-shadow" class="color-inner"></div>
 </div>
 </div>
 
@@ -476,9 +471,10 @@
 <div class="check-box for-image">
 <div class="check-inner">
 <!--tint-->
-<label><input type="checkbox" name="color-overlay"><span>Color overlay</span></label>
+<label><input type="checkbox"><span>Color overlay</span></label>
 <div class="colorpicker-box">
-<div class="color-inner color-overlay" style="background-color: rgba(221, 49, 49, 0.6);"></div>
+<div class="colorpicker-but" data-color="color-overlay"><span></span></div>
+<div id="color-overlay" class="color-inner"></div>
 </div>
 </div>
 </div>
@@ -611,7 +607,13 @@
 </div>
 <!--/popup-->
 
-<!--<script src="js/jscolor.js"></script>-->
+<!--SCRIPT-->
+
+<script src="js/fabric.js"></script>
+<script src="js/tui-code-snippet.min.js"></script>
+<script src="js/tui-color-picker.js"></script>
+<script src="js/bluebird.min.js"></script>
+<script src="js/FileSaver.js"></script>
 <script src="js/main.js"></script>
 
 </body>
