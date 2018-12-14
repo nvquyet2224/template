@@ -28,17 +28,17 @@
 
 <!--panels-->
 <div id="tools-panel" class="tools-panel">
-<div><button id="cursor-but" class="selected" data-panel="cursor"><i class="icon-cursor_icn"></i></button></div>
+<div><button id="cursor-but" class="selected" data-target="cursor"><i class="icon-cursor_icn"></i></button></div>
 <div><button id="pencil-but" data-target="pencil"><i class="icon-pen_icn"></i></button></div>
 <div class="horizon-line"></div>
 <div><button id="title-but" data-target="title"><i class="icon-text_icn"></i></button></div>
 <div><button id="text-but" data-target="text"><i class="icon-paragraph_icn"></i></button></div>
-<div><button id="rectangle-but" data-target="rectangle"><i class="icon-rect_icn"></i></button></div>
+<div><button id="rect-but" data-target="rect"><i class="icon-rect_icn"></i></button></div>
 <div><button id="circle-but" data-target="circle"><i class="icon-circle_icn"></i></button></div>
 <div><button id="arrow-but" data-target="arrow"><i class="icon-arrow_icn"></i></button></div>
 <div><button id="line-but" data-target="line"><i class="icon-line_icn"></i></button></div>
-<div><button id="image-but" data-target="image-modal"><i class="icon-pic_icn"></i></button></div>
-<div><button id="video-but" data-target="video-modal"><i class="icon-vid_icn"></i></button></div>
+<div><button id="image-but" data-target="image"><i class="icon-pic_icn"></i></button></div>
+<div><button id="video-but" data-target="video"><i class="icon-vid_icn"></i></button></div>
 <div><button id="code-but" data-target="code"><i class="icon-code_icn"></i></button></div>
 <div><button id="search-but" data-target="search"><i class="icon-search_icn"></i></button></div>
 </div>
@@ -80,7 +80,7 @@
 <!--effect-->
 <div class="objects-panel" id="objects-panel" data-object="slide">
 <div class="objects-title">
-<h2><i class="icon-settings_icn"></i><span>Image</span></h2>
+<h2><i class="icon-settings_icn"></i><span id="objects-title">Image</span></h2>
 </div>
 
 <!--for slide-->
@@ -95,7 +95,7 @@
 </li>
 <li><strong>Background</strong>
 <div class="colorpicker-box">
-<div class="colorpicker-but" data-color="color-background"><span></span></div>
+<div class="colorpicker-but" data-color="color-background"><span id="colorBackground" data-color=""></span></div>
 <div id="color-background" class="color-inner"></div>
 </div>
 </li>
@@ -117,7 +117,7 @@
 <i class="icon-arrow_down_icn"></i>
 </button>
 <ul id="transition-list" class="transition-list">
-<li class="has-line" data-target="None">None</li>
+<li class="has-line selected" data-target="None">None</li>
 <li data-target="3D Cube" class="has-line">3D Cube</li>
 <li data-target="3D Flip">3D Flip</li>
 <li data-target="Closing Door">Closing Door</li>
@@ -233,7 +233,7 @@
 <i class="icon-arrow_down_icn"></i>
 </button>
 <ul id="filter-list" class="filter-list">
-<li data-target="Normal" class="has-line">Normal</li>
+<li data-target="Normal" class="has-line selected">Normal</li>
 
 <li data-target="Darken" class="has-line">Darken</li>
 <li data-target="Multiply">Multiply</li>
@@ -323,38 +323,31 @@
 
 <div class="text-align-box">
 <div class="align-hoz">
-<i class="icon-txt-left_icn"></i>
-<i class="icon-txt-center_icn"></i>
-<i class="icon-txt-right_icn"></i>
-<i class="icon-txt-justify_icn"></i>
+<i class="icon-txt-left_icn selected" data-target="left"></i>
+<i class="icon-txt-center_icn" data-target="center"></i>
+<i class="icon-txt-right_icn" data-target="right"></i>
+<i class="icon-txt-justify_icn" data-target="justify"></i>
 </div>
 <div class="align-ver">
-<i class="icon-txt-valign-top"></i>
-<i class="icon-txt-valign-middle"></i>
-<i class="icon-txt-valign-bottom"></i>
+<i class="icon-txt-valign-top selected" data-target="top"></i>
+<i class="icon-txt-valign-middle" data-target="middle"></i>
+<i class="icon-txt-valign-bottom" data-target="bottom"></i>
 </div>
 </div>
 
 <div class="text-decoration-box">
-<i class="icon-bold"></i>
-<i class="icon-italic"></i>
-<i class="icon-underline"></i>
-<i class="icon-lineThrough"></i>
-<i class="icon-uppercase"></i>
-<i class="icon-lowercase"></i>
+<i class="icon-bold" data-target="bold"></i>
+<i class="icon-italic" data-target="italic"></i>
+<i class="icon-underline" data-target="underline"></i>
+<i class="icon-lineThrough" data-target="lineThrough"></i>
+<i class="icon-uppercase" data-target="uppercase"></i>
+<i class="icon-lowercase" data-target="lowercase"></i>
 </div>
 
 <div class="text-style">
-<div class="number-input">
-<strong>Fill</strong>
-<div class="colorpicker-box">
-<div class="colorpicker-but" data-color="color-text-fill"><span></span></div>
-<div id="color-text-fill" class="color-inner"></div>
-</div>
-</div>
-<div class="number-input"><strong>Font size</strong><input type="text" name="fontSize" autocomplete="off" value="70"></div>
-<div class="number-input"><strong>Light height</strong><input type="text" name="lineHeight" autocomplete="off" value="1"></div>
-<div class="number-input"><strong>Letter spacing</strong><input type="text" name="charSpacing" autocomplete="off" value="0"></div>
+<div class="number-input"><strong>Font size</strong><input type="text" id="fontSize" data-target="font-size" autocomplete="off" value="20"></div>
+<div class="number-input"><strong>Light height</strong><input type="text" id="lineHeight" data-target="line-height" autocomplete="off" value="1"></div>
+<div class="number-input"><strong>Letter spacing</strong><input type="text" id="charSpacing" data-target="char-spacing" autocomplete="off" value="0"></div>
 </div>
 
 </div>
@@ -395,9 +388,9 @@
 
 <div class="check-box">
 <div class="check-inner">
-<label><input type="checkbox"><span>Fill</span></label>
+<label><input type="checkbox" data-target="color-fill"><span>Fill</span></label>
 <div class="colorpicker-box">
-<div class="colorpicker-but" data-color="color-fill"><span></span></div>
+<div class="colorpicker-but" data-color="color-fill"><span id="colorFill" data-color=""></span></div>
 <div id="color-fill" class="color-inner"></div>
 </div>
 </div>
@@ -405,7 +398,7 @@
 <div class="check-inner">
 <label><input type="checkbox" data-target="color-stroke"><span>Stroke</span></label>
 <div class="colorpicker-box">
-<div class="colorpicker-but" data-color="color-stroke"><span></span></div>
+<div class="colorpicker-but" data-color="color-stroke"><span id="colorStroke" data-color=""></span></div>
 <div id="color-stroke" class="color-inner"></div>
 </div>
 </div>
@@ -413,20 +406,20 @@
 <div class="ranges-box hide" data-check="color-stroke">
 <div class="ranges-view">
 <strong>Stroke width</strong>
-<input type="text" class="range-mask" data-range="stroke-width-range" value="0">
+<input type="text" class="range-mask" data-range="stroke-width-range" id="strokeWidth" value="0">
 </div>
 <div class="ranges">
 <span class="bg-range" data-range="stroke-width-range"></span>
 <span class="fill-range" data-range="stroke-width-range"></span>
 <span class="track-range" data-range="stroke-width-range"></span>
-<input type="range" id="stroke-width-range" data-target="stroke-width-range" min="0" max="100" value="3" step="1">
+<input type="range" id="stroke-width-range" data-target="stroke-width-range" min="0" max="100" value="0" step="1">
 </div>
 </div>
 
-<div class="ranges-box for-rectangle">
+<div class="ranges-box for-rect">
 <div class="ranges-view">
 <strong>Border radius</strong>
-<input type="text" class="range-mask" data-range="border-radius-range" value="0">
+<input type="text" class="range-mask" data-range="border-radius-range" id="borderRadius" value="0">
 </div>
 <div class="ranges">
 <span class="bg-range" data-range="border-radius-range"></span>
@@ -453,17 +446,17 @@
 <div class="check-box">
 
 <div class="check-inner">
-<label><input type="checkbox" data-target="color-shadow"><span>Shadow</span></label>
+<label><input type="checkbox" id="checkColorShadow" data-target="color-shadow"><span>Shadow</span></label>
 <div class="colorpicker-box">
-<div class="colorpicker-but" data-color="color-shadow"><span></span></div>
+<div class="colorpicker-but" data-color="color-shadow"><span id="colorShadow" data-color=""></span></div>
 <div id="color-shadow" class="color-inner"></div>
 </div>
 </div>
 
 <div class="check-inner shadow-box hide" data-check="color-shadow">
-<div class="number-input"><strong>X</strong><input type="text" name="offsetX" autocomplete="off" value="10"></div>
-<div class="number-input"><strong>Y</strong><input type="text" name="offsetY" autocomplete="off" value="10"></div>
-<div class="number-input"><strong>Blur</strong><input type="text" name="blur" autocomplete="off" value="20"></div>
+<div class="number-input"><strong>X</strong><input type="text" id="color-shadow-x" data-target="color-shadow-x" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Y</strong><input type="text" id="color-shadow-y" data-target="color-shadow-y" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Blur</strong><input type="text" id="color-shadow-blur" data-target="color-shadow-blur" autocomplete="off" value="20"></div>
 </div>
 
 </div>
@@ -471,9 +464,9 @@
 <div class="check-box for-image">
 <div class="check-inner">
 <!--tint-->
-<label><input type="checkbox"><span>Color overlay</span></label>
+<label><input type="checkbox" data-target="color-overlay"><span>Color overlay</span></label>
 <div class="colorpicker-box">
-<div class="colorpicker-but" data-color="color-overlay"><span></span></div>
+<div class="colorpicker-but" data-color="color-overlay"><span id="colorOverlay" data-color=""></span></div>
 <div id="color-overlay" class="color-inner"></div>
 </div>
 </div>
@@ -560,6 +553,73 @@
 </div>
 <!--/for object-->
 
+<!--for pencil-->
+<div class="objects-info drawing" id="drawing-info">
+
+<div class="info-item">
+
+<strong>Brush type</strong>
+
+<div class="brush-box">
+<button id="brush-but" class="brush-but">
+<span id="brush-text">Pencil</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="brush-list" class="brush-list">
+<li class="has-line selected" data-target="pencil">Pencil</li>
+<li data-target="circle">Circle</li>
+<li data-target="spray">Spray</li>
+<li data-target="pattern">Pattern</li>
+<li data-target="hline">hline</li>
+<li data-target="vline">vline</li>
+<li data-target="square">square</li>
+<li data-target="diamond">diamond</li>
+<li data-target="texture">texture</li>
+</ul>
+</div>
+
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Brush Width</strong>
+<input type="text" class="range-mask" data-range="brush-range" value="30">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="brush-range"></span>
+<span class="fill-range" data-range="brush-range"></span>
+<span class="track-range" data-range="brush-range"></span>
+<input type="range" id="brush-range" data-target="brush-range" min="30" max="100" value="30" step="1">
+</div>
+</div>
+
+<div class="number-input">
+<strong>Brush Color</strong>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-brush"><span id="colorBrush" data-color=""></span></div>
+<div id="color-brush" class="color-inner"></div>
+</div>
+</div>
+
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" id="checkColorBrushShadow" data-target="color-brush-shadow"><span>Brush Shadow</span></label>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-brush-shadow"><span id="colorBrushShadow" data-color=""></span></div>
+<div id="color-brush-shadow" class="color-inner"></div>
+</div>
+</div>
+<div class="check-inner shadow-box hide" data-check="color-brush-shadow">
+<div class="number-input"><strong>X</strong><input type="text" id="brush-shadow-x" data-target="brush-shadow-x" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Y</strong><input type="text" id="brush-shadow-y" data-target="brush-shadow-y" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Blur</strong><input type="text" id="brush-shadow-blur" data-target="brush-shadow-blur" autocomplete="off" value="20"></div>
+</div>
+</div>
+
+</div>
+
+</div>
+<!--for pencil-->
+
 </div>
 <!--effect-->
 
@@ -572,14 +632,14 @@
 
 <div class="modal-inner" id="modal-box">
 
-<div data-modal='image-modal' class="modal-box image-modal">
+<div data-modal='image' class="modal-box image-modal">
 <div class="title">
 <h2>Add new image</h2>
 </div>
 <div class="detail"></div>
 </div>
 
-<div data-modal='video-modal' class="modal-box video-modal">
+<div data-modal='video' class="modal-box video-modal">
 <div class="title">
 <h2>Add new video</h2>
 </div>
@@ -615,6 +675,5 @@
 <script src="js/bluebird.min.js"></script>
 <script src="js/FileSaver.js"></script>
 <script src="js/main.js"></script>
-
 </body>
 </html>

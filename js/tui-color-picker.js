@@ -2689,7 +2689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	function Slider(options, container) {
 	    container = domutil.appendHTMLElement('div', container, options.cssPrefix + 'slider-container');
-	    container.style.display = 'none';
+	    container.style.display = 'block';
 
 	    View.call(this, options, container);
 

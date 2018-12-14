@@ -109,6 +109,7 @@ input[type="text"].tui-colorpicker-palette-hex:focus {
 	cursor:pointer;
 	background-color:rgba(78,86,255,1);
 	color:#fff;
+	display:none;
 }
 .tui-colorpicker-palette-toggle-slider:hover{
 	background-color:rgba(78,86,255,1);
