@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Image editor</title>
+<link rel="icon" href="favicon.ico">
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/icon.css">
+<link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/tui-color-picker.css">
+</head>
+
+
+<body>
+
+<div class="editor-wrapper">
+
+<div class="editor-header">
+
+<div class="full-screen-but" id="full-screen-but">
+<span><i class="icon-fullScreen"></i></span>
+</div>
+
+</div>
+
+<div class="editor-content">
+
+<!--panels-->
+<div id="tools-panel" class="tools-panel">
+<div><button id="cursor-but" class="selected" data-target="cursor"><i class="icon-cursor_icn"></i></button></div>
+<div><button id="pencil-but" data-target="pencil"><i class="icon-pen_icn"></i></button></div>
+<div class="horizon-line"></div>
+<div><button id="title-but" data-target="title"><i class="icon-text_icn"></i></button></div>
+<div><button id="text-but" data-target="text"><i class="icon-paragraph_icn"></i></button></div>
+<div><button id="rect-but" data-target="rect"><i class="icon-rect_icn"></i></button></div>
+<div><button id="circle-but" data-target="circle"><i class="icon-circle_icn"></i></button></div>
+<div><button id="arrow-but" data-target="arrow"><i class="icon-arrow_icn"></i></button></div>
+<div><button id="line-but" data-target="line"><i class="icon-line_icn"></i></button></div>
+<div><button id="image-but" data-target="image"><i class="icon-pic_icn"></i></button></div>
+<div><button id="video-but" data-target="video"><i class="icon-vid_icn"></i></button></div>
+<div><button id="code-but" data-target="code"><i class="icon-code_icn"></i></button></div>
+<div><button id="search-but" data-target="search"><i class="icon-search_icn"></i></button></div>
+</div>
+<!--panels-->
+
+<!---->
+<div class="drawer-content">
+
+<div class="drawer-area" id="drawer-area">
+<div class="fabric-box">
+<canvas id="canvas"></canvas>
+</div>
+</div>
+
+<div class="drawer-middle">
+<div class="middle-inner">
+
+<ul>
+<li><button id="zoom-out"><i class="icon-minus_icon"></i></button></li>
+<li class="zoom-per" id="zoom-percent">50%</li>
+<li><button id="zoom-in"><i class="icon-plus_icn"></i></button></li>
+</ul>
+
+<ul>
+<li><button><i class="icon-undo_icn"></i></button></li>
+<li><button><i class="icon-redo_icn"></i></button></li>
+</ul>
+
+</div>
+</div>
+
+<div class="drawer-bottom">
+<div class="bottom-inner"></div>
+</div>
+
+</div>
+<!---->
+
+<!--effect-->
+<div class="objects-panel" id="objects-panel" data-object="slide">
+<div class="objects-title">
+<h2><i class="icon-settings_icn"></i><span id="objects-title">Image</span></h2>
+</div>
+
+<!--for slide-->
+<div class="objects-info slide" id="slide-info">
+
+<div class="info-item no-stroke">
+<ul>
+<li>
+<div class="number-input"><strong>W</strong></div>
+<div class="number-input"><strong>W</strong><input type="text" name="width" readonly="" tabindex="-1" autocomplete="off" value="1920"></div>
+<div class="number-input"><strong>H</strong><input type="text" name="height" readonly="" tabindex="-1" autocomplete="off" value="1080"></div>
+</li>
+<li><strong>Background</strong>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-background"><span id="colorBackground" data-color=""></span></div>
+<div id="color-background" class="color-inner"></div>
+</div>
+</li>
+</ul>
+</div>
+
+<div class="info-item">
+<strong>Template</strong>
+<div class="apply-template"><button id="apply-but" data-target='apply-modal'><span>Apply template…</span></button></div>
+<div class="convert-template"><button id="convert-but" data-target='convert-modal'><span>Convert to template</span></button></div>
+</div>
+
+<div class="info-item">
+<strong>Transition</strong>
+
+<div class="transition-box">
+<button id="transition-but" class="transition-but">
+<span id="transition-text">None</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="transition-list" class="transition-list">
+<li class="has-line selected" data-target="None">None</li>
+<li data-target="3D Cube" class="has-line">3D Cube</li>
+<li data-target="3D Flip">3D Flip</li>
+<li data-target="Closing Door">Closing Door</li>
+<li data-target="Corner Rotation">Corner Rotation</li>
+<li data-target="Cross Fade">Cross Fade</li>
+<li data-target="Horizontal Reveal">Horizontal Reveal</li>
+<li data-target="Horizontal Slide">Horizontal Slide</li>
+<li data-target="Scale Down">Scale Down</li>
+<li data-target="Scale Up">Scale Up</li>
+<li data-target="Squish">Squish</li>
+<li data-target="Vertical Drop">Vertical Drop</li>
+<li data-target="Vertical Reveal">Vertical Reveal</li>
+<li data-target="Vertical Slide">Vertical Slide</li>
+</ul>
+</div>
+
+<div class="duration-box">
+
+<div class="ranges-view">
+<strong>Duration (ms)</strong>
+<input type="text" class="range-mask" data-range="duration-range" value="50">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="duration-range"></span>
+<span class="fill-range" data-range="duration-range"></span>
+<span class="track-range" data-range="duration-range"></span>
+<input type="range" id="duration-range" data-target="duration-range" min="0" max="2000" value="50" step="1">
+</div>
+
+</div>
+
+<div class="preview-box">
+<div class="preview-overview"><strong>Preview</strong></div>
+</div>
+
+</div>
+
+<div class="info-item">
+<div class="export-box">
+<button id="export-but"><span>Export as JPG</span><i class="icon-arrow_next_icn"></i></button>
+</div>
+</div>
+
+
+</div>
+<!--/for slide-->
+
+<!--for object-->
+<div class="objects-info object" id="objects-info">
+
+<div class="info-item no-space no-stroke">
+<div class="align-box">
+<button id="align-left" class="align-left"><span></span><span></span></button>
+<button id="align-h-center" class="align-h-center"><span></span><span></span></button>
+<button id="align-right" class="align-right"><span></span><span></span></button>
+<button id="align-top" class="align-top"><span></span><span></span></button>
+<button id="align-v-center" class="align-v-center"><span></span><span></span></button>
+<button id="align-bottom" class="align-bottom"><span></span><span></span></button>
+</div>
+</div>
+
+<div class="info-item">
+<ul>
+<li>
+<div class="number-input"><strong>X</strong><input type="text" name="width" autocomplete="off" value="98"></div>
+<div class="number-input"><strong>Y</strong><input type="text" name="height" autocomplete="off" value="82"></div>
+</li>
+<li>
+<div class="number-input"><strong>W</strong><input type="text" name="width" autocomplete="off" value="393"></div>
+<div class="number-input"><strong>H</strong><input type="text" name="height" autocomplete="off" value="396"></div>
+</li>
+<li>
+<div class="number-input"><img src="img/prop-angle.svg" alt="icon"><input type="text" name="angle" autocomplete="off" value="11.77"></div>
+<div class="number-input"><img src="img/prop-scale.svg" alt="icon"><input type="text" name="scale" autocomplete="off" value="33.84"></div>
+</li>
+
+</ul>
+</div>
+
+<div class="info-item no-space">
+<div class="align-box">
+<button id="forward-but" class="forward"><span></span><span></span></button>
+<button id="backward-but" class="backward"><span></span><span></span></button>
+<button id="fliph-but" class="fliph"><span></span><span></span></button>
+<button id="flipv-but" class="flipv"><span></span><span></span></button>
+<button id="enlarge-but" class="enlarge"><span></span><span></span></button>
+<button id="lock-but" class="lock"><span></span><span></span></button>
+</div>
+</div>
+
+<div class="info-item">
+
+<div class="ranges-box">
+
+<div class="ranges-view">
+<strong>Opacity</strong>
+<input type="text" class="range-mask" data-range="opacity-range" value="100">
+</div>
+
+<div class="ranges">
+<span class="bg-range" data-range="opacity-range"></span>
+<span class="fill-range" data-range="opacity-range"></span>
+<span class="track-range" data-range="opacity-range"></span>
+<input type="range" id="opacity-range" data-target="opacity-range" min="0" max="100" value="100" step="1">
+</div>
+
+</div>
+
+<!--
+<div class="filter-box">
+<button id="filter-but" class="filter-but">
+<span id="filter-text">Normal</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="filter-list" class="filter-list">
+<li data-target="Normal" class="has-line selected">Normal</li>
+
+<li data-target="Darken" class="has-line">Darken</li>
+<li data-target="Multiply">Multiply</li>
+<li data-target="Color Burn">Color Burn</li>
+
+<li data-target="Lighten" class="has-line">Lighten</li>
+<li data-target="Screen">Screen</li>
+<li data-target="Color Dodge">Color Dodge</li>
+
+<li data-target="Overlay" class="has-line">Overlay</li>
+<li data-target="Soft Light">Soft Light</li>
+<li data-target="Hard Light">Hard Light</li>
+
+<li data-target="Difference" class="has-line">Difference</li>
+<li data-target="Exclusion">Exclusion</li>
+
+<li data-target="Hue" class="has-line">Hue</li>
+<li data-target="Saturation">Saturation</li>
+<li data-target="Color">Color</li>
+<li data-target="Luminosity">Luminosity</li>
+</ul>
+</div>
+-->
+
+<div class="preview-box for-image">
+<div class="preview-overview"><strong>Preview</strong></div>
+
+<div class="crop-box">
+<button id="crop-but" class="crop-but"><span>Crop</span></button>
+</div>
+
+<div class="view-box">
+<button class="view-but">
+<i class="icon-link_icn"></i><a target="_blank" rel="noopener noreferrer" href="http://res.cloudinary.com/hcdkt0ybc/image/upload/v1544170586/1c8deceb-ffca-4160-8964-e40404f768dc.png">View original</a>
+</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="info-item for-text">
+
+<strong>Font</strong>
+<div id="add-font-but" class="add-font-but">
+<i class="icon-plus_icn"></i><span>Add</span>
+</div>
+
+<div class="font-family-box">
+<button id="font-family-but" class="font-family-but">
+<span id="font-family-text">Alfa Slab One</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="font-family-list" class="font-family-list">
+<li data-target="Alfa Slab One" class="has-line selected">Alfa Slab One</li>
+<li data-target="Archivo Narrow">Archivo Narrow</li>
+<li data-target="Arvo">Arvo</li>
+<li data-target="Bitter">Bitter</li>
+<li data-target="Emblema One">Emblema One</li>
+<li data-target="Georgia">Georgia</li>
+<li data-target="Helvetica">Helvetica</li>
+<li data-target="Inconsolata">Inconsolata</li>
+<li data-target="Khand">Khand</li>
+<li data-target="Mr Dafoe">Mr Dafoe</li>
+<li data-target="Playfair Display">Playfair Display</li>
+<li data-target="Quattrocento">Quattrocento</li>
+<li data-target="Roboto">Roboto</li>
+<li data-target="Roboto Slab">Roboto Slab</li>
+<li data-target="Times New Roman">Times New Roman</li>
+<li data-target="Vollkorn">Vollkorn</li>
+<li data-target="Yellowtail">Yellowtail</li>
+</ul>
+</div>
+
+<div class="font-weight-box">
+<button id="font-weight-but" class="font-weight-but">
+<span id="font-weight-text">Thin</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="font-weight-list" class="font-weight-list">
+<li data-target="Thin" class="has-line selected">Thin</li>
+<li data-target="Light">Light</li>
+<li data-target="Regular">Regular</li>
+<li data-target="Medium">Medium</li>
+<li data-target="Bold">Bold</li>
+</ul>
+</div>
+
+<div class="text-align-box">
+<div class="align-hoz">
+<i class="icon-txt-left_icn selected" data-target="left"></i>
+<i class="icon-txt-center_icn" data-target="center"></i>
+<i class="icon-txt-right_icn" data-target="right"></i>
+<i class="icon-txt-justify_icn" data-target="justify"></i>
+</div>
+<div class="align-ver">
+<i class="icon-txt-valign-top selected" data-target="top"></i>
+<i class="icon-txt-valign-middle" data-target="middle"></i>
+<i class="icon-txt-valign-bottom" data-target="bottom"></i>
+</div>
+</div>
+
+<div class="text-decoration-box">
+<i class="icon-bold" data-target="bold"></i>
+<i class="icon-italic" data-target="italic"></i>
+<i class="icon-underline" data-target="underline"></i>
+<i class="icon-lineThrough" data-target="lineThrough"></i>
+<i class="icon-uppercase" data-target="uppercase"></i>
+<i class="icon-lowercase" data-target="lowercase"></i>
+</div>
+
+<div class="text-style">
+<div class="number-input"><strong>Font size</strong><input type="text" id="fontSize" data-target="font-size" autocomplete="off" value="20"></div>
+<div class="number-input"><strong>Light height</strong><input type="text" id="lineHeight" data-target="line-height" autocomplete="off" value="1"></div>
+<div class="number-input"><strong>Letter spacing</strong><input type="text" id="charSpacing" data-target="char-spacing" autocomplete="off" value="0"></div>
+</div>
+
+</div>
+
+
+<div class="info-item for-arrow">
+
+<div class="check-box">
+
+<div class="check-inner">
+<label><input type="checkbox" name="start-arrow"><span>Start arrow</span></label>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" name="end-arrow"><span>End arrow</span></label>
+</div>
+
+</div>
+
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Thickness</strong>
+<input type="text" class="range-mask" data-range="thickness-range" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="thickness-range"></span>
+<span class="fill-range" data-range="thickness-range"></span>
+<span class="track-range" data-range="thickness-range"></span>
+<input type="range" id="thickness-range" data-target="thickness-range" min="2" max="50" value="12" step="1">
+</div>
+</div>
+
+
+</div>
+
+<div class="info-item">
+
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" data-target="color-fill"><span>Fill</span></label>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-fill"><span id="colorFill" data-color=""></span></div>
+<div id="color-fill" class="color-inner"></div>
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="color-stroke"><span>Stroke</span></label>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-stroke"><span id="colorStroke" data-color=""></span></div>
+<div id="color-stroke" class="color-inner"></div>
+</div>
+</div>
+
+<div class="ranges-box hide" data-check="color-stroke">
+<div class="ranges-view">
+<strong>Stroke width</strong>
+<input type="text" class="range-mask" data-range="stroke-width-range" id="strokeWidth" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="stroke-width-range"></span>
+<span class="fill-range" data-range="stroke-width-range"></span>
+<span class="track-range" data-range="stroke-width-range"></span>
+<input type="range" id="stroke-width-range" data-target="stroke-width-range" min="0" max="100" value="0" step="1">
+</div>
+</div>
+
+<div class="ranges-box for-rect">
+<div class="ranges-view">
+<strong>Border radius</strong>
+<input type="text" class="range-mask" data-range="border-radius-range" id="borderRadius" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="border-radius-range"></span>
+<span class="fill-range" data-range="border-radius-range"></span>
+<span class="track-range" data-range="border-radius-range"></span>
+<input type="range" id="border-radius-range" data-target="border-radius-range" min="0" max="100" value="0" step="1">
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="info-item for-image">
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" name="highquality"><span>High quality</span></label>
+</div>
+</div>
+</div>
+
+<div class="info-item">
+
+<div class="check-box">
+
+<div class="check-inner">
+<label><input type="checkbox" id="checkColorShadow" data-target="color-shadow"><span>Shadow</span></label>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-shadow"><span id="colorShadow" data-color=""></span></div>
+<div id="color-shadow" class="color-inner"></div>
+</div>
+</div>
+
+<div class="check-inner shadow-box hide" data-check="color-shadow">
+<div class="number-input"><strong>X</strong><input type="text" id="color-shadow-x" data-target="color-shadow-x" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Y</strong><input type="text" id="color-shadow-y" data-target="color-shadow-y" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Blur</strong><input type="text" id="color-shadow-blur" data-target="color-shadow-blur" autocomplete="off" value="20"></div>
+</div>
+
+</div>
+
+<div class="filter-box">
+
+<strong class="small-title">Filters</strong>
+
+<div class="check-box">
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="grayscale"><span>Grayscale</span></label>
+</div>
+
+<div class="radio-box hide" data-check="grayscale">
+<div class="radio-inner">
+<label><input type="radio" name="grayscale" data-target="average"><span>Avg</span></label>
+<label><input type="radio" name="grayscale" data-target="lightness"><span>Light</span></label>
+<label><input type="radio" name="grayscale" data-target="luminosity"><span>Lum</span></label>
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="invert"><span>Invert</span></label>
+</div>
+
+<strong>Colormatrix filters</strong>
+<div class="check-inner check-group">
+<label><input type="checkbox" data-target="sepia"><span>Sepia</span></label>
+<label><input type="checkbox" data-target="blackwhite"><span>Black/White</span></label>
+<label><input type="checkbox" data-target="brownie"><span>Brownie</span></label>
+<label><input type="checkbox" data-target="vintage"><span>Vintage</span></label>
+<label><input type="checkbox" data-target="kodachrome"><span>Kodachrome</span></label>
+<label><input type="checkbox" data-target="technicolor"><span>Technicolor</span></label>
+<label><input type="checkbox" data-target="polaroid"><span>Polaroid</span></label>
+<label><input type="checkbox" data-target="sharpen"><span>Sharpen</span></label>
+<label><input type="checkbox" data-target="emboss"><span>Emboss</span></label>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="color-remove"><span>Remove color</span></label>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-remove"><span id="colorRemove" data-color=""></span></div>
+<div id="color-remove" class="color-inner"></div>
+</div>
+</div>
+
+<div class="ranges-box hide" data-check="color-remove">
+<div class="ranges-view">
+<strong>Distance</strong>
+<input type="text" class="range-mask" data-range="distance-range" id="distanceRange" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="distance-range"></span>
+<span class="fill-range" data-range="distance-range"></span>
+<span class="track-range" data-range="distance-range"></span>
+<input type="range" id="distance-range" data-target="distance-range" min="0" max="100" value="0" step="1">
+</div>
+</div>
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Brightness</strong>
+<input type="text" class="range-mask" data-range="brightness-range" id="brightnessRange" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="brightness-range"></span>
+<span class="fill-range" data-range="brightness-range"></span>
+<span class="track-range" data-range="brightness-range"></span>
+<input type="range" id="brightness-range" data-target="brightness-range" min="-100" max="100" value="0" step="1">
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="gamma"><span>Gamma</span></label>
+</div>
+
+<div class="ranges-box hide" data-check="gamma">
+
+<div class="range-item">
+<div class="ranges-view">
+<strong>Red</strong>
+<input type="text" class="range-mask" data-range="red-range" id="redRange" value="100">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="red-range"></span>
+<span class="fill-range" data-range="red-range"></span>
+<span class="track-range" data-range="red-range"></span>
+<input type="range" id="red-range" data-target="red-range" min="20" max="220" value="100" step="1">
+</div>
+</div>
+
+<div class="range-item">
+<div class="ranges-view">
+<strong>Green</strong>
+<input type="text" class="range-mask" data-range="green-range" id="greenRange" value="100">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="green-range"></span>
+<span class="fill-range" data-range="green-range"></span>
+<span class="track-range" data-range="green-range"></span>
+<input type="range" id="green-range" data-target="green-range" min="20" max="220" value="100" step="1">
+</div>
+</div>
+
+<div class="range-item">
+<div class="ranges-view">
+<strong>Blue</strong>
+<input type="text" class="range-mask" data-range="blue-range" id="blueRange" value="100">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="blue-range"></span>
+<span class="fill-range" data-range="blue-range"></span>
+<span class="track-range" data-range="blue-range"></span>
+<input type="range" id="blue-range" data-target="blue-range" min="20" max="220" value="100" step="1">
+</div>
+</div>
+
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="contrast"><span>Contrast</span></label>
+</div>
+
+<div class="ranges-box hide" data-check="contrast">
+<div class="ranges-view">
+<strong>Value</strong>
+<input type="text" class="range-mask" data-range="contrast-range" id="contrastRange" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="contrast-range"></span>
+<span class="fill-range" data-range="contrast-range"></span>
+<span class="track-range" data-range="contrast-range"></span>
+<input type="range" id="contrast-range" data-target="contrast-range" min="-100" max="100" value="0" step="1">
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="saturation"><span>Saturation</span></label>
+</div>
+
+<div class="ranges-box hide" data-check="saturation">
+<div class="ranges-view">
+<strong>Value</strong>
+<input type="text" class="range-mask" data-range="saturation-range" id="saturationRange" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="saturation-range"></span>
+<span class="fill-range" data-range="saturation-range"></span>
+<span class="track-range" data-range="saturation-range"></span>
+<input type="range" id="saturation-range" data-target="saturation-range" min="-100" max="100" value="0" step="1">
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="hue"><span>Hue</span></label>
+</div>
+
+<div class="ranges-box hide" data-check="hue">
+<div class="ranges-view">
+<strong>Value</strong>
+<input type="text" class="range-mask" data-range="hue-range" id="hueRange" value="0">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="hue-range"></span>
+<span class="fill-range" data-range="hue-range"></span>
+<span class="track-range" data-range="hue-range"></span>
+<input type="range" id="hue-range" data-target="hue-range" min="-200" max="200" value="0" step="1">
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="noise"><span>Noise</span></label>
+</div>
+
+<div class="ranges-box hide" data-check="noise">
+<div class="ranges-view">
+<strong>Value</strong>
+<input type="text" class="range-mask" data-range="noise-range" id="noiseRange" value="100">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="noise-range"></span>
+<span class="fill-range" data-range="noise-range"></span>
+<span class="track-range" data-range="noise-range"></span>
+<input type="range" id="noise-range" data-target="noise-range" min="0" max="1000" value="100" step="1">
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="pixelate"><span>Pixelate</span></label>
+</div>
+
+<div class="ranges-box hide" data-check="pixelate">
+<div class="ranges-view">
+<strong>Value</strong>
+<input type="text" class="range-mask" data-range="pixelate-range" id="pixelateRange" value="40">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="pixelate-range"></span>
+<span class="fill-range" data-range="pixelate-range"></span>
+<span class="track-range" data-range="pixelate-range"></span>
+<input type="range" id="pixelate-range" data-target="pixelate-range" min="20" max="200" value="40" step="1">
+</div>
+</div>
+
+<div class="check-inner">
+<label><input type="checkbox" data-target="blur"><span>Blur</span></label>
+</div>
+
+<div class="ranges-box hide" data-check="blur">
+<div class="ranges-view">
+<strong>Value</strong>
+<input type="text" class="range-mask" data-range="blur-range" id="blurRange" value="10">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="blur-range"></span>
+<span class="fill-range" data-range="blur-range"></span>
+<span class="track-range" data-range="blur-range"></span>
+<input type="range" id="blur-range" data-target="blur-range" min="0" max="100" value="10" step="1">
+</div>
+</div>
+
+<strong>Blend Color</strong>
+
+<!--AA-->
+
+</div>
+
+</div>
+
+
+</div>
+
+<div class="info-item">
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" name="hyperlink" data-target="hyperlink"><span>Hyperlink</span></label>
+</div>
+<div class="check-inner link-box hide" data-check="hyperlink">
+<input type="text" class="no-number" name="hyperlink" value="https://www.google.com/">
+</div>
+</div>
+</div>
+
+<div class="info-item">
+<button class="add-smart-block">
+<i id="add-smart-block" class="icon-plus_icn"></i>
+<span>Add Smart Block</span>
+</button>
+</div>
+
+</div>
+<!--/for object-->
+
+<!--for pencil-->
+<div class="objects-info drawing" id="drawing-info">
+
+<div class="info-item">
+
+<strong>Brush type</strong>
+
+<div class="brush-box">
+<button id="brush-but" class="brush-but">
+<span id="brush-text">Pencil</span>
+<i class="icon-arrow_down_icn"></i>
+</button>
+<ul id="brush-list" class="brush-list">
+<li class="has-line selected" data-target="pencil">Pencil</li>
+<li data-target="circle">Circle</li>
+<li data-target="spray">Spray</li>
+<li data-target="pattern">Pattern</li>
+<li data-target="hline">hline</li>
+<li data-target="vline">vline</li>
+<li data-target="square">square</li>
+<li data-target="diamond">diamond</li>
+<li data-target="texture">texture</li>
+</ul>
+</div>
+
+
+<div class="ranges-box">
+<div class="ranges-view">
+<strong>Brush Width</strong>
+<input type="text" class="range-mask" data-range="brush-range" value="30">
+</div>
+<div class="ranges">
+<span class="bg-range" data-range="brush-range"></span>
+<span class="fill-range" data-range="brush-range"></span>
+<span class="track-range" data-range="brush-range"></span>
+<input type="range" id="brush-range" data-target="brush-range" min="30" max="100" value="30" step="1">
+</div>
+</div>
+
+<div class="number-input">
+<strong>Brush Color</strong>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-brush"><span id="colorBrush" data-color=""></span></div>
+<div id="color-brush" class="color-inner"></div>
+</div>
+</div>
+
+<div class="check-box">
+<div class="check-inner">
+<label><input type="checkbox" id="checkColorBrushShadow" data-target="color-brush-shadow"><span>Brush Shadow</span></label>
+<div class="colorpicker-box">
+<div class="colorpicker-but" data-color="color-brush-shadow"><span id="colorBrushShadow" data-color=""></span></div>
+<div id="color-brush-shadow" class="color-inner"></div>
+</div>
+</div>
+<div class="check-inner shadow-box hide" data-check="color-brush-shadow">
+<div class="number-input"><strong>X</strong><input type="text" id="brush-shadow-x" data-target="brush-shadow-x" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Y</strong><input type="text" id="brush-shadow-y" data-target="brush-shadow-y" autocomplete="off" value="10"></div>
+<div class="number-input"><strong>Blur</strong><input type="text" id="brush-shadow-blur" data-target="brush-shadow-blur" autocomplete="off" value="20"></div>
+</div>
+</div>
+
+</div>
+
+</div>
+<!--for pencil-->
+
+</div>
+<!--effect-->
+
+</div>
+</div>
+
+<!--popup-->
+<div class="modal" id="modal">
+<div class="overlay"></div>
+
+<div class="modal-inner" id="modal-box">
+
+<div data-modal='image' class="modal-box image-modal">
+<div class="title">
+<h2>Add new image</h2>
+</div>
+<div class="detail">
+<!--drag-->
+<div id="img-area" class="drop-box">
+<form class="my-form">
+<h3>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</h3>
+<input type="file" id="fileImage" multiple accept="image/jpeg,image/gif,image/png,image/svg+xml">
+<label class="button" for="fileImage">Select some files</label>
+</form>
+</div>
+<!--drag-->
+</div>
+</div>
+
+<div data-modal='video' class="modal-box video-modal">
+<div class="title">
+<h2>Add new video</h2>
+</div>
+<div class="detail">
+<!--drag-->
+<div id="video-area" class="drop-box">
+<form class="my-form">
+<h3>Upload multiple files with the file dialog or by dragging and dropping videos onto the dashed region</h3>
+<input type="file" id="fileVideo" multiple accept="video/mp4,video/quicktime">
+<label class="button" for="fileVideo">Select some files</label>
+</form>
+</div>
+<!--drag-->
+</div>
+</div>
+
+<div data-modal='apply-modal' class="modal-box apply-modal">
+<div class="title">
+<h2>Apply a template</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<div data-modal='convert-modal' class="modal-box convert-modal">
+<div class="title">
+<h2>New template</h2>
+</div>
+<div class="detail"></div>
+</div>
+
+<button class="close-modal" id="close-modal"><i class="icon-closeBtn"></i></button>
+
+</div>
+
+</div>
+<!--/popup-->
+
+<!--SCRIPT-->
+
+<script src="js/fabric.js"></script>
+<script src="js/tui-code-snippet.min.js"></script>
+<script src="js/tui-color-picker.js"></script>
+<script src="js/bluebird.min.js"></script>
+<script src="js/FileSaver.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

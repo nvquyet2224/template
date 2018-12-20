@@ -5,8 +5,10 @@
 		var $ = function(id){ return document.getElementById(id) }
 		
 		var overlayModal =  document.querySelector('.overlay');
+		var modalBox = $('modal-box');
+		var drawCnt = document.querySelector('.drawer-content');
 		var curColor;
-		
+
 		var configs = {
 			width:1920,
 			height:1080,
@@ -102,11 +104,138 @@
 		///////////// ORTHER /////////////
 		//////////////////////////////////
 		
+	
+		function preventDefaults(e) {
+			e.preventDefault();
+		}
+		
+		
+		function uploadFile(file) {
+			
+			var type = file.type.split('/')[1];
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				
+				if(type == 'mp4') {
+					var vid = 'obj_' +  Math.floor(Date.now());
+					var video = document.createElement('video');
+					video.setAttribute("id", vid);
+					video.style.display = 'none';
+					video.muted = true;
+					video.controls = false;
+					
+					video.addEventListener("loadedmetadata", function () {
+						video.width = video.videoWidth;
+						video.height = video.videoHeight;
+						
+						oVideo = new fabric.Image(video);
+						
+						oVideo.set({
+							width: video.videoWidth,
+							height: video.videoHeight
+						});
+						
+						canvas.add(oVideo);
+						
+					});
+					
+					video.src =  e.target.result;
+				
+					video.play();
+					video.onended = function(e) {
+						console.log('end video');
+						video.play();
+					};
+					
+					drawCnt.appendChild(video);
+					
+				}else {
+					var data = e.target.result;                    
+					fabric.Image.fromURL(data, function (img) {
+						var ctxR = canvas.height/canvas.width,
+							imgR = img.height/img.width,
+							imgH = imgR * canvas.width,
+							xScale = (imgR > ctxR && img.width < canvas.width) ? 1 : canvas.width/img.width;
+							yScale = (imgR > ctxR && img.width < canvas.width) ? 1 : imgH / img.height;
+						
+						var obj = img.set({
+							scaleX: xScale,
+							scaleY: yScale
+						});
+						
+						canvas.centerObject(obj);
+						canvas.add(obj);
+	
+					});
+				}
+				
+			}
+			
+			reader.readAsDataURL(file);
+			
+		}
+		
+		function processFiles(files,id) {
+			//This function can process loading by use list temp to get total size
+			if (!files || !files.length) {
+				$(id).classList.remove('highlight');
+				return;
+			} else {
+				;[].slice.call(files).forEach(function(file){
+					uploadFile(file);
+				});
+				$('close-modal').click();
+			}
+		}
+		
+		function handleDrag(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			this.classList.add('highlight');
+		}
+		
+		function handleDrop(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			var data = e.dataTransfer;
+			var files = data.files;
+			processFiles(files,this.getAttribute('id'));
+		}
+		
+		$('fileImage').onchange = function(byThis) {
+			var files = byThis.target.files;
+			processFiles(files,'img-area');
+		}
+		
+		$('fileVideo').onchange = function(byThis) {
+			var files = byThis.target.files;
+			processFiles(files,'video-area');
+		}
+		
+		;['dragenter', 'dragover'].forEach(function(eventName){
+			overlayModal.addEventListener(eventName, preventDefaults, false);
+			modalBox.addEventListener(eventName, preventDefaults, false);
+			$('img-area').addEventListener(eventName, handleDrag, false);
+			$('video-area').addEventListener(eventName, handleDrag, false);
+		});
+		
+		;['dragleave', 'drop'].forEach(function(eventName){
+			overlayModal.addEventListener(eventName, preventDefaults, false);
+			modalBox.addEventListener(eventName, preventDefaults, false);
+			$('img-area').addEventListener(eventName, handleDrop, false);
+			$('video-area').addEventListener(eventName, handleDrop, false);
+		});
+		
+		
+		
+		
+		
 		//Change range position	
 		function rangePos(range) {
 			target = range.getAttribute('data-target');
-			track =  document.querySelector('.track-range[data-range='+ target +']');
-			fill =  document.querySelector('.fill-range[data-range='+ target +']');
+			track = range.parentElement.querySelector('.track-range');
+			fill = range.parentElement.querySelector('.fill-range');
+			
 			var vmax = parseInt(range.max,10),
 				vmin = parseInt(range.min,10),
 				vnum = parseInt(range.value,10);
@@ -116,14 +245,35 @@
 			track.style.left = offset + '%';
 			track.style.marginLeft  = -offset * 0.14 + 'px';
 			fill.style.left = offset + '%';
+			
+			//Filter
+			if(target == 'brightness-range') {
+				processFilter(5,range.value);
+			}else if(target == 'contrast-range') {
+				processFilter(6,range.value);
+			}else if(target == 'saturation-range') {
+				processFilter(7,range.value);
+			}else if(target == 'blur-range') {
+				processFilter(11,range.value);
+			}
+			
 		}
 		
 		//Set value for range
 		function rangeValue(range) {
 			target = range.getAttribute('data-target');
-			document.querySelector('.range-mask[data-range='+ target +']').value = range.value;
+			range.parentElement.querySelector('.input-view').value = range.value;
+			
 			if(target == 'brush-range') {
 				canvas.freeDrawingBrush.width = parseInt(range.value,10) || 1;
+			}else if(target == 'brightness-range') {
+				processFilter(5,range.value);
+			}else if(target == 'contrast-range') {
+				processFilter(6,range.value);
+			}else if(target == 'saturation-range') {
+				processFilter(7,range.value);
+			}else if(target == 'blur-range') {
+				processFilter(11,range.value);
 			}else {
 				updateDraw(target,range.value);
 			}
@@ -132,7 +282,6 @@
 		
 		//Input type range
 		[].slice.call(document.querySelectorAll('input[type="range"]')).forEach(function(range){
-			
 			range.oninput = function() {
 				rangePos(this);
 				rangeValue(this);
@@ -144,8 +293,36 @@
 			rangePos(range);
 		});
 		
+		//Input view relation with range input
+		[].slice.call(document.querySelectorAll('.input-view')).forEach(function(input) {
+			
+			input.onkeydown = function(event) {
+				var that = this;
+				if(event.keyCode == 38 || event.keyCode == 40) {
+					event.preventDefault();
+					
+					var target = that.getAttribute('data-range');
+					range = $(target);
+					
+					event.keyCode == 38 && that.value < parseInt(range.max,10) && that.value++;
+					event.keyCode == 40 && that.value > parseInt(range.min,10) && that.value--;
+					
+					range.value = that.value;
+					range.setAttribute('value',that.value);
+					rangePos(range);
+					
+					if(target == 'brush-range') {
+						canvas.freeDrawingBrush.width = parseInt(that.value,10) || 1;
+					}else {
+						updateDraw(target,that.value);
+					}
+				}
+			};
+			
+		});
+		
 		//Input type text [change number by keydown or up]
-		[].slice.call(document.querySelectorAll('input[type="text"]')).forEach(function(input){
+		/*[].slice.call(document.querySelectorAll('input[type="text"]')).forEach(function(input){
 			input.onkeydown = function(event) {
 				var that = this;
 				
@@ -162,6 +339,7 @@
 							range.value = that.value;
 							range.setAttribute('value',that.value);
 							rangePos(range);
+							
 							
 							if(target == 'brush-range') {
 								canvas.freeDrawingBrush.width = parseInt(that.value,10) || 1;
@@ -197,7 +375,7 @@
 				}
 				
 			}
-		});
+		});*/
 			
 		//Input type checkbox [ show relation box ]
 		[].slice.call(document.querySelectorAll('input[type="checkbox"]')).forEach(function(input){
@@ -205,6 +383,7 @@
 
 				var target = this.getAttribute('data-target');
 				if(target) {
+					//console.log(target);
 					var box = document.querySelector('div[data-check='+ target +']');
 					if(box) {
 						this.checked && box.classList.remove('hide');
@@ -223,7 +402,9 @@
 						}else {
 							canvas.freeDrawingBrush.shadow = null;
 						}
-					}
+					}/*else if(target == 'invert') {
+						processFilter(1,1)
+					}*/
 					
 				}
 				
@@ -314,6 +495,10 @@
 		$('close-modal').onclick = function() {
 			$('modal').classList.remove('show');
 			document.querySelector('.modal-box.selected').classList.remove('selected');
+			
+			;['image-but', 'video-but'].forEach(function(byThis){
+				$(byThis).classList.contains('selected') && $(byThis).classList.remove('selected');
+			});
 		}
 		
 		overlayModal.onclick = function() {
@@ -329,19 +514,7 @@
 		$('convert-but').onclick = function() {
 			openModal(this.getAttribute('data-target'));
 		};
-		
-		
-		//Filter drop
-		$('filter-but').onclick = function() {
-			this.classList.contains('open') ? this.classList.remove('open') : this.classList.add('open');
-		};
-		$('filter-list').onclick = function(event){
-			this.querySelector('.selected').classList.remove('selected');
-			event.target.classList.add('selected');
-			$('filter-text').innerHTML = event.target.getAttribute('data-target');
-			$('filter-but').click();
-		};
-		
+
 		//Font family drop
 		$('font-family-but').onclick = function() {
 			this.classList.contains('open') ? this.classList.remove('open') : this.classList.add('open');
@@ -386,6 +559,28 @@
 			event.target.classList.add('selected');
 			$('transition-text').innerHTML = event.target.getAttribute('data-target');
 			$('transition-but').click();
+		};
+		
+		//Blend color
+		$('blend-color-but').onclick = function() {
+			this.classList.contains('open') ? this.classList.remove('open') : this.classList.add('open');
+		};
+		$('blend-color-list').onclick = function(event){
+			this.querySelector('.selected').classList.remove('selected');
+			event.target.classList.add('selected');
+			$('blend-color-text').innerHTML = event.target.getAttribute('data-target');
+			$('blend-color-but').click();
+		};
+		
+		//Blend image
+		$('blend-image-but').onclick = function() {
+			this.classList.contains('open') ? this.classList.remove('open') : this.classList.add('open');
+		};
+		$('blend-image-list').onclick = function(event){
+			this.querySelector('.selected').classList.remove('selected');
+			event.target.classList.add('selected');
+			$('blend-image-text').innerHTML = event.target.getAttribute('data-target');
+			$('blend-image-but').click();
 		};
 		
 		
@@ -465,8 +660,35 @@
 		//////////////////////////////////
 		///////////// FILTER /////////////
 		//////////////////////////////////
+		function updateFilter(index, prop, value) {
+			obj.filters[index][prop] = value;
+			obj.applyFilters();
+		}
 		
-		//Code
+		//Apply filter [index use to manage filter]
+		function processFilter(index,value) {
+			var obj = canvas.getActiveObject();
+			
+			if(obj) {
+				if(obj.filters[index]) {
+					index == 1 && (obj.filters[index] = null);
+					index == 5 && (obj.filters[index]['brightness'] = parseFloat(value/100));
+					index == 6 && (obj.filters[index]['contrast'] = parseFloat(value/100));
+					index == 7 && (obj.filters[index]['saturation'] = parseFloat(value/100));
+					index == 11 && (obj.filters[index]['blur'] = parseFloat(value/100));
+				}else{
+					(index == 1) && (filter = new f.Invert());
+					(index == 5) && (filter = new f.Brightness({brightness: parseFloat(value/100)}));
+					(index == 6) && (filter = new f.Contrast({contrast: parseFloat(value/100)}));
+					(index == 7) && (filter = new f.Saturation({saturation: parseFloat(value/100)}));
+					(index == 11) && (filter = new f.Blur({blur: parseFloat(value/100)}));
+					obj.filters[index] = filter;
+				}
+				obj.applyFilters();
+			}
+			
+		}
+		
 		
 		//////////////////////////////////
 		/////////// END - FILTER /////////
@@ -636,69 +858,61 @@
 		
 		function title() {
 			var itext = new fabric.IText('Type your title here...', {
-				left:configs.width/2 - 210, 
-				top:configs.height/2 - 20,
 				fontFamily:'Roboto',
 				fill:$('colorFill').getAttribute('data-color') || '#fff',
 				stroke:$('colorStroke').getAttribute('data-color') || '#fff',
-				strokeWidth:parseInt($('strokeWidth').value,10) || 0,
-				fontSize:20,
+				strokeWidth:parseInt($('stroke-range').value,10) || 0,
+				fontSize:40,
 				lineHeight:1
 			});
+			canvas.centerObject(itext);
 			canvas.add(itext);
 		}
 		
 		function paragraph() {
 			var text = 'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit\nlorem ipsum dolor sit amet,\nconsectetur adipiscing elit';
 			var itext = new fabric.IText(text, {
-				left:configs.width/2 - 140, 
-				top:configs.height/2 - 50,
 				fontFamily: 'Roboto',
 				fill:$('colorFill').getAttribute('data-color') || '#fff',
 				stroke:$('colorStroke').getAttribute('data-color') || '#fff',
-				strokeWidth:parseInt($('strokeWidth').value,10) || 0,
-				fontSize:20,
+				strokeWidth:parseInt($('stroke-range').value,10) || 0,
+				fontSize:26,
 				lineHeight:1
 			});
+			canvas.centerObject(itext);
 			canvas.add(itext);
 		}
 		
 		function circle() {
 			var circle = new fabric.Circle({
 				radius:50, 
-				strokeWidth:parseInt($('strokeWidth').value,10) || 3,
+				strokeWidth:parseInt($('stroke-range').value,10) || 3,
 				stroke:$('colorStroke').getAttribute('data-color') || '#fff',
-				fill:$('colorFill').getAttribute('data-color') ||  '#fff', 
-				left:configs.width/2 - 50, 
-				top:configs.height/2 - 50
+				fill:$('colorFill').getAttribute('data-color') ||  '#fff'
 			});
-			
+			canvas.centerObject(circle);
 			canvas.add(circle);
-			canvas.setActiveObject(circle);
 		}
 		
 		function rectangle() {
 			var rect = new fabric.Rect({
-				left:configs.width/2 - 50, 
-				top:configs.height/2 - 50,
-				strokeWidth:parseInt($('strokeWidth').value,10) || 3,
+				strokeWidth:parseInt($('stroke-range').value,10) || 3,
 				stroke:$('colorStroke').getAttribute('data-color') || '#fff',
 				fill:$('colorFill').getAttribute('data-color') || '#fff',
-				rx:parseInt($('borderRadius').value,10) || 0,
-				ry:parseInt($('borderRadius').value,10) || 0,
+				rx:parseInt($('radius-range').value,10) || 0,
+				ry:parseInt($('radius-range').value,10) || 0,
 				width:100,
 				height:100
 			});
+			canvas.centerObject(rect);
 			canvas.add(rect);
-			canvas.setActiveObject(rect);
 		}
 		
 		
-		
 		function updateDraw(type,value) {
-
+			
 			canvas.getActiveObjects().forEach(function(obj) {
-				if(type == 'stroke-width-range') {
+				if(type == 'stroke-range') {
 					obj.set({
 						strokeWidth:parseInt(value,10)
 					});
@@ -706,7 +920,7 @@
 					obj.set({
 						opacity:parseInt(value,10)/100
 					});
-				}else if(type == 'border-radius-range') {
+				}else if(type == 'radius-range') {
 					obj.set({
 						rx:value,
 						ry:value
@@ -798,7 +1012,8 @@
 				
 				canvas.isDrawingMode = false;
 				
-				that.querySelector('.selected').classList.remove('selected');
+				that.querySelector('.selected') && that.querySelector('.selected').classList.remove('selected');
+				
 				obj.classList.add('selected');
 				
 				target = obj.getAttribute('data-target');
@@ -863,10 +1078,9 @@
 	
  	var editor = new fsEditor('canvas', {
 			width:960, 
-			height: 480, 
-			fill: '#978ed6'
+			height:540, 
+			fill:'#978ed6'
 	});
-	
 	
 	
 })();
