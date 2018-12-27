@@ -1,0 +1,222 @@
+/*.modal-backdrop.in {*/
+  /*opacity: 1; }*/
+.modal {
+  background-color: #000;
+}
+.modal-dialog.popup-content {
+  border: solid 1px #00ffba; }
+  @media (min-width: 1280px) {
+    .modal-dialog.popup-content {
+      width: 80%; } }
+  .modal-dialog.popup-content .modal-content {
+    background: #000 url(../img/bg-popup.jpg) top center no-repeat;
+    background-size: contain;
+    padding-top: 40px;
+    padding-bottom: 40px; }
+    .modal-dialog.popup-content .modal-content h1 {
+      font-size: 25px;
+      font-family: 'Kanit';
+      color: #00ffba;
+      text-transform: uppercase; }
+    .modal-dialog.popup-content .modal-content .popup_header {
+      padding-bottom: 30px; }
+    .modal-dialog.popup-content .modal-content .panel {
+      border: none;
+      background: #000; }
+    .modal-dialog.popup-content .modal-content .panel-heading {
+      background: #001a2b;
+      background: -webkit-linear-gradient(legacy-direction(#002735), #001a2b);
+      background: linear-gradient(#002735, #001a2b);
+      border-radius: 0; }
+      @media (min-width: 320px) {
+        .modal-dialog.popup-content .modal-content .panel-heading {
+          padding: 0 15px 0 0; } }
+      @media (min-width: 992px) {
+        .modal-dialog.popup-content .modal-content .panel-heading {
+          padding: 0 35px 0 0; } }
+      .modal-dialog.popup-content .modal-content .panel-heading a {
+        display: block;
+        color: #00ffba;
+        line-height: 75px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: 'Kanit';
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+        .modal-dialog.popup-content .modal-content .panel-heading a:hover, .modal-dialog.popup-content .modal-content .panel-heading a:active {
+          text-decoration: none; }
+        @media (min-width: 320px) {
+          .modal-dialog.popup-content .modal-content .panel-heading a {
+            font-size: 14px;
+            line-height: 45px; } }
+        @media (min-width: 992px) {
+          .modal-dialog.popup-content .modal-content .panel-heading a {
+            font-size: 16px;
+            line-height: 75px; } }
+        .modal-dialog.popup-content .modal-content .panel-heading a span {
+          width: 75px;
+          margin-right: 20px;
+          display: inline-block;
+          background: url(../img/popup-border.png) center right no-repeat; }
+          @media (min-width: 320px) {
+            .modal-dialog.popup-content .modal-content .panel-heading a span {
+              width: 45px;
+              margin-right: 10px; } }
+          @media (min-width: 992px) {
+            .modal-dialog.popup-content .modal-content .panel-heading a span {
+              width: 75px;
+              margin-right: 20px; } }
+    .modal-dialog.popup-content .modal-content .panel-body {
+      color: #008f64;
+      font-family: 'Open Sans', sans-serif;
+      border: none; }
+  .modal-dialog.popup-content .panel-group .panel + .panel {
+    margin-top: 10px; }
+  .modal-dialog.popup-content button.close {
+    opacity: 1;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  z-index: 10;}
+
+.panel-heading .accordion-toggle:before {
+  font-family: 'FontAwesome';
+  content: "\f107";
+  float: right;
+  color: #00ffba; }
+
+.panel-heading .accordion-toggle.collapsed:before {
+  content: "\f105"; }
+
+/*# sourceMappingURL=pop-up.css.map */
+.default-modal .modal-dialog.popup-content .modal-content{
+  background: #000;
+  color: #fff;
+}
+.default-modal .modal-inner {
+  color: #fff;
+}
+.default-modal .modal-dialog.popup-content {
+  max-width: 600px;
+}
+.default-modal {
+  background-color: rgba(0, 0, 0, .5);
+}
+.detail-modal .modal-dialog.popup-content .modal-content{
+  padding: 0;
+}
+.detail-modal .fn-challenge-item {
+  padding: 60px 20px 20px;
+  margin: 0;
+}
+.detail-modal .fn-challenge-item {
+  background: rgb(0, 41, 55);
+  background: -moz-linear-gradient(top, rgba(0, 41, 55, 1) 0%, rgba(0, 12, 34, 1) 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 41, 55, 1) 0%, rgba(0, 12, 34, 1) 100%);
+  background: linear-gradient(to bottom, rgba(0, 41, 55, 1) 0%, rgba(0, 12, 34, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#002937', endColorstr='#000c22', GradientType=0);
+}
+
+.modal-tooltip .modal-dialog {
+  position: absolute;
+  right: 0;
+}
+.modal-top .modal-dialog {
+  top: 10px;
+}
+.modal-tooltip .modal-dialog:after,
+.modal-tooltip .modal-dialog:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.modal-top .modal-dialog:after {
+  top: -19px;
+  right: 6px;
+  border-width: 0 16px 20px;
+  border-bottom-color: #000;
+}
+.modal-top .modal-dialog:before {
+  top: -20px;
+  right: 4px;
+  border-width: 0 18px 22px;
+  border-bottom-color: #00ffba;
+}
+.modal-bottom .modal-dialog {
+  bottom: 10px;
+}
+.modal-bottom .modal-dialog:after {
+  bottom: -19px;
+  right: 6px;
+  border-width: 20px 16px 0;
+  border-top-color: #000;
+}
+.modal-bottom .modal-dialog:before {
+  bottom: -20px;
+  right: 4px;
+  border-width: 22px 18px 00;
+  border-top-color: #00ffba;
+}
+.click .glyphicon-option-vertical{
+  font-size: 24px;
+  color: #00ffba;
+}
+
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.modal-tooltip .glyphicon-arrow-up,
+.modal-tooltip .glyphicon-arrow-down {
+  color: #00ffba;
+  position: absolute;
+  right: 13px;
+  font-size: 20px;
+  z-index: 1;
+
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+}
+.modal-tooltip .glyphicon-arrow-up {
+  top: 0;
+}
+.modal-tooltip .glyphicon-arrow-down {
+  bottom: 0;
+  top: auto;
+}

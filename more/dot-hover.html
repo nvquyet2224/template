@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="useFull">
+
+<head>
+<meta charset="utf-8">
+<title>Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<style type="text/css">
+	body {
+		margin:0;
+		padding:0;
+		width:100vw;
+		height:100vh;
+		overflow:hidden;
+		background-color:#141414;
+		text-align:center;
+		cursor:pointer;
+	}
+	* {
+		-webkit-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+	h1,h2,h3,h4,h5,h6,p,ul,li {
+		margin:0;
+		padding:0;
+		line-height:1.4;
+	}
+	text{
+  position:relative;
+  left:110px;
+  top:10px;
+  font-family:'Baskerville',Georgia,serif;
+  font-size:17px;
+}
+a{
+  color:inherit;
+}
+.dots{
+  list-style-type:none;
+  padding:20px;
+  position:relative;
+  top:200px;
+}
+.dot{
+  display:inline-block;
+  vertical-align:middle;
+  border-radius:100%;
+  width:30px;
+  height:30px;
+  background:#fff;
+  margin-left:5px;
+  margin-right:5px;
+  cursor:pointer;
+  color:white;
+  position:relative;
+  z-index:2;
+}
+.select{
+  display:block;
+  border-radius:100%;
+  width:40px;
+  height:40px;
+  background:#fff;
+  position:absolute;
+  z-index:3;
+  top:15px;
+  left:0px;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<ul class="dots">
+  <li class="select"></li>
+  <li class="dot"></li>
+  <li class="dot"></li>
+  <li class="dot"></li>
+  <li class="dot"></li>
+  <li class="dot"></li>
+</ul>
+
+
+
+<!--Tween-->
+<script src='js/TweenMax.min.js'></script>
+<script src='js/jquery.js'></script>
+
+
+<script>
+
+$(document).ready(function(){
+  $(".dot").hover(function(){
+    var cur=$(this);
+    var dest=cur.position().left;
+    var t=0.6;
+    TweenMax.to($(".select"),t,{x:dest,ease:Back.easeOut})
+  });
+  
+  var del = 0;
+  var lastPos=$(".select").position().left;
+  function updateScale(){
+    var pos=$(".select").position().left;
+    
+    var speed=Math.abs(pos-lastPos);
+    var d=44;
+    var offset=-20;
+    var hd=d/2;
+    var scale=(offset+pos)%d;
+    if(scale>hd){
+      scale=hd-(scale-hd);
+    }
+    scale=1-((scale/hd)*0.35);
+    
+	TweenMax.to($(".select"),0.1,{scaleY:scale,scaleX:1+(speed*0.06)})
+    lastPos=pos;
+
+    requestAnimationFrame(updateScale);
+  }
+  requestAnimationFrame(updateScale);
+  $(".dot:eq(0)").trigger("mouseover");
+});
+
+</script>
+
+</body>
+</html>
