@@ -1,0 +1,30 @@
+@font-face{
+	font-family:'UTM_Avo';
+	font-display:block;
+	src:url('fonts/UTM_Avo.ttf');
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face{
+	font-family:'UTM_AvoB';
+	font-display:block;
+	src:url('fonts/UTM_AvoBold.ttf');
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face{
+	font-family:'VL_Sofia';
+	font-display:block;
+	src:url('fonts/VL_Sofia_Pro_Soft_Light.otf');
+	font-weight:normal;
+	font-style:normal;
+}
+
+@font-face{
+	font-family:'VL_SofiaB';
+	font-display:block;
+	src:url('fonts/SofiaPro-Bold.otf');
+    src:url('fonts/SofiaPro-Bold.ttf') format('truetype');
+	font-weight:normal;
+	font-style:normal;
+}
