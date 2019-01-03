@@ -177,7 +177,7 @@ $(window).load(function() {
 		$('.loadicon').fadeOut(50, function(){
 			SlideShow();
 		});	
-	},100);
+	},150);
 	
 	
 });

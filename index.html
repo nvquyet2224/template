@@ -16,6 +16,9 @@
 <meta name="revisit-after" content="1 days"/>-->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="preload" href="css/layout-min.css" as="style">
+<link rel="preload" href="css/style-min.css" as="style">
+<link rel="preload" href="js/vendor.js" as="script">
 <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
 <link rel="icon" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/icons-192.png" sizes="192x192">
@@ -73,7 +76,7 @@ body{-webkit-animation:demo-start 0.3s steps(1,end) 0s 1 normal both;-moz-animat
 </header>
 <!--/header-->
 
-<!--render css-->
+<!--render-->
 <div id="request-block"></div>
 <!--render css-->
 <noscript id="request-styles">
@@ -347,6 +350,7 @@ else window.addEventListener('load', normalStyles);
 <!--/page-->
 
 <!--script-->
+<script src="js/vendor.js"></script>
 <script defer="defer" src="js/main-min.js"></script>
 <!--/script-->
 
