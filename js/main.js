@@ -172,14 +172,9 @@ function commonEvents() {
 }
 
 $(window).load(function() {
-	
-	setTimeout(function(){
-		$('.loadicon').fadeOut(50, function(){
+	$('.loadicon').fadeOut(100, function(){
 			SlideShow();
-		});	
-	},150);
-	
-	
+	});	
 });
 
 (function() {
