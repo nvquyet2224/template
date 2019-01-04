@@ -21,7 +21,7 @@
 <link rel="preload" href="./css/layout.css" as="style">
 <link rel="preload" href="./js/vendor.js" as="script">
 <style>
-body{-webkit-animation:demo-start 0.3s steps(1,end) 0s 1 normal both;-moz-animation:demo-start 0.3s steps(1,end) 0s 1 normal both;-ms-animation:demo-start 0.3s steps(1,end) 0s 1 normal both;animation:demo-start 0.3s steps(1,end) 0s 1 normal both}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}
+body{-webkit-animation:demo-start 1.5s steps(1,end) 0s forwards;animation:demo-start 1.5s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}
 .loadicon{position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:100}
 @font-face{font-family:VL_Sofia;font-style:normal;font-weight:normal;font-display:swap;src:local('VL_Sofia'),url(./fonts/VL_Sofia_Pro_Soft_Light.otf) format("opentype")}@font-face{font-family:VL_SofiaB;font-style:normal;font-weight:normal;font-display:swap;src:local('VL_SofiaB'),url(./fonts/SofiaPro-Bold.otf) format("opentype"),url(./fonts/SofiaPro-Bold.ttf) format('truetype')}
 </style>
@@ -77,16 +77,16 @@ body{-webkit-animation:demo-start 0.3s steps(1,end) 0s 1 normal both;-moz-animat
 <link href="./css/layout.css" rel="stylesheet" type="text/css">
 </noscript>
 <script>
-var requestStyles = function() {
-var requestNode = document.getElementById("request-styles");
-var replacement = document.getElementById("request-block");
-replacement.innerHTML = requestNode.textContent;
-requestNode.parentElement.removeChild(requestNode);
-};
-var rafR = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (rafR) rafR(function() { window.setTimeout(requestStyles, 0); });
-else window.addEventListener('load', requestStyles);
+	var requestStyles = function() {
+		var requestNode = document.getElementById("request-styles");
+		var replacement = document.getElementById("request-block");
+		replacement.innerHTML = requestNode.textContent;
+		requestNode.parentElement.removeChild(requestNode);
+	};
+	var rafR = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+	window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	if (rafR) rafR(function() { window.setTimeout(requestStyles, 0); });
+	else window.addEventListener('load', requestStyles);
 </script>
 
 <!--content-->
@@ -99,12 +99,12 @@ else window.addEventListener('load', requestStyles);
 
 <div class="swiper-wrapper">
 <div class="swiper-slide">
-<div class="item pcBg lazy" data-original="images/bg1.jpg"></div>
-<div class="item spBg lazy" data-original="images/bg1-sp.jpg"></div>
+<div class="item pcBg lazy-load" style="background-image:url(images/pc-light.jpg)" data-original="images/bg1.jpg"></div>
+<div class="item spBg lazy-load" style="background-image:url(images/sp-light.jpg)" data-original="images/bg1-sp.jpg"></div>
 </div>
 <div class="swiper-slide">
-<div class="item pcBg lazy" data-original="images/bg2.jpg"></div>
-<div class="item spBg lazy" data-original="images/bg2-sp.jpg"></div>
+<div class="item pcBg lazy-load" style="background-image:url(images/pc-light.jpg)" data-original="images/bg2.jpg"></div>
+<div class="item spBg lazy-load" style="background-image:url(images/sp-light.jpg)" data-original="images/bg2-sp.jpg"></div>
 </div>
 </div>
 
@@ -323,17 +323,17 @@ else window.addEventListener('load', requestStyles);
 <link href="./css/style.css" rel="stylesheet" type="text/css">
 </noscript>
 <script>
-var normalStyles = function() {
-var normalNode = document.getElementById("normal-styles");
-var normalReplacement = document.createElement("div");
-normalReplacement.innerHTML = normalNode.textContent;
-document.body.appendChild(normalReplacement)
-normalNode.parentElement.removeChild(normalNode);
-};
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-if (raf) raf(function() { window.setTimeout(normalStyles, 0); });
-else window.addEventListener('load', normalStyles);
+	var normalStyles = function() {
+		var normalNode = document.getElementById("normal-styles");
+		var normalReplacement = document.createElement("div");
+		normalReplacement.innerHTML = normalNode.textContent;
+		document.body.appendChild(normalReplacement)
+		normalNode.parentElement.removeChild(normalNode);
+	};
+	var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+	window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	if (raf) raf(function() { window.setTimeout(normalStyles, 0); });
+	else window.addEventListener('load', normalStyles);
 </script>
 <!--normal style-->
 
@@ -346,7 +346,7 @@ else window.addEventListener('load', normalStyles);
 
 <!--script-->
 <script src="./js/vendor.js"></script>
-<script defer src="./js/main.js"></script>
+<script src="./js/main.js"></script>
 <!--/script-->
 
 </body>

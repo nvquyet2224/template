@@ -262,6 +262,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-size:2.25rem;
 	line-height:1.2;
 	margin:1rem 0 1.25rem 0;
+	position:relative;
 }
 
 .uv p, .aqua p, .index p, .sunscreen p {
@@ -670,7 +671,7 @@ h1, h2, h3, h4, h5, h6 {
 	.index h2, 
 	.sunscreen h2, 
 	.shortcut h2 {
-		margin:0 0 .5rem 0;	
+		margin:0 0 .5rem 0;
 	}
 	
 	.uv,
