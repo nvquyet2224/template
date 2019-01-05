@@ -1,11 +1,10 @@
 
 //detect
-var ua = navigator.userAgent;
+/*var ua = navigator.userAgent;
 var isFirefox = typeof InstallTrigger !== 'undefined';
 var isEdge = /Edge/i.test(ua);
 var isIE = /MSIE 9|MSIE 10|rv:11.0/i.test(ua);
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-
 
 function iOSversion() {
     if (/iP(hone|od|ad)/.test(navigator.platform)) {
@@ -24,8 +23,8 @@ var iOSSafari = /iP(ad|od|hone)/i.test(window.navigator.userAgent) && /WebKit/i.
 
 if(iOSSafari) {
 	$('body').addClass('iosSapari');
-}
-
+}*/
+var doCument = $('#page-wrap');
 
 $.fn.isInViewport = function() {
   var elementTop = $(this).offset().top;
@@ -162,19 +161,16 @@ function commonEvents() {
 		}
 	});
 	
-	$('#go-top').on("click" ,function() {
-        $('html, body').animate({scrollTop: 0}, 500);
-    });
-    
+	$('#go-top').on("click" ,function() { doCument.animate({scrollTop: 0}, 500); });
 	
 }
 
 function onScroll() {
 	ImgLazyLoad();
 	BgLazyLoad();
-	var scrollTop = $(document).scrollTop();
-	scrollTop > $(window).height()/2 && $('#go-top').addClass('show');
-	scrollTop < $(window).height()/2 && $('#go-top').removeClass('show');
+	var top = doCument.scrollTop();
+	top > $(window).height()/2 && $('#go-top').addClass('show');
+	top < $(window).height()/2 && $('#go-top').removeClass('show');
 }
 
 function Rotate() {
@@ -185,10 +181,10 @@ function Resize() {
 	console.log('Resize');
 }
 
-$(window).on('scroll', onScroll);
+doCument.on('scroll', onScroll);
+
 $(window).on("orientationchange", Rotate);
 $(window).on('resize', Resize);
-
 $(window).on('load', function(){
 	$('.loadicon').fadeOut(100, function(){
 		SlideShow();

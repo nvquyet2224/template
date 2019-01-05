@@ -135,6 +135,16 @@ p a:hover{
 	height:40px;
 }
 
+#page-wrap {
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	overflow:hidden;
+	overflow-y:auto;
+}
+
 .section-box,
 .section-inr{
 	position:relative;
