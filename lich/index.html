@@ -17,7 +17,7 @@
 	display:block;
 	width:100%;
 	height:100vh;
-	padding:50px 0 0 0;
+	padding:20px 0;
 	-webkit-box-sizing:border-box;
 	box-sizing:border-box;
  }
@@ -75,7 +75,8 @@
 	-webkit-text-stroke-width:3px;
    -webkit-text-stroke-color:#000;
    -webkit-text-fill-color:transparent;
-   opacity:0.1;
+   color:#000;
+   opacity:0.3;
  }
  
  .box {
@@ -137,6 +138,23 @@
 .sunday span:nth-child(2) {
 	color:#fff;
  }
+ 
+ #printId {
+	 position:absolute;
+	 right:20px;
+	 top:20px;
+	 padding:10px;
+ }
+ 
+ @media print {
+	 .calendar-wrap {
+	 	padding:180px 0 20px 0
+	 }
+	#printId {
+		display:none;
+	}
+ }
+
 </style>
 </head>
 <body>
@@ -1190,7 +1208,14 @@
 <!--/December-->
 
 </div>
+<button id="printId">Print</button>
 </div>
+
+<script>
+	printId.addEventListener("click", function(){
+	  window.print();
+	});
+</script>
 
 </body>
 </html>
