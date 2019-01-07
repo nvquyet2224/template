@@ -3,7 +3,6 @@ var VERSION = 'version_01'              // Version of the off-line cache (change
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
 	'/template/web/',                     // If you have separate JS/CSS files,
-	'/template/web/index.html',            // add path to those files here
 	'/template/web/css/layout.css',
 	'/template/web/css/slide-min.css',
 	'/template/web/css/style.css',
@@ -31,7 +30,13 @@ var URLS = [                            // Add URL you want to cache in this lis
 	'/template/web/images/icon-soap.png',
 	'/template/web/images/product02.png',
 	'/template/web/images/product03.png',
-]
+	'/template/web/images/bg1-light.jpg',
+	'/template/web/images/bg1-sp-light.jpg',
+	'/template/web/images/bg2-light.jpg',
+	'/template/web/images/bg2-sp-light.jpg',
+	'/template/web/fonts/VL_Sofia_Pro_Soft_Light.otf',
+	'/template/web/fonts/SofiaPro-Bold.otf'
+];
 
 // Respond with cached resources
 self.addEventListener('fetch', function (e) {
@@ -41,22 +46,6 @@ self.addEventListener('fetch', function (e) {
 			return response || fetch(e.request);
 		})
 	);
-  /*console.log('fetch request : ' + e.request.url)
-  e.respondWith(
-    caches.match(e.request).then(function (request) {
-      if (request) { // if cache is available, respond with cache
-        console.log('responding with cache : ' + e.request.url)
-        return request
-      } else {       // if there are no cache, try fetching request
-        console.log('file is not cached, fetching : ' + e.request.url)
-        return fetch(e.request)
-      }
-
-      // You can omit if/else for console.log & put one line below like this too.
-      // return request || fetch(e.request)
-    })
-  )*/
-  
 });
 
 // Cache resources

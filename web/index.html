@@ -370,11 +370,7 @@ body{-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards;animation:demo-
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/template/web/sw.js', {scope: '/template/web/'}).then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
     });
   });
 }
