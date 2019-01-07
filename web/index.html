@@ -369,7 +369,7 @@ body{-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards;animation:demo-
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('sw.js').then(function(registration) {
+    navigator.serviceWorker.register('/nvquyet2224.github.io/template/web/sw.js', {scope: '/nvquyet2224.github.io/template/web/'}).then(function(registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
