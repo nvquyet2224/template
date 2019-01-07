@@ -75,23 +75,23 @@ function SlideShow() {
 			},
 			on: {
 				init: function() {
-				},
-				transitionStart: function() {
-					banner = $(window).width() > 1100 ? $('.swiper-slide').eq(this.activeIndex).find('.pcBg.lazy') : $('.swiper-slide').eq(this.activeIndex).find('.spBg.lazy');
-					if(banner.length) {
-						var img = new Image();
-						img.onload = function(){
-							banner.css({'background-image': 'url('+ banner.data("original") +')'});
-							banner.removeClass('lazy');
-						};
-						img.src = banner.data("original");
-					}
 					if(!this.autoplay.running) {
 						this.params.autoplay = {
                             delay: 7000,
                             disableOnInteraction: true
                         };
                         this.autoplay.start();
+					}
+				},
+				transitionStart: function() {
+					banner = $(window).width() > 1100 ? $('.swiper-slide').eq(this.activeIndex).find('.pcBg.lazy') : $('.swiper-slide').eq(this.activeIndex).find('.spBg.lazy');
+					if(banner.length) {
+						//var img = new Image();
+						//img.onload = function(){
+							banner.css({'background-image': 'url('+ banner.data("original") +')'});
+							banner.removeClass('lazy');
+						//};
+						//img.src = banner.data("original");
 					}
 				},
 				transitionEnd: function() {

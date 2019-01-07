@@ -1,27 +1,57 @@
-//If any fetch fails, it will look for the request in the cache and serve it from there first
-self.addEventListener("fetch", function(event) {
+
+var CACHE_NAME = 'template-cache-v1';
+var urlsToCache = [
+	'/',
+	'css/layout.css',
+	'css/slide-min.css',
+	'css/style.css',
+	'js/jquery-min.js',
+	'js/swiper-min.js',
+	'js/olw-min.js',
+	'js/main.js',
+	'images/bg1.jpg',
+	'images/bg1-sp.jpg',
+	'images/bg2.jpg',
+	'images/bg2-sp.jpg',
+	'images/women.jpg',
+	'images/shortcut-01.jpg',
+	'images/shortcut-02.jpg',
+	'images/article.jpg',
+	'images/article-sp.jpg',
+	'images/news-01.jpg',
+	'images/news-02.jpg',
+	'images/news-03.jpg',
+	'images/news-04.jpg',
+	'images/news-05.jpg',
+	'images/icon-booster.png',
+	'images/icon-essence.png',
+	'images/icon-proof.png',
+	'images/icon-soap.png',
+	'images/product02.png',
+	'images/product03.png',
+];
+
+self.addEventListener('install', function(event) {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
+});
+
+self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetch(event.request).catch(function(error) {
-      console.log(
-        "[Service Worker] Network request Failed. Serving content from cache: " +
-          error
-      );
-      //Check to see if you have it in the cache
-      //Return response
-      //If not in the cache, then return error page
-      return caches
-        .open(
-          "sw-precache-v3-sw-precache-webpack-plugin-https://silent-things.surge.sh"
-        )
-        .then(function(cache) {
-          return cache.match(event.request).then(function(matching) {
-            var report =
-              !matching || matching.status == 404
-                ? Promise.reject("no-match")
-                : matching;
-            return report;
-          });
-        });
-    })
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
   );
 });
