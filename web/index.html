@@ -18,21 +18,21 @@
 <link rel="apple-touch-icon" href="images/icons-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="images/icons-512.png" sizes="512x512">
 <!--reload-->
-<link rel="preload" href="css/layout.css" as="style">
+<link rel="preload" href="css/layout-min.css" as="style">
 <link rel="preload" href="css/slide-min.css" as="style">
 <link rel="preload" href="js/jquery-min.js" as="script">
 <link rel="preload" href="js/swiper-min.js" as="script">
 <link rel="preload" href="js/olw-min.js" as="script">
 <link rel="preload" href="js/main.js" as="script">
-<link rel="preload" as="style" href="css/style.css">
+<link rel="preload" href="css/style-min.css" as="style">
 <!--prefetch-->
-<link rel="prefetch" href="css/layout.css" as="style">
+<link rel="prefetch" href="css/layout-min.css" as="style">
 <link rel="prefetch" href="css/slide-min.css" as="style">
 <link rel="prefetch" href="js/jquery-min.js" as="script">
 <link rel="prefetch" href="js/swiper-min.js" as="script">
 <link rel="prefetch" href="js/olw-min.js" as="script">
 <link rel="prefetch" href="js/main.js" as="script">
-<link rel="prefetch" as="style" href="css/style.css">
+<link rel="prefetch" as="style-min" href="css/style.css">
 <!--manifest-->
 <link rel="manifest" href="manifest.json">
 <style>
@@ -89,7 +89,7 @@ body{-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards;animation:demo-
 <div id="request-block"></div>
 <!--render css-->
 <noscript id="request-styles">
-<link href="css/layout.css" rel="stylesheet" type="text/css">
+<link href="css/layout-min.css" rel="stylesheet" type="text/css">
 <link href="css/slide-min.css" rel="stylesheet" type="text/css">
 </noscript>
 <script>
@@ -336,7 +336,7 @@ body{-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards;animation:demo-
 
 <!--normal style-->
 <noscript id="normal-styles">
-<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/style-min.css" rel="stylesheet" type="text/css">
 </noscript>
 <script>
 	var normalStyles = function() {
@@ -366,7 +366,8 @@ body{-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards;animation:demo-
 <script src="js/olw-min.js"></script>
 <script src="js/main.js"></script>
 
-<script>
+<!--close this-->
+<!--<script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/template/web/sw.js', {scope: '/template/web/'}).then(function(registration) {
@@ -374,7 +375,7 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
-</script>
+</script>-->
 <!--/script-->
 
 </body>

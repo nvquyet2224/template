@@ -1,4 +1,3 @@
-
 //detect
 var ua = navigator.userAgent;
 var isFirefox = typeof InstallTrigger !== 'undefined';
@@ -14,6 +13,7 @@ function iOSversion() {
 }
 
 var iOS = iOSversion();
+
 isIE && $('body').addClass('ie-class');
 
 $.fn.isInViewport = function() {
@@ -176,7 +176,7 @@ function Resize() {
 }
 
 $(window).on('load', function(){
-	$('.loadicon').fadeOut(100, function(){
+	$('.loadicon').fadeOut(200, function(){
 		SlideShow();
 		commonEvents();
 		inputHolder();
