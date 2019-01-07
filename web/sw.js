@@ -2,8 +2,35 @@ var APP_PREFIX = 'ApplicationName_'     // Identifier for this app (this needs t
 var VERSION = 'version_01'              // Version of the off-line cache (change this value everytime you want to update cache)
 var CACHE_NAME = APP_PREFIX + VERSION
 var URLS = [                            // Add URL you want to cache in this list.
-  '/template/web/',                     // If you have separate JS/CSS files,
-  '/template/web/index.html'            // add path to those files here
+	'/template/web/',                     // If you have separate JS/CSS files,
+	'/template/web/index.html',            // add path to those files here
+	'/template/web/css/layout.css',
+	'/template/web/css/slide-min.css',
+	'/template/web/css/style.css',
+	'/template/web/js/jquery-min.js',
+	'/template/web/js/swiper-min.js',
+	'/template/web/js/olw-min.js',
+	'/template/web/js/main.js',
+	'/template/web/images/bg1.jpg',
+	'/template/web/images/bg1-sp.jpg',
+	'/template/web/images/bg2.jpg',
+	'/template/web/images/bg2-sp.jpg',
+	'/template/web/images/women.jpg',
+	'/template/web/images/shortcut-01.jpg',
+	'/template/web/images/shortcut-02.jpg',
+	'/template/web/images/article.jpg',
+	'/template/web/images/article-sp.jpg',
+	'/template/web/images/news-01.jpg',
+	'/template/web/images/news-02.jpg',
+	'/template/web/images/news-03.jpg',
+	'/template/web/images/news-04.jpg',
+	'/template/web/images/news-05.jpg',
+	'/template/web/images/icon-booster.png',
+	'/template/web/images/icon-essence.png',
+	'/template/web/images/icon-proof.png',
+	'/template/web/images/icon-soap.png',
+	'/template/web/images/product02.png',
+	'/template/web/images/product03.png',
 ]
 
 // Respond with cached resources
