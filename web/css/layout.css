@@ -86,10 +86,10 @@ p a:hover{
 	overflow:hidden;
 }
 
-#page-wrap,
-#hdr-wrap,
-#cnt-wrap,
-#ftr-wrap,
+.page-wrap,
+.hdr-wrap,
+.cnt-wrap,
+.ftr-wrap,
 .hdr-inr,
 .cnt-inr,
 .ftr-inr{
@@ -98,7 +98,7 @@ p a:hover{
 	height:auto;
 }
 
-#hdr-wrap{
+.hdr-wrap{
 	position:fixed;
 	left:0;
 	top:0;
@@ -129,20 +129,10 @@ p a:hover{
 	vertical-align:top;	
 }
 
-#nav-but{
+.nav-but{
 	position:absolute;
 	width:40px;
 	height:40px;
-}
-
-#page-wrap {
-	position:fixed;
-	left:0;
-	top:0;
-	right:0;
-	bottom:0;
-	overflow:hidden;
-	overflow-y:auto;
 }
 
 .section-box,

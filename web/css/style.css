@@ -8,9 +8,17 @@ h1, h2, h3, h4, h5, h6 {
 	font-family:'VL_SofiaB';
 }
 
+.ie-class {
+	overflow:hidden;	
+}
+
 /*header*/
 .hdr-inr {
 	background-color:#029fcf;	
+}
+
+.ie-class .hdr-inr {
+	width:calc(100% - 17px);
 }
 
 .logo {
@@ -172,6 +180,19 @@ h1, h2, h3, h4, h5, h6 {
 #go-top.show:hover {
 	box-shadow:0 0 30px 0 rgba(3,172,226,0.5);
 }
+
+
+/*page*/
+.ie-class .page-wrap {
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	overflow:hidden;
+	overflow-y:auto;
+}
+
 
 
 /*banner*/

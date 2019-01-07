@@ -13,27 +13,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="format-detection" content="telephone=no"/>
 <meta name="theme-color" content="#fff"/>
-<link rel="icon" href="./images/favicon.png">
-<link href="./images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
-<link rel="apple-touch-icon" href="./images/icons-192.png" sizes="192x192">
-<link rel="apple-touch-icon" href="./images/icons-512.png" sizes="512x512">
-<link rel="manifest" href="./manifest.json">
-<link rel="preload" href="./css/layout-min.css" as="style">
-<link rel="preload" href="./css/slide-min.css" as="style">
-<link rel="preload" href="./js/jquery-min.js" as="script">
-<link rel="preload" href="./js/swiper-min.js" as="script">
-<link rel="preload" href="./js/olw-min.js" as="script">
-<link rel="preload" href="./js/main.js" as="script">
-<link rel="prefetch" as="script" href="./js/jquery-min.js">
-<link rel="prefetch" as="script" href="./js/swiper-min.js">
-<link rel="prefetch" as="script" href="./js/olw-min.js">
-<link rel="prefetch" as="script" href="./js/main.js">
-<link rel="preload" as="style" href="./css/fonts.css">
-<link rel="prefetch" as="style" href="./css/fonts.css">
-<link rel="preload" as="style" href="./css/style-min.css">
-<link rel="prefetch" as="style" href="./css/style-min.css">
+<link rel="icon" href="images/favicon.png">
+<link href="images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+<link rel="apple-touch-icon" href="images/icons-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="images/icons-512.png" sizes="512x512">
+<!--reload-->
+<link rel="preload" href="css/layout.css" as="style">
+<link rel="preload" href="css/slide-min.css" as="style">
+<link rel="preload" href="js/jquery-min.js" as="script">
+<link rel="preload" href="js/swiper-min.js" as="script">
+<link rel="preload" href="js/olw-min.js" as="script">
+<link rel="preload" href="js/main.js" as="script">
+<link rel="preload" as="style" href="css/style.css">
+<!--prefetch-->
+<link rel="prefetch" href="css/layout.css" as="style">
+<link rel="prefetch" href="css/slide-min.css" as="style">
+<link rel="prefetch" href="js/jquery-min.js" as="script">
+<link rel="prefetch" href="js/swiper-min.js" as="script">
+<link rel="prefetch" href="js/olw-min.js" as="script">
+<link rel="prefetch" href="js/main.js" as="script">
+<link rel="prefetch" as="style" href="css/style.css">
+<!--manifest-->
+<link rel="manifest" href="manifest.json">
 <style>
-body{overflow:hidden;-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards;animation:demo-start 0.05s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}
+body{-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards;animation:demo-start 0.05s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}
+@font-face{font-family:VL_Sofia;font-style:normal;font-weight:normal;font-display: swap;src:local('VL_Sofia'),url(fonts/VL_Sofia_Pro_Soft_Light.otf) format("opentype")}@font-face{font-family:VL_SofiaB;font-style:normal;font-weight:normal;font-display: swap;src:local('VL_SofiaB'),url(fonts/SofiaPro-Bold.otf) format("opentype"),url(fonts/SofiaPro-Bold.ttf) format('truetype')}
 .loadicon{position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:100}
 </style>
 </head>
@@ -45,10 +49,10 @@ body{overflow:hidden;-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards
 <!--loading-->
 
 <!--page-->
-<div id="page-wrap">
+<div class="page-wrap">
 
 <!--header-->
-<header id="hdr-wrap">
+<header class="hdr-wrap">
 <span class="overlay"></span>
 <div class="hdr-inr">
 
@@ -71,7 +75,7 @@ body{overflow:hidden;-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards
 </div>
 </div>
 
-<button id="nav-but" class="hide-text">
+<button class="nav-but hide-text">
 <span>Line</span>
 <span>Line</span>
 <span>Line</span>
@@ -85,8 +89,8 @@ body{overflow:hidden;-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards
 <div id="request-block"></div>
 <!--render css-->
 <noscript id="request-styles">
-<link href="./css/layout-min.css" rel="stylesheet" type="text/css">
-<link href="./css/slide-min.css" rel="stylesheet" type="text/css">
+<link href="css/layout.css" rel="stylesheet" type="text/css">
+<link href="css/slide-min.css" rel="stylesheet" type="text/css">
 </noscript>
 <script>
 	var requestStyles = function() {
@@ -102,7 +106,7 @@ body{overflow:hidden;-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards
 </script>
 
 <!--content-->
-<div id="cnt-wrap">
+<div class="cnt-wrap">
 <div class="cnt-inr">
 
 <!--banner-->
@@ -325,15 +329,14 @@ body{overflow:hidden;-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards
 <!--/content-->
 
 <!--footer-->
-<footer id="ftr-wrap">
+<footer class="ftr-wrap">
 <div class="ftr-inr"></div>
 </footer>
 <!--/footer-->
 
 <!--normal style-->
 <noscript id="normal-styles">
-<link href="./css/fonts.css" rel="stylesheet" type="text/css">
-<link href="./css/style-min.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 </noscript>
 <script>
 	var normalStyles = function() {
@@ -358,10 +361,10 @@ body{overflow:hidden;-webkit-animation:demo-start 0.05s steps(1,end) 0s forwards
 <!--/page-->
 
 <!--script-->
-<script src="./js/jquery-min.js"></script>
-<script src="./js/swiper-min.js"></script>
-<script src="./js/olw-min.js"></script>
-<script src="./js/main.js"></script>
+<script src="js/jquery-min.js"></script>
+<script src="js/swiper-min.js"></script>
+<script src="js/olw-min.js"></script>
+<script src="js/main.js"></script>
 <!--/script-->
 
 </body>

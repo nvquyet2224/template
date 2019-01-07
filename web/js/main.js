@@ -1,6 +1,6 @@
 
 //detect
-/*var ua = navigator.userAgent;
+var ua = navigator.userAgent;
 var isFirefox = typeof InstallTrigger !== 'undefined';
 var isEdge = /Edge/i.test(ua);
 var isIE = /MSIE 9|MSIE 10|rv:11.0/i.test(ua);
@@ -14,25 +14,13 @@ function iOSversion() {
 }
 
 var iOS = iOSversion();
-
-if(isIE || isEdge){
-	document.documentElement.classList.add('no-blend');
-}
-
-var iOSSafari = /iP(ad|od|hone)/i.test(window.navigator.userAgent) && /WebKit/i.test(window.navigator.userAgent) && !(/(CriOS|FxiOS|OPiOS|mercury)/i.test(window.navigator.userAgent));
-
-if(iOSSafari) {
-	$('body').addClass('iosSapari');
-}*/
-var doCument = $('#page-wrap');
+isIE && $('body').addClass('ie-class');
 
 $.fn.isInViewport = function() {
   var elementTop = $(this).offset().top;
   var elementBottom = elementTop + $(this).outerHeight();
-
   var viewportTop = $(window).scrollTop();
   var viewportBottom = viewportTop + $(window).height();
-
   return elementBottom > viewportTop && elementTop < viewportBottom;
 };
 
@@ -161,14 +149,20 @@ function commonEvents() {
 		}
 	});
 	
-	$('#go-top').on("click" ,function() { doCument.animate({scrollTop: 0}, 500); });
+	$('#go-top').on("click" ,function() { 
+		if(isIE) {
+			$('.page-wrap').animate({scrollTop: 0}, 500); 
+		}else {
+			$('html,body').animate({scrollTop: 0}, 500); 
+		}
+	});
 	
 }
 
 function onScroll() {
 	ImgLazyLoad();
 	BgLazyLoad();
-	var top = doCument.scrollTop();
+	var top = $(window).scrollTop() || $('.page-wrap').scrollTop();
 	top > $(window).height()/2 && $('#go-top').addClass('show');
 	top < $(window).height()/2 && $('#go-top').removeClass('show');
 }
@@ -181,10 +175,6 @@ function Resize() {
 	console.log('Resize');
 }
 
-doCument.on('scroll', onScroll);
-
-$(window).on("orientationchange", Rotate);
-$(window).on('resize', Resize);
 $(window).on('load', function(){
 	$('.loadicon').fadeOut(100, function(){
 		SlideShow();
@@ -193,7 +183,16 @@ $(window).on('load', function(){
 	});
 });
 
+if(isIE) {
+	$('.page-wrap').on('scroll', onScroll);
+}else {
+	$(window).on('scroll', onScroll);
+}
+
+$(window).on("orientationchange", Rotate);
+$(window).on('resize', Resize);
+
 (function() {
-	
+
 })();
 
