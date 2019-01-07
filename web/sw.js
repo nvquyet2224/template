@@ -35,7 +35,13 @@ var URLS = [                            // Add URL you want to cache in this lis
 
 // Respond with cached resources
 self.addEventListener('fetch', function (e) {
-  console.log('fetch request : ' + e.request.url)
+	console.log(e.request.url);
+	e.respondWith(
+		caches.match(e.request).then(function(response) {
+			return response || fetch(e.request);
+		})
+	);
+  /*console.log('fetch request : ' + e.request.url)
   e.respondWith(
     caches.match(e.request).then(function (request) {
       if (request) { // if cache is available, respond with cache
@@ -49,7 +55,8 @@ self.addEventListener('fetch', function (e) {
       // You can omit if/else for console.log & put one line below like this too.
       // return request || fetch(e.request)
     })
-  )
+  )*/
+  
 });
 
 // Cache resources
