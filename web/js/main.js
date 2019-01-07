@@ -86,12 +86,12 @@ function SlideShow() {
 				transitionStart: function() {
 					banner = $(window).width() > 1100 ? $('.swiper-slide').eq(this.activeIndex).find('.pcBg.lazy') : $('.swiper-slide').eq(this.activeIndex).find('.spBg.lazy');
 					if(banner.length) {
-						//var img = new Image();
-						//img.onload = function(){
+						var img = new Image();
+						img.onload = function(){
 							banner.css({'background-image': 'url('+ banner.data("original") +')'});
 							banner.removeClass('lazy');
-						//};
-						//img.src = banner.data("original");
+						};
+						img.src = banner.data("original");
 					}
 				},
 				transitionEnd: function() {
@@ -175,14 +175,6 @@ function Resize() {
 	console.log('Resize');
 }
 
-$(window).on('load', function(){
-	$('.loadicon').fadeOut(200, function(){
-		SlideShow();
-		commonEvents();
-		inputHolder();
-	});
-});
-
 if(isIE) {
 	$('.page-wrap').on('scroll', onScroll);
 }else {
@@ -192,7 +184,15 @@ if(isIE) {
 $(window).on("orientationchange", Rotate);
 $(window).on('resize', Resize);
 
-(function() {
+$(window).on('load', function(){
+	$('.loadicon').fadeOut(150, function(){
+		SlideShow();
+		commonEvents();
+		inputHolder();
+	});
+});
 
+
+(function() {
 })();
 
