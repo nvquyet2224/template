@@ -18,7 +18,6 @@ var URLS = [
 	'/template/web/images/prev.png',
 	'/template/web/images/next.png',
 	'/template/web/images/icon-top.png',
-	'/template/web/images/favicon.png',
 	'/template/web/images/icons-192.png',
 	'/template/web/images/bg1.jpg',
 	'/template/web/images/bg1-sp.jpg',
