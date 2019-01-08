@@ -4,13 +4,22 @@ var CACHE_NAME = APP_PREFIX + VERSION;
 var URLS = [
 	'/template/web/',
 	'/template/web/index.html',
-	'/template/web/css/layout.css',
+	'/template/web/css/layout-min.css',
 	'/template/web/css/slide-min.css',
-	'/template/web/css/style.css',
+	'/template/web/css/style-min.css',
+	'/template/web/css/font-min.css',
 	'/template/web/js/jquery-min.js',
 	'/template/web/js/swiper-min.js',
 	'/template/web/js/olw-min.js',
 	'/template/web/js/main.js',
+	'/template/web/images/logo.png',
+	'/template/web/images/prev.svg',
+	'/template/web/images/next.svg',
+	'/template/web/images/prev.png',
+	'/template/web/images/next.png',
+	'/template/web/images/icon-top.png',
+	'/template/web/images/favicon.png',
+	'/template/web/images/icons-192.png',
 	'/template/web/images/bg1.jpg',
 	'/template/web/images/bg1-sp.jpg',
 	'/template/web/images/bg2.jpg',
@@ -36,7 +45,9 @@ var URLS = [
 	'/template/web/images/bg2-light.jpg',
 	'/template/web/images/bg2-sp-light.jpg',
 	'/template/web/fonts/VL_Sofia_Pro_Soft_Light.otf',
-	'/template/web/fonts/SofiaPro-Bold.otf'
+	'/template/web/fonts/SofiaPro-Bold.otf',
+	'/template/web/manifest.json',
+	'/template/web/sw.js'
 ];
 
 // Respond with cached resources

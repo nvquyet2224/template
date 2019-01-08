@@ -190,7 +190,15 @@ $(window).on('load', function(){
 	});
 });
 
-
 (function() {
 })();
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/template/web/sw.js', {scope: '/template/web/'}).then(function(registration) {
+		console.log('Registration succeeded');
+    }, function(err) {
+		console.log('Registration failed !');
+    });
+  });
+}

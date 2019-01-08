@@ -18,6 +18,10 @@
 <link rel="apple-touch-icon" href="images/icons-512.png" sizes="512x512">
 <link rel="preload" href="css/layout-min.css" as="style">
 <link rel="preload" href="images/logo.png" as="image">
+<link href="css/layout-min.css" rel="stylesheet" type="text/css">
+<link href="css/slide-min.css" rel="stylesheet" type="text/css">
+<link href="css/style-min.css" rel="stylesheet" type="text/css">
+<link href="css/font-min.css" rel="stylesheet" type="text/css">
 <link rel="manifest" href="manifest.json">
 <style>body{-webkit-animation:demo-start .2s steps(1,end) 0s forwards;animation:demo-start .2s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}.loadicon{position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:100}</style>
 </head>
@@ -246,13 +250,14 @@
 <!--facilities-->
 </div>
 <!--/page-->
+
 <!--script-->
 <script src="js/jquery-min.js"></script>
 <script src="js/swiper-min.js"></script>
 <script src="js/olw-min.js"></script>
 <script src="js/main.js" defer></script>
 <!--normal style-->
-<noscript id="normal-styles">
+<!--<noscript id="normal-styles">
 <link href="css/layout-min.css" rel="stylesheet" type="text/css">
 <link href="css/slide-min.css" rel="stylesheet" type="text/css">
 <link href="css/style-min.css" rel="stylesheet" type="text/css">
@@ -269,20 +274,7 @@ normalNode.parentElement.removeChild(normalNode);
 var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 if(raf)raf(function(){window.setTimeout(normalStyles,0)});
 else window.addEventListener('load',normalStyles);
-</script>
+</script>-->
 <!--normal style-->
-<!--close this-->
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/template/web/sw.js', {scope: '/template/web/'}).then(function(registration) {
-		console.log('Registration succeeded');
-    }, function(err) {
-		console.log('Registration failed !');
-    });
-  });
-}
-</script>
-<!--/script-->
 </body>
 </html>
