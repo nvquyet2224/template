@@ -272,17 +272,15 @@ else window.addEventListener('load',normalStyles);
 </script>
 <!--normal style-->
 <!--close this-->
-<script>
+<!--<script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/template/web/sw.js', {scope: '/template/web/'}).then(function(registration) {
-		console.log('Registration succeeded');
     }, function(err) {
-		console.log('Registration failed !');
     });
   });
 }
-</script>
+</script>-->
 <!--/script-->
 </body>
 </html>
