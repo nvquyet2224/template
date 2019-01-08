@@ -3,6 +3,7 @@ var VERSION = 'version_01';
 var CACHE_NAME = APP_PREFIX + VERSION;
 var URLS = [
 	'/template/web/',
+	'/template/web/index.html',
 	'/template/web/css/layout.css',
 	'/template/web/css/slide-min.css',
 	'/template/web/css/style.css',

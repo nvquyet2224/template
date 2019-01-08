@@ -168,11 +168,9 @@ function onScroll() {
 }
 
 function Rotate() {
-	console.log('Rotate');
 }
 
 function Resize() {
-	console.log('Resize');
 }
 
 if(isIE) {
