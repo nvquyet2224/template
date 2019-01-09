@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".open-side-nav").click(function(){$(".side-nav").css("width","90%")}),$(".close-side-nav").click(function(){$(".side-nav").css("width","0")})});

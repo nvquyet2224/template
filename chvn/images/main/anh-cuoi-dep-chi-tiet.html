@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cuoi hoi Vietnam</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+  <!--    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Roboto+Condensed:300,400,700|Roboto+Slab:300,400,700&amp;subset=vietnamese" rel="stylesheet">-->
+  <!--    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400,700&amp;subset=vietnamese" rel="stylesheet">-->
+
+  <link href="build/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="build/css/custom.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="build/css/justifiedGallery.min.css">
+  <script type="text/javascript" src="build/js/jquery-3.2.1.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-------------facebook script---------------->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=118868968521651&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+  <!-------------------------------------------->
+
+  <!-------------zalo script---------------->
+  <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+  <!-------------------------------------------->
+
+  <div class="banner-ads banner-ads-left">
+    <div class="content">
+      <img src="https://dummyimage.com/480x710" class="img-responsive">
+    </div>
+  </div>
+  <div class="banner-ads banner-ads-right">
+    <div class="content">
+      <img src="https://dummyimage.com/480x710" class="img-responsive">
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="index.html">
+              <img src="build/images/logo.png" alt="Cưới hỏi Vietnam" />
+            </a>
+          </div>
+          <div class="col-md-6">
+            <div class="right">
+              <form class="form-inline">
+                <div class="input-group add-on">
+                  <input type="text" class="form-control" placeholder="Tìm kiếm" name="srch-term" id="srch-term">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default blue-text" type="submit">
+                      <img src="build/images/icon/search.svg" height="15" alt="">
+                    </button>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-default blue-text member">
+                  <img src="build/images/icon/user.svg" height="17" alt=""> THÀNH VIÊN
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header> <!-- header -->
+
+    <nav id="navigation-top">
+      <div class="container">
+        <ul class="list-nav flex">
+          <li class="flex-grow">
+            <a class="link-nav-menu" href="index.html">TRANG CHỦ</a>
+          </li>
+          <li class="flex-grow dropdown">
+            <a class="link-nav-menu dropdown-toggle" onclick="location.href='khuyen-mai.html';" href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">KHUYẾN MÃI</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Khuyến mãi Uy Tín</a></li>
+              <li><a href="#">Tất cả khuyến mãi</a></li>
+              <li><a href="#">Nhà hàng tiệc cưới</a></li>
+              <li><a href="#">Studio chụp ảnh cưới</a></li>
+              <li><a href="#">Áo cưới</a></li>
+              <li><a href="#">Wedding Planner</a></li>
+              <li><a href="#">Trang điểm cô dâu</a></li>
+              <li><a href="#">Nhẫn cưới</a></li>
+              <li><a href="#">Hoa cưới đẹp</a></li>
+              <li><a href="#">Trang trí tiệc cưới</a></li>
+              <li><a href="#">Trang trí gia tiên</a></li>
+              <li><a href="#">Thiệp cưới đẹp</a></li>
+              <li><a href="#">Quà tặng cưới</a></li>
+              <li><a href="#">Làm đẹp</a></li>
+              <li><a href="#">Bánh cưới</a></li>
+              <li><a href="#">Xe hoa</a></li>
+              <li><a href="#">Dịch vụ nấu ăn</a></li>
+              <li><a href="#">Nhà rạp</a></li>
+              <li><a href="#">Trăng mật</a></li>
+              <li><a href="#">Dịch vụ khác</a></li>
+            </ul>
+          </li>
+          <li class="flex-grow">
+            <a class="link-nav-menu" href="dich-vu-cuoi.html">DỊCH VỤ CƯỚI</a>
+          </li>
+          <li class="flex-grow">
+            <a class="link-nav-menu" href="nha-cung-cap.html">NHÀ CUNG CẤP</a>
+          </li>
+          <li class="flex-grow active">
+            <a class="link-nav-menu" href="anh-cuoi-dep.html">ẢNH CƯỚI ĐẸP</a>
+          </li>
+          <li class="flex-grow">
+            <a class="link-nav-menu" href="xu-huong-cuoi.html">XU HƯỚNG CƯỚI</a>
+          </li>
+          <li class="flex-grow">
+            <a class="link-nav-menu" href="video.html">VIDEO</a>
+          </li>
+          <li class="flex-grow">
+            <a class="link-nav-menu" href="cong-dong.html">CỘNG ĐỒNG</a>
+          </li>
+          <li class="flex-grow">
+            <a class="link-nav-menu" href="cuoc-song-moi.html">CUỘC SỐNG MỚI</a>
+          </li>
+        </ul>
+      </div>
+    </nav> <!-- navigation top -->
+    <section class="sectionContent">
+      <div class="container">
+        <ol class="breadcrumb chvn-breadcrumb">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Ảnh cưới đẹp</a></li>
+          <li class="active">Tên Danh Mục Con</li>
+        </ol>
+
+        <div class="content-panel post">
+          <div class="post-padding">
+            <h1>Trang trí tiệc cưới theo chủ để Hàn Quốc dễ thương</h1>
+            <p class="head-info">21/12/2018 - 1,909 lượt xem</p>
+            <div class="social-panel">
+              <div style="float:left">
+                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+              </div>
+              <div style="float:left;margin-left: 2px;margin-top: 5px;height: 20px;">
+                <div class="zalo-share-button" data-href="http://developers.zalo.me" data-oaid="579745863508352884" data-layout="1" data-color="blue" data-customize="false"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <h5 class="title-article">Để đánh dấu sự thành công của một tập thể trong suốt thời gian vừa qua, việc tổ chức
+              một buổi tiệc gặp gỡ họp mặt mọi người là điều cần thiết.</h5>
+            <p>Trang trí sảnh cưới theo chủ đề Mùa Giáng Sinh tại Callary Wedding & Events hôm nay thật đẹp. Chỉ từ những
+              thứ đơn gian nhưng mang đậm tinh thần lễ hội, chúng tôi đã mang đến một tiệc cưới theo đúng mong muốn của CD
+              CR, những người đã đặt trọn niềm tin vào Callary. Dĩ nhiên, như mọi khi, chúng tôi tạo ra những điều này chỉ
+              vì một lý do đơn giản: Callary yêu những nụ cười rạng ngời hạnh phúc.</p>
+
+          </div>
+        </div>
+      </div>
+
+
+      <main class="gallery-panel">
+
+        <div class="gallery-toolbar">
+          <div class="back-link">
+            <a href="anh-cuoi-dep.html"><img src="build/images/i-back.png" />Trở về Ảnh Cưới Đẹp</a>
+          </div>
+          <div class="view-controls">
+            <a href="javascript:void(0)" class="btn-view-control btn-thumbnail-view" data-container="body" data-toggle="popover" data-html="true" data-placement="top" data-trigger="hover" data-content="Xem ảnh kiểu thu nhỏ">
+              <img src="build/images/icon/thumbnail-view-icon.png" class="normal" alt="" />
+              <img src="build/images/icon/thumbnail-view-icon-hover.png" class="selected" alt="" />
+            </a>
+            <a href="javascript:void(0)" class="btn-view-control btn-justified-view active" data-toggle="popover" data-html="true" data-placement="top" data-trigger="hover" data-content="Xem ảnh kiểu canh đều">
+              <img src="build/images/icon/justified-view-icon.svg" class="normal" alt="" />
+              <img src="build/images/icon/justified-view-icon-hover.svg" class="selected" alt="" />
+            </a>
+            <a href="javascript:void(0)" class="btn-view-control btn-tile-view" data-toggle="popover" data-html="true" data-placement="top" data-trigger="hover" data-content="Xem ảnh kiểu lớp">
+              <img src="build/images/icon/tile-view-icon.svg" class="normal" alt="" />
+              <img src="build/images/icon/tile-view-icon-hover.svg" class="selected" alt="" />
+            </a>
+          </div>
+        </div>
+
+
+        <div id="mygallery">
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="0">
+              <img src="build/images/g-detail-1.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 1</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="1">
+              <img src="build/images/g-detail-2.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 2</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="2">
+              <img src="build/images/g-detail-3.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 3</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="3">
+              <img src="build/images/g-detail-4.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 4</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="4">
+              <img src="build/images/g-detail-5.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 5</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="5">
+              <img src="build/images/g-detail-6.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 6</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="6">
+              <img src="build/images/g-detail-7.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 7</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="7">
+              <img src="build/images/g-detail-8.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 8</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="8">
+              <img src="build/images/g-detail-9.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 9</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="9">
+              <img src="build/images/g-detail-10.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 10</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="10">
+              <img src="build/images/g-detail-11.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 11</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="11">
+              <img src="build/images/g-detail-12.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 12</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="12">
+              <img src="build/images/g-detail-13.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 13</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="13">
+              <img src="build/images/g-detail-14.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 14</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="14">
+              <img src="build/images/g-detail-15.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 15</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <a href="javascript:void(0)" class="open-overlay" data-number="15">
+              <img src="build/images/g-detail-16.jpg" alt="">
+            </a>
+            <div class="p-caption">
+              <div class="description">
+                <a href="#" class="title">Lorem ipsum dolor sit amet 16</a>
+                <a href="#" class="attribution">Lorem Ipsum</a>
+              </div>
+              <div class="icons">
+                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i> 888</a>
+                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 99</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div class="overlay-gallery">
+        <div class="overlay-content">
+          <a href="javascript:void(0)" class="close-popup style" title="Trở về Ảnh Cưới Đẹp Chi Tiết">
+            <img alt="" src="build/images/icon/close-icon.png">
+          </a>
+          <div class="back-link">
+            <a href="anh-cuoi-dep.html" class="close-popup" title="Trở về Ảnh Cưới Đẹp">
+              <img src="build/images/icon/return-arrow.png" alt="" />Trở về Ảnh Cưới Đẹp
+            </a>
+          </div>
+          <div class="promotion">
+            <div class="left-content">
+              <div class="content-center">
+                <a href="khuyen-mai.html">
+                  <img src="https://dummyimage.com/990x405" alt="" />
+                </a>
+              </div>
+            </div>
+            <div class="right-content">
+              <div class="container">
+                <div class="title">
+                  <h3>QUẢNG CÁO</h3>
+                </div>
+                <div class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  <br>
+                  <a href="khuyen-mai.html">Xem chi tiết</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="left-content">
+            <div id="carouselGalleryDetail" class="carousel slide images" data-ride="carousel" data-interval="false" data-title="Trang trí tiệc cưới theo chủ để Hàn Quốc dễ thương">
+              <div class="lds-dual-ring"></div>
+              <div class="carousel-inner">
+                <div class="carousel-item item active" data-title="Lorem ipsum dolor sit amet 1">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-1.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 2">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-2.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 3">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-3.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 4">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-4.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 5">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-5.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 6">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-6.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 7">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-2.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 8">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-2.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 9">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-4.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 10">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-1.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 11">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-5.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 12">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-6.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 13">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-1.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 14">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-4.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 15">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-3.jpg"></div>
+                  </div>
+                </div>
+
+                <div class="carousel-item item" data-title="Lorem ipsum dolor sit amet 16">
+                  <div class="control-item control-prev"></div>
+                  <div class="control-item control-next"></div>
+                  <div class="content-center">
+                    <div class="image-wrapper" data-imagesrc="build/images/g-popup-6.jpg"></div>
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselGalleryDetail" role="button">
+                <img src="build/images/icon/prev.png" alt="">
+              </a>
+              <a class="carousel-control-next" href="#carouselGalleryDetail" role="button">
+                <img src="build/images/icon/next.png" alt="">
+              </a>
+              <div class="overlay-title">
+                <a href="anh-cuoi-dep-chi-tiet.html" title="Trở về Ảnh Cưới Đẹp Chi Tiết"></a>
+              </div>
+              <div class="social-2">
+                <div class="like">
+                  <img alt="" src="build/images/icon/like-icon-2.png" height="13">
+                  <a href="javascript:void(0)">Thích</a>
+                </div>
+                <span class="view-count">909,000 lượt xem</span>
+                <div class="social-panel">
+                  <div class="fb">
+                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+                  </div>
+                  <div class="zl">
+                    <div class="zalo-share-button" data-href="http://developers.zalo.me" data-oaid="579745863508352884" data-layout="1" data-color="blue" data-customize="false"></div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="expand-img">
+                <a href="javascript:void(0)" class="btn-fullscreen">
+                  <img src="build/images/icon/expand-arrow.png" alt="fullscreen" class="on">
+                  <img src="build/images/icon/close-icon.png" alt="exit fullscreen" class="off">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="right-content">
+            <div class="container">
+              <div class="title">
+                <img src="build/images/logo-small.png" alt="" />
+                <h3>Trung Tâm Hội Nghị Tiệc Cưới MerPerle Crystal Palace</h3>
+              </div>
+              <div class="description">
+                Trang trí sảnh cưới theo chủ đề Mùa Giáng Sinh tại Callary Wedding & Events hôm nay thật đẹp.
+                Chỉ từ những thứ đơn gian nhưng mang đậm tinh thần lễ hội, chúng tôi đã mang đến một tiệc cưới
+                theo đúng mong muốn của CD CR, những người đã đặt trọn niềm tin vào Callary.
+              </div>
+            </div>
+            <div class="social">
+              <div class="social-panel">
+                <div class="fb">
+                  <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+                </div>
+                <div class="zl">
+                  <div class="zalo-share-button" data-href="http://developers.zalo.me" data-oaid="579745863508352884" data-layout="1" data-color="blue" data-customize="false"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="container">
+                <div class="summary clearfix">
+                  <div class="like">
+                    <img alt="like" src="build/images/icon/like-icon.png">
+                    <a href="javascript:void(0)">Thích</a>
+                    <span>9</span>
+                  </div>
+                  <div class="comment-filter">
+                    <div class="dropdown show">
+                      <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bình luận mới nhất
+                        <span class="caret"></span>
+                      </a>
+
+                      <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Bình luận mới nhất</a>
+                        <a class="dropdown-item" href="#">Bình luận liên quan nhất</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="new-comment">
+                  <img src="build/images/logo-small.png" alt="" />
+                  <input type="text" placeholder="Viết bình luận ...">
+                </div>
+                <div class="comment-details">
+                  <div class="item">
+                    <div class="content">
+                      <img alt="" src="build/images/thumb-thanh-vien.png">
+                      <div class="content">
+                        <a href="#" class="name">Nguyễn Trâm</a>
+                        Nguyễn Trâm mình thấy mặt bằng ở Bình Dương đâu có khó tìm hay khó thương lượng
+                        tới như Nhà nói, để đâu đâu cũng có Nhà mà mỗi BD ko có Nhà. các tiệm từ thức ăn
+                        tới cà phê, trà sữa mọc như nấm, mà mỗi Nhà là ko về. fan của Nhà nên buồn lắm,
+                        lướt fb cứ ít ngày lại ...
+                        <a href="javascript:void(0)" class="read-more">Xem thêm</a>
+                      </div>
+                      <div class="func-comment">
+                        <div class="dropdown show">
+                          <a class="btn btn-link" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="" src="build/images/icon/dot-spam.png" />
+                          </a>
+
+                          <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuLink1">
+                            <a class="dropdown-item" href="#">Báo cáo Spam</a>
+                            <a class="dropdown-item" href="#">Ẩn bình luận</a>
+                            <a class="dropdown-item" href="#">Xóa bình luận</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-info">
+                      <a href="javascript:void(0)">Thích</a>
+                      <span class="like-count">3</span>
+                      <span class="dot">·</span>
+                      <a href="javascript:void(0)">Trả lời</a>
+                      <span class="dot">·</span>
+                      <span class="date">2:12 · 28/3/2018</span>
+                    </div>
+                  </div>
+                  <div class="item sub">
+                    <div class="content">
+                      <img alt="" src="build/images/thumb-thanh-vien.png">
+                      <div class="content">
+                        <a href="#" class="name">Nguyễn Trâm</a>
+                        Nguyễn Trâm mình thấy mặt bằng ở Bình Dương đâu có khó tìm hay khó thương lượng
+                        tới như Nhà nói, để đâu đâu cũng có Nhà mà mỗi BD ko có Nhà. các tiệm từ thức ăn
+                        tới cà phê, trà sữa mọc như nấm, mà mỗi Nhà là ko về. fan của Nhà nên buồn lắm,
+                        lướt fb cứ ít ngày lại ...
+                        <a href="javascript:void(0)" class="read-more">Xem thêm</a>
+                      </div>
+                      <div class="func-comment">
+                        <div class="dropdown show">
+                          <a class="btn btn-link" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="" src="build/images/icon/dot-spam.png" />
+                          </a>
+
+                          <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuLink1">
+                            <a class="dropdown-item" href="#">Báo cáo Spam</a>
+                            <a class="dropdown-item" href="#">Ẩn bình luận</a>
+                            <a class="dropdown-item" href="#">Xóa bình luận</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-info">
+                      <a href="javascript:void(0)">Thích</a>
+                      <span class="like-count">3</span>
+                      <span class="dot">·</span>
+                      <a href="javascript:void(0)">Trả lời</a>
+                      <span class="dot">·</span>
+                      <span class="date">2:12 · 28/3/2018</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="read-more-comment">
+                  <a href="javascript:void(0)">Xem thêm 35 bình luận khác</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-panel post">
+        <div class="container">
+          <div class="post-padding">
+            <div class="footer-post">
+              <div class="tag">
+                <h3>
+                  TAGs
+                  <a class="q-tag" href="javascript:void(0)" data-container="body" data-toggle="popover" data-html="true" data-placement="top" data-trigger="hover" data-content="Tags là các từ khoá giúp cho bạn dễ dàng hơn trong việc xem các thông tin cùng chủ đề trên Cưới Hỏi Việt Nam. Hãy bấm chọn để xem tiếp.">
+                    <img alt="tags" src="build/images/icon/i-tag.png">
+                  </a>
+                </h3>
+
+                <div class="tag-list">
+                  <a href="#">
+                    <span class="label">màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">đám cưới màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">tông cưới màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">cưới màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">đám cưới màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">đám cưới màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">tông cưới màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">cưới màu tím</span>
+                  </a>
+                  <a href="#">
+                    <span class="label">đám cưới màu tím</span>
+                  </a>
+                </div>
+              </div>
+              <div class="social-panel">
+                <div style="float:left">
+                  <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+                </div>
+                <div style="float:left;margin-left: 2px;margin-top: 5px;height: 20px;">
+                  <div class="zalo-share-button" data-href="http://developers.zalo.me" data-oaid="579745863508352884" data-layout="1" data-color="blue" data-customize="false"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="social-comment">
+              <div class="top">
+                <div class="count-comment">
+                  <span>200 bình luận</span>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mới nhất <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Hàng đầu</a></li>
+                    <li><a href="#">Mới nhất</a></li>
+                    <li><a href="#">Cũ nhất</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="new-comment">
+                <img src="build/images/icon/none-avatar.png" alt="">
+                <div class="content">
+                  <div>
+                    <a href="#">Đăng nhập</a> hoặc <a href="#">đăng ký</a> để đăng bình luận
+                  </div>
+                </div>
+              </div>
+              <div class="comments">
+                <div class="r-comment">
+                  <a class="avatar" href="#">
+                    <img src="build/images/icon/m-avatar.png" alt="">
+                  </a>
+                  <div class="content">
+                    <a class="name" href="#">Tiên Vũ</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla p</p>
+                    <div class="comment-info">
+                      <a href="javascript:void(0)">Thích</a>
+                      <span class="like-count">3</span>
+                      <span class="dot">·</span>
+                      <a href="javascript:void(0)">Trả lời</a>
+                      <span class="dot">·</span>
+                      <span class="date">28/3/2018 2:12</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="read-more-comment">
+                <button class="btn btn-lg btn-bp">Tải thêm 10 bình luận</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <a href="javascript:void(0)" class="close-popup">
+            <img src="build/images/icon/close-icon.png" alt="" />
+          </a>
+          <img src="https://dummyimage.com/700x500" alt="" />
+        </div>
+      </div>
+    </section>
+    <footer id="wrapper-footer">
+      <div class="top-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <a href="index.html" class="logo">
+                <img src="build/images/logo.png" alt="Cưới hỏi Vietnam" />
+              </a>
+              <div class="content-2">Trang thông tin cưới hỏi uy tín ở Việt Nam</div>
+            </div>
+            <div class="col-md-4">
+              <div class="content-3">
+                <span>Kết nối với Cưới hỏi Việt Nam:</span>
+                <div class="social">
+                  <a href="javascript:void(0);">
+                    <img src="build/images/icon/fb-ico.png" alt="Facebook">
+                  </a>
+                  <a href="javascript:void(0);">
+                    <img src="build/images/icon/pinterest-ico.png" alt="Pintersest">
+                  </a>
+                  <a href="javascript:void(0);">
+                    <img src="build/images/icon/google-plus-ico.png" alt="Google +">
+                  </a>
+                  <a href="javascript:void(0);">
+                    <img src="build/images/icon/mail-ico.png" alt="Email">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="bottom-footer">
+        <div class="container">
+          <div class="row row-chvn-1">
+            <div class="col-md-3">
+              <p>
+                Liên hệ: A. Vũ Đức Tiên <br>
+                (Chuyên viên phát triển kinh doanh) <br>
+                Điện thoại: 0903 679 809 <br>
+                Email: tien.cuoihoivietnam@gmail.com <br>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p>
+                Cơ quan chủ quản: CÔNG TY TNHH QUẢNG CÁO VÀ TRUYỀN THÔNG QUANG THẢO <br>
+                Địa chỉ: 49/11 Hoàng Dư Khương, Phường 12, Quận 10, TP. HCM <br>
+                Giấy chứng nhận ĐKKD số: 0312209624 do Sở KHĐT TP.HCM cấp ngày 29/03/2013. <br>
+                Người chịu trách nhiệm chính: Ông Vũ Đức Thảo - Giám đốc Công ty.
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p>
+                QUY CHẾ hoạt động của Cuoihoivietnam.com <br>
+                ® Ghi rõ nguồn "Cuoihoivietnam.com" <br>
+                khi phát hành lại thông tin từ website này. <br>
+                Đã thông báo với Bộ Công Thương.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="build/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="build/js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="build/js/jquery.justifiedGallery.min.js"></script>
+  <script type="text/javascript" src="build/js/script.js"></script>
+  <script type="text/javascript" src="build/js/app.js"></script>
+  <script type="text/javascript" src="build/js/galleryview.js"></script>
+
+</body>
+
+</html>
