@@ -84,14 +84,12 @@
 
 <div class="search-box">
 <div class="search-txt">
-<label><input type="text" id="" value="Tìm kiếm" data-holder="Tìm kiếm"></label>
+<label class="hide-text">Search<input type="text" id="" value="Tìm kiếm" data-holder="Tìm kiếm"></label>
 </div>
 <button id="search-but" class="hide-text">Search</button>
 </div>
 
-<button type="button" id="member-register">
-<img src="images/icon/user.svg" alt="">Thành viên
-</button>
+<button type="button" id="member-but"><img src="images/icon/user.svg" alt="Thành viên">Thành viên</button>
 
 </div>
 </header>
@@ -100,24 +98,36 @@
 <div class="cnt-wrap">
 <div class="cnt-inr">
 
+<!--HOME PAGE-->
+
 <!--banner collapse-->
 <div class="section-box">
 <div class="section-inr banner-collapse">
+
+<div class="box">
+<div class="box-inner">
+
 <a href="javascript:void(0);">
-<div class="collapse-small">
+<div class="area-pic small">
 <img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/collapse-small.jpg" alt="mùa tình yêu">
 </div>
-<div class="collapse-full"><img draggable="false" src="images/collapse-full.jpg" alt="mùa tình yêu"></div>
+<div class="area-pic big"><img draggable="false" src="images/collapse-full.jpg" alt="mùa tình yêu"></div>
 </a>
 </div>
+
+</div>
+</div>
+
 </div>
 <!--/banner collapse-->
 
 <!--banner-->
 <div class="section-box">
-<div class="section-inr banner-separate">
+<div class="section-inr banner">
 
-<div class="box banner">
+<div class="box size-08">
+<div class="box-inner">
+
 <div class="banner-slider">
 
 <div class="banner-item">
@@ -157,10 +167,12 @@
 </div>
 
 </div>
+
+</div>
 </div>
 
-<div class="box promotion">
-<div class="promotion-inner">
+<div class="box size-04 text-separate">
+<div class="box-inner">
 <a href="javascript:void(0);">
 <div class="area-bg cmBg lazy" data-original="images/upload/thumbnail-1.jpg"></div>
 <div class="area-txt">
@@ -177,7 +189,7 @@
 <!--news-->
 <div class="section-box">
 
-<div class="section-inr news">
+<div class="section-inr separete-2 text-separate news">
 
 <div class="box">
 <div class="box-inner">
@@ -258,9 +270,9 @@
 <!--gallery-->
 <div class="section-box">
 
-<div class="title"><h2>ảnh cưới đẹp chọn lọc</h2></div>
+<div class="title"><h3>ảnh cưới đẹp chọn lọc</h3></div>
 
-<div class="section-inr gallery separate-3 bg-gradient per-100">
+<div class="section-inr separate-3 text-over bg-gradient gallery">
 
 <div class="box">
 <div class="box-inner">
@@ -377,9 +389,9 @@
 <!--service-->
 <div class="section-box">
 
-<div class="title"><h2>dịch vụ cưới</h2></div>
+<div class="title"><h3>dịch vụ cưới</h3></div>
 
-<div class="section-inr service bg-color separate-6 per-100">
+<div class="section-inr separate-6 text-over bg-color service">
 
 <div class="box">
 <div class="box-inner">
@@ -583,24 +595,28 @@
 </div>
 <!--/service-->
 
-<!--full pic-->
+<!---banner-fulll-->
 <div class="section-box">
-<div class="section-inr full-box">
+<div class="section-inr banner-full">
+
+<div class="box">
 <a href="javascript:void(0);">
-<div class="full-pic">
+<div class="area-pic">
 <img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/upload/banner1.jpg" alt="pic">
 </div>
 </a>
 </div>
+
 </div>
-<!--/full pic-->
+</div>
+<!--/-banner-fulll-->
 
 <!--albums-->
 <div class="section-box">
 
-<div class="title"><h2>album cưới mới nhất</h2></div>
+<div class="title"><h3>album cưới mới nhất</h3></div>
 
-<div class="section-inr albums separate-3 bg-gradient per-100">
+<div class="section-inr separate-3 text-over bg-gradient albums">
 
 <div class="box">
 <div class="box-inner">
@@ -717,9 +733,9 @@
 <!--videos-->
 <div class="section-box">
 
-<div class="title"><h2>video cưới đẹp</h2></div>
+<div class="title"><h3>video cưới đẹp</h3></div>
 
-<div class="section-inr videos separate-3 per-50">
+<div class="section-inr separate-3 text-separate videos">
 
 <div class="box">
 <div class="box-inner">
@@ -809,12 +825,12 @@
 </div>
 <!--/videos-->
 
-<!--videos-->
+<!--distributor-->
 <div class="section-box">
 
-<div class="title"><h2>nhà cung cấp mới tham gia</h2></div>
+<div class="title"><h3>nhà cung cấp mới tham gia</h3></div>
 
-<div class="section-inr distributor separate-6">
+<div class="section-inr separate-6 text-separate distributor">
 
 <div class="box">
 <div class="box-inner">
@@ -896,24 +912,28 @@
 
 </div>
 </div>
-<!--/videos-->
+<!--/distributor-->
 
-<!--full pic-->
+<!--banner-fulll-->
 <div class="section-box">
-<div class="section-inr full-box">
+<div class="section-inr banner-full">
+
+<div class="box">
 <a href="javascript:void(0);">
-<div class="full-pic">
+<div class="area-pic">
 <img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/upload/banner2.jpg" alt="pic">
 </div>
 </a>
 </div>
+
 </div>
-<!--/full pic-->
+</div>
+<!--/banner-fulll-->
 
 <!--register-->
 <div class="section-box">
 
-<div class="title"><h2>đăng ký nhận tin</h2></div>
+<div class="title"><h3>đăng ký nhận tin</h3></div>
 
 <div class="section-inr register-box">
 
@@ -923,17 +943,1311 @@
 
 <div class="area-form">
 <form id="form_register">
-<label>
+<label class="hide-text">Đăng ký
 <input type="text" id="register-input" data-holder="Nhập địa chỉ email của bạn..." value="Nhập địa chỉ email của bạn...">
 <button type="submit" id="register-but">Đăng ký</button>
 </label>
-
 </form>
 </div>
 
 </div>
 </div>
 <!--/register-->
+
+<!--/HOME PAGE-->
+
+
+
+
+
+
+<!--PROMOTION PAGE-->
+
+<!--banner collapse-->
+<div class="section-box">
+<div class="section-inr banner-collapse">
+
+<div class="box">
+<div class="box-inner">
+
+<a href="javascript:void(0);">
+<div class="area-pic small">
+<img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/collapse-small.jpg" alt="mùa tình yêu">
+</div>
+<div class="area-pic big"><img draggable="false" src="images/collapse-full.jpg" alt="mùa tình yêu"></div>
+</a>
+</div>
+
+</div>
+</div>
+
+</div>
+<!--/banner collapse-->
+
+<!--breadcrumb-->
+<div class="section-box">
+<div class="section-inr">
+
+<div class="box">
+<div class="box-inner">
+
+<ul class="breadcrumb">
+<li><a href="javascript:void(0)">Trang chủ</a></li>
+<li><a href="javascript:void(0)">Khuyến Mãi</a></li>
+<li class="active">Khuyến Mãi Uy Tín</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+</div>
+<!--/breadcrumb-->
+
+<!--promotion list-->
+<div class="section-box">
+
+<div class="title"><h2>Khuyến Mãi Uy Tín</h2></div>
+
+<div class="section-inr block-search">
+
+<div class="box">
+<div class="box-inr">
+<span>TÌM KIẾM KHUYẾN MÃI</span>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Khuyến mãi uy tín</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Khuyến mãi uy tín</li>
+<li data-target="2">Tất cả khuyến mãi</li>
+<li data-target="3">Nhà hàng tiệc cưới</li>
+<li data-target="4">Studio chụp ảnh cưới</li>
+<li data-target="5">Áo cưới</li>
+<li data-target="6">Wedding Planner</li>
+<li data-target="7">Trang điểm cô dâu</li>
+<li data-target="8">Nhẫn cưới</li>
+<li data-target="9">Hoa cưới đẹp</li>
+<li data-target="10">Trang trí tiệc cưới</li>
+<li data-target="11">Trang trí gia tiên</li>
+<li data-target="12">Thiệp cưới đẹp</li>
+<li data-target="13">Quà tặng cưới</li>
+<li data-target="14">Làm đẹp</li>
+<li data-target="15">Bánh cưới</li>
+<li data-target="16">Xe hoa</li>
+<li data-target="17">Dịch vụ nấu ăn</li>
+<li data-target="18">Nhà rạp</li>
+<li data-target="19">Trăng mật</li>
+<li data-target="20">Dịch vụ khác</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Tất cả tỉnh/thành phố</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Tất cả tỉnh/thành phố</li>
+<li data-target="2">HỒ CHÍ MINH</li>
+<li data-target="3">&#8729; Quận 1</li>
+<li data-target="4">&#8729; Quận 2</li>
+<li data-target="5">&#8729; Quận 3</li>
+<li data-target="6">&#8729; Quận 4</li>
+<li data-target="7">&#8729; Quận 5</li>
+<li data-target="8">&#8729; Quận 6</li>
+<li data-target="9">&#8729; Quận 7</li>
+<li data-target="10">&#8729; Quận 8</li>
+<li data-target="11">&#8729; Quận 9</li>
+<li data-target="12">&#8729; Quận 10</li>
+<li data-target="13">&#8729; Quận 11</li>
+<li data-target="14">&#8729; Quận 12</li>
+<li data-target="15">&#8729; Quận Bình Tân</li>
+<li data-target="16">&#8729; Quận Thủ Đức</li>
+<li data-target="17">&#8729; Quận Gò Vấp</li>
+<li data-target="18">&#8729; Quận Bình Thạnh</li>
+<li data-target="19">&#8729; Quận Tân Bình</li>
+<li data-target="20">&#8729; Quận Tân Phú</li>
+<li data-target="21">&#8729; Huyện Bình Chánh</li>
+<li data-target="22">&#8729; Huyện Cần Giờ</li>
+<li data-target="23">&#8729; Huyện Củ Chi</li>
+<li data-target="24">&#8729; Huyện Hóc Môn</li>
+<li data-target="25">&#8729; Huyện Nhà Bè</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Xem ngẫu nhiên</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Xem ngẫu nhiên</li>
+<li data-target="2">Mới nhất</li>
+<li data-target="3">Cũ nhất</li>
+<li data-target="4">TẤT CẢ GIÁ</li>
+<li data-target="5">&#8729; Giá từ Thấp &gt; Cao</li>
+<li data-target="6">&#8729; Giá từ Cao & Thấp</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+<button class="btn-search" id="promotion-but">Tìm ngay</button>
+</div>
+</div>
+
+</div>
+
+<div class="section-inr separate-3 text-separate promotion-section">
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Tưng Bừng Mùa Lễ Hội - Tất Niên Tân Niên Trọn Gói Chỉ Từ 449.000 / Khách</h3>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Tưng Bừng Ưu Đãi Tiệc Tất Niên Tân Niên Tại Trung Tâm Hội Nghị Tiệc Cưới Bạch Kim</h3>
+<div class="price">5,900,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi</p>
+<h5>Nhà hàng tiệc cưới Calary</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Ưu đãi LỚN NHẤT Trong Năm Với GIÁ CHỈ 99.000Đ/BÀN</h3>
+<div class="price">90,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-1.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới New World</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Giảm 50% váy cưới khi book makeup tại Hà Dino trong tháng 12 năm 2018.</h3>
+<div class="price">1,245,000<sup>đ</sup>/Lần</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/logo-partner3.jpg"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Gói phim trường Mộc Thanh Q.7, TP.HCM</h3>
+<div class="price">8,000,000<sup>đ</sup>/Album</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/logo-partner3.jpg"></div>
+<div class="post-info">
+<p>Đăng bởi</p>
+<h5>Nhà hàng tiệc cưới Bạch Kim</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Chào Noel và Xuân 2018 - 1986studio giảm mặc định 10% trong BST 2017</h3>
+<div class="price">4,000<sup>đ</sup>/Thiệp</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Tưng Bừng Mùa Lễ Hội - Tất Niên Tân Niên Trọn Gói Chỉ Từ 449.000 / Khách</h3>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Tưng Bừng Ưu Đãi Tiệc Tất Niên Tân Niên Tại Trung Tâm Hội Nghị Tiệc Cưới Bạch Kim</h3>
+<div class="price">5,900,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi</p>
+<h5>Nhà hàng tiệc cưới Calary</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Ưu đãi LỚN NHẤT Trong Năm Với GIÁ CHỈ 99.000Đ/BÀN</h3>
+<div class="price">90,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-1.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới New World</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Giảm 50% váy cưới khi book makeup tại Hà Dino trong tháng 12 năm 2018.</h3>
+<div class="price">1,245,000<sup>đ</sup>/Lần</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/logo-partner3.jpg"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Gói phim trường Mộc Thanh Q.7, TP.HCM</h3>
+<div class="price">8,000,000<sup>đ</sup>/Album</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/logo-partner3.jpg"></div>
+<div class="post-info">
+<p>Đăng bởi</p>
+<h5>Nhà hàng tiệc cưới Bạch Kim</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Chào Noel và Xuân 2018 - 1986studio giảm mặc định 10% trong BST 2017</h3>
+<div class="price">4,000<sup>đ</sup>/Thiệp</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Tưng Bừng Mùa Lễ Hội - Tất Niên Tân Niên Trọn Gói Chỉ Từ 449.000 / Khách</h3>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Tưng Bừng Ưu Đãi Tiệc Tất Niên Tân Niên Tại Trung Tâm Hội Nghị Tiệc Cưới Bạch Kim</h3>
+<div class="price">5,900,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi</p>
+<h5>Nhà hàng tiệc cưới Calary</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-3.jpg">
+<div class="expired">HẾT HẠN</div>
+</div>
+<div class="area-txt">
+<h3>Ưu đãi LỚN NHẤT Trong Năm Với GIÁ CHỈ 99.000Đ/BÀN</h3>
+<div class="price">90,000<sup>đ</sup>/Bàn</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-1.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới New World</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-2.jpg">
+<div class="expired">HẾT HẠN</div>
+</div>
+<div class="area-txt">
+<h3>Giảm 50% váy cưới khi book makeup tại Hà Dino trong tháng 12 năm 2018.</h3>
+<div class="price">1,245,000<sup>đ</sup>/Lần</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/logo-partner3.jpg"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-1.jpg">
+<div class="expired">HẾT HẠN</div>
+</div>
+<div class="area-txt">
+<h3>Gói phim trường Mộc Thanh Q.7, TP.HCM</h3>
+<div class="price">8,000,000<sup>đ</sup>/Album</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/logo-partner3.jpg"></div>
+<div class="post-info">
+<p>Đăng bởi</p>
+<h5>Nhà hàng tiệc cưới Bạch Kim</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-promotion-3.jpg">
+<div class="expired">HẾT HẠN</div>
+</div>
+<div class="area-txt">
+<h3>Chào Noel và Xuân 2018 - 1986studio giảm mặc định 10% trong BST 2017</h3>
+<div class="price">4,000<sup>đ</sup>/Thiệp</div>
+<div class="post">
+<div class="post-logo"><img src="images/upload/thumbnail-supplier-2.png"></div>
+<div class="post-info">
+<p>Đăng bởi | TÀI TRỢ</p>
+<h5>Nhà hàng tiệc cưới Metropole</h5>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+</div>
+
+<div class="section-inr">
+<p>Paging here</p>
+</div>
+
+
+</div>
+<!--/promotion list-->
+
+<!--banner-fulll-->
+<div class="section-box">
+<div class="section-inr banner-full">
+
+<div class="box">
+<a href="javascript:void(0);">
+<div class="area-pic">
+<img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/upload/banner-promotion-1.jpg" alt="pic">
+</div>
+</a>
+</div>
+
+</div>
+</div>
+<!--/banner-fulll-->
+
+<!--/PROMOTION PAGE-->
+
+
+
+
+
+<!--SERVICES PAGE-->
+
+<!--banner collapse-->
+<div class="section-box">
+<div class="section-inr banner-collapse">
+
+<div class="box">
+<div class="box-inner">
+
+<a href="javascript:void(0);">
+<div class="area-pic small">
+<img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/collapse-small.jpg" alt="mùa tình yêu">
+</div>
+<div class="area-pic big"><img draggable="false" src="images/collapse-full.jpg" alt="mùa tình yêu"></div>
+</a>
+</div>
+
+</div>
+</div>
+
+</div>
+<!--/banner collapse-->
+
+<!--breadcrumb-->
+<div class="section-box">
+<div class="section-inr">
+
+<div class="box">
+<div class="box-inner">
+
+<ul class="breadcrumb">
+<li><a href="javascript:void(0)">Trang chủ</a></li>
+<li><a href="javascript:void(0)">Dịch Vụ Cưới</a></li>
+<li class="active">Dịch Vụ Cưới Uy Tín</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+</div>
+<!--/breadcrumb-->
+
+<!--service list-->
+<div class="section-box">
+
+<div class="title"><h2>Dịch Vụ Cưới Uy Tín</h2></div>
+
+<div class="section-inr block-search">
+
+<div class="box">
+<div class="box-inr">
+<span>TÌM KIẾM DỊCH VỤ CƯỚI</span>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Dịch Vụ Cưới Uy Tín</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Dịch Vụ Cưới Uy Tín</li>
+<li data-target="2">Tất cả dịch vụ cưới</li>
+<li data-target="3">Nhà hàng tiệc cưới</li>
+<li data-target="4">Studio chụp ảnh cưới</li>
+<li data-target="5">Áo cưới</li>
+<li data-target="6">Wedding Planner</li>
+<li data-target="7">Trang điểm cô dâu</li>
+<li data-target="8">Nhẫn cưới</li>
+<li data-target="9">Hoa cưới đẹp</li>
+<li data-target="10">Trang trí tiệc cưới</li>
+<li data-target="11">Trang trí gia tiên</li>
+<li data-target="12">Thiệp cưới đẹp</li>
+<li data-target="13">Quà tặng cưới</li>
+<li data-target="14">Làm đẹp</li>
+<li data-target="15">Bánh cưới</li>
+<li data-target="16">Xe hoa</li>
+<li data-target="17">Dịch vụ nấu ăn</li>
+<li data-target="18">Nhà rạp</li>
+<li data-target="19">Trăng mật</li>
+<li data-target="20">Dịch vụ khác</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Tất cả tỉnh/thành phố</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Tất cả tỉnh/thành phố</li>
+<li data-target="2">HỒ CHÍ MINH</li>
+<li data-target="3">&#8729; Quận 1</li>
+<li data-target="4">&#8729; Quận 2</li>
+<li data-target="5">&#8729; Quận 3</li>
+<li data-target="6">&#8729; Quận 4</li>
+<li data-target="7">&#8729; Quận 5</li>
+<li data-target="8">&#8729; Quận 6</li>
+<li data-target="9">&#8729; Quận 7</li>
+<li data-target="10">&#8729; Quận 8</li>
+<li data-target="11">&#8729; Quận 9</li>
+<li data-target="12">&#8729; Quận 10</li>
+<li data-target="13">&#8729; Quận 11</li>
+<li data-target="14">&#8729; Quận 12</li>
+<li data-target="15">&#8729; Quận Bình Tân</li>
+<li data-target="16">&#8729; Quận Thủ Đức</li>
+<li data-target="17">&#8729; Quận Gò Vấp</li>
+<li data-target="18">&#8729; Quận Bình Thạnh</li>
+<li data-target="19">&#8729; Quận Tân Bình</li>
+<li data-target="20">&#8729; Quận Tân Phú</li>
+<li data-target="21">&#8729; Huyện Bình Chánh</li>
+<li data-target="22">&#8729; Huyện Cần Giờ</li>
+<li data-target="23">&#8729; Huyện Củ Chi</li>
+<li data-target="24">&#8729; Huyện Hóc Môn</li>
+<li data-target="25">&#8729; Huyện Nhà Bè</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Xem ngẫu nhiên</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Xem ngẫu nhiên</li>
+<li data-target="2">Mới nhất</li>
+<li data-target="3">Cũ nhất</li>
+<li data-target="4">TẤT CẢ GIÁ</li>
+<li data-target="5">&#8729; Giá từ Thấp &gt; Cao</li>
+<li data-target="6">&#8729; Giá từ Cao & Thấp</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+<button class="btn-search" id="service-but">Tìm ngay</button>
+</div>
+</div>
+
+</div>
+
+<div class="section-inr separate-3 text-separate service-section">
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngày Cưới Trọn Vẹn Với Nhà Hàng Tiệc Cưới Riverside.</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Callary Wedding &amp; Event</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngọt ngào và tươi mới với Sweety Wedding</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Riverside Palace ∙ TÀI TRỢ</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Bộ Thiệp Cưới Đẹp Phong Cách Cổ Điển</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Thiệp Cưới Phúc Tài</p></div>
+</div>
+<div class="price">9,000<sup>đ</sup>/Thiệp</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngày Cưới Trọn Vẹn Với Nhà Hàng Tiệc Cưới Riverside.</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Callary Wedding &amp; Event</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Bộ Thiệp Cưới Đẹp Phong Cách Cổ Điển</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Thiệp Cưới Phúc Tài</p></div>
+</div>
+<div class="price">9,000<sup>đ</sup>/Thiệp</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngọt ngào và tươi mới với Sweety Wedding</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Riverside Palace ∙ TÀI TRỢ</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Bộ Thiệp Cưới Đẹp Phong Cách Cổ Điển</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Thiệp Cưới Phúc Tài</p></div>
+</div>
+<div class="price">9,000<sup>đ</sup>/Thiệp</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngày Cưới Trọn Vẹn Với Nhà Hàng Tiệc Cưới Riverside.</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Callary Wedding &amp; Event</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngọt ngào và tươi mới với Sweety Wedding</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Riverside Palace ∙ TÀI TRỢ</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngọt ngào và tươi mới với Sweety Wedding</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Riverside Palace ∙ TÀI TRỢ</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngày Cưới Trọn Vẹn Với Nhà Hàng Tiệc Cưới Riverside.</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Callary Wedding &amp; Event</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Bộ Thiệp Cưới Đẹp Phong Cách Cổ Điển</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Thiệp Cưới Phúc Tài</p></div>
+</div>
+<div class="price">9,000<sup>đ</sup>/Thiệp</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Bộ Thiệp Cưới Đẹp Phong Cách Cổ Điển</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Thiệp Cưới Phúc Tài</p></div>
+</div>
+<div class="price">9,000<sup>đ</sup>/Thiệp</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngày Cưới Trọn Vẹn Với Nhà Hàng Tiệc Cưới Riverside.</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Callary Wedding &amp; Event</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngọt ngào và tươi mới với Sweety Wedding</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Riverside Palace ∙ TÀI TRỢ</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-1.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngày Cưới Trọn Vẹn Với Nhà Hàng Tiệc Cưới Riverside.</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Callary Wedding &amp; Event</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-3.jpg">
+</div>
+<div class="area-txt">
+<h3>Bộ Thiệp Cưới Đẹp Phong Cách Cổ Điển</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Thiệp Cưới Phúc Tài</p></div>
+</div>
+<div class="price">9,000<sup>đ</sup>/Thiệp</div>
+</div>
+</a>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0)">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumb-wedding-service-2.jpg">
+</div>
+<div class="area-txt">
+<h3>Ngọt ngào và tươi mới với Sweety Wedding</h3>
+<div class="post">
+<div class="post-info"><p>bởi: Riverside Palace ∙ TÀI TRỢ</p></div>
+</div>
+<div class="price">3,190,000<sup>đ</sup>/Bàn</div>
+</div>
+</a>
+</div>
+</div>
+
+</div>
+
+<div class="section-inr">
+<p>Paging here</p>
+</div>
+
+
+</div>
+<!--/service list-->
+
+<!--banner-fulll-->
+<div class="section-box">
+<div class="section-inr banner-full">
+
+<div class="box">
+<a href="javascript:void(0);">
+<div class="area-pic">
+<img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/upload/banner-promotion-1.jpg" alt="pic">
+</div>
+</a>
+</div>
+
+</div>
+</div>
+<!--/banner-fulll-->
+
+<!--/SERVICES PAGE-->
+
+
+
+<!--DISTRIBUTOR PAGE-->
+
+<!--banner collapse-->
+<div class="section-box">
+<div class="section-inr banner-collapse">
+
+<div class="box">
+<div class="box-inner">
+
+<a href="javascript:void(0);">
+<div class="area-pic small">
+<img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/collapse-small.jpg" alt="mùa tình yêu">
+</div>
+<div class="area-pic big"><img draggable="false" src="images/collapse-full.jpg" alt="mùa tình yêu"></div>
+</a>
+</div>
+
+</div>
+</div>
+
+</div>
+<!--/banner collapse-->
+
+<!--breadcrumb-->
+<div class="section-box">
+<div class="section-inr">
+
+<div class="box">
+<div class="box-inner">
+
+<ul class="breadcrumb">
+<li><a href="javascript:void(0)">Trang chủ</a></li>
+<li><a href="javascript:void(0)">Nhà Cung Cấp</a></li>
+<li class="active">Nhà Cung Cấp Uy Tín</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+</div>
+<!--/breadcrumb-->
+
+<!--distributor list-->
+<div class="section-box">
+
+<div class="title"><h2>Nhà Cung Cấp Uy Tín</h2></div>
+
+<div class="section-inr block-search">
+
+<div class="box">
+<div class="box-inr">
+<span>TÌM KIẾM NHÀ CUNG CẤP</span>
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Nhà Cung Cấp Uy Tín</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Nhà Cung Cấp Uy Tín</li>
+<li data-target="2">Tất cả dịch vụ cưới</li>
+<li data-target="3">Nhà hàng tiệc cưới</li>
+<li data-target="4">Studio chụp ảnh cưới</li>
+<li data-target="5">Áo cưới</li>
+<li data-target="6">Wedding Planner</li>
+<li data-target="7">Trang điểm cô dâu</li>
+<li data-target="8">Nhẫn cưới</li>
+<li data-target="9">Hoa cưới đẹp</li>
+<li data-target="10">Trang trí tiệc cưới</li>
+<li data-target="11">Trang trí gia tiên</li>
+<li data-target="12">Thiệp cưới đẹp</li>
+<li data-target="13">Quà tặng cưới</li>
+<li data-target="14">Làm đẹp</li>
+<li data-target="15">Bánh cưới</li>
+<li data-target="16">Xe hoa</li>
+<li data-target="17">Dịch vụ nấu ăn</li>
+<li data-target="18">Nhà rạp</li>
+<li data-target="19">Trăng mật</li>
+<li data-target="20">Dịch vụ khác</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Tất cả tỉnh/thành phố</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Tất cả tỉnh/thành phố</li>
+<li data-target="2">HỒ CHÍ MINH</li>
+<li data-target="3">&#8729; Quận 1</li>
+<li data-target="4">&#8729; Quận 2</li>
+<li data-target="5">&#8729; Quận 3</li>
+<li data-target="6">&#8729; Quận 4</li>
+<li data-target="7">&#8729; Quận 5</li>
+<li data-target="8">&#8729; Quận 6</li>
+<li data-target="9">&#8729; Quận 7</li>
+<li data-target="10">&#8729; Quận 8</li>
+<li data-target="11">&#8729; Quận 9</li>
+<li data-target="12">&#8729; Quận 10</li>
+<li data-target="13">&#8729; Quận 11</li>
+<li data-target="14">&#8729; Quận 12</li>
+<li data-target="15">&#8729; Quận Bình Tân</li>
+<li data-target="16">&#8729; Quận Thủ Đức</li>
+<li data-target="17">&#8729; Quận Gò Vấp</li>
+<li data-target="18">&#8729; Quận Bình Thạnh</li>
+<li data-target="19">&#8729; Quận Tân Bình</li>
+<li data-target="20">&#8729; Quận Tân Phú</li>
+<li data-target="21">&#8729; Huyện Bình Chánh</li>
+<li data-target="22">&#8729; Huyện Cần Giờ</li>
+<li data-target="23">&#8729; Huyện Củ Chi</li>
+<li data-target="24">&#8729; Huyện Hóc Môn</li>
+<li data-target="25">&#8729; Huyện Nhà Bè</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+
+<div class="select-list">
+<div class="select-header"><h3>Xem ngẫu nhiên</h3></div>
+<div class="select-box">
+<ul>
+<li class="selected" data-target="1">Xem ngẫu nhiên</li>
+<li data-target="2">Mới nhất</li>
+<li data-target="3">Cũ nhất</li>
+<li data-target="4">TẤT CẢ GIÁ</li>
+<li data-target="5">&#8729; Giá từ Thấp &gt; Cao</li>
+<li data-target="6">&#8729; Giá từ Cao & Thấp</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<div class="box-inr">
+<button class="btn-search" id="service-but">Tìm ngay</button>
+</div>
+</div>
+
+</div>
+
+<div class="section-inr separate-3 text-separate distributor-section">
+
+<!--test-->
+
+<div class="box">
+<div class="box-inner">
+
+<div class="supplier">
+<a href="javascript:void(0)">
+<div  style="height:150px;" class="area-bg cmBg lazy" data-original="images/upload/thumbnail-supplier-1.png"></div>
+<div class="area-txt">
+<h3>Trung Tâm Hội Nghị Tiệc Cưới MerPerle Crystal Palace</h3>
+</div>
+</a>
+</div>
+
+<div class="supplier-info">
+
+<div class="supplier-pics">
+<ul>
+<li><a href="javascript:void(0)"><div style="height:150px;" class="area-bg cmBg lazy" data-original="images/upload/supplier-gallery-1.jpg"></div></a></li>
+<li><a href="javascript:void(0)"><div style="height:150px;" class="area-bg cmBg lazy" data-original="images/upload/supplier-gallery-2.jpg"></div></a></li>
+<li><a href="javascript:void(0)"><div style="height:150px;" class="area-bg cmBg lazy" data-original="images/upload/supplier-gallery-3.jpg"></div></a></li>
+<li><a href="javascript:void(0)"><div style="height:150px;" class="area-bg cmBg lazy" data-original="images/upload/supplier-gallery-4.jpg"></div></a></li>
+</ul>
+</div>
+
+<div class="supplier-contact">
+
+<div class="supplier-menu">
+<ul>
+<li><a href="javascript:void(0)">KHUYẾN MÃI</a> •</li>
+<li><a href="javascript:void(0)">HÌNH ẢNH</a> •</li>
+<li><a href="javascript:void(0)">DỊCH VỤ</a> •</li>
+<li><a href="javascript:void(0)">VIDEO</a> •</li>
+<li><a href="javascript:void(0)">LIÊN HỆ</a></li>
+</ul>
+</div>
+
+<div class="supplier-holine">
+<button><img src="images/icon/icon-money.png">
+NHẬN BÁO GIÁ
+</button>
+<button class="btn-chvn btn-call leftspace5 flex flex-items-center" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="hover" data-content="<div style='text-align:center;'>Trung Tâm Hội Nghị Tiệc Cưới MerPerle Crystal Palace<br/>028 388 54549</div>" data-original-title="" title="">
+<i class="glyphicon glyphicon-earphone rightspace10"></i>
+GỌI NGAY
+</button>
+</div>
+
+
+</div>
+
+<div class="supplier-description">
+<p>Lung linh tựa lâu đài vương giả được thiết kế độc đáo theo trường phái kiến trúc tân
+cổ điển châu Âu, Trung tâm Hội nghị và Tiệc cưới Metropole hiện diện bên bạn để thắp
+sáng những ước mơ lấp lánh ánh hồng ...
+<span class="view-more">
+<a href="javascript:void(0)">Xem thêm</a> ∙
+<a href="javascript:void(0)">TÀI TRỢ</a>
+</span>
+</p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!--/test-->
+
+</div>
+
+<div class="section-inr">
+<p>Paging here</p>
+</div>
+
+
+</div>
+<!--/distributor list-->
+
+<!--banner-fulll-->
+<div class="section-box">
+<div class="section-inr banner-full">
+
+<div class="box">
+<a href="javascript:void(0);">
+<div class="area-pic">
+<img class="cmPic lazy" draggable="false" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/upload/banner-promotion-1.jpg" alt="pic">
+</div>
+</a>
+</div>
+
+</div>
+</div>
+<!--/banner-fulll-->
+
+<!--/DISTRIBUTOR PAGE-->
+
 
 </div>
 </div>
@@ -942,12 +2256,19 @@
 <footer class="ftr-wrap">
 
 <div class="ftr-top">
-
 <div class="ftr-inr">
+
+<div class="box size-08">
+<div class="box-inner">
 <div class="ftr-logo">
 <a href="javascript:void(0);"><img draggable="false" src="images/logo.png" alt="Cưới hỏi Vietnam"></a>
 <span>Trang thông tin cưới hỏi uy tín ở Việt Nam</span>
 </div>
+</div>
+</div>
+
+<div class="box size-04">
+<div class="box-inner">
 <div class="social">
 <span>Kết nối với Cưới hỏi Việt Nam:</span>
 <ul>
@@ -958,35 +2279,33 @@
 </ul>
 </div>
 </div>
+</div>
 
+</div>
 </div>
 
 <div class="ftr-inr">
 
-<div class="box">
-<div class="area-txt">
-<p>
-Liên hệ: A. Vũ Đức Tiên <br>
+<div class="box size-03">
+<div class="box-inner">
+<p>Liên hệ: A. Vũ Đức Tiên <br>
 (Chuyên viên phát triển kinh doanh) <br>
 Điện thoại: 0903 679 809 <br>
-Email: tien.cuoihoivietnam@gmail.com <br>
-</p>
+Email: tien.cuoihoivietnam@gmail.com <br></p>
 </div>
 </div>
 
-<div class="box">
-<div class="area-txt">
-<p>
-Cơ quan chủ quản: CÔNG TY TNHH QUẢNG CÁO VÀ TRUYỀN THÔNG QUANG THẢO <br>
+<div class="box size-06">
+<div class="box-inner">
+<p>Cơ quan chủ quản: CÔNG TY TNHH QUẢNG CÁO VÀ TRUYỀN THÔNG QUANG THẢO <br>
 Địa chỉ: 49/11 Hoàng Dư Khương, Phường 12, Quận 10, TP. HCM <br>
 Giấy chứng nhận ĐKKD số: 0312209624 do Sở KHĐT TP.HCM cấp ngày 29/03/2013. <br>
-Người chịu trách nhiệm chính: Ông Vũ Đức Thảo - Giám đốc Công ty.
-</p>
+Người chịu trách nhiệm chính: Ông Vũ Đức Thảo - Giám đốc Công ty.</p>
 </div>
 </div>
 
-<div class="box">
-<div class="area-txt">
+<div class="box size-03">
+<div class="box-inner">
 <p>
 QUY CHẾ hoạt động của Cuoihoivietnam.com <br>
 ® Ghi rõ nguồn "Cuoihoivietnam.com" <br>
@@ -1007,9 +2326,9 @@ khi phát hành lại thông tin từ website này. <br>
 
 <!--script-->
 <script src="js/jquery-min.js"></script>
-<!--<script src="js/swiper-min.js"></script>-->
 <script src="js/olw-min.js"></script>
 <script src="js/main.js" defer></script>
+<script src="js/frontend-emulator.js" defer></script>
 <!--/script-->
 
 <!--normal style-->

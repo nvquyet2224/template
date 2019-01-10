@@ -64,7 +64,7 @@ button.owl-dot{
 	top:50%;
 	display:inline-block;
 	padding:10px;
-	margin:-10px 0 0 0;
+	margin:-20px 0 0 0;
 	border:none;
 	cursor:pointer;
 	-webkit-border-radius:0;
@@ -125,8 +125,8 @@ button.owl-dot{
 }
 .owl-dot span {
 	display:block;
-	width:10px;
-	height:10px;
+	width:8px;
+	height:8px;
 	border:1px solid #a8adb0;
 	background-color:rgba(255,255,255,0);
 	-webkit-transition:all 0.3s ease-in-out;

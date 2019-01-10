@@ -72,7 +72,7 @@ a{
 	color:#333;
 }
 p a:hover{
-	color:rgba(160, 93, 166,1);
+	color:#a05da6;
 }
 .clear::after{
 	content:'';
@@ -88,55 +88,235 @@ p a:hover{
 	overflow:hidden;
 }
 
-/*common*/
-.page-wrap,
-.hdr-wrap,
-.cnt-wrap,
-.ftr-wrap {
+/*COMMON*/
+.page-wrap, .hdr-wrap, .cnt-wrap, .ftr-wrap {
 	display:block;
 	width:100%;
 	height:auto;
 }
 
-.hdr-inr,
-.cnt-inr,
-.ftr-inr {
+.hdr-inr, .cnt-inr, .ftr-inr {
 	position:relative;
 	display:block;
 	width:90%;
 	height:auto;
 	max-width:1010px;
 	margin:0 auto;
-	-webkit-box-sizing:border-box;
-	box-sizing:border-box;
 }
 
-.hdr-wrap{
-	
+
+/*HEADER*/
+.hdr-inr {
+	padding-top:1.25rem;
 }
 
-.logo{
-	position:absolute;
+.logo, .logo a, .logo img {
+	display:block;
 	width:auto;
 	height:auto;
 }
+.logo{
+	position:relative;
+	left:0.9375rem;
+	display:inline-block;
+}
+.logo a, .logo img {
+	display:block;
+}
 
-.navigation, .nav, .nav ul{
+
+.navigation {
 	position:relative;
 	display:block;
-	height:auto;	
+	padding:2.1875rem 0.9375rem 0.625rem 0.9375rem;
 }
 
 .nav-but{
-	position:absolute;
-	width:40px;
-	height:40px;
+	display:none;
 }
+
+
+/*CONTAINER*/
+.pcBg, .pcPic{
+	display:block;
+}
+
+.spBg, .spPic{
+	display:none;
+}
+
+.section-box {
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+}
+.title {
+	position:relative;
+	display:block;
+	width:100%;
+	margin-bottom:1rem;
+}
+.title h2, .title h3{
+	position:relative;
+	display:inline-block;
+}
+
+
+.section-inr {
+	position:relative;
+	display:block;
+}
+
+.section-inr::after, .ftr-inr::after {
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:0;
+	clear:both;
+}
+
+.box{
+	position:relative;
+	display:block;
+	width:100%;
+	float:left;
+}
+
+.box.size-02{
+}
+.box.size-03{
+	width:25%;
+}
+.box.size-04{
+	width:33.3333%;
+}
+.box.size-05{
+}
+.box.size-06{
+	width:50%;
+}
+.box.size-07{
+}
+.box.size-08{
+	width:66.6666%;
+}
+.box.size-09{
+}
+.box.size-10{
+}
+.box.size-11{
+}
+.box.size-12{
+}
+
+.box-inner {
+	position:relative;
+	display:block;
+	padding:0 0.9375rem;
+}
+
+.box-inner a {
+	position:relative;
+	display:block;	
+}
+
+.separete-2 .box{
+	width:50%;
+	margin-bottom:1.375rem;
+}
+
+.separate-3 .box {
+	width:33.3333%;
+	margin-bottom:1.875rem;
+}
+
+.separate-6 {
+	padding:0 0.46875rem;
+}
+.separate-6 .box {
+	width:16.6666%;
+	margin-bottom:0.9375rem;
+}
+.separate-6 .box-inner {
+	padding:0 0.46875rem;
+}
+
+
+.area-bg,
+.area-pic,
+.area-txt {
+	position:relative;
+	display:block;
+}
+
+.area-pic img{
+	display:block;
+	width:100%;
+	height:auto;
+}
+
+.text-over .area-bg::before, .separete-2 .area-bg::before, 
+.banner .area-bg::before, .videos .area-bg::before, .promotion-section .area-bg::before, 
+.service-section .area-bg::before{
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+}
+
+.banner .area-bg::before, .text-over .area-bg::before, 
+.promotion-section .area-bg::before {
+	padding-top:100%;	
+}
+
+.separete-2 .area-bg {
+	width:240px;		
+}
+.separete-2 .area-bg::before, .videos .area-bg::before,
+.service-section .area-bg::before {
+	padding-top:56.25%
+}
+
+.banner-collapse {
+	margin-bottom:1.25rem;
+	min-height:92px;
+}
+.small{
+	display:block;
+}
+.big{
+	display:none;
+}
+
+.banner {
+	margin-bottom:1.875rem;
+}
+
+.banner-slider, .owl-stage-outer, .banner-item, .banner-pic{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+
+.banner-full {
+	margin-bottom:1.875rem;
+	padding:0 0.9375rem;
+}
+
+
+
+
+/*FOOTER*/
 
 
 
 /*BANNER*/
-.banner-full {
+/*.banner-full {
 	
 }
 
@@ -171,59 +351,7 @@ p a:hover{
 	width:100%;
 	height:auto;
 	padding-top:100%;
-}
-
-/*common*/
-.section-box,
-.section-inr{
-	position:relative;
-	display:block;
-	width:100%;
-	height:auto;
-	-webkit-box-sizing:border-box;
-	box-sizing:border-box;
-}
-
-.title{
-	width:100%;
-}
-
-.box{
-	position:relative;
-	display:block;
-	float:left;
-	-webkit-box-sizing:border-box;
-	box-sizing:border-box;
-}
-
-.box-inner {
-	position:relative;
-	width:100%;
-	height:auto;
-}
-
-.area-txt,
-.area-pic,
-.area-bg{
-	display:block;
-}
-
-.area-pic img{
-	display:block;
-	width:auto;
-	height:auto;
-	max-width:100%;
-	margin:0 auto;
-}
-
-.pcBg, .pcPic{
-	display:block;
-}
-
-.spBg, .spPic{
-	display:none;
-}
-
+}*/
 
 /*media*/
 @media screen and (max-width:980px){

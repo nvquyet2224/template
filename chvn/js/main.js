@@ -110,8 +110,8 @@ function commonEvents() {
 	});
 	
 	$('.banner-collapse').on('mouseenter', function(){
-			$('.collapse-small').fadeOut('fast', function(){
-				$('.collapse-full').fadeIn('fast');
+			$('.small').fadeOut(0, function(){
+				$('.big').fadeIn('fast');
 			});
 	});
 	
@@ -140,12 +140,13 @@ $(window).on("orientationchange", Rotate);
 $(window).on('resize', Resize);
 
 $(window).on('load', function(){
-	$('.loadicon').fadeOut(150, function(){
+	
+	setTimeout(function(){
 		SlideShow();
 		onScroll();
 		commonEvents();
-		inputHolder();
-	});
+		inputHolder();	
+	},100);
 });
 
 (function() {
