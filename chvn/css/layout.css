@@ -71,6 +71,11 @@ a{
 	text-decoration:none;
 	color:#333;
 }
+p a {
+	color:#1da6c0;
+	-webkit-transition:color 0.3s ease-in-out;
+	transition:color 0.3s ease-in-out;
+}
 p a:hover{
 	color:#a05da6;
 }
@@ -90,6 +95,7 @@ p a:hover{
 
 /*COMMON*/
 .page-wrap, .hdr-wrap, .cnt-wrap, .ftr-wrap {
+	position:relative;
 	display:block;
 	width:100%;
 	height:auto;
@@ -168,7 +174,7 @@ p a:hover{
 	display:block;
 }
 
-.section-inr::after, .ftr-inr::after {
+.section-inr::after, .ftr-inr::after, .separate-4::after {
 	content:'';
 	position:relative;
 	display:block;
@@ -211,18 +217,28 @@ p a:hover{
 .box.size-12{
 }
 
+.separate-2, .separate-3, .separate-6 {
+	font-size:0;
+}
+
+.separate-2 .box, .separate-3 .box, .separate-6 .box {
+	float:none;
+	display:inline-block;
+	vertical-align:top;
+}
+
 .box-inner {
 	position:relative;
 	display:block;
 	padding:0 0.9375rem;
 }
 
-.box-inner a {
+.box-inner > a {
 	position:relative;
 	display:block;	
 }
 
-.separete-2 .box{
+.separate-2 .box{
 	width:50%;
 	margin-bottom:1.375rem;
 }
@@ -230,6 +246,10 @@ p a:hover{
 .separate-3 .box {
 	width:33.3333%;
 	margin-bottom:1.875rem;
+}
+
+.separate-4 .box {
+	width:25%;
 }
 
 .separate-6 {
@@ -257,27 +277,29 @@ p a:hover{
 	height:auto;
 }
 
-.text-over .area-bg::before, .separete-2 .area-bg::before, 
-.banner .area-bg::before, .videos .area-bg::before, .promotion-section .area-bg::before, 
-.service-section .area-bg::before{
+.separate-2 .area-bg {
+	width:240px;		
+}
+
+.area-bg::before{
 	content:'';
 	position:relative;
 	display:block;
 	width:100%;
 	height:auto;
+	background-color:rgba(0,0,0,0.1);
 }
 
-.banner .area-bg::before, .text-over .area-bg::before, 
-.promotion-section .area-bg::before {
-	padding-top:100%;	
+.ratio-100 .area-bg::before{
+	padding-top:100%;
 }
 
-.separete-2 .area-bg {
-	width:240px;		
+.ratio-56 .area-bg::before{
+	padding-top:56.25%;
 }
-.separete-2 .area-bg::before, .videos .area-bg::before,
-.service-section .area-bg::before {
-	padding-top:56.25%
+
+.separate-2 .area-txt {
+		
 }
 
 .banner-collapse {
@@ -301,6 +323,15 @@ p a:hover{
 	width:100%;
 	height:auto;
 	overflow:hidden;
+}
+
+.banner-pic::before {
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	padding-top:56.3%;
 }
 
 .banner-full {
