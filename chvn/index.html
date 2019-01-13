@@ -15,7 +15,9 @@
 <link rel="icon" href="images/favicon.ico">
 <link rel="preload" href="css/layout.css" as="style">
 <link rel="preload" href="css/slide.css" as="style">
-<style>body{-webkit-animation:demo-start 1.5s steps(1,end) 0s forwards;animation:demo-start 1.5s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}.loadicon{position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:100}</style>
+<link rel="preload" href="css/style.css" as="style">
+<link rel="preload" href="css/fonts.css" as="style">
+<style>body{-webkit-animation:demo-start .5s steps(1,end) 0s forwards;animation:demo-start .5s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}.loadicon{position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:100}</style>
 </head>
 <body>
 <!--loading-->
@@ -30,6 +32,12 @@
 <h1 class="logo"><a href="index.html" class="hide-text"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/logo.png" alt="Cưới Hỏi Việt Nam">Cưới Hỏi Việt Nam</a></h1>
 
 <div class="navigation">
+
+<div class="head-nav hide-pc">
+<a href="index.html"><img class="menu-logo" src="images/logo.png" alt=""></a>
+<span class="close-nav"><img src="images/icon/close-icon.png" alt="close"></span>
+</div>
+
 <div class="nav">
 <ul>
 <li class="active">
@@ -69,12 +77,20 @@
 </li>
 </ul>
 </div>
+
+<div class="social hide-pc">
+<span>Kết nối với Cưới hỏi Việt Nam:</span>
+<ul>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/fb-ico.png" alt="Facebook"></a></li>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/pinterest-ico.png" alt="Pintersest"></a></li>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/google-plus-ico.png" alt="Google +"></a></li>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/mail-ico.png" alt="Email"></a></li>
+</ul>
 </div>
-<button class="nav-but hide-text">
-<span>Line</span>
-<span>Line</span>
-<span>Line</span>
-</button>
+
+</div>
+
+<div class="nav-but"><span></span></div>
 
 <div class="search-box">
 <div class="search-txt">
@@ -155,7 +171,7 @@
 </div>
 </div>
 
-<div class="box size-04">
+<div class="box size-04 hide-sp">
 <div class="box-inner">
 <a href="javascript:void(0);">
 <div class="area-bg cmBg lazy" data-original="images/upload/thumbnail-1.jpg"></div>
@@ -173,7 +189,7 @@
 <!--news-->
 <div class="section-box">
 
-<div class="section-inr separate-2 text-separate ratio-56 news">
+<div class="section-inr separate-2 text-separate ratio-56 news-home">
 
 <div class="box">
 <div class="box-inner">
@@ -248,6 +264,22 @@
 </div>
 
 </div>
+
+<div class="section-inr text-separate ratio-100 hide-pc">
+
+<div class="box">
+<div class="box-inner">
+<a href="javascript:void(0);">
+<div class="area-bg cmBg lazy" data-original="images/upload/thumbnail-1.jpg"></div>
+<div class="area-txt">
+<h3>Tất Niên Tân Niên Trọn Gói Chỉ Từ 449.000 tại Nhà Hàng Tiệc Cưới Capella.</h3>
+</div>
+</a>
+</div>
+</div>
+
+</div>
+
 </div>
 <!--/news-->
 
@@ -256,9 +288,9 @@
 
 <div class="title"><h3>ảnh cưới đẹp chọn lọc</h3></div>
 
-<div class="section-inr separate-3 text-over bg-gradient ratio-100 gallery">
+<div class="section-inr separate-3 text-over bg-gradient ratio-100 gallery-home">
 
-<div class="box">
+<div class="box full-sp">
 <div class="box-inner">
 <a href="javascript:void(0)">
 <div class="area-bg cmBg lazy" data-original="images/upload/carousel-1.1.jpg"></div>
@@ -375,7 +407,9 @@
 
 <div class="title"><h3>dịch vụ cưới</h3></div>
 
-<div class="section-inr separate-6 text-over bg-color ratio-100 service">
+<div class="section-inr separate-6 text-over bg-color ratio-100 service-home">
+
+<div class="row-item">
 
 <div class="box">
 <div class="box-inner">
@@ -443,6 +477,10 @@
 </div>
 </div>
 
+</div>
+
+<div class="row-item">
+
 <div class="box">
 <div class="box-inner">
 <a href="javascript:void(0);">
@@ -508,6 +546,10 @@
 </a>
 </div>
 </div>
+
+</div>
+
+<div class="row-item">
 
 <div class="box">
 <div class="box-inner">
@@ -576,6 +618,8 @@
 </div>
 
 </div>
+
+</div>
 </div>
 <!--/service-->
 
@@ -600,9 +644,9 @@
 
 <div class="title"><h3>album cưới mới nhất</h3></div>
 
-<div class="section-inr separate-3 text-over bg-gradient ratio-100 albums">
+<div class="section-inr separate-3 text-over bg-gradient ratio-100 album-home">
 
-<div class="box">
+<div class="box hide-sp">
 <div class="box-inner">
 <a href="javascript:void(0)">
 <div class="area-bg cmBg lazy" data-original="images/upload/carousel-1.1.jpg"></div>
@@ -719,7 +763,7 @@
 
 <div class="title"><h3>video cưới đẹp</h3></div>
 
-<div class="section-inr separate-3 text-separate ratio-56 videos">
+<div class="section-inr separate-3 text-separate ratio-56 video-home">
 
 <div class="box">
 <div class="box-inner">
@@ -1018,6 +1062,9 @@ khi phát hành lại thông tin từ website này. <br>
 <button id="go-top" class="hide-text">Go to top</button>
 <!--facilities-->
 
+</div>
+<!--/page-->
+
 <!--normal style-->
 <noscript id="normal-styles">
 <link href="css/layout.css" rel="stylesheet" type="text/css">
@@ -1039,14 +1086,11 @@ else window.addEventListener('load',normalStyles);
 </script>
 <!--normal style-->
 
-</div>
-<!--/page-->
-
 <!--script-->
 <script src="js/jquery-min.js"></script>
 <script src="js/olw-min.js"></script>
+<script src="js/frontend-emulator.js"></script>
 <script src="js/main.js" defer></script>
-<script src="js/frontend-emulator.js" defer></script>
 <!--/script-->
 
 </body>

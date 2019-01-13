@@ -15,7 +15,9 @@
 <link rel="icon" href="images/favicon.ico">
 <link rel="preload" href="css/layout.css" as="style">
 <link rel="preload" href="css/slide.css" as="style">
-<style>body{-webkit-animation:demo-start 1.5s steps(1,end) 0s forwards;animation:demo-start 1.5s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}.loadicon{position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:100}</style>
+<link rel="preload" href="css/style.css" as="style">
+<link rel="preload" href="css/fonts.css" as="style">
+<style>body{-webkit-animation:demo-start .5s steps(1,end) 0s forwards;animation:demo-start .5s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}.loadicon{position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:100}</style>
 </head>
 <body>
 <!--loading-->
@@ -30,6 +32,12 @@
 <h1 class="logo"><a href="index.html" class="hide-text"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/logo.png" alt="Cưới Hỏi Việt Nam">Cưới Hỏi Việt Nam</a></h1>
 
 <div class="navigation">
+
+<div class="head-nav hide-pc">
+<a href="index.html"><img class="menu-logo" src="images/logo.png" alt=""></a>
+<span class="close-nav"><img src="images/icon/close-icon.png" alt="close"></span>
+</div>
+
 <div class="nav">
 <ul>
 <li>
@@ -69,12 +77,20 @@
 </li>
 </ul>
 </div>
+
+<div class="social hide-pc">
+<span>Kết nối với Cưới hỏi Việt Nam:</span>
+<ul>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/fb-ico.png" alt="Facebook"></a></li>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/pinterest-ico.png" alt="Pintersest"></a></li>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/google-plus-ico.png" alt="Google +"></a></li>
+<li><a href="javascript:void(0);" target="_blank"><img draggable="false" class="cmPic lazy" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E" data-original="images/icon/mail-ico.png" alt="Email"></a></li>
+</ul>
 </div>
-<button class="nav-but hide-text">
-<span>Line</span>
-<span>Line</span>
-<span>Line</span>
-</button>
+
+</div>
+
+<div class="nav-but"><span></span></div>
 
 <div class="search-box">
 <div class="search-txt">
@@ -492,6 +508,9 @@ khi phát hành lại thông tin từ website này. <br>
 <button id="go-top" class="hide-text">Go to top</button>
 <!--facilities-->
 
+</div>
+<!--/page-->
+
 <!--normal style-->
 <noscript id="normal-styles">
 <link href="css/layout.css" rel="stylesheet" type="text/css">
@@ -512,9 +531,6 @@ if(raf)raf(function(){window.setTimeout(normalStyles,0)});
 else window.addEventListener('load',normalStyles);
 </script>
 <!--normal style-->
-
-</div>
-<!--/page-->
 
 <!--script-->
 <script src="js/jquery-min.js"></script>
