@@ -9,7 +9,7 @@
 	 padding:0;
 	 height:100vh;
 	 font-family:Arial, sans-serif;
-	 font-size:12px;
+	 font-size:18px;
 	 color:#333;
  }
  .calendar-wrap {
@@ -113,14 +113,15 @@
  }
  table td span {
 	display:block;
+	font-size:100%;
  }
  table td span:nth-child(2){
-	font-size:10px;
+	font-size:83%;
 	font-weight:normal;
 	color:#999;
  }
  .empty {
-	padding:15px 0;
+	padding:19px 0;
  }
  .grey {
 	background-color:#ccc;
@@ -148,6 +149,9 @@
  @media print {
 	#printId {
 		display:none;
+	}
+	.calendar-wrap {
+		padding:140px 0 20px 0;
 	}
  }
 
