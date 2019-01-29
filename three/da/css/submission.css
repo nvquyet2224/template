@@ -1,0 +1,244 @@
+/** SUBMISSION STYLE **/
+.submission-section{
+    background-image: url("../img/submission/bg.jpg");
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-position: top center;
+    text-align: center;
+    background-size: cover
+}
+.logo{
+    margin: 42px auto 50px;
+    text-align: center;
+    max-width: 100%;
+}
+.submission-form{
+    background-color:rgba(255, 255, 255, .67);
+    box-shadow: 0px 11px 11px 0px rgba(106, 139, 189, 0.75);
+    width:929px;
+    margin: 0 auto;
+    padding: 34px 74px 30px 73px;
+}
+.form-title{
+    font-size:14px;
+    line-height:15px;
+    color:#000;
+    margin:0;
+    padding:12px 0;
+    text-align:center;
+    text-transform: uppercase;
+}
+.form-radio-group{
+    text-align: left;
+    margin-top:29px;
+    overflow: hidden;
+}
+.form-radio-item{
+    float:left;
+    width:33.33%;
+}
+
+.form-radio{
+    display: none;
+}
+.form-radio + label {
+    color: #000000;
+    font-size:14px;
+    font-weight: normal;
+}
+.form-radio + label span {
+    display:inline-block;
+    width:26px;
+    height:26px;
+    margin:0 15px 0 0;
+    vertical-align:middle;
+    cursor:pointer;
+    -moz-border-radius:  50%;
+    border-radius:  50%;
+    border:1px solid #5889ea;
+    background-color:#ffffff;
+}
+
+.form-radio:checked + label span{
+    background-color:#5889ea;
+}
+
+.form-button{
+    padding:16px 30px;
+    background: #5889ea;
+    border-radius:31px;
+    color:#fff;
+    font-size:24px;
+    display: inline-block;
+    margin:0 auto;
+    line-height:30px;
+    text-transform: uppercase;
+    border:none;
+}
+
+.form-button span {
+    padding: 0 40px;
+}
+.avatar{
+    display: block;
+    margin: 45px auto 19px;
+}
+.btn-upload{
+    margin-bottom:22px;
+}
+.form-text{
+    display: block;
+    padding:20px 25px;
+    border: 2px solid #dadada;
+    font-size:14px;
+    width:100%;
+}
+.form-text:-moz-placeholder,
+.form-text::-moz-placeholder,
+.form-text::-webkit-input-placeholder,
+.form-text:-ms-input-placeholder{color:#000;}
+.text-countdown {
+    display: block;
+    text-align: right;
+    font-weight: normal;
+    font-size:12px;
+    letter-spacing: 1px;
+}
+.question{
+    overflow: hidden;
+    margin-top:13px;
+    text-align:left;
+}
+.question h3{
+    font-size:18px;
+    color:#000;
+    line-height:24px;
+    padding:0 30px;
+}
+.question ul{
+    margin-top:20px;
+    overflow: hidden;
+}
+.question li{
+    margin:15px 0 0;
+    overflow: hidden;
+}
+.question li:first-child{margin-top:2px;}
+.question li:last-child{margin:7px 0 12px;}
+.question .form-radio + label span{
+    width: 16px;
+    height: 17px;
+}
+#txt-title{
+    margin:15px 0 10px;
+}
+#story{
+    margin:20px 0;
+}
+#btn-submit{
+    margin-left:20px;
+    padding: 16px 55px;
+}
+/*-------------- custom for thankyou page start ---------*/
+.thankyou-page{
+    padding-bottom:60px;
+    overflow: hidden;
+}
+.thankyou-page .logo{
+    margin:25px 0 23px;
+}
+.thankyou-page h2{
+    margin:0 0 30px;
+}
+.thankyou-page p {
+    color: #626060;
+    font-size: 14px;
+    padding: 0 69px;
+    line-height: 17px;
+    margin: 0 0 15px;
+    letter-spacing: 1px;
+}
+
+.thankyou-page .form-button {
+    margin-top: 16px;
+    padding: 16px 50px;
+
+}
+.thankyou-page .submission-form {
+    padding: 34px 70px;
+}
+.thankyou-page .products {
+    margin: 70px 0 85px;
+    overflow: hidden;
+}
+.products .product-item {
+    float:left;
+}
+.products .product-item:first-child{
+    width:25.7287706%
+}
+.products .product-item:nth-child(2){
+    width: 49.429%;
+}
+.products .product-item:last-child{
+    width:24.84157161%;
+}
+.product-img img{
+    margin-bottom: 27px;
+    max-width: 100%;
+}
+.product-title {
+    color: #5e5d5d;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 16px;
+    text-align: center;
+    margin-top:0;
+}
+/*-------------- custom for thankyou page end---------*/
+@media (max-width: 1199px) and (min-width: 992px){
+
+}
+
+@media (max-width: 991px){
+    .submission-form{
+        width:94%;
+    }
+}
+
+@media (max-width: 767px){
+    .submission-form{
+        padding: 30px 20px;
+    }
+    .question h3{padding: 0;}
+    #btn-submit{padding: 16px 30px;margin-left:0;}
+    .form-radio-item{
+        float:none;
+        width:auto;
+        margin:10px 0;
+    }
+    /*-------------- custom responsive for thankyou page start---------*/
+    .thankyou-page .submission-form {
+        padding: 34px 10px;
+    }
+    .thankyou-page p{padding:0;}
+    .products .product-item {
+        width:100% !important;
+
+    }
+    .product-img img {
+        margin-bottom: 0px;
+    }
+    .products .product-item:nth-child(2) .product-img img{
+        margin: -60px 0;
+    }
+    .product-title {
+        margin-top:10px;
+        margin-bottom:50px;
+    }
+    /*-------------- custom responsive for thankyou page end ---------*/
+}
+
+@media (max-width: 479px){
+
+}

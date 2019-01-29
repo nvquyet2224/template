@@ -1,0 +1,172 @@
+/** COMMON STYLE FOR ALL PAGE **/
+
+/* font */
+
+@font-face {
+	font-family:'iCielSamsungSharpSans';
+	src: url('../fonts/iCielSamsungSharpSans-Bold.eot');
+	src: url('../fonts/iCielSamsungSharpSans-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/iCielSamsungSharpSans-Bold.woff') format('woff'),
+		url('../fonts/iCielSamsungSharpSans-Bold.ttf') format('truetype'),
+		url('../fonts/iCielSamsungSharpSans-Bold.svg#iCielSamsungSharpSans-Bold') format('svg');
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+000D-FB02;
+}
+
+@font-face {
+	font-family:'iCielSamsungSharpSans';
+	src: url('../fonts/iCielSamsungSharpSans-Medium.eot');
+	src: url('../fonts/iCielSamsungSharpSans-Medium.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/iCielSamsungSharpSans-Medium.woff') format('woff'),
+		url('../fonts/iCielSamsungSharpSans-Medium.ttf') format('truetype'),
+		url('../fonts/iCielSamsungSharpSans-Medium.svg#iCielSamsungSharpSans-Medium') format('svg');
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+000D-FB02;
+}
+
+@font-face {
+	font-family:'iCielSamsungSharpSans';
+	src: url('../fonts/iCielSamsungSharpSansRegular.eot');
+	src: url('../fonts/iCielSamsungSharpSansRegular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/iCielSamsungSharpSansRegular.woff') format('woff'),
+		url('../fonts/iCielSamsungSharpSansRegular.ttf') format('truetype'),
+		url('../fonts/iCielSamsungSharpSansRegular.svg#iCielSamsungSharpSansRegular') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+000D-FB02;
+}
+
+@font-face {
+	font-family:'samsunginterface';
+	src: url('../fonts/samsunginterfaceblack-webfont.eot');
+	src: url('../fonts/samsunginterfaceblack-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/samsunginterfaceblack-webfont.woff') format('woff'),
+		url('../fonts/samsunginterfaceblack-webfont.ttf') format('truetype'),
+		url('../fonts/samsunginterfaceblack-webfont.svg#samsunginterfaceblack-webfont') format('svg');
+	font-weight: 900;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+000D-FB02;
+}
+
+@font-face {
+	font-family:'samsunginterface';
+	src: url('../fonts/samsunginterfacebold-webfont.eot');
+	src: url('../fonts/samsunginterfacebold-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/samsunginterfacebold-webfont.woff') format('woff'),
+		url('../fonts/samsunginterfacebold-webfont.ttf') format('truetype'),
+		url('../fonts/samsunginterfacebold-webfont.svg#samsunginterfacebold-webfont') format('svg');
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+000D-FB02;
+}
+
+@font-face {
+	font-family:'samsunginterface';
+	src: url('../fonts/samsunginterfaceregular-webfont.eot');
+	src: url('../fonts/samsunginterfaceregular-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/samsunginterfaceregular-webfont.woff') format('woff'),
+		url('../fonts/samsunginterfaceregular-webfont.ttf') format('truetype'),
+		url('../fonts/samsunginterfaceregular-webfont.svg#samsunginterfaceregular-webfont') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+000D-FB02;
+}
+
+
+/* fix normalize */
+*{margin:0; padding:0; text-decoration: none; outline: 0; word-wrap: break-word}
+
+html, body{font-family: 'iCielSamsungSharpSans', arial, helvetica, sans-serif; font-size: 14px}
+
+ol, ul{list-style:none}
+
+img{border: none}
+
+a, a:visited, a:hover, a:focus{outline: none; text-decoration: none}
+a{transition: all ease .5s;}
+
+/* common class clear */
+.da-btn-primary{background: #00349a; display: inline-block; color: #fff !important; text-transform: uppercase; padding: 0 30px; height: 40px; line-height: 42px; white-space: nowrap; border-radius: 25px; font-weight: 700}
+.da-btn-info{background: #5889ea; display: inline-block; color: #fff !important; text-transform: uppercase; padding: 0 40px; height: 40px; line-height: 42px; white-space: nowrap; border-radius: 25px}
+.da-btn-block{width: 180px; height: 40px; display: table;}
+.da-btn-block .da-icon{display: table-cell; width: 40px; height: 40px; vertical-align: middle;}
+.da-btn-block .da-icon.da-icon-story{background: url(../img/home/icon-send-story.png) no-repeat;}
+.da-btn-block .da-icon.da-icon-heart-story{background: url(../img/home/icon-heart-story.png) no-repeat;}
+.da-btn-block .text{display: table-cell; width: calc(100% - 40px); height: 40px; color: #00349a; text-transform: uppercase; vertical-align: middle; padding: 7px 5px 0 8px; line-height: 15px; font-weight: 700}
+.da-btn-week{font-weight: 700; width: 120px; height: 40px; text-align: center; text-transform: uppercase; display: inline-block; line-height: 45px; color: #000; background: #fff; border-radius: 25px; font-size: 18px}
+.da-btn-week:hover{background: #00349a; color: #fff}
+.da-btn-award{font-weight: 700; width: 120px; height: 40px; text-align: center; text-transform: uppercase; display: inline-block; line-height: 45px; color: #637fb7; background: #fff; border-radius: 25px; font-size: 18px; border: 1px solid #637fb7}
+.da-btn-award:hover{background: #637fb7; color: #fff}
+.da-icon-2{width: 20px; height: 20px; display: inline-block; margin-right: 10px; vertical-align: middle;}
+.da-icon-2.da-icon-heart{background: url(../img/home/icon-heart-love.png) no-repeat center}
+.da-icon-2.da-icon-face{background: url(../img/home/icon-facebook.png) no-repeat center}
+
+.custom-navbar-toggle{padding: 9px 10px; background: transparent; border: 0; float: right; margin-top: 15px; display: none; transition: margin-right ease .5s}
+.custom-navbar-toggle .icon-bar{background: rgba(0, 0, 0, .5); border-radius: 1px; display: block; height: 2px; width: 22px}
+.custom-navbar-toggle .icon-bar  + .icon-bar{margin-top: 4px}
+
+#wrapper{}
+
+#header{position: fixed; top: 0; left: 0; width: 100%; z-index: 999;}
+#header .sub-nav{background: #fff; height: 60px; position: relative;}
+#header .sub-nav .logo{float: left; margin-right: 40px; height: 60px; line-height: 60px}
+#header .sub-nav .nav-list{margin: 0; float: left}
+#header .sub-nav .nav-list > li{float: left; margin-left: 55px;position: relative; }
+#header .sub-nav .nav-list > li:first-child{margin-left: 0;}
+#header .sub-nav .nav-list > li a,
+#header .sub-nav .nav-list > li .logined{text-transform: uppercase; display: block; line-height: 45px; border-top: 10px solid transparent; padding: 0 10px 5px; color: #474848}
+#header .sub-nav .nav-list > li:hover a,
+#header .sub-nav .nav-list > li.active a{border-top: 10px solid #00349a; color: #05488e}
+#header .sub-nav .nav-list > li .fb-avatar{max-width:40px;max-height: 40px; border-radius: 50%;vertical-align: middle}
+#header .sub-nav .nav-list > li .fb-name{vertical-align: middle;font-size:14px;text-transform: uppercase;color:#474848;}
+#header .sub-nav .nav-list > li .logined a{display: none; position: absolute;top:0;left:0;width: 100%;z-index:1;background: #ffffff;text-align: center;}
+#header .sub-nav .nav-list > li .logined:hover a{display: block;}
+#content{padding-top: 60px;}
+
+#footer{}
+
+
+.guide-popup{width:510px;padding:60px 80px;background: #ffffff;margin-left:-225px;position:absolute;top:180px; left:50%;text-align:center;}
+.guide-button{padding:5px 30px;background: #00349a;border-radius:20px;color:#fff;font-size:18px;display: inline-block;margin:25px auto 0;line-height:30px;text-transform: uppercase;border:none;cursor:pointer;}
+
+@media (min-width: 768px){
+
+}
+
+@media (max-width: 767px){
+
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+	#header .sub-nav .nav-list > li{margin-left: 20px;}
+}
+
+@media (min-width: 992px){
+	#header .sub-nav .nav-list{display: block !important}
+}
+
+@media (max-width: 991px){
+	.custom-navbar-toggle{display: block}
+	#header .sub-nav .nav-list{position: absolute; top: 100%; right: 0; background: #fff; display: none; width: 100%; border-top: 1px solid #ececec; border-bottom: 1px solid #ececec}
+	#header .sub-nav .nav-list > li{float: none; margin: 0; padding: 2px 0;}
+	#header .sub-nav .nav-list > li a{border-left: 10px solid transparent; border-top: 0}
+	#header .sub-nav .nav-list > li:hover a,
+	#header .sub-nav .nav-list > li.active a{border-left: 10px solid #00349a; border-top: 0}
+}
+
+@media (max-height: 479px){
+	#header .sub-nav .nav-list{max-height: 150px; overflow-y: auto}
+}
+
+.loading-content {position: fixed; z-index: 99999; width: 100%; height: 100%; display: block; background-color: #000; overflow: hidden;}
+.loading {position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: table; }
+.wrapper-img {display: table-cell; vertical-align: middle;}
+.wrapper-img img {display: block;border-radius: 0%;overflow: hidden;margin: 0 auto;}

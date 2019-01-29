@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <title>Your Website</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="bower_components/fullpage.js/dist/jquery.fullpage.css">
+
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/love.css"/>
+    <link rel="stylesheet" href="css/story.css"/>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+    <header id="header">
+        <nav class="sub-nav">
+            <div class="container">
+                <button type="button" class="navbarToggle custom-navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul id="subMenu" class="nav-list clearfix">
+                    <li data-menuanchor="firstPage" class="active">
+                        <a href="index.html">Trang chủ</a>
+                    </li>
+                    <li data-menuanchor="thirdPage">
+                        <a href="index.html#thirdPage">Giải thưởng</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể lệ</a>
+                    </li>
+                    <li>
+                        <a href="#">Góc yêu thương</a>
+                    </li>
+                    <li>
+                        <a href="#">Đăng nhập với facebook</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="content">
+        <div id="fullpage">
+            <div class="section">
+                <div id="sphere" class="room-render"></div>
+                <!-- story modal start -->
+                <div class="story-modal" story-id="1">
+                    <div class="story-container">
+                        <div class="story-scroll">
+                            <div class="heart-icon" onclick="storyDetail.hide();"></div>
+                            <div class="session-wrapper">
+                                <div class="story-img">
+                                    <img src="img/story/story-img.png" title="Yêu Chiếc áo đẫm mồ hôi của bố">
+                                </div>
+                                <div class="function-container">
+                                    <div class="session-container">
+                                        <a class="function-item like" href="#" title="Yêu thích">
+                                            <div class="function-icon"></div>
+                                            <div class="function-detail">
+                                                <div class="function-name">Yêu thích</div>
+                                                <div class="function-count">20.244</div>
+                                            </div>
+                                        </a>
+                                        <a class="function-item share" href="#" title="Chia sẻ">
+                                            <div class="function-icon"></div>
+                                            <div class="function-detail">
+                                                <div class="function-name">Chia sẻ</div>
+                                                <div class="function-count">340</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="session-wrapper">
+                                <div class="session-container story-detail">
+                                    <img class="avatar" src="img/story/avatar.png" title="Nguyễn Hải Linh">
+                                    <span class="author-name">Nguyễn Hải Linh</span>
+                                    <h2 class="story-name">Yêu Chiếc Áo Đẫm Mồ Hôi Của Bố</h2>
+                                    <p class="story-content">
+                                        Những hôm đi làm về hơi muộn, con gái tôi vẫn hay ngóng và khi vừa nghe tiếng tôi mở cửa là sẽ chạy ra ngay và reo lên “A! Bố về! Bố ơi bố có mệt không?” rồi con bé sẽ mang cho tôi ly nước ép vợ tôi đã làm sẵn. Nhìn ánh mắt lấp lánh và tinh nghịch của con, tôi bỗng thấy bao mệt mỏi tan biến hết. Thật lạ lùng khi chỉ 1 câu hỏi thăm đơn giản và 1 ly nước cam lại có thể làm chúng ta hạnh phúc đến vậy.
+                                    </p>
+                                    <div class="story-actions share">
+                                        <a class="action-item" href="#">
+                                            <span class="action-icon"></span>
+                                            <span class="action-name">Gửi câu chuyện của bạn</span>
+                                        </a>
+                                        <a class="action-item collection" href="#">
+                                            <span class="action-icon"></span>
+                                            <span class="action-name">Xem bộ sưu tập</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- story modal end -->
+                <!-- info modal start -->
+                <div class="info-modal">
+                    <div class="info-container">
+                        <div class="info-scroll">
+                            <div class="s-icon" onclick="infographics.hide();"></div>
+                            <ul class="info-list">
+                                <li class="info-item item-1">
+                                    <div class="item-name">Lorem Ipsum is</div>
+                                    <img class="item-img" src="img/info/product1.jpg" title="product-1">
+                                    <p class="item-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                </li>
+                                <li class="info-item item-2">
+                                    <div class="item-name">Lorem Ipsum is</div>
+                                    <img class="item-img" src="img/info/product2.jpg" title="product-1">
+                                    <p class="item-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                </li>
+                                <li class="info-item item-3">
+                                    <div class="item-name">Lorem Ipsum is</div>
+                                    <img class="item-img" src="img/info/product3.jpg" title="product-1">
+                                    <p class="item-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                </li>
+                                <li class="info-item item-4">
+                                    <div class="item-name">Lorem Ipsum is</div>
+                                    <img class="item-img" src="img/info/product4.jpg" title="product-1">
+                                    <p class="item-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- info modal end -->
+
+            </div>
+        </div>
+
+    </div>
+    <footer id="footer">
+        <!-- <p>Copyright 2009 Your name</p> -->
+    </footer>
+</div>
+
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="bower_components/fullpage.js/dist/jquery.fullpage.js"></script>
+
+<script src="plugins/three.min.js"></script>
+<script src="plugins/controls.js"></script>
+<script src="plugins/detector.js"></script>
+<script src="plugins/modernizr.min.js"></script>
+<script src="plugins/fulltilt.min.js"></script>
+
+<script src="js/common.js"></script>
+<script src="js/room.js"></script>
+
+<script src="js/story.js"></script>
+<script src="js/infographics.js"></script>
+<script type="text/javascript">
+    $(function(){
+        storyDetail.init();
+        infographics.init();
+
+        /*
+         var story = {
+         id: 1,
+         img:"img/story/story-img.png",
+         like: "20.244",
+         share:"340",
+         avatar: "img/story/avatar.png",
+         author: "Nguyễn Hải Linh",
+         title: "Yêu Chiếc Áo Đẫm Mồ Hôi Của Bố",
+         content:"Những hôm đi làm về hơi muộn, con gái tôi vẫn hay ngóng và khi vừa nghe tiếng tôi mở cửa là sẽ chạy ra ngay và reo lên “A! Bố về! Bố ơi bố có mệt không?” rồi con bé sẽ mang cho tôi ly nước ép vợ tôi đã làm sẵn. Nhìn ánh mắt lấp lánh và tinh nghịch của con, tôi bỗng thấy bao mệt mỏi tan biến hết. Thật lạ lùng khi chỉ 1 câu hỏi thăm đơn giản và 1 ly nước cam lại có thể làm chúng ta hạnh phúc đến vậy."
+         };
+         storyDetail.show(story);
+         //============================
+         storyDetail.hide();
+         */
+
+        
+         infographics.show();
+         //============================
+         //infographics.hide();
+         
+    });
+</script>
+</body>
+</html>

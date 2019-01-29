@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		
+		<title>Your Website</title>
+
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/submission.css" />
+
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header id="header">
+				<nav class="sub-nav">
+					<div class="container">
+						<button type="button" class="navbarToggle custom-navbar-toggle">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<ul id="subMenu" class="nav-list clearfix">
+							<li data-menuanchor="firstPage" class="active">
+								<a href="#firstPage">Trang chủ</a>
+							</li>
+							<li data-menuanchor="thirdPage">
+								<a href="#thirdPage">Giải thưởng</a>
+							</li>
+							<li>
+								<a href="#">Thể lệ</a>
+							</li>
+							<li>
+								<a href="#">Góc yêu thương</a>
+							</li>
+							<li>
+								<a href="#">Đăng nhập với facebook</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<div id="content">
+				<section class="submission-section">
+					<img class="logo" title="Ngôi nhà yêu thương" src="img/submission/logo.png">
+					<form class="submission-form">
+						<h2 class="form-title ">Bạn đã tìm thấy nguồn cảm hứng từ đâu trong ngôi nhà của mình</h2>
+						<ul class="form-radio-group">
+							<li class="form-radio-item">
+								<input class="form-radio" type="radio" value="0" checked="checked" name="source" id="source-1">
+								<label for="source-1"><span></span>Bữa cơm gia đình</label>
+							</li>
+							<li class="form-radio-item">
+								<input class="form-radio" type="radio" value="1" name="source" id="source-2">
+								<label for="source-2"><span></span>Áo quần yêu thương</label>
+							</li>
+							<li class="form-radio-item">
+								<input class="form-radio" type="radio"  value="2" name="source" id="source-3">
+								<label for="source-3"><span></span>Không gian quây quần</label>
+							</li>
+						</ul>
+						<img class="avatar" src="img/submission/select-file.jpg">
+						<button class="form-button btn-upload"><span>GỬI ẢNH</span></button>
+						<input placeholder="Tiêu đề câu chuyện" id="txt-title" class="form-text" type="text" name="title" maxlength="70">
+						<label for="txt-title" class="text-countdown"><span class="countdown">70</span>/<span class="total">70</span> ký tự</label>
+						<textarea rows="7" placeholder="Câu chuyện của bạn" id="story" class="form-text" name="story" maxlength="500"></textarea>
+						<label for="story" class="text-countdown"><span class="countdown">500</span>/<span class="total">500</span> ký tự</label>
+						<div class="question">
+							<h3>Đâu là sáng tạo công nghệ bạn mong đợi ở chiếc tủ lạnh để bữa cơm gia đình càng tươi ngon hấp dẫn?</h3>
+							<ul>
+								<li>
+									<input class="form-radio" type="radio" value="0" checked="checked" name="tech" id="tech-1">
+									<label for="tech-1"><span></span>A. Hệ thống làm lạnh đa chiều và giữ ẩm tối ưu</label>
+								</li>
+								<li>
+									<input class="form-radio" type="radio" value="1" name="tech" id="tech-2">
+									<label for="tech-2"><span></span>B. Nhiều không gian lưu trữ tiện lợi</label>
+								</li>
+								<li>
+									<input class="form-radio" type="radio" value="2" name="tech" id="tech-3">
+									<label for="tech-3"><span></span>C. Tiết kiệm điện năng tối đa</label>
+								</li>
+								<li>
+									<input class="form-radio" type="radio" value="3" name="tech" id="tech-4">
+									<label for="tech-4"><span></span>D. Ý kiến riêng của bạn:</label>
+								</li>
+								<li>
+									<input id="txt-idea" class="form-text" type="text" name="idea" maxlength="70">
+								</li>
+							</ul>
+						</div>
+						<button id="btn-submit" class="form-button">HOÀN THÀNH</button>
+					</form>
+				</section>
+			</div>
+			<footer id="footer">
+				<!-- <p>Copyright 2009 Your name</p> -->
+			</footer>
+		</div>
+
+
+
+		<script src="js/common.js"></script>
+		<script src="js/submission.js"></script>
+
+	</body>
+</html>

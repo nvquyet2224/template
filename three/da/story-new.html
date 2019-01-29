@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <title>Your Website</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="bower_components/fullpage.js/dist/jquery.fullpage.css">
+
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/love.css"/>
+    <link rel="stylesheet" href="css/story.css"/>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+    <header id="header">
+        <nav class="sub-nav">
+            <div class="container">
+                <button type="button" class="navbarToggle custom-navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul id="subMenu" class="nav-list clearfix">
+                    <li data-menuanchor="firstPage" class="active">
+                        <a href="#firstPage">Trang chủ</a>
+                    </li>
+                    <li data-menuanchor="thirdPage">
+                        <a href="#thirdPage">Giải thưởng</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể lệ</a>
+                    </li>
+                    <li>
+                        <a href="#">Góc yêu thương</a>
+                    </li>
+                    <li>
+                        <a href="#">Đăng nhập với facebook</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="content">
+        <div id="fullpage">
+            <div class="section">
+                <div class="wrapper-room clearfix">
+                    <div id="sphere" class="room-render"></div>
+                    <div class="story-popup">
+                        <div class="story-popup-content">
+                            <div class="heart-icon"></div>
+                            <div class="head clearfix">
+                                <div class="title">
+                                    <span class="text" id="title-collection">Góc yêu thương</span>
+                                </div>
+                                <div class="action">
+                                    <a href="#" class="open-search-button openSearchOption"></a>
+                                    <div class="wrap-act clearfix">
+                                        <div class="search">
+                                            <input type="text" id="input-search-story" class="search-input" placeholder="Tìm kiếm">
+                                        </div>
+                                        <div class="share">
+                                            <a class="da-btn-block" id="your-story" href="#">
+                                                <i class="da-icon da-icon-story"></i><span class="text">Gửi câu chuyện của bạn</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="scroll-content">
+                                    <ul class="story-list clearfix"></ul>
+                                    <div class="load-more-foot">
+                                        <a class="da-btn-primary load-more-story" page="1" data="1" href="#">Tải thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-modal" story-id="1">
+                        <div class="story-container">
+                            <div class="heart-icon"></div>
+                            <div class="story-wrapper">
+                                <div class="story-scroll">
+                                    <div class="session-wrapper left-col">
+                                        <div class="story-img">
+                                            <img src="/img/story/story-img.png" title="Yêu Chiếc áo đẫm mồ hôi của bố">
+                                        </div>
+                                        <div class="function-container">
+                                            <div class="session-container">
+                                                <a class="function-item like voting-button" href="#" title="Yêu thích">
+                                                    <div class="function-icon"></div>
+                                                    <div class="function-detail">
+                                                        <div class="function-name">Yêu thích</div>
+                                                        <div class="function-count voting-count">20.244</div>
+                                                    </div>
+                                                </a>
+                                                <a class="function-item share" href="#" title="Chia sẻ"
+                                                   target="new">
+                                                    <div class="function-icon"></div>
+                                                    <div class="function-detail">
+                                                        <div class="function-name">Chia sẻ</div>
+                                                        <div class="function-count">340</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="session-wrapper right-col">
+                                        <div class="session-container story-detail">
+                                            <div class="story-info">
+                                                <img class="avatar" src="/img/story/avatar.png" title="Nguyễn Hải Linh">
+                                                <span class="author-name">Nguyễn Hải Linh</span>
+                                                <h2 class="story-name">Yêu Chiếc Áo Đẫm Mồ Hôi Của Bố</h2>
+                                            </div>
+                                            <div class="story-content">
+                                                Những hôm đi làm về hơi muộn, con gái tôi vẫn hay ngóng và khi vừa nghe tiếng tôi mở cửa là sẽ chạy ra ngay và reo lên “A! Bố về! Bố ơi bố có mệt không?” rồi con bé sẽ mang cho tôi ly nước ép vợ tôi đã làm sẵn. Nhìn ánh mắt lấp lánh và tinh nghịch của con, tôi bỗng thấy bao mệt mỏi tan biến hết. Thật lạ lùng khi chỉ 1 câu hỏi thăm đơn giản và 1 ly nước cam lại có thể làm chúng ta hạnh phúc đến vậy.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="story-actions share">
+                                    <a class="action-item" id='add-user-story-action' href="#">
+                                        <span class="action-icon"></span>
+                                        <span class="action-name">Gửi câu chuyện của bạn</span>
+                                    </a>
+                                    <a class="action-item collection" id='view-collection-action' href="#">
+                                        <span class="action-icon"></span>
+                                        <span class="action-name">Xem bộ sưu tập</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-modal">
+                        <div class="info-container">
+                            <div class="info-scroll">
+                                <div class="s-icon"></div>
+                                <div class="info-list">
+
+                                </div>
+                                <div class="see-more-foot">
+                                    <a class="da-btn-primary brand-link" target="_blank" href="#">Xem chi tiết</a>
+                                </div>
+                                <br/><br/><br/><br/><br/><br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <!-- <p>Copyright 2009 Your name</p> -->
+    </footer>
+</div>
+
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="bower_components/fullpage.js/dist/jquery.fullpage.js"></script>
+
+<script src="plugins/three.min.js"></script>
+<script src="plugins/three-helpers.js"></script>
+<script src="plugins/TweenMax1.17.0.min.js"></script>
+<script src="plugins/detector.js"></script>
+
+<script src="js/common.js"></script>
+<script src="js/story.js"></script>
+<script src="js/love.js"></script>
+
+<script>
+
+    function loadJS(file) {
+        var jsElm = document.createElement("script");
+        jsElm.type = "application/javascript", jsElm.src = file, document.body.appendChild(jsElm)
+    }
+
+    function loadThree() {
+        var timestamp = +new Date;
+        var ssize = Math.max(window.screen.availHeight, window.screen.availWidth);
+        loadJS(ssize > 1024 ? "js/dynamic.js?t=" + timestamp : "js/dynamic-mobile.js?t=" + timestamp)
+    }
+
+    var configs = {
+        defaultRoom: 1,
+        imagePath: "img/360_items/",
+        rooms: [
+            {
+                id: 1,
+                positions: [
+                    {type: 'brand', x: 476, y: 152, z: 4, objectId: 1},
+                    {type: 'collection', x: 458, y: 144, z: 136, objectId: 1, count: 1000},
+                    {type: 'go', x: -155, y: -134, z: 455, objectId: 2},
+                    {type: 'go', x: -478, y: -122, z: 74, objectId: 3}
+
+                ]
+            }, {
+                id: 2,
+                positions: [
+                    {type: 'go', x: 147, y: -236, z: -415, objectId: 1},
+                    {type: 'go', x: -440, y: -222, z: -80, objectId: 3}
+                ]
+            }, {
+                id: 3,
+                positions: [
+                    {type: 'go', x: -443, y: -230, z: -16, objectId: 2},
+                    {type: 'go', x: -63, y: -227, z: 440, objectId: 1}
+                ]
+            }
+        ]
+    }
+    loadThree();
+
+</script>
+<script>
+    $(function(){
+        storyDetail.init();
+
+         /*var story = {
+         id: 1,
+         img:"img/story/story-img.png",
+         like: "20.244",
+         share:"340",
+         avatar: "img/story/avatar.png",
+         author: "Nguyễn Hải Linh",
+         title: "Yêu Chiếc Áo Đẫm Mồ Hôi Của Bố",
+         content:"Những hôm đi làm về hơi muộn, con gái tôi vẫn hay ngóng và khi vừa nghe tiếng tôi mở cửa là sẽ chạy ra ngay và reo lên “A! Bố về! Bố ơi bố có mệt không?” rồi con bé sẽ mang cho tôi ly nước ép vợ tôi đã làm sẵn. Nhìn ánh mắt lấp lánh và tinh nghịch của con, tôi bỗng thấy bao mệt mỏi tan biến hết. Thật lạ lùng khi chỉ 1 câu hỏi thăm đơn giản và 1 ly nước cam lại có thể làm chúng ta hạnh phúc đến vậy."
+         };*/
+         storyDetail.show();
+         //============================
+         //storyDetail.hide();
+
+
+        //============================
+        //infographics.hide();
+
+    });
+</script>
+</body>
+</html>

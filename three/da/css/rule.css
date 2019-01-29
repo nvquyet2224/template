@@ -1,0 +1,72 @@
+body{
+    color:#000;
+    font-size: 14px;
+}
+p{
+    margin:5px 0;
+    padding:0;
+}
+.rule-title a,
+.rule-title a:visited,
+.rule-title a:hover,
+.rule-title  a:focus{
+    font-weight: bold;
+    color:#000;
+    font-size: 14px;
+}
+h5{
+    font-weight: bold;
+}
+.rule-page{
+    background-image: url("../img/rule/bg.jpg");
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-position: top center;
+    text-align: center;
+    background-size: cover;
+    overflow: hidden;
+}
+#rule-group{
+    max-width:1200px;
+    margin: 30px auto 45px;
+    padding: 41px 100px 41px 54px;
+    background-color:rgba(255, 255, 255, .67);
+    box-shadow: 0px 11px 11px 0px rgba(106, 139, 189, 0.75);
+    text-align: left;
+    line-height: 18px;
+}
+.rule-item{
+    margin-bottom:32px;
+}
+.rule-title{
+    margin-bottom:12px;
+}
+.title{
+    font-size:30px;
+    font-weight: bold;
+    margin:23px 0 3px;
+}
+
+/** RULE STYLE **/
+@media (max-width: 1199px) and (min-width: 992px){
+    #rule-group{
+        margin: 30px 20px 45px;
+    }
+}
+
+@media (max-width: 991px){
+    #rule-group{
+        margin: 30px 20px 45px;
+        padding: 41px 54px;
+    }
+}
+
+@media (max-width: 767px){
+    #rule-group{
+        padding: 41px 20px;
+    }
+}
+
+@media (max-width: 479px){
+
+}

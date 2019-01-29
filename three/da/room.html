@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <title>Your Website</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="bower_components/fullpage.js/dist/jquery.fullpage.css">
+
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/love.css"/>
+    <link rel="stylesheet" href="css/story.css"/>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+    <header id="header">
+        <nav class="sub-nav">
+            <div class="container">
+                <button type="button" class="navbarToggle custom-navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul id="subMenu" class="nav-list clearfix">
+                    <li data-menuanchor="firstPage" class="active">
+                        <a href="#firstPage">Trang chủ</a>
+                    </li>
+                    <li data-menuanchor="thirdPage">
+                        <a href="#thirdPage">Giải thưởng</a>
+                    </li>
+                    <li>
+                        <a href="#">Thể lệ</a>
+                    </li>
+                    <li>
+                        <a href="#">Góc yêu thương</a>
+                    </li>
+                    <li>
+                        <a href="#">Đăng nhập với facebook</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="content">
+        <div id="fullpage">
+            <div class="loading-content" style="">
+                <div class="loading">
+                    <div class="wrapper-img">
+                        <img class="img-responsive" src="img/home/loading.gif">
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="wrapper-room clearfix">
+                    <div id="sphere" class="room-render"></div>
+                    <section class="love-section">
+                        <div class="container">
+                            <div class="text-content" id="top-text-content">
+                                <div class="welcome-container">
+                                    <div class="text-photo">
+                                        <img src="img/love/img-ngoinhayeuthuong.png">
+                                    </div>
+                                    <div class="text-description">
+                                        Đồng hành cùng Samsung tìm cảm hứng sáng tạo từ những điều bình dị trong ngôi
+                                        nhà của bạn.
+                                    </div>
+                                </div>
+                                <article class="story-article">
+                                    <div class="content">
+                                        Đâu là cảm hứng bạn tìm thấy từ bữa cơm vợ nấu, chiếc áo mẹ giặt, hay không gian
+                                        thoáng mát cả gia đình quây quần?
+                                    </div>
+                                    <footer>
+                                        <a class="da-btn-primary" href="javascript:void(0);"
+                                           onclick="$('#sphere').gyroViewer()">Chia sẻ ngay</a>
+                                    </footer>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="bottom-intro-control clearfix">
+                        <div class="point-control">
+                            <div class="point-map">
+                                <a class="link-point point-1 active" href="#" data="1">
+                                    <div class="point"></div>
+                                    <div class="point-tip">
+                                        <div class="icon-caret"></div>
+                                        <span class="text">Bạn đang ở phỏng khách</span>
+                                    </div>
+                                </a>
+                                <a class="link-point point-2" href="#" data="2">
+                                    <div class="point"></div>
+                                    <div class="point-tip">
+                                        <div class="icon-caret"></div>
+                                        <span class="text">Bạn đang ở phòng bếp</span>
+                                    </div>
+                                </a>
+                                <a class="link-point point-3" href="#" data="3">
+                                    <div class="point"></div>
+                                    <div class="point-tip">
+                                        <div class="icon-caret"></div>
+                                        <span class="text">Bạn đang ở phòng giặt ủi</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-popup">
+                        <div class="story-popup-content">
+                            <div class="heart-icon"></div>
+                            <div class="head clearfix">
+                                <div class="title">
+                                    <span class="text">Góc yêu thương gia đình quây quần</span>
+                                </div>
+                                <div class="search">
+                                    <input type="text" class="search-input" placeholder="Tìm kiếm">
+                                </div>
+                                <div class="share">
+                                    <a class="da-btn-block" href="#">
+                                        <i class="da-icon da-icon-story"></i><span
+                                            class="text">Gửi câu chuyện của bạn</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="scroll-content">
+                                    <ul class="story-list clearfix">
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="story-item">
+                                                <h4>con gái tôi là số một</h4>
+                                                <div class="frame-photo">
+                                                    <figure>
+                                                        <img src="img/home/img-user-photo.jpg">
+                                                    </figure>
+                                                    <div class="frame-foot clearfix">
+                                                        <div class="see-more pull-left">
+                                                            <a href="#">Xem câu chuyện</a>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <div class="love">
+                                                                <i class="da-icon-2 da-icon-heart"></i><span
+                                                                    class="number">1.789</span>
+                                                            </div>
+                                                            <div class="face">
+                                                                <i class="da-icon-2 da-icon-face"></i><span
+                                                                    class="number">200</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="load-more-foot">
+                                        <a class="da-btn-primary" href="#">Tải thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <!-- <p>Copyright 2009 Your name</p> -->
+    </footer>
+</div>
+
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="bower_components/fullpage.js/dist/jquery.fullpage.js"></script>
+
+<script src="plugins/three.min.js"></script>
+<script src="plugins/CanvasRenderer.js"></script>
+<script src="plugins/three-helpers.js"></script>
+<script src="plugins/TweenMax1.17.0.min.js"></script>
+<script src="plugins/es6-promise.min.js"></script>
+<script src="plugins/fulltilt.min.js"></script>
+<script src="plugins/modernizr.min.js"></script>
+<script src="plugins/Detector.js"></script>
+
+<script src="js/common.js"></script>
+<script src="js/love.js"></script>
+<script src="js/room.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#fullpage').fullpage({
+            paddingBottom: '60px',
+            verticalCentered: false,
+            normalScrollElements: '.scroll-content',
+            menu: '#subMenu',
+        });
+
+        var options = {
+            "defaultRoom": 1,
+            "rooms": [
+                {
+                    "id": 1,
+                    "positions": [
+                        {"type": "go", "objectId": 2, "count": 0, "x": -166, "y": -126, "z": 454},
+                        {"type": "go", "objectId": 3, "count": 0, "x": -311, "y": -270, "z": 282},
+                        {"type": "collection", "objectId": 3, "count": 3, "x": 480, "y": 65, "z": 136},
+                        {"type": "brand", "objectId": 1, "count": 0, "x": 468, "y": 173, "z": -14}
+                    ]
+                }, {
+                    "id": 2,
+                    "positions": [
+                        {"type": "go", "objectId": 1, "count": 0, "x": 126, "y": -298, "z": -380},
+                        {"type": "go", "objectId": 3, "count": 0, "x": -152, "y": -250, "z": 404},
+                        {"type": "collection", "objectId": 1, "count": 2, "x": 345, "y": -144, "z": 331},
+                        {"type": "brand", "objectId": 2, "count": 0, "x": 495, "y": -29, "z": 61}
+                    ]
+                }, {
+                    "id": 3,
+                    "positions": [
+                        {"type": "go", "objectId": 1, "count": 0, "x": 74, "y": -220, "z": 442},
+                        {"type": "go", "objectId": 2, "count": 0, "x": -181, "y": -230, "z": 405},
+                        {"type": "collection", "objectId": 2, "count": 2, "x": 366, "y": 75, "z": 331},
+                        {"type": "brand", "objectId": 3, "count": 0, "x": 494, "y": -72, "z": 18}
+                    ]
+                }
+            ]
+        };
+
+        var limits = {
+            disableGyro: true,
+            mouse: true,
+            mouseLimits: [
+                {id: 1, start: -15, end: 80},
+                {id: 2, start: -50, end: 70},
+                {id: 3, start: 30, end: 60}
+            ],
+            gyro: true,
+            gyroLimits: [
+                {id: 1, start: 100, end: 200},
+                {id: 2, start: 100, end: 200},
+                {id: 3, start: 200, end: 340}
+            ]
+        }
+
+        $("#sphere").SphereViewer(options, limits);
+    });
+</script>
+
+</body>
+</html>

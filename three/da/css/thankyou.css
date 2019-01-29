@@ -1,0 +1,60 @@
+.infographic-aircon-popup{height: 100%; background: rgba(255,255,255,1); position: absolute; color: #404142; transition: all ease .3s; top: 0; left: -100%}
+.infographic-aircon-popup .infographic-popup-content{padding: 35px; height: 100%; width: 720px; position: relative;}
+.infographic-aircon-popup .head .title{font-weight: 700; text-transform: uppercase; width: 570px; margin: 0 auto; line-height: normal;}
+.infographic-aircon-popup .head .title .sub-text-1{font-size: 18px}
+.infographic-aircon-popup .head .title .text{font-size: 36px; text-align: center; color: #00349a;}
+.infographic-aircon-popup .head .title .sub-text-2{font-size: 18px; text-align: right}
+.infographic-aircon-popup .head .action{text-align: center; margin-top: 5px}
+.infographic-aircon-popup .head .description{text-align: justify; color: #00349a; font-size: 12px; margin-top: 15px; margin-bottom: 10px}
+.infographic-aircon-popup .head .description .special-text{font-size: 14px; font-weight: 700; text-transform: uppercase; text-align: center}
+.infographic-aircon-popup .content img{width: 100%}
+
+.infographic-showcase-popup{height: 100%; background: rgba(255,255,255,1); position: absolute; color: #404142; transition: all ease .3s; top: 0; left: -100%}
+.infographic-showcase-popup .infographic-popup-content{padding: 35px; height: 100%; width: 720px; position: relative;}
+.infographic-showcase-popup .head .title{font-weight: 700; text-transform: uppercase; margin: 0 auto; line-height: normal;}
+.infographic-showcase-popup .head .title .text{font-size: 36px; color: #00349a;}
+.infographic-showcase-popup .head .action{margin-bottom: 10px}
+.infographic-showcase-popup .head .description{color: #00349a; font-size: 12px; margin-bottom: 10px}
+.infographic-showcase-popup .content img{width: 100%}
+
+.wrapper-room{position: relative;}
+.filter-wrap{
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='10');
+}
+
+.open-infographic-aircon-popup .infographic-aircon-popup,
+.open-infographic-showcase-popup .infographic-showcase-popup{left: 0;}
+
+.element-slimScrollRail{width: 10px !important; right: 2px !important; background: #858688 !important; opacity: 1 !important}
+.element-slimScrollBar{width: 12px !important; background: #fff !important; opacity: 1 !important; box-shadow: 1px 1px 1px rgba(0, 0, 0, .3)}
+.element-slimScrollDiv{padding-right:15px; overflow: visible !important;}
+
+.s-icon{
+    position: absolute;
+    top:15px;
+    right:-33px;
+    z-index:10;
+    background: url("../img/info/s-icon.png");
+    width:69px;
+    height: 69px;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+    .infographic-aircon-popup .infographic-popup-content,
+    .infographic-showcase-popup .infographic-popup-content{width: 400px}
+}
+
+@media (max-width: 767px) {
+    .infographic-aircon-popup .head .title{width: 100%}
+}
+
+@media (max-width: 479px) {
+    .infographic-aircon-popup .infographic-popup-content,
+    .infographic-showcase-popup .infographic-popup-content{width: 280px}
+}
