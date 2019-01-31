@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>three.js webgl - equirectangular panorama</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<style>
+body {
+	background-color:#fff;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+}
+
+.container {
+	position:fixed;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+}
+
+.catalog {
+	position:absolute;
+	right:0;
+	top:0;
+	font-size:0;
+}
+
+.catalog li {
+	display:block;	
+	margin-bottom:1px;
+	cursor:pointer;
+}
+
+.catalog li img {
+	display:block;
+	width:auto;
+	height:auto;
+	max-width:60px;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id="container" class="container"></div>
+
+<script src="js/three.js"></script>
+<script src="js/WebGL.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/DragControls.js"></script>
+<script src="js/house.js"></script>
+
+</body>
+</html>

@@ -97,8 +97,8 @@ function init() {
     var cylinderGeometry = new THREE.CylinderGeometry( objectSize / 4, objectSize / 4, 20, 32 );
     mesh3 = new THREE.Mesh(cylinderGeometry, material);
     mesh3.position.set(objectSize * 2, 0, 0);
+	
     //mesh3.callback = objectClickHandler;
-
 	//geometry = new THREE.PlaneGeometry(3,3 * 0.74);
 	//mesh4 = new THREE.Mesh(geometry, material);
 	//mesh4.callback = objectClickHandler;
