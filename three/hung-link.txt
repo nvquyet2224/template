@@ -14,3 +14,14 @@ https://albertopiras.github.io/threeJS-object-controls/
 https://www.blend4web.com
 
 https://github.com/mrdoob/three.js/issues/991
+
+//3d object
+https://discourse.threejs.org/t/3d-model-not-rotating-around-its-center/604/9
+
+
+//Rotate around
+https://codepen.io/vidark/pen/oWZEQJ
+https://www.babylonjs-playground.com/#A83GX#7
+https://github.com/mrdoob/three.js/issues/1219
+
+https://andreasrohner.at/posts/Web%20Development/JavaScript/Simple-orbital-camera-controls-for-THREE-js/

@@ -2,43 +2,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>three.js webgl - equirectangular panorama</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Manage the house</title>
+<link rel="icon" href="images/favicon.png">
 <style>
+
 body {
-	background-color:#fff;
-	margin:0;
-	padding:0;
-	overflow:hidden;
+	background-color: rgb(0, 0, 0);
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 
-.container {
+/*.container {
 	position:fixed;
 	left:0;
 	right:0;
 	top:0;
 	bottom:0;
-}
+}*/
 
-.catalog {
+#info {
 	position:absolute;
+	left:0;
 	right:0;
-	top:0;
-	font-size:0;
+	z-index:1;
+	text-align:right;
+	padding:10px 20px;
+	
 }
 
-.catalog li {
-	display:block;	
-	margin-bottom:1px;
-	cursor:pointer;
-}
-
-.catalog li img {
-	display:block;
-	width:auto;
-	height:auto;
-	max-width:60px;
+#info a {
+	display:inline-block;
+	padding:3px 7px;
+	margin-left:1px;
+	background-color:rgba(255,255,255,0.5);
+	text-decoration:none;
+	color:#333;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	font-size:12px;
 }
 
 
@@ -46,13 +49,23 @@ body {
 </head>
 <body>
 
+<div id="info">
+<a href="javascript:translate();">Translate</a>
+<a href="javascript:rotate();">Rotate</a>
+<a href="javascript:scale();">Scale</a>
+</div>
+
+
+		
 <div id="container" class="container"></div>
 
 <script src="js/three.js"></script>
 <script src="js/WebGL.js"></script>
 <script src="js/OrbitControls.js"></script>
-<script src="js/DragControls.js"></script>
-<script src="js/house.js"></script>
+<script src="js/TransformControls.js"></script>
+<script src="js/stats.min.js"></script>
+<script src="js/ShadowMesh.js"></script>
+<script src="js/house-bk.js"></script>
 
 </body>
 </html>
