@@ -22,7 +22,7 @@ var mesh,
 
 	
 	// Paramater room
-	var roomW = 10, roomH = 10, roomD = 0.01;
+	var roomW = 20, roomH = 10, roomD = 0.1;
 	
 	var floorMesh, ceilingMesh, rightWallMesh, leftWallMesh, backWallMesh, frontWallMesh;
 	
@@ -83,8 +83,8 @@ function init() {
 	renderer = new THREE.WebGLRenderer( { antialias: true });
 	renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    //renderer.setClearColor( 0x889988 );
-	renderer.setClearColor( 'rgb(0,0,0)' );
+    renderer.setClearColor( 0x889988 );
+	//renderer.setClearColor( 'rgb(0,0,0)' );
 	
 	container.appendChild( renderer.domElement );
 	
@@ -187,8 +187,8 @@ function init() {
 		//color: 0xffffff
 	} );
 	floorMesh = new THREE.Mesh( floorGeometry, floorMaterial );
-	//floorMesh.position.y = -roomH/2;
-	floorMesh.position.y = 0;
+	floorMesh.position.y = -roomH/2;
+	//floorMesh.position.y = 0;
 	scene.add( floorMesh );
 	floorMesh.userData.normal = floorMesh.position.clone().normalize();
 	floorMesh.onBeforeRender = onBeforeRender;
@@ -273,7 +273,7 @@ function init() {
 	/////////////////////////////////////////////////////////
 
 	// CUBE and CUBE's SHADOWS
-	var cubeGeometry = new THREE.BoxGeometry( 1, 1, 1 );
+	/*var cubeGeometry = new THREE.BoxGeometry( 1, 1, 1 );
 	var cubeMaterial = new THREE.MeshPhongMaterial( { color: 0xff0000, emissive: 0x200000 } );
 	cubeParent = new THREE.Mesh( cubeGeometry, cubeMaterial );
 	
@@ -283,7 +283,7 @@ function init() {
 	scene.add( cubeParent );
 	
 	cubeGroundShadow = new THREE.ShadowMesh( cubeParent );
-	scene.add( cubeGroundShadow );
+	scene.add( cubeGroundShadow );*/
 	
 	
 	//cubeRightShadow = new THREE.ShadowMesh( cubeParent );
@@ -297,7 +297,7 @@ function init() {
 	//control.attach( cubeParent );
 	
 	// CYLINDER and CYLINDER's SHADOWS
-	var cylinderGeometry = new THREE.CylinderGeometry( 0.3, 0.3, 2 );
+	/*var cylinderGeometry = new THREE.CylinderGeometry( 0.3, 0.3, 2 );
 	var cylinderMaterial = new THREE.MeshPhongMaterial( { color: 0x0000ff, emissive: 0x000020 } );
 	cylinderParent = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
 	cylinderParent.position.x = 3;
@@ -305,7 +305,7 @@ function init() {
 	scene.add( cylinderParent );
 	
 	cylinderGroundShadow = new THREE.ShadowMesh( cylinderParent );
-	scene.add( cylinderGroundShadow );
+	scene.add( cylinderGroundShadow );*/
 	
 	//cylinderGroundShadow = new THREE.ShadowMesh( cylinderParent );
 	//scene.add( cylinderGroundShadow );
@@ -316,17 +316,16 @@ function init() {
 	//cylinderBackShadow = new THREE.ShadowMesh( cylinderParent );
 	//scene.add( cylinderBackShadow );
 	
-	
 
 	// TORUS and TORUS' SHADOWS
-	var torusGeometry = new THREE.TorusGeometry( 1, 0.2, 10, 16, TWO_PI );
+	/*var torusGeometry = new THREE.TorusGeometry( 1, 0.2, 10, 16, TWO_PI );
 	var torusMaterial = new THREE.MeshPhongMaterial( { color: 0xff00ff, emissive: 0x200020 } );
 	torusParent = new THREE.Mesh( torusGeometry, torusMaterial );
 	torusParent.position.z = -2.5;
 	scene.add( torusParent );
 
 	torusGroundShadow = new THREE.ShadowMesh( torusParent );
-	scene.add( torusGroundShadow );
+	scene.add( torusGroundShadow );*/
 	
 	//torusRightShadow = new THREE.ShadowMesh( torusParent );
 	//scene.add( torusRightShadow );
@@ -339,7 +338,7 @@ function init() {
 	var pyramidGeometry = new THREE.CylinderGeometry( 0, 0.5, 2, 4 );
 	var pyramidMaterial = new THREE.MeshLambertMaterial( { color: 'rgb(255,255,0)', emissive: 0x440000, shading: THREE.FlatShading } );
 	pyramid = new THREE.Mesh( pyramidGeometry, pyramidMaterial );
-	pyramid.position.set( -4, -4, 2 );
+	//pyramid.position.set( -4, -4, 2 );
 	scene.add( pyramid );
 
 	pyramidShadow = new THREE.ShadowMesh( pyramid );
@@ -492,9 +491,9 @@ function animate() {
 
 function render() {
 	
-	cubeGroundShadow.update( floorPlane, lightPosition4D );
-	cylinderGroundShadow.update( floorPlane, lightPosition4D );
-	torusGroundShadow.update( floorPlane, lightPosition4D );
+	//cubeGroundShadow.update( floorPlane, lightPosition4D );
+	//cylinderGroundShadow.update( floorPlane, lightPosition4D );
+	//torusGroundShadow.update( floorPlane, lightPosition4D );
 	
 	renderer.render( scene, camera );
 }
