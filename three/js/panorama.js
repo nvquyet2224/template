@@ -223,8 +223,6 @@ window.onload = function() {
     document.addEventListener('mousemove', onDocumentMouseMove, false);
 	document.addEventListener('mouseup', onDocumentMouseUp, false);
 	
-	
-	
 	catalog.onclick = function(e) {
 		
 		var path = e.target.getAttribute('src');
