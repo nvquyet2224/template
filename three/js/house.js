@@ -15,25 +15,31 @@ var mesh,
 	far = 1000,
 	orbit,
 	control,
-	objects = [],
 	mouse,
 	raycaster,
 	shadowMesh,
+	selected = false,
 	INTERSECTED;
 	
 	
 	//walls
-	var walls, ground, interactiveObj = [], rotateObj = [], groundRaycastObj = [];
+	//var walls, ground, rayRoom = [];
+	var ray_object = [], ray_room = [];
 	var mouseDown = false;	
 		
 	// Room parameter
 	var xRoom = 20, yRoom = 10, dRoom = 0.2;
 	var clientX, clientY;
-	var wall_fl_box, wall_ce_box, wall_le_box, wall_ri_box, wall_ba_box, wall_fr_box;
 	
-	var grayBox1, wallBox1;
+	var wall_fl_box = new THREE.Box3();
+	var wall_ce_box = new THREE.Box3();
+	var wall_ba_box = new THREE.Box3();
+	var wall_fr_box = new THREE.Box3();
+	var wall_le_box = new THREE.Box3();
+	var wall_ri_box = new THREE.Box3();
+	var wall_fl_room, wall_ce_room, wall_ba_room, wall_fr_room, wall_le_room, wall_ri_room;
 
-
+	
 	
 	///////////////////////////////////////
 	/////////////// SHADOW ///////////////
@@ -45,9 +51,12 @@ var mesh,
 	var sphere, sphere_fl_shadow, sphere_le_shadow, sphere_ri_shadow, sphere_ba_shadow, sphere_fr_shadow, sphere_ce_shadow;
 	var sandy, sandy_fl_shadow, sandy_le_shadow, sandy_ri_shadow, sandy_ba_shadow, sandy_fr_shadow, sandy_ce_shadow;
 	var gray, gray_fl_shadow, gray_le_shadow, gray_ri_shadow, gray_ba_shadow, gray_fr_shadow, gray_ce_shadow;
-	
-	var pyramidBox, sphereBox, sandyBox, grayBox;
-	
+
+	var box_Intersected  = new THREE.Box3();
+	var pyramidBox = new THREE.Box3();
+	var sphereBox = new THREE.Box3();
+	var sandyBox = new THREE.Box3();
+	var grayBox = new THREE.Box3();
 	
 	
 	var FL_VECTOR = new THREE.Vector3( 0, 1, 0 );
@@ -152,8 +161,84 @@ function init() {
 	
 	// TransformControls
 	control = new THREE.TransformControls( camera, renderer.domElement );
-	//control.addEventListener('change', render);
+	
+	var lastPosition;
+	var check = true;
+	
+	var fl_check = true, fl_pos;
+	var ce_check = true, ce_pos;
+	var ba_check = true, ba_pos;
+	var fr_check = true, fr_pos;
+	var le_check = true, le_pos;
+	var ri_check = true, ri_pos;
+	
+	control.addEventListener( 'objectChange', function ( event ) {
+		  
+		//lastPosition = this.object.position.clone();
+			
+		if(INTERSECTED && mouseDown) {
+			
+			box_Intersected.setFromObject(INTERSECTED);
+			
+			wall_fl_box.setFromObject(wall_fl_room);
+			wall_ce_box.setFromObject(wall_ce_room);
+			wall_ba_box.setFromObject(wall_ba_room);
+			wall_fr_box.setFromObject(wall_fr_room);
+			wall_le_box.setFromObject(wall_le_room);
+			wall_ri_box.setFromObject(wall_ri_room);
+			
+			if(box_Intersected.intersectsBox(wall_fl_box)) {
+				if(fl_check) {
+					fl_pos = INTERSECTED.position.y;
+					fl_check = false;
+				}
+				INTERSECTED.position.y = fl_pos;
+			}
+			
+			if(box_Intersected.intersectsBox(wall_ce_box)) {
+				if(ce_check) {
+					ce_pos = INTERSECTED.position.y;
+					ce_check = false;
+				}
+				INTERSECTED.position.y = ce_pos;
+			}
+			
+			if(box_Intersected.intersectsBox(wall_ba_box)) {
+				if(ba_check) {
+					ba_pos = INTERSECTED.position.z;
+					ba_check = false;
+				}
+				INTERSECTED.position.z = ba_pos;
+			}
+			
+			if(box_Intersected.intersectsBox(wall_fr_box)) {
+				if(fr_check) {
+					fr_pos = INTERSECTED.position.z;
+					fr_check = false;
+				}
+				INTERSECTED.position.z = fr_pos;
+			}
+			
+			if(box_Intersected.intersectsBox(wall_le_box)) {
+				if(le_check) {
+					le_pos = INTERSECTED.position.x;
+					le_check = false;
+				}
+				INTERSECTED.position.x = le_pos;
+			}
+			
+			if(box_Intersected.intersectsBox(wall_ri_box)) {
+				if(ri_check) {
+					ri_pos = INTERSECTED.position.x;
+					ri_check = false;
+				}
+				INTERSECTED.position.x = ri_pos;
+			}
+		}
+	} );
+	
 	control.addEventListener( 'dragging-changed', function ( event ) {
+		selected = true;
 		orbit.enabled = ! event.value;
 	} );
 	
@@ -205,9 +290,9 @@ function init() {
 	///////////// ROOM //////////////
 	/////////////////////////////////
 
-	walls = new THREE.Object3D();
-	var groundGeo_2 = new THREE.BoxGeometry(xRoom, xRoom, dRoom); //for roof and floor
-	var groundGeo = new THREE.BoxGeometry(xRoom, yRoom);
+	//walls = new THREE.Object3D();
+	//var groundGeo_2 = new THREE.BoxGeometry(xRoom, xRoom, dRoom); //for roof and floor
+	//var groundGeo = new THREE.BoxGeometry(xRoom, yRoom);
 
 
 	// Floor room  parameters
@@ -217,7 +302,7 @@ function init() {
         map: new THREE.TextureLoader().load('images/hardwood.png')
     } );
 	
-	material_floor.map.needsUpdate = true;
+	//material_floor.map.needsUpdate = true;
 	 
     // Left room parameters
     var geometry_wall = new THREE.BoxGeometry( xRoom, yRoom, dRoom );
@@ -234,7 +319,7 @@ function init() {
 	var material_right = new THREE.MeshPhongMaterial( {
         map: new THREE.TextureLoader().load('images/light_fine_wood.jpg')
     } );
-	material_right.map.needsUpdate = true;
+	//material_right.map.needsUpdate = true;
 	
     // Back room parameters
     var geometry_back = new THREE.BoxGeometry( xRoom - (dRoom*2), yRoom, dRoom );
@@ -244,133 +329,147 @@ function init() {
     } );
 
 	
-	ground = new THREE.Mesh(groundGeo_2, material_floor);
-	ground.overdraw = true;
+	//ground = new THREE.Mesh(geometry_floor, material_floor);
+	//ground.overdraw = true;
 	//ground.position.set(0, 0, 0);
 	//ground.rotation.x = -Math.PI / 2;
-	ground.position.set( 0, -(yRoom + dRoom)/2 , 0 );
-	ground.rotation.set( - Math.PI / 2, 0, 0 );
+	//ground.position.set( 0, -(yRoom + dRoom)/2 , 0 );
+	//ground.rotation.set( - Math.PI / 2, 0, 0 );
 	
-	walls.add(ground);
-	console.log(ground);
+	//walls.add(ground);
+	//console.log(ground);
 	
 
 	// Floor
-	mesh = new THREE.Mesh( geometry_floor, material_floor );
-	mesh.position.set( 0, -(yRoom + dRoom)/2 , 0 );
-	mesh.rotation.set( - Math.PI / 2, 0, 0 );
-	//scene.add( mesh );
-	mesh.overdraw = true;
-	walls.add( mesh );
-	wall_fl_box = new THREE.BoundingBoxHelper( mesh );
-	wall_fl_box.update(mesh);
+	wall_fl_room = new THREE.Mesh( geometry_floor, material_floor );
+	wall_fl_room.position.set( 0, -(yRoom + dRoom)/2 , 0 );
+	wall_fl_room.rotation.set( - Math.PI / 2, 0, 0 );
+	wall_fl_room.name = 'fl_room';
+	scene.add( wall_fl_room );
+	ray_room.push( wall_fl_room );
+	
+	//mesh.overdraw = true;
+	//walls.add( mesh );
+	//wall_fl_box = new THREE.BoundingBoxHelper( mesh );
+	//wall_fl_box.update(mesh);
 	//wall_fl_box.box.min.x -= 0.1;
 	//wall_fl_box.box.max.x += 0.1;
 	//scene.add(wall_fl_box);
 	
-	//mesh.userData.normal = mesh.position.clone().normalize();
-	//mesh.onBeforeRender = onBeforeRender;
-	//mesh.onAfterRender = onAfterRender;
+	//wall_fl_room.userData.normal = wall_fl_room.position.clone().normalize();
+	//wall_fl_room.onBeforeRender = onBeforeRender;
+	//wall_fl_room.onAfterRender = onAfterRender;
 	
 	
 	// Celling
-	mesh = new THREE.Mesh( geometry_floor, material_floor );
-	mesh.position.set( 0, (yRoom + dRoom)/2 , 0 );
-	mesh.rotation.set( - Math.PI / 2, 0, 0 );
-	//scene.add( mesh );
-	mesh.overdraw = true;
-	walls.add( mesh );
-	wall_ce_box = new THREE.BoundingBoxHelper( mesh );
-	wall_ce_box.update(mesh);
+	wall_ce_room = new THREE.Mesh( geometry_floor, material_floor );
+	wall_ce_room.position.set( 0, (yRoom + dRoom)/2 , 0 );
+	wall_ce_room.rotation.set( - Math.PI / 2, 0, 0 );
+	wall_ce_room.name = 'ce_room';
+	scene.add( wall_ce_room );
+	ray_room.push( wall_ce_room );
+	
+	//mesh.overdraw = true;
+	//walls.add( mesh );
+	//wall_ce_box = new THREE.BoundingBoxHelper( mesh );
+	//wall_ce_box.update(mesh);
 	//wall_ce_box.box.min.x -= 0.1;
 	//wall_ce_box.box.max.x += 0.1;
 	//scene.add(wall_ce_box);
 	
-	mesh.userData.normal = mesh.position.clone().normalize();
-	mesh.onBeforeRender = onBeforeRender;
-	mesh.onAfterRender = onAfterRender;
+	wall_ce_room.userData.normal = wall_ce_room.position.clone().normalize();
+	wall_ce_room.onBeforeRender = onBeforeRender;
+	wall_ce_room.onAfterRender = onAfterRender;
 	
 
 	// Wall back
-	mesh = new THREE.Mesh( geometry_back, material_wall);
-	mesh.position.set( 0, 0, -(xRoom - dRoom)/2);
-	mesh.rotation.set( 0, 0, 0 );
-	//scene.add( mesh );
-	mesh.overdraw = true;
-	walls.add( mesh );
-	wall_ba_box = new THREE.BoundingBoxHelper( mesh );
-	wall_ba_box.update(mesh);
+	wall_ba_room = new THREE.Mesh( geometry_back, material_wall);
+	wall_ba_room.position.set( 0, 0, -(xRoom - dRoom)/2);
+	wall_ba_room.rotation.set( 0, 0, 0 );
+	wall_ba_room.name = 'ba_room';
+	scene.add( wall_ba_room );
+	ray_room.push( wall_ba_room );
+	
+	//wall_ba_room.overdraw = true;
+	//walls.add( mesh );
+	//wall_ba_box = new THREE.BoundingBoxHelper( mesh );
+	//wall_ba_box.update(mesh);
 	//wall_ba_box.box.min.x -= 0.1;
 	//wall_ba_box.box.max.x += 0.1;
 	//scene.add(wall_ba_box);
 	
-	mesh.userData.normal = mesh.position.clone().normalize();
-	mesh.onBeforeRender = onBeforeRender;
-	mesh.onAfterRender = onAfterRender;
+	wall_ba_room.userData.normal = wall_ba_room.position.clone().normalize();
+	wall_ba_room.onBeforeRender = onBeforeRender;
+	wall_ba_room.onAfterRender = onAfterRender;
 	
 	
 	// Wall front
-	mesh = new THREE.Mesh( geometry_back, material_wall);
-	mesh.position.set( 0, 0, (xRoom - dRoom)/2);
-	mesh.rotation.set( 0, 0, 0 );
-	//scene.add( mesh );
-	mesh.overdraw = true;
-	walls.add( mesh );
-	wall_fr_box = new THREE.BoundingBoxHelper( mesh );
-	wall_fr_box.update(mesh);
+	wall_fr_room = new THREE.Mesh( geometry_back, material_wall);
+	wall_fr_room.position.set( 0, 0, (xRoom - dRoom)/2);
+	wall_fr_room.rotation.set( 0, 0, 0 );
+	wall_fr_room.name = 'fr_room';
+	scene.add( wall_fr_room );
+	ray_room.push( wall_fr_room );
+	
+	//mesh.overdraw = true;
+	//walls.add( mesh );
+	//wall_fr_box = new THREE.BoundingBoxHelper( mesh );
+	//wall_fr_box.update(mesh);
 	//wall_fr_box.box.min.x -= 0.1;
 	//wall_fr_box.box.max.x += 0.1;
 	//scene.add(wall_fr_box);
 	
-	mesh.userData.normal = mesh.position.clone().normalize();
-	mesh.onBeforeRender = onBeforeRender;
-	mesh.onAfterRender = onAfterRender;
+	wall_fr_room.userData.normal = wall_fr_room.position.clone().normalize();
+	wall_fr_room.onBeforeRender = onBeforeRender;
+	wall_fr_room.onAfterRender = onAfterRender;
 	
 	
 	// Wall left
-	mesh = new THREE.Mesh( geometry_wall, material_left );
-	mesh.position.set( -(xRoom - dRoom)/2, 0, 0 );
-	mesh.rotation.set( 0, -Math.PI / 2, 0 );
-	//scene.add( mesh );
+	wall_le_room = new THREE.Mesh( geometry_wall, material_left );
+	wall_le_room.position.set( -(xRoom - dRoom)/2, 0, 0 );
+	wall_le_room.rotation.set( 0, -Math.PI / 2, 0 );
+	wall_le_room.name = 'le_room';
+	scene.add( wall_le_room );
+	ray_room.push( wall_le_room );
 	
-	mesh.overdraw = true;
-	walls.add( mesh );
-	wall_le_box = new THREE.BoundingBoxHelper( mesh );
-	wall_le_box.update(mesh);
+	
+	//mesh.overdraw = true;
+	//walls.add( mesh );
+	//wall_le_box = new THREE.BoundingBoxHelper( mesh );
+	//wall_le_box.update(mesh);
 	//wall_le_box.box.min.x -= 0.1;
 	//wall_le_box.box.max.x += 0.1;
 	//scene.add(wall_le_box);
 	
-	wallBox1 = new THREE.Box3();
-	wallBox1.setFromObject(wall_le_box);
 	
-	
-	mesh.userData.normal = mesh.position.clone().normalize();
-	mesh.onBeforeRender = onBeforeRender;
-	mesh.onAfterRender = onAfterRender;
+	wall_le_room.userData.normal = wall_le_room.position.clone().normalize();
+	wall_le_room.onBeforeRender = onBeforeRender;
+	wall_le_room.onAfterRender = onAfterRender;
 	
 	
 	// Wall right
-	mesh = new THREE.Mesh( geometry_wall, material_right );
-	mesh.position.set( (xRoom - dRoom)/2, 0, 0 );
-	mesh.rotation.set( 0, -Math.PI / 2, 0 );
-	//scene.add( mesh );
+	wall_ri_room = new THREE.Mesh( geometry_wall, material_right );
+	wall_ri_room.position.set( (xRoom - dRoom)/2, 0, 0 );
+	wall_ri_room.rotation.set( 0, -Math.PI / 2, 0 );
+	wall_ri_room.name = 'ri_room';
+	scene.add( wall_ri_room );
+	ray_room.push( wall_ri_room );
 	
-	mesh.overdraw = true;
-	walls.add( mesh );
-	wall_ri_box = new THREE.BoundingBoxHelper( mesh );
-	wall_ri_box.update(mesh);
+	//mesh.overdraw = true;
+	//walls.add( mesh );
+	//wall_ri_box = new THREE.BoundingBoxHelper( mesh );
+	//wall_ri_box.update(mesh);
 	//wall_ri_box.box.min.x -= 0.1;
 	//wall_ri_box.box.max.x += 0.1;
 	//scene.add(wall_ri_box);
 	
-	mesh.userData.normal = mesh.position.clone().normalize();
-	mesh.onBeforeRender = onBeforeRender;
-	mesh.onAfterRender = onAfterRender;
+	wall_ri_room.userData.normal = wall_ri_room.position.clone().normalize();
+	wall_ri_room.onBeforeRender = onBeforeRender;
+	wall_ri_room.onAfterRender = onAfterRender;
 	
-	scene.add( walls );
 	
-	groundRaycastObj.push(walls);
+	//scene.add( walls );
+	//groundRaycastObj.push(walls);
 	
 	
 	////////////////////////////////
@@ -387,16 +486,12 @@ function init() {
 	
 	sandy = new THREE.Mesh( geometry, material_sandy );
     sandy.position.set( 2, -4, 6 );
-	
 	sandy.type = '3d-mode';
 	sandy.name = 'sandy_box';
+	
 	scene.add( sandy );
-	objects.push( sandy );
-	interactiveObj.push(sandy);
-	sandyBox = new THREE.BoundingBoxHelper( sandy );
-	// comment next line out if you don't want to see the wireframe sofa boxHelper
-	scene.add(sandyBox);
-
+	ray_object.push( sandy );
+	
 	sandy_fl_shadow = new THREE.ShadowMesh( sandy );
 	scene.add( sandy_fl_shadow );
 	
@@ -428,20 +523,8 @@ function init() {
     gray.position.set( -2 , - 4, - 6 );
 	gray.type = '3d-mode';
 	gray.name = 'gray_box';
-    
-	scene.add( gray );
-	objects.push( gray );
-	interactiveObj.push(gray);
-	
-	grayBox = new THREE.BoundingBoxHelper( gray );
-	
-	// comment next line out if you don't want to see the wireframe sofa boxHelper
-	scene.add(grayBox);
-
-	grayBox1 = new THREE.Box3();
-	grayBox1.setFromObject(grayBox);
-		
-		
+    scene.add( gray );
+	ray_object.push( gray );
 	
 	gray_fl_shadow = new THREE.ShadowMesh( gray );
 	scene.add( gray_fl_shadow );
@@ -470,14 +553,8 @@ function init() {
 	sphere.position.set( 6, -4, -6 );
 	sphere.type = '3d-mode';
 	sphere.name = 'sphere_box';
-	
-    scene.add( sphere );
-	objects.push( sphere );
-	interactiveObj.push(sphere);
-	sphereBox = new THREE.BoundingBoxHelper( sphere );
-	// comment next line out if you don't want to see the wireframe sofa boxHelper
-	scene.add(sphereBox);
-	
+	scene.add( sphere );
+	ray_object.push( sphere );
 	
 	sphere_fl_shadow = new THREE.ShadowMesh( sphere );
 	scene.add( sphere_fl_shadow );
@@ -505,13 +582,8 @@ function init() {
 	pyramid.position.set( -7, -2.9, -2 );
 	pyramid.type = '3d-mode';
 	pyramid.name = 'pyramid_box';
-	
-    scene.add( pyramid );
-	objects.push( pyramid );
-	interactiveObj.push(pyramid);
-	pyramidBox = new THREE.BoundingBoxHelper( pyramid );
-	// comment next line out if you don't want to see the wireframe sofa boxHelper
-	scene.add(pyramidBox);
+	scene.add( pyramid );
+	ray_object.push( pyramid );
 	
 	pyramid_fl_shadow = new THREE.ShadowMesh( pyramid );
 	scene.add( pyramid_fl_shadow );
@@ -638,7 +710,7 @@ function onMouseDown(event) {
 	
 	// Intersects
 	raycaster.setFromCamera( mouse, camera );
-	var intersects = raycaster.intersectObjects( objects );
+	var intersects = raycaster.intersectObjects( ray_object );
 	
 	if ( intersects.length > 0 ) {
 
@@ -666,12 +738,18 @@ function onMouseDown(event) {
 			control.showZ = true;
 		}
 		
+	}else {
+		if(!selected) {
+			control.detach();
+			INTERSECTED = null;
+		}
 	}
 	
 }
 
 function onMouseUp(event) {
 	mouseDown = false;
+	selected = false;
 }
 
 function onMouseMove(event) {
@@ -691,24 +769,14 @@ function onMouseMove(event) {
 	// Intersects
 	raycaster.setFromCamera( mouse, camera );
 	
-	var intersects = raycaster.intersectObjects( objects );
+	var intersects = raycaster.intersectObjects( ray_object );
 	
 	if ( intersects.length > 0 ) { 
 		container.style.cursor = 'pointer';
 		
 	}else {
 		container.style.cursor = 'default';
-		
 	}
-	
-	
-	if(mouseDown) {
-		
-		//var grayBox  = new THREE.Box3().setFromObject(mesh1);
-		var intersects  = grayBox1.intersectsBox(wallBox1); 
-		console.log(intersects);
-	}
-	
 	
 }
 
@@ -749,12 +817,17 @@ function render() {
 	pyramid_ri_shadow.update( RI_PLANE, lightPosition4D );
 	pyramid_ba_shadow.update( BA_PLANE, lightPosition4D );
 	pyramid_fr_shadow.update( FR_PLANE, lightPosition4D );
+
+	//sandy.material =
+	//sandyBox.intersectsBox(grayBox) ? sandy.materials.colliding : sandy.materials.solid;
+
+	//sandyHelper.update();
+	//grayHelper.update();
+	//sphereHelper.update();
+	//pyramidHelper.update();
 	
-	grayBox.update();
-	sandyBox.update();
-	pyramidBox.update();
-	sphereBox.update();
 	
 	renderer.render( scene, camera );
 	 
 }
+
