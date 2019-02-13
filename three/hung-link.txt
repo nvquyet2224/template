@@ -25,3 +25,8 @@ https://www.babylonjs-playground.com/#A83GX#7
 https://github.com/mrdoob/three.js/issues/1219
 
 https://andreasrohner.at/posts/Web%20Development/JavaScript/Simple-orbital-camera-controls-for-THREE-js/
+
+
+https://gamevui.vn/noi-ong-nuoc-2/game
+
+https://stackoverflow.com/questions/35843564/prevent-objects-from-moving-outside-room-in-three-js

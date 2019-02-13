@@ -16,29 +16,63 @@ var mesh,
 	orbit,
 	control,
 	mouse,
+	mouseDown = false,
+	clientX,
+	clientY,
 	raycaster,
 	shadowMesh,
-	selected = false,
+	controlling = false, // Control on object using
+	ray_object = [], 
+	ray_room = [],
 	INTERSECTED;
 	
-	
-	//walls
-	//var walls, ground, rayRoom = [];
-	var ray_object = [], ray_room = [];
-	var mouseDown = false;	
+	// Room Parameters
+	var xRoom = 20,
+		yRoom = 10, 
+		dRoom = 0.2;
 		
-	// Room parameter
-	var xRoom = 20, yRoom = 10, dRoom = 0.2;
-	var clientX, clientY;
+	// WallMesh
+	var wallMesh = {
+		fl_mesh: null,
+		ce_mesh: null,
+		ba_mesk: null,
+		fr_mesh: null,
+		le_mesh: null,
+		ri_mesh: null
+	}
 	
-	var wall_fl_box = new THREE.Box3();
-	var wall_ce_box = new THREE.Box3();
-	var wall_ba_box = new THREE.Box3();
-	var wall_fr_box = new THREE.Box3();
-	var wall_le_box = new THREE.Box3();
-	var wall_ri_box = new THREE.Box3();
-	var wall_fl_room, wall_ce_room, wall_ba_room, wall_fr_room, wall_le_room, wall_ri_room;
-
+	// WallBox
+	var wallBox = {
+		fl_box: new THREE.Box3(),
+		ce_box: new THREE.Box3(),
+		ba_box: new THREE.Box3(),
+		fr_box: new THREE.Box3(),
+		le_box: new THREE.Box3(),
+		ri_box: new THREE.Box3()
+	}
+	
+	// Wall flags
+	var flags = {
+		fl_flag: true,
+		ce_flag: true,
+		ba_flag: true,
+		fr_flag: true,
+		le_flag: true,
+		ri_flag: true
+	}
+	
+	// Wall collisions
+	var collisions = {
+		fl_point: 0,
+		ce_point: 0,
+		ba_point: 0 ,
+		fr_point: 0,
+		le_point: 0,
+		ri_point: 0
+	}
+	
+	// Object collisions
+	var intersectMesh = new THREE.Box3();
 	
 	
 	///////////////////////////////////////
@@ -47,16 +81,48 @@ var mesh,
 	var sunLight = new THREE.DirectionalLight( 'rgb(255,255,255)', 1 );
 	var lightSphere, lightHolder;
 	
-	var pyramid, pyramid_fl_shadow, pyramid_le_shadow, pyramid_ri_shadow, pyramid_ba_shadow, pyramid_fr_shadow, pyramid_ce_shadow;
-	var sphere, sphere_fl_shadow, sphere_le_shadow, sphere_ri_shadow, sphere_ba_shadow, sphere_fr_shadow, sphere_ce_shadow;
-	var sandy, sandy_fl_shadow, sandy_le_shadow, sandy_ri_shadow, sandy_ba_shadow, sandy_fr_shadow, sandy_ce_shadow;
-	var gray, gray_fl_shadow, gray_le_shadow, gray_ri_shadow, gray_ba_shadow, gray_fr_shadow, gray_ce_shadow;
-
-	var box_Intersected  = new THREE.Box3();
-	var pyramidBox = new THREE.Box3();
-	var sphereBox = new THREE.Box3();
-	var sandyBox = new THREE.Box3();
-	var grayBox = new THREE.Box3();
+	
+	
+	var sandy = {
+		mesh: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	
+	var gray = {
+		mesh: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	
+	var sphere = {
+		mesh: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	
+	var pyramid = {
+		mesh: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	
 	
 	
 	var FL_VECTOR = new THREE.Vector3( 0, 1, 0 );
@@ -161,84 +227,81 @@ function init() {
 	
 	// TransformControls
 	control = new THREE.TransformControls( camera, renderer.domElement );
+	control.addEventListener( 'change', function ( event ) {
+		
+	});
 	
-	var lastPosition;
-	var check = true;
-	
-	var fl_check = true, fl_pos;
-	var ce_check = true, ce_pos;
-	var ba_check = true, ba_pos;
-	var fr_check = true, fr_pos;
-	var le_check = true, le_pos;
-	var ri_check = true, ri_pos;
-	
+
 	control.addEventListener( 'objectChange', function ( event ) {
-		  
-		//lastPosition = this.object.position.clone();
-			
-		if(INTERSECTED && mouseDown) {
-			
-			box_Intersected.setFromObject(INTERSECTED);
-			
-			wall_fl_box.setFromObject(wall_fl_room);
-			wall_ce_box.setFromObject(wall_ce_room);
-			wall_ba_box.setFromObject(wall_ba_room);
-			wall_fr_box.setFromObject(wall_fr_room);
-			wall_le_box.setFromObject(wall_le_room);
-			wall_ri_box.setFromObject(wall_ri_room);
-			
-			if(box_Intersected.intersectsBox(wall_fl_box)) {
-				if(fl_check) {
-					fl_pos = INTERSECTED.position.y;
-					fl_check = false;
-				}
-				INTERSECTED.position.y = fl_pos;
-			}
-			
-			if(box_Intersected.intersectsBox(wall_ce_box)) {
-				if(ce_check) {
-					ce_pos = INTERSECTED.position.y;
-					ce_check = false;
-				}
-				INTERSECTED.position.y = ce_pos;
-			}
-			
-			if(box_Intersected.intersectsBox(wall_ba_box)) {
-				if(ba_check) {
-					ba_pos = INTERSECTED.position.z;
-					ba_check = false;
-				}
-				INTERSECTED.position.z = ba_pos;
-			}
-			
-			if(box_Intersected.intersectsBox(wall_fr_box)) {
-				if(fr_check) {
-					fr_pos = INTERSECTED.position.z;
-					fr_check = false;
-				}
-				INTERSECTED.position.z = fr_pos;
-			}
-			
-			if(box_Intersected.intersectsBox(wall_le_box)) {
-				if(le_check) {
-					le_pos = INTERSECTED.position.x;
-					le_check = false;
-				}
-				INTERSECTED.position.x = le_pos;
-			}
-			
-			if(box_Intersected.intersectsBox(wall_ri_box)) {
-				if(ri_check) {
-					ri_pos = INTERSECTED.position.x;
-					ri_check = false;
-				}
-				INTERSECTED.position.x = ri_pos;
+		
+		intersectMesh.setFromObject(this.object);
+		var originPoint = INTERSECTED.position.clone();
+		
+		//Wallbox
+		wallBox.fl_box.setFromObject(wallMesh.fl_mesh);
+		wallBox.ce_box.setFromObject(wallMesh.ce_mesh);
+		wallBox.ba_box.setFromObject(wallMesh.ba_mesh);
+		wallBox.fr_box.setFromObject(wallMesh.fr_mesh);
+		wallBox.le_box.setFromObject(wallMesh.le_mesh);
+		wallBox.ri_box.setFromObject(wallMesh.ri_mesh);
+		
+		// Find intersects INTERSECTED with walls
+		if(intersectMesh.intersectsBox(wallBox.fl_box)) { // floor
+			collisions.fl_point = this.object.position.y;
+			//console.log(originPoint.y);
+			if(flags.fl_flag) {
+				flags.fl_flag = false;
+				//collisions.fl_point = this.object.position.y;
 			}
 		}
+		
+		if(intersectMesh.intersectsBox(wallBox.ce_box)) {  // celling
+			if(flags.ce_flag) {
+				collisions.ce_point = originPoint.y;
+				flags.ce_flag = false;
+			}
+			INTERSECTED.position.y = collisions.ce_point;
+		}
+		
+		if(intersectMesh.intersectsBox(wallBox.ba_box)) {  // back
+			if(flags.ba_flag) {
+				collisions.ba_point = originPoint.z;
+				flags.ba_flag = false;
+			}
+			INTERSECTED.position.z = collisions.ba_point;
+		}
+		
+		if(intersectMesh.intersectsBox(wallBox.fr_box)) {  // front
+			if(flags.fr_flag) {
+				collisions.fr_point = originPoint.z;
+				flags.fr_flag = false;
+			}
+			INTERSECTED.position.z = collisions.fr_point;
+		}
+		
+		if(intersectMesh.intersectsBox(wallBox.le_box)) {  // left
+			if(flags.le_flag) {
+				collisions.le_point = originPoint.x;
+				flags.le_flag = false;
+			}
+			INTERSECTED.position.x = collisions.le_point;
+		}
+		
+		if(intersectMesh.intersectsBox(wallBox.ri_box)) {  // right
+			if(flags.ri_flag) {
+				collisions.ri_point = originPoint.x;
+				flags.ri_flag = false;
+			}
+			INTERSECTED.position.x = collisions.ri_point;
+		}
+		
+		console.log(collisions.fl_point);
+		
+		
 	} );
-	
 	control.addEventListener( 'dragging-changed', function ( event ) {
-		selected = true;
+		//console.log('bb');
+		controlling = true;
 		orbit.enabled = ! event.value;
 	} );
 	
@@ -290,186 +353,99 @@ function init() {
 	///////////// ROOM //////////////
 	/////////////////////////////////
 
-	//walls = new THREE.Object3D();
-	//var groundGeo_2 = new THREE.BoxGeometry(xRoom, xRoom, dRoom); //for roof and floor
-	//var groundGeo = new THREE.BoxGeometry(xRoom, yRoom);
-
-
-	// Floor room  parameters
-	var geometry_floor = new THREE.BoxGeometry( xRoom, xRoom, dRoom );
+	var fl_geometry = new THREE.BoxGeometry( xRoom, xRoom, dRoom );
+	var ce_geometry = new THREE.BoxGeometry( xRoom, xRoom, dRoom );
+	var ba_geometry = new THREE.BoxGeometry( xRoom - (dRoom*2), yRoom, dRoom );
+	var fr_geometry = new THREE.BoxGeometry( xRoom - (dRoom*2), yRoom, dRoom );
+	var le_geometry = new THREE.BoxGeometry( xRoom, yRoom, dRoom );
+	var ri_geometry = new THREE.BoxGeometry( xRoom, yRoom, dRoom );
 	
-	var material_floor = new THREE.MeshPhongMaterial( {
-        map: new THREE.TextureLoader().load('images/hardwood.png')
-    } );
+	var fl_material = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load('images/floor.jpg') } );
+	var ce_material = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load('images/celling.jpg') } );
+	var ba_material = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load('images/back.jpg') } );
+	var fr_material = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load('images/front.jpg') } );
+	var le_material = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load('images/left.jpg') } );
+	var ri_material = new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader().load('images/right.jpg') } );
 	
-	//material_floor.map.needsUpdate = true;
-	 
-    // Left room parameters
-    var geometry_wall = new THREE.BoxGeometry( xRoom, yRoom, dRoom );
-	
-	var material_wall = new THREE.MeshPhongMaterial( {
-        map: new THREE.TextureLoader().load('images/marbletiles.jpg')
-    } );
-	
-	var material_left = new THREE.MeshPhongMaterial( {
-        map: new THREE.TextureLoader().load('images/light_brick.jpg')
-    } );
-	
-	
-	var material_right = new THREE.MeshPhongMaterial( {
-        map: new THREE.TextureLoader().load('images/light_fine_wood.jpg')
-    } );
-	//material_right.map.needsUpdate = true;
-	
-    // Back room parameters
-    var geometry_back = new THREE.BoxGeometry( xRoom - (dRoom*2), yRoom, dRoom );
-	
-	var material_back = new THREE.MeshPhongMaterial( {
-        map: new THREE.TextureLoader().load('images/light_brick.jpg')
-    } );
-
-	
-	//ground = new THREE.Mesh(geometry_floor, material_floor);
-	//ground.overdraw = true;
-	//ground.position.set(0, 0, 0);
-	//ground.rotation.x = -Math.PI / 2;
-	//ground.position.set( 0, -(yRoom + dRoom)/2 , 0 );
-	//ground.rotation.set( - Math.PI / 2, 0, 0 );
-	
-	//walls.add(ground);
-	//console.log(ground);
-	
-
 	// Floor
-	wall_fl_room = new THREE.Mesh( geometry_floor, material_floor );
-	wall_fl_room.position.set( 0, -(yRoom + dRoom)/2 , 0 );
-	wall_fl_room.rotation.set( - Math.PI / 2, 0, 0 );
-	wall_fl_room.name = 'fl_room';
-	scene.add( wall_fl_room );
-	ray_room.push( wall_fl_room );
-	
-	//mesh.overdraw = true;
-	//walls.add( mesh );
-	//wall_fl_box = new THREE.BoundingBoxHelper( mesh );
-	//wall_fl_box.update(mesh);
-	//wall_fl_box.box.min.x -= 0.1;
-	//wall_fl_box.box.max.x += 0.1;
-	//scene.add(wall_fl_box);
-	
-	//wall_fl_room.userData.normal = wall_fl_room.position.clone().normalize();
-	//wall_fl_room.onBeforeRender = onBeforeRender;
-	//wall_fl_room.onAfterRender = onAfterRender;
+	wallMesh.fl_mesh = new THREE.Mesh( fl_geometry, fl_material );
+	wallMesh.fl_mesh.position.set( 0, -(yRoom + dRoom)/2 , 0 );
+	wallMesh.fl_mesh.rotation.set( - Math.PI / 2, 0, 0 );
+	wallMesh.fl_mesh.name = 'fl_room';
+	scene.add( wallMesh.fl_mesh );
+	ray_room.push( wallMesh.fl_mesh );
+
+	//wallMesh.fl_mesh.userData.normal = wallMesh.fl_mesh.position.clone().normalize();
+	//wallMesh.fl_mesh.onBeforeRender = onBeforeRender;
+	//wallMesh.fl_mesh.onAfterRender = onAfterRender;
 	
 	
 	// Celling
-	wall_ce_room = new THREE.Mesh( geometry_floor, material_floor );
-	wall_ce_room.position.set( 0, (yRoom + dRoom)/2 , 0 );
-	wall_ce_room.rotation.set( - Math.PI / 2, 0, 0 );
-	wall_ce_room.name = 'ce_room';
-	scene.add( wall_ce_room );
-	ray_room.push( wall_ce_room );
+	wallMesh.ce_mesh = new THREE.Mesh( ce_geometry, ce_material );
+	wallMesh.ce_mesh.position.set( 0, (yRoom + dRoom)/2 , 0 );
+	wallMesh.ce_mesh.rotation.set( - Math.PI / 2, 0, 0 );
+	wallMesh.ce_mesh.name = 'ce_room';
+	scene.add( wallMesh.ce_mesh );
+	ray_room.push( wallMesh.ce_mesh );
 	
-	//mesh.overdraw = true;
-	//walls.add( mesh );
-	//wall_ce_box = new THREE.BoundingBoxHelper( mesh );
-	//wall_ce_box.update(mesh);
-	//wall_ce_box.box.min.x -= 0.1;
-	//wall_ce_box.box.max.x += 0.1;
-	//scene.add(wall_ce_box);
-	
-	wall_ce_room.userData.normal = wall_ce_room.position.clone().normalize();
-	wall_ce_room.onBeforeRender = onBeforeRender;
-	wall_ce_room.onAfterRender = onAfterRender;
+	wallMesh.ce_mesh.userData.normal = wallMesh.ce_mesh.position.clone().normalize();
+	wallMesh.ce_mesh.onBeforeRender = onBeforeRender;
+	wallMesh.ce_mesh.onAfterRender = onAfterRender;
 	
 
 	// Wall back
-	wall_ba_room = new THREE.Mesh( geometry_back, material_wall);
-	wall_ba_room.position.set( 0, 0, -(xRoom - dRoom)/2);
-	wall_ba_room.rotation.set( 0, 0, 0 );
-	wall_ba_room.name = 'ba_room';
-	scene.add( wall_ba_room );
-	ray_room.push( wall_ba_room );
+	wallMesh.ba_mesh = new THREE.Mesh( ba_geometry, ba_material );
+	wallMesh.ba_mesh.position.set( 0, 0, -(xRoom - dRoom)/2);
+	wallMesh.ba_mesh.rotation.set( 0, 0, 0 );
+	wallMesh.ba_mesh.name = 'ba_room';
+	scene.add( wallMesh.ba_mesh );
+	ray_room.push( wallMesh.ba_mesh );
 	
-	//wall_ba_room.overdraw = true;
-	//walls.add( mesh );
-	//wall_ba_box = new THREE.BoundingBoxHelper( mesh );
-	//wall_ba_box.update(mesh);
-	//wall_ba_box.box.min.x -= 0.1;
-	//wall_ba_box.box.max.x += 0.1;
-	//scene.add(wall_ba_box);
-	
-	wall_ba_room.userData.normal = wall_ba_room.position.clone().normalize();
-	wall_ba_room.onBeforeRender = onBeforeRender;
-	wall_ba_room.onAfterRender = onAfterRender;
+	wallMesh.ba_mesh.userData.normal = wallMesh.ba_mesh.position.clone().normalize();
+	wallMesh.ba_mesh.onBeforeRender = onBeforeRender;
+	wallMesh.ba_mesh.onAfterRender = onAfterRender;
 	
 	
 	// Wall front
-	wall_fr_room = new THREE.Mesh( geometry_back, material_wall);
-	wall_fr_room.position.set( 0, 0, (xRoom - dRoom)/2);
-	wall_fr_room.rotation.set( 0, 0, 0 );
-	wall_fr_room.name = 'fr_room';
-	scene.add( wall_fr_room );
-	ray_room.push( wall_fr_room );
+	wallMesh.fr_mesh = new THREE.Mesh( fr_geometry, fr_material );
+	wallMesh.fr_mesh.position.set( 0, 0, (xRoom - dRoom)/2);
+	wallMesh.fr_mesh.rotation.set( 0, 0, 0 );
+	wallMesh.fr_mesh.name = 'fr_room';
+	scene.add( wallMesh.fr_mesh );
+	ray_room.push( wallMesh.fr_mesh );
 	
-	//mesh.overdraw = true;
-	//walls.add( mesh );
-	//wall_fr_box = new THREE.BoundingBoxHelper( mesh );
-	//wall_fr_box.update(mesh);
-	//wall_fr_box.box.min.x -= 0.1;
-	//wall_fr_box.box.max.x += 0.1;
-	//scene.add(wall_fr_box);
-	
-	wall_fr_room.userData.normal = wall_fr_room.position.clone().normalize();
-	wall_fr_room.onBeforeRender = onBeforeRender;
-	wall_fr_room.onAfterRender = onAfterRender;
+	wallMesh.fr_mesh.userData.normal = wallMesh.fr_mesh.position.clone().normalize();
+	wallMesh.fr_mesh.onBeforeRender = onBeforeRender;
+	wallMesh.fr_mesh.onAfterRender = onAfterRender;
 	
 	
 	// Wall left
-	wall_le_room = new THREE.Mesh( geometry_wall, material_left );
-	wall_le_room.position.set( -(xRoom - dRoom)/2, 0, 0 );
-	wall_le_room.rotation.set( 0, -Math.PI / 2, 0 );
-	wall_le_room.name = 'le_room';
-	scene.add( wall_le_room );
-	ray_room.push( wall_le_room );
+	wallMesh.le_mesh = new THREE.Mesh( le_geometry, le_material );
+	wallMesh.le_mesh.position.set( -(xRoom - dRoom)/2, 0, 0 );
+	wallMesh.le_mesh.rotation.set( 0, -Math.PI / 2, 0 );
+	wallMesh.le_mesh.name = 'le_room';
+	scene.add( wallMesh.le_mesh );
+	ray_room.push( wallMesh.le_mesh );
 	
-	
-	//mesh.overdraw = true;
-	//walls.add( mesh );
-	//wall_le_box = new THREE.BoundingBoxHelper( mesh );
-	//wall_le_box.update(mesh);
-	//wall_le_box.box.min.x -= 0.1;
-	//wall_le_box.box.max.x += 0.1;
-	//scene.add(wall_le_box);
-	
-	
-	wall_le_room.userData.normal = wall_le_room.position.clone().normalize();
-	wall_le_room.onBeforeRender = onBeforeRender;
-	wall_le_room.onAfterRender = onAfterRender;
+	wallMesh.le_mesh.userData.normal = wallMesh.le_mesh.position.clone().normalize();
+	wallMesh.le_mesh.onBeforeRender = onBeforeRender;
+	wallMesh.le_mesh.onAfterRender = onAfterRender;
 	
 	
 	// Wall right
-	wall_ri_room = new THREE.Mesh( geometry_wall, material_right );
-	wall_ri_room.position.set( (xRoom - dRoom)/2, 0, 0 );
-	wall_ri_room.rotation.set( 0, -Math.PI / 2, 0 );
-	wall_ri_room.name = 'ri_room';
-	scene.add( wall_ri_room );
-	ray_room.push( wall_ri_room );
+	wallMesh.ri_mesh = new THREE.Mesh( ri_geometry, ri_material );
+	wallMesh.ri_mesh.position.set( (xRoom - dRoom)/2, 0, 0 );
+	wallMesh.ri_mesh.rotation.set( 0, -Math.PI / 2, 0 );
+	wallMesh.ri_mesh.name = 'ri_room';
+	scene.add( wallMesh.ri_mesh );
+	ray_room.push( wallMesh.ri_mesh );
 	
-	//mesh.overdraw = true;
-	//walls.add( mesh );
-	//wall_ri_box = new THREE.BoundingBoxHelper( mesh );
-	//wall_ri_box.update(mesh);
-	//wall_ri_box.box.min.x -= 0.1;
-	//wall_ri_box.box.max.x += 0.1;
-	//scene.add(wall_ri_box);
-	
-	wall_ri_room.userData.normal = wall_ri_room.position.clone().normalize();
-	wall_ri_room.onBeforeRender = onBeforeRender;
-	wall_ri_room.onAfterRender = onAfterRender;
+	wallMesh.ri_mesh.userData.normal = wallMesh.ri_mesh.position.clone().normalize();
+	wallMesh.ri_mesh.onBeforeRender = onBeforeRender;
+	wallMesh.ri_mesh.onAfterRender = onAfterRender;
 	
 	
-	//scene.add( walls );
-	//groundRaycastObj.push(walls);
+	
 	
 	
 	////////////////////////////////
@@ -477,131 +453,114 @@ function init() {
 	////////////////////////////////
 	
 	// Cube Sandy
-	var geometry = new THREE.BoxGeometry( 4, 2, 2 );
-    
-    // material
-    var material_sandy = new THREE.MeshPhongMaterial( {
-        color: 'sandybrown'
-    } );
+	var sandy_geometry = new THREE.BoxGeometry( 4, 2, 2 );
+    var sandy_material = new THREE.MeshPhongMaterial( { color: 'sandybrown' } );
 	
-	sandy = new THREE.Mesh( geometry, material_sandy );
-    sandy.position.set( 2, -4, 6 );
-	sandy.type = '3d-mode';
-	sandy.name = 'sandy_box';
+	sandy.mesh = new THREE.Mesh( sandy_geometry, sandy_material );
+    sandy.mesh.position.set( 2, -4, 6 );
+	sandy.mesh.type = '3d-mode';
+	sandy.mesh.name = 'sandy_box';
 	
-	scene.add( sandy );
-	ray_object.push( sandy );
+	sandy.fl_shadow = new THREE.ShadowMesh( sandy.mesh );
+	sandy.ce_shadow = new THREE.ShadowMesh( sandy.mesh );
+	sandy.ba_shadow = new THREE.ShadowMesh( sandy.mesh );
+	sandy.fr_shadow = new THREE.ShadowMesh( sandy.mesh );
+	sandy.le_shadow = new THREE.ShadowMesh( sandy.mesh );
+	sandy.ri_shadow = new THREE.ShadowMesh( sandy.mesh );
 	
-	sandy_fl_shadow = new THREE.ShadowMesh( sandy );
-	scene.add( sandy_fl_shadow );
+	scene.add( sandy.mesh );
+	scene.add( sandy.fl_shadow );
+	scene.add( sandy.ce_shadow );
+	scene.add( sandy.ba_shadow );
+	scene.add( sandy.fr_shadow );
+	scene.add( sandy.le_shadow );
+	scene.add( sandy.ri_shadow );
 	
-	sandy_ce_shadow = new THREE.ShadowMesh( sandy );
-	scene.add( sandy_ce_shadow );
-	
-	sandy_le_shadow = new THREE.ShadowMesh( sandy );
-	scene.add( sandy_le_shadow );
-	
-	sandy_ri_shadow = new THREE.ShadowMesh( sandy );
-	scene.add( sandy_ri_shadow );
-	
-	sandy_ba_shadow = new THREE.ShadowMesh( sandy );
-	scene.add( sandy_ba_shadow );
-	
-	sandy_fr_shadow = new THREE.ShadowMesh( sandy );
-	scene.add( sandy_fr_shadow );
+	ray_object.push( sandy.mesh );
 	
 	
 	// Cube gray
-	var geometry = new THREE.BoxGeometry( 2, 2, 2 );
-    
-	var material_gray = new THREE.MeshPhongMaterial( {
-        color: 'gray'
-    } );
-    
-    // mesh
-    gray = new THREE.Mesh( geometry, material_gray );
-    gray.position.set( -2 , - 4, - 6 );
-	gray.type = '3d-mode';
-	gray.name = 'gray_box';
-    scene.add( gray );
-	ray_object.push( gray );
+	var gray_geometry = new THREE.BoxGeometry( 2, 2, 2 );
+	var gray_material = new THREE.MeshPhongMaterial( { color: 'gray' } );
+
+    gray.mesh = new THREE.Mesh( gray_geometry, gray_material );
+    gray.mesh.position.set( -2 , - 4, - 6 );
+	gray.mesh.type = '3d-mode';
+	gray.mesh.name = 'gray_box';
 	
-	gray_fl_shadow = new THREE.ShadowMesh( gray );
-	scene.add( gray_fl_shadow );
+	gray.fl_shadow = new THREE.ShadowMesh( gray.mesh );
+	gray.ce_shadow = new THREE.ShadowMesh( gray.mesh );
+	gray.ba_shadow = new THREE.ShadowMesh( gray.mesh );
+	gray.fr_shadow = new THREE.ShadowMesh( gray.mesh );
+	gray.le_shadow = new THREE.ShadowMesh( gray.mesh );
+	gray.ri_shadow = new THREE.ShadowMesh( gray.mesh );
 	
-	gray_ce_shadow = new THREE.ShadowMesh( gray );
-	scene.add( gray_ce_shadow );
+    scene.add( gray.mesh );
+	scene.add( gray.fl_shadow );
+	scene.add( gray.ce_shadow );
+	scene.add( gray.ba_shadow );
+	scene.add( gray.fr_shadow );
+	scene.add( gray.le_shadow );
+	scene.add( gray.ri_shadow );
 	
-	gray_le_shadow = new THREE.ShadowMesh( gray );
-	scene.add( gray_le_shadow );
-	
-	gray_ri_shadow = new THREE.ShadowMesh( gray );
-	scene.add( gray_ri_shadow );
-	
-	gray_ba_shadow = new THREE.ShadowMesh( gray );
-	scene.add( gray_ba_shadow );
-	
-	gray_fr_shadow = new THREE.ShadowMesh( gray );
-	scene.add( gray_fr_shadow );
+	ray_object.push( gray.mesh );
 	
 	
 	
 	// Sphere [ circle ]
-	var sphereGeometry = new THREE.SphereBufferGeometry( 1.0, 20, 10 );
-	var sphereMaterial = new THREE.MeshPhongMaterial( { color: 'rgb(255,255,255)', emissive: 0x222222 } );
-	sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-	sphere.position.set( 6, -4, -6 );
-	sphere.type = '3d-mode';
-	sphere.name = 'sphere_box';
-	scene.add( sphere );
-	ray_object.push( sphere );
+	var sphere_geometry = new THREE.SphereBufferGeometry( 1.0, 20, 10 );
+	var sphere_material = new THREE.MeshPhongMaterial( { color: 'rgb(255,255,255)', emissive: 0x222222 } );
 	
-	sphere_fl_shadow = new THREE.ShadowMesh( sphere );
-	scene.add( sphere_fl_shadow );
+	sphere.mesh = new THREE.Mesh( sphere_geometry, sphere_material );
+	sphere.mesh.position.set( 6, -4, -6 );
+	sphere.mesh.type = '3d-mode';
+	sphere.mesh.name = 'sphere_box';
 	
-	sphere_ce_shadow = new THREE.ShadowMesh( sphere );
-	scene.add( sphere_ce_shadow );
+	sphere.fl_shadow = new THREE.ShadowMesh( sphere.mesh );
+	sphere.ce_shadow = new THREE.ShadowMesh( sphere.mesh );
+	sphere.ba_shadow = new THREE.ShadowMesh( sphere.mesh );
+	sphere.fr_shadow = new THREE.ShadowMesh( sphere.mesh );
+	sphere.le_shadow = new THREE.ShadowMesh( sphere.mesh );
+	sphere.ri_shadow = new THREE.ShadowMesh( sphere.mesh );
+
+	scene.add( sphere.mesh );
+	scene.add( sphere.fl_shadow );
+	scene.add( sphere.ce_shadow );
+	scene.add( sphere.ba_shadow );
+	scene.add( sphere.fr_shadow );
+	scene.add( sphere.le_shadow );
+	scene.add( sphere.ri_shadow );
 	
-	sphere_le_shadow = new THREE.ShadowMesh( sphere );
-	scene.add( sphere_le_shadow );
+	ray_object.push( sphere.mesh );
 	
-	sphere_ri_shadow = new THREE.ShadowMesh( sphere );
-	scene.add( sphere_ri_shadow );
-	
-	sphere_ba_shadow = new THREE.ShadowMesh( sphere );
-	scene.add( sphere_ba_shadow );
-	
-	sphere_fr_shadow = new THREE.ShadowMesh( sphere );
-	scene.add( sphere_fr_shadow );
 	
 	
 	// Pyramid
-	var pyramidGeometry = new THREE.CylinderBufferGeometry( 0, 2.5, 4, 4 );
-	var pyramidMaterial = new THREE.MeshPhongMaterial( { color: 'rgb(255,255,0)', emissive: 0x440000, flatShading: true, shininess: 0 } );
-	pyramid = new THREE.Mesh( pyramidGeometry, pyramidMaterial );
-	pyramid.position.set( -7, -2.9, -2 );
-	pyramid.type = '3d-mode';
-	pyramid.name = 'pyramid_box';
-	scene.add( pyramid );
-	ray_object.push( pyramid );
+	var pyramid_geometry = new THREE.CylinderBufferGeometry( 0, 2.5, 4, 4 );
+	var pyramid_material = new THREE.MeshPhongMaterial( { color: 'rgb(255,255,0)', emissive: 0x440000, flatShading: true, shininess: 0 } );
 	
-	pyramid_fl_shadow = new THREE.ShadowMesh( pyramid );
-	scene.add( pyramid_fl_shadow );
+	pyramid.mesh = new THREE.Mesh( pyramid_geometry, pyramid_material );
+	pyramid.mesh.position.set( -7, -2.9, -2 );
+	pyramid.mesh.type = '3d-mode';
+	pyramid.mesh.name = 'pyramid_box';
 	
-	pyramid_ce_shadow = new THREE.ShadowMesh( pyramid );
-	scene.add( pyramid_ce_shadow );
+	pyramid.fl_shadow = new THREE.ShadowMesh( pyramid.mesh );
+	pyramid.ce_shadow = new THREE.ShadowMesh( pyramid.mesh );
+	pyramid.ba_shadow = new THREE.ShadowMesh( pyramid.mesh );
+	pyramid.fr_shadow = new THREE.ShadowMesh( pyramid.mesh );
+	pyramid.le_shadow = new THREE.ShadowMesh( pyramid.mesh );
+	pyramid.ri_shadow = new THREE.ShadowMesh( pyramid.mesh );
+
+	scene.add( pyramid.mesh );
+	scene.add( pyramid.fl_shadow );
+	scene.add( pyramid.ce_shadow );
+	scene.add( pyramid.ba_shadow );
+	scene.add( pyramid.fr_shadow );
+	scene.add( pyramid.le_shadow );
+	scene.add( pyramid.ri_shadow );
 	
-	pyramid_le_shadow = new THREE.ShadowMesh( pyramid );
-	scene.add( pyramid_le_shadow );
+	ray_object.push( pyramid.mesh );
 	
-	pyramid_ri_shadow = new THREE.ShadowMesh( pyramid );
-	scene.add( pyramid_ri_shadow );
-	
-	pyramid_ba_shadow = new THREE.ShadowMesh( pyramid );
-	scene.add( pyramid_ba_shadow );
-	
-	pyramid_fr_shadow = new THREE.ShadowMesh( pyramid );
-	scene.add( pyramid_fr_shadow );
 	
 	
 	// Tv
@@ -616,7 +575,7 @@ function init() {
 	mesh.type = '2d-mode';
 	scene.add( mesh );
 	objects.push( mesh );*/
-		
+	
 	
 	
 	/////////////////////////////////////////////
@@ -673,17 +632,6 @@ function scale() {
 	control.showZ = true;
 }
 
-function ToggleX() {
-	
-}
-
-function ToggleY() {
-	
-}
-
-function ToggleZ() {
-	
-}
 
 function onResize(event) {
 	
@@ -713,10 +661,18 @@ function onMouseDown(event) {
 	var intersects = raycaster.intersectObjects( ray_object );
 	
 	if ( intersects.length > 0 ) {
-
+			
+		// reset flag
+		flags.fl_flag = true;
+		flags.ce_flag = true;
+		flags.ba_flag = true;
+		flags.fr_flag = true;
+		flags.le_flag = true;
+		flags.ri_flag = true;
+		
 		INTERSECTED = intersects[ 0 ].object;
 		control.attach( INTERSECTED );
-		control.lookAt(new THREE.Vector3(0,0,0));
+		//control.lookAt(new THREE.Vector3(0,0,0));
 		
 		var mode = control.getMode();
 		if(mode == 'rotate') {
@@ -739,7 +695,7 @@ function onMouseDown(event) {
 		}
 		
 	}else {
-		if(!selected) {
+		if(!controlling) {
 			control.detach();
 			INTERSECTED = null;
 		}
@@ -748,8 +704,20 @@ function onMouseDown(event) {
 }
 
 function onMouseUp(event) {
+	/*if(INTERSECTED) {
+		// reset flag
+		flags.fl_flag = true;
+		flags.ce_flag = true;
+		flags.ba_flag = true;
+		flags.fr_flag = true;
+		flags.le_flag = true;
+		flags.ri_flag = true;
+		reDraw();
+	}*/
+	
 	mouseDown = false;
-	selected = false;
+	controlling = false;
+	
 }
 
 function onMouseMove(event) {
@@ -773,58 +741,128 @@ function onMouseMove(event) {
 	
 	if ( intersects.length > 0 ) { 
 		container.style.cursor = 'pointer';
-		
+			
 	}else {
 		container.style.cursor = 'default';
 	}
 	
 }
 
+function reDraw() {
+	
+	intersectMesh.setFromObject(INTERSECTED);
+	var originPoint = INTERSECTED.position.clone();
+	
+	//Wallbox
+	wallBox.fl_box.setFromObject(wallMesh.fl_mesh);
+	wallBox.ce_box.setFromObject(wallMesh.ce_mesh);
+	wallBox.ba_box.setFromObject(wallMesh.ba_mesh);
+	wallBox.fr_box.setFromObject(wallMesh.fr_mesh);
+	wallBox.le_box.setFromObject(wallMesh.le_mesh);
+	wallBox.ri_box.setFromObject(wallMesh.ri_mesh);
+	
+	// Find intersects INTERSECTED with walls
+	if(intersectMesh.intersectsBox(wallBox.fl_box)) { // floor
+		if(flags.fl_flag) {
+			flags.fl_flag = false;
+			collisions.fl_point = originPoint.y;
+		}
+		INTERSECTED.position.y = collisions.fl_point;
+		
+	}
+	
+	if(intersectMesh.intersectsBox(wallBox.ce_box)) {  // celling
+		if(flags.ce_flag) {
+			collisions.ce_point = originPoint.y;
+			flags.ce_flag = false;
+		}
+		INTERSECTED.position.y = collisions.ce_point;
+	}
+	
+	if(intersectMesh.intersectsBox(wallBox.ba_box)) {  // back
+		if(flags.ba_flag) {
+			collisions.ba_point = originPoint.z;
+			flags.ba_flag = false;
+		}
+		INTERSECTED.position.z = collisions.ba_point;
+	}
+	
+	if(intersectMesh.intersectsBox(wallBox.fr_box)) {  // front
+		if(flags.fr_flag) {
+			collisions.fr_point = originPoint.z;
+			flags.fr_flag = false;
+		}
+		INTERSECTED.position.z = collisions.fr_point;
+	}
+	
+	if(intersectMesh.intersectsBox(wallBox.le_box)) {  // left
+		if(flags.le_flag) {
+			collisions.le_point = originPoint.x;
+			flags.le_flag = false;
+		}
+		INTERSECTED.position.x = collisions.le_point;
+	}
+	
+	if(intersectMesh.intersectsBox(wallBox.ri_box)) {  // right
+		if(flags.ri_flag) {
+			collisions.ri_point = originPoint.x;
+			flags.ri_flag = false;
+		}
+		INTERSECTED.position.x = collisions.ri_point;
+	}
+		
+}
+
 
 function animate() {
 
     requestAnimationFrame( animate );
+	
 	render();
 }
 
 
 function render() {
 	
-	sandy_fl_shadow.update( FL_PLANE, lightPosition4D );
-	sandy_ce_shadow.update( CE_PLANE, lightPosition4D );
-	sandy_le_shadow.update( LE_PLANE, lightPosition4D );
-	sandy_ri_shadow.update( RI_PLANE, lightPosition4D );
-	sandy_ba_shadow.update( BA_PLANE, lightPosition4D );
-	sandy_fr_shadow.update( FR_PLANE, lightPosition4D );
-	
-	gray_fl_shadow.update( FL_PLANE, lightPosition4D );
-	gray_ce_shadow.update( CE_PLANE, lightPosition4D );
-	gray_le_shadow.update( LE_PLANE, lightPosition4D );
-	gray_ri_shadow.update( RI_PLANE, lightPosition4D );
-	gray_ba_shadow.update( BA_PLANE, lightPosition4D );
-	gray_fr_shadow.update( FR_PLANE, lightPosition4D );
-	
-	sphere_fl_shadow.update( FL_PLANE, lightPosition4D );
-	sphere_ce_shadow.update( CE_PLANE, lightPosition4D );
-	sphere_le_shadow.update( LE_PLANE, lightPosition4D );
-	sphere_ri_shadow.update( RI_PLANE, lightPosition4D );
-	sphere_ba_shadow.update( BA_PLANE, lightPosition4D );
-	sphere_fr_shadow.update( FR_PLANE, lightPosition4D );
-	
-	pyramid_fl_shadow.update( FL_PLANE, lightPosition4D );
-	pyramid_ce_shadow.update( CE_PLANE, lightPosition4D );
-	pyramid_le_shadow.update( LE_PLANE, lightPosition4D );
-	pyramid_ri_shadow.update( RI_PLANE, lightPosition4D );
-	pyramid_ba_shadow.update( BA_PLANE, lightPosition4D );
-	pyramid_fr_shadow.update( FR_PLANE, lightPosition4D );
+	sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
+	sandy.ce_shadow.update( CE_PLANE, lightPosition4D );
+	sandy.ba_shadow.update( BA_PLANE, lightPosition4D );
+	sandy.fr_shadow.update( FR_PLANE, lightPosition4D );
+	sandy.le_shadow.update( LE_PLANE, lightPosition4D );
+	sandy.ri_shadow.update( RI_PLANE, lightPosition4D );
 
+	gray.fl_shadow.update( FL_PLANE, lightPosition4D );
+	gray.ce_shadow.update( CE_PLANE, lightPosition4D );
+	gray.ba_shadow.update( BA_PLANE, lightPosition4D );
+	gray.fr_shadow.update( FR_PLANE, lightPosition4D );
+	gray.le_shadow.update( LE_PLANE, lightPosition4D );
+	gray.ri_shadow.update( RI_PLANE, lightPosition4D );
+	
+	
+	sphere.fl_shadow.update( FL_PLANE, lightPosition4D );
+	sphere.ce_shadow.update( CE_PLANE, lightPosition4D );
+	sphere.ba_shadow.update( BA_PLANE, lightPosition4D );
+	sphere.fr_shadow.update( FR_PLANE, lightPosition4D );
+	sphere.le_shadow.update( LE_PLANE, lightPosition4D );
+	sphere.ri_shadow.update( RI_PLANE, lightPosition4D );
+	
+	pyramid.fl_shadow.update( FL_PLANE, lightPosition4D );
+	pyramid.ce_shadow.update( CE_PLANE, lightPosition4D );
+	pyramid.ba_shadow.update( BA_PLANE, lightPosition4D );
+	pyramid.fr_shadow.update( FR_PLANE, lightPosition4D );
+	pyramid.le_shadow.update( LE_PLANE, lightPosition4D );
+	pyramid.ri_shadow.update( RI_PLANE, lightPosition4D );
+	
 	//sandy.material =
 	//sandyBox.intersectsBox(grayBox) ? sandy.materials.colliding : sandy.materials.solid;
-
 	//sandyHelper.update();
 	//grayHelper.update();
 	//sphereHelper.update();
 	//pyramidHelper.update();
+	
+	/*if(INTERSECTED && mouseDown) {
+		reDraw();
+	}*/
 	
 	
 	renderer.render( scene, camera );
