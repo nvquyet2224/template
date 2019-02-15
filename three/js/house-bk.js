@@ -19,12 +19,18 @@ var mesh,
 	mouseDown = false,
 	clientX,
 	clientY,
+	deltaX,
+	deltaY,
+	mouseX,
+	mouseY,
 	raycaster,
 	shadowMesh,
 	controlling = false, // Control on object using
 	ray_object = [], 
 	ray_room = [],
-	INTERSECTED;
+	intersects_obj,
+	intersects_helper;
+	
 	
 	// Room Parameters
 	var xRoom = 20,
@@ -42,8 +48,6 @@ var mesh,
 	}
 	
 	// WallBox
-	var walls = new THREE.Object3D();
-	 
 	var wallBox = {
 		fl_box: new THREE.Box3(),
 		ce_box: new THREE.Box3(),
@@ -65,17 +69,14 @@ var mesh,
 	
 	// Wall collisions
 	var collisions = {
-		fl_point: 0,
-		ce_point: 0,
-		ba_point: 0 ,
-		fr_point: 0,
-		le_point: 0,
-		ri_point: 0
+		x: 0,
+		y: 0,
+		z: 0
 	}
 	
 	// Object collisions
-	var intersectMesh = new THREE.Box3();
-	
+	var intersects_box = new THREE.Box3();
+
 	
 	///////////////////////////////////////
 	/////////////// SHADOW ///////////////
@@ -88,6 +89,7 @@ var mesh,
 	var sandy = {
 		mesh: null,
 		helper: null,
+		box: null,
 		fl_shadow: null,
 		ce_shadow: null,
 		ba_shadow: null,
@@ -95,10 +97,13 @@ var mesh,
 		le_shadow: null,
 		ri_shadow: null
 	}
+	sandy.box = new THREE.Box3();
+	
 	
 	var gray = {
 		mesh: null,
 		helper: null,
+		box: null,
 		fl_shadow: null,
 		ce_shadow: null,
 		ba_shadow: null,
@@ -106,10 +111,12 @@ var mesh,
 		le_shadow: null,
 		ri_shadow: null
 	}
+	gray.box = new THREE.Box3();
 	
 	var sphere = {
 		mesh: null,
 		helper: null,
+		box: null,
 		fl_shadow: null,
 		ce_shadow: null,
 		ba_shadow: null,
@@ -117,10 +124,12 @@ var mesh,
 		le_shadow: null,
 		ri_shadow: null
 	}
+	sphere.box = new THREE.Box3();
 	
 	var pyramid = {
 		mesh: null,
 		helper: null,
+		box: null,
 		fl_shadow: null,
 		ce_shadow: null,
 		ba_shadow: null,
@@ -128,6 +137,23 @@ var mesh,
 		le_shadow: null,
 		ri_shadow: null
 	}
+	pyramid.box = new THREE.Box3();
+	
+	/*
+	var chair = {
+		mesh: null,
+		helper: null,
+		box: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	chair.box = new THREE.Box3();*/
+	
+	
 	
 	
 	
@@ -230,84 +256,31 @@ function init() {
     //orbit.addEventListener('change', render);
 	//orbit.maxPolarAngle = Math.PI / 2;
 	
-	
 	// TransformControls
 	control = new THREE.TransformControls( camera, renderer.domElement );
-	control.addEventListener( 'change', function ( event ) {
-		
-	});
+	//control.addEventListener( 'change', function ( event ) {});
 	
-
 	control.addEventListener( 'objectChange', function ( event ) {
 		
-		/*intersectMesh.setFromObject(this.object);
-		var originPoint = INTERSECTED.position.clone();
+		intersects_box.setFromObject(this.object);
 		
-		//Wallbox
-		wallBox.fl_box.setFromObject(wallMesh.fl_mesh);
-		wallBox.ce_box.setFromObject(wallMesh.ce_mesh);
-		wallBox.ba_box.setFromObject(wallMesh.ba_mesh);
-		wallBox.fr_box.setFromObject(wallMesh.fr_mesh);
-		wallBox.le_box.setFromObject(wallMesh.le_mesh);
-		wallBox.ri_box.setFromObject(wallMesh.ri_mesh);
+		var x_max = (xRoom - intersects_box.getSize().x )/2 - dRoom
+		var y_max = (yRoom - intersects_box.getSize().y )/2;
+		var z_max = (xRoom - intersects_box.getSize().z )/2  - dRoom;
 		
-		// Find intersects INTERSECTED with walls
-		if(intersectMesh.intersectsBox(wallBox.fl_box)) { // floor
-			collisions.fl_point = this.object.position.y;
-			//console.log(originPoint.y);
-			if(flags.fl_flag) {
-				flags.fl_flag = false;
-				//collisions.fl_point = this.object.position.y;
-			}
-		}
+		( this.object.position.x <= -x_max ) && ( this.object.position.x = -x_max );
+		( this.object.position.x >=  x_max ) && ( this.object.position.x = x_max );
 		
-		if(intersectMesh.intersectsBox(wallBox.ce_box)) {  // celling
-			if(flags.ce_flag) {
-				collisions.ce_point = originPoint.y;
-				flags.ce_flag = false;
-			}
-			INTERSECTED.position.y = collisions.ce_point;
-		}
-		
-		if(intersectMesh.intersectsBox(wallBox.ba_box)) {  // back
-			if(flags.ba_flag) {
-				collisions.ba_point = originPoint.z;
-				flags.ba_flag = false;
-			}
-			INTERSECTED.position.z = collisions.ba_point;
-		}
-		
-		if(intersectMesh.intersectsBox(wallBox.fr_box)) {  // front
-			if(flags.fr_flag) {
-				collisions.fr_point = originPoint.z;
-				flags.fr_flag = false;
-			}
-			INTERSECTED.position.z = collisions.fr_point;
-		}
-		
-		if(intersectMesh.intersectsBox(wallBox.le_box)) {  // left
-			if(flags.le_flag) {
-				collisions.le_point = originPoint.x;
-				flags.le_flag = false;
-			}
-			INTERSECTED.position.x = collisions.le_point;
-		}
-		
-		if(intersectMesh.intersectsBox(wallBox.ri_box)) {  // right
-			if(flags.ri_flag) {
-				collisions.ri_point = originPoint.x;
-				flags.ri_flag = false;
-			}
-			INTERSECTED.position.x = collisions.ri_point;
-		}
-		
-		console.log(collisions.fl_point);
-		*/
+		( this.object.position.y <= -y_max ) && ( this.object.position.y = -y_max );
+		( this.object.position.y >= y_max )  && ( this.object.position.y =  y_max );
+				
+		( this.object.position.z <= -z_max ) && ( this.object.position.z = -z_max );
+		( this.object.position.z >=  z_max ) && ( this.object.position.z =  z_max );
 		
 		
 	} );
+	
 	control.addEventListener( 'dragging-changed', function ( event ) {
-		//console.log('bb');
 		controlling = true;
 		orbit.enabled = ! event.value;
 	} );
@@ -322,8 +295,6 @@ function init() {
 	
 	// Raycaster
 	raycaster = new THREE.Raycaster();
-	
-	
 	
 	
 	
@@ -379,14 +350,12 @@ function init() {
 	wallMesh.fl_mesh.position.set( 0, -(yRoom + dRoom)/2 , 0 );
 	wallMesh.fl_mesh.rotation.set( - Math.PI / 2, 0, 0 );
 	wallMesh.fl_mesh.name = 'fl_room';
-	//scene.add( wallMesh.fl_mesh );
-	//ray_room.push( wallMesh.fl_mesh );
-	wallMesh.fl_mesh.overdraw  = true;
-	walls.add(wallMesh.fl_mesh);
+	scene.add( wallMesh.fl_mesh );
+	ray_room.push( wallMesh.fl_mesh );
 	
-	//wallMesh.fl_mesh.userData.normal = wallMesh.fl_mesh.position.clone().normalize();
-	//wallMesh.fl_mesh.onBeforeRender = onBeforeRender;
-	//wallMesh.fl_mesh.onAfterRender = onAfterRender;
+	wallMesh.fl_mesh.userData.normal = wallMesh.fl_mesh.position.clone().normalize();
+	wallMesh.fl_mesh.onBeforeRender = onBeforeRender;
+	wallMesh.fl_mesh.onAfterRender = onAfterRender;
 	
 	
 	// Celling
@@ -394,10 +363,8 @@ function init() {
 	wallMesh.ce_mesh.position.set( 0, (yRoom + dRoom)/2 , 0 );
 	wallMesh.ce_mesh.rotation.set( - Math.PI / 2, 0, 0 );
 	wallMesh.ce_mesh.name = 'ce_room';
-	//scene.add( wallMesh.ce_mesh );
-	//ray_room.push( wallMesh.ce_mesh );
-	wallMesh.ce_mesh.overdraw  = true;
-	walls.add(wallMesh.ce_mesh);
+	scene.add( wallMesh.ce_mesh );
+	ray_room.push( wallMesh.ce_mesh );
 	
 	wallMesh.ce_mesh.userData.normal = wallMesh.ce_mesh.position.clone().normalize();
 	wallMesh.ce_mesh.onBeforeRender = onBeforeRender;
@@ -409,10 +376,8 @@ function init() {
 	wallMesh.ba_mesh.position.set( 0, 0, -(xRoom - dRoom)/2);
 	wallMesh.ba_mesh.rotation.set( 0, 0, 0 );
 	wallMesh.ba_mesh.name = 'ba_room';
-	//scene.add( wallMesh.ba_mesh );
-	//ray_room.push( wallMesh.ba_mesh );
-	wallMesh.ba_mesh.overdraw  = true;
-	walls.add(wallMesh.ba_mesh);
+	scene.add( wallMesh.ba_mesh );
+	ray_room.push( wallMesh.ba_mesh );
 	
 	wallMesh.ba_mesh.userData.normal = wallMesh.ba_mesh.position.clone().normalize();
 	wallMesh.ba_mesh.onBeforeRender = onBeforeRender;
@@ -424,10 +389,8 @@ function init() {
 	wallMesh.fr_mesh.position.set( 0, 0, (xRoom - dRoom)/2);
 	wallMesh.fr_mesh.rotation.set( 0, 0, 0 );
 	wallMesh.fr_mesh.name = 'fr_room';
-	//scene.add( wallMesh.fr_mesh );
-	//ray_room.push( wallMesh.fr_mesh );
-	wallMesh.fr_mesh.overdraw  = true;
-	walls.add(wallMesh.fr_mesh);
+	scene.add( wallMesh.fr_mesh );
+	ray_room.push( wallMesh.fr_mesh );
 	
 	wallMesh.fr_mesh.userData.normal = wallMesh.fr_mesh.position.clone().normalize();
 	wallMesh.fr_mesh.onBeforeRender = onBeforeRender;
@@ -439,10 +402,8 @@ function init() {
 	wallMesh.le_mesh.position.set( -(xRoom - dRoom)/2, 0, 0 );
 	wallMesh.le_mesh.rotation.set( 0, -Math.PI / 2, 0 );
 	wallMesh.le_mesh.name = 'le_room';
-	//scene.add( wallMesh.le_mesh );
-	//ray_room.push( wallMesh.le_mesh );
-	wallMesh.le_mesh.overdraw  = true;
-	walls.add(wallMesh.le_mesh);
+	scene.add( wallMesh.le_mesh );
+	ray_room.push( wallMesh.le_mesh );
 	
 	wallMesh.le_mesh.userData.normal = wallMesh.le_mesh.position.clone().normalize();
 	wallMesh.le_mesh.onBeforeRender = onBeforeRender;
@@ -454,18 +415,21 @@ function init() {
 	wallMesh.ri_mesh.position.set( (xRoom - dRoom)/2, 0, 0 );
 	wallMesh.ri_mesh.rotation.set( 0, -Math.PI / 2, 0 );
 	wallMesh.ri_mesh.name = 'ri_room';
-	//scene.add( wallMesh.ri_mesh );
-	//ray_room.push( wallMesh.ri_mesh );
-	wallMesh.ri_mesh.overdraw  = true;
-	walls.add(wallMesh.ri_mesh);
-
+	scene.add( wallMesh.ri_mesh );
+	ray_room.push( wallMesh.ri_mesh );
+	
 	wallMesh.ri_mesh.userData.normal = wallMesh.ri_mesh.position.clone().normalize();
 	wallMesh.ri_mesh.onBeforeRender = onBeforeRender;
 	wallMesh.ri_mesh.onAfterRender = onAfterRender;
 	
-	scene.add(walls);
 	
-	ray_room.push(walls);
+	// Wall box 3d	
+	wallBox.fl_box.setFromObject(wallMesh.fl_mesh);
+	wallBox.ce_box.setFromObject(wallMesh.ce_mesh);
+	wallBox.ba_box.setFromObject(wallMesh.ba_mesh);
+	wallBox.fr_box.setFromObject(wallMesh.fr_mesh);
+	wallBox.le_box.setFromObject(wallMesh.le_mesh);
+	wallBox.ri_box.setFromObject(wallMesh.ri_mesh);
 	
 	
 	////////////////////////////////
@@ -488,7 +452,9 @@ function init() {
 	sandy.le_shadow = new THREE.ShadowMesh( sandy.mesh );
 	sandy.ri_shadow = new THREE.ShadowMesh( sandy.mesh );
 	sandy.helper = new THREE.BoundingBoxHelper( sandy.mesh );
-		
+	sandy.helper.visible = false;
+	sandy.box.setFromObject( sandy.mesh );
+	
 	scene.add( sandy.mesh );
 	scene.add( sandy.fl_shadow );
 	scene.add( sandy.ce_shadow );
@@ -497,8 +463,11 @@ function init() {
 	scene.add( sandy.le_shadow );
 	scene.add( sandy.ri_shadow );
 	scene.add( sandy.helper );
-	
+
 	ray_object.push( sandy.mesh );
+	
+	
+	
 	
 	
 	// Cube gray
@@ -517,6 +486,8 @@ function init() {
 	gray.le_shadow = new THREE.ShadowMesh( gray.mesh );
 	gray.ri_shadow = new THREE.ShadowMesh( gray.mesh );
 	gray.helper = new THREE.BoundingBoxHelper( gray.mesh );
+	gray.helper.visible = false;
+	gray.box.setFromObject( gray.mesh );
 	
     scene.add( gray.mesh );
 	scene.add( gray.fl_shadow );
@@ -526,7 +497,7 @@ function init() {
 	scene.add( gray.le_shadow );
 	scene.add( gray.ri_shadow );
 	scene.add( gray.helper );
-	
+
 	ray_object.push( gray.mesh );
 	
 	
@@ -547,7 +518,9 @@ function init() {
 	sphere.le_shadow = new THREE.ShadowMesh( sphere.mesh );
 	sphere.ri_shadow = new THREE.ShadowMesh( sphere.mesh );
 	sphere.helper = new THREE.BoundingBoxHelper( sphere.mesh );
-
+	sphere.helper.visible = false;
+	sphere.box.setFromObject( sphere.mesh );
+	
 	scene.add( sphere.mesh );
 	scene.add( sphere.fl_shadow );
 	scene.add( sphere.ce_shadow );
@@ -577,7 +550,9 @@ function init() {
 	pyramid.le_shadow = new THREE.ShadowMesh( pyramid.mesh );
 	pyramid.ri_shadow = new THREE.ShadowMesh( pyramid.mesh );
 	pyramid.helper = new THREE.BoundingBoxHelper( pyramid.mesh );
-
+	pyramid.helper.visible = false;
+	pyramid.box.setFromObject( pyramid.mesh );
+	
 	scene.add( pyramid.mesh );
 	scene.add( pyramid.fl_shadow );
 	scene.add( pyramid.ce_shadow );
@@ -591,18 +566,59 @@ function init() {
 	
 	
 	
-	// Tv
-	/*var geometry = new THREE.BoxGeometry( 4, 3, 0.02);
 	
-	var material_image = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('images/tv-01.jpg')
-    });
+	///////// JSON OBJECT //////////
+	var jeep = {
+		mesh: null,
+		helper: null,
+		box: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	jeep.box = new THREE.Box3();
 	
-    var mesh = new THREE.Mesh(geometry, material_image);
-	mesh.position.set(0,0,-9.8);
-	mesh.type = '2d-mode';
-	scene.add( mesh );
-	objects.push( mesh );*/
+	
+	var loader1 = new THREE.AssimpJSONLoader();
+	/*loader1.load( 'json/jeep.assimp.json', function ( object ) {
+		object.scale.multiplyScalar( 0.2 );
+		scene.add( object );
+	} );*/
+	
+	loader1.load( 'json/jeep.assimp.json', function ( object ) {
+		jeep.mesh = object;
+		jeep.mesh.position.set( 0, -5, 0);
+		jeep.mesh.type = '3d-mode';
+		jeep.mesh.name = 'jeep_box';
+		
+		jeep.fl_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.ce_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.ba_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.fr_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.le_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.ri_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.helper = new THREE.BoundingBoxHelper( jeep.mesh );
+		jeep.helper.visible = false;
+		jeep.box.setFromObject( jeep.mesh );
+		
+		scene.add( jeep.mesh );
+		scene.add( jeep.fl_shadow );
+		scene.add( jeep.ce_shadow );
+		scene.add( jeep.ba_shadow );
+		scene.add( jeep.fr_shadow );
+		scene.add( jeep.le_shadow );
+		scene.add( jeep.ri_shadow );
+		scene.add( jeep.helper );
+		
+		jeep.mesh.scale.multiplyScalar( 0.5 );
+		scene.add( jeep.mesh );
+		
+		ray_object.push( jeep.mesh );
+		
+	} );
 	
 	
 	
@@ -618,11 +634,17 @@ function init() {
 	scaleCtr.addEventListener( 'touchstart', scale, {passive: false} );
 
 	//Document event
-	document.addEventListener( 'mousedown', onMouseDown, false );
+	/*document.addEventListener( 'mousedown', onMouseDown, false );
 	document.addEventListener( 'mouseup', onMouseUp, false );
 	document.addEventListener( 'mousemove', onMouseMove, false );
 	document.addEventListener( 'touchstart', onMouseDown, {passive: false} );
-	document.addEventListener( 'touchmove', onMouseMove, {passive: false} );
+	document.addEventListener( 'touchmove', onMouseMove, {passive: false} );*/
+	
+	container.addEventListener( 'mousedown', onMouseDown, false );
+	container.addEventListener( 'mouseup', onMouseUp, false );
+	container.addEventListener( 'mousemove', onMouseMove, false );
+	container.addEventListener( 'touchstart', onMouseDown, {passive: false} );
+	container.addEventListener( 'touchmove', onMouseMove, {passive: false} );
 	
 	//Window events
 	window.addEventListener( 'resize', onResize, false );
@@ -633,17 +655,21 @@ function init() {
 
 
 function translate() {
-	control.setMode("translate");
-	control.showX = true;
-	control.showY = true;
-	control.showZ = true;
+	if(intersects_obj) {
+		//control.attach(intersects_obj);
+		control.setMode("translate");
+		control.showX = true;
+		control.showY = true;
+		control.showZ = true;	
+	}
 }
 
 function rotate() {
-	control.setMode("rotate");
-	if(INTERSECTED) {
-		
-		if(INTERSECTED.type == '3d-mode') {
+	
+	if(intersects_obj) {
+		//control.attach(intersects_obj);
+		control.setMode("rotate");
+		if(intersects_obj.type == '3d-mode') {
 			control.showX = false;
 			control.showY = true;
 			control.showZ = false;
@@ -654,10 +680,17 @@ function rotate() {
 }
 
 function scale() {
-	control.setMode("scale");
-	control.showX = true;
-	control.showY = true;
-	control.showZ = true;
+	
+	if(intersects_obj) {
+		//control.attach(intersects_obj);
+		control.setMode("scale");
+		if(intersects_obj.type == '3d-mode') {
+			control.showX = true;
+			control.showY = true;
+			control.showZ = true;
+		}
+		
+	}
 }
 
 
@@ -684,65 +717,48 @@ function onMouseDown(event) {
 	mouse.x = 	( clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( clientY / window.innerHeight ) * 2 + 1;
 	
-	// Intersects
-	raycaster.setFromCamera( mouse, camera );
-	var intersects = raycaster.intersectObjects( ray_object );
+	// find intersections
+	raycaster.setFromCamera(mouse, camera);
+	var intersects = raycaster.intersectObjects(ray_object, true);
 	
-	if ( intersects.length > 0 ) {
-			
-		// reset flag
-		flags.fl_flag = true;
-		flags.ce_flag = true;
-		flags.ba_flag = true;
-		flags.fr_flag = true;
-		flags.le_flag = true;
-		flags.ri_flag = true;
+	if (intersects.length > 0) {
+		intersects_obj = intersects[0].object;
+		control.attach(intersects_obj);
 		
-		INTERSECTED = intersects[ 0 ].object;
-		control.attach( INTERSECTED );
-		//control.lookAt(new THREE.Vector3(0,0,0));
-		
-		var mode = control.getMode();
-		if(mode == 'rotate') {
-			
-			if(INTERSECTED.type == '3d-mode') {
-				control.showX = false;
-				control.showY = true;
-				control.showZ = false;
-				
-			}else {
-				control.showX = true;
-				control.showY = true;
-				control.showZ = true;
-			}
-			
-		}else {
-			control.showX = true;
-			control.showY = true;
-			control.showZ = true;
+		if(intersects_helper) {
+			intersects_helper.visible = false;
 		}
+		
+		if(intersects_obj.name == 'sandy_box') {
+			intersects_helper = sandy.helper;
+			
+		}else if(intersects_obj.name == 'gray_box')  {
+			intersects_helper = gray.helper;
+			
+		}else if(intersects_obj.name == 'sphere_box')  {
+			intersects_helper = sphere.helper;
+		}
+		else if(intersects_obj.name == 'pyramid_box')  {
+			intersects_helper = pyramid.helper;
+		}
+		
+		intersects_helper.visible = true;
+		
 		
 	}else {
-		if(!controlling) {
-			control.detach();
-			INTERSECTED = null;
+		
+		if(!controlling && intersects_obj) {
+			//control.detach();
+			//intersects_obj = null;
+			//intersects_helper.visible = false;
 		}
+		
 	}
 	
 }
 
 function onMouseUp(event) {
-	/*if(INTERSECTED) {
-		// reset flag
-		flags.fl_flag = true;
-		flags.ce_flag = true;
-		flags.ba_flag = true;
-		flags.fr_flag = true;
-		flags.le_flag = true;
-		flags.ri_flag = true;
-		reDraw();
-	}*/
-	
+
 	mouseDown = false;
 	controlling = false;
 	
@@ -762,83 +778,24 @@ function onMouseMove(event) {
 	mouse.x = 	( clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( clientY / window.innerHeight ) * 2 + 1;
 	
-	// Intersects
-	raycaster.setFromCamera( mouse, camera );
+	//deltaX = clientX - mouseX;
+	//deltaY = clientY - mouseY;
 	
-	var intersects = raycaster.intersectObjects( ray_object );
 	
-	if ( intersects.length > 0 ) { 
+	raycaster.setFromCamera(mouse, camera);
+	var intersects = raycaster.intersectObjects(ray_object, true);
+
+	if (intersects.length > 0) {
 		container.style.cursor = 'pointer';
-			
-	}else {
-		container.style.cursor = 'default';
+		
+	} else {
+		container.style.cursor = 'auto';
 	}
 	
 }
 
 function reDraw() {
 	
-	intersectMesh.setFromObject(INTERSECTED);
-	var originPoint = INTERSECTED.position.clone();
-	
-	//Wallbox
-	wallBox.fl_box.setFromObject(wallMesh.fl_mesh);
-	wallBox.ce_box.setFromObject(wallMesh.ce_mesh);
-	wallBox.ba_box.setFromObject(wallMesh.ba_mesh);
-	wallBox.fr_box.setFromObject(wallMesh.fr_mesh);
-	wallBox.le_box.setFromObject(wallMesh.le_mesh);
-	wallBox.ri_box.setFromObject(wallMesh.ri_mesh);
-	
-	// Find intersects INTERSECTED with walls
-	if(intersectMesh.intersectsBox(wallBox.fl_box)) { // floor
-		if(flags.fl_flag) {
-			flags.fl_flag = false;
-			collisions.fl_point = originPoint.y;
-		}
-		INTERSECTED.position.y = collisions.fl_point;
-		
-	}
-	
-	if(intersectMesh.intersectsBox(wallBox.ce_box)) {  // celling
-		if(flags.ce_flag) {
-			collisions.ce_point = originPoint.y;
-			flags.ce_flag = false;
-		}
-		INTERSECTED.position.y = collisions.ce_point;
-	}
-	
-	if(intersectMesh.intersectsBox(wallBox.ba_box)) {  // back
-		if(flags.ba_flag) {
-			collisions.ba_point = originPoint.z;
-			flags.ba_flag = false;
-		}
-		INTERSECTED.position.z = collisions.ba_point;
-	}
-	
-	if(intersectMesh.intersectsBox(wallBox.fr_box)) {  // front
-		if(flags.fr_flag) {
-			collisions.fr_point = originPoint.z;
-			flags.fr_flag = false;
-		}
-		INTERSECTED.position.z = collisions.fr_point;
-	}
-	
-	if(intersectMesh.intersectsBox(wallBox.le_box)) {  // left
-		if(flags.le_flag) {
-			collisions.le_point = originPoint.x;
-			flags.le_flag = false;
-		}
-		INTERSECTED.position.x = collisions.le_point;
-	}
-	
-	if(intersectMesh.intersectsBox(wallBox.ri_box)) {  // right
-		if(flags.ri_flag) {
-			collisions.ri_point = originPoint.x;
-			flags.ri_flag = false;
-		}
-		INTERSECTED.position.x = collisions.ri_point;
-	}
-		
 }
 
 
@@ -849,9 +806,8 @@ function animate() {
 	render();
 }
 
-
 function render() {
-	
+
 	sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
 	sandy.ce_shadow.update( CE_PLANE, lightPosition4D );
 	sandy.ba_shadow.update( BA_PLANE, lightPosition4D );
@@ -886,12 +842,12 @@ function render() {
 	sphere.helper.update();
 	pyramid.helper.update();
 	
-	/*if(INTERSECTED && mouseDown) {
-		reDraw();
-	}*/
-	
-	
 	renderer.render( scene, camera );
 	 
 }
+
+
+
+
+
 

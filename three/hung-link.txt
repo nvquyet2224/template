@@ -30,3 +30,7 @@ https://andreasrohner.at/posts/Web%20Development/JavaScript/Simple-orbital-camer
 https://gamevui.vn/noi-ong-nuoc-2/game
 
 https://stackoverflow.com/questions/35843564/prevent-objects-from-moving-outside-room-in-three-js
+
+https://clara.io/view/bc5fa46d-3e39-4fad-a4ea-6f93712ed957#
+
+http://math.hws.edu/eck/cs424/notes2013/threejs/json-loader-demo.html

@@ -4,10 +4,6 @@ if ( WEBGL.isWebGLAvailable() === false ) {
 	document.body.appendChild( WEBGL.getWebGLErrorMessage() );
 }
 
-
-
-
-
 var container = document.getElementById('container');
 
 var mesh, 
@@ -143,6 +139,39 @@ var mesh,
 	}
 	pyramid.box = new THREE.Box3();
 	
+	///////// JSON OBJECT //////////
+	var jeep = {
+		mesh: null,
+		helper: null,
+		box: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	jeep.box = new THREE.Box3();
+	
+	
+	
+	/*
+	var chair = {
+		mesh: null,
+		helper: null,
+		box: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	chair.box = new THREE.Box3();*/
+	
+	
+	
+	
 	
 	var FL_VECTOR = new THREE.Vector3( 0, 1, 0 );
 	var CE_VECTOR = new THREE.Vector3( 0, -1, 0 );
@@ -243,51 +272,31 @@ function init() {
     //orbit.addEventListener('change', render);
 	//orbit.maxPolarAngle = Math.PI / 2;
 	
-	
 	// TransformControls
 	control = new THREE.TransformControls( camera, renderer.domElement );
-	control.addEventListener( 'change', function ( event ) {
-		
-	});
+	//control.addEventListener( 'change', function ( event ) {});
 	
-
 	control.addEventListener( 'objectChange', function ( event ) {
 		
 		intersects_box.setFromObject(this.object);
-		//this.object.updateMatrixWorld(false);
 		
-		if(intersects_box.intersectsBox(wallBox.fl_box) || intersects_box.intersectsBox(wallBox.ce_box)) { // floor
-			
-			intersects_box.intersectsBox(wallBox.fl_box)
-			flags.fl_flag && ( collisions.y = this.object.position.y );
-			intersects_helper.material.color.set('red');
-			flags.fl_flag = false;
-			
-			
-		} 
+		var x_max = (xRoom - intersects_box.getSize().x )/2 - dRoom
+		var y_max = (yRoom - intersects_box.getSize().y )/2;
+		var z_max = (xRoom - intersects_box.getSize().z )/2  - dRoom;
 		
-		if(intersects_box.intersectsBox(wallBox.le_box) || intersects_box.intersectsBox(wallBox.ri_box)) { // left
-			flags.le_flag && ( collisions.x = this.object.position.x );
-			intersects_helper.material.color.set('red');
-			flags.le_flag = false;
-			
-		}
+		( this.object.position.x <= -x_max ) && ( this.object.position.x = -x_max );
+		( this.object.position.x >=  x_max ) && ( this.object.position.x = x_max );
 		
-		if(intersects_box.intersectsBox(wallBox.ba_box) || intersects_box.intersectsBox(wallBox.fr_box)) { // back
-			flags.ba_flag && ( collisions.z = this.object.position.z );
-			intersects_helper.material.color.set('red');
-			flags.ba_flag = false;
-			
-		}
+		( this.object.position.y <= -y_max ) && ( this.object.position.y = -y_max );
+		( this.object.position.y >= y_max )  && ( this.object.position.y =  y_max );
+				
+		( this.object.position.z <= -z_max ) && ( this.object.position.z = -z_max );
+		( this.object.position.z >=  z_max ) && ( this.object.position.z =  z_max );
 		
-		!flags.le_flag && ( this.object.position.x = collisions.x );
-		!flags.fl_flag && ( this.object.position.y = collisions.y );
-		!flags.ba_flag && ( this.object.position.z = collisions.z );
 		
 	} );
 	
 	control.addEventListener( 'dragging-changed', function ( event ) {
-		//console.log('bb');
 		controlling = true;
 		orbit.enabled = ! event.value;
 	} );
@@ -302,8 +311,6 @@ function init() {
 	
 	// Raycaster
 	raycaster = new THREE.Raycaster();
-	
-	
 	
 	
 	
@@ -362,9 +369,9 @@ function init() {
 	scene.add( wallMesh.fl_mesh );
 	ray_room.push( wallMesh.fl_mesh );
 	
-	//wallMesh.fl_mesh.userData.normal = wallMesh.fl_mesh.position.clone().normalize();
-	//wallMesh.fl_mesh.onBeforeRender = onBeforeRender;
-	//wallMesh.fl_mesh.onAfterRender = onAfterRender;
+	wallMesh.fl_mesh.userData.normal = wallMesh.fl_mesh.position.clone().normalize();
+	wallMesh.fl_mesh.onBeforeRender = onBeforeRender;
+	wallMesh.fl_mesh.onAfterRender = onAfterRender;
 	
 	
 	// Celling
@@ -446,7 +453,7 @@ function init() {
 	////////////////////////////////
 	
 	// Cube Sandy
-	var sandy_geometry = new THREE.BoxGeometry( 4, 2, 2 );
+	/*var sandy_geometry = new THREE.BoxGeometry( 4, 2, 2 );
     var sandy_material = new THREE.MeshPhongMaterial( { color: 'sandybrown' } );
 	
 	sandy.mesh = new THREE.Mesh( sandy_geometry, sandy_material );
@@ -472,8 +479,9 @@ function init() {
 	scene.add( sandy.le_shadow );
 	scene.add( sandy.ri_shadow );
 	scene.add( sandy.helper );
-	
+
 	ray_object.push( sandy.mesh );
+	
 	
 	
 	
@@ -570,23 +578,56 @@ function init() {
 	scene.add( pyramid.ri_shadow );
 	scene.add( pyramid.helper );
 	
+	ray_object.push( pyramid.mesh );*/
 	
-	ray_object.push( pyramid.mesh );
+	var objectLoader = new THREE.ObjectLoader();
+	objectLoader.load( "json/jeep.assimp.json", function ( obj ) {
+
+		scene.add( obj );
+
+	} );
 	
 	
+	//loader.load('/static/bear.json', (geometry, materials) => {
+	  //const bear = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+	  //scene.add(bear);
+	//});
+
+	/*var loader = new THREE.AssimpJSONLoader();
 	
-	// Tv
-	/*var geometry = new THREE.BoxGeometry( 4, 3, 0.02);
-	
-	var material_image = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('images/tv-01.jpg')
-    });
-	
-    var mesh = new THREE.Mesh(geometry, material_image);
-	mesh.position.set(0,0,-9.8);
-	mesh.type = '2d-mode';
-	scene.add( mesh );
-	objects.push( mesh );*/
+	loader.load( 'json/jeep.assimp.json', function ( object ) {
+		
+		jeep.mesh = object;
+		jeep.mesh.position.set( 0, -5, 0);
+		jeep.mesh.type = '3d-mode';
+		jeep.mesh.name = 'jeep_box';
+		
+		jeep.fl_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.ce_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.ba_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.fr_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.le_shadow = new THREE.ShadowMesh( jeep.mesh );
+		jeep.ri_shadow = new THREE.ShadowMesh( jeep.mesh );
+		
+		jeep.helper = new THREE.BoundingBoxHelper( jeep.mesh );
+		jeep.helper.visible = false;
+		
+		jeep.box.setFromObject( jeep.mesh );
+		scene.add( jeep.mesh );
+		scene.add( jeep.fl_shadow );
+		scene.add( jeep.ce_shadow );
+		scene.add( jeep.ba_shadow );
+		scene.add( jeep.fr_shadow );
+		scene.add( jeep.le_shadow );
+		scene.add( jeep.ri_shadow );
+		
+		scene.add( jeep.helper );
+		jeep.mesh.scale.multiplyScalar( 0.8 );
+		
+		scene.add( jeep.mesh );
+		ray_object.push( jeep.mesh );
+		
+	} );*/
 	
 	
 	
@@ -674,6 +715,17 @@ function onMouseDown(event) {
 	event.preventDefault();
 	mouseDown = true;
 	
+	if(event.touches == undefined ) {
+		clientX = event.clientX;
+		clientY = event.clientY;
+	}else {
+		clientX = event.touches[0].clientX;
+		clientY = event.touches[0].clientY;
+	}
+	
+	mouse.x = 	( clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( clientY / window.innerHeight ) * 2 + 1;
+	
 	// find intersections
 	raycaster.setFromCamera(mouse, camera);
 	var intersects = raycaster.intersectObjects(ray_object, true);
@@ -697,9 +749,11 @@ function onMouseDown(event) {
 		}
 		else if(intersects_obj.name == 'pyramid_box')  {
 			intersects_helper = pyramid.helper;
+		}else if(intersects_obj.name == 'jeep_box')  {
+			intersects_helper = jeep.helper;
 		}
 		
-		intersects_helper.visible = true;
+		//intersects_helper.visible = true;
 		
 		
 	}else {
@@ -711,79 +765,11 @@ function onMouseDown(event) {
 		}
 		
 	}
-
-	
-	/*if(event.touches == undefined ) {
-		clientX = event.clientX;
-		clientY = event.clientY;
-	}else {
-		clientX = event.touches[0].clientX;
-		clientY = event.touches[0].clientY;
-	}
-	
-	mouse.x = 	( clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( clientY / window.innerHeight ) * 2 + 1;
-	*/
-	
-	// Intersects
-	/*raycaster.setFromCamera( mouse, camera );
-	var intersects = raycaster.intersectObjects( ray_object );
-	
-	if ( intersects.length > 0 ) {
-			
-		// reset flag
-		flags.fl_flag = true;
-		flags.ce_flag = true;
-		flags.ba_flag = true;
-		flags.fr_flag = true;
-		flags.le_flag = true;
-		flags.ri_flag = true;
-		
-		intersects_obj = intersects[ 0 ].object;
-		control.attach( intersects_obj );
-		//control.lookAt(new THREE.Vector3(0,0,0));
-		
-		var mode = control.getMode();
-		if(mode == 'rotate') {
-			
-			if(intersects_obj.type == '3d-mode') {
-				control.showX = false;
-				control.showY = true;
-				control.showZ = false;
-				
-			}else {
-				control.showX = true;
-				control.showY = true;
-				control.showZ = true;
-			}
-			
-		}else {
-			control.showX = true;
-			control.showY = true;
-			control.showZ = true;
-		}
-		
-	}else {
-		if(!controlling) {
-			control.detach();
-			intersects_obj = null;
-		}
-	}*/
 	
 }
 
 function onMouseUp(event) {
-	/*if(intersects_obj) {
-		// reset flag
-		flags.fl_flag = true;
-		flags.ce_flag = true;
-		flags.ba_flag = true;
-		flags.fr_flag = true;
-		flags.le_flag = true;
-		flags.ri_flag = true;
-		reDraw();
-	}*/
-	
+
 	mouseDown = false;
 	controlling = false;
 	
@@ -817,153 +803,10 @@ function onMouseMove(event) {
 		container.style.cursor = 'auto';
 	}
 	
-	/*
-	if (sandy_selected == true) {
-
-		testIntersects = raycaster.intersectObjects(ray_room, true);
-		if (testIntersects.length > 0) {
-			
-			sandy.box.setFromObject( sandy.mesh );
-			
-			var okToMove = true;
-			
-			sandyOldPosition.copy(sandy.mesh.position);
-			
-			newIntersectPoint.copy(testIntersects[0].point);
-			
-			intersectOffset.copy(newIntersectPoint);
-			intersectOffset.sub(oldIntersectPoint);
-			//uncomment below if you want more precision mouse movements of objects
-			//intersectOffset.multiplyScalar(0.1);
-			// store old intersect point for next frame
-			oldIntersectPoint.copy(newIntersectPoint);
-			
-			sandy.mesh.position.add(intersectOffset);
-			//sandy.mesh.updateMatrixWorld(true);
-			//chairBox.updateMatrixWorld(true);
-			sandy.helper.update(sandy.mesh);
-			
-			// default
-			sandy.helper.material.color.set('white');   
-			
-			if( sandy.box.intersectsBox(ri_Box) ) {
-				okToMove = false;
-				
-				sandy.helper.material.color.set('red');
-			}
-			else if( sandy.box.intersectsBox(le_Box) ) {
-				okToMove = false;
-				sandy.helper.material.color.set('red');
-			}
-			else if( sandy.box.intersectsBox(ba_Box) ) {
-				okToMove = false;
-				console.log('back');
-				control.detach();
-				console.log(sandyOldPosition.z)
-				sandy.helper.material.color.set('red');
-			}
-			else if( sandy.box.intersectsBox(fr_Box) ) {
-				okToMove = false;
-				sandy.helper.material.color.set('red');
-			}
-			
-			// if NOT ok to move and chair is hitting something,
-			if ( !okToMove ) {
-				// put chair back where it was
-				sandy.mesh.position.copy(sandyOldPosition);
-			}
-		
-		
-		}
-
-	}
-	*/
-	
-	
-	/*
-	// Intersects
-	raycaster.setFromCamera( mouse, camera );
-	
-	var intersects = raycaster.intersectObjects( ray_object );
-	
-	if ( intersects.length > 0 ) { 
-		container.style.cursor = 'pointer';
-			
-	}else {
-		container.style.cursor = 'default';
-	}*/
-	
-	//mouseX = clientX;
-	//mouseY = clientY;
-	
-	//console.log(deltaX);
-	//console.log(deltaY);
-	
 }
 
 function reDraw() {
 	
-	intersects_box.setFromObject(intersects_obj);
-	var originPoint = intersects_obj.position.clone();
-	
-	//Wallbox
-	wallBox.fl_box.setFromObject(wallMesh.fl_mesh);
-	wallBox.ce_box.setFromObject(wallMesh.ce_mesh);
-	wallBox.ba_box.setFromObject(wallMesh.ba_mesh);
-	wallBox.fr_box.setFromObject(wallMesh.fr_mesh);
-	wallBox.le_box.setFromObject(wallMesh.le_mesh);
-	wallBox.ri_box.setFromObject(wallMesh.ri_mesh);
-	
-	// Find intersects intersects_obj with walls
-	if(intersects_box.intersectsBox(wallBox.fl_box)) { // floor
-		if(flags.fl_flag) {
-			flags.fl_flag = false;
-			collisions.fl_point = originPoint.y;
-		}
-		intersects_obj.position.y = collisions.fl_point;
-		
-	}
-	
-	if(intersects_box.intersectsBox(wallBox.ce_box)) {  // celling
-		if(flags.ce_flag) {
-			collisions.ce_point = originPoint.y;
-			flags.ce_flag = false;
-		}
-		intersects_obj.position.y = collisions.ce_point;
-	}
-	
-	if(intersects_box.intersectsBox(wallBox.ba_box)) {  // back
-		if(flags.ba_flag) {
-			collisions.ba_point = originPoint.z;
-			flags.ba_flag = false;
-		}
-		intersects_obj.position.z = collisions.ba_point;
-	}
-	
-	if(intersects_box.intersectsBox(wallBox.fr_box)) {  // front
-		if(flags.fr_flag) {
-			collisions.fr_point = originPoint.z;
-			flags.fr_flag = false;
-		}
-		intersects_obj.position.z = collisions.fr_point;
-	}
-	
-	if(intersects_box.intersectsBox(wallBox.le_box)) {  // left
-		if(flags.le_flag) {
-			collisions.le_point = originPoint.x;
-			flags.le_flag = false;
-		}
-		intersects_obj.position.x = collisions.le_point;
-	}
-	
-	if(intersects_box.intersectsBox(wallBox.ri_box)) {  // right
-		if(flags.ri_flag) {
-			collisions.ri_point = originPoint.x;
-			flags.ri_flag = false;
-		}
-		intersects_obj.position.x = collisions.ri_point;
-	}
-		
 }
 
 
@@ -974,10 +817,9 @@ function animate() {
 	render();
 }
 
-
 function render() {
-	
-	sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
+
+	/*sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
 	sandy.ce_shadow.update( CE_PLANE, lightPosition4D );
 	sandy.ba_shadow.update( BA_PLANE, lightPosition4D );
 	sandy.fr_shadow.update( FR_PLANE, lightPosition4D );
@@ -1006,15 +848,22 @@ function render() {
 	pyramid.le_shadow.update( LE_PLANE, lightPosition4D );
 	pyramid.ri_shadow.update( RI_PLANE, lightPosition4D );
 	
+	
+	
 	sandy.helper.update();
 	gray.helper.update();
 	sphere.helper.update();
-	pyramid.helper.update();
+	pyramid.helper.update();*/
 	
-	/*if(intersects_obj && mouseDown) {
-		reDraw();
-	}*/
-	
+	if(jeep.mesh) {
+		jeep.fl_shadow.update( FL_PLANE, lightPosition4D );
+		jeep.ce_shadow.update( CE_PLANE, lightPosition4D );
+		jeep.ba_shadow.update( BA_PLANE, lightPosition4D );
+		jeep.fr_shadow.update( FR_PLANE, lightPosition4D );
+		jeep.le_shadow.update( LE_PLANE, lightPosition4D );
+		jeep.ri_shadow.update( RI_PLANE, lightPosition4D );
+		jeep.helper.update();
+	}
 	
 	renderer.render( scene, camera );
 	 
