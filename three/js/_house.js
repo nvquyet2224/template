@@ -139,6 +139,22 @@ var mesh,
 	}
 	pyramid.box = new THREE.Box3();
 	
+	///////// JSON OBJECT //////////
+	var jeep = {
+		mesh: null,
+		helper: null,
+		box: null,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
+	jeep.box = new THREE.Box3();
+	
+	
+	
 	/*
 	var chair = {
 		mesh: null,
@@ -437,7 +453,7 @@ function init() {
 	////////////////////////////////
 	
 	// Cube Sandy
-	var sandy_geometry = new THREE.BoxGeometry( 4, 2, 2 );
+	/*var sandy_geometry = new THREE.BoxGeometry( 4, 2, 2 );
     var sandy_material = new THREE.MeshPhongMaterial( { color: 'sandybrown' } );
 	
 	sandy.mesh = new THREE.Mesh( sandy_geometry, sandy_material );
@@ -562,63 +578,37 @@ function init() {
 	scene.add( pyramid.ri_shadow );
 	scene.add( pyramid.helper );
 	
-	ray_object.push( pyramid.mesh );
+	ray_object.push( pyramid.mesh );*/
 	
+	var  url = 'json/banana.obj';
 	
-	
-	
-	///////// JSON OBJECT //////////
-	var jeep = {
-		mesh: null,
-		helper: null,
-		box: null,
-		fl_shadow: null,
-		ce_shadow: null,
-		ba_shadow: null,
-		fr_shadow: null,
-		le_shadow: null,
-		ri_shadow: null
-	}
-	jeep.box = new THREE.Box3();
-	
-	
-	var loader1 = new THREE.AssimpJSONLoader();
-	/*loader1.load( 'json/jeep.assimp.json', function ( object ) {
-		object.scale.multiplyScalar( 0.2 );
-		scene.add( object );
-	} );*/
-	
-	loader1.load( 'json/jeep.assimp.json', function ( object ) {
-		jeep.mesh = object;
-		jeep.mesh.position.set( 0, -5, 0);
-		jeep.mesh.type = '3d-mode';
-		jeep.mesh.name = 'jeep_box';
+	// instantiate a loader
+	var loader = new THREE.OBJLoader();
+
+	// load a resource
+	loader.load( url,
+		// called when resource is loaded
+		function ( object ) {
+			//console.log('done');
+			console.log(object);
+			object.position.set(0,-5,0);
+			scene.add( object );
+
+		},
+		// called when loading is in progresses
+		function ( xhr ) {
+			console.log('loading');
+			console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+		},
+		// called when loading has errors
+		function ( error ) {
 		
-		jeep.fl_shadow = new THREE.ShadowMesh( jeep.mesh );
-		jeep.ce_shadow = new THREE.ShadowMesh( jeep.mesh );
-		jeep.ba_shadow = new THREE.ShadowMesh( jeep.mesh );
-		jeep.fr_shadow = new THREE.ShadowMesh( jeep.mesh );
-		jeep.le_shadow = new THREE.ShadowMesh( jeep.mesh );
-		jeep.ri_shadow = new THREE.ShadowMesh( jeep.mesh );
-		jeep.helper = new THREE.BoundingBoxHelper( jeep.mesh );
-		jeep.helper.visible = false;
-		jeep.box.setFromObject( jeep.mesh );
-		
-		scene.add( jeep.mesh );
-		scene.add( jeep.fl_shadow );
-		scene.add( jeep.ce_shadow );
-		scene.add( jeep.ba_shadow );
-		scene.add( jeep.fr_shadow );
-		scene.add( jeep.le_shadow );
-		scene.add( jeep.ri_shadow );
-		scene.add( jeep.helper );
-		
-		jeep.mesh.scale.multiplyScalar( 0.5 );
-		scene.add( jeep.mesh );
-		
-		ray_object.push( jeep.mesh );
-		
-	} );
+			console.log( 'An error happened' );
+
+		}
+	);
+	
 	
 	
 	
@@ -740,9 +730,11 @@ function onMouseDown(event) {
 		}
 		else if(intersects_obj.name == 'pyramid_box')  {
 			intersects_helper = pyramid.helper;
+		}else if(intersects_obj.name == 'jeep_box')  {
+			intersects_helper = jeep.helper;
 		}
 		
-		intersects_helper.visible = true;
+		//intersects_helper.visible = true;
 		
 		
 	}else {
@@ -808,7 +800,7 @@ function animate() {
 
 function render() {
 
-	sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
+	/*sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
 	sandy.ce_shadow.update( CE_PLANE, lightPosition4D );
 	sandy.ba_shadow.update( BA_PLANE, lightPosition4D );
 	sandy.fr_shadow.update( FR_PLANE, lightPosition4D );
@@ -837,10 +829,22 @@ function render() {
 	pyramid.le_shadow.update( LE_PLANE, lightPosition4D );
 	pyramid.ri_shadow.update( RI_PLANE, lightPosition4D );
 	
+	
+	
 	sandy.helper.update();
 	gray.helper.update();
 	sphere.helper.update();
-	pyramid.helper.update();
+	pyramid.helper.update();*/
+	
+	if(jeep.mesh) {
+		jeep.fl_shadow.update( FL_PLANE, lightPosition4D );
+		jeep.ce_shadow.update( CE_PLANE, lightPosition4D );
+		jeep.ba_shadow.update( BA_PLANE, lightPosition4D );
+		jeep.fr_shadow.update( FR_PLANE, lightPosition4D );
+		jeep.le_shadow.update( LE_PLANE, lightPosition4D );
+		jeep.ri_shadow.update( RI_PLANE, lightPosition4D );
+		jeep.helper.update();
+	}
 	
 	renderer.render( scene, camera );
 	 
