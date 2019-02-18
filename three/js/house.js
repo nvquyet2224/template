@@ -566,6 +566,61 @@ function init() {
 	
 	
 	
+	// glTF loader
+
+	var path = 'models/gltf/Crate/';
+	var pathFile = 'scene.gltf';
+	
+	var bus = {
+		body:null,
+	};
+	
+	var loader = new THREE.GLTFLoader().setPath( path );
+	loader.load( pathFile, function ( gltf ) {
+		
+		var gltfBox = gltf.scene.children[0];
+		
+		//gltfBox.scale.set (0.2,0.2,0.2);
+		
+		//gltfBox.visible = false;
+		//scene.add(gltfBox);
+		
+		//var scale = 5.6;
+		//bus.body = gltf.scene.children[0];
+		//bus.body.name = "body";
+		//bus.body.rotation.set ( 0, -1.5708, 0 );
+		//bus.body.scale.set (.5,.5,.5);
+		//bus.body.position.set ( 0, 3.6, 0 );
+		//bus.body.castShadow = true;
+		//bus.frame.add(bus.body);
+		
+		//console.log(gltf.scene.node);
+		//var parser = gltf.parser;
+		//var testBox = new THREE.Box3();
+		
+		
+		//var meshs = parser.json.meshs;
+		//console.log(parser.json.meshes.length);
+		//console.log(gltf.scene.textures);
+		//console.log(gltf.scene.nodes[0]);
+		/*scene.add( gltf.scene );
+		gltf.scene.traverse( function ( child ) {
+			if ( child.isSkinnedMesh ) {
+				console.log('asas');
+				child.castShadow = true;
+			}
+		} );*/
+		
+		//mixer = new THREE.AnimationMixer( gltf.scene );
+		//mixer.clipAction( gltf.animations[ 0 ] ).play();
+		
+	}, undefined, function ( e ) {
+		console.error( e );
+	} );
+	
+	
+	
+	
 	/////////////////////////////////////////////
 	/////////////// CONTROLS EVENTS ////////////
 	///////////////////////////////////////////

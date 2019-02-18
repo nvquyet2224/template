@@ -34,3 +34,9 @@ https://stackoverflow.com/questions/35843564/prevent-objects-from-moving-outside
 https://clara.io/view/bc5fa46d-3e39-4fad-a4ea-6f93712ed957#
 
 http://math.hws.edu/eck/cs424/notes2013/threejs/json-loader-demo.html
+
+https://sketchfab.com/lavadragon
+
+https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/README.md
+
+https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/README.md
