@@ -85,7 +85,6 @@ var mesh,
 	var lightSphere, lightHolder;
 	
 	
-	
 	var sandy = {
 		mesh: null,
 		helper: null,
@@ -139,7 +138,6 @@ var mesh,
 	}
 	pyramid.box = new THREE.Box3();
 	
-	/*
 	var chair = {
 		mesh: null,
 		helper: null,
@@ -151,9 +149,7 @@ var mesh,
 		le_shadow: null,
 		ri_shadow: null
 	}
-	chair.box = new THREE.Box3();*/
-	
-	
+	chair.box = new THREE.Box3();
 	
 	
 	
@@ -181,15 +177,13 @@ var mesh,
 	var lightPosition4D = new THREE.Vector4();
 	
 	
-	
 	///////////////////////////////////////
 	/////////////// STAR /////////////////
 	/////////////////////////////////////
 	
 	init();
 	animate();
-	
-	
+		
 function init() {
 	
 	// scene
@@ -198,8 +192,8 @@ function init() {
 	// camera
     camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, aspect, far );
 	camera.add( new THREE.PointLight( 0xffffff, 0.8 ) );
-    camera.position.set( 20, 20, 20 );
-	//camera.position.set( 0, 0, 30 );
+    //camera.position.set( 20, 20, 20 );
+	camera.position.set( 5, 0, 20 );
 	scene.add( camera );
 	
     // ambient
@@ -214,6 +208,22 @@ function init() {
 	container.appendChild( renderer.domElement );
 	
 	
+	
+	
+	
+	///////////////////////////////////////
+	////////////// HELPER ////////////////
+	/////////////////////////////////////
+	
+	//var grid = new THREE.GridHelper( 20, 20, 0x000000, 0x000000 );
+	//grid.position.y = 0;
+	//grid.material.opacity = 0.2;
+	//grid.material.transparent = true;
+	//scene.add( grid );
+	
+	
+	//var ch = new THREE.CameraHelper.update().
+	//scene.add( ch );
 	
 	///////////////////////////////////////
 	////////////// SHADOW ////////////////
@@ -353,9 +363,9 @@ function init() {
 	scene.add( wallMesh.fl_mesh );
 	ray_room.push( wallMesh.fl_mesh );
 	
-	wallMesh.fl_mesh.userData.normal = wallMesh.fl_mesh.position.clone().normalize();
-	wallMesh.fl_mesh.onBeforeRender = onBeforeRender;
-	wallMesh.fl_mesh.onAfterRender = onAfterRender;
+	//wallMesh.fl_mesh.userData.normal = wallMesh.fl_mesh.position.clone().normalize();
+	//wallMesh.fl_mesh.onBeforeRender = onBeforeRender;
+	//wallMesh.fl_mesh.onAfterRender = onAfterRender;
 	
 	
 	// Celling
@@ -437,7 +447,7 @@ function init() {
 	////////////////////////////////
 	
 	// Cube Sandy
-	var sandy_geometry = new THREE.BoxGeometry( 4, 2, 2 );
+	/*var sandy_geometry = new THREE.BoxGeometry( 4, 2, 2 );
     var sandy_material = new THREE.MeshPhongMaterial( { color: 'sandybrown' } );
 	
 	sandy.mesh = new THREE.Mesh( sandy_geometry, sandy_material );
@@ -465,8 +475,6 @@ function init() {
 	scene.add( sandy.helper );
 
 	ray_object.push( sandy.mesh );
-	
-	
 	
 	
 	
@@ -562,64 +570,120 @@ function init() {
 	scene.add( pyramid.ri_shadow );
 	scene.add( pyramid.helper );
 	
-	ray_object.push( pyramid.mesh );
+	ray_object.push( pyramid.mesh );*/
 	
 	
 	
-	// glTF loader
+	
+	////////////////////////////////////
+	/////////// OBJECTS GLB ////////////
+	///////////////////////////////////
+	
+	
+	
+	// Load Chair
+	var bounding_box =  new THREE.Box3();;
+	var loader = new THREE.GLTFLoader();
+	
+	loader.load(
+		'models/gltf/vitra-chair/vitra-chair.glb',
+		function Done( gltf ) {
+			
+			gltf.scene.traverse( function ( child ) {
+				
+				if ( child.isMesh ) {
+					
+					child.geometry.center();
+					
+					child.rotation.set(0,1.8,0);
+					child.scale.set(0.04,0.04,0.04);
+					child.type = '3d-mode';
+					
+					bounding_box.setFromObject(child);
+					var top = (yRoom - bounding_box.getSize().y)/2;
+					child.position.set( 3.4, -top, 0.9 )
+					
+					chair.mesh = child;
+					
+				}
+				
+			} );
+			
+			scene.add( chair.mesh );
+	
+			chair.fl_shadow = new THREE.ShadowMesh( chair.mesh );
+			//chair.ce_shadow = new THREE.ShadowMesh( chair.mesh );
+			chair.ba_shadow = new THREE.ShadowMesh( chair.mesh );
+			chair.fr_shadow = new THREE.ShadowMesh( chair.mesh );
+			chair.le_shadow = new THREE.ShadowMesh( chair.mesh );
+			chair.ri_shadow = new THREE.ShadowMesh( chair.mesh );
 
-	var path = 'models/gltf/Crate/';
-	var pathFile = 'scene.gltf';
-	
-	var bus = {
-		body:null,
-	};
-	
-	var loader = new THREE.GLTFLoader().setPath( path );
-	loader.load( pathFile, function ( gltf ) {
-		
-		var gltfBox = gltf.scene.children[0];
-		
-		//gltfBox.scale.set (0.2,0.2,0.2);
-		
-		//gltfBox.visible = false;
-		//scene.add(gltfBox);
-		
-		//var scale = 5.6;
-		//bus.body = gltf.scene.children[0];
-		//bus.body.name = "body";
-		//bus.body.rotation.set ( 0, -1.5708, 0 );
-		//bus.body.scale.set (.5,.5,.5);
-		//bus.body.position.set ( 0, 3.6, 0 );
-		//bus.body.castShadow = true;
-		//bus.frame.add(bus.body);
-		
-		//console.log(gltf.scene.node);
-		//var parser = gltf.parser;
-		//var testBox = new THREE.Box3();
-		
-		
-		//var meshs = parser.json.meshs;
-		//console.log(parser.json.meshes.length);
-		//console.log(gltf.scene.textures);
-		//console.log(gltf.scene.nodes[0]);
-		/*scene.add( gltf.scene );
-		gltf.scene.traverse( function ( child ) {
-			if ( child.isSkinnedMesh ) {
-				console.log('asas');
-				child.castShadow = true;
-			}
-		} );*/
-		
-		//mixer = new THREE.AnimationMixer( gltf.scene );
-		//mixer.clipAction( gltf.animations[ 0 ] ).play();
-		
-	}, undefined, function ( e ) {
-		console.error( e );
-	} );
+			scene.add( chair.fl_shadow );
+			//scene.add( chair.ce_shadow );
+			scene.add( chair.ba_shadow );
+			scene.add( chair.fr_shadow );
+			scene.add( chair.le_shadow );
+			scene.add( chair.ri_shadow );
+			
+			ray_object.push( chair.mesh );
+			
+			
+		}, function Processs ( err ) {
+			
+		}, function Error ( err ) {
+			
+		}
+	);
 	
 	
-	
+	// Load Usm
+	loader.load(
+		'models/gltf/USM/USM-config-gltf.glb',
+		function Done( gltf ) {
+			
+			bounding_box = new THREE.Box3();
+			
+			gltf.scene.traverse( function ( child ) {
+				
+				if ( child.isMesh ) {
+					child.type = 'change-material';
+					
+					//scene.add( child );
+					
+					console.log(child.name);
+					
+					if(child.name == 'haller458001') {
+						//console.log(child);
+						//child.scale.set(5,5,5);
+						child.visible = false;
+						console.log(child);
+						
+					}
+				}
+				
+			} );
+			
+			gltf.scene.scale.set(5,5,5);
+			gltf.scene.rotation.set(0,-1.2,0);
+			
+			gltf.scene.position.x = 6;
+			gltf.scene.position.y = -5;
+			gltf.scene.position.z = 0;
+			
+			scene.add( gltf.scene );
+			
+			ray_object.push( gltf.scene );
+			
+			
+		}, function Processs ( err ) {
+			
+		}, function Error ( err ) {
+			
+		}
+	);
+		
+		
+		
 	
 	/////////////////////////////////////////////
 	/////////////// CONTROLS EVENTS ////////////
@@ -632,6 +696,30 @@ function init() {
 	scaleCtr.addEventListener( 'click', scale, false);
 	scaleCtr.addEventListener( 'touchstart', scale, {passive: false} );
 
+
+	colorCtl.addEventListener( 'click', function(e){
+
+		if(intersects_obj) {
+			console.log(intersects_obj);
+			console.log(intersects_obj.material);
+			
+			control.detach();
+			var color = e.target.getAttribute('data-color');
+			if(color == 'fa1731') {
+				intersects_obj.material.color.set( 0xfa1731 );
+			}else if(color == '17fa37') {
+				intersects_obj.material.color.set( 0x17fa37 );
+				
+			}else if(color == 'fad717') {
+				intersects_obj.material.color.set( 0xfad717 );
+			}else if(color == 'ffffff') {
+				intersects_obj.material.color.set( 0xffffff );
+			}
+		}
+
+		
+	}, false);
+	
 	//Document event
 	/*document.addEventListener( 'mousedown', onMouseDown, false );
 	document.addEventListener( 'mouseup', onMouseUp, false );
@@ -655,7 +743,7 @@ function init() {
 
 function translate() {
 	if(intersects_obj) {
-		//control.attach(intersects_obj);
+		control.attach(intersects_obj);
 		control.setMode("translate");
 		control.showX = true;
 		control.showY = true;
@@ -666,7 +754,7 @@ function translate() {
 function rotate() {
 	
 	if(intersects_obj) {
-		//control.attach(intersects_obj);
+		control.attach(intersects_obj);
 		control.setMode("rotate");
 		if(intersects_obj.type == '3d-mode') {
 			control.showX = false;
@@ -681,7 +769,7 @@ function rotate() {
 function scale() {
 	
 	if(intersects_obj) {
-		//control.attach(intersects_obj);
+		control.attach(intersects_obj);
 		control.setMode("scale");
 		if(intersects_obj.type == '3d-mode') {
 			control.showX = true;
@@ -722,9 +810,10 @@ function onMouseDown(event) {
 	
 	if (intersects.length > 0) {
 		intersects_obj = intersects[0].object;
+		intersects_obj.material.color.set( 0xfa1731 );
 		control.attach(intersects_obj);
 		
-		if(intersects_helper) {
+		/*if(intersects_helper) {
 			intersects_helper.visible = false;
 		}
 		
@@ -741,7 +830,7 @@ function onMouseDown(event) {
 			intersects_helper = pyramid.helper;
 		}
 		
-		intersects_helper.visible = true;
+		intersects_helper.visible = true;*/
 		
 		
 	}else {
@@ -807,7 +896,7 @@ function animate() {
 
 function render() {
 
-	sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
+	/*sandy.fl_shadow.update( FL_PLANE, lightPosition4D );
 	sandy.ce_shadow.update( CE_PLANE, lightPosition4D );
 	sandy.ba_shadow.update( BA_PLANE, lightPosition4D );
 	sandy.fr_shadow.update( FR_PLANE, lightPosition4D );
@@ -839,7 +928,19 @@ function render() {
 	sandy.helper.update();
 	gray.helper.update();
 	sphere.helper.update();
-	pyramid.helper.update();
+	pyramid.helper.update();*/
+	
+
+	if(chair.mesh) {
+		chair.fl_shadow.update( FL_PLANE, lightPosition4D );
+		//chair.ce_shadow.update( CE_PLANE, lightPosition4D );
+		chair.ba_shadow.update( BA_PLANE, lightPosition4D );
+		chair.fr_shadow.update( FR_PLANE, lightPosition4D );
+		chair.le_shadow.update( LE_PLANE, lightPosition4D );
+		chair.ri_shadow.update( RI_PLANE, lightPosition4D );
+		//chair.helper.update();
+	}
+	
 	
 	renderer.render( scene, camera );
 	 

@@ -40,6 +40,41 @@ body {
 	font-size:12px;
 }
 
+#colorCtl {
+	position:absolute;
+	left:0;
+	right:0;
+	top:40px;
+	padding:10px 20px;
+	text-align:right;
+	z-index:100;
+}
+
+#colorCtl a {
+	position:relative;
+	display:inline-block;
+	width:30px;
+	height:30px;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+}
+
+#colorCtl a:nth-child(1) {
+	background-color:#fa1731;
+}
+
+#colorCtl a:nth-child(2) {
+	background-color:#17fa37;
+}
+
+#colorCtl a:nth-child(3) {
+	background-color:#fad717;
+}
+
+#colorCtl a:nth-child(4) {
+	background-color:#ffffff;
+}
+
 </style>
 </head>
 <body>
@@ -48,6 +83,13 @@ body {
 <a id="translateCtr" href="javascript:void(0);">Translate</a>
 <a id="rotateCtr" href="javascript:void(0);">Rotate</a>
 <a id="scaleCtr" href="javascript:void(0);">Scale</a>
+</div>
+
+<div id="colorCtl">
+<a data-color="fa1731" href="javascript:void(0);"></a>
+<a data-color="17fa37" href="javascript:void(0);"></a>
+<a data-color="fad717" href="javascript:void(0);"></a>
+<a data-color="ffffff" href="javascript:void(0);"></a>
 </div>
 
 <div id="container" class="container"></div>
