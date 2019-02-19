@@ -40,3 +40,4 @@ https://sketchfab.com/lavadragon
 https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/README.md
 
 https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/README.md
+https://stackoverflow.com/questions/49580090/gltfloader-does-not-make-object-as-1-mesh
