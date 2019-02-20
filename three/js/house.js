@@ -5,10 +5,10 @@ if ( WEBGL.isWebGLAvailable() === false ) {
 }
 
 var container = document.getElementById('container');
-
+				
 var mesh, 
 	renderer, 
-	scene, 
+	scene,
 	camera,
 	fov = 40,
 	aspect = 1,
@@ -29,7 +29,10 @@ var mesh,
 	ray_object = [], 
 	ray_room = [],
 	intersects_obj,
+	intersects_material,
 	intersects_helper;
+	
+	var groups = [];
 	
 	
 	// Room Parameters
@@ -139,9 +142,7 @@ var mesh,
 	pyramid.box = new THREE.Box3();
 	
 	var chair = {
-		mesh: null,
-		helper: null,
-		box: null,
+		ready: false,
 		fl_shadow: null,
 		ce_shadow: null,
 		ba_shadow: null,
@@ -149,7 +150,16 @@ var mesh,
 		le_shadow: null,
 		ri_shadow: null
 	}
-	chair.box = new THREE.Box3();
+	
+	var usm = {
+		ready: false,
+		fl_shadow: null,
+		ce_shadow: null,
+		ba_shadow: null,
+		fr_shadow: null,
+		le_shadow: null,
+		ri_shadow: null
+	}
 	
 	
 	
@@ -177,10 +187,61 @@ var mesh,
 	var lightPosition4D = new THREE.Vector4();
 	
 	
+	
+	
+	
+	
+	
 	///////////////////////////////////////
 	/////////////// STAR /////////////////
 	/////////////////////////////////////
+	var selectedObjects = [];
+			var composer, effectFXAA, outlinePass;
+			var obj3d = new THREE.Object3D();
+			var group = new THREE.Group();
+			var params = {
+				edgeStrength: 3.0,
+				edgeGlow: 0.0,
+				edgeThickness: 1.0,
+				pulsePeriod: 0,
+				rotate: false,
+				usePatternTexture: false
+			};
+
+
 	
+	var gui = new dat.GUI( { width: 300 } );
+			gui.add( params, 'edgeStrength', 0.01, 10 ).onChange( function ( value ) {
+				outlinePass.edgeStrength = Number( value );
+			} );
+			gui.add( params, 'edgeGlow', 0.0, 1 ).onChange( function ( value ) {
+				outlinePass.edgeGlow = Number( value );
+			} );
+			gui.add( params, 'edgeThickness', 1, 4 ).onChange( function ( value ) {
+				outlinePass.edgeThickness = Number( value );
+			} );
+			gui.add( params, 'pulsePeriod', 0.0, 5 ).onChange( function ( value ) {
+				outlinePass.pulsePeriod = Number( value );
+			} );
+			gui.add( params, 'rotate' );
+			gui.add( params, 'usePatternTexture' ).onChange( function ( value ) {
+				outlinePass.usePatternTexture = value;
+			} );
+			var Configuration = function () {
+				this.visibleEdgeColor = '#ffffff';
+				this.hiddenEdgeColor = '#190a05';
+			};
+			var conf = new Configuration();
+			gui.addColor( conf, 'visibleEdgeColor' ).onChange( function ( value ) {
+				outlinePass.visibleEdgeColor.set( value );
+			} );
+			gui.addColor( conf, 'hiddenEdgeColor' ).onChange( function ( value ) {
+				outlinePass.hiddenEdgeColor.set( value );
+			} );
+
+
+
+
 	init();
 	animate();
 		
@@ -199,7 +260,6 @@ function init() {
     // ambient
     //scene.add( new THREE.AmbientLight( 0x444444 ) );
     
-	
 	// renderer
     renderer = new THREE.WebGLRenderer( { antialias: true });
 	renderer.setPixelRatio( window.devicePixelRatio );
@@ -209,17 +269,15 @@ function init() {
 	
 	
 	
-	
-	
 	///////////////////////////////////////
 	////////////// HELPER ////////////////
 	/////////////////////////////////////
 	
-	//var grid = new THREE.GridHelper( 20, 20, 0x000000, 0x000000 );
-	//grid.position.y = 0;
-	//grid.material.opacity = 0.2;
-	//grid.material.transparent = true;
-	//scene.add( grid );
+	var grid = new THREE.GridHelper( 20, 20, 0x000000, 0x000000 );
+	grid.position.y = 0;
+	grid.material.opacity = 0.2;
+	grid.material.transparent = true;
+	scene.add( grid );
 	
 	
 	//var ch = new THREE.CameraHelper.update().
@@ -274,16 +332,20 @@ function init() {
 		
 		intersects_box.setFromObject(this.object);
 		
-		var x_max = (xRoom - intersects_box.getSize().x )/2 - dRoom
-		var y_max = (yRoom - intersects_box.getSize().y )/2;
-		var z_max = (xRoom - intersects_box.getSize().z )/2  - dRoom;
+		var x = intersects_box.getSize().x;
+		var y = intersects_box.getSize().y;
+		var z = intersects_box.getSize().z;
+		
+		var x_max = (xRoom - x )/2 - dRoom;
+		var y_max = yRoom/2;
+		var z_max = (xRoom - z )/2  - dRoom;
+		
 		
 		( this.object.position.x <= -x_max ) && ( this.object.position.x = -x_max );
 		( this.object.position.x >=  x_max ) && ( this.object.position.x = x_max );
 		
 		( this.object.position.y <= -y_max ) && ( this.object.position.y = -y_max );
-		( this.object.position.y >= y_max )  && ( this.object.position.y =  y_max );
-				
+		( this.object.position.y >=  (y_max - y) )  && ( this.object.position.y =  (y_max - y ) );
 		( this.object.position.z <= -z_max ) && ( this.object.position.z = -z_max );
 		( this.object.position.z >=  z_max ) && ( this.object.position.z =  z_max );
 		
@@ -581,6 +643,32 @@ function init() {
 	
 	
 	
+	//Out line
+		
+	composer = new THREE.EffectComposer( renderer );
+	var renderPass = new THREE.RenderPass( scene, camera );
+	composer.addPass( renderPass );
+	outlinePass = new THREE.OutlinePass( new THREE.Vector2( window.innerWidth, window.innerHeight ), scene, camera );
+	composer.addPass( outlinePass );
+	
+	var onLoad = function ( texture ) {
+		outlinePass.patternTexture = texture;
+		texture.wrapS = THREE.RepeatWrapping;
+		texture.wrapT = THREE.RepeatWrapping;
+	};
+	var loader1 = new THREE.TextureLoader();
+	loader1.load( 'textures/tri_pattern.jpg', onLoad );
+	effectFXAA = new THREE.ShaderPass( THREE.FXAAShader );
+	effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
+	effectFXAA.renderToScreen = true;
+	composer.addPass( effectFXAA );
+	
+
+
+	//outlinePass = new THREE.OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), scene, camera);
+	//composer.addPass( outlinePass );
+
+	
 	// Load Chair
 	var bounding_box =  new THREE.Box3();;
 	var loader = new THREE.GLTFLoader();
@@ -589,44 +677,49 @@ function init() {
 		'models/gltf/vitra-chair/vitra-chair.glb',
 		function Done( gltf ) {
 			
+			var root = gltf.scene;
+			root.controlMode = '3d';
+			
 			gltf.scene.traverse( function ( child ) {
 				
 				if ( child.isMesh ) {
-					
-					child.geometry.center();
-					
-					child.rotation.set(0,1.8,0);
-					child.scale.set(0.04,0.04,0.04);
-					child.type = '3d-mode';
-					
-					bounding_box.setFromObject(child);
-					var top = (yRoom - bounding_box.getSize().y)/2;
-					child.position.set( 3.4, -top, 0.9 )
-					
-					chair.mesh = child;
+					child.userData.parent = root;
 					
 				}
 				
 			} );
 			
-			scene.add( chair.mesh );
+			console.log(root);
+			//root.updateMatrixWorld();
+			//root.castShadow = true;
+			//root.receiveShadow = true;
+			
+			root.scale.set( 5, 5, 5 );
+			root.position.set( 0, -5, 0);
+			
+			scene.add( root );
+			ray_object.push( root );
+			
+			//renderer.shadowMap.enabled = true;
 	
-			chair.fl_shadow = new THREE.ShadowMesh( chair.mesh );
-			//chair.ce_shadow = new THREE.ShadowMesh( chair.mesh );
-			chair.ba_shadow = new THREE.ShadowMesh( chair.mesh );
-			chair.fr_shadow = new THREE.ShadowMesh( chair.mesh );
-			chair.le_shadow = new THREE.ShadowMesh( chair.mesh );
-			chair.ri_shadow = new THREE.ShadowMesh( chair.mesh );
-
-			scene.add( chair.fl_shadow );
+			chair.fl_shadow = new THREE.ShadowMesh( root );
+			//chair.ce_shadow = new THREE.ShadowMesh( child );
+			//chair.ba_shadow = new THREE.ShadowMesh( child );
+			//chair.fr_shadow = new THREE.ShadowMesh( child );
+			//chair.le_shadow = new THREE.ShadowMesh( child );
+			//chair.ri_shadow = new THREE.ShadowMesh( child );
+					
+			scene.add( root );
 			//scene.add( chair.ce_shadow );
-			scene.add( chair.ba_shadow );
-			scene.add( chair.fr_shadow );
-			scene.add( chair.le_shadow );
-			scene.add( chair.ri_shadow );
+			//scene.add( chair.ba_shadow );
+			//scene.add( chair.fr_shadow );
+			//scene.add( chair.le_shadow );
+			//scene.add( chair.ri_shadow );
 			
-			ray_object.push( chair.mesh );
+			chair.ready = true;
 			
+			//obj3d.add( root );
+						
 			
 		}, function Processs ( err ) {
 			
@@ -641,38 +734,38 @@ function init() {
 		'models/gltf/USM/USM-config-gltf.glb',
 		function Done( gltf ) {
 			
-			bounding_box = new THREE.Box3();
+			var root = gltf.scene;
+			root.controlMode = '3d';
 			
 			gltf.scene.traverse( function ( child ) {
 				
 				if ( child.isMesh ) {
-					child.type = 'change-material';
+					child.userData.parent = root;
 					
-					//scene.add( child );
+					//usm.fl_shadow = new THREE.ShadowMesh( child );
+					//usm.ce_shadow = new THREE.ShadowMesh( child );
+					//usm.ba_shadow = new THREE.ShadowMesh( child );
+					//usm.fr_shadow = new THREE.ShadowMesh( child );
+					//usm.le_shadow = new THREE.ShadowMesh( child );
+					//usm.ri_shadow = new THREE.ShadowMesh( child );
+							
+					//scene.add( usm.fl_shadow );
+					//scene.add( usm.ce_shadow );
+					//scene.add( usm.ba_shadow );
+					//scene.add( usm.fr_shadow );
+					//scene.add( usm.le_shadow );
+					//scene.add( usm.ri_shadow );
 					
-					console.log(child.name);
-					
-					if(child.name == 'haller458001') {
-						//console.log(child);
-						//child.scale.set(5,5,5);
-						child.visible = false;
-						console.log(child);
-						
-					}
+					usm.ready = true;
 				}
 				
 			} );
+
+			root.scale.set( 5, 5, 5 );
+			root.position.set( 4, -5, 0);
 			
-			gltf.scene.scale.set(5,5,5);
-			gltf.scene.rotation.set(0,-1.2,0);
-			
-			gltf.scene.position.x = 6;
-			gltf.scene.position.y = -5;
-			gltf.scene.position.z = 0;
-			
-			scene.add( gltf.scene );
-			
-			ray_object.push( gltf.scene );
+			scene.add( root );
+			ray_object.push( root );
 			
 			
 		}, function Processs ( err ) {
@@ -689,36 +782,35 @@ function init() {
 	/////////////// CONTROLS EVENTS ////////////
 	///////////////////////////////////////////
 	
-	translateCtr.addEventListener("click", translate, false );
-	translateCtr.addEventListener("touchstart", translate, {passive: false} );
-	rotateCtr.addEventListener( 'click', rotate, false);
-	rotateCtr.addEventListener( 'touchstart', rotate, {passive: false} );
-	scaleCtr.addEventListener( 'click', scale, false);
-	scaleCtr.addEventListener( 'touchstart', scale, {passive: false} );
-
-
-	colorCtl.addEventListener( 'click', function(e){
-
-		if(intersects_obj) {
-			console.log(intersects_obj);
-			console.log(intersects_obj.material);
-			
-			control.detach();
-			var color = e.target.getAttribute('data-color');
-			if(color == 'fa1731') {
-				intersects_obj.material.color.set( 0xfa1731 );
-			}else if(color == '17fa37') {
-				intersects_obj.material.color.set( 0x17fa37 );
-				
-			}else if(color == 'fad717') {
-				intersects_obj.material.color.set( 0xfad717 );
-			}else if(color == 'ffffff') {
-				intersects_obj.material.color.set( 0xffffff );
-			}
-		}
-
-		
-	}, false);
+//	translateCtr.addEventListener("click", translate, false );
+//	translateCtr.addEventListener("touchstart", translate, {passive: false} );
+//	rotateCtr.addEventListener( 'click', rotate, false);
+//	rotateCtr.addEventListener( 'touchstart', rotate, {passive: false} );
+//	scaleCtr.addEventListener( 'click', scale, false);
+//	scaleCtr.addEventListener( 'touchstart', scale, {passive: false} );
+//
+//
+//	colorCtl.addEventListener( 'click', function(e){
+//
+//		if(intersects_material) {
+//			
+//			control.detach();
+//			
+//			var color = e.target.getAttribute('data-color');
+//			if(color == 'fa1731') {
+//				intersects_material.material.color.set( 0xfa1731 );
+//			}else if(color == '17fa37') {
+//				intersects_material.material.color.set( 0x17fa37 );
+//				
+//			}else if(color == 'fad717') {
+//				intersects_material.material.color.set( 0xfad717 );
+//			}else if(color == 'ffffff') {
+//				intersects_material.material.color.set( 0xffffff );
+//			}
+//		}
+//
+//		
+//	}, false);
 	
 	//Document event
 	/*document.addEventListener( 'mousedown', onMouseDown, false );
@@ -737,9 +829,54 @@ function init() {
 	window.addEventListener( 'resize', onResize, false );
 	
 	
+	controlId.addEventListener( 'click', function(event){
+		var target = event.target.getAttribute('data-control');
+		( target == 'remove' ) && remove();
+		( target == 'translate' ) && translate();
+		( target == 'rotate' ) && rotate();
+		( target == 'scale' ) && scale();
+	}, false );
+	
+	controlId.addEventListener( 'touchstart', function(event){
+		var target = event.target.getAttribute('data-control');
+		( target == 'remove' ) && remove();
+		( target == 'translate' ) && translate();
+		( target == 'rotate' ) && rotate();
+		( target == 'scale' ) && scale();
+	}, false );
+	
+	materialId.addEventListener( 'click', function(event){
+		var color, target = event.target.getAttribute('data-color');
+		
+		target == 'fa1731' && ( color = 0xfa1731 );
+		target == '17fa37' && ( color = 0x17fa37 );
+		target == 'fad717' && ( color = 0xfad717 );
+		target == 'ffffff' && ( color = 0xffffff );
+		
+		if(intersects_material) {
+			var mat = new THREE.MeshPhongMaterial({color:color });  
+			intersects_material.material = mat;
+			
+			//intersects_material.hasSelected = false;
+			//intersects_material.currentMaterial = mat;
+			
+		}
+		
+		
+	}, false );
+	
+	materialId.addEventListener( 'touchstart', function(event){
+		var target = event.target.getAttribute('data-color');
+		
+	}, false );
+	
+	
+	
 }
 
-
+function remove() {
+	control.detach();
+}
 
 function translate() {
 	if(intersects_obj) {
@@ -754,9 +891,11 @@ function translate() {
 function rotate() {
 	
 	if(intersects_obj) {
-		control.attach(intersects_obj);
+		
 		control.setMode("rotate");
-		if(intersects_obj.type == '3d-mode') {
+		control.attach(intersects_obj);
+		
+		if(intersects_obj.controlMode == '3d') {
 			control.showX = false;
 			control.showY = true;
 			control.showZ = false;
@@ -771,7 +910,7 @@ function scale() {
 	if(intersects_obj) {
 		control.attach(intersects_obj);
 		control.setMode("scale");
-		if(intersects_obj.type == '3d-mode') {
+		if(intersects_obj.controlMode == '3d') {
 			control.showX = true;
 			control.showY = true;
 			control.showZ = true;
@@ -809,29 +948,31 @@ function onMouseDown(event) {
 	var intersects = raycaster.intersectObjects(ray_object, true);
 	
 	if (intersects.length > 0) {
-		intersects_obj = intersects[0].object;
-		intersects_obj.material.color.set( 0xfa1731 );
-		control.attach(intersects_obj);
 		
-		/*if(intersects_helper) {
-			intersects_helper.visible = false;
+		intersects_material = intersects[0].object;
+		intersects_obj = intersects[0].object.userData.parent;
+		
+		
+		outlinePass.selectedObjects = intersects_material;
+		
+		//intersects_material.material.transparent = true;
+		//intersects_material.material.opacity = 0.2;
+		
+		//intersects_material.material.refractionRatio = 0.2;
+		
+		/*if(intersects_material.hasSelected) {
+			intersects_material.material = intersects_material.currentMaterial;
+			intersects_material.hasSelected = false;
+		}else {
+			var mat = new THREE.MeshPhongMaterial({color:0xD2D2FF, specular:0x333333, shininess:60, opacity:0.5,shading:THREE.SmoothShading});  
+			intersects_material.currentMaterial = intersects_material.material;
+			intersects_material.hasSelected = true;
+			intersects_material.material = mat;
+		}*/
+		
+		if(control.visible) {
+			control.attach(intersects_obj);
 		}
-		
-		if(intersects_obj.name == 'sandy_box') {
-			intersects_helper = sandy.helper;
-			
-		}else if(intersects_obj.name == 'gray_box')  {
-			intersects_helper = gray.helper;
-			
-		}else if(intersects_obj.name == 'sphere_box')  {
-			intersects_helper = sphere.helper;
-		}
-		else if(intersects_obj.name == 'pyramid_box')  {
-			intersects_helper = pyramid.helper;
-		}
-		
-		intersects_helper.visible = true;*/
-		
 		
 	}else {
 		
@@ -875,6 +1016,7 @@ function onMouseMove(event) {
 
 	if (intersects.length > 0) {
 		container.style.cursor = 'pointer';
+		
 		
 	} else {
 		container.style.cursor = 'auto';
@@ -931,14 +1073,22 @@ function render() {
 	pyramid.helper.update();*/
 	
 
-	if(chair.mesh) {
+	if(usm.ready) {
+		//usm.fl_shadow.update( FL_PLANE, lightPosition4D );
+		//usm.ce_shadow.update( CE_PLANE, lightPosition4D );
+		//usm.ba_shadow.update( BA_PLANE, lightPosition4D );
+		//usm.fr_shadow.update( FR_PLANE, lightPosition4D );
+		//usm.le_shadow.update( LE_PLANE, lightPosition4D );
+		//usm.ri_shadow.update( RI_PLANE, lightPosition4D );
+	}
+	
+	if(chair.ready) {
 		chair.fl_shadow.update( FL_PLANE, lightPosition4D );
 		//chair.ce_shadow.update( CE_PLANE, lightPosition4D );
-		chair.ba_shadow.update( BA_PLANE, lightPosition4D );
-		chair.fr_shadow.update( FR_PLANE, lightPosition4D );
-		chair.le_shadow.update( LE_PLANE, lightPosition4D );
-		chair.ri_shadow.update( RI_PLANE, lightPosition4D );
-		//chair.helper.update();
+		//chair.ba_shadow.update( BA_PLANE, lightPosition4D );
+		//chair.fr_shadow.update( FR_PLANE, lightPosition4D );
+		//chair.le_shadow.update( LE_PLANE, lightPosition4D );
+		//chair.ri_shadow.update( RI_PLANE, lightPosition4D );
 	}
 	
 	

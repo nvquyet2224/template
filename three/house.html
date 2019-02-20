@@ -15,10 +15,22 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	
-	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
 }
 
+h2, a {
+	padding:0;
+	margin:0;
+	font-size:100%;
+	font-family:inherit;
+}
+
+a {
+	text-decoration:none;	
+}
+
+/*
 #info {
 	position:absolute;
 	left:0;
@@ -73,34 +85,134 @@ body {
 
 #colorCtl a:nth-child(4) {
 	background-color:#ffffff;
+}*/
+
+
+.tools-box {
+	position:absolute;
+	width:auto;
+	height:auto;
+	right:0;
+	top:0;
+	padding:20px;
+	background-color:rgba(255,255,255,0.1);
 }
+
+.tools-box * {
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;	
+}
+
+.tools-box h2 {
+	color:#fff;
+	font-size:120%;
+	margin-bottom:10px;
+}
+
+.box {
+	position:relative;
+	display:block;
+	width:auto;
+	height:auto;	
+}
+
+.controls-box {
+	position:relative;
+	display:block;
+	margin-bottom:20px;
+}
+
+.controls-box a {
+	display:block;
+	width:auto;
+	min-width:70px;
+	margin-bottom:5px;
+	padding:5px 10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	color:#444;
+	background-color:rgba(255,255,255,0.5);
+}
+
+.materials-box {
+	display:block;
+}
+
+.materials-box a {
+	position:relative;
+	display:inline-block;
+	width:20px;
+	height:20px;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+}
+
+.materials-box a:nth-child(1) {
+	background-color:#fa1731;
+}
+
+.materials-box a:nth-child(2) {
+	background-color:#17fa37;
+}
+
+.materials-box a:nth-child(3) {
+	background-color:#fad717;
+}
+
+.materials-box a:nth-child(4) {
+	background-color:#ffffff;
+}
+
 
 </style>
 </head>
 <body>
 
-<div id="info">
-<a id="translateCtr" href="javascript:void(0);">Translate</a>
-<a id="rotateCtr" href="javascript:void(0);">Rotate</a>
-<a id="scaleCtr" href="javascript:void(0);">Scale</a>
+<div class="tools-box">
+
+<div class="box">
+<h2>Controls</h2>
+
+<div id="controlId" class="controls-box">
+<a data-control="remove" href="javascript:void(0);">Remove</a>
+<a data-control="translate" href="javascript:void(0);">Translate</a>
+<a data-control="rotate" href="javascript:void(0);">Rotate</a>
+<a data-control="scale" href="javascript:void(0);">Scale</a>
 </div>
 
-<div id="colorCtl">
+<h2>Material</h2>
+
+<div id="materialId" class="materials-box">
 <a data-color="fa1731" href="javascript:void(0);"></a>
 <a data-color="17fa37" href="javascript:void(0);"></a>
 <a data-color="fad717" href="javascript:void(0);"></a>
 <a data-color="ffffff" href="javascript:void(0);"></a>
 </div>
 
+</div>
+
+</div>
+
 <div id="container" class="container"></div>
 
 
 <script src="js/three.js"></script>
-<script src="js/WebGL.js"></script>
-<script src="js/ShadowMesh.js"></script>
 <script src="js/controls/OrbitControls.js"></script>
 <script src="js/controls/TransformControls.js"></script>
-<script src="js/loader/GLTFLoader.js"></script>
+<script src="js/loaders/GLTFLoader.js"></script>
+
+<script src="js/WebGL.js"></script>
+
+<script src="js/shaders/CopyShader.js"></script>
+<script src="js/shaders/FXAAShader.js"></script>
+<script src="js/postprocessing/EffectComposer.js"></script>
+<script src="js/postprocessing/RenderPass.js"></script>
+<script src="js/postprocessing/ShaderPass.js"></script>
+<script src="js/postprocessing/OutlinePass.js"></script>
+
+<script src="js/ShadowMesh.js"></script>
+
+<script src="js/libs/dat.gui.min.js"></script>
 
 
 <script src="js/house.js"></script>
