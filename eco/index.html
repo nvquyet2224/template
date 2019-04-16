@@ -21,8 +21,17 @@
 <meta property="og:image" content="images/thumbnail.jpg" />
 <!--link-->
 <link rel="icon" href="images/favicon.png">
+<link rel="preload" href="css/style.min.css" as="style">
 <link rel="preload" href="css/fonts.min.css" as="style">
-<style>body{-webkit-animation:demo-start .5s steps(1,end) 0s forwards;animation:demo-start .5s steps(1,end) 0s forwards}@-webkit-keyframes demo-start{from{visibility:hidden}to{visibility:visible}}@keyframes demo-start{from{visibility:hidden}to{visibility:visible}}.loadicon{position:fixed;left:0;top:0;right:0;bottom:0;display:block;width:100%;height:100%;background-color:#fff;z-index:100}</style>
+<link rel="preload" href="fonts/kiehls_hand_tc_bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="fonts/Gotham-Bold.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="fonts/Gotham-Black.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="fonts/Gotham-Medium.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="fonts/Gotham-Light.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="fonts/Gotham-Light.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="fonts/Gotham-MediumIta.otf" as="font" type="font/otf" crossorigin="anonymous">
+<style>@-webkit-keyframes page-start{from{visibility:hidden}to{visibility:visible}}@keyframes page-start{from{visibility:hidden}to{visibility:visible}}body{-webkit-animation:page-start .2s steps(1,end) 0s forwards;animation:page-start .2s steps(1,end) 0s forwards}.cnt-wrap{opacity:0}
+</style>
 </head>
 
 <body>
@@ -38,20 +47,23 @@
 	<div class="bg"></div>
 	
 	<div class="leaf">
-		<img class="pc" data-src="images/leaf_01.png" alt="pic">
-		<img class="sp" data-src="images/leaf_01_sp.png" alt="pic">
+		<img draggable="false" class="pc lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/leaf_01.png" alt="pic">
+		<img draggable="false" class="sp lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/leaf_01_sp.png" alt="pic">
 	</div>
 	
 	<div class="square">
-		<img data-src="images/square_01.png" alt="pic">
+		<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_01.png" alt="pic">
 	</div>
 	
 	<div class="section-inr">
 		
-		<div class="logo"><img data-src="images/kiehl_logo.png" alt="Kiehl's"></div>
-		<h1 class="slogan"><img data-src="images/slogan.png" alt="recycle & be rewarded"></h1>
+		<div class="logo">
+        	<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/kiehl_logo.png" alt="Kiehl's">
+		</div>
+		<h1 class="slogan">
+        	<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/slogan.png" alt="recycle & be rewarded">
+		</h1>
 		<p>- Áp dụng đến hết ngày 31/10/2019 –</p>
-		
 	</div>
 
 	<div class="section-inr">
@@ -64,7 +76,7 @@
 
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/bottle.png" alt="Mang vỏ chai full size Kiehl’s">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/bottle.png" alt="Mang vỏ chai full size Kiehl’s">
 				</div>
 				<div class="area-txt">
 					<p>Mang vỏ chai <br>full size Kiehl’s</p>
@@ -74,7 +86,7 @@
 
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/bag.png" alt="Mang túi tái chế Kiehl’s khi mua hàng">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/bag.png" alt="Mang túi tái chế Kiehl’s khi mua hàng">
 				</div>
 				<div class="area-txt">
 					<p>Mang túi tái chế Kiehl’s <br>khi mua hàng</p>
@@ -84,7 +96,7 @@
 
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/stamp.png" alt="Con dấu">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/stamp.png" alt="Con dấu">
 				</div>
 				<div class="area-txt">
 					<p>Con dấu</p>
@@ -94,7 +106,7 @@
 		</div>
 		
 		<div class="line">
-			<img data-src="images/line.png" alt="line">
+			<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/line.png" alt="line">
 		</div>
 		
 	</div>
@@ -105,17 +117,17 @@
 			<div class="box">
 				<span class="number">3</span>
 				<div class="area-pic">
-					<img data-src="images/stamp-small.png" alt="Ultra facial Stamp">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/stamp-small.png" alt="Ultra facial Stamp">
 				</div>
 				<span class="equal">=</span>
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/ultra-facial.png" alt="Ultra Facial Oil Free Gel Cream">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/ultra-facial.png" alt="Ultra Facial Oil Free Gel Cream">
 				</div>
 			</div>
 			<div class="result ultra">
-				<span class="arrow arrow_ultra"><img data-src="images/arrow_ultra.png" alt="arrow"></span>
+				<span class="arrow arrow_ultra"><img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/arrow_ultra.png" alt="arrow"></span>
 				<p>Ultra Facial <br>Oil-Free Gel Cream 7ml</p>
 			</div>
 		</div>
@@ -124,23 +136,25 @@
 			<div class="box">
 				<span class="number">6</span>
 				<div class="area-pic">
-					<img data-src="images/stamp-small.png" alt="Powerful-Strength Stamp">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/stamp-small.png" alt="Powerful-Strength Stamp">
 				</div>
 				<span class="equal">=</span>
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/ultra-facial.png" alt="Ultra Facial Oil Free Gel Cream">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/ultra-facial.png" alt="Ultra Facial Oil Free Gel Cream">
 				</div>
 				<span class="plus">+</span>
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/pslrc.png" alt="PSLRC Deluxe 5ml sRGB r1">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/pslrc.png" alt="PSLRC Deluxe 5ml sRGB r1">
 				</div>
 			</div>
 			<div class="result powerful">
-				<span class="arrow arrow_powerful"><img data-src="images/arrow_powerful.png" alt="arrow"></span>
+				<span class="arrow arrow_powerful">
+                	<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/arrow_powerful.png" alt="arrow">
+				</span>
 				<p>Powerful-Strength Line <br>Reducing Concentrate 5ml</p>
 			</div>
 		</div>
@@ -149,29 +163,29 @@
 			<div class="box">
 				<span class="number">10</span>
 				<div class="area-pic">
-					<img data-src="images/stamp-small.png" alt="Rare Earth Stamp">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/stamp-small.png" alt="Rare Earth Stamp">
 				</div>
 				<span class="equal">=</span>
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/ultra-facial.png" alt="Ultra Facial Oil Free Gel Cream">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/ultra-facial.png" alt="Ultra Facial Oil Free Gel Cream">
 				</div>
 				<span class="plus">+</span>
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/pslrc.png" alt="PSLRC Deluxe 5ml sRGB r1">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/pslrc.png" alt="PSLRC Deluxe 5ml sRGB r1">
 				</div>
 				<span class="plus">+</span>
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/kiehls_rare_earth.png" alt="kiehls rare earth cleansing masque_14ml Srgb r2">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/kiehls_rare_earth.png" alt="kiehls rare earth cleansing masque_14ml Srgb r2">
 				</div>
 			</div>
 			<div class="result rare">
-				<span class="arrow arrow_rare"><img data-src="images/arrow_rare.png" alt="arrow"></span>
+				<span class="arrow arrow_rare"><img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/arrow_rare.png" alt="arrow"></span>
 				<p>Rare Earth Deep Pore <br>Cleansing Masque 14ml</p>
 			</div>
 		</div>
@@ -186,26 +200,32 @@
 	
 	<div class="bg"></div>
 	
-	<div class="sun"><img data-src="images/sun.png" alt="sun"></div>
+	<div class="sun">
+    	<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/sun.png" alt="sun">
+	</div>
 	<div class="square square_large_green">
-		<img class="pc" data-src="images/square_02.png" alt="pic">
-		<img class="sp" data-src="images/square_02_sp.png" alt="pic">
+		<img draggable="false" class="pc lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_02.png" alt="pic">
+		<img draggable="false" class="sp lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_02_sp.png" alt="pic">
 	</div>
 	<div class="square square_large_white">
-		<img class="pc" data-src="images/square_03.png" alt="pic">
-		<img class="sp" data-src="images/square_03_sp.png" alt="pic">
+		<img draggable="false" class="pc lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_03.png" alt="pic">
+		<img draggable="false" class="sp lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_03_sp.png" alt="pic">
 	</div>
 	<div class="square square_small_green">
-		<img class="pc" data-src="images/square_04.png" alt="pic">
-		<img class="sp" data-src="images/square_04_sp.png" alt="pic">
+		<img draggable="false" class="pc lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_04.png" alt="pic">
+		<img draggable="false" class="sp lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_04_sp.png" alt="pic">
 	</div>
-	<div class="square square_small_white pc"><img data-src="images/square_05.png" alt="pic"></div>
+	<div class="square square_small_white hide-sp">
+    	<img draggable="false" class="pc lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/square_05.png" alt="pic">
+    </div>
 	<div class="leaf">
-		<img class="pc" data-src="images/leaf_02.png" alt="pic">
-		<img class="sp" data-src="images/leaf_02_sp.png" alt="pic">
+		<img draggable="false" class="pc lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/leaf_02.png" alt="pic">
+		<img draggable="false" class="sp lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/leaf_02_sp.png" alt="pic">
 	</div>
 	
-	<div class="circle-arrow"><img data-src="images/circle-arrow.png" alt="pic"></div>
+	<div class="circle-arrow">
+    	<img draggable="false" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="cm lazy" data-src="images/circle-arrow.png" alt="pic">
+	</div>
 	
 	<div class="section-inr">
 		<div class="title">
@@ -214,7 +234,7 @@
 		<div class="steps">
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/sign.png" alt="Khách hàng đã đăng ký thông tin và mua hàng tại hệ thống cửa hàng Kiehl’s Việt Nam.">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/sign.png" alt="Khách hàng đã đăng ký thông tin và mua hàng tại hệ thống cửa hàng Kiehl’s Việt Nam.">
 				</div>
 				<div class="area-txt">
 					<p>Khách hàng đã đăng ký <br>thông tin và mua hàng <br>tại hệ thống cửa hàng <br>Kiehl’s Việt Nam.</p>
@@ -222,7 +242,7 @@
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/kiehls_bag.png" alt="Áp dụng cho khách hàng khi bất kì sản phẩm của Kiehl’s.">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/kiehls_bag.png" alt="Áp dụng cho khách hàng khi bất kì sản phẩm của Kiehl’s.">
 				</div>
 				<div class="area-txt">
 					<p>Áp dụng cho khách hàng <br>khi bất kì sản phẩm <br>của Kiehl’s.</p>
@@ -230,7 +250,7 @@
 			</div>
 			<div class="box">
 				<div class="area-pic">
-					<img data-src="images/medicine.png" alt="Khách hàng đã tham gia chương trình tái chế từ 01/11/2018 - 31/03/2019. Đặc biệt: Số lượng con dấu của thẻ cũ được cộng sang thẻ mới (con dấu được tính sau lần đổi quà tặng cuối cùng).">
+					<img draggable="false" class="cm lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="images/medicine.png" alt="Khách hàng đã tham gia chương trình tái chế từ 01/11/2018 - 31/03/2019">
 				</div>
 				<div class="area-txt">
 					<p>Khách hàng đã tham gia chương trình <br>tái chế từ 01/11/2018 - 31/03/2019.<strong> Đặc biệt: </strong>Số lượng con dấu của thẻ cũ được <br>cộng sang thẻ mới (con dấu được tính <br>sau lần đổi quà tặng cuối cùng).</p>
@@ -280,8 +300,8 @@
 
 <!--normal style-->
 <noscript id="normal-styles">
-<link href="css/fonts.min.css" rel="stylesheet" type="text/css">
 <link href="css/style.min.css" rel="stylesheet" type="text/css">
+<link href="css/fonts.min.css" rel="stylesheet" type="text/css">
 </noscript>
 <script>
 var normalStyles = function () {
@@ -299,7 +319,7 @@ else window.addEventListener('load', normalStyles);
 
 <!--script-->
 <script src="js/jquery-min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.min.js"></script>
 <!--/script-->
 
 </body>

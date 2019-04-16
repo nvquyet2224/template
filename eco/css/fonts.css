@@ -3,13 +3,16 @@
 	font-family: 'Gotham Light';
 	font-style: normal;
 	font-weight: normal;
-	src: url('../fonts/Gotham-Light.otf') format('opentype');
+	font-display: fallback;
+	src: url('../fonts/Gotham-Light.ttf') format('truetype'),
+		 url('../fonts/Gotham-Light.otf') format('opentype');
 }
 
 @font-face {
 	font-family: 'Gotham-Book';
 	font-weight: normal;
 	font-style: normal;
+	font-display: fallback;
 	src: url('../fonts/Gotham-Book.otf') format('opentype');
 }
 
@@ -17,6 +20,7 @@
 	font-family: 'Gotham Medium';
 	font-style: normal;
 	font-weight: normal;
+	font-display: fallback;
 	src: url('../fonts/Gotham-Medium.otf') format('opentype');
 }
 
@@ -24,6 +28,7 @@
 	font-family: 'Gotham Medium Italic';
 	font-style: normal;
 	font-weight: normal;
+	font-display: fallback;
 	src: url('../fonts/Gotham-MediumIta.otf') format('opentype');
 }
 
@@ -32,6 +37,7 @@
 	font-family: 'Gotham Bold';
 	font-style: normal;
 	font-weight: normal;
+	font-display: fallback;
 	src: url('../fonts/Gotham-Bold.otf') format('opentype');
 }
 
@@ -39,6 +45,7 @@
 	font-family: 'Gotham Black';
 	font-style: normal;
 	font-weight: normal;
+	font-display: fallback;
 	src: url('../fonts/Gotham-Black.otf') format('opentype');
 }
 
@@ -46,16 +53,18 @@
 	font-family: 'Kiehls Hand';
 	font-style: normal;
 	font-weight: normal;
+	font-display: fallback;
 	src: url('../fonts/kiehls_hand_tc.ttf') format("truetype");
 }
 
 @font-face {
   font-family: 'Kiehls Hand Bold';
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
   src: url('../fonts/kiehls_hand_tc_bold.eot');
   src: url('../fonts/kiehls_hand_tc_bold.eot?#iefix') format('embedded-opentype'),
 	   url('../fonts/kiehls_hand_tc_bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 

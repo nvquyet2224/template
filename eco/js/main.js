@@ -9,12 +9,15 @@ $.fn.isInViewport = function() {
 
 //Lazayload images
 function ImgLazyLoad(){
-	lazyImages = $('img');
-	lazyImages.each(function(index, lazyImage) {
-		if ($(lazyImage).isInViewport()) {
-			$(lazyImage).attr('src', $(this).data("src"));
+	
+	lazyImages = $(window).width() > 949 ? $('.pc.lazy, .cm.lazy') : $('.sp.lazy, .cm.lazy');
+	lazyImages.each(function() {
+		if ($(this).isInViewport()) {
+			$(this).attr('src', $(this).data("src"));
+			$(this).removeClass('lazy');
 		}
 	});
+	
 }
 
 function onScroll() {
@@ -23,11 +26,12 @@ function onScroll() {
 
 $(window).on('scroll', onScroll);
 $(window).on('load', function(){
-	$('.cnt-wrap').animate({'opacity': 1}, 100, function() {
+	$('.cnt-wrap').animate({'opacity': 1}, 500, function() {
+		$( "html, body" ).scrollTop(0);
 		ImgLazyLoad();
 	});
-	
 });
 (function() {
+	$( "html, body" ).scrollTop(0);
 	ImgLazyLoad();
 })();
