@@ -1,0 +1,1117 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>StarBerry</title>
+    <meta name="keywords" content="StarBerry" />
+    <meta name="description" content="StarBerry" />
+    <meta property="og:title" content="StarBerry" />
+    <meta property="og:description" content="StarBerry" />
+    <meta content="INDEX,FOLLOW" name="robots" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#f6f2ec" />
+    <!--social-->
+    <meta property="og:url" content="browse.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="StarBerry" />
+    <meta property="og:description" content="StarBerry" />
+    <meta property="og:image" content="images/thumbnail.jpg" />
+    <!--link-->
+    <link rel="icon" href="images/favicon.ico">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+
+    <style>
+        body {
+            -webkit-animation: page-start 1s steps(1, end) 0s 1 normal both;
+            animation: page-start 1s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes page-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes page-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--Page-->
+    <div class="cnt-wrap">
+
+        <!--Header-->
+        <div class="header">
+            <div class="header-inr">
+
+                <div class="nav-but">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="logo">
+                    <a href="index.html">
+                        <img draggable="false" src="images/hdr-logo-ompalo.png" alt="ompalo">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+
+                <div class="search-box">
+                    <div class="search-block">
+                        <input type="text" id="txt_search" value="" />
+                        <div class="search-clean"></div>
+                        <div class="search-cancel">Cancel</div>
+                    </div>
+                    <div class="search-but"></div>
+                </div>
+
+                <div class="user-area">
+                    <div class="playlist has-layout pc">
+                        <a href="your-list.html">
+                            <div class="playlist-pic">
+                                <img draggable="false" src="images/hdr-icon-mylist.png" alt="My list">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="select-list select-language" id="language-select">
+                        <div class="select-header">
+                            <h3><span><img src="images/language-en-icon.png" /></span>English</h3>
+                        </div>
+                        <div class="select-box">
+                            <ul>
+                                <li data-target="1" class="selected"><span><img
+                                            src="images/language-en-icon.png" /></span>English</li>
+                                <li data-target="2"><span><img src="images/language-vi-icon.png" /></span>Vietnamese
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="user-manage pc">
+
+                        <div class="about-info has-layout">
+                            <a href="userpage.html">
+                                <div class="user-pic">
+                                    <img draggable="false" src="images/hdr-avatar-small.png" alt="Tri Thong">
+                                </div>
+                                <div class="user-name">Tri Thong</div>
+                            </a>
+                        </div>
+                        <div class="user-drop"></div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="user-control pc">
+                <ul>
+                    <li><a href="profile.html">My Account</a></li>
+                    <li class="sign-out">Sign Out</li>
+                </ul>
+            </div>
+
+        </div>
+        <!--/Header-->
+
+        <!--Content-->
+        <div class="cnt-inr">
+
+            <!--Side-->
+            <div class="main">
+
+                <!--Side-->
+                <div class="side">
+                    <div class="side-inr">
+
+                        <div class="side-user has-layout sp">
+                            <a href="userpage.html">
+                                <div class="user-pic">
+                                    <img draggable="false" src="images/hdr-avatar-small.png" alt="Tri Thong">
+                                </div>
+                                <div class="user-name">Tri Thong<span>Father / Analog lover</span></div>
+                            </a>
+                        </div>
+
+                        <ul>
+
+                            <li>
+                                <a class="active" href="index.html">
+                                    <span class="nav-icon"><img src="images/side-icon-home.png" alt="Home" />
+                                        <img class="nav-active" src="images/side-icon-home-active.png" alt="Home" />
+                                    </span>
+                                    <span class="nav-text">Home</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="browse.html">
+                                    <span class="nav-icon"><img src="images/side-icon-browse.png" alt="Browse" />
+                                        <img class="nav-active" src="images/side-icon-browse-active.png" alt="Browse" />
+                                    </span>
+                                    <span class="nav-text">Browse</span>
+                                </a>
+                            </li>
+
+                            <li class="has-child">
+                                <a href="javascript:void(0);">
+                                    <span class="nav-icon"><img src="images/side-icon-my-list.png" alt="Your List" />
+                                        <img class="nav-active" src="images/side-icon-my-list-active.png"
+                                            alt="Your List" />
+                                    </span>
+                                    <span class="nav-text">My List (4)</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">Game 4 Life</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">DIY & Tech hack</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">Best song for Work</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">Fashionista review</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="setting.html">
+                                    <span class="nav-icon"><img src="images/side-icon-setting.png" alt="Settings" />
+                                        <img class="nav-active" src="images/side-icon-setting-active.png"
+                                            alt="Settings" />
+                                    </span>
+                                    <span class="nav-text">Settings</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="getting-around.html">
+                                    <span class="nav-icon"><img src="images/side-icon-getting.png"
+                                            alt="Getting around" />
+                                        <img class="nav-active" src="images/side-icon-getting-active.png"
+                                            alt="Getting around" />
+                                    </span>
+                                    <span class="nav-text">Getting around</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="help.html">
+                                    <span class="nav-icon"><img src="images/side-icon-help.png" alt="Help" />
+                                        <img class="nav-active" src="images/side-icon-help-active.png" alt="Help" />
+                                    </span>
+                                    <span class="nav-text">Help</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="share-feedback.html">
+                                    <span class="nav-icon"><img src="images/side-icon-share-feedback.png"
+                                            alt="Share feedback" />
+                                        <img class="nav-active" src="images/side-icon-share-feedback-active.png"
+                                            alt="Share feedback" />
+                                    </span>
+                                    <span class="nav-text">Share feedback</span>
+                                </a>
+                            </li>
+
+                            <li class="side-signout sp">
+                                <a href="javascript:void(0);">
+                                    <span class="nav-icon"><img src="images/side-icon-logout.png" alt="Log Out" />
+                                        <img class="nav-active" src="images/side-icon-logout-active.png"
+                                            alt="Log Out" />
+                                    </span>
+                                    <span class="nav-text">Log Out</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+                <!--/Side-->
+
+                <div class="main-inr">
+
+                    <!--Video full-->
+                    <div class="section-box video-full">
+                        <div class="full-detail" data-timer="0">
+                            <div class="full-player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"
+                                poster="images/banner/hero-bg-01.jpg"></div>
+                        </div>
+                    </div>
+                    <!--/Video full-->
+
+                    <!--About video-->
+                    <div class="section-box about-video">
+
+                        <div class="title">
+                            <h2>The Amazing Hongkong - Neon journey Benjamin Hung photographey</h2>
+                        </div>
+
+                        <div class="section-inr about-top has-layout">
+                            <div class="about-nav">
+                                <ul>
+                                    <li><a href="javascript:void(0);">HOME</a></li>
+                                    <li><a href="javascript:void(0);">REVIEW</a></li>
+                                    <li><span>PHOTOGRAPHY</span><span>4.724 VIEWS</span></li>
+                                </ul>
+                            </div>
+                            <div class="about-social">
+                                <div class="box-but">
+                                    <div class="btn btn-like"><span>242</span></div>
+                                    <div class="btn btn-unlike"><span>0</span></div>
+                                    <div class="btn btn-share"><span>Share</span></div>
+                                    <div class="btn btn-mylist active"><span>My list</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-inr has-layout">
+
+                            <div class="comments">
+
+                                <div class="about-info has-layout">
+                                    <div class="user-pic">
+                                        <img draggable="false" src="images/hdr-avatar-small.png" alt="Tri Thong">
+                                    </div>
+                                    <div class="user-name">Tri Thong
+                                        <span class="date">on air 21 June, 2019</span>
+                                    </div>
+                                </div>
+
+                                <div class="video-brief">
+                                    <p>Great, non irritating eye cream. Better tan dermatologist product costing 10x
+                                        more! Absorbs easy and leaves area soft to the touch. Need very little so
+                                        should
+                                        last a long time. When I saw the bags vanish and an age spot fade, I
+                                        immediately
+                                        bought a spare!</p>
+                                </div>
+
+                                <div id="comments-container"></div>
+                            </div>
+
+                            <div class="advertisment pc">
+                                <div class="box">
+                                    <div class="area-pic"><img draggable="false" src="images/box-01.jpg"
+                                            alt="Suburra Series"></div>
+                                </div>
+                                <div class="box">
+                                    <div class="area-pic"><img draggable="false" src="images/box-02.jpg"
+                                            alt="Suburra Series"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!--/About video-->
+
+                    <!--Watch next-->
+                    <div class="section-box watch_next sprFive" id="fs_watch_next">
+
+                        <div class="title">
+                            <h2>Whatch next</h2>
+                        </div>
+
+                        <div class="section-inr">
+
+                            <div class="video-wrap">
+
+                                <div class="video-slider" data-items="5">
+
+                                    <div class="item-wrapper">
+
+                                        <div class="item-container video-item">
+                                            <div class="video-inr">
+                                                <a href="video-detail.html">
+                                                    <div class="area-pic">
+                                                        <img draggable="false" src="images/watching/watching-2x-01.jpg"
+                                                            alt="10 Last on earth">
+                                                    </div>
+                                                    <div class="fs_player" data-id="wat-01" data-timer="0"
+                                                        data-video="bTqVqk7FSmY" data-type="youtube"
+                                                        data-poster="images/watching/watching-2x-01.jpg">
+                                                        <div class="player" data-target="wat-01"
+                                                            data-plyr-provider="youtube"
+                                                            data-plyr-embed-id="bTqVqk7FSmY"
+                                                            poster="images/watching/watching-2x-01.jpg"></div>
+                                                    </div>
+                                                    <div class="area-txt">
+                                                        <h3>10 Last on earth</h3>
+                                                        <p>Great, non irritating eye cream. Better tan dermatologist
+                                                            product costing 10x
+                                                            more! Absorbs easy and leaves area soft to the touch.
+                                                            Need
+                                                            very little so should
+                                                            last a long time. When I saw the bags vanish and an age
+                                                            spot
+                                                            fade, I immediately
+                                                            bought a spare!</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-container video-item">
+                                            <div class="video-inr">
+                                                <a href="video-detail.html">
+                                                    <div class="area-pic">
+                                                        <img draggable="false" src="images/watching/watching-2x-02.jpg"
+                                                            alt="Abstract L'art du design">
+                                                    </div>
+                                                    <div class="fs_player" data-id="wat-02" data-timer="0"
+                                                        data-video="bTqVqk7FSmY" data-type="youtube"
+                                                        data-poster="images/watching/watching-2x-02.jpg">
+                                                        <div class="player" data-target="wat-02"
+                                                            data-plyr-provider="youtube"
+                                                            data-plyr-embed-id="bTqVqk7FSmY"
+                                                            poster="images/watching/watching-2x-02.jpg"></div>
+                                                    </div>
+                                                    <div class="area-txt">
+                                                        <h3>Abstract L'art du design</h3>
+                                                        <p>Great, non irritating eye cream. Better tan dermatologist
+                                                            product costing 10x
+                                                            more! Absorbs easy and leaves area soft to the touch.
+                                                            Need
+                                                            very little so should
+                                                            last a long time. When I saw the bags vanish and an age
+                                                            spot
+                                                            fade, I immediately
+                                                            bought a spare!</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-container video-item">
+                                            <div class="video-inr">
+                                                <a href="video-detail.html">
+                                                    <div class="area-pic">
+                                                        <img draggable="false" src="images/watching/watching-2x-03.jpg"
+                                                            alt="Fauda series">
+                                                    </div>
+                                                    <div class="fs_player" data-id="wat-03" data-timer="0"
+                                                        data-video="bTqVqk7FSmY" data-type="youtube"
+                                                        data-poster="images/watching/watching-2x-03.jpg">
+                                                        <div class="player" data-target="wat-03"
+                                                            data-plyr-provider="youtube"
+                                                            data-plyr-embed-id="bTqVqk7FSmY"
+                                                            poster="images/watching/watching-2x-03.jpg"></div>
+                                                    </div>
+                                                    <div class="area-txt">
+                                                        <h3>Fauda series</h3>
+                                                        <p>Great, non irritating eye cream. Better tan dermatologist
+                                                            product costing 10x
+                                                            more! Absorbs easy and leaves area soft to the touch.
+                                                            Need
+                                                            very little so should
+                                                            last a long time. When I saw the bags vanish and an age
+                                                            spot
+                                                            fade, I immediately
+                                                            bought a spare!</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-container video-item">
+                                            <div class="video-inr">
+                                                <a href="video-detail.html">
+                                                    <div class="area-pic">
+                                                        <img draggable="false" src="images/watching/watching-2x-04.jpg"
+                                                            alt="Rim of the world">
+                                                    </div>
+                                                    <div class="fs_player" data-id="wat-04" data-timer="0"
+                                                        data-video="bTqVqk7FSmY" data-type="youtube"
+                                                        data-poster="images/watching/watching-2x-04.jpg">
+                                                        <div class="player" data-target="wat-04"
+                                                            data-plyr-provider="youtube"
+                                                            data-plyr-embed-id="bTqVqk7FSmY"
+                                                            poster="images/watching/watching-2x-04.jpg"></div>
+                                                    </div>
+                                                    <div class="area-txt">
+                                                        <h3>Rim of the world</h3>
+                                                        <p>Great, non irritating eye cream. Better tan dermatologist
+                                                            product costing 10x
+                                                            more! Absorbs easy and leaves area soft to the touch.
+                                                            Need
+                                                            very little so should
+                                                            last a long time. When I saw the bags vanish and an age
+                                                            spot
+                                                            fade, I immediately
+                                                            bought a spare!</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-container video-item">
+                                            <div class="video-inr">
+                                                <a href="video-detail.html">
+                                                    <div class="area-pic">
+                                                        <img draggable="false" src="images/watching/watching-2x-05.jpg"
+                                                            alt="Cum sociis natoque penatibus et magnis dis parturient">
+                                                    </div>
+                                                    <div class="fs_player" data-id="wat-05" data-timer="0"
+                                                        data-video="bTqVqk7FSmY" data-type="youtube"
+                                                        data-poster="images/watching/watching-2x-05.jpg">
+                                                        <div class="player" data-target="wat-05"
+                                                            data-plyr-provider="youtube"
+                                                            data-plyr-embed-id="bTqVqk7FSmY"
+                                                            poster="images/watching/watching-2x-05.jpg"></div>
+                                                    </div>
+                                                    <div class="area-txt">
+                                                        <h3>Cum sociis natoque penatibus et magnis dis parturient
+                                                        </h3>
+                                                        <p>Great, non irritating eye cream. Better tan dermatologist
+                                                            product costing 10x
+                                                            more! Absorbs easy and leaves area soft to the touch.
+                                                            Need
+                                                            very little so should
+                                                            last a long time. When I saw the bags vanish and an age
+                                                            spot
+                                                            fade, I immediately
+                                                            bought a spare!</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="slide-pic-nav">
+                                    <div class="next-pic"></div>
+                                    <div class="prev-pic"></div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <!--/Watch next-->
+
+                    <!--Video you might love-->
+                    <div class="section-box you-love">
+
+                        <div class="title">
+                            <h2>Video you might love</h2>
+                        </div>
+
+                        <div class="section-inr">
+
+                            <div class="video-box has-layout">
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-01.jpg"
+                                                    alt="10 Last on earth">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-01" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-01.jpg">
+                                                <div class="player" data-target="yl-01" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-01.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>10 Last on earth</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-02.jpg"
+                                                    alt="Abstract L'art du design">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-02" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-02.jpg">
+                                                <div class="player" data-target="yl-02" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-02.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>Abstract L'art du design</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-03.jpg"
+                                                    alt="Fauda series">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-03" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-03.jpg">
+                                                <div class="player" data-target="yl-03" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-03.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>Fauda series</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-04.jpg"
+                                                    alt="Rim of the world">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-04" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-04.jpg">
+                                                <div class="player" data-target="yl-04" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-04.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>Rim of the world</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-05.jpg"
+                                                    alt="Cum sociis natoque penatibus et magnis dis parturient">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-05" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-05.jpg">
+                                                <div class="player" data-target="yl-05" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-05.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>Cum sociis natoque penatibus et magnis dis parturient</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-06.jpg"
+                                                    alt="House of Cards">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-06" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-06.jpg">
+                                                <div class="player" data-target="yl-06" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-06.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>House of Cards</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-07.jpg"
+                                                    alt="iBoy movie">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-07" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-07.jpg">
+                                                <div class="player" data-target="yl-07" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-07.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>iBoy movie</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-08.jpg"
+                                                    alt="El Chapo">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-08" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-08.jpg">
+                                                <div class="player" data-target="yl-08" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-08.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>El Chapo</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-09.jpg"
+                                                    alt="The Crown">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-09" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-09.jpg">
+                                                <div class="player" data-target="yl-09" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-09.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>The Crown</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-inr">
+                                        <a href="video-detail.html">
+                                            <div class="area-pic">
+                                                <img draggable="false" src="images/you-love/you-love-10.jpg"
+                                                    alt="Trash">
+                                            </div>
+                                            <div class="fs_player" data-id="yl-10" data-timer="0"
+                                                data-video="bTqVqk7FSmY" data-type="youtube"
+                                                data-poster="images/you-love/you-love-10.jpg">
+                                                <div class="player" data-target="yl-10" data-plyr-provider="youtube"
+                                                    data-plyr-embed-id="bTqVqk7FSmY"
+                                                    poster="images/you-love/you-love-10.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="area-txt">
+                                                <h3>Trash</h3>
+                                                <p>Great, non irritating eye cream. Better tan dermatologist
+                                                    product costing 10x
+                                                    more! Absorbs easy and leaves area soft to the touch.
+                                                    Need
+                                                    very little so should
+                                                    last a long time. When I saw the bags vanish and an age
+                                                    spot
+                                                    fade, I immediately
+                                                    bought a spare!</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="box-but">
+                                <div class="btn btn-loadmore" id="btnVideoLoad"><span>Load more</span></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!--/Video you might love-->
+
+                    <!--Footer-->
+                    <div class="footer">
+                        <div class="footer-inr">
+                            <div class="ftr-logo">
+                                <a class="logo-ompalo" href="index.html"><img draggable="false"
+                                        src="images/logo-ompalo-gray.png" alt="ompalo"></a>
+                            </div>
+                            <div class="ftr-navigation">
+                                <ul>
+                                    <li><a href="javascript:void(0)">About us</a></li>
+                                    <li><a href="javascript:void(0)">Data & Privacy</a></li>
+                                    <li><a href="javascript:void(0)">Term & Condition</a></li>
+                                    <li><a href="javascript:void(0)">FAQ</a></li>
+                                    <li><a href="javascript:void(0)">Pricing & Membership</a></li>
+                                </ul>
+                            </div>
+                            <div class="ftr-social">
+                                <ul>
+                                    <li><a class="scl-facebook" href="javascript:void(0)"><img draggable="false"
+                                                src="images/icon-facebook.png" alt="facebook"></a>
+                                    </li>
+                                    <li><a class="scl-instagram" href="javascript:void(0)"><img draggable="false"
+                                                src="images/icon-instagram.png" alt="instagram"></a>
+                                    </li>
+                                    <li><a class="scl-youtube" href="javascript:void(0)"><img draggable="false"
+                                                src="images/icon-youtube.png" alt="youtube"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Footer-->
+                </div>
+
+            </div>
+            <!--/Main-->
+
+        </div>
+        <!--/Content-->
+
+        <!--Popup-->
+        <div class="overlay-popup">
+
+            <div class="close-popup"></div>
+
+            <div class="overlay-inr signin-overlay hide">
+
+                <div class="title">
+                    <h2>Sign In</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Email</span>
+                    <div class="form-group">
+                        <input type="text" id="txtSignInEmail" placeholder="Please enter a valid email." value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Password</span>
+                    <div class="form-group">
+                        <input type="password" id="txtSignInPassword"
+                            placeholder="Your password must be at least 8 characters." value="">
+                    </div>
+                </div>
+
+                <div class="box-but">
+                    <div class="btn btnLogin" id="btnLogin"><span>Sign In</span></div>
+                </div>
+
+                <div class="overlay-help custom-checkbox">
+                    <div class="remember-area">
+                        <label for="chkRemember"><input type="checkbox" id="chkRemember" checked=""><span>Remember
+                                me</span></label>
+                    </div>
+                    <div class="forgot-area">
+                        <a href="javascript:void(0);">Forgot Password ?</a>
+                    </div>
+                </div>
+
+                <div class="orther-sign">
+                    <ul>
+                        <li class="by-facebook"><span>Sign in with Facebook</span></li>
+                        <li class="by-google"><span>Sign in with Google</span></li>
+                    </ul>
+                </div>
+
+                <div class="overlay-ask">
+                    <p>Don't have an account? <a href="javascript:void(0);">Sign up now.</a></p>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr signup-overlay hide">
+
+                <div class="title">
+                    <h2>Sign Up</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Email</span>
+                    <div class="form-group">
+                        <input type="text" id="txtSingUpEmail" placeholder="Please enter the valid email." value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Password</span>
+                    <div class="form-group">
+                        <input type="password" id="txtSingUpPassword"
+                            placeholder="Your password must be at least 8 characters" value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Re-type Password</span>
+                    <div class="form-group">
+                        <input type="password" id="txtSingUpReTypePassword"
+                            placeholder="Your password must be at least 8 characters" value="">
+                    </div>
+                </div>
+
+                <div class="box-but">
+                    <div class="btn btnSignUp" id="btnSignUp"><span>Sign Up</span></div>
+                </div>
+
+                <div class="overlay-help custom-checkbox">
+                    <div class="remember-area">
+                        <label for="chkTerms"><input type="checkbox" id="chkTerms" checked=""><span>I accept the
+                                terms
+                                and conditions</span></label>
+                    </div>
+                </div>
+
+                <div class="overlay-ask">
+                    <p>Already have an account? <a href="javascript:void(0);">Sign in here.</a></p>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr forgot-overlay hide">
+
+                <div class="title">
+                    <h2>Forget Password</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Email</span>
+                    <div class="form-group">
+                        <input type="text" id="txtForgotEmail" placeholder="Please enter the valid email."
+                            value="ompalo@gmail.com">
+                    </div>
+                </div>
+
+                <div class="box-but">
+                    <div class="btn btnCancel" id="btnCancelConfirm"><span>Cancel</span></div>
+                    <div class="btn btnCreate" id="btnConfirm"><span>Confirm</span></div>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr add-mylist-overlay hide">
+
+                <div class="title">
+                    <h2>Add to My list</h2>
+                </div>
+
+                <div class="overlay-help custom-large-checkbox scroll-panel">
+                    <ul>
+                        <li>
+                            <div>
+                                <label for="chkGame"><input type="checkbox" id="chkGame"><span>Game 4
+                                        Life</span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="chkDiy"><input type="checkbox" id="chkDiy"><span>DIY & Tech
+                                        hack</span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="chkBestSong"><input type="checkbox" id="chkBestSong"><span>Best song for
+                                        work</span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="chkFashion"><input type="checkbox" id="chkFashion"><span>Fashion
+                                        review</span></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="overlay-ask">
+                    <p><a href="javascript:void(0);"><span class="icon-plus">+</span> Create New Playlist</a></p>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr create-mylist-overlay hide">
+
+                <div class="title">
+                    <h2>Create New Playlist</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Playlist Name</span>
+                    <div class="form-group">
+                        <input type="text" id="txtCreatePlayListEmail" placeholder="A new playlist." value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Description</span>
+                    <div class="form-group">
+                        <div class="limit-input"><span class="limit">0</span><span>/50</span>
+                        </div>
+                        <textarea id="txtCreatePlayListDescription" maxlength="50"
+                            placeholder="Give your playlist a description"></textarea>
+                    </div>
+                </div>
+
+                <div class="box-but has-layout">
+                    <div class="btn btnCancel" id="btnCancel"><span>Cancel</span></div>
+                    <div class="btn btnCreate" id="btnCreate"><span>Create</span></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!--/Popup-->
+
+    </div>
+    <!--/Page-->
+
+    <div class="goTop"></div>
+
+    <!--script-->
+    <script src="js/jquery-min.js"></script>
+    <script src="js/comments-data.js"></script>
+    <script src="js/jquery-comments.js"></script>
+    <script src="js/slide.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/plyr.js"></script>
+    <script src="js/main.js" defer></script>
+    <!--/script-->
+
+</body>
+
+</html>

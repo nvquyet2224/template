@@ -1,0 +1,581 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>StarBerry</title>
+    <meta name="keywords" content="StarBerry" />
+    <meta name="description" content="StarBerry" />
+    <meta property="og:title" content="StarBerry" />
+    <meta property="og:description" content="StarBerry" />
+    <meta content="INDEX,FOLLOW" name="robots" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#f6f2ec" />
+    <!--social-->
+    <meta property="og:url" content="browse.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="StarBerry" />
+    <meta property="og:description" content="StarBerry" />
+    <meta property="og:image" content="images/thumbnail.jpg" />
+    <!--link-->
+    <link rel="icon" href="images/favicon.ico">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+
+    <style>
+        body {
+            -webkit-animation: page-start 1s steps(1, end) 0s 1 normal both;
+            animation: page-start 1s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes page-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes page-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--Page-->
+    <div class="cnt-wrap">
+
+        <!--Header-->
+        <div class="header">
+            <div class="header-inr">
+
+                <div class="nav-but">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="logo">
+                    <a href="index.html">
+                        <img draggable="false" src="images/hdr-logo-ompalo.png" alt="ompalo">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+
+                <div class="search-box">
+                    <div class="search-block">
+                        <input type="text" id="txt_search" value="" />
+                        <div class="search-clean"></div>
+                        <div class="search-cancel">Cancel</div>
+                    </div>
+                    <div class="search-but"></div>
+                </div>
+
+                <div class="user-area">
+                    <div class="playlist has-layout pc">
+                        <a href="your-list.html">
+                            <div class="playlist-pic">
+                                <img draggable="false" src="images/hdr-icon-mylist.png" alt="My list">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="select-list select-language" id="language-select">
+                        <div class="select-header">
+                            <h3><span><img src="images/language-en-icon.png" /></span>English</h3>
+                        </div>
+                        <div class="select-box">
+                            <ul>
+                                <li data-target="1" class="selected"><span><img
+                                            src="images/language-en-icon.png" /></span>English</li>
+                                <li data-target="2"><span><img src="images/language-vi-icon.png" /></span>Vietnamese
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="user-manage pc">
+
+                        <div class="about-info has-layout">
+                            <a href="userpage.html">
+                                <div class="user-pic">
+                                    <img draggable="false" src="images/hdr-avatar-small.png" alt="Tri Thong">
+                                </div>
+                                <div class="user-name">Tri Thong</div>
+                            </a>
+                        </div>
+                        <div class="user-drop"></div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="user-control pc">
+                <ul>
+                    <li><a href="profile.html">My Account</a></li>
+                    <li class="sign-out">Sign Out</li>
+                </ul>
+            </div>
+
+        </div>
+        <!--/Header-->
+
+        <!--Content-->
+        <div class="cnt-inr">
+
+            <!--Side-->
+            <div class="main">
+
+                <!--Side-->
+                <div class="side">
+                    <div class="side-inr">
+
+                        <div class="side-user has-layout sp">
+                            <a href="userpage.html">
+                                <div class="user-pic">
+                                    <img draggable="false" src="images/hdr-avatar-small.png" alt="Tri Thong">
+                                </div>
+                                <div class="user-name">Tri Thong<span>Father / Analog lover</span></div>
+                            </a>
+                        </div>
+
+                        <ul>
+
+                            <li>
+                                <a href="index.html">
+                                    <span class="nav-icon"><img src="images/side-icon-home.png" alt="Home" />
+                                        <img class="nav-active" src="images/side-icon-home-active.png" alt="Home" />
+                                    </span>
+                                    <span class="nav-text">Home</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="browse.html">
+                                    <span class="nav-icon"><img src="images/side-icon-browse.png" alt="Browse" />
+                                        <img class="nav-active" src="images/side-icon-browse-active.png" alt="Browse" />
+                                    </span>
+                                    <span class="nav-text">Browse</span>
+                                </a>
+                            </li>
+
+                            <li class="has-child">
+                                <a href="javascript:void(0);">
+                                    <span class="nav-icon"><img src="images/side-icon-my-list.png" alt="Your List" />
+                                        <img class="nav-active" src="images/side-icon-my-list-active.png"
+                                            alt="Your List" />
+                                    </span>
+                                    <span class="nav-text">My List (4)</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">Game 4 Life</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">DIY & Tech hack</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">Best song for Work</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="playlist.html">
+                                            <span class="nav-text">Fashionista review</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="setting.html">
+                                    <span class="nav-icon"><img src="images/side-icon-setting.png" alt="Settings" />
+                                        <img class="nav-active" src="images/side-icon-setting-active.png"
+                                            alt="Settings" />
+                                    </span>
+                                    <span class="nav-text">Settings</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="getting-around.html">
+                                    <span class="nav-icon"><img src="images/side-icon-getting.png"
+                                            alt="Getting around" />
+                                        <img class="nav-active" src="images/side-icon-getting-active.png"
+                                            alt="Getting around" />
+                                    </span>
+                                    <span class="nav-text">Getting around</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="help.html">
+                                    <span class="nav-icon"><img src="images/side-icon-help.png" alt="Help" />
+                                        <img class="nav-active" src="images/side-icon-help-active.png" alt="Help" />
+                                    </span>
+                                    <span class="nav-text">Help</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="share-feedback.html">
+                                    <span class="nav-icon"><img src="images/side-icon-share-feedback.png"
+                                            alt="Share feedback" />
+                                        <img class="nav-active" src="images/side-icon-share-feedback-active.png"
+                                            alt="Share feedback" />
+                                    </span>
+                                    <span class="nav-text">Share feedback</span>
+                                </a>
+                            </li>
+
+                            <li class="side-signout sp">
+                                <a href="javascript:void(0);">
+                                    <span class="nav-icon"><img src="images/side-icon-logout.png" alt="Log Out" />
+                                        <img class="nav-active" src="images/side-icon-logout-active.png"
+                                            alt="Log Out" />
+                                    </span>
+                                    <span class="nav-text">Log Out</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+                <!--/Side-->
+
+                <div class="main-inr">
+
+                    <div class="section-box resolve">
+                        <div class="section-inr">
+
+                            <div class="box-but">
+                                <div class="back-but"><span>Legal and Privacty</span></div>
+                            </div>
+
+                            <div class="resolve-box">
+
+                                <div class="title">
+                                    <h2>Legal</h2>
+                                </div>
+
+                                <div class="resolve-detail">
+                                    <p>It was a humorously perilous for both of us. For, before we proceed further, it
+                                        must be said that the monkey-rope was fast at both ends; <a
+                                            href="https://ompalo.com/" target="_blank">https://ompalo.com</a>, and fast
+                                        to my narrow leather one. So that for better or for worse, we two, for the time,
+                                        were wedded; and should poor <br>Queequeg sink to rise no more, please contact
+                                        our Privacy Office by email at</p>
+
+                                    <p>The monkey-rope is found in all whalers; but it was only in the Pequod that the
+                                        monkey and his holder were ever tied together. This improvement upon the
+                                        original usage was introduced by no less a man than Stubb, in order to afford
+                                        the imperilled harpooneer the strongest possible guarantee for the faithfulness
+                                        and vigilance of his monkey-rope holder.Being the savage's bowsman, that is, the
+                                        person who pulled the bow-oar in his boat (the second one from forward), it was
+                                        my cheerful duty to attend upon him while taking that hard-scrabble.</p>
+                                </div>
+
+                                <div class="title">
+                                    <h2>Privacy</h2>
+                                </div>
+
+                                <div class="resolve-detail">
+                                    <p>We receive and store information about you such as:</p>
+
+                                    <p><strong>• Privacy 1:</strong> <br>In the tumultuous business of cutting-in and
+                                        attending to a whale, there is much
+                                        running backwards and forwards among the crew. Now hands are wanted here, and
+                                        then again hands are wanted there. There is no staying in any one.</p>
+
+                                    <p><strong>• Privacy 2:</strong> <br>I have hinted that I would often jerk poor
+                                        Queequeg from between the whale and the ship—where he would occasionally fall,
+                                        from the incessant rolling and swaying of both. But this was not the only
+                                        jamming jeopardy he was expo.</p>
+
+                                    <p><strong>• Privacy 3:</strong> <br>I have hinted that I would often jerk poor
+                                        Queequeg from between the whale and the ship—where he would occasionally fall,
+                                        from the incessant rolling and swaying of both. But this was not the only
+                                        jamming jeopardy he was expo.</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="footer">
+                        <div class="footer-inr">
+                            <div class="ftr-logo">
+                                <a class="logo-ompalo" href="index.html"><img draggable="false"
+                                        src="images/logo-ompalo-gray.png" alt="ompalo"></a>
+                            </div>
+                            <div class="ftr-navigation">
+                                <ul>
+                                    <li><a href="javascript:void(0)">About us</a></li>
+                                    <li><a href="javascript:void(0)">Data & Privacy</a></li>
+                                    <li><a href="javascript:void(0)">Term & Condition</a></li>
+                                    <li><a href="javascript:void(0)">FAQ</a></li>
+                                    <li><a href="javascript:void(0)">Pricing & Membership</a></li>
+                                </ul>
+                            </div>
+                            <div class="ftr-social">
+                                <ul>
+                                    <li><a class="scl-facebook" href="javascript:void(0)"><img draggable="false"
+                                                src="images/icon-facebook.png" alt="facebook"></a>
+                                    </li>
+                                    <li><a class="scl-instagram" href="javascript:void(0)"><img draggable="false"
+                                                src="images/icon-instagram.png" alt="instagram"></a>
+                                    </li>
+                                    <li><a class="scl-youtube" href="javascript:void(0)"><img draggable="false"
+                                                src="images/icon-youtube.png" alt="youtube"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Footer-->
+                </div>
+
+            </div>
+            <!--/Main-->
+
+        </div>
+        <!--/Content-->
+
+        <!--Popup-->
+        <div class="overlay-popup">
+
+            <div class="close-popup"></div>
+
+            <div class="overlay-inr signin-overlay hide">
+
+                <div class="title">
+                    <h2>Sign In</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Email</span>
+                    <div class="form-group">
+                        <input type="text" id="txtSignInEmail" placeholder="Please enter a valid email." value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Password</span>
+                    <div class="form-group">
+                        <input type="password" id="txtSignInPassword"
+                            placeholder="Your password must be at least 8 characters." value="">
+                    </div>
+                </div>
+
+                <div class="box-but">
+                    <div class="btn btnLogin" id="btnLogin"><span>Sign In</span></div>
+                </div>
+
+                <div class="overlay-help custom-checkbox">
+                    <div class="remember-area">
+                        <label for="chkRemember"><input type="checkbox" id="chkRemember" checked=""><span>Remember
+                                me</span></label>
+                    </div>
+                    <div class="forgot-area">
+                        <a href="javascript:void(0);">Forgot Password ?</a>
+                    </div>
+                </div>
+
+                <div class="orther-sign">
+                    <ul>
+                        <li class="by-facebook"><span>Sign in with Facebook</span></li>
+                        <li class="by-google"><span>Sign in with Google</span></li>
+                    </ul>
+                </div>
+
+                <div class="overlay-ask">
+                    <p>Don't have an account? <a href="javascript:void(0);">Sign up now.</a></p>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr signup-overlay hide">
+
+                <div class="title">
+                    <h2>Sign Up</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Email</span>
+                    <div class="form-group">
+                        <input type="text" id="txtSingUpEmail" placeholder="Please enter the valid email." value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Password</span>
+                    <div class="form-group">
+                        <input type="password" id="txtSingUpPassword"
+                            placeholder="Your password must be at least 8 characters" value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Re-type Password</span>
+                    <div class="form-group">
+                        <input type="password" id="txtSingUpReTypePassword"
+                            placeholder="Your password must be at least 8 characters" value="">
+                    </div>
+                </div>
+
+                <div class="box-but">
+                    <div class="btn btnSignUp" id="btnSignUp"><span>Sign Up</span></div>
+                </div>
+
+                <div class="overlay-help custom-checkbox">
+                    <div class="remember-area">
+                        <label for="chkTerms"><input type="checkbox" id="chkTerms" checked=""><span>I accept the
+                                terms
+                                and conditions</span></label>
+                    </div>
+                </div>
+
+                <div class="overlay-ask">
+                    <p>Already have an account? <a href="javascript:void(0);">Sign in here.</a></p>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr forgot-overlay hide">
+
+                <div class="title">
+                    <h2>Forget Password</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Email</span>
+                    <div class="form-group">
+                        <input type="text" id="txtForgotEmail" placeholder="Please enter the valid email."
+                            value="ompalo@gmail.com">
+                    </div>
+                </div>
+
+                <div class="box-but">
+                    <div class="btn btnCancel" id="btnCancelConfirm"><span>Cancel</span></div>
+                    <div class="btn btnCreate" id="btnConfirm"><span>Confirm</span></div>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr add-mylist-overlay hide">
+
+                <div class="title">
+                    <h2>Add to My list</h2>
+                </div>
+
+                <div class="overlay-help custom-large-checkbox scroll-panel">
+                    <ul>
+                        <li>
+                            <div>
+                                <label for="chkGame"><input type="checkbox" id="chkGame"><span>Game 4
+                                        Life</span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="chkDiy"><input type="checkbox" id="chkDiy"><span>DIY & Tech
+                                        hack</span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="chkBestSong"><input type="checkbox" id="chkBestSong"><span>Best song for
+                                        work</span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="chkFashion"><input type="checkbox" id="chkFashion"><span>Fashion
+                                        review</span></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="overlay-ask">
+                    <p><a href="javascript:void(0);"><span class="icon-plus">+</span> Create New Playlist</a></p>
+                </div>
+
+            </div>
+
+            <div class="overlay-inr create-mylist-overlay hide">
+
+                <div class="title">
+                    <h2>Create New Playlist</h2>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Playlist Name</span>
+                    <div class="form-group">
+                        <input type="text" id="txtCreatePlayListEmail" placeholder="A new playlist." value="">
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span class="caption">Description</span>
+                    <div class="form-group">
+                        <div class="limit-input"><span class="limit">0</span><span>/50</span>
+                        </div>
+                        <textarea id="txtCreatePlayListDescription" maxlength="50"
+                            placeholder="Give your playlist a description"></textarea>
+                    </div>
+                </div>
+
+                <div class="box-but has-layout">
+                    <div class="btn btnCancel" id="btnCancel"><span>Cancel</span></div>
+                    <div class="btn btnCreate" id="btnCreate"><span>Create</span></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!--/Popup-->
+
+    </div>
+    <!--/Page-->
+
+    <div class="goTop"></div>
+
+    <!--script-->
+    <script src="js/jquery-min.js"></script>
+    <script src="js/comments-data.js"></script>
+    <script src="js/jquery-comments.js"></script>
+    <script src="js/slide.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/plyr.js"></script>
+    <script src="js/main.js" defer></script>
+    <!--/script-->
+
+</body>
+
+</html>
