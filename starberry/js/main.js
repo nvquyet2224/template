@@ -1097,7 +1097,7 @@ function fsEvent() {
 
 	//Popup events
 	$('.signInEmail, .signup-overlay .overlay-ask a').click(function () { //Sign In Popup
-		pauseVideo();
+		//pauseVideo();
 		$('.cnt-wrap').addClass('blur');
 		$('.overlay-inr').addClass('hide');
 		$('.signin-overlay').removeClass('hide');
@@ -1106,7 +1106,7 @@ function fsEvent() {
 	});
 
 	$('.creatAccount, .signin-overlay .overlay-ask a').click(function () { //Create Account Popup
-		pauseVideo();
+		//pauseVideo();
 		$('.cnt-wrap').addClass('blur');
 		$('.overlay-inr').addClass('hide');
 		$('.signup-overlay').removeClass('hide');
@@ -1115,7 +1115,7 @@ function fsEvent() {
 	});
 
 	$('.forgot-area a').click(function () { //Forgot Password Popup
-		pauseVideo();
+		//pauseVideo();
 		$('.cnt-wrap').addClass('blur');
 		$('.overlay-inr').addClass('hide');
 		$('.forgot-overlay').removeClass('hide');
@@ -1124,7 +1124,7 @@ function fsEvent() {
 	});
 
 	$('.btn-mylist').click(function () { //Add Mylist Popup
-		pauseVideo();
+		//pauseVideo();
 		$('.cnt-wrap').addClass('blur');
 		$('.overlay-inr').addClass('hide');
 		$('.add-mylist-overlay').removeClass('hide');
@@ -1139,7 +1139,7 @@ function fsEvent() {
 	});
 
 	$('.add-mylist-overlay .overlay-ask a').click(function () { //Add Mylist Popup
-		pauseVideo();
+		//pauseVideo();
 		$('.cnt-wrap').addClass('blur');
 		$('.overlay-inr').addClass('hide');
 		$('.create-mylist-overlay').removeClass('hide');
@@ -1157,7 +1157,7 @@ function fsEvent() {
 		$('.overlay-inr').addClass('hide');
 		$('body').removeClass('no-scroll');
 		$('.overlay-popup').removeClass('active');
-		openVideo();
+		//openVideo();
 	});
 
 	//Select list
