@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="user-area">
-                    <div class="playlist has-layout pc">
+                    <div class="playlist">
                         <a href="your-list.html">
                             <div class="playlist-pic">
                                 <img draggable="false" src="images/hdr-icon-mylist.png" alt="My list">
@@ -359,12 +359,16 @@
                                         <div class="box">
                                             <span class="caption">Gender</span>
                                             <div class="form-group">
-                                                <div class="custom-select select-gender">
-                                                    <select id="slGender">
-                                                        <option value="0">Choose Gender</option>
-                                                        <option value="1" selected>Female</option>
-                                                        <option value="2">Male</option>
-                                                    </select>
+                                                <div class="select-list select-gender" id="selectGender">
+                                                    <div class="select-header">
+                                                        <h3>Female</h3>
+                                                    </div>
+                                                    <div class="select-box">
+                                                        <ul>
+                                                            <li data-target="female" class="selected">Female</li>
+                                                            <li data-target="male">Male</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -373,96 +377,110 @@
                                             <span class="caption">Birthday</span>
                                             <div class="form-group has-layout">
 
-                                                <div class="custom-select select-month">
-                                                    <select id="slMonth">
-                                                        <option value="0" selected>Month</option>
-                                                        <option value="1">01</option>
-                                                        <option value="2">02</option>
-                                                        <option value="3">03</option>
-                                                        <option value="4">04</option>
-                                                        <option value="5">05</option>
-                                                        <option value="6">06</option>
-                                                        <option value="7">07</option>
-                                                        <option value="8">08</option>
-                                                        <option value="9">09</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                    </select>
+                                                <div class="select-list select-month" id="selectMonth">
+                                                    <div class="select-header">
+                                                        <h3>Month</h3>
+                                                    </div>
+                                                    <div class="select-box">
+                                                        <ul>
+                                                            <li data-target="0" class="selected">Month</li>
+                                                            <li data-target="01">01</li>
+                                                            <li data-target="02">02</li>
+                                                            <li data-target="02">03</li>
+                                                            <li data-target="04">04</li>
+                                                            <li data-target="05">05</li>
+                                                            <li data-target="06">06</li>
+                                                            <li data-target="07">07</li>
+                                                            <li data-target="08">08</li>
+                                                            <li data-target="09">09</li>
+                                                            <li data-target="10">10</li>
+                                                            <li data-target="11">11</li>
+                                                            <li data-target="12">12</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
 
-                                                <div class="custom-select select-day">
-                                                    <select id="slDay">
-                                                        <option value="0" selected>Day</option>
-                                                        <option value="1">01</option>
-                                                        <option value="2">02</option>
-                                                        <option value="3">03</option>
-                                                        <option value="4">04</option>
-                                                        <option value="5">05</option>
-                                                        <option value="6">06</option>
-                                                        <option value="7">07</option>
-                                                        <option value="8">08</option>
-                                                        <option value="9">09</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                        <option value="13">13</option>
-                                                        <option value="14">14</option>
-                                                        <option value="15">15</option>
-                                                        <option value="16">16</option>
-                                                        <option value="17">17</option>
-                                                        <option value="18">18</option>
-                                                        <option value="19">19</option>
-                                                        <option value="20">20</option>
-                                                        <option value="21">21</option>
-                                                        <option value="22">22</option>
-                                                        <option value="23">23</option>
-                                                        <option value="24">24</option>
-                                                        <option value="25">25</option>
-                                                        <option value="26">26</option>
-                                                        <option value="27">27</option>
-                                                        <option value="28">28</option>
-                                                        <option value="29">29</option>
-                                                        <option value="30">30</option>
-                                                        <option value="31">31</option>
-                                                    </select>
+                                                <div class="select-list select-day" id="selectDay">
+                                                    <div class="select-header">
+                                                        <h3>Day</h3>
+                                                    </div>
+                                                    <div class="select-box">
+                                                        <ul>
+                                                            <li data-target="0" class="selected">Day</li>
+                                                            <li data-target="01">01</li>
+                                                            <li data-target="02">02</li>
+                                                            <li data-target="02">03</li>
+                                                            <li data-target="04">04</li>
+                                                            <li data-target="05">05</li>
+                                                            <li data-target="06">06</li>
+                                                            <li data-target="07">07</li>
+                                                            <li data-target="08">08</li>
+                                                            <li data-target="09">09</li>
+                                                            <li data-target="10">10</li>
+                                                            <li data-target="11">11</li>
+                                                            <li data-target="12">12</li>
+                                                            <li data-target="13">13</li>
+                                                            <li data-target="14">14</li>
+                                                            <li data-target="15">15</li>
+                                                            <li data-target="16">16</li>
+                                                            <li data-target="17">17</li>
+                                                            <li data-target="18">18</li>
+                                                            <li data-target="19">19</li>
+                                                            <li data-target="20">20</li>
+                                                            <li data-target="21">21</li>
+                                                            <li data-target="22">22</li>
+                                                            <li data-target="23">23</li>
+                                                            <li data-target="24">24</li>
+                                                            <li data-target="25">25</li>
+                                                            <li data-target="26">26</li>
+                                                            <li data-target="27">27</li>
+                                                            <li data-target="28">28</li>
+                                                            <li data-target="29">29</li>
+                                                            <li data-target="30">30</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
 
-                                                <div class="custom-select select-year">
-                                                    <select id="slYear">
-                                                        <option value="0" selected>Year</option>
-                                                        <option value="1">2000</option>
-                                                        <option value="2">1999</option>
-                                                        <option value="3">1998</option>
-                                                        <option value="4">1997</option>
-                                                        <option value="5">1996</option>
-                                                        <option value="6">1995</option>
-                                                        <option value="7">1994</option>
-                                                        <option value="8">1993</option>
-                                                        <option value="9">1992</option>
-                                                        <option value="10">1991</option>
-                                                        <option value="11">1990</option>
-                                                        <option value="12">1989</option>
-                                                        <option value="13">1988</option>
-                                                        <option value="14">1987</option>
-                                                        <option value="15">1986</option>
-                                                        <option value="16">1985</option>
-                                                        <option value="17">1984</option>
-                                                        <option value="18">1983</option>
-                                                        <option value="19">1982</option>
-                                                        <option value="20">1981</option>
-                                                        <option value="21">1980</option>
-                                                        <option value="22">1979</option>
-                                                        <option value="23">1978</option>
-                                                        <option value="24">1977</option>
-                                                        <option value="25">1976</option>
-                                                        <option value="26">1975</option>
-                                                        <option value="27">1974</option>
-                                                        <option value="28">1973</option>
-                                                        <option value="29">1972</option>
-                                                        <option value="30">1971</option>
-                                                        <option value="31">1970</option>
-                                                    </select>
+                                                <div class="select-list select-year" id="selectYear">
+                                                    <div class="select-header">
+                                                        <h3>Year</h3>
+                                                    </div>
+                                                    <div class="select-box">
+                                                        <ul>
+                                                            <li data-target="0" class="selected">Year</li>
+                                                            <li data-target="2000">2000</li>
+                                                            <li data-target="1999">1999</li>
+                                                            <li data-target="1998">1998</li>
+                                                            <li data-target="1997">1997</li>
+                                                            <li data-target="1996">1996</li>
+                                                            <li data-target="1995">1995</li>
+                                                            <li data-target="1994">1994</li>
+                                                            <li data-target="1993">1993</li>
+                                                            <li data-target="1992">1992</li>
+                                                            <li data-target="1991">1991</li>
+                                                            <li data-target="1990">1990</li>
+                                                            <li data-target="1989">1989</li>
+                                                            <li data-target="1988">1988</li>
+                                                            <li data-target="1987">1987</li>
+                                                            <li data-target="1986">1986</li>
+                                                            <li data-target="1985">1985</li>
+                                                            <li data-target="1984">1984</li>
+                                                            <li data-target="1983">1983</li>
+                                                            <li data-target="1982">1982</li>
+                                                            <li data-target="1981">1981</li>
+                                                            <li data-target="1980">1980</li>
+                                                            <li data-target="1979">1979</li>
+                                                            <li data-target="1978">1978</li>
+                                                            <li data-target="1977">1977</li>
+                                                            <li data-target="1976">1976</li>
+                                                            <li data-target="1975">1975</li>
+                                                            <li data-target="1974">1974</li>
+                                                            <li data-target="1973">1973</li>
+                                                            <li data-target="1972">1972</li>
+                                                            <li data-target="1971">1971</li>
+                                                            <li data-target="1970">1970</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
 
                                             </div>

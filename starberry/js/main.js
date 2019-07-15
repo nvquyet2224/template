@@ -1160,7 +1160,6 @@ function fsEvent() {
 		openVideo();
 	});
 
-
 	//Select list
 	$('.select-header').click(function (e) {
 
