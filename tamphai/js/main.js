@@ -164,6 +164,35 @@ function Rotate() {
 
 }
 
+// Func Resize
+function Resize() {
+
+	// Need detect not mobile when resize because in mobile scrolling call resize
+	if (!isMobile) {
+		setTimeout(function(){
+			resetLayout();
+		},100);
+		
+	}
+
+
+}
+
+
+
+function resetLayout() {
+	var ratio = window.innerWidth/window.innerHeight;
+	console.log(ratio)
+	if(ratio > 1920/1080) {
+		$('body').addClass('byHeight');
+	}else {
+		$('body').removeClass('byHeight');
+	}
+}
+
+// Page Rezize
+$(window).on('resize', Resize);
+
 // Page Rotate
 $(window).on('orientationchange', Rotate);
 
@@ -173,7 +202,7 @@ $(window).on('load', function () {
 	setTimeout(function () {
 		//game-content
 		$('body').css({ 'visibility': 'visible' });
-		$('.main-bg').addClass('off');
+		//$('.main-bg').addClass('off');
 		//$('.footer').addClass('is-result');
 		$('.step-01').addClass('current');
 	}, 500); // 100ms is detected good
@@ -187,5 +216,6 @@ $(window).on('load', function () {
 	setTimeout(function () {
 		Count();
 	}, 500);
+	resetLayout();
 
 })();

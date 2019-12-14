@@ -62,6 +62,7 @@ body {
 	-webkit-user-select:none;
   user-select:none;
   background-color:#1c1e4d;
+  overflow: hidden;
 }
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 *, *:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
@@ -90,11 +91,6 @@ button, input, textarea{
 
 /*Common*/
 .game-content{
-  /* position:fixed;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%; */
   position: relative;
   display: block;
   width: 100%;
@@ -124,13 +120,13 @@ button, input, textarea{
   width:100%;
   height:auto;
   left:0;
-  top:2.3%;
+  top:2.3148%;
   line-height:0;
   z-index:2;
   text-align:center;
 }
 .logo img {
-  width:8.4%;
+  width:8.59375%;
   height:auto;
 }
 .footer{
@@ -140,8 +136,8 @@ button, input, textarea{
   width:100%;
   height:auto;
   line-height:0;
-  background:url(../images/footer-pc.png) no-repeat center bottom;
-  background-size:100% auto;
+  /* background:url(../images/footer-pc.png) no-repeat center bottom;
+  background-size:100% auto; */
   pointer-events:none;
 }
 .footer::before{
@@ -152,19 +148,39 @@ button, input, textarea{
   height:auto;
   padding-top:27.29%;
 }
+.footer .bg{
+  position: absolute;
+  left: 0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:url(../images/footer-pc.png) no-repeat center bottom;
+  background-size:100% auto;
+}
 .slogan-bot{
   position:absolute;
-  left:21%;
-  bottom:5.5%;
-  width:35.67%;
+  left:17%;
+  bottom:8%;
+  width:auto;
   height:auto;
-  line-height:0;
+  font-size:2.2vw;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transform: rotate(-5deg);
+  transform: rotate(-5deg);
 }
+.slogan-bot h2{
+  font-size:100%;
+}
+.slogan-bot h3{
+  font-size:62%;
+}
+
 .bottle{
   position:absolute;
   right:13.8%;
   bottom:4.6%;
-  width:12%;
+  width:12.7%;
   height:auto;
   line-height:0;
 }
@@ -193,7 +209,6 @@ button, input, textarea{
   background-size: cover;
 }
 
-
 .slogan-bot img, .bottle img{
   width:100%;
 }
@@ -212,18 +227,18 @@ button, input, textarea{
 }
 
 .flower-left .flower:nth-child(1) {
-  left:6%;
+  left:4.4%;
   bottom:4.6%;
   width:2%;
 }
 .flower-left .flower:nth-child(2) {
-  left:10.5%;
+  left:9%;
   bottom:5%;
   width:2.1%;
 }
 
 .flower-left .flower:nth-child(3) {
-  left:14%;
+  left:12.4%;
   bottom:13%;
   width:3.2%;
 }
@@ -323,25 +338,6 @@ button, input, textarea{
 	-webkit-transition-delay:0s, 0s;
 	transition-delay:0s, 0s
 }
-
-
-/*Home Screen*/
-.headline{
-  position:absolute;
-  left:38.69%;
-  top:23.6%;
-  width:30.73%;
-  height:auto;
-  line-height:0;
-}
-.slogan{
-  position:absolute;
-  right:4.0625%;
-  top:28%;
-  width:23.3333%;
-  height:auto;
-  line-height:0;
-}
 .game-but{
   position:absolute;
   z-index:2;
@@ -350,9 +346,10 @@ button, input, textarea{
   position: relative;
   display:inline-block;
   height:auto;
-  line-height:0;
   cursor:pointer;
-  overflow: hidden;
+  -webkit-border-radius:50px;
+  border-radius:50px;
+  overflow:hidden;
 }
 .game-but button::after, .game-but a::after{
   content: '';
@@ -368,8 +365,52 @@ button, input, textarea{
   -webkit-transform: rotate(10deg);
   transform: rotate(10deg);
 }
-.headline img, .slogan img, .game-but button img{
+.game-but button img{
   width:100%;
+}
+
+
+/*Home Screen*/
+.headline{
+  position:absolute;
+  left:38.54%;
+  top:25.5%;
+  width:auto;
+  height:auto;
+  font-size:4.35vw;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 18px 18px rgba(0,0,0,0.3);
+  -webkit-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+  letter-spacing:-1.4px;
+}
+.headline h2{
+  font-size:100%;
+  line-height: 1.2;
+}
+.headline h3{
+  font-size:44.8%;
+  line-height: 1;
+}
+.headline span{
+  font-size: 68.75%;
+}
+.slogan{
+  position:absolute;
+  right:4.0625%;
+  top:28%;
+  width:auto;
+  height:auto;
+  background-color: #fff;
+  padding:2.7% 1.46%;
+  -webkit-border-radius: 1.8vw;
+  border-radius: 1.8vw;
+}
+.slogan h2{
+  font-size:1.875vw;
+  color: #121a51;
+  text-align: center;
 }
 .slogan .game-but{
   width:100%;
@@ -378,18 +419,22 @@ button, input, textarea{
   margin-top:-1.3vw;
   text-align: center;
 }
-.slogan .game-but  button{
+.slogan .game-but button{
   display: inline-block;
   width: 68%;
-  -webkit-border-radius:20px;
-  border-radius:20px;
+  background-color:#fff17e;
+  -webkit-border-radius:1.04vw;
+  border-radius:1.04v;
+}
+.slogan .game-but span{
+  position: relative;
+  display: block;
+  padding: 8% 0;
+  color: #111a50;
+  font-size: 1.77vw;
 }
 
-.game-but button{
-  -webkit-border-radius:50px;
-  border-radius:50px;
-  overflow:hidden;
-}
+
 .clothes-box{
   position:absolute;
   left:33.645%;
@@ -409,14 +454,37 @@ button, input, textarea{
 }
 .placement-main{
   position: absolute;
-  left:1.6666%;
-  top:11.85%;
-  width:49.48%;
+  left:0.26%;
+  top:12.7777%;
+  width:49.21875%;
   height: auto;
   line-height: 0;
 }
 .placement-main img{
   width:100%;
+}
+
+
+/*By Height*/
+.byHeight .game-content{
+  height: 100vh;
+  width: calc(100vh * 1920/1080);
+  margin:0 auto;
+}
+.byHeight .headline{
+  font-size: 7.6566vh;
+}
+.byHeight .slogan h2{
+  font-size:3.3333vh;
+}
+.byHeight .slogan .game-but span{
+  font-size:3.1vh;
+}
+.byHeight .slogan-bot{
+  font-size:3.9vh;
+}
+.byHeight .bg{
+  position: fixed;
 }
 
 
@@ -1144,8 +1212,8 @@ button, input, textarea{
 }
 
 .current .btnPlay {
-  -webkit-animation:btnAni 0.5s infinite alternate;
-  animation:btnAni 0.5s infinite alternate;
+  /* -webkit-animation:btnAni 0.5s infinite alternate;
+  animation:btnAni 0.5s infinite alternate; */
 }
 .current button.btnPlay::after, .current .game-but a.btnPlay::after{
   -webkit-animation:glenAni 1s infinite;
