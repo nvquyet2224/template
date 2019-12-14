@@ -61,6 +61,7 @@ body {
 	-webkit-tap-highlight-color:transparent;
 	-webkit-user-select:none;
   user-select:none;
+  background-color:#1c1e4d;
 }
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 *, *:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
@@ -135,7 +136,7 @@ button, input, textarea{
 .footer{
   position:absolute;
   left:0;
-  bottom:0;
+  bottom:-1px;
   width:100%;
   height:auto;
   line-height:0;
