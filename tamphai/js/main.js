@@ -183,7 +183,7 @@ function Resize() {
 function resetLayout() {
 	var ratio = window.innerWidth/window.innerHeight;
 	console.log(ratio)
-	if(ratio > 1920/1080) {
+	if(ratio >= 1920/1080) {
 		$('body').addClass('byHeight');
 	}else {
 		$('body').removeClass('byHeight');
@@ -205,7 +205,7 @@ $(window).on('load', function () {
 		//$('.main-bg').addClass('off');
 		//$('.footer').addClass('is-result');
 		$('.step-01').addClass('current');
-	}, 500); // 100ms is detected good
+	}, 1000); // 100ms is detected good
 
 });
 
