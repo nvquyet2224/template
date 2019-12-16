@@ -196,10 +196,10 @@ $(window).on('load', function () {
 // Page Ready
 (function () {
 	fsEvent();
-	randomAnswer();
-	setTimeout(function () {
-		Count();
-	}, 500);
+	// randomAnswer();
+	// setTimeout(function () {
+	// 	Count();
+	// }, 500);
 		
 	var isFace = isFacebookApp();
 

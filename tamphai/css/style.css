@@ -2831,7 +2831,7 @@ screen and (max-width:700px) and (orientation:landscape) {
   display:block;
   left:0;
   top:0;
-  width:1000px;
+  width:1200px;
   height:auto;
   font-family:'Montserrat', sans-serif;
   font-weight:900;
@@ -2861,9 +2861,9 @@ screen and (max-width:700px) and (orientation:landscape) {
 
 .share-content .result-info{
   position:absolute;
-  left:7% !important;
+  left:4% !important;
   top:19% !important;
-  width:30%;
+  width:33%;
   height:auto;
   padding:1.7% 2%;
   overflow:hidden;
@@ -2924,15 +2924,15 @@ screen and (max-width:700px) and (orientation:landscape) {
   display:block;
   padding-left:48%;
   padding-top:2%;
-  columns: #131b4d;;
+  color: #131b4d;;
   text-transform:uppercase;
 }
 .share-content .info-txt h2{
-  font-size:20px;
+  font-size:21px;
   line-height:1;
 }
 .share-content .info-txt span{
-  font-size:44px;
+  font-size:45px;
   line-height:1;
 }
 .share-content .info-txt span small{
@@ -2943,14 +2943,14 @@ screen and (max-width:700px) and (orientation:landscape) {
   font-weight:inherit;
 }
 .share-content .info-txt p{
-  font-size:12px;
+  font-size:13px;
   line-height:1.2;
 }
 .share-content .result-detail{
   position:absolute;
-  left:7%  !important;
+  left:4%  !important;
   top:49% !important;
-  width:30%;
+  width:33%;
   height:auto;
   background-color:#fff;
   padding:1.5% 2%;
@@ -2964,7 +2964,7 @@ screen and (max-width:700px) and (orientation:landscape) {
   position:relative;
   display:inline-block;
   text-transform:uppercase;
-  font-size:7px;
+  font-size:10px;
   vertical-align:middle;
   line-height:1.2;
 }
@@ -2974,14 +2974,14 @@ screen and (max-width:700px) and (orientation:landscape) {
 }
 .share-content .result-detail li span:nth-child(1) {
   width:20%;
-  font-size:19px;
+  font-size:21px;
 }
 .share-content .result-detail li span:nth-child(2) {
   width:16%;
 }
 .share-content .result-detail li span:nth-child(4) {
   width:34%;
-  font-size:16px;
+  font-size:18px;
   text-align:center;
 }
 .share-content .result-detail li:last-child{
