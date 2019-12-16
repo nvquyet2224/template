@@ -63,6 +63,7 @@ body {
   user-select:none;
   background-color:#1c1e4d;
   overflow:hidden;
+  overflow-y: auto;
 }
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 *, *:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
@@ -98,6 +99,7 @@ button, input, textarea{
   font-family:'Montserrat', sans-serif;
   font-weight:900;
   font-style:italic;
+  overflow: hidden;
 }
 .game-content::before{
   content:'';
@@ -158,7 +160,7 @@ button, input, textarea{
 .slogan-bot{
   position:absolute;
   left:17%;
-  bottom:8%;
+  bottom:11%;
   width:auto;
   height:auto;
   font-size:2.2vw;
@@ -269,7 +271,14 @@ button, input, textarea{
   right:35%;
   bottom:2%;
 }
-
+.flower-end{
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height:auto;
+  opacity:0;
+}
 .is-result .flower-right .flower{
   width:2%;
 }
@@ -423,6 +432,8 @@ button, input, textarea{
   background-color:#fff17e;
   -webkit-border-radius:1.85vh;
   border-radius:1.85vh;
+  -webkit-box-shadow:0 18px 13px rgba(0,0,0,0.2);
+  box-shadow:0 18px 13px rgba(0,0,0,0.2);
 }
 .slogan .game-but span{
   position:relative;
@@ -430,8 +441,10 @@ button, input, textarea{
   padding:8% 0;
   color:#111a50;
   font-size:1.77vw;
+  font-weight: 900;
+  font-style: italic;
+  
 }
-
 
 .clothes-box{
   position:absolute;
@@ -480,18 +493,33 @@ button, input, textarea{
   left:5%;
   top:5%;
   width:100%;
-  height:68.75%;
+  height:auto;
   z-index:0;
 }
-.light-place::before,
-.light-place::after{
+.light-place::before{
+  content:'';
+  position: relative;
+  display: block;
+  width:100%;
+  height: auto;
+  padding-top:68.75%;
+}
+.light-place div{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height:100%;
+}
+.light-place div::before,
+.light-place div::after{
   content:'';
   position:absolute;
   left:0;
   top:0;
   width:100%;
   height:100%;
-  background:url(../images/light-blue.png) no-repeat center 0;
+  background:url(../images/light-blue.png) no-repeat center center;
   opacity:0.3;
   -webkit-transform:scale(0.8);
   transform:scale(0.8);
@@ -620,6 +648,12 @@ button, input, textarea{
   font-size:2vw;
   line-height:1;
 }
+.game-step .count-per {
+  opacity:0.7;
+}
+.game-step .count-per.is-done{
+  opacity:1;
+}
 .info-txt span{
   font-size:4.8vw;
   line-height:1;
@@ -655,7 +689,7 @@ button, input, textarea{
   position:relative;
   display:inline-block;
   text-transform:uppercase;
-  font-size:0.9vw;
+  font-size:0.8vw;
   vertical-align:middle;
   line-height:1.2;
 }
@@ -665,14 +699,14 @@ button, input, textarea{
 }
 .result-detail li span:nth-child(1) {
   width:20%;
-  font-size:2.2vw;
+  font-size:2.1vw;
 }
 .result-detail li span:nth-child(2) {
   width:16%;
 }
 .result-detail li span:nth-child(4) {
   width:34%;
-  font-size:2vw;
+  font-size:1.9vw;
   text-align:center;
 }
 .result-detail li:last-child{
@@ -691,6 +725,7 @@ button, input, textarea{
   background-color:#fff17e;
   -webkit-border-radius:4.6vh;
   border-radius:4.6vh;
+  box-shadow:0 18px 13px rgba(0,0,0,0.2);
 }
 .result-detail .game-but span{
   position:relative;
@@ -698,6 +733,9 @@ button, input, textarea{
   padding:7% 0;
   color:#111a50;
   font-size:1.7vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
 }
 
 .headline-result{
@@ -740,8 +778,8 @@ button, input, textarea{
   display:inline-block;
   width:66.4%;
   height:auto;
-  -webkit-box-shadow:0 27px 47px rgba(129,129,129,0.2);
-  box-shadow:0 27px 47px rgba(129,129,129,0.2);
+  -webkit-box-shadow:0 18px 13px rgba(0,0,0,0.2);
+  box-shadow:0 18px 13px rgba(0,0,0,0.2);
   -webkit-border-radius:4.6vh;
   border-radius:4.6vh;
   background-color:#111a51;
@@ -1061,12 +1099,10 @@ button, input, textarea{
 
 @-webkit-keyframes btnAni {
   0%{
-    box-shadow:0 0 20px 0 rgba(255,255,255,0.5);
     -webkit-transform:scale(1);
     transform:scale(1);
   }
   100%{
-    box-shadow:0 0 60px 0 rgba(255,255,255,0.5);
     -webkit-transform:scale(1.05);
     transform:scale(1.05);
   }
@@ -1075,12 +1111,10 @@ button, input, textarea{
 
 @keyframes btnAni {
   0%{
-    box-shadow:0 0 20px 0 rgba(255,255,255,0.5);
     -webkit-transform:scale(1);
     transform:scale(1);
   }
   100%{
-    box-shadow:0 0 60px 0 rgba(255,255,255,0.5);
     -webkit-transform:scale(1.05);
     transform:scale(1.05);
   }
@@ -1100,17 +1134,12 @@ button, input, textarea{
 
  @-webkit-keyframes fly {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
+    opacity:1;
     -webkit-transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
     transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
   }
@@ -1118,17 +1147,12 @@ button, input, textarea{
 
 @keyframes fly {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
+    opacity:1;
     -webkit-transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
     transform:translate3d(-25vw,-34vh,0) scale(1.2) rotate(360deg);
   }
@@ -1136,53 +1160,38 @@ button, input, textarea{
 
 @-webkit-keyframes flySP {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
-    -webkit-transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
+    opacity:1;
+    -webkit-transform:translate3d(-230px,-120px,0) scale(1.2) rotate(360deg);
+    transform:translate3d(-230px,-120px,0) scale(1.2) rotate(360deg);
   }
 }
 
 @keyframes flySP {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
-    -webkit-transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-230px,-90px,0) scale(1.2) rotate(360deg);
+    opacity:1;
+    -webkit-transform:translate3d(-230px,-120px,0) scale(1.2) rotate(360deg);
+    transform:translate3d(-230px,-120px,0) scale(1.2) rotate(360deg);
   }
 }
 
 @-webkit-keyframes flyMax {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
+    opacity:1;
     -webkit-transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
     transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
   }
@@ -1191,17 +1200,12 @@ button, input, textarea{
 
 @keyframes flyMax {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
+    opacity:1;
     -webkit-transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
     transform:translate3d(-26vw,-30vh,0) scale(1.2) rotate(360deg);
   }
@@ -1210,17 +1214,12 @@ button, input, textarea{
 
 @-webkit-keyframes flySmall {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
+    opacity:1;
     -webkit-transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
     transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
   }
@@ -1229,21 +1228,15 @@ button, input, textarea{
 
 @keyframes flySmall {
   0%{
-    opacity:0.8;
+    opacity:0;
     -webkit-transform:translate3d(0,0,0) scale(1) rotate(0deg);
     transform:translate3d(0,0,0) scale(1) rotate(0deg);
   }
-  70% {
-    opacity:0.8;
-    -webkit-transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
-    transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
-  }
   100% {
-    opacity:0;
+    opacity:1;
     -webkit-transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
     transform:translate3d(-26vw,-35vh,0) scale(1.2) rotate(360deg);
   }
-
 }
 
 @-webkit-keyframes ClothesAni {
@@ -1304,7 +1297,7 @@ button, input, textarea{
   }
   100%{
     opacity:1;
-    transform:translateX(300px) rotate(10deg);
+    transform:translateX(400px) rotate(10deg);
   }
 }
 
@@ -1316,7 +1309,7 @@ button, input, textarea{
   }
   100%{
     opacity:1;
-    transform:translateX(300px) rotate(10deg);
+    transform:translateX(400px) rotate(10deg);
   }
 }
 
@@ -1354,10 +1347,16 @@ button, input, textarea{
   animation:fly 6.5s 4.5s infinite;
 }
 
-.current .btnPlay {
-  /* -webkit-animation:btnAni 0.5s infinite alternate;
-  animation:btnAni 0.5s infinite alternate; */
+.footer.is-result  .flower-right .flower .flower-end{
+  -webkit-animation:fadeIn 6s 2.5s infinite alternate;
+  animation:fadeIn 6s 2.5s infinite alternate;
 }
+
+.current .btnPlay {
+  -webkit-animation:btnAni 0.5s infinite alternate;
+  animation:btnAni 0.5s infinite alternate;
+}
+
 .current button.btnPlay::after, .current .game-but a.btnPlay::after{
   -webkit-animation:glenAni 1s infinite;
   animation:glenAni 1s infinite;
@@ -1387,11 +1386,11 @@ button, input, textarea{
   -webkit-animation:PlacementMainAni 0.9s steps(2) infinite;
   animation:PlacementMainAni 0.9s steps(2) infinite;
 }
-.current .light-place::before {
+.current .light-place div::before {
   -webkit-animation:lightPlacement 1.5s infinite alternate;
   animation:lightPlacement 1.5s infinite alternate;
 }
-.current .light-place::after{
+.current .light-place div::after{
   -webkit-animation:lightPlacement 2s 0.5s infinite alternate;
   animation:lightPlacement 2s 0.5s infinite alternate;
 }
@@ -1411,58 +1410,11 @@ button, input, textarea{
   animation:PlacementAni 0.9s steps(3) infinite;
 }
 
-@media screen and (max-width:1100px) and (orientation:landscape) {
-  /*
-  .logo {
-    top:5%;
-  }
-  .logo img{
-    width:12%;
+@media screen and (max-width:1100px) {
+  body{
+    overflow-y: auto;
   }
 
-  .fs-not-psp{
-    display:block;
-  }
-  .fs-psp {
-    display:none;
-  }
-
-  .placement-main{
-    top:26%;
-  } 
-  .headline{
-    top:33%;
-  }
-  .slogan{
-    top:46%;
-  }
-  
-  .placement{
-    top:18%;
-  }
-  .bubble{
-    top:23%;
-    right:3%;
-  }
-
-  .placement-result{
-    width:28%;
-    top:34%;
-  }
-  .headline-result{
-    left:66%;
-    top:40%
-  }
-  .result-info{
-    top:26%;
-  }
-  */
-  
-}
-
-@media screen and (max-width:840px) and (orientation:portrait) {
-
-  /*Common*/  
   .fs-pc{
     display:none;
   }
@@ -1476,30 +1428,27 @@ button, input, textarea{
     display:block;
   }
 
-  .isDesk .logo,
+ .isDesk .logo,
   .logo{
-    top:2.3%;
+    top:3.44%;
   }
-  
   .isDesk .logo img,
   .logo img {
-    width:25%;
+    width:19.6%;
   }
-
   .isDesk .game-content,
   .game-content{
-    position:absolute;
-    left:0;
-    top:0;
+    position: relative;
     width:100%;
     height:auto;
+    overflow: hidden;
   }
   .isDesk .game-content::before,
   .game-content::before{
-    padding-top:177.734375%;
+    padding-top:177.7777777777778%;
   }
-  .isDesk .footer,
-  .footer{
+  .isDesk .footer .bg,
+  .footer .bg{
     background:url(../images/footer.png) no-repeat center bottom;
     background-size:100% auto;
   }
@@ -1509,9 +1458,10 @@ button, input, textarea{
   }
   .isDesk .slogan-bot,
   .slogan-bot{
-    left:18.68%;
+    left:18%;
     bottom:16.8%;
-    width:55%;
+    font-size:3vw;
+    white-space: nowrap;
     z-index:2;
   }
   .isDesk .bottle,
@@ -1520,7 +1470,6 @@ button, input, textarea{
     bottom:12%;
     width:19.6%;
   }
-
   .flower-left .flower:nth-child(1){
     width:3%;
     left:1.6%;
@@ -1557,7 +1506,6 @@ button, input, textarea{
   .is-result .flower-right .flower{
     width:3%;
   }
-
   .main-bg{
     background:url(../images/bg-main.jpg) no-repeat center center;
     background-size:cover;
@@ -1572,35 +1520,67 @@ button, input, textarea{
     width:44%;
   }
   
-  /*Home Screen*/
-  .isDesk .placement-main,
-  .placement-main{
-    width:92%;
-    left:7%;
-    top:41%;
-  }
   .isDesk .headline,
   .headline{
-    right:auto;
-    left:18.5%;
-    top:19.6%;
-    width:63%;
+    top:14.6%;
+    left:50%;
+    -webkit-transform: translate(-50%,0) rotate(-10deg);
+    transform: translate(-50%,0) rotate(-10deg);
+    font-size:9.8vw;
+    white-space: nowrap
   }
+
+  .isDesk .placement-main,
+  .placement-main{
+    width:76%;
+    left:12%;
+    top:auto;
+    bottom:0;
+  }
+  .isDesk .placement-main::before,
+  .placement-main::before{
+    padding-top:158.29%;
+  }
+  .placement-main span{
+    background: url(../images/placement-main-sp.png) left 0;
+    background-size: auto 100%;
+  }
+
   .isDesk .slogan,
   .slogan{
     right:auto;
-    left:9.9%;
-    top:69%;
-    width:80.27%;
+    left:10%;
+    top:auto;
+    bottom:20.47%;
+    width:80%;
+    z-index: 1;
+    padding:4.5% 0;
+  }
+  .isDesk .slogan h2,
+  .slogan h2{
+    font-size:3.6vw;
+  }
+  .isDesk .slogan h2 br:nth-child(1), .isDesk .slogan h2 br:nth-child(3),
+  .slogan h2 br:nth-child(1), .slogan h2 br:nth-child(3){
+      display: none;
   }
   .isDesk .slogan .game-but,
   .slogan .game-but{
-    margin-top:-3vw;
+    margin-top:-2.6vw;
   }
   .isDesk .slogan .game-but button,
   .slogan .game-but button{
-    width:42%;
+    width:52%;
+    -webkit-border-radius:50px;
+    border-radius:50px;
   }
+  .isDesk .slogan .game-but span,
+  .slogan .game-but span {
+    padding:5.5% 0;
+    font-size:5vw;
+  }
+
+
   .isDesk .clothes-box,
   .clothes-box{
     left:-67%;
@@ -1608,36 +1588,64 @@ button, input, textarea{
     width:120%;
   }
 
-  /*Placement Screen*/
   .isDesk .bubble,
   .bubble{
-    right:5%;
-    top:22%;
-    width:64%;
+    right:0;
+    top:24%;
+    width:66%;
   }
   .isDesk .placement,
   .placement{
-    left:-4%;
+    left:-2%;
     top:auto;
     bottom:7%;
-    width:90%;
+    width:94%;
   }
 
-  /*Result Screen*/
   .isDesk .placement-result,
   .placement-result{
     left:0;
     top:auto;
     bottom:2%;
-    width:45%;
+    width:50%;
   }
   .isDesk .headline-result,
   .headline-result{
-    left:42%;
-    bottom:21%;
+    left:49%;
     top:auto;
-    width:45%;
+    bottom:20%;
+    top:auto;
+    font-size:5.4vw;
   }
+  .isDesk .headline-result h2,
+  .headline-result h2,
+  .isDesk .headline-result h3,
+  .headline-result h3 {
+    -webkit-transform: rotate(-5deg);  
+    transform: rotate(-5deg);
+  }
+  .isDesk .headline-result h2,
+  .headline-result h2{
+    margin-bottom:2.6vw;
+  }
+  .isDesk .headline-result .game-but,
+  .headline-result .game-but{
+    padding-left:10%;
+    text-align: left;
+  }
+  .isDesk .headline-result a, .headline-result a{
+    width:66%;
+    text-align: center;
+    -webkit-border-radius:50px;
+    border-radius:50px;
+  }
+  .isDesk .headline-result a span,
+  .headline-result a span{
+    padding:9% 0 10% 0;
+    font-size:3.4vw;
+    line-height:1.2;
+  }
+
   .isDesk .result-info,
   .result-info{
     position:absolute;
@@ -1678,7 +1686,7 @@ button, input, textarea{
   }
   .isDesk .info-txt p,
   .info-txt p{
-    font-size:3.2vw;
+    font-size:2.6vw;
   }
   .isDesk .info-txt p br:nth-child(2),
   .info-txt p br:nth-child(2) {
@@ -1698,9 +1706,17 @@ button, input, textarea{
     position:relative;
     display:inline-block;
     text-transform:uppercase;
-    font-size:2.2vw;
+    font-size:2vw;
     vertical-align:middle;
     line-height:1.2;
+  }
+  .isDesk .result-detail .game-but,
+  .result-detail .game-but{
+    margin-top:-5.3vw;
+  }
+  .isDesk .result-detail .game-but span,
+  .result-detail .game-but span{
+    font-size:4vw;
   }
   .isDesk .result-detail li,
   .result-detail li{
@@ -1719,124 +1735,38 @@ button, input, textarea{
   .isDesk .result-detail li span:nth-child(4),
   .result-detail li span:nth-child(4) {
     width:24vw;
-    font-size:5.2vw;
+    font-size:5vw;
     text-align:center;
   }
   .isDesk .result-detail .game-but button,
   .result-detail .game-but button {
     width:53%;
+    -webkit-border-radius:50px;
+    border-radius:50px;
   }
   
 }
 
 @media screen and (max-width:520px) and (orientation:portrait) {
-  /*Common*/
-  body:not(.isDesk) .logo img{
-    width:20%;
-  }
-  body:not(.isDesk) .bottle{
-    width:14%;
-    right:8.2%;
+  body:not(.isDesk){
+    position: fixed;
+    left: 0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow: hidden;
   }
   body:not(.isDesk) .game-content{
-    position:fixed;
-    left:0;
+    position: fixed;
+    left: 0;
     top:0;
     width:100%;
     height:100%;
   }
-  body:not(.isDesk) .game-items{
-    position:absolute;
-    width:100%;
-    height:100%;
-  }
   body:not(.isDesk) .game-content::before{
-    display:none;
+    display: none;
   }
 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:13.5%;
-    left:19%;
-    width:62%;
-  }
-  body:not(.isDesk) .placement-main{
-    top:auto;
-    left:9%;
-    width:82%;
-    bottom:-5%;
-  }
-  body:not(.isDesk) .slogan{
-    top:auto;
-    bottom:22%;
-  }
-
-  /*Placement Screen*/
-  body:not(.isDesk) .bubble{
-    right:5%;
-    top:auto;
-    bottom:52%;
-    width:62%;
-  }
-  body:not(.isDesk) .placement{
-    width:94%;
-    bottom:8%;
-  }
-
-
-  /*Result Screen*/
-  body:not(.isDesk) .result-info{
-    padding:1% 3%;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-  body:not(.isDesk) .info-avatar{
-    width:36%;
-  }
-  body:not(.isDesk) .circle{
-    width:108%;
-    height:108%;
-  }
-  body:not(.isDesk) .user-avatar{
-    width:94%;
-    height:94%;
-    left:3%;
-    top:3%;
-  }
-  body:not(.isDesk) .result-info{
-    top:17%;
-  }
-  body:not(.isDesk) .info-txt{
-    padding-top:2%;
-    padding-left:40%;
-  }
-  body:not(.isDesk) .info-txt h2{
-    font-size:4.5vw;
-  }
-  body:not(.isDesk) .info-txt span{
-    font-size:12vw;
-  }
-  body:not(.isDesk) .info-txt p{
-    font-size:2.8vw;
-  }
-  body:not(.isDesk) .result-detail{
-    top:36%;
-    left:12%;
-    width:78%;
-    padding:2% 4% 5% 4%;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-  body:not(.isDesk) .placement-result{
-    width:46%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:50%;
-    left:44%;
-    bottom:20%;
-  }
-
-  /*Animation*/
   .footer.is-result .flower-right .flower:nth-child(1) {
     -webkit-animation:flySP 6.5s 0.5s infinite;
     animation:flySP 6.5s 0.5s infinite;
@@ -1861,416 +1791,719 @@ button, input, textarea{
     -webkit-animation:flySP 6.5s 4.5s infinite;
     animation:flySP 6.5s 4.5s infinite;
   }
+
+}
+
+
+
+/*IP Xplus*/
+@media screen and (max-width:420px)  and (min-width:400px) and (min-height:700px) and (max-height:740px) and (orientation:portrait) { 
+  body:not(.isDesk) .headline{
+    top:15.5%;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-3%;
+  }
   
-}
-
-@media screen and (max-width:420px)  and (min-width:400px) and (min-height:700px) and (max-height:720px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:14%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-8%;
-  }
-  body:not(.isDesk) .slogan{
-    bottom:19%;
-  }
-
-}
-
-@media screen and (max-width:420px)  and (min-width:400px) and (min-height:620px) and (max-height:640px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:15%;
-    left:23%;
-    width:54%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-19%;
-  }
-  body:not(.isDesk) .slogan{
-    bottom:17%;
-  }
-
-  /*Placement Screen*/
-  body:not(.isDesk) .bubble{
-    right:8%;
-    bottom:54%;
-    width:54%;
+  body:not(.isDesk) .bubble {
+    right:0%;
+    top:20%;
+    width:66%;
   }
   body:not(.isDesk) .placement{
     left:-3%;
-    width:90%;
-    bottom:6%;
+    bottom:7%;
+    width:100%;
   }
-
-  /*Result Screen*/
-  body:not(.isDesk) .result-detail{
-    top:38%;
-  }
-  body:not(.isDesk) .placement-result{
-    width:38%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:44%;
-    left:38%;
-    bottom:18%;
-  }
-  
 
 }
 
-@media screen and (max-width:420px)  and (min-width:400px) and (min-height:590px) and (max-height:615px) and (orientation:portrait) { 
-  /*Home Screen*/
+
+/*IP 6,7,8 Plus*/
+@media screen and (max-width:420px)  and (min-width:400px) and (min-height:600px) and (max-height:630px) and (orientation:portrait) { 
+  body:not(.isDesk) .logo {
+    top:2%;
+  }
   body:not(.isDesk) .headline{
-    top:15%;
-    left:26%;
-    width:48%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-19%;
-  }
-  body:not(.isDesk) .slogan{
-    left:12%;
-    bottom:17%;
-    width:76%;
-  }
-
-  
-  /*Result Screen*/
-  body:not(.isDesk) .result-detail{
-    top:38%;
-  }
-  body:not(.isDesk) .placement-result{
-    width:38%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:44%;
-    left:38%;
-    bottom:18%;
-  }
-
-}
-
-@media screen and (max-width:420px)  and (min-width:400px) and (min-height:650px) and (max-height:680px) and (orientation:portrait) { 
-  /*Placement Screen*/
-  body:not(.isDesk) .bubble{
-    right:5%;
-    bottom:52%;
-    width:58%;
-  }
-  body:not(.isDesk) .placement{
-    width:90%;
-  }
-
-}
-
-@media screen and (max-width:390px)  and (min-width:380px) and (min-height:500px) and (max-height:510px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:17%;
-    left:30%;
-    width:40%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-18%;
-    left:15%;
-    width:70%;
-  }
-  body:not(.isDesk) .slogan{
-    left:15%;
-    bottom:17%;
-    width:70%;
-  }
-  
-  /*Result Screen*/
-  body:not(.isDesk) .result-info{
-    -webkit-transform:scale(0.88);
-    transform:scale(0.88);
-  }
-  body:not(.isDesk) .result-detail{
-    top:37.5%;
-    -webkit-transform:scale(0.88);
-    transform:scale(0.88);
-  }
-  body:not(.isDesk) .placement-result{
-    width:32%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:42%;
-    left:37%;
-    bottom:17%;
-  } 
-
-  
-}
-
-@media screen and (max-width:380px)  and (min-width:370px)  and (min-height:620px) and (max-height:660px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:14%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-7%;
-  }
-  body:not(.isDesk) .slogan{
-    bottom:20%;
-  }
-
-}
-
-@media screen and (max-width:380px)  and (min-width:370px)  and (min-height:530px) and (max-height:570px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:15%;
-    left:26%;
-    width:48%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-18%;
-  }
-  body:not(.isDesk) .slogan{
-    bottom:17%;
-  }
-
-  /*Placement Screen*/
-  body:not(.isDesk) .bubble{
-    right:8%;
-    bottom:54%;
-    width:54%;
-  }
-  body:not(.isDesk) .placement{
-    left:-3%;
-    width:90%;
-    bottom:6%;
-  }
-  
-  /*Result Screen*/
-  body:not(.isDesk) .result-detail{
-    top:38%;
-  }
-  body:not(.isDesk) .placement-result{
-    width:38%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:44%;
-    left:38%;
-    bottom:18%;
-  }
-
-}
-
-@media screen and (max-width:380px)  and (min-width:370px)  and (min-height:600px) and (max-height:620px) and (orientation:portrait) { 
-
-  /*Placement Screen*/
-  body:not(.isDesk) .bubble{
-    right:5%;
-    bottom:52%;
-    width:58%;
-  }
-  body:not(.isDesk) .placement{
-    width:90%;
-  }
-
-}
-
-@media screen and (max-width:370px)  and (min-width:358px)  and (min-height:500px) and (max-height:520px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:16%;
-    left:28%;
-    width:44%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-22%;
-  }
-  body:not(.isDesk) .slogan{
-    bottom:17%;
-    left:12%;
-    width:76%;
-  }
-  
-  /*Result Screen*/
-  body:not(.isDesk) .result-detail{
-    top:38%;
-  }
-  body:not(.isDesk) .placement-result{
-    width:36%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:42%;
-    left:38%;
-    bottom:18%;
-  }
-
-}
-
-@media screen and (max-width:370px)  and (min-width:358px)  and (min-height:540px) and (max-height:610px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:14.5%;
+    top:15.5%;
+    font-size:8vw;
   }
   body:not(.isDesk) .placement-main{
     bottom:-12%;
   }
   body:not(.isDesk) .slogan{
-    bottom:17%;
-    
+    left:14%;
+    width:72%;
+  }
+  body:not(.isDesk) .slogan{
+    padding: 3.5% 0;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:3vw;
+  }
+  
+  body:not(.isDesk) .slogan .game-but span {
+    font-size:4vw;
+  }
+
+  
+  body:not(.isDesk) .bubble {
+    right: 4%;
+    top: 16%;
+    width: 56%;
+  }
+  
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  body:not(.isDesk) .result-info {
+    top:15%;
+  }
+  body:not(.isDesk) .result-detail{
+    top:37%;
+  }
+  body:not(.isDesk)  .headline-result{
+    font-size:5.2vw;
+    left:43%;
+    bottom:18%;
+  }
+  body:not(.isDesk) .placement-result{
+    width:43%;
+  }
+  body:not(.isDesk) .headline-result a{
+    width:62%;
+  }
+  body:not(.isDesk) .headline-result a span{
+    font-size:3.5vw;
+  }
+  
+}
+
+
+/*GG*/
+@media screen and (max-width:420px)  and (min-width:400px) and (min-height:600px) and (max-height:615px) and (orientation:portrait) { 
+  body:not(.isDesk) .logo {
+    top:2%;
+  }
+  body:not(.isDesk) .headline{
+    top:15.5%;
+    font-size:8vw;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-14%;
+  }
+  body:not(.isDesk) .slogan{
+    left:14%;
+    width:72%;
+  }
+  body:not(.isDesk) .slogan{
+    padding: 3.5% 0;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:3vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:4vw;
   }
 
 }
 
-@media screen and (max-width:370px)  and (min-width:358px)  and (min-height:540px) and (max-height:592px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:14.5%;
-    left:21%;
-    width:58%;
+
+/*GG*/
+@media screen and (max-width:390px)  and (min-width:380px) and (min-height:480px) and (max-height:510px) and (orientation:portrait) { 
+  body:not(.isDesk) .logo {
+    top:1%;
   }
-
-}
-
-@media screen and (max-width:370px)  and (min-width:358px)  and (min-height:500px) and (max-height:505px) and (orientation:portrait) { 
-  /*Home Screen*/
   body:not(.isDesk) .headline{
-    top:16%;
-    left:28%;
-    width:44%;
+    top:17%;
+    font-size:6vw;
   }
   body:not(.isDesk) .placement-main{
     bottom:-24%;
   }
   body:not(.isDesk) .slogan{
-    bottom:17%;
-    left:15%;
-    width:70%;
+    left:14%;
+    width:72%;
+  }
+  body:not(.isDesk) .slogan{
+    padding: 2.5% 0;
+    bottom:18%;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:2.8vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:3vw;
+  }
+
+  body:not(.isDesk) .bubble {
+    right: 8%;
+    top: 15%;
+    width: 50%;
+  }
+  body:not(.isDesk) .placement{
+   width: 88%;
   }
 
   
-  /*Result Screen*/
-  body:not(.isDesk) .result-info{
-    top:18%;
-    -webkit-transform:scale(0.9);
-    transform:scale(0.9);
+  
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.76);
+    transform: scale(0.76);
+  }
+  body:not(.isDesk) .result-info {
+    top:14%;
   }
   body:not(.isDesk) .result-detail{
-    -webkit-transform:scale(0.9);
-    transform:scale(0.9);
+    top:35%;
+  }
+  body:not(.isDesk)  .headline-result{
+    font-size:5vw;
+    left:38%;
+    bottom:17%;
+  }
+  body:not(.isDesk) .placement-result{
+    width:38%;
+  }
+  body:not(.isDesk) .headline-result a{
+    width:62%;
+  }
+  body:not(.isDesk) .headline-result a span{
+    font-size:3vw;
   }
 
-  body:not(.isDesk) .placement-result{
-    width:36%;
+}
+
+/*GG*/
+@media screen and (max-width:370px)  and (min-width:358px) and (min-height:540px) and (max-height:600px) and (orientation:portrait) { 
+  body:not(.isDesk) .headline{
+    top:16%;
+    font-size:9vw;
   }
-  body:not(.isDesk) .headline-result{
-    width:42%;
-    left:38%;
-    bottom:18%;
+  body:not(.isDesk) .placement-main{
+    bottom:-6%;
+  }
+  body:not(.isDesk) .slogan{
+    bottom:20%;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:3.4vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:4vw;
+  }
+
+  body:not(.isDesk) .bubble {
+    right: 1%;
+    top: 18%;
+    width: 64%;
+  }
+  body:not(.isDesk) .placement{
+   width: 98%;
+  }
+
+  
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  body:not(.isDesk) .result-info {
+    top:15%;
+  }
+  body:not(.isDesk) .result-detail{
+    top:35%;
+  }
+  
+}
+
+/*LG*/
+@media screen and (max-width:370px)  and (min-width:358px) and (min-height:540px) and (max-height:594px) and (orientation:portrait) { 
+  body:not(.isDesk) .headline{
+    top:16%;
+    font-size:8vw;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-6%;
+  }
+  body:not(.isDesk) .slogan{
+    bottom:20%;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:3.4vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:4vw;
+  }
+
+  
+  body:not(.isDesk) .bubble {
+    right: 1%;
+    top: 18%;
+    width: 60%;
+  }
+  body:not(.isDesk) .placement{
+   width: 98%;
   }
 
 
 }
 
-@media screen and (max-width:370px)  and (min-width:358px)  and (min-height:540px) and (max-height:570px) and (orientation:portrait) { 
-  /*Home Screen*/
+
+/*GG*/
+@media screen and (max-width:370px)  and (min-width:358px) and (min-height:500px) and (max-height:520px) and (orientation:portrait) { 
+  body:not(.isDesk) .logo {
+    top:1%;
+  }
   body:not(.isDesk) .headline{
+    top:16%;
+    font-size:7vw;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-17%;
+  }
+  body:not(.isDesk) .slogan{
+    left:14%;
+    width:72%;
+  }
+  body:not(.isDesk) .slogan{
+    padding: 2.5% 0;
+    bottom:18%;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:2.8vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:3vw;
+  }
+  
+  body:not(.isDesk) .bubble {
+    right: 8%;
+    top: 15%;
+    width: 54%;
+  }
+  body:not(.isDesk) .placement{
+   width: 92%;
+  }
+
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.86);
+    transform: scale(0.86);
+  }
+  body:not(.isDesk) .result-info {
+    top:14%;
+  }
+  body:not(.isDesk) .result-detail{
+    top:36%;
+  }
+  body:not(.isDesk)  .headline-result{
+    font-size:5vw;
+    left:38%;
+    bottom:17%;
+  }
+  body:not(.isDesk) .placement-result{
+    width:38%;
+  }
+  body:not(.isDesk) .headline-result a{
+    width:62%;
+  }
+  body:not(.isDesk) .headline-result a span{
+    font-size:3vw;
+  }
+  
+
+}
+
+
+/*LG*/
+@media screen and (max-width:370px)  and (min-width:358px) and (min-height:500px) and (max-height:510px) and (orientation:portrait) { 
+  body:not(.isDesk) .logo {
+    top:1%;
+  }
+  body:not(.isDesk) .headline{
+    top:16%;
+    font-size:6.6vw;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-17%;
+  }
+  body:not(.isDesk) .slogan{
+    left:14%;
+    width:72%;
+  }
+  body:not(.isDesk) .slogan{
+    padding: 2.5% 0;
+    bottom:18%;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:2.8vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:3vw;
+  }
+  
+  body:not(.isDesk) .bubble {
+    right: 6%;
+    top: 15%;
+    width: 54%;
+  }
+  body:not(.isDesk) .placement{
+   width: 90%;
+  }
+
+}
+
+
+/*SS S3  S4 S5 Note5*/
+@media screen and (max-width:370px)  and (min-width:358px) and (min-height:550px) and (max-height:564px) and (orientation:portrait) { 
+  body:not(.isDesk) .headline{
+    top:17%;
+    font-size:8vw;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-12%;
+  }
+  body:not(.isD7sk) .slogan{
+    padding:3.5% 0;
+    bottom:20%;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:3vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:3.8vw;
+  }
+
+  body:not(.isDesk) .bubble {
+    right: 6%;
+    top: 18%;
+    width: 54%;
+  }
+  body:not(.isDesk) .placement{
+   width: 96%;
+  }
+
+  
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.86);
+    transform: scale(0.86);
+  }
+  body:not(.isDesk) .result-info {
+    top:16%;
+  }
+  body:not(.isDesk) .result-detail{
+    top:36%;
+  }
+  body:not(.isDesk) .placement-result{
+    width:46%;
+  }
+  body:not(.isDesk)  .headline-result{
+    font-size:5.2vw;
+    left:44%;
+  }
+  body:not(.isDesk) .headline-result a span{
+    font-size:3vw;
+  } 
+  
+}
+
+
+/*SS S8 S9 S9+*/
+@media screen and (max-width:370px)  and (min-width:358px) and (min-height:580px) and (max-height:610px) and (orientation:portrait) { 
+  body:not(.isDesk) .headline{
+    top:17%;
+    font-size:8vw;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-5%;
+  }
+  body:not(.isD7sk) .slogan{
+    padding:3.5% 0;
+    bottom:23%;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:3vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:3.8vw;
+  }
+  
+  body:not(.isDesk) .bubble {
+    right: 2%;
+    top: 19%;
+    width: 62%;
+  }
+  body:not(.isDesk) .placement{
+    left:-3%;
+   width: 98%;
+  }
+
+  
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  body:not(.isDesk) .result-info {
+    top:16%;
+  }
+  body:not(.isDesk) .result-detail{
+    top:36%;
+  }
+  body:not(.isDesk) .placement-result{
+    width:48%;
+  }
+  body:not(.isDesk)  .headline-result{
+    font-size:5.2vw;
+    left:48%;
+    bottom:22%;
+  }
+  body:not(.isDesk) .headline-result a span{
+    font-size:3vw;
+  } 
+
+
+}
+
+
+/*IP X XMAS*/
+@media screen and (max-width:380px)  and (min-width:370px) and (min-height:580px) and (max-height:660px) and (orientation:portrait) { 
+  body:not(.isDesk) .headline{
+    top:15.5%;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-4%;
+  }
+  
+  body:not(.isDesk) .bubble {
+    right:0%;
+    top:19%;
+    width:66%;
+  }
+  body:not(.isDesk) .placement{
+    left:-3%;
+    bottom:7%;
+    width:100%;
+  }
+
+
+}
+
+/*IP  6,7,8*/
+@media screen and (max-width:380px)  and (min-width:370px) and (max-height:560px) and (orientation:portrait) { 
+  body:not(.isDesk) .logo {
+    top:2%;
+  }
+  body:not(.isDesk) .headline{
+    top:16.5%;
+    font-size:7vw;
+  }
+  body:not(.isDesk) .placement-main{
+    bottom:-12%;
+  }
+  body:not(.isDesk) .slogan{
+    left:14%;
+    width:72%;
+  }
+  body:not(.isDesk) .slogan{
+    padding: 3.5% 0;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:3vw;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:4vw;
+  }
+
+  body:not(.isDesk) .bubble {
+    right: 4%;
+    top: 15%;
+    width: 58%;
+  }
+
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.86);
+    transform: scale(0.86);
+  }
+  body:not(.isDesk) .result-info {
     top:15%;
-    left:23%;
-    width:54%;
+  }
+  body:not(.isDesk) .result-detail{
+    top:36%;
+  }
+  body:not(.isDesk)  .headline-result{
+    font-size:5.2vw;
+    left:43%;
+    bottom:18%;
+  }
+  body:not(.isDesk) .placement-result{
+    width:44%;
+  }
+  body:not(.isDesk) .headline-result a{
+    width:62%;
+  }
+  body:not(.isDesk) .headline-result a span{
+    font-size:3.5vw;
+  }
+  
+
+}
+
+
+/*IP*/
+@media screen and (max-width:350px) and (orientation:portrait) { 
+  body:not(.isDesk) .logo {
+    top:2%;
+  }
+  body:not(.isDesk) .headline{
+    top:16.5%;
+    font-size:7vw;
   }
   body:not(.isDesk) .placement-main{
     bottom:-16%;
   }
   body:not(.isDesk) .slogan{
-    bottom:17%;
-  }
-
-  
-  /*Result Screen*/
-  body:not(.isDesk) .result-info{
-    top:18%;
-  }
-  body:not(.isDesk) .result-detail{
-    top:39%;
-  }
-
-  body:not(.isDesk) .placement-result{
-    width:36%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:42%;
-    left:38%;
-    bottom:18%;
-  }
-
-
-}
-
-@media screen and (max-width:370px)  and (min-width:358px)  and (min-height:690px) and (max-height:700px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:17%;
-  }
-  
-  /*Placement Screen*/
-  body:not(.isDesk) .bubble{
-    right:2%;
-    top:auto;
-    bottom:50%;
-    width:68%;
-  }
-  body:not(.isDesk) .placement{
-    left:-5%;
-    width:106%;
-    bottom:7%;
-  }
-
-}
-
-@media screen and (max-width:350px) and (orientation:portrait) { 
-  /*Home Screen*/
-  body:not(.isDesk) .headline{
-    top:16%;
-    left:29%;
-    width:42%;
-  }
-  body:not(.isDesk) .placement-main{
-    bottom:-22%;
+    left:14%;
+    width:72%;
   }
   body:not(.isDesk) .slogan{
-    bottom:17%;
-    left:13%;
-    width:74%;
+    padding: 3.5% 0;
   }
-
-  /*Placement Screen*/
-  body:not(.isDesk) .bubble{
-    right:15%;
-    bottom:56%;
-    width:44%;
+  body:not(.isDesk) .slogan h2{
+    font-size:3vw;
   }
-  body:not(.isDesk) .placement{
-    left:-3%;
-    width:88%;
-    bottom:6%;
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:4vw;
   }
   
-  /*Result Screen*/
+  body:not(.isDesk) .bubble {
+    right: 11%;
+    top: 16%;
+    width: 48%;
+  }
+  
+  
+  body:not(.isDesk) .result-info,
+  body:not(.isDesk) .result-detail {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  body:not(.isDesk) .result-info {
+    top:14.5%;
+  }
   body:not(.isDesk) .result-detail{
-    top:38%;
+    top:35%;
   }
-  body:not(.isDesk) .placement-result{
-    width:38%;
-  }
-  body:not(.isDesk) .headline-result{
-    width:44%;
-    left:38%;
+  body:not(.isDesk)  .headline-result{
+    font-size:5.2vw;
+    left:43%;
     bottom:18%;
   }
+  body:not(.isDesk) .placement-result{
+    width:44%;
+  }
+  body:not(.isDesk) .headline-result a{
+    width:62%;
+  }
+  body:not(.isDesk) .headline-result a span{
+    font-size:3.5vw;
+  }
+  
 
 }
+
+
+
+/*IP  6,7,8*/
+@media screen and (max-width:520px) and (orientation:portrait) { 
+
+  body.isFace .logo {
+    top:2%;
+  }
+  body.isFace .headline{
+    top:16.5%;
+    font-size:7vw;
+  }
+  body.isFace .placement-main{
+    bottom:-12%;
+  }
+  body.isFace .slogan{
+    left:14%;
+    width:72%;
+  }
+  body.isFace .slogan{
+    padding: 3.5% 0;
+  }
+  body.isFace .slogan h2{
+    font-size:3vw;
+  }
+  body.isFace .slogan .game-but span{
+    font-size:4vw;
+  }
+
+  body.isFace .bubble {
+    right: 4%;
+    top: 15%;
+    width: 58%;
+  }
+
+  body.isFace .result-info,
+  body.isFace .result-detail {
+    -webkit-transform: scale(0.86);
+    transform: scale(0.86);
+  }
+  body.isFace .result-info {
+    top:15%;
+  }
+  body.isFace .result-detail{
+    top:36%;
+  }
+  body.isFace .headline-result{
+    font-size:5.2vw;
+    left:43%;
+    bottom:18%;
+  }
+  body.isFace .placement-result{
+    width:44%;
+  }
+  body.isFace .headline-result a{
+    width:62%;
+  }
+  body.isFace .headline-result a span{
+    font-size:3.5vw;
+  }
+  
+
+}
+
 
 
 @media screen and (max-width:840px) and (orientation:landscape) {
+  /*Common*/  
+  .fs-pc{
+    display:none;
+  }
+  .fs-sp {
+    display:block;
+  }
+
+  body:not(.isDesk) .game-content{
+    position: fixed;
+    left: 0;
+    top:0;
+    width:100%;
+    height:100%;
+  }
+  body:not(.isDesk) .game-content::before{
+    display: none;
+  }
+
   /*Common*/  
   .fs-pc{
     display:none;
@@ -2284,19 +2517,20 @@ button, input, textarea{
   .logo img {
     width:8%;
   }
-  .footer{
+
+  body:not(.isDesk) .footer .bg{
     background:url(../images/footer-pc.png) no-repeat center bottom;
     background-size:100% auto;
   }
-  .slogan-bot{
-    left:20%;
-    bottom:5%;
-    width:44%;
+  body:not(.isDesk) .slogan-bot{
+    left: 20%;
+    bottom: 7%;
+    font-size: 2.4vw;
   }
-  .bottle{
-    right:14%;
+  body:not(.isDesk) .bottle{
+    right:12%;
     bottom:4%;
-    width:8%;
+    width:10%;
   }
   
   .flower-left .flower:nth-child(1){
@@ -2314,7 +2548,6 @@ button, input, textarea{
     left:10%;
     bottom:12%;
   }
-  
   .flower-right .flower:nth-child(1),
   .flower-right .flower:nth-child(4) {
     width:2%;
@@ -2338,127 +2571,171 @@ button, input, textarea{
     width:2%;
   }
   
-  .main-bg{
+  body:not(.isDesk) .main-bg{
     background:url(../images/bg-main.jpg) no-repeat center center;
     background-size:cover;
   }
-  .sub-bg {
+  body:not(.isDesk) .sub-bg {
     background:url(../images/bg-sub.jpg) no-repeat center center;
     background-size:cover;
   }
   
+
   /*Home Screen*/
-  .placement-main{
-    width:44%;
-    top:8%;
+  body:not(.isDesk) .headline{
+    left:50%;
+    top:23%;
+    -webkit-transform: translate(-50%,0) rotate(-10deg);
+    transform: translate(-50%,0) rotate(-10deg);
+    font-size:3.8vw;
   }
-  .headline{
-    left:37%;
-    top:20%;
+  body:not(.isDesk) .placement-main{
+    position: absolute;
+    left:1%;
+    top: 4%;
+    width: 48%;
+    bottom:auto;
+    height: auto;
   }
-  .clothes-box{
+  body:not(.isDesk) .placement-main span{
+    background: url(../images/placement-main.png) left 0;
+    background-size: auto 100%;
+  }
+  body:not(.isDesk) .placement-main::before{
+    padding-top:100%;
+  }
+  body:not(.isDesk) .clothes-box{
     left:32%;
     top:53%;
     width:42%;
-  } 
-  .slogan{
-    top:28%;
+  }
+  body:not(.isDesk) .slogan{
+    top:auto;
+    width: auto;
+    left:auto;
+    right: 4%;
+    padding:1.5% 1.5% 3% 1.5%;
+    bottom:48%;
+  }
+  body:not(.isDesk) .slogan h2 br:nth-child(1), body:not(.isDesk) .slogan h2 br:nth-child(3) {
+    display: block;
+  }
+  body:not(.isDesk) .slogan h2{
+    font-size:2vw;
+  }
+  body:not(.isDesk) .slogan .game-but button{
+    width:64%;
+  }
+  body:not(.isDesk) .slogan .game-but span{
+    font-size:2vw;
   }
   
   /*Placement Screen*/
-  .bubble{
-    right:12%;
-    top:16%;
-    width:42%;
-  }
-  .placement{
-    left:12%;
-    top:7%;
+  body:not(.isDesk) .bubble{
+    right:10%;
+    top:15%;
     width:44%;
+    
+  }
+  body:not(.isDesk) .placement{
+    left:12%;
+    top:1%;
+    width:44%;
+    bottom:auto;
   }
 
+
   /*Result Screen*/
-  .placement-result{
+  body:not(.isDesk) .placement-result{
     left:38%;
     top:auto;
-    bottom:0;
-    width:23%;
+    bottom:-10%;
+    width:30%;
   }
-  .headline-result{
-    left:59%;
-    bottom:34%;
-    top:auto;
-    width:24%;
+  body:not(.isDesk) .headline-result{
+    left:auto;
+    right:7%;
+    top:16%;
+    bottom:auto;
+    font-size:3.2vw;
   }
-  .result-info{
+  body:not(.isDesk) .result-info{
     left:4.5%;
-    top:18%;
+    top:13%;
     width:33%;
     padding:0.5% 1%;
   }
-  .result-info::before{
+  body:not(.isDesk) .result-info::before{
     width:78%;
     -webkit-border-radius:0 10px 10px 0;
     border-radius:0 10px 10px 0;
   }
-  .info-avatar{
+  body:not(.isDesk) .info-avatar{
     width:38%;
   }
-  .user-avatar{
+  body:not(.isDesk) .user-avatar{
     left:3%;
     top:3%;
     width:94%;
     height:94%;
   }
-  .circle{
-    width:107%;
-    height:107%;
+  body:not(.isDesk) .circle{
+    width:109%;
+    height:109%;
   }
-  .info-txt{
+  body:not(.isDesk) .info-txt{
     padding-top:5%;
     padding-left:40%;
   }
-  .info-txt h2{
+  body:not(.isDesk) .info-txt h2{
     font-size:1.6vw;
   }
-  .info-txt span{
+  body:not(.isDesk) .info-txt span{
     font-size:4vw;
   }
-  .info-txt p{
+  body:not(.isDesk) .info-txt p{
     font-size:1.2vw;
   }
-  .info-txt p br:nth-child(2) {
+  body:not(.isDesk) .info-txt p br:nth-child(2) {
     display:none;
   }
-  .result-detail{
+  body:not(.isDesk) .result-detail{
     left:4.5%;
-    top:48%;
+    top:43%;
     width:33%;
     padding:1.5% 1% 3% 1.5%;
     -webkit-border-radius:10px;
     border-radius:10px;
     z-index:10;
   }
-  .result-detail span{
+  body:not(.isDesk) .result-detail span{
     font-size:1vw;
   }
-  .result-detail .game-but{
+  body:not(.isDesk) .result-detail .game-but{
     margin-top:-2vw;
   }
-  .result-detail li span:nth-child(1) {
+  body:not(.isDesk) .result-detail .game-but span{
+    font-size:1.4vw;
+  }
+  body:not(.isDesk) .result-detail li span:nth-child(1) {
     width:5.4vw;
     font-size:2.2vw;
   }
-  .result-detail li span:nth-child(2) {
+  body:not(.isDesk) .result-detail li span:nth-child(2) {
     width:4.6vw;
   }
-  .result-detail li span:nth-child(4) {
+  body:not(.isDesk) .result-detail li span:nth-child(4) {
     width:8vw;
     font-size:1.8vw;
   }
-  .result-detail .game-but button {
-    width:53%;
+  body:not(.isDesk) .headline-result a{
+    width:70%;
   }
+  body:not(.isDesk)  .headline-result .game-but span{
+    padding:8% 0 10% 0;
+    font-size:2vw;
+  }
+
   
   /*Animation*/
   .footer.is-result .flower-right .flower:nth-child(1) {
@@ -2486,49 +2763,39 @@ button, input, textarea{
     animation:flyMax 6.5s 4.5s infinite;
   }
   
-  
 }
 
 @media screen and (max-width:840px) and (min-height:380px) and (max-height:420px) and (orientation:landscape),
 screen and (max-width:700px) and (orientation:landscape) {
-  .bottle{
-    width:10%;
-  }
-  
-  /*Home Screen*/
-  .placement-main{
-    top:15%;
-  }
-   
   /*Placement Screen*/
-  .placement{
-    left:10%;
-    top:9%;
-    width:46%;
+  body:not(.isDesk) .bubble{
+    right: 4%;
+    top: 17%;
+    width: 50%;
+  }
+  body:not(.isDesk) .placement{
+    left: 9%;
+    top: 6%;
+    width: 48%;
+    bottom: auto;
   }
 
-  /*Result Screen*/
-  .result-info{
-    top:21%;
+  body:not(.isDesk) .result-info{
+    top:17%;
   }
-  .placement-result{
-    width:29%;
+  body:not(.isDesk) .placement-result{
+    left: 37%;
+    top:auto;
+    bottom: 0;
+    width: 34%;
   }
-  .headline-result{
-    left:64%;
-    bottom:40%;
+  body:not(.isDesk) .headline-result{
+    right:4%;
+    font-size:3.4vw;
   }
-  .headline-result{
-    width:26%;
-  }
-  .result-detail .game-but button {
-    width:60%;
-  }
-  .circle{
-    width:108%;
-    height:108%;
-  }
-  
+
+
+
   /*Animation*/
   .footer.is-result .flower-right .flower:nth-child(1) {
     -webkit-animation:flySmall 6.5s 0.5s infinite;
@@ -2557,10 +2824,9 @@ screen and (max-width:700px) and (orientation:landscape) {
   
 }
 
-
 /*Share css*/
 .share-content{
-  position:fixed;
+  position: absolute;
   display:block;
   left:0;
   top:0;
@@ -2594,8 +2860,8 @@ screen and (max-width:700px) and (orientation:landscape) {
 
 .share-content .result-info{
   position:absolute;
-  left:7%;
-  top:19%;
+  left:7% !important;
+  top:19% !important;
   width:30%;
   height:auto;
   padding:1.7% 2%;
@@ -2657,7 +2923,7 @@ screen and (max-width:700px) and (orientation:landscape) {
   display:block;
   padding-left:48%;
   padding-top:2%;
-  color:#131b4d;
+  columns: #131b4d;;
   text-transform:uppercase;
 }
 .share-content .info-txt h2{
@@ -2681,8 +2947,8 @@ screen and (max-width:700px) and (orientation:landscape) {
 }
 .share-content .result-detail{
   position:absolute;
-  left:7%;
-  top:49%;
+  left:7%  !important;
+  top:49% !important;
   width:30%;
   height:auto;
   background-color:#fff;
@@ -2719,4 +2985,11 @@ screen and (max-width:700px) and (orientation:landscape) {
 }
 .share-content .result-detail li:last-child{
   margin:0;
+}
+
+canvas{
+  position: fixed;
+  left:0;
+  top:0;
+  z-index: -9;
 }

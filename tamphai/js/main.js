@@ -4,6 +4,11 @@ var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 	ua
 );
 
+function isFacebookApp() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+}
+
 if(!isMobile) {
 	$('body').addClass('isDesk');
 }
@@ -72,6 +77,7 @@ function CountUp(obj, start, end, duration) {
 		current += increment;
 		$(obj).find('small').html(current);
 		if (current == end) {
+			$(obj).addClass('is-done');
 			clearInterval(timer);
 		}
 	}, stepTime);
@@ -120,7 +126,10 @@ function fsEvent() {
 
 	$('#btnShare').on('click', function () {
 		if(isShare) {
-			craeteCanvas();
+			$('html,body').scrollTop(0);
+			setTimeout(function(){
+				craeteCanvas();
+			},100);
 			isShare = false;
 		}
 	});
@@ -128,20 +137,24 @@ function fsEvent() {
 
 function craeteCanvas() {
 	$('canvas').remove();
-	html2canvas(document.querySelector("#share-box")).then(canvas => {
+
+	html2canvas(document.querySelector("#share-box"), {
+		scale:1
+	}).then(function(canvas) {
 		document.body.appendChild(canvas);
 		setTimeout(function () {
 			var myCanvas = document.getElementsByTagName("canvas")[0];
-			var url = myCanvas.toDataURL("image/png", 0.1);
+			var url = myCanvas.toDataURL("image/png");
 			console.log(url);
 		}, 500);
 	});
+
 }
 
 function randomAnswer() {
 	var indexTitle = Math.floor(Math.random() * 5);
 	var indexDetail = Math.floor(Math.random() * 2);
-	indexTitle = 0;
+	indexTitle = 4;
 	indexDetail = 0;
 	var title = answers[indexTitle].title;
 	var detail = answers[indexTitle].detail[indexDetail].content;
@@ -164,35 +177,6 @@ function Rotate() {
 
 }
 
-// Func Resize
-function Resize() {
-
-	// Need detect not mobile when resize because in mobile scrolling call resize
-	if (!isMobile) {
-		setTimeout(function(){
-			resetLayout();
-		},100);
-		
-	}
-
-
-}
-
-
-
-function resetLayout() {
-	var ratio = window.innerWidth/window.innerHeight;
-	console.log(ratio)
-	if(ratio >= 1920/1080) {
-		$('body').addClass('byHeight');
-	}else {
-		$('body').removeClass('byHeight');
-	}
-}
-
-// Page Rezize
-$(window).on('resize', Resize);
-
 // Page Rotate
 $(window).on('orientationchange', Rotate);
 
@@ -205,7 +189,7 @@ $(window).on('load', function () {
 		//$('.main-bg').addClass('off');
 		//$('.footer').addClass('is-result');
 		$('.step-01').addClass('current');
-	}, 1000); // 100ms is detected good
+	}, 500); // 100ms is detected good
 
 });
 
@@ -216,6 +200,11 @@ $(window).on('load', function () {
 	setTimeout(function () {
 		Count();
 	}, 500);
-	resetLayout();
+		
+	var isFace = isFacebookApp();
 
+	if(isFace) {
+		$('body').addClass('isFace');
+	}
+	
 })();
