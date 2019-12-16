@@ -2431,7 +2431,7 @@ button, input, textarea{
     font-size:7vw;
   }
   body.isFace .placement-main{
-    bottom:-12%;
+    bottom:-16%;
   }
   body.isFace .slogan{
     left:14%;
@@ -2446,23 +2446,24 @@ button, input, textarea{
   body.isFace .slogan .game-but span{
     font-size:4vw;
   }
-
+  
   body.isFace .bubble {
-    right: 4%;
-    top: 15%;
-    width: 58%;
+    right: 11%;
+    top: 16%;
+    width: 48%;
   }
-
+  
+  
   body.isFace .result-info,
   body.isFace .result-detail {
-    -webkit-transform: scale(0.86);
-    transform: scale(0.86);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
   }
   body.isFace .result-info {
-    top:15%;
+    top:14.5%;
   }
   body.isFace .result-detail{
-    top:36%;
+    top:35%;
   }
   body.isFace .headline-result{
     font-size:5.2vw;
