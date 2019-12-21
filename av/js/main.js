@@ -1,51 +1,28 @@
-// Detect Mobile
-var ua = navigator.userAgent;
-var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-	ua
-);
 
+// var isWebP = false;
+// function WebpIsSupported(callback) {
+// 	// If the browser doesn't has the method createImageBitmap, you can't display webp format
+// 	if (!window.createImageBitmap) {
+// 		callback(false);
+// 		return;
+// 	}
 
-var IEMobile = ua.match(/IEMobile/i);
-var isIE9 = /MSIE 9/i.test(ua);
-var isIE10 = /MSIE 10/i.test(ua);
-var isIE11 = /rv:11.0/i.test(ua) && !IEMobile ? true : false;
+// 	// Base64 representation of a white point image
+// 	var webpdata = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoCAAEAAQAcJaQAA3AA/v3AgAA=';
 
-if (isIE9 || isIE10 || isIE11) {
-	$('body').addClass('isIE');
-}
+// 	// Retrieve the Image in Blob Format
+// 	fetch(webpdata).then(function (response) {
+// 		return response.blob();
+// 	}).then(function (blob) {
+// 		// If the createImageBitmap method succeeds, return true, otherwise false
+// 		createImageBitmap(blob).then(function () {
+// 			callback(true);
+// 		}, function () {
+// 			callback(false);
+// 		});
+// 	});
+// }
 
-function isFacebookApp() {
-	var ua = navigator.userAgent || navigator.vendor || window.opera;
-	return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-}
-
-var isWebP = false;
-function WebpIsSupported(callback) {
-	// If the browser doesn't has the method createImageBitmap, you can't display webp format
-	if (!window.createImageBitmap) {
-		callback(false);
-		return;
-	}
-
-	// Base64 representation of a white point image
-	var webpdata = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoCAAEAAQAcJaQAA3AA/v3AgAA=';
-
-	// Retrieve the Image in Blob Format
-	fetch(webpdata).then(function (response) {
-		return response.blob();
-	}).then(function (blob) {
-		// If the createImageBitmap method succeeds, return true, otherwise false
-		createImageBitmap(blob).then(function () {
-			callback(true);
-		}, function () {
-			callback(false);
-		});
-	});
-}
-
-if (isMobile) {
-	$('body').addClass('isSP');
-}
 
 var gifts = [
 	{
@@ -127,7 +104,7 @@ function inputHolder() {
 }
 
 // Events Common
-function fsEvent() {
+//function fsEvent() {
 	// Open select
 	$(document).on('click', '.fs-select-header', function (e) {
 		var box = $(this).parent();
@@ -172,7 +149,7 @@ function fsEvent() {
 	// JoinNoew
 	$('#btnJoinNow').click(function () {
 		
-		//$('.item-02, .fs-overlay-condition').css({'display': 'block'});
+		$('.item-02, .fs-overlay-condition').css({'display': 'block'});
 
 		$("html, body").scrollTop(64);
 
@@ -294,28 +271,9 @@ function fsEvent() {
 		}
 	});
 
-	inputHolder();
+	//inputHolder();
 
-}
-
-// LazyLoad
-function ImgLazyLoad() {
-	console.log('asas');
-	lazyImages = document.querySelectorAll('.fs-lazy');
-
-	// Lazy images
-	[].slice.call(lazyImages).forEach(function (elm) {
-		if (isWebP) {
-			elm.setAttribute('src', elm.getAttribute('data-webp'));
-		} else {
-			elm.setAttribute('src', elm.getAttribute('data-original'));
-		}
-		elm.classList.remove('fs-lazy');
-	});
-
-
-}
-
+//}
 
 function randomAnswer() {
 	var index = Math.floor(Math.random() * 8);
@@ -332,9 +290,7 @@ function randomAnswer() {
 	$('.brief-main').html(pics);
 	$('.brief-detail').html(brief);
 	$('.step-03 .item-title p').html(gifts[index].title);
-
-	ImgLazyLoad();
-
+	ImgLazyLoad('.item-02');
 }
 
 function resetLayout() {
@@ -345,7 +301,6 @@ function resetLayout() {
 	}
 
 }
-
 
 // Func Resize
 function Resize() {
@@ -375,57 +330,19 @@ function Rotate() {
 // Page Rezize
 $(window).on('resize', Resize);
 
-
 // Page Rotate
 $(window).on('orientationchange', Rotate);
 
 //  Page load
 $(window).on('load', function () {
 
-	setTimeout(function () {
-		//game-content
-		
-		$('.fs-loading').fadeOut(100, function(){
-
-			$('.fs-loading').remove();
-			$('.game-content').css({ 'opacity': 1 });
-
-			$('.item-01').addClass('active');
-			//$('.item-01').addClass('active');
-
-			fsEvent();
-			
-			$('.item-02, .fs-overlay-condition').css({'display': 'block'});
-
-		});
-	}, 150); // 100ms is detected good
+	$('.fs-loading').fadeOut(500, function(){
+		$('.fs-loading').remove();
+	});
 
 });
 
 // Page Ready
 (function () {
-	
 	resetLayout();
-	
-	var isFace = isFacebookApp();
-	if (isFace) {
-		$('body').addClass('isFace');
-	}
-	
-	$('body').addClass('is-webp');
-	isWebP = true;
-	
-	ImgLazyLoad();
-
-	// WebpIsSupported(function (isSupported) {
-	// 	if (isSupported) {
-	// 		$('body').addClass('is-webp');
-	// 		isWebP = true;
-	// 	} else {
-	// 		$('body').addClass('no-webp');
-	// 	}
-	// 	ImgLazyLoad();
-		
-	// });
-
 })();
