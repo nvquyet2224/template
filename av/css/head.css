@@ -1,0 +1,36 @@
+
+@media screen and (max-width:1100px) {
+	.fs_header_inner {
+		padding:0 20px;	
+	}
+	
+	.fs_main_menu, .fs_header_right .fs_sub_menu, .fs_header_tool li:nth-child(1) {
+		display:none;	
+	}
+	
+	.fs_header_tool {
+		margin-right:-5px;
+	}
+	
+	.fs_header_tool li {
+		margin:0;
+		height:62px;
+	}
+	
+	.fs_header_inner::before {
+		content:'';
+		position:absolute;
+		top:21px;
+		width:26px;
+		height:20px;
+		background-image:url(../images/ico-new-gnb-menu-mo.svg);
+		background-position:0 0;
+		background-size:100% auto;
+	}
+}
+
+
+
+  
+
+

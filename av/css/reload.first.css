@@ -1,0 +1,635 @@
+.fs-hide-txt{
+	font-size:0;
+	line-height:0;
+  }
+  .item-02::before{
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	padding-top:62.5%;
+  }
+  .game-step{
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	visibility:hidden;
+	  opacity:0;
+	  -webkit-transition:opacity 0.3s ease-in-out 0s, visibility 0s linear 0.3s;	
+	transition:opacity 0.3s ease-in-out 0s, visibility 0s linear 0.3s;
+  }
+  .item-02 .step-01 .item-title,
+.item-02 .step-02 .item-title,
+.item-02 .step-03 .item-title,
+.item-02 .step-04 .item-title{
+  padding:3vw 0 1.5vw 0;
+  text-align:center;
+}
+.main-box{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+  }
+  .main-pic{
+	position:relative;
+	display:block;
+	width:20%;
+	height:auto;
+	line-height:0;
+	margin:0 auto 6.3vw auto;
+  }
+  .main-pic img{
+	width:100%;
+	height:auto;
+  }
+  .step-02 .game-but{
+	position:absolute;
+	width:14%;
+	left:58%;
+	top:54%
+  }
+  .step-02 .game-but button{
+	width:63%;
+	height:auto;
+  }
+  .item-02 .game-but p {
+	margin-bottom:1vw;
+	font-size:1.1111vw;
+	color:#fff;
+  }
+  .volume-but{
+	position:absolute;
+	left:2.77%;
+	top:66%;
+	width:5%;
+	z-index:1;
+	cursor: pointer;
+  }
+  .volume-but::before{
+	content:'';
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	padding-top:100%;
+  }
+  .volume-but span{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+  }
+  .volume-but span::before,
+  .volume-but span::after{
+	content:'';
+	position:absolute;
+	left:0;
+	top:0;
+	display:block;
+	width:100%;
+	height:100%;
+	-webkit-transition:opacity 0.3s ease-in-out;
+	transition:opacity 0.3s ease-in-out;
+  }
+  .is-webp .volume-but span::before{
+	background:url(../images/volume.webp) no-repeat center center;
+	background-size:cover;
+  }
+  .volume-but span::after{
+	opacity:0;
+  }
+  .is-webp .volume-but span::after{
+	background:url(../images/volume-off.webp) no-repeat center center;
+	background-size:cover;
+  }
+  .result-box{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+  }
+  .result-pic{
+	position:relative;
+	display:block;
+	width:30%;
+	height:auto;
+	line-height:0;
+	margin:0 auto;
+	left:-5%;
+  }
+  .step-04 .item-title{
+	z-index:1;
+  }
+  .step-04 .item-title h2{
+	font-size:4.4444vw;
+  }
+  .brief-box{
+	position:relative;
+	display:block;
+	width:48%;
+	height:auto;
+	margin:0 auto;
+  }
+  .brief-main{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	margin:-7vw auto 0 auto;
+  }
+  .brief-bot{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	backface-visibility:visible;
+  }
+  .brief-bot::after{
+	content:'';
+	position:absolute;
+	left:0;
+	top:-10%;
+	width:100%;
+	height:120%;
+	z-index:1;
+	box-shadow:0 0 500px 200px rgba(4,62,170,1) inset;
+	z-index:2;
+	pointer-events:none;
+  }
+  .step-04 .game-but{
+	padding-top:1.5vw;
+  }
+  .step-04 .game-but p {
+	font-family:'iCielSamsungSharpSansBold';
+	font-weight:bold;
+	font-style:normal;
+	text-transform:uppercase;
+	font-size:1.04vw;
+	letter-spacing:4px;
+	margin-bottom:0.5vw;
+  }
+  .more-but{
+	text-align:center;
+  }
+  .btn-play-again{
+	position:relative;
+	padding:1vw;
+	display:inline-block;
+	width:auto;
+	height:auto;
+	font-family:'SamsungOne';
+	font-weight:bold;
+	font-style:normal;
+	font-size:1.736vw;
+	text-transform:uppercase;
+	color:#fff;
+	cursor:pointer;
+  }
+  .fs-form{
+	position:relative;
+	display:block;
+	height:auto;
+	width:26%;
+	min-width:382px;
+	margin:0 auto 2vw auto;
+  }
+  .fs-form-outer{
+	position:relative;
+	display:block;
+	padding:3px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	overflow:hidden;
+  }
+  .fs-form-outer::before{
+	content:'';
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:linear-gradient(0deg, rgba(170,108,42,1) 0%, rgba(251,241,182,1) 100%);
+	z-index:0;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+  }
+  .fs-form .fs-box{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	padding:5vh 4vh;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	
+	background-color:#fff;
+	z-index:1;
+  }
+  .is-webp .fs-form .fs-box{
+	background:url(../images/form-bg-top.webp), url(../images/form-bg-bot.webp);
+	background-color:#fff;
+	background-repeat:no-repeat, no-repeat;
+	background-position:110% -62px, 0 102%;
+	background-size:110px auto, 110px auto;
+  }
+  .fs-group {
+	position:relative;
+	display:block;
+	margin-bottom:15px;
+  }
+  .fs-field{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+  }
+  .fs-group input[type='text'],
+  .fs-group input[type='password'] {
+	  display:block;
+	  width:100%;
+	  height:40px;
+	  border:1px solid #9c9da5;
+	  -webkit-appearance:none;
+	  font-size:13px;
+	  color:#363636;
+	  padding:5px 15px;
+	  line-height:40px;
+	  box-shadow:-1px -1px 0 rgba(0,0,0,0.1), 1px 1px 0 rgba(0,0,0,0.1), 1px 1px 0 rgba(0,0,0,0.1) inset, -1px -1px 0 rgba(0,0,0,0.1) inset;
+  }
+  .fs-caption{
+	display:block;
+	font-family:'SamsungOne';
+	font-weight:normal;
+	font-style:normal;
+	color:#363636;
+	font-size:13px;
+	margin-bottom:7px;
+  }
+  .fs-error-txt{
+	  position:absolute;
+	  width:100%;
+	  height:100%;
+	  visibility:hidden;
+  }
+  .fs-error-txt p {
+	max-width:100%;
+	position:absolute;
+	top:50%;
+	left:15px;
+	width:calc(100% - 30px);
+	height:auto;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	font-family:'SamsungOne';
+	font-weight:normal;
+	font-style:normal;
+	color:#f00;
+	font-size:18px;
+	-webkit-transform:translate(0,-50%);
+	transform:translate(0,-50%);
+  }
+  .has-captcha{
+	text-align:center;
+  }
+  .g-recaptcha{
+	display:inline-block;
+  }
+  .fs-checkbox li {
+	position:relative;
+	margin-bottom:10px;
+  }
+  .fs-checkbox label {
+	position:relative;
+	display:inline-block;
+	vertical-align:top;
+	font-family:'SamsungOne';
+	font-weight:normal;
+	font-style:normal;
+	padding:0 0 0 34px;
+	font-size:11px;
+	line-height:1.4;
+	min-height:30px;
+  }
+  .fs-checkbox li:nth-child(2) label{
+	padding-top:6px;
+  }
+  .fs-checkbox label::before{
+	content:'';
+	position:absolute;
+	left:0;
+	top:0;
+  }
+  .is-webp .fs-checkbox label::before{
+	background:url(../images/circle.webp) no-repeat center center;
+	background-size:cover;
+  }
+  .fs-checkbox .fs-show-error label::before{
+	background:none;
+	border:1px solid #f00;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+}
+.fs-checkbox input[type='checkbox'] {
+	position:absolute;
+	left:0;
+	top:0;
+  opacity:0;
+	cursor:pointer;
+}
+.fs-checkbox label::before, .fs-checkbox input[type='checkbox']{
+  width:24px;
+  height:24px;
+}
+
+.fs-checkbox label::after {
+  content:"";
+  position:absolute;
+  left:7px;
+  top:0;
+  width:20px;
+  height:18px;
+  opacity:0;
+}
+.is-webp .fs-checkbox label::after{
+	background:url(../images/check.webp) no-repeat center center;
+	background-size:cover;
+  }
+  .fs-checkbox input[type='checkbox']:checked + label::after {
+	  opacity:1;
+  }
+  .fs-checkbox input[type='checkbox']:checked + label::before {
+	background-color:rgba(0,0,0,0.5);
+	-webkit-border-radius:50%;
+	border-radius:50%;
+  }
+  .fs-checkbox label a{
+	  text-decoration:underline;
+	  color:#252525;
+	  -webkit-transition:all 0.3s ease-in-out;
+	  transition:all 0.3s ease-in-out;
+  }
+  .fs-select{
+	position:relative;
+	display:block;
+	width:100%;
+	height:auto;
+	text-align:left;
+	z-index:2;
+}
+.fs-select-header {
+  position:relative;
+  display:block;
+  width:100%;
+  height:40px;
+  line-height:38px;
+  padding:0 15px;
+  border:1px solid #9c9da5;
+  box-shadow:-1px -1px 0 rgba(0,0,0,0.1), 1px 1px 0 rgba(0,0,0,0.1), 1px 1px 0 rgba(0,0,0,0.1) inset, -1px -1px 0 rgba(0,0,0,0.1) inset;
+  cursor:pointer;
+  z-index:2;
+  -webkit-transition:all 0.3s ease-in-out;
+  transition:all 0.3s ease-in-out;
+}
+.fs-show-error .fs-select-header {
+	border:1px solid #f00;
+}
+.fs-show-error .fs-select-header span{
+	color:#f00;
+}
+.fs-select-header span {
+  display:inline-block;
+  vertical-align:middle;
+  width:auto;
+  line-height:1.6;
+  max-width:100%;
+  font-family:'SamsungOne';
+  font-weight:normal;
+  font-style:normal;
+  font-size:13px;
+  color:#252525;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+.fs-select-box{
+	position:absolute;
+	top:100%;
+	left:0;
+	display:block;
+	width:100%;
+	height:auto;
+	margin:2px 0 0 0;
+	visibility:hidden;
+	opacity:0;
+	-webkit-transition:all 0.3s ease-in-out 0s, visibility 0s linear 0.3s;	
+	transition:all 0.3s ease-in-out 0s, visibility 0s linear 0.3s;
+}
+.fs-select-box ul{
+	position:relative;
+	display:block;
+	max-height:260px;
+	background-color:#fff;
+	border:1px solid #ddd;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	overflow:hidden;
+	overflow-y:auto;
+	-webkit-overflow-scrolling:touch;
+}
+.fs-select-box li {
+  position:relative;
+  display:block;
+  font-family:'SamsungOne';
+  font-weight:normal;
+  font-style:normal;
+  font-size:13px;
+  color:#252525;
+  margin-bottom:1px;
+  border-bottom:1px solid#ddd;
+  padding:10px 15px;
+  cursor:pointer;
+  -webkit-transition:all 0.3s ease-in-out;
+  transition:all 0.3s ease-in-out;
+}
+.fs-select-header::after{
+	position:absolute;
+	content:"";
+	top:50%;
+	right:10px;
+	width:12px;
+	height:7px;
+	
+	-webkit-transform:translate(0,-50%);
+	transform:translate(0,-50%);
+  }
+  .is-webp .fs-select-header::after{
+	background:url(../images/arrow-down.webp) no-repeat center center;
+	background-size:contain;
+  }
+  .fs-overlay-condition::before, .fs-overlay-condition::after{
+	content:'';
+	position:relative;
+	display:inline-block;
+	width:0;
+	height:100%;
+	vertical-align:middle;
+  }
+  .fs-overlay-inr-condition {
+	position:relative;
+	display:inline-block;
+  width:90%;
+  height:auto;
+  min-height:100vh;
+  max-width:960px;
+  vertical-align:middle;
+  background-color:#fff;
+  padding:5%;
+}
+.fs-close-overlay-condition {
+  position:fixed;
+  right:30px;
+  top:10px;
+  width:40px;
+  height:40px;
+  cursor:pointer;
+  z-index:1;
+}
+.is-webp .fs-close-overlay-condition{
+	background:url(../images/close.webp) no-repeat center center;
+	background-size:20px auto;
+  }
+  .fs-overlay-condition h3{
+	font-family:'iCielSamsungSharpSansBold';
+	font-weight:bold;
+	font-style:normal;
+	font-size:22px;
+	text-align:center;
+	margin-bottom:40px;
+	text-transform:uppercase;
+  }
+  .fs-overlay-condition p {
+	font-family:'SamsungOne';
+	font-weight:normal;
+	font-style:normal;
+	font-size:15px;
+	margin-bottom:10px;
+	line-height:1.4;
+  }
+  .fs-overlay-condition p strong{
+	font-family:'SamsungOne';
+	font-weight:bold;
+	font-style:normal;
+  }
+  
+  .fs-overlay-condition p:last-child{
+	font-size:16px;
+	font-family:'SamsungOne';
+	font-weight:bold;
+	font-style:normal;
+	text-align:right;
+  }
+  .fs-overlay-condition p a{
+	font-family:'iCielSamsungSharpSansMedium';
+	font-weight:500;
+	font-style:normal;
+	color:#14338b;
+  }
+  
+  .fs-overlay-condition-detail{
+	text-align:left;
+  }
+  .byHeight .item-02 .step-01 .item-title,
+  .byHeight .item-02 .step-02 .item-title, 
+  .byHeight .item-02 .step-03 .item-title, 
+  .byHeight .item-02 .step-04 .item-title {
+	padding:5.3333vh 0 2.6666vh 0;
+  }
+  .byHeight .volume-but{
+	top:auto;
+	bottom:5%;
+  }
+  .byHeight .step-02 .game-but {
+	top:60%;
+  }
+  .byHeight .game-step {
+	width:calc(100vh * 1920/1080);
+	margin:0 auto;
+  }
+  .byHeight .step-01 .item-title h2,
+  .byHeight .step-02 .item-title h2,
+  .byHeight .step-03 .item-title h2,
+  .byHeight .step-04 .item-title h2{
+	font-size:5.925vh;
+  }
+  .byHeight .step-01 .item-title p,
+  .byHeight .step-02 .item-title p,
+  .byHeight .step-03 .item-title p,
+  .byHeight .step-04 .item-title p {
+	font-size:2.6vh;
+  }
+  .byHeight .main-pic{
+	width:25%;
+	margin:0 auto;
+  }
+  .byHeight .item-02 .game-but p {
+	font-size:1.6vh;
+  }
+  .byHeight .brief-main{
+	margin:-12vh auto 0 auto;
+  }
+  .byHeight .step-04 .game-but{
+	padding-top:1.5vh;
+  }
+  .byHeight .step-04 .game-but p {
+	font-size:1.848vh;
+	margin-bottom:0.8888vh;
+  }
+  .byHeight .btn-play-again{
+	font-size:3.086vh;
+	padding:1.2vh;
+  }
+  .byHeight .fs-form{
+	margin:0 auto 2vh auto;
+  }
+  .byHeight .fs-group {
+	margin-bottom:1vh;
+  }
+  .byHeight .fs-caption{
+	margin-bottom:0.6vh;
+  }
+  .byHeight .result-pic{
+	width:36%;
+	top:3vh;
+  }
+  .brief-top, .brief-bot, .money-top, .money-left, .coins-blur, .money-right, .money-mid-right, .money-right-bot, .ring, 
+  .pattern-light, .pattern-light-right, .heart-top, .heart-left, .heart-right, .bear, .gift6-heart-top, .gift6-heart-left, .gift6-heart-left-bot, .gift6-heart-bot,
+  .book-left, .book-right, .dumbbell-left, .dumbbell-right{
+	opacity:0;
+  }
+  .step-04 .item-title, .step-04 .game-but {
+	opacity:1;
+  }
+  .step-04 .game-but button {
+	width:52%;
+  }
+  @-webkit-keyframes fadeIn {
+	0%{
+	  opacity:0;
+	}
+	100% {
+	  opacity:1;
+	}
+  }
+  @keyframes fadeIn {
+	0%{
+	  opacity:0;
+	}
+	100% {
+	  opacity:1;
+	}
+  }
