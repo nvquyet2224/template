@@ -1,65 +1,9 @@
 @charset "utf-8";
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video{
-	margin:0;
-	padding:0;
-	border:0;
-	font-size:100%;
-	font-family:inherit;
-	vertical-align:baseline;
-}
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section{
-	display:block;
-}
-ol, ul{
-	list-style:none;
-}
-blockquote, q{
-	quotes:none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after{
-	content:'';
-	content:none;
-}
-h1, h2, h3, h4, h5, h6 {
-	line-height:1.2;
-	font-size:100%;
-}
-p {
-	line-height:1.4;
-	font-size:100%;
-}
-img{
-	border:none;
-	outline:none;
-}
-a{
-	text-decoration:none;
-	color:#000;
-}
 html, body {
-  padding:0;
-  margin:0;
-  font-size:16px;
-  color:#000;
-  line-height:1;
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  -webkit-text-size-adjust:none;
+  color:#000;
+	line-height:1;
+	-webkit-text-size-adjust:none;
 	-webkit-font-smoothing:antialiased;
 	-webkit-tap-highlight-color:transparent;
 	-webkit-user-select:none;
@@ -79,79 +23,56 @@ button, input, textarea{
 }
 
 /*Fonts*/
-@font-face {
+ @font-face {
 	font-family:'SamsungOne';
 	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff2);
 	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff2?#iefix) format("embedded-opentype"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff2) format("woff2"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.woff) format("woff"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-400.ttf) format("truetype");
 	font-weight:normal;
-	font-style:normal;
+  font-style:normal;
+  font-display:wrap;
 }
 @font-face {
 	font-family:'SamsungOne';
 	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.eot);
 	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.eot?#iefix) format("embedded-opentype"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.woff2) format("woff2"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.woff) format("woff"), url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungOne-700.ttf) format("truetype");
 	font-weight:bold;
-	font-style:normal
+  font-style:normal;
+  font-display:wrap;
 }
 @font-face {
-	font-family:'SamsungSharpSans';
-	src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.eot);
-    src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.eot?#iefix) format("embedded-opentype"), 
-    url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.woff) format("woff");
-	font-weight:bold;
-	font-style:normal;
+  font-family:'SamsungSharpSans';
+  src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.eot);
+  src:url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.eot?#iefix) format("embedded-opentype"), 
+  url(https://cdn.samsung.com/etc/designs/smg/global/fonts/SamsungSharpSansBd.woff) format("woff");
+  font-weight:bold;
+  font-style:normal;
+  font-display:wrap;
 }
 @font-face {
-    font-family:'iCielSamsungSharpSansBold';
-	src:url(https://cdn.samsung.com/etc/designs/smg/vn/font/SamsungSharpSans-Bold-UTF8.woff2);
-    font-weight:bold;
-    font-style:normal;
+  font-family:'iCielSamsungSharpSansBold';
+  src:url(https://cdn.samsung.com/etc/designs/smg/vn/font/SamsungSharpSans-Bold-UTF8.woff2);
+  font-weight:bold;
+  font-style:normal;
+  font-display:wrap;
 }
 @font-face {
-    font-family:'iCielSamsungSharpSansMedium';
-	src:url(https://cdn.samsung.com/etc/designs/smg/vn/font/SamsungSharpSans-Bold-UTF8.woff2);
-    font-weight:normal;
-    font-style:normal;
+  font-family:'iCielSamsungSharpSansMedium';
+  src:url(https://cdn.samsung.com/etc/designs/smg/vn/font/SamsungSharpSans-Bold-UTF8.woff2);
+  font-weight:normal;
+  font-style:normal;
+  font-display:wrap;
 }
 
 /*Common*/
 .fs-hide-txt span{
-  position: absolute;
+  position:absolute;
   font-size:0;
-  z-index: -1;
-  pointer-events: none;
+  z-index:-1;
+  pointer-events:none;
 }
 .fs-no-scroll {
 	overflow:hidden;
 }
-.game-content{
-  position:relative;
-  display:block;
-  width:100%;
-  height:auto;
-  overflow:hidden;
-}
-.item{
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:auto;
-  visibility:hidden;
-	opacity:0;
-	-webkit-transition:opacity 0.3s ease-in-out 0s, visibility 0s linear 0.3s;	
-	transition:opacity 0.3s ease-in-out 0s, visibility 0s linear 0.3s;
-}
-.item.active{
-  position:relative;
-  left:auto;
-  top:auto;
-  opacity:1;
-	visibility:visible;
-	-webkit-transition-delay:0s, 0s;
-	transition-delay:0s, 0s
-}
-
 @media screen and (min-width:1121px) {
   .no-webp .item-02{
     background:url(../images/bg-sub-pc.jpg) no-repeat center center;
@@ -162,7 +83,6 @@ button, input, textarea{
     background-size:cover;
   }
 }
-
 .item-02::before{
   content:'';
   position:relative;
@@ -193,21 +113,12 @@ button, input, textarea{
 }
 .item-title h2{
   font-family:'iCielSamsungSharpSansBold';
-  font-weight:bold;
-  font-style:normal;
-  font-size:4.4444vw;
-  color:#14338b;
-  text-transform:uppercase;
 }
 .item-title.has-shadow h2{
   text-shadow:-1px -1px 0 rgba(255,255,255,1), 1px 1px 0 rgba(0,0,0,1);
 }
 .item-title p {
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  font-size:1.52777vw;
-  color:#14338b;
 }
 .game-but{
   position:relative;
@@ -265,14 +176,12 @@ button, input, textarea{
   opacity:0.8;
 }
 
-
 /*Home Screen*/
 .home-top{
   position:relative;
   display:block;
   width:100%;
   height:auto;
-  
 }
 .no-webp .home-top{
   background:url(../images/bg-main-top-pc.jpg) no-repeat center bottom;
@@ -301,14 +210,9 @@ button, input, textarea{
 }
 .item-title.size-large p{
   font-family:'iCielSamsungSharpSansMedium';
-  font-weight:500;
-  font-style:normal;
-  font-size:1.736vw;
 }
 .item-title.size-large p strong{
   font-family:'iCielSamsungSharpSansBold';
-  font-weight:bold;
-  font-style:normal;
 }
 .light-center{
   position:absolute;
@@ -331,16 +235,16 @@ button, input, textarea{
   bottom:30%;
   width:5%;
   height:auto;
-  display: block;
+  display:block;
   line-height:0;
   -webkit-transform-origin:center bottom;
   transform-origin:center bottom;
 }
 .light-left img {
   position:relative;
-  display: block;
+  display:block;
   width:100%;
-  height: auto;
+  height:auto;
 }
 .heart{
   position:absolute;
@@ -421,7 +325,6 @@ button, input, textarea{
   top:3px;
   width:100%;
   height:100%;
-  
   -webkit-filter:blur(3px);
   filter:blur(3px);
   z-index:-1;
@@ -451,7 +354,6 @@ button, input, textarea{
   top:3px;
   width:100%;
   height:100%;
-  
 }
 .no-webp .heart:nth-child(4) span::before{
   background:url(../images/heart.png) no-repeat center center;
@@ -525,7 +427,6 @@ button, input, textarea{
   display:block;
   width:100%;
   height:auto;
-  
   margin-top:-1px;
 }
 .no-webp .home-bot{
@@ -574,8 +475,6 @@ button, input, textarea{
 }
 .method-steps p strong{
   font-family:'SamsungOne';
-  font-weight:bold;
-  font-style:normal;
 }
 .home-bot .game-but {
   position:absolute;
@@ -596,7 +495,6 @@ button, input, textarea{
 .home-bot .game-but p br{
   display:none;
 }
-
 
 /*step1*/
 .item-02 .step-01 .item-title,
@@ -648,7 +546,7 @@ button, input, textarea{
   top:66%;
   width:5%;
   z-index:1;
-  cursor: pointer;
+  cursor:pointer;
 }
 .no-webp .volume-but.is-off{
   background:url(../images/volume-off.png) no-repeat center center;
@@ -780,7 +678,7 @@ button, input, textarea{
   pointer-events:none;
 }
 .isIE .brief-bot::after{
-  display: none;
+  display:none;
 }
 .item-02.no-space{
   padding-bottom:4vw;
@@ -835,12 +733,6 @@ button, input, textarea{
 }
 .brief-txt p {
   font-family:'iCielSamsungSharpSansMedium';
-  font-weight:500;
-  font-style:normal;
-  color:#fff;
-  line-height:1.6;
-  font-size:1.18vw;
-  margin-bottom:1vw;
 }
 .img-voucher{
   position:relative;
@@ -870,29 +762,12 @@ button, input, textarea{
 }
 .step-04 .game-but p {
   font-family:'iCielSamsungSharpSansBold';
-  font-weight:bold;
-  font-style:normal;
-  text-transform:uppercase;
-  font-size:1.04vw;
-  letter-spacing:4px;
-  margin-bottom:0.5vw;
 }
 .more-but{
   text-align:center;
 }
 .btn-play-again{
-  position:relative;
-  padding:1vw;
-  display:inline-block;
-  width:auto;
-  height:auto;
   font-family:'SamsungOne';
-  font-weight:bold;
-  font-style:normal;
-  font-size:1.736vw;
-  text-transform:uppercase;
-  color:#fff;
-  cursor:pointer;
 }
 
 /***************** AREA PATTERN *********************/
@@ -1082,7 +957,6 @@ button, input, textarea{
   padding:5vh 4vh;
   -webkit-border-radius:10px;
   border-radius:10px;
-  
   background-color:#fff;
   z-index:1;
 }
@@ -1150,13 +1024,7 @@ button, input, textarea{
 	border-color:#81828f;
 }
 .fs-caption{
-  display:block;
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  color:#363636;
-  font-size:13px;
-  margin-bottom:7px;
 }
 .fs-error-txt{
     position:absolute;
@@ -1168,21 +1036,7 @@ button, input, textarea{
 	visibility:visible;
 }
 .fs-error-txt p {
-  max-width:100%;
-  position:absolute;
-  top:50%;
-  left:15px;
-  width:calc(100% - 30px);
-  height:auto;
-  white-space:nowrap;
-  text-overflow:ellipsis;
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  color:#f00;
-  font-size:18px;
-  -webkit-transform:translate(0,-50%);
-  transform:translate(0,-50%);
 }
 .has-captcha{
   text-align:center;
@@ -1198,16 +1052,7 @@ button, input, textarea{
   margin-bottom:10px;
 }
 .fs-checkbox label {
-  position:relative;
-  display:inline-block;
-  vertical-align:top;
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  padding:0 0 0 34px;
-  font-size:11px;
-  line-height:1.4;
-  min-height:30px;
 }
 .fs-checkbox li:nth-child(2) label{
   padding-top:6px;
@@ -1315,19 +1160,7 @@ button, input, textarea{
     color:#f00;
 }
 .fs-select-header span {
-  display:inline-block;
-  vertical-align:middle;
-  width:auto;
-  line-height:1.6;
-  max-width:100%;
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  font-size:13px;
-  color:#252525;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  overflow:hidden;
 }
 .fs-select-box{
 	position:absolute;
@@ -1355,19 +1188,7 @@ button, input, textarea{
 	-webkit-overflow-scrolling:touch;
 }
 .fs-select-box li {
-  position:relative;
-  display:block;
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  font-size:13px;
-  color:#252525;
-  margin-bottom:1px;
-  border-bottom:1px solid#ddd;
-  padding:10px 15px;
-  cursor:pointer;
-  -webkit-transition:all 0.3s ease-in-out;
-  transition:all 0.3s ease-in-out;
 }
 .fs-select-box li span{
 	position:relative;
@@ -1430,6 +1251,7 @@ button, input, textarea{
   text-align:center;
   overflow:hidden;
   overflow-y:auto;
+  display: block;
 }
 .fs-overlay-condition::before, .fs-overlay-condition::after{
   content:'';
@@ -1475,39 +1297,19 @@ button, input, textarea{
 }
 .fs-overlay-condition h3{
   font-family:'iCielSamsungSharpSansBold';
-  font-weight:bold;
-  font-style:normal;
-  font-size:22px;
-  text-align:center;
-  margin-bottom:40px;
-  text-transform:uppercase;
 }
 .fs-overlay-condition p {
   font-family:'SamsungOne';
-  font-weight:normal;
-  font-style:normal;
-  font-size:15px;
-  margin-bottom:10px;
-  line-height:1.4;
 }
 .fs-overlay-condition p strong{
   font-family:'SamsungOne';
-  font-weight:bold;
-  font-style:normal;
 }
 
 .fs-overlay-condition p:last-child{
-  font-size:16px;
   font-family:'SamsungOne';
-  font-weight:bold;
-  font-style:normal;
-  text-align:right;
 }
 .fs-overlay-condition p a{
   font-family:'iCielSamsungSharpSansMedium';
-  font-weight:500;
-  font-style:normal;
-  color:#14338b;
 }
 
 .fs-overlay-condition-detail{
@@ -1595,439 +1397,6 @@ button, input, textarea{
   top:3vh;
 }
 
-@-webkit-keyframes fadeInUp {
-  0%{
-    opacity:0;
-    -webkit-transform:translate3d(0,0,0) scale(1);
-    transform:translate3d(0,0,0) scale(1);
-  }
-  90% {
-    opacity:1;
-    -webkit-transform:translate3d(30px,-250px,0) scale(1.5);
-    transform:translate3d(30px,-250px,0) scale(1.5);
-  }
-  100% {
-    opacity:0;
-    -webkit-transform:translate3d(30px,-250px,0) scale(2);
-    transform:translate3d(30px,-250px,0) scale(2);
-  }
-}
-@keyframes fadeInUp {
-  0%{
-    opacity:0;
-    -webkit-transform:translate3d(0,0,0) scale(1);
-    transform:translate3d(0,0,0) scale(1);
-  }
-  90% {
-    opacity:1;
-    -webkit-transform:translate3d(30px,-250px,0) scale(1.5);
-    transform:translate3d(30px,-250px,0) scale(1.5);
-  }
-  100% {
-    opacity:0;
-    -webkit-transform:translate3d(30px,-250px,0) scale(2);
-    transform:translate3d(30px,-250px,0) scale(2);
-  }
-}
-@-webkit-keyframes fadeInUp2 {
-  0%{
-    opacity:0;
-    -webkit-transform:translate3d(0,0,0) scale(1);
-    transform:translate3d(0,0,0) scale(1);
-  }
-  90% {
-    opacity:1;
-    -webkit-transform:translate3d(-30px,-250px,0) scale(1.5);
-    transform:translate3d(-30px,-250px,0) scale(1.5);
-  }
-  100% {
-    opacity:0;
-    -webkit-transform:translate3d(-30px,-250px,0) scale(2);
-    transform:translate3d(-30px,-250px,0) scale(2);
-  }
-}
-@keyframes fadeInUp2 {
-  0%{
-    opacity:0;
-    -webkit-transform:translate3d(0,0,0) scale(1);
-    transform:translate3d(0,0,0) scale(1);
-  }
-  90% {
-    opacity:1;
-    -webkit-transform:translate3d(-30px,-250px,0) scale(1.5);
-    transform:translate3d(-30px,-250px,0) scale(1.5);
-  }
-  100% {
-    opacity:0;
-    -webkit-transform:translate3d(-30px,-250px,0) scale(2);
-    transform:translate3d(-30px,-250px,0) scale(2);
-  }
-}
-@-webkit-keyframes Shake {
-  0%{
-    transform:rotate(-5deg);
-  }
-  50%{
-    transform:rotate(0deg);
-  }
-  100%{
-    transform:rotate(5deg);
-  }
-}
-@keyframes Shake {
-  0%{
-    transform:rotate(-5deg);
-  }
-  50%{
-    transform:rotate(0deg);
-  }
-  100%{
-    transform:rotate(5deg);
-  }
-}
-@-webkit-keyframes Light {
-  100%{
-    -webkit-transform:rotate(4deg) scaleY(1.2);
-    transform:rotate(4deg) scaleY(1.2);
-  }
-}
-@keyframes Light {
-  100%{
-    -webkit-transform:rotate(4deg) scaleY(1.2);
-    transform:rotate(4deg) scaleY(1.2);
-  }
-}
-@-webkit-keyframes MoveScale1 {
-  form{
-    -webkit-transform:translate3d(0,0,0) scale(0.8);
-    transform:translate3d(0,0,0) scale(0.8);
-  }
-  to{
-    -webkit-transform:translate3d(15px,-20px,0) scale(1.02);
-    transform:translate3d(15px,-20px,0) scale(1.02);
-  }
-}
-@keyframes MoveScale1 {
-  form{
-    -webkit-transform:translate3d(0,0,0) scale(0.8);
-    transform:translate3d(0,0,0) scale(0.8);
-  }
-  to{
-    -webkit-transform:translate3d(15px,-20px,0) scale(1.02);
-    transform:translate3d(15px,-20px,0) scale(1.02);
-  }
-}
-@-webkit-keyframes MoveScale2 {
-  form{
-    -webkit-transform:translate3d(0,0,0) scale(0.8);
-    transform:translate3d(0,0,0) scale(0.8);
-  }
-  to{
-    -webkit-transform:translate3d(0,-15px,0) scale(1.02);
-    transform:translate3d(0,-15px,0) scale(1.02);
-  }
-}
-@keyframes MoveScale2 {
-  form{
-    -webkit-transform:translate3d(0,0,0) scale(0.8);
-    transform:translate3d(0,0,0) scale(0.8);
-  }
-  to{
-    -webkit-transform:translate3d(0,-15px,0) scale(1.02);
-    transform:translate3d(0,-15px,0) scale(1.02);
-  }
-}
-
-@-webkit-keyframes Rotate {
-  100%{
-    -webkit-transform:rotate(360deg);
-    transform:rotate(360deg);
-  }
-}
-@keyframes Rotate {
-  100%{
-    -webkit-transform:rotate(360deg);
-    transform:rotate(360deg);
-  }
-}
-@-webkit-keyframes Rotate45 {
-  0%{
-    -webkit-transform:rotate(45deg);
-    transform:rotate(45deg);
-  }
-  100% {
-    -webkit-transform:rotate(0deg);
-    transform:rotate(0deg);
-  }
-}
-@keyframes Rotate45 {
-  0%{
-    -webkit-transform:rotate(45deg);
-    transform:rotate(45deg);
-  }
-  100% {
-    -webkit-transform:rotate(0deg);
-    transform:rotate(0deg);
-  }
-}
-@-webkit-keyframes fadeIn {
-  0%{
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
-}
-@keyframes fadeIn {
-  0%{
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
-}
-@-webkit-keyframes fadeOut {
-  0%{
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-@keyframes fadeOut {
-  0%{
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-@-webkit-keyframes scaleIn {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(2);
-    transform:scale(2);
-  }
-  20% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-  40% {
-    opacity:1;
-    -webkit-transform:scale(1.1);
-    transform:scale(1.1);
-  }
-  60% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-  80% {
-    opacity:1;
-    -webkit-transform:scale(1.1);
-    transform:scale(1.1);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-}
-@keyframes scaleIn {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(2);
-    transform:scale(2);
-  }
-  20% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-  40% {
-    opacity:1;
-    -webkit-transform:scale(1.1);
-    transform:scale(1.1);
-  }
-  60% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-  80% {
-    opacity:1;
-    -webkit-transform:scale(1.1);
-    transform:scale(1.1);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-}
-@-webkit-keyframes moneyCenter {
-  0%{
-    opacity:0;
-    -webkit-transform:translateY(20px);
-    transform:translateY(20px);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:translateY(0px);
-    transform:translateY(0px);
-  }
-}
-
-@keyframes moneyCenter {
-  0%{
-    opacity:0;
-    -webkit-transform:translateY(20px);
-    transform:translateY(20px);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:translateY(0px);
-    transform:translateY(0px);
-  }
-}
-@-webkit-keyframes moneyLeft {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(0.8) translateX(20px);
-    transform:scale(0.8) translateX(20px);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1) translateX(0);
-    transform:scale(1) translateX(0);
-  }
-}
-@keyframes moneyLeft {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(0.8) translateX(20px);
-    transform:scale(0.8) translateX(20px);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1) translateX(0);
-    transform:scale(1) translateX(0);
-  }
-}
-@-webkit-keyframes moneyRight {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(0.8) translateX(-20px);
-    transform:scale(0.8) translateX(-20px);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1) translateX(0);
-    transform:scale(1) translateX(0);
-  }
-}
-@keyframes moneyRight {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(0.8) translateX(-20px);
-    transform:scale(0.8) translateX(-20px);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1) translateX(0);
-    transform:scale(1) translateX(0);
-  }
-}
-
-@-webkit-keyframes whiteBoxAni {
-  100%{
-    -webkit-transform:translate(100%,-25%) rotate(60deg);
-    transform:translate(100%,-25%) rotate(60deg);
-  }
-}
-
-@keyframes whiteBoxAni {
-  100%{
-    -webkit-transform:translate(100%,-25%) rotate(60deg);
-    transform:translate(100%,-25%) rotate(60deg);
-  }
-}
-
-@-webkit-keyframes scaleOut {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(0.3);
-    transform:scale(0.3);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-}
-
-@keyframes scaleOut {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(0.3);
-    transform:scale(0.3);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-}
-
-@-webkit-keyframes scaleInPT {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(3);
-    transform:scale(3);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-}
-
-@keyframes scaleInPT {
-  0%{
-    opacity:0;
-    -webkit-transform:scale(3);
-    transform:scale(3);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform:scale(1);
-    transform:scale(1);
-  }
-}
-
-@-webkit-keyframes shadowAni{
-  0%{
-    opacity:1;
-    box-shadow:0 0 500px 200px rgba(4,62,170,0.5) inset;
-  }
-  100% {
-    opacity:0;
-    box-shadow:0 0 500px 0px rgba(4,62,170,1) inset;
-  }
-}
-
-@keyframes shadowAni{
-  0%{
-    opacity:1;
-    box-shadow:0 0 500px 200px rgba(4,62,170,1) inset;
-  }
-  100% {
-    opacity:0;
-    box-shadow:0 0 500px 200px rgba(4,62,170,0) inset;
-  }
-}
-
 
 /*Animations*/
 .brief-top, .brief-bot, .money-top, .money-left, .coins-blur, .money-right, .money-mid-right, .money-right-bot, .ring, 
@@ -2080,17 +1449,12 @@ button, input, textarea{
   -webkit-animation:fadeInUp 5s infinite 1s;
   animation:fadeInUp 5s infinite 1s;
 }
-.item-title, .fs-form, .game-but, .main-box, .volume-but, .result-pic {
-  opacity:0;
-}
-.item-01.active .item-title, 
 .step-01.current .item-title,
 .step-02.current .item-title,
 .step-03.current .item-title {
   -webkit-animation:fadeIn 1s forwards;
   animation:fadeIn 1s forwards;
 }
-
 .item-01.active .game-but,
 .step-01.current .fs-form,
 .step-02.current .main-box {
@@ -2118,7 +1482,6 @@ button, input, textarea{
   -webkit-animation:shadowAni 1.5s 1.5s forwards;
   animation:shadowAni 1.5s 1.5s forwards;
 }
-
 .step-04.current .money-top, .step-04.current .money-left, .step-04.current .coins-blur, 
 .step-04.current .money-right, .step-04.current .money-mid-right, .step-04.current .money-right-bot, .step-04.current .ring, 
 .step-04.current .pattern-light, .step-04.current .pattern-light-right, .step-04.current .heart-top, .step-04.current .heart-left, 
@@ -2128,7 +1491,6 @@ button, input, textarea{
   -webkit-animation:scaleInPT 1.5s 1.7s forwards;
   animation:scaleInPT 1.5s 1.7s forwards;
 }
-
 .step-01.current .game-but,
 .step-02.current .game-but {
   -webkit-animation:fadeIn 1s 1s forwards;

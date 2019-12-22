@@ -385,32 +385,36 @@ $(window).on('resize', Resize);
 // Page Rotate
 $(window).on('orientationchange', Rotate);
 
+var waiting = true;
 //  Page load
 $(window).on('load', function () {
-
-	setTimeout(function () {
-		randomAnswer();
-		ImgLazyLoad();
+	
+	$('.fs-loading').fadeOut(300, function() {
+		loading = false;
+		$('.fs-loading').remove();
 	});
-
-	setTimeout(function () {
-		//game-content
-		$('.game-content').css({ 'visibility': 'visible' });
-		$('.fs-loading').fadeOut(300, function(){
-			$('.fs-loading').remove();
-			$('.item-01').addClass('active');
-		});
-	}, 250); // 100ms is detected good
 
 });
 
 // Page Ready
 (function () {
-	fsEvent();
+	
 	resetLayout();
-
+	ImgLazyLoad();
+	fsEvent();
 	var isFace = isFacebookApp();
 	if (isFace) {
 		$('body').addClass('isFace');
 	}
+
+	setTimeout(function(){
+		if(waiting){
+			$('.fs-loading').fadeOut(300, function() {
+				loading = false;
+				$('.fs-loading').remove();
+				fsEvent();
+			});
+		}
+	},1100);
+
 })();
