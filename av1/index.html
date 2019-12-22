@@ -33,11 +33,11 @@
   <link rel="preload" href="css/style.min.css" as="style">
   <link rel="preload" href="css/head.min.css" as="style">
   <link rel="preload" href="js/jquery-min.js" as="script">
-  <link rel="preload" href="js/main_code.js" as="script">
+  <link rel="preload" href="js/main.min.js" as="script">
   <!--google-->
-  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+  <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
   <style>
-    .game-content{visibility:hidden}.fs-loading{position:fixed;left:0;top:0;width:100%;height:100%;background-color:#fff;z-index:3}.fs-loading::before{content:'';position:absolute;left:50%;top:50%;width:60px;height:60px;border-left:5px solid #1a40a2;border-top:5px solid #1a40a2;-webkit-border-radius:50%;border-radius:50%;-webkit-animation:rotate360 1.5s infinite linear running;animation:rotate360 1.5s infinite linear running}@-webkit-keyframes rotate360{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate360{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+    .game-content{visibility:hidden}.fs-loading{position:fixed;left:0;top:0;width:100%;height:100%;margin:-30px 0 0 -30px;background-color:#fff;z-index:3}.fs-loading::before{content:'';position:absolute;left:50%;top:50%;width:60px;height:60px;border-left:5px solid #1a40a2;border-top:5px solid #1a40a2;-webkit-border-radius:50%;border-radius:50%;-webkit-animation:rotate360 1.5s infinite;animation:rotate360 1.5s infinite;}@-webkit-keyframes rotate360{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate360{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
   </style>
 </head>
 
@@ -76,9 +76,9 @@
   </div>
   <!--Header temp-->
 
-  <div class="fs-loading"></div>
-
   <div id="app" class="game-content">
+
+    <div class="fs-loading"></div>
 
     <div class="game-items">
 
@@ -150,7 +150,7 @@
           </div>
 
           <div class="game-but">
-            <button id="btnJoinNow" onclick="joinNow()">
+            <button id="btnJoinNow">
               <img class="fs-lazy"
                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/btn-tham-gia-ngay.webp" data-original="images/btn-tham-gia-ngay.png"
@@ -209,17 +209,17 @@
             <div class="fs-form-outer">
               <div class="fs-box">
 
-                <div class="fs-group" id="fs_field_username">
+                <div class="fs-group">
                   <label class="fs-caption">Họ và tên</label>
                   <div class="fs-field">
-                    <div class="fs-error-txt" id="fs_error_username">
+                    <div class="fs-error-txt">
                       <p>Vui lòng kiểm tra lại dữ liệu Vui lòng kiểm tra lại dữ liệu Vui lòng kiểm tra lại dữ liệu</p>
                     </div>
                     <input type="text" name="fs_txt_username" id="fs_txt_username" value="Nguyen Van Quyet">
                   </div>
                 </div>
 
-                <div class="fs-group" id="fs_field_year">
+                <div class="fs-group fs-show-error">
                   <label class="fs-caption">Năm sinh</label>
                   <div class="fs-field">
                     <div class="fs-select" id="fs_year">
@@ -265,10 +265,10 @@
                   </div>
                 </div>
 
-                <div class="fs-group" id="fs_field_email">
+                <div class="fs-group">
                   <label class="fs-caption">Email</label>
                   <div class="fs-field">
-                    <div class="fs-error-txt" id="fs_error_email">
+                    <div class="fs-error-txt">
                       <p>Vui lòng kiểm tra lại dữ liệu</p>
                     </div>
                     <input type="text" name="fs_txt_email" id="fs_txt_email" value="nvquyet222@gmail.com">
@@ -288,7 +288,7 @@
                 </div>
 
                 <div class="fs-group has-captcha">
-                  <div class="g-recaptcha" id="capchaAreaId"></div>
+                  <div class="g-recaptcha" data-sitekey="6LfqO64UAAAAAOatQly0ExDiU9RWolZZMca86ynC"></div>
                 </div>
 
               </div>
@@ -297,7 +297,7 @@
           </div>
 
           <div class="game-but">
-            <button id="btnRegister" onclick="registerInfo()">
+            <button id="btnRegister">
               <img class="fs-lazy"
                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/btn-dang-ky.webp" data-original="images/btn-dang-ky.png" alt="Đăng Ký">
@@ -489,7 +489,7 @@
   </script>
   <!--normal style-->
   <script src="js/jquery-min.js"></script>
-  <script src="js/main_code.js"></script>
+  <script src="js/main.min.js"></script>
 
 </body>
 
