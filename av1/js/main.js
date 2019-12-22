@@ -305,20 +305,19 @@ function fsEvent() {
 }
 
 // LazyLoad
-function ImgLazyLoad() {
+function ImgLazyLoad(byThis) {
 
-	lazyImages = document.querySelectorAll('.fs-lazy');
-
-	// Lazy images
-	[].slice.call(lazyImages).forEach(function (elm) {
-		if (isWebP) {
-			elm.setAttribute('src', elm.getAttribute('data-webp'));
-		} else {
-			elm.setAttribute('src', elm.getAttribute('data-original'));
-		}
-		elm.classList.remove('fs-lazy');
-	});
-
+	var lazyBlock = document.querySelector(byThis);
+      lazyImages = lazyBlock.querySelectorAll('.fs-lazy');
+      // Lazy images
+      [].slice.call(lazyImages).forEach(function (elm) {
+        if (isWebP) {
+        elm.setAttribute('src', elm.getAttribute('data-webp'));
+        } else {
+        elm.setAttribute('src', elm.getAttribute('data-original'));
+        }
+        elm.classList.remove('fs-lazy');
+    });
 
 }
 
@@ -339,7 +338,7 @@ function randomAnswer() {
 	$('.brief-detail').html(brief);
 	$('.step-03 .item-title p').html(gifts[index].title);
 
-	ImgLazyLoad();
+	ImgLazyLoad('item-02');
 
 }
 
@@ -400,8 +399,9 @@ $(window).on('load', function () {
 (function () {
 	
 	resetLayout();
-	ImgLazyLoad();
+	ImgLazyLoad('.item-01');
 	fsEvent();
+	
 	var isFace = isFacebookApp();
 	if (isFace) {
 		$('body').addClass('isFace');
