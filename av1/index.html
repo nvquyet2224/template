@@ -8,7 +8,7 @@
   <meta name="language" content="vi_VN">
   <meta name="robots" content="index, follow">
   <meta name="author" content="AV Tết">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   <title>AV Tết</title>
@@ -33,10 +33,66 @@
   <link rel="preload" href="css/style.css" as="style">
   <link rel="preload" href="js/jquery-min.js" as="script">
   <link rel="preload" href="js/main.js" as="script">
+  <link rel="preload" as="font" href="fonts/SamsungOne-700.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="fonts/iCielSamsungSharpSans-Medium.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="fonts/SamsungOne-400.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="fonts/SamsungOne-700.woff2" type="font/woff2" crossorigin="anonymous">
   <!--google-->
   <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
   <style>
-    .game-content{visibility:hidden}.fs-loading{position:fixed;left:0;top:0;width:100%;height:100%;margin:-30px 0 0 -30px;background-color:#fff;z-index:3}.fs-loading::before{content:'';position:absolute;left:50%;top:50%;width:60px;height:60px;border-left:5px solid #1a40a2;border-top:5px solid #1a40a2;-webkit-border-radius:50%;border-radius:50%;-webkit-animation:rotate360 1.5s infinite;animation:rotate360 1.5s infinite;}@-webkit-keyframes rotate360{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate360{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+    .game-content {
+      visibility: hidden
+    }
+
+    .fs-loading {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      margin: -30px 0 0 -30px;
+      background-color: #fff;
+      z-index: 3
+    }
+
+    .fs-loading::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 60px;
+      height: 60px;
+      border-left: 5px solid #1a40a2;
+      border-top: 5px solid #1a40a2;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      -webkit-animation: rotate360 1.5s infinite;
+      animation: rotate360 1.5s infinite;
+    }
+
+    @-webkit-keyframes rotate360 {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes rotate360 {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
   </style>
 </head>
 
@@ -57,13 +113,11 @@
           </div>
 
           <div class="light-left">
-            <img class="fs-lazy"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               data-webp="images/single-light.webp" data-original="images/single-light.png" alt="light">
           </div>
           <div class="light-center">
-            <img class="fs-lazy"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               data-webp="images/light.webp" data-original="images/light.png" alt="light">
           </div>
 
@@ -76,49 +130,41 @@
 
           <div class="moneys">
             <div class="money">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/dong-xu.webp" data-original="images/dong-xu.png" alt="dong-xu">
             </div>
             <div class="money">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/dong-xu.webp" data-original="images/dong-xu.png" alt="dong-xu">
             </div>
             <div class="money">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/dong-xu.webp" data-original="images/dong-xu.png" alt="dong-xu">
             </div>
           </div>
 
           <div class="flowers">
             <div class="flower">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/flower.webp" data-original="images/flower.png" alt="flower">
             </div>
             <div class="flower">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/flower.webp" data-original="images/flower.png" alt="flower">
             </div>
             <div class="flower">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/flower.webp" data-original="images/flower.png" alt="flower">
             </div>
             <div class="flower">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/flower.webp" data-original="images/flower.png" alt="flower">
             </div>
           </div>
 
           <div class="game-but">
             <button id="btnJoinNow">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/btn-tham-gia-ngay.webp" data-original="images/btn-tham-gia-ngay.png"
                 alt="btn-tham-gia-ngay">
             </button>
@@ -127,8 +173,7 @@
 
         <div class="home-bot">
           <div class="method-title">
-            <img class="fs-lazy"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               data-webp="images/method-title.webp" data-original="images/method-title.png" alt="Cách thức tham gia">
           </div>
           <div class="method-steps">
@@ -152,8 +197,7 @@
           <div class="game-but">
             <p>Hãy cùng bạn bè Gieo Quẻ Xăm đoán vận đầu năm và <br>nhận ưu đãi lên đến 44% mừng Tết lớn nhé!</p>
             <button id="btnShareNow">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/btn-chia-se.webp" data-original="images/btn-chia-se.png" alt="Share ngay">
             </button>
           </div>
@@ -181,7 +225,10 @@
                     <div class="fs-error-txt">
                       <p>Vui lòng kiểm tra lại dữ liệu Vui lòng kiểm tra lại dữ liệu Vui lòng kiểm tra lại dữ liệu</p>
                     </div>
-                    <input type="text" name="fs_txt_username" id="fs_txt_username" value="Nguyen Van Quyet">
+                    <label class="fs-hide-txt">
+                      <span>User name</span>
+                      <input type="text" name="fs_txt_username" id="fs_txt_username" value="Nguyen Van Quyet">
+                    </label>
                   </div>
                 </div>
 
@@ -237,7 +284,10 @@
                     <div class="fs-error-txt">
                       <p>Vui lòng kiểm tra lại dữ liệu</p>
                     </div>
-                    <input type="text" name="fs_txt_email" id="fs_txt_email" value="nvquyet222@gmail.com">
+                    <label class="fs-hide-txt">
+                      <span>User name</span>
+                      <input type="text" name="fs_txt_email" id="fs_txt_email" value="nvquyet222@gmail.com">
+                    </label>
                   </div>
                 </div>
 
@@ -264,8 +314,7 @@
 
           <div class="game-but">
             <button id="btnRegister">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/btn-dang-ky.webp" data-original="images/btn-dang-ky.png" alt="Đăng Ký">
             </button>
           </div>
@@ -280,8 +329,7 @@
 
           <div class="main-box">
             <div class="main-pic">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/xam-sprite.webp" data-original="images/xam-sprite.png"
                 alt="Bạn đã đăng ký thành công. Hãy gieo quẻ để biết dự đoán tương lai của bạn.">
             </div>
@@ -290,8 +338,7 @@
           <div class="game-but">
             <p>Nhấp liên tục để xin quẻ</p>
             <button id="btnPlay">
-              <img class="fs-lazy"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              <img class="fs-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 data-webp="images/btn-click.webp" data-original="images/btn-click.png" alt="Nhấp liên tục để xin quẻ">
             </button>
           </div>
@@ -373,13 +420,13 @@
             phẩm Samsung TV nhất định.</p>
           <p><strong>6. Giá trị khuyến mãi:</strong> Giá trị khuyến mãi phụ thuộc vào từng mẫu mã TV. Người tiêu dùng
             phải truy cập vào trang bán hàng trực tuyến của Samsung: <a
-              href="https://shop.samsung.com/vn/product/TV/c/AV01"
-              target="_blank">https://shop.samsung.com/vn/product/TV/c/AV01</a> chọn sản phẩm cần mua và nhập mã code để
+              href="https://shop.samsung.com/vn/product/TV/c/AV01" target="_blank"
+              rel="noopener">https://shop.samsung.com/vn/product/TV/c/AV01</a> chọn sản phẩm cần mua và nhập mã code để
             biết mức khuyến mãi.</p>
           <p><strong>7. Khách hàng của chương trình khuyến mại:</strong></p>
           <p>- Khách hàng của chương trình khuyến mại (đối tượng được hưởng khuyến mại): Khách hàng đã đăng ký thông tin
-            và tham gia thành công trò chơi “Gieo Quẻ Xăm Mừng Tết Lớn”: <a href="javascript:void(0);"
-              target="_blank">[link]</a> sẽ
+            và tham gia thành công trò chơi “Gieo Quẻ Xăm Mừng Tết Lớn”: <a href="javascript:void(0);" target="_blank"
+              rel="noopener">[link]</a> sẽ
             nhận được Phiếu giảm giá lên đến 48%.</p>
           <p>- Nhân viên Công Ty TNHH Điện Tử Samsung CE HCMC Complex – Chi nhánh Thành Phố Hồ Chí Minh; nhân viên Công
             ty TNHH Điện Tử Samsung Vina; nhân viên của các nhà phân phối, các đại lý bán hàng trực tiếp của Công Ty
@@ -387,7 +434,8 @@
             vụ cho chương trình khuyến mại này không được tham gia chương trình khuyến mại này.</p>
           <p><strong>8. Nội dung chi tiết thể lệ chương trình khuyến mại:</strong></p>
           <p>- Nội dung khuyến mại: Trong thời gian khuyến mại, sau khi Khách hàng đăng ký thông tin và tham gia thành
-            công trò chơi “Gieo Quẻ Xăm Mừng Tết Lớn”: <a href="javascript:void(0);" target="_blank">[link]</a> sẽ nhận
+            công trò chơi “Gieo Quẻ Xăm Mừng Tết Lớn”: <a href="javascript:void(0);" target="_blank"
+              rel="noopener">[link]</a> sẽ nhận
             được Phiếu giảm
             giá lên đến 48% áp dụng cho các sản phẩm Samsung TV trong danh sách khuyến mãi.</p>
           <p>- Cách thức sử dụng Phiếu giảm giá: Khách hàng đăng nhập vào trang bán hàng trực tuyến nêu trên, sau đó
@@ -402,14 +450,16 @@
           <p><strong>10. Trách nhiệm thông báo:</strong></p>
           <p>- Công Ty TNHH Điện Tử Samsung HCMC CE Complex - Chi nhánh Thành phố Hồ Chí Minh cam kết sẽ thông báo công
             khai chi tiết nội dung của thể lệ chương trình khuyến mại tại nơi bán sản phẩm khuyến mại khuyến mại, trên
-            trang <a href="http://www.samsung.com/vn/" target="_blank">http://www.samsung.com/vn/</a></p>
+            trang <a href="http://www.samsung.com/vn/" target="_blank" rel="noopener">http://www.samsung.com/vn/</a></p>
           <p>- Ngoài ra, thông tin về kết quả chương trình sẽ được thông báo bằng cách đăng tải danh sách nhận quà tặng
-            trên trang <a href="http://www.samsung.com/vn/" target="_blank">http://www.samsung.com/vn/</a> và trên
+            trên trang <a href="http://www.samsung.com/vn/" target="_blank"
+              rel="noopener">http://www.samsung.com/vn/</a> và trên
             phương tiện truyền thông đại chúng và thông báo trực tiếp cho Khách Hàng.</p>
           <p><strong>11. Các quy định khác:</strong></p>
           <p>- Bằng việc đồng ý tham gia, cung cấp thông tin cá nhân, người tham gia đồng ý với các điều khoản về Bảo
             mật thông tin của Samsung quy định tại đường link dưới đây: <a
-              href="http://www.samsung.com/vn/info/privacy/" target="_blank">http://www.samsung.com/vn/info/privacy/</a>
+              href="http://www.samsung.com/vn/info/privacy/" target="_blank"
+              rel="noopener">http://www.samsung.com/vn/info/privacy/</a>
           </p>
           <p>- Khi đã tham gia chương trình, người tham gia đồng ý với việc sử dụng tên, hình ảnh và/hoặc những thông
             tin được đăng kí trên mẫu đăng ký tham gia mà không có thù lao cho mục đích quảng cáo và tiếp thị của
