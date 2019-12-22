@@ -42,19 +42,6 @@ function WebpIsSupported(callback) {
 	});
 }
 
-WebpIsSupported(function (isSupported) {
-	if (isSupported) {
-		$('body').addClass('is-webp');
-		isWebP = true;
-	} else {
-		$('body').addClass('no-webp');
-	}
-});
-
-if (isMobile) {
-	$('body').addClass('isSP');
-}
-
 var gifts = [
 	{
 		giftId: 1,
@@ -398,10 +385,24 @@ $(window).on('load', function () {
 // Page Ready
 (function () {
 	
+	WebpIsSupported(function (isSupported) {
+		if (isSupported) {
+			$('body').addClass('is-webp');
+			isWebP = true;
+		} else {
+			$('body').addClass('no-webp');
+		}
+		ImgLazyLoad('.item-01');
+	});
+
+	if (isMobile) {
+		$('body').addClass('isSP');
+	}
+
 	resetLayout();
-	ImgLazyLoad('.item-01');
-	fsEvent();
 	
+	fsEvent();
+
 	var isFace = isFacebookApp();
 	if (isFace) {
 		$('body').addClass('isFace');
