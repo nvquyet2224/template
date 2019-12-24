@@ -325,7 +325,7 @@ function randomAnswer() {
 	$('.brief-detail').html(brief);
 	$('.step-03 .item-title p').html(gifts[index].title);
 
-	ImgLazyLoad('item-02');
+	ImgLazyLoad('.item-02');
 
 }
 
@@ -363,6 +363,7 @@ function Rotate() {
 
 }
 
+var loading = true;
 
 // Page Rezize
 $(window).on('resize', Resize);
@@ -375,10 +376,13 @@ var waiting = true;
 //  Page load
 $(window).on('load', function () {
 	
-	$('.fs-loading').fadeOut(300, function() {
+	if(loading) {
+		//$('.item-01').addClass('active');
 		loading = false;
-		$('.fs-loading').remove();
-	});
+		$('.fs-loading').fadeOut(350, function() {
+			$('.fs-loading').remove();
+		});
+	}
 
 });
 
@@ -408,14 +412,16 @@ $(window).on('load', function () {
 		$('body').addClass('isFace');
 	}
 
+	//$('.item-01').addClass('active');
+
 	setTimeout(function(){
-		if(waiting){
+
+		if(loading){
+			loading = false;
 			$('.fs-loading').fadeOut(300, function() {
-				loading = false;
 				$('.fs-loading').remove();
-				fsEvent();
 			});
 		}
-	},1100);
+	},1000);
 
 })();
