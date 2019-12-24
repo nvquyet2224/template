@@ -173,7 +173,49 @@ html, body{
 .fs-type-full img{
 	width:100%;
 }
-.fs-banner-details, .fs-birthday-details, .fs-purvey-details, .fs-stores-details, .fs-type-overlay{
+.fs-banner-details{
+	position: absolute;
+	width:80%;
+	height:auto;
+	left: 10%;
+	top:14.8%;
+}
+.fs-banner-details::before, 
+.fs-banner-details::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+}
+.fs-banner-details::before{
+	background-color:#e9af23;
+	opacity:0.38;
+	z-index: 0;
+	-webkit-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+}
+.fs-banner-details::after{
+	background-color:#fffaef;
+	z-index: 1;
+	-webkit-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+}
+.fs-banner-wrap{
+	position: relative;
+	display: block;
+	width:100%;
+	height: auto;
+	z-index: 2;
+	text-align: center;
+	padding-bottom:20px;
+}
+.fs-banner-wrap .fs-area-pic img {
+	width: auto;
+	height: auto;
+}
+.fs-birthday-details, .fs-purvey-details, .fs-stores-details, .fs-type-overlay{
 	position: absolute;
 	left:0;
 	top:0;
@@ -184,7 +226,15 @@ html, body{
 	width:100%;
 	height:auto;
 }
-
+.fs-heart{
+	margin:-63px 0 24px 0;
+}
+.fs-slogan{
+	margin-bottom:19px;
+}
+.fs-brief-regis{
+	margin-bottom:39px;
+}
 
 /*KEYFRAMES*/
 @-webkit-keyframes rotate360 {
