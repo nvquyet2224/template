@@ -122,7 +122,6 @@ html, body{
 }
 .fs-area-pic img{	
 	width:auto;
-	max-width:100%;
 }
 .fs-pc{
 	display:block;
@@ -215,7 +214,7 @@ html, body{
 	width: auto;
 	height: auto;
 }
-.fs-birthday-details, .fs-purvey-details, .fs-stores-details, .fs-type-overlay{
+.fs-stores-details, .fs-type-overlay{
 	position: absolute;
 	left:0;
 	top:0;
@@ -235,6 +234,149 @@ html, body{
 .fs-brief-regis{
 	margin-bottom:39px;
 }
+
+.fs-birthday-details{
+	position: absolute;
+	width:80%;
+	height: auto;
+	left:10%;
+	bottom:0;
+	text-align:center;
+	font-size:0;
+	z-index: 2;
+
+}
+.fs-birthday-details .fs-title-large{
+	left: 50%;
+	-webkit-transform: translate(-50%,0);
+	transform: translate(-50%,0);
+    top: -124px;
+}
+.fs-birthday-details .fs-box{
+	position: relative;
+	top:24px;
+}
+.fs-birthday-details li {
+	position: relative;
+	display: inline-block;
+	width:auto;
+	height: auto;
+	vertical-align:top;
+}
+.fs-birthday-details .fs-title, .arrow-white{
+	position: absolute;
+}
+.fs-birthday-details li:nth-child(1) .fs-product{
+	width:456px;
+	height: auto;
+}
+.fs-birthday-details li:nth-child(1) .fs-title{
+	top:-38px;
+	left:-82px;
+}
+.fs-birthday-details li:nth-child(1) .arrow-white {
+	left: 50px;
+	top:100%;
+	margin-top:7px;
+}
+.fs-birthday-details li:nth-child(2){
+	margin:0 0 0 -97px;
+}
+.fs-birthday-details li:nth-child(2) .fs-product{
+	top:24px;
+	width:97px;
+	height: auto;
+}
+.fs-birthday-details li:nth-child(2) .fs-title{
+	top:-38px;
+	left:-64px;
+}
+.fs-birthday-details li:nth-child(2) .arrow-white {
+	left: 160px;
+	top:100%;
+	margin-top:7px;
+}
+.fs-birthday-details li:nth-child(2) .arrow-white img {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+
+.fs-purvey-details {
+	position: absolute;
+	left: 10%;
+	top:20px;
+	width:80%;
+	height: auto;
+	text-align: center;
+}
+.fs-title-topic{
+	margin-bottom:53px;
+}
+.fs-purvey-details .fs-title-large {
+	margin-bottom:40px;
+}
+.fs-purvey-details .fs-title-topic + .fs-title-large {
+	margin-bottom:53px;
+}
+.fs-spr-three {
+	position: relative;
+	display: block;
+	text-align:left;
+}
+.fs-spr-three li {
+	position: relative;
+	display:inline-block;
+	vertical-align: middle;
+}
+.fs-spr-three li .fs-title{
+	position: absolute;
+}
+.fs-spr-three li .fs-equal{
+	margin:0 76px;
+}
+.fs-spr-three li:nth-child(1) {
+	width:206px;
+	text-align:right;
+	background-color: #f00;
+
+}
+.fs-spr-three:nth-child(3) li:nth-child(1) .fs-product{
+	left:36px;
+}
+
+.fs-spr-three:nth-child(4) li:nth-child(1) .fs-key{
+	left:-13px;
+}
+
+.fs-title-wrap{
+	position: relative;
+	display:inline-block;
+	width: auto;
+	height: auto;
+}
+.fs-icon{
+	position: absolute;
+}
+.fs-icon:nth-child(1) {
+	left:100%;
+	top:20px;
+	margin-left:23px;
+}
+.fs-icon:nth-child(3) {
+	right:100%;
+	top:20px;
+	margin-right:23px;
+}
+
+.fs-spr-two li {
+	position: relative;
+	display:inline-block;
+	vertical-align: middle;
+}
+.fs-spr-three li .fs-title{
+	position: absolute;
+}
+
 
 /*KEYFRAMES*/
 @-webkit-keyframes rotate360 {
