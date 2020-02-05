@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>PixiJS V4 Displacement Filter Demo - By MarkHawkinsDesigns.com</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.6.2/pixi.min.js"></script>
+    <style type="text/css">
+        body {
+            background-color: #000;
+        }
+        canvas {
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        function Flag1() {
+            const app = new PIXI.Application(600, 400, { antialias: true, transparent: true });
+            document.body.appendChild(app.view);
+
+            app.stage.interactive = true;
+
+            const container = new PIXI.Container();
+            app.stage.addChild(container);
+
+            const flag = PIXI.Sprite.from('images/flag.png');
+            container.addChild(flag);
+            flag.x = 0;
+            flag.y = 0;
+
+            const displacementSprite = PIXI.Sprite.from('images/filters/displacement_map_repeat.jpg');
+            // Make sure the sprite is wrapping.
+            displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+            const displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
+            displacementFilter.padding = 0;
+
+            displacementSprite.position = flag.position;
+
+            app.stage.addChild(displacementSprite);
+
+            flag.filters = [displacementFilter];
+
+            displacementFilter.scale.x = 60;
+            displacementFilter.scale.y = 120;
+            
+            app.ticker.add(() => {
+                // Offset the sprite position to make vFilterCoord update to larger value. Repeat wrapping makes sure there's still pixels on the coordinates.
+                displacementSprite.x += 10;
+                // Reset x to 0 when it's over width to keep values from going to very huge numbers.
+                if (displacementSprite.x > displacementSprite.width) { displacementSprite.x = 0; }
+            });
+
+        }
+        
+        Flag1();
+
+    </script>
+</body>
+
+</html>
