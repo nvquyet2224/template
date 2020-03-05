@@ -30,26 +30,26 @@
     <link href="landing.html" rel="canonical">
     <meta name="theme-color" content="#fff" />
     <!--preload-->
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="css/twentytwenty.css" as="style">
-    <link rel="preload" href="css/popupinfo.css" as="style">
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link rel="preload" href="css/header.css" as="style">
+    <link rel="preload" href="css/header.min.css" as="style">
+    <link rel="preload" href="css/style.min.css" as="style">
+    <link rel="preload" href="css/twentytwenty.min.css" as="style">
+    <link rel="preload" href="css/font-awesome.min.css" as="style">
     <link rel="preload" href="vendor/jquery-min.js" as="script">
     <link rel="preload" href="js/swiper.js" as="script">
     <link rel="preload" href="js/TweenMax.min.js" as="script">
     <link rel="preload" href="js/jquery.event.move.js" as="script">
     <link rel="preload" href="js/jquery.twentytwenty.js" as="script">
-    <link rel="preload" href="js/main.js" as="script">
-    <style>
-        body {
-            visibility: hidden
-        }
-    </style>
+    <link rel="preload" href="js/main.min.js" as="script">
+    <link rel="preload" href="fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Montserrat-Light.woff2" as="font" type="font/woff2" crossorigin>
+    <style>.fs-loading{position:fixed;left:0;top:0;width:100vw;height:100vh;background-color:#fff;z-index:100}.fs-page{opacity:0}</style>
 </head>
 
 <body>
-
+    <div class="fs-loading"></div>
     <div class="fs-page">
 
         <header id="primary_header">
@@ -63,7 +63,7 @@
                     </h1>
                     <nav class="menu_primary">
                         <div class="fs-search-top">
-                            <input type="text" value="">
+                            <label class="fs-hide-label"><input type="text" value="">Search</label>
                         </div>
                         <ul class="menu">
                             <li>
@@ -241,21 +241,20 @@
                 <div class="fs-slider swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <!-- Nếu đến ngày post banner giảm giá thì gắn thêm class is-joy-discount này vào -->
                             <div class="fs-box is-joy-kv">
                                 <div class="fs-area-pic">
-                                    <img class="fs-pc cmPic fs-lazy"
+                                    <img class="fs-pc pcPic fs-lazy"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                         data-src="images/landing/kv-cost.jpg" alt="Điện thoại Joy 3">
-                                    <img class="fs-sp cmPic fs-lazy"
+                                    <img class="fs-sp spPic fs-lazy"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                         data-src="images/landing/kv-cost-sp.jpg" alt="Điện thoại Joy 3">
                                 </div>
                                 <div class="fs-area-pic byDiscount">
-                                    <img class="fs-pc cmPic fs-lazy"
+                                    <img class="fs-pc pcPic fs-lazy"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                         data-src="images/landing/kv-discount.jpg" alt="Điện thoại Joy 3">
-                                    <img class="fs-sp cmPic fs-lazy"
+                                    <img class="fs-sp spPic fs-lazy"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                         data-src="images/landing/kv-discount-sp.jpg" alt="Điện thoại Joy 3">
                                 </div>
@@ -268,10 +267,10 @@
                         <div class="swiper-slide">
                             <div class="fs-box is-joy-waiting">
                                 <div class="fs-area-pic">
-                                    <img class="fs-pc cmPic fs-lazy"
+                                    <img class="fs-pc pcPic fs-lazy"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                         data-src="images/landing/joy-banner.jpg" alt="Điện thoại Joy 3">
-                                    <img class="fs-sp cmPic fs-lazy"
+                                    <img class="fs-sp spPic fs-lazy"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                         data-src="images/landing/joy-banner-sp.jpg" alt="Điện thoại Joy 3">
                                 </div>
@@ -335,12 +334,6 @@
 
                     </div>
 
-                    <!--<div class="fs-camera-cap">
-                        <img class="cmPic fs-lazy"
-                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                            data-src="images/landing/camera-phone.png" alt="Đắm Chìm Trong Màn Hình Rộng Hơn">
-                    </div>-->
-
                 </div>
             </div>
 
@@ -351,7 +344,7 @@
 
                         <div class="fs-area-txt">
                             <div class="fs-camera-pic fs-pc">
-                                <img class="cmPic fs-lazy"
+                                <img class="pcPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/camera-info-mask.png"
                                     alt="Đắm Chìm Trong Màn Hình Rộng Hơn">
@@ -369,7 +362,7 @@
                                 <div class="fs-btn"><span>Mua ngay</span></div>
                             </div>
                             <div class="fs-camera-pic fs-sp">
-                                <img class="cmPic fs-lazy"
+                                <img class="spPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/camera-info-mask.png"
                                     alt="Đắm Chìm Trong Màn Hình Rộng Hơn">
@@ -418,13 +411,8 @@
                                 </div>
 
                                 <div class="fs-compare-container twentytwenty-container">
-                                    <img class="cmPic fs-lazy"
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                        data-src="images/landing/compare-02.png" alt="Camera hiệp sĩ bóng đêm">
-                                    <img class="cmPic fs-lazy"
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                        data-src="images/landing/compare-01.png" alt="Camera hiệp sĩ bóng đêm">
-
+                                    <img src="images/landing/compare-02.png" alt="Camera hiệp sĩ bóng đêm">
+                                    <img src="images/landing/compare-01.png" alt="Camera hiệp sĩ bóng đêm">
                                 </div>
 
                             </div>
@@ -476,19 +464,19 @@
                             </div>
 
                             <div class="fs-area-pic">
-                                <img class="fs-pc cmPic fs-lazy battery-shadow"
+                                <img class="fs-pc pcPic fs-lazy battery-shadow"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/phone2-shadow.png"
                                     alt="Pin khủng, sạc nhanh Cả ngày xài thả phanh!">
-                                <img class="fs-pc cmPic fs-lazy"
+                                <img class="fs-pc pcPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/phone2.jpg"
                                     alt="Pin khủng, sạc nhanh Cả ngày xài thả phanh!">
-                                <img class="fs-sp cmPic fs-lazy battery-shadow"
+                                <img class="fs-sp spPic fs-lazy battery-shadow"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/phone2-shadow-sp.png"
                                     alt="Pin khủng, sạc nhanh Cả ngày xài thả phanh!">
-                                <img class="fs-sp cmPic fs-lazy"
+                                <img class="fs-sp spPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/phone2-sp.jpg"
                                     alt="Pin khủng, sạc nhanh Cả ngày xài thả phanh!">
@@ -593,11 +581,11 @@
 
                         <div class="fs-experience-box">
                             <div class="fs-experience-main">
-                                <img class="fs-pc cmPic fs-lazy"
+                                <img class="fs-pc pcPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/experience-main.jpg"
                                     alt="Hiệu Suất Mạnh Mẽ Cho Trải Nghiệm Hoàn Hảo">
-                                <img class="fs-sp cmPic fs-lazy"
+                                <img class="fs-sp spPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/landing/experience-main-sp.jpg"
                                     alt="Hiệu Suất Mạnh Mẽ Cho Trải Nghiệm Hoàn Hảo">
@@ -854,7 +842,7 @@
                                     <p>Chipset Qualcomm Snapdragon 632</p>
                                 </div>
                                 <div class="fs-parameter-item fs-sp">
-                                    <h3><span class="fs-parameter-icon camera-icon"><img class="cmPic fs-lazy"
+                                    <h3><span class="fs-parameter-icon camera-icon"><img class="spPic fs-lazy"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="images/landing/camera-icon.png" alt="Mở khoá bằng nhận diện gương
                                     mặt nhớ mãi không thôi."></span>CAMERA</h3>
@@ -874,7 +862,7 @@
                             </li>
                             <li class="fs-pc">
                                 <div class="fs-parameter-item">
-                                    <h3><span class="fs-parameter-icon camera-icon"><img class="cmPic fs-lazy"
+                                    <h3><span class="fs-parameter-icon camera-icon"><img class="pcPic fs-lazy"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="images/landing/camera-icon.png" alt="Mở khoá bằng nhận diện gương
                                 mặt nhớ mãi không thôi."></span>CAMERA</h3>
@@ -920,7 +908,7 @@
                                     <p>GSM: Band 2/3/5/8</p>
                                 </div>
                                 <div class="fs-parameter-item fs-sp">
-                                    <h3><span class="fs-parameter-icon battery-icon"><img class="cmPic fs-lazy"
+                                    <h3><span class="fs-parameter-icon battery-icon"><img class="spPic fs-lazy"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="images/landing/battery-icon.png" alt="Mở khoá bằng nhận diện gương
                                     mặt nhớ mãi không thôi."></span>Pin</h3>
@@ -929,7 +917,7 @@
                                 </div>
 
                                 <div class="fs-parameter-item fs-sp">
-                                    <h3><span class="fs-parameter-icon content-icon"><img class="cmPic fs-lazy"
+                                    <h3><span class="fs-parameter-icon content-icon"><img class="spPic fs-lazy"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="images/landing/content-icon.png" alt="Mở khoá bằng nhận diện gương
                                     mặt nhớ mãi không thôi."></span>THÀNH PHẦN TRONG HỘP</h3>
@@ -944,7 +932,7 @@
                             </li>
                             <li class="fs-pc">
                                 <div class="fs-parameter-item">
-                                    <h3><span class="fs-parameter-icon battery-icon"><img class="cmPic fs-lazy"
+                                    <h3><span class="fs-parameter-icon battery-icon"><img class="pcPic fs-lazy"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="images/landing/battery-icon.png" alt="Mở khoá bằng nhận diện gương
                                 mặt nhớ mãi không thôi."></span>Pin</h3>
@@ -975,34 +963,15 @@
         </div>
         <!--/Content-->
 
-        <!-- Popup -->
-        <div class="fs-popup-info">
-            <div class="fs-ctn-pop-info">
-                <div class="fs-close-popup-info"></div>
-                <div class="fs-area-pic">
-                    <img class="cmPic fs-lazy fs-pc"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                        data-src="images/popup-info.png" alt="Cùng chở đón Joy 3">
-                    <img class="cmPic fs-lazy fs-sp"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                        data-src="images/popup-info-sp.png" alt="Cùng chở đón Joy 3">
-                </div>
-                <div class="fs-box-but">
-                    <div class="fs-btn"><span>Tham gia ngay</span></div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <!--Dont remove-->
     <!--normal style-->
     <noscript id="normal-styles">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-        <link href="css/twentytwenty.css" rel="stylesheet" type="text/css">
-        <link href="css/popupinfo.css" rel="stylesheet" type="text/css">
-        <link href="css/header.css" rel="stylesheet" type="text/css">
-        <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+        <link href="css/header.min.css" rel="stylesheet" type="text/css">
+        <link href="css/style.min.css" rel="stylesheet" type="text/css">
+        <link href="css/twentytwenty.min.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </noscript>
     <script>
         var normalStyles = function () {
@@ -1018,11 +987,11 @@
     </script>
     <!--normal style-->
     <script src="vendor/jquery-min.js"></script>
-    <script src="js/swiper.js"></script>
+    <script src="js/swiper.min.js"></script>
     <script src="js/TweenMax.min.js"></script>
-    <script src="js/jquery.event.move.js"></script>
-    <script src="js/jquery.twentytwenty.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/jquery.event.move.min.js"></script>
+    <script src="js/jquery.twentytwenty.min.js"></script>
+    <script src="js/main.min.js"></script>
 </body>
 
 </html>

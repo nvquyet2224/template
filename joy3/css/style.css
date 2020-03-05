@@ -1308,67 +1308,6 @@ button.swiper-pagination-bullet {
 .fs-overlay-inr .fs-btn span{
 	color:#fff;
 }
-/* .fs-header{
-	position: relative;
-	width:100%;
-	height:auto;
-	background-color:#fff;
-}
-.fs-navigation{
-	position:relative;
-	display:block;
-	height:50px;
-	line-height:50px;
-	padding:0 4.84vw;
-	display:block;
-	width:100%;
-	border-bottom:1px solid #d9d9d9;
-	text-align:right;
-	background-color: #fff;
-	line-height:initial;
-}
-.fs-navigation li {
-	position:relative;
-	display:inline-block;
-	font-family:'Montserrat';
-	font-weight:300;
-	font-style:normal;
-	font-size:14px;
-	vertical-align:middle;
-	margin-right:2.2vw;
-	cursor:pointer;
-	-webkit-transition:all 0.3s ease-in-out;
-	transition:all 0.3s ease-in-out;
-}
-.fs-navigation li > a{
-	display:block;
-	line-height:0;
-}
-.fs-navigation li:last-child{
-	margin:0;
-}
-.fs-navigation li:nth-child(1) {
-	font-weight:700;
-	font-style:normal;
-	position:absolute;
-	left:4.84%;
-	top:50%;
-	-webkit-transform:translateY(-50%);
-	transform:translateY(-50%);
-	font-size:19px;
-	cursor:default;
-	-webkit-transition:none;
-	transition:none;
-	opacity:1 !important;
-}
-.fs-navigation li:nth-child(1) a{
-	line-height:initial;
-}
-.fs-navigation li:hover{
-	opacity:0.5;
-} */
-
-
 
 /*Common*/
 .is-banner .fs-area-txt h2,
@@ -3504,17 +3443,7 @@ button.swiper-pagination-bullet {
 	.is-habit .fs-area-txt p, .is-experience .fs-area-txt p, .is-security .fs-area-txt p, .is-vos .fs-area-txt p{
 		font-size:2.8vw;
 	}
-	/* .fs-info-camera{
-		width:51vw;
-		padding:1.5vw 0 0 21.6vw;
-	}
-	.fs-info-camera span{
-		font-size:2.8vw;
-	}
-	.fs-info-camera span:nth-child(3){
-		top:1.5vw;
-	} */
-
+	
 	.vos-nav{
 		width:76%;
 	}
