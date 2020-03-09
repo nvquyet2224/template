@@ -5,93 +5,109 @@
 	<title>Beck Interative</title>
 	<style>
 		body {
-			background-color: #000;
-			overflow: hidden;
+			background-color:#000;
+			overflow:hidden;
 		}
 
 		#app {
-			position: relative;
-			width: 100vw;
-			height: 100vh;
+			position:relative;
+			width:100vw;
+			height:100vh;
 		}
 
 		.video-box {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			display: block;
-			width: 900px;
-			height: auto;
-			-webkit-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-			border: 1px solid #ddd;
+			position:absolute;
+			left:50%;
+			top:50%;
+			display:block;
+			width:900px;
+			height:auto;
+			-webkit-transform:translate(-50%, -50%);
+			transform:translate(-50%, -50%);
 		}
 
 		.preload-video {
-			position: absolute;
-			right: 0;
-			top: 0;
+			position:absolute;
+			right:0;
+			top:0;
 		}
 
 		.video-box::before {
-			content: '';
-			position: relative;
-			display: block;
-			width: 100%;
-			height: auto;
-			padding-top: 56.25%;
+			content:'';
+			position:relative;
+			display:block;
+			width:100%;
+			height:auto;
+			padding-top:56.25%;
+		}
+
+		.video-box::after {
+			content:'';
+			position:absolute;
+			left:0;
+			top:0;
+			width:100%;
+			height:100%;
+			background-color:rgba(0, 0, 0, 1);
+			z-index:0;
 		}
 
 		video,
 		canvas {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
+			position:absolute;
+			left:0;
+			top:0;
+			width:100%;
+			height:100%;
 		}
 
 		video {
-			opacity: 0;
-			display: none;
+			opacity:0;
+			display:none;
 		}
 
 		canvas {
-			z-index: 1;
+			-webkit-transition:opacity 0.5s ease-in-out;
+			transition:opacity 0.5s ease-in-out;
+			z-index:1;
+		}
+
+		.video-box.show-poster canvas {
+			opacity:0;
 		}
 
 		#buttons {
-			height: 250px;
-			width: 127px;
-			margin-left: 20px;
-			overflow-y: scroll;
-			z-index: 2;
+			height:250px;
+			width:127px;
+			margin-left:20px;
+			overflow-y:scroll;
+			z-index:2;
 		}
 
 		.hostposts-box div {
-			position: absolute;
-			right: 20px;
-			top: 20px;
-			width: 100%;
-			height: auto;
-			text-align: right;
-			opacity: 0;
-			visibility: hidden;
-			z-index: 3;
+			position:absolute;
+			right:20px;
+			top:20px;
+			width:100%;
+			height:auto;
+			text-align:right;
+			opacity:0;
+			visibility:hidden;
+			z-index:3;
 		}
 
 		.hostposts-box div.active {
-			opacity: 1;
-			visibility: visible;
+			opacity:1;
+			visibility:visible;
 		}
 
 		.btn {
-			display: inline-block;
-			width: 100px;
-			height: 40px;
-			vertical-align: top;
-			border: none;
-			cursor: pointer;
+			display:inline-block;
+			width:100px;
+			height:40px;
+			vertical-align:top;
+			border:none;
+			cursor:pointer;
 		}
 	</style>
 </head>
@@ -137,45 +153,45 @@
 
 		var videoItems = [
 			{
-				id: 1,
-				src: 'videos/video1.mp4',
-				hostposts: [{ id: 'host2', "startTime": 4, "endTime": 16 }]
+				id:1,
+				src:'videos/video1.mp4',
+				hostposts:[{ id:'host2', "startTime":4, "endTime":16 }]
 			}, {
-				id: 2,
-				src: 'videos/video2.mp4',
-				hostposts: [{ id: 'host3', "startTime": 4, "endTime": 16 }]
+				id:2,
+				src:'videos/video2.mp4',
+				hostposts:[{ id:'host3', "startTime":4, "endTime":16 }]
 			}, {
-				id: 3,
-				src: 'videos/video3.mp4',
-				hostposts: [{ id: 'host4', "startTime": 4, "endTime": 16 }]
+				id:3,
+				src:'videos/video3.mp4',
+				hostposts:[{ id:'host4', "startTime":4, "endTime":16 }]
 			}, {
-				id: 4,
-				src: 'videos/video4.mp4',
-				hostposts: [{ id: 'host5', "startTime": 4, "endTime": 16 }]
+				id:4,
+				src:'videos/video4.mp4',
+				hostposts:[{ id:'host5', "startTime":4, "endTime":16 }]
 			}, {
-				id: 5,
-				src: 'videos/video5.mp4',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:5,
+				src:'videos/video5.mp4',
+				hostposts:[{ id:'host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 6,
-				src: 'videos/video6.mp4',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:6,
+				src:'videos/video6.mp4',
+				hostposts:[{ id:'host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 7,
-				src: 'videos/video7.mp4',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:7,
+				src:'videos/video7.mp4',
+				hostposts:[{ id:'host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 8,
-				src: 'videos/video8.mp4',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:8,
+				src:'videos/video8.mp4',
+				hostposts:[{ id:'host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 9,
-				src: 'videos/video9.mp4',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:9,
+				src:'videos/video9.mp4',
+				hostposts:[{ id:'host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 10,
-				src: 'videos/video10.mp4',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:10,
+				src:'videos/video10.mp4',
+				hostposts:[{ id:'host1', "startTime":4, "endTime":16 }]
 			}
 		]
 
@@ -188,14 +204,17 @@
 			video.addEventListener('loadedmetadata', function () {
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
-
+				console.log('loadedmetadata video');
 			});
 
 			video.addEventListener('loadeddata', function () {
+				console.log('loadeddata video');
+				$('.video-box').removeClass('show-poster');
 				this.play();
 			});
 
 			video.addEventListener('play', function () {
+				$('.video-box').removeClass('show-poster');
 				var $this = this; //cache
 				(function loop() {
 					if (!$this.paused && !$this.ended) {
@@ -210,7 +229,7 @@
 				var hostpostId = null;
 				if (videoItems[currentIndex].hostposts && videoItems[currentIndex].hostposts.length > 0) {
 					if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].startTime && vidCurrentTime < videoItems[currentIndex].hostposts[0].endTime) {
-						this.pause();
+						//this.pause();
 						hostpostId = videoItems[currentIndex].hostposts[0].id;
 						$('#' + hostpostId).addClass('active');
 					} else if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].endTime) {
@@ -223,6 +242,7 @@
 		}
 
 		function createVideo(index) {
+			$('.video-box').addClass('show-poster');
 			$('.hostposts-box div').removeClass('active');
 			this.currentIndex = index;
 			video.src = videoItems[index].src;
