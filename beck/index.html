@@ -2,7 +2,8 @@
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>Beck Interative</title>
+	<title>Becks</title>
+	<link rel="icon" href="favicon.png">
 	<style>
 		body {
 			margin: 0;
@@ -92,7 +93,6 @@
 
 		canvas {
 			z-index: 1;
-			opacity:1;
 		}
 
 		.beck-poster {
@@ -108,20 +108,10 @@
 			opacity: 0;
 			z-index: 5;
 		}
-		canvas, .beck-poster{
-			-webkit-transition: opacity 1s ease-in-out;
-			transition: opacity 1s ease-in-out;
-		}
-		.video-box.open-poster{
-			opacity:0.5;
-		}
-		.video-box.open-poster canvas{
-			opacity: 0;
-		}
-		.video-box.open-poster .beck-poster{
+
+		.video-box.open-poster .beck-poster {
 			opacity: 1;
 		}
-
 
 		#buttons {
 			height: 250px;
@@ -295,15 +285,23 @@
 			});
 			createVideo(0);
 		}
-		
+
 		function createVideo(index) {
 			$('.beck-poster').css({ 'background-image': 'url(' + videoItems[index].poster + ')' });
 			$('.hostposts-box div').removeClass('active');
 			$('.video-box').addClass('open-poster');
-			
-			this.currentIndex = index;
-			video.src = videoItems[index].src;
-				
+			if (index > 0) {
+				setTimeout(function () {
+					currentIndex = index;
+					video.src = videoItems[index].src;
+				}, 0);
+
+			} else {
+				currentIndex = index;
+				video.src = videoItems[index].src;
+			}
+
+
 		}
 
 		(function () {
@@ -350,18 +348,6 @@
 
 		}());
 	</script>
-	<div class="img-lazy">
-		<img src="videos/video1.jpg" alt="lazy">
-		<img src="videos/video2.jpg" alt="lazy">
-		<img src="videos/video3.jpg" alt="lazy">
-		<img src="videos/video4.jpg" alt="lazy">
-		<img src="videos/video5.jpg" alt="lazy">
-		<img src="videos/video6.jpg" alt="lazy">
-		<img src="videos/video7.jpg" alt="lazy">
-		<img src="videos/video8.jpg" alt="lazy">
-		<img src="videos/video9.jpg" alt="lazy">
-		<img src="videos/video10.jpg" alt="lazy">
-	</div>
 </body>
 
 </html>
