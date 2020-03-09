@@ -153,7 +153,7 @@
 
 	<div id="app">
 		<div class="video-box">
-			<video id="beckVideo" preload="metadata" muted>
+			<video id="beckVideo" preload="auto" muted>
 				Your browser does not support the video tag.
 			</video>
 			<canvas id="backCanvas"></canvas>
@@ -250,6 +250,8 @@
 			canvas = document.getElementById('backCanvas');
 			ctx = canvas.getContext('2d');
 
+			ctx.restore();
+
 			video.addEventListener('loadedmetadata', function () {
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
@@ -265,7 +267,7 @@
 				(function loop() {
 					if (!$this.paused && !$this.ended) {
 						ctx.drawImage($this, 0, 0);
-						setTimeout(loop, 1000 / 60); // drawing at 30fps
+						setTimeout(loop, 1000 / 30); // drawing at 30fps
 					}
 				})();
 			}, 0);
@@ -276,6 +278,7 @@
 				if (videoItems[currentIndex].hostposts && videoItems[currentIndex].hostposts.length > 0) {
 					if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].startTime && vidCurrentTime < videoItems[currentIndex].hostposts[0].endTime) {
 						hostpostId = videoItems[currentIndex].hostposts[0].id;
+						this.pause();
 						$('#' + hostpostId).addClass('active');
 					} else if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].endTime) {
 						hostpostId = videoItems[currentIndex].hostposts[0].id;
