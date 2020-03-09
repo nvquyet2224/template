@@ -1,0 +1,277 @@
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Beck Interative</title>
+	<style>
+		body {
+			background-color: #000;
+			overflow: hidden;
+		}
+
+		#app {
+			position: relative;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		.video-box {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			display: block;
+			width: 900px;
+			height: auto;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			border: 1px solid #ddd;
+		}
+
+		.preload-video {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+
+		.video-box::before {
+			content: '';
+			position: relative;
+			display: block;
+			width: 100%;
+			height: auto;
+			padding-top: 56.25%;
+		}
+
+		video,
+		canvas {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		video {
+			opacity: 0;
+			display: none;
+		}
+
+		canvas {
+			z-index: 1;
+		}
+
+		#buttons {
+			height: 250px;
+			width: 127px;
+			margin-left: 20px;
+			overflow-y: scroll;
+			z-index: 2;
+		}
+
+		.hostposts-box div {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			width: 100%;
+			height: auto;
+			text-align: right;
+			opacity: 0;
+			visibility: hidden;
+			z-index: 3;
+		}
+
+		.hostposts-box div.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.btn {
+			display: inline-block;
+			width: 100px;
+			height: 40px;
+			vertical-align: top;
+			border: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="app">
+		<div class="video-box">
+			<video id="beckVideo" width="640" height="480" preload="auto" muted controls>
+				Your browser does not support the video tag.
+			</video>
+			<canvas id="backCanvas"></canvas>
+
+			<div class="hostposts-box">
+				<div id="host1">
+					<button id="btn1" class="btn">Video1</button>
+				</div>
+				<div id="host2">
+					<button id="btn2" class="btn">Video2</button>
+					<button id="btn3" class="btn">Video3</button>
+					<button id="btn4" class="btn">Video4</button>
+				</div>
+				<div id="host3">
+					<button id="btn5" class="btn">Video5</button>
+					<button id="btn6" class="btn">Video6</button>
+				</div>
+				<div id="host4">
+					<button id="btn7" class="btn">Video7</button>
+					<button id="btn8" class="btn">Video8</button>
+				</div>
+				<div id="host5">
+					<button id="btn9" class="btn">Video9</button>
+					<button id="btn10" class="btn">Video10</button>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script>
+
+		var videoItems = [
+			{
+				id: 1,
+				src: 'videos/video1.mp4',
+				hostposts: [{ id: 'host2', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 2,
+				src: 'videos/video2.mp4',
+				hostposts: [{ id: 'host3', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 3,
+				src: 'videos/video3.mp4',
+				hostposts: [{ id: 'host4', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 4,
+				src: 'videos/video4.mp4',
+				hostposts: [{ id: 'host5', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 5,
+				src: 'videos/video5.mp4',
+				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 6,
+				src: 'videos/video6.mp4',
+				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 7,
+				src: 'videos/video7.mp4',
+				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 8,
+				src: 'videos/video8.mp4',
+				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 9,
+				src: 'videos/video9.mp4',
+				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+			}, {
+				id: 10,
+				src: 'videos/video10.mp4',
+				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+			}
+		]
+
+		var video, canvas, ctx, currentIndex = 0;
+		function setupVideo() {
+			video = document.getElementById("beckVideo");
+			canvas = document.getElementById('backCanvas');
+			ctx = canvas.getContext('2d');
+
+			video.addEventListener('loadedmetadata', function () {
+				canvas.width = video.videoWidth;
+				canvas.height = video.videoHeight;
+
+			});
+
+			video.addEventListener('loadeddata', function () {
+				this.play();
+			});
+
+			video.addEventListener('play', function () {
+				var $this = this; //cache
+				(function loop() {
+					if (!$this.paused && !$this.ended) {
+						ctx.drawImage($this, 0, 0);
+						setTimeout(loop, 1000 / 30); // drawing at 30fps
+					}
+				})();
+			}, 0);
+
+			video.addEventListener('timeupdate', function () {
+				var vidCurrentTime = this.currentTime;
+				var hostpostId = null;
+				if (videoItems[currentIndex].hostposts && videoItems[currentIndex].hostposts.length > 0) {
+					if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].startTime && vidCurrentTime < videoItems[currentIndex].hostposts[0].endTime) {
+						this.pause();
+						hostpostId = videoItems[currentIndex].hostposts[0].id;
+						$('#' + hostpostId).addClass('active');
+					} else if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].endTime) {
+						hostpostId = videoItems[currentIndex].hostposts[0].id;
+						$('#' + hostpostId).removeClass('active');
+					}
+				}
+			});
+			createVideo(0);
+		}
+
+		function createVideo(index) {
+			$('.hostposts-box div').removeClass('active');
+			this.currentIndex = index;
+			video.src = videoItems[index].src;
+		}
+
+		(function () {
+			setupVideo();
+
+			[].forEach.call(document.getElementsByClassName('btn'), function (btn) {
+				btn.addEventListener('click', function (e) {
+					switch (e.target.id) {
+						case "btn1":
+							createVideo(0);
+							break;
+						case "btn2":
+							createVideo(1);
+							break;
+						case "btn3":
+							createVideo(2);
+							break;
+						case "btn4":
+							createVideo(3);
+							break;
+						case "btn5":
+							createVideo(4);
+							break;
+						case "btn6":
+							createVideo(5);
+							break;
+						case "btn7":
+							createVideo(6);
+							break;
+						case "btn8":
+							createVideo(7);
+							break;
+						case "btn9":
+							createVideo(8);
+							break;
+						case "btn10":
+							createVideo(9);
+							break;
+						default:
+							console.log(e.target.id);
+					}
+				})
+			});
+
+		}());
+	</script>
+</body>
+
+</html>
