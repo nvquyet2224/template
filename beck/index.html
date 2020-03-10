@@ -2,149 +2,90 @@
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Becks</title>
 	<link rel="icon" href="favicon.png">
 	<style>
 		body {
-			margin: 0;
-			padding: 0;
-			background-color: #000;
-			overflow: hidden;
+			margin:0;
+			padding:0;
+			background-color:#000;
+			overflow:hidden;
 		}
 
 		* {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			-webkit-font-smoothing: antialiased
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;
+			-webkit-font-smoothing:antialiased
 		}
 
 		*,
 		*:before,
 		*:after {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box
 		}
-
 		#app {
-			position: relative;
-			width: 100vw;
-			height: 100vh;
+			position:relative;
+			width:100vw;
+			height:100vh;
 		}
-
-		.img-lazy {
-			position: absolute;
-			left: 0;
-			top: 0;
-			opacity: 0;
-			visibility: hidden;
-			width: 100%;
-			height: auto;
-		}
-
-		.img-lazy img {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: auto;
-		}
-
 		.video-box {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			display: block;
-			width: 900px;
-			height: auto;
-			-webkit-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
+			position:absolute;
+			left:50%;
+			top:50%;
+			display:block;
+			width:100%;
+			height:auto;
+			max-width:960px;
+			-webkit-transform:translate(-50%, -50%);
+			transform:translate(-50%, -50%);
 		}
-
-		.preload-video {
-			position: absolute;
-			right: 0;
-			top: 0;
-		}
-
 		.video-box::before {
-			content: '';
-			position: relative;
-			display: block;
-			width: 100%;
-			height: auto;
-			padding-top: 56.25%;
+			content:'';
+			position:relative;
+			display:block;
+			width:100%;
+			height:auto;
+			padding-top:56.25%;
 		}
-
-		video,
-		canvas {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-		}
-
 		video {
-			opacity: 0;
-			display: none;
+			position:absolute;
+			left:0;
+			top:0;
+			width:100%;
+			height:100%;
 		}
-
-		canvas {
-			z-index: 1;
-		}
-
-		.beck-poster {
-			position: absolute;
-			left: 0;
-			top: 0;
-			pointer-events: none;
-			width: 100%;
-			height: 100%;
-			background-repeat: no-repeat;
-			background-position: center center;
-			background-size: cover;
-			opacity: 0;
-			z-index: 5;
-		}
-
-		.video-box.open-poster .beck-poster {
-			opacity: 1;
-		}
-
-		#buttons {
-			height: 250px;
-			width: 127px;
-			margin-left: 20px;
-			overflow-y: scroll;
-			z-index: 2;
-		}
-
 		.hostposts-box div {
-			position: absolute;
-			right: 20px;
-			top: 20px;
-			width: 100%;
-			height: auto;
-			text-align: right;
-			opacity: 0;
-			visibility: hidden;
-			z-index: 3;
+			position:absolute;
+			right:20px;
+			top:20px;
+			width:100%;
+			height:auto;
+			text-align:right;
+			opacity:0;
+			visibility:hidden;
+			z-index:3;
 		}
-
 		.hostposts-box div.active {
-			opacity: 1;
-			visibility: visible;
+			opacity:1;
+			visibility:visible;
 		}
-
 		.btn {
-			display: inline-block;
-			width: 100px;
-			height: 40px;
-			vertical-align: top;
-			border: none;
-			cursor: pointer;
+			display:inline-block;
+			width:auto;
+			height:auto;
+			vertical-align:top;
+			border:none;
+			cursor:pointer;
+			padding:0.5rem 1rem;
+			-webkit-appearance:none;
+			background-color:#ddd;
+			-webkit-border-radius:4px;
+			border-radius:4px;
+			font-size:14px;
 		}
 	</style>
 </head>
@@ -153,12 +94,9 @@
 
 	<div id="app">
 		<div class="video-box">
-			<video id="beckVideo" preload="auto" muted>
+			<video id="beckVideo" playsinline preload="auto" muted>
 				Your browser does not support the video tag.
 			</video>
-			<canvas id="backCanvas"></canvas>
-
-			<div class="beck-poster"></div>
 
 			<div class="hostposts-box">
 				<div id="host1">
@@ -192,97 +130,75 @@
 
 		var videoItems = [
 			{
-				id: 1,
-				src: 'videos/video1.mp4',
-				poster: 'videos/video1.jpg',
-				hostposts: [{ id: 'host2', "startTime": 4, "endTime": 16 }]
+				id:1,
+				src:'videos/video1.mp4',
+				poster:'videos/video1.jpg',
+				hostposts:[{ id:'#host2', "startTime":4, "endTime":16 }]
 			}, {
-				id: 2,
-				src: 'videos/video2.mp4',
-				poster: 'videos/video2.jpg',
-				hostposts: [{ id: 'host3', "startTime": 4, "endTime": 16 }]
+				id:2,
+				src:'videos/video2.mp4',
+				poster:'videos/video2.jpg',
+				hostposts:[{ id:'#host3', "startTime":4, "endTime":16 }]
 			}, {
-				id: 3,
-				src: 'videos/video3.mp4',
-				poster: 'videos/video3.jpg',
-				hostposts: [{ id: 'host4', "startTime": 4, "endTime": 16 }]
+				id:3,
+				src:'videos/video3.mp4',
+				poster:'videos/video3.jpg',
+				hostposts:[{ id:'#host4', "startTime":4, "endTime":16 }]
 			}, {
-				id: 4,
-				src: 'videos/video4.mp4',
-				poster: 'videos/video4.jpg',
-				hostposts: [{ id: 'host5', "startTime": 4, "endTime": 16 }]
+				id:4,
+				src:'videos/video4.mp4',
+				poster:'videos/video4.jpg',
+				hostposts:[{ id:'#host5', "startTime":4, "endTime":16 }]
 			}, {
-				id: 5,
-				src: 'videos/video5.mp4',
-				poster: 'videos/video5.jpg',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:5,
+				src:'videos/video5.mp4',
+				poster:'videos/video5.jpg',
+				hostposts:[{ id:'#host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 6,
-				src: 'videos/video6.mp4',
-				poster: 'videos/video6.jpg',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:6,
+				src:'videos/video6.mp4',
+				poster:'videos/video6.jpg',
+				hostposts:[{ id:'#host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 7,
-				src: 'videos/video7.mp4',
-				poster: 'videos/video7.jpg',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:7,
+				src:'videos/video7.mp4',
+				poster:'videos/video7.jpg',
+				hostposts:[{ id:'#host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 8,
-				src: 'videos/video8.mp4',
-				poster: 'videos/video8.jpg',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:8,
+				src:'videos/video8.mp4',
+				poster:'videos/video8.jpg',
+				hostposts:[{ id:'#host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 9,
-				src: 'videos/video9.mp4',
-				poster: 'videos/video9.jpg',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:9,
+				src:'videos/video9.mp4',
+				poster:'videos/video9.jpg',
+				hostposts:[{ id:'#host1', "startTime":4, "endTime":16 }]
 			}, {
-				id: 10,
-				src: 'videos/video10.mp4',
-				poster: 'videos/video10.jpg',
-				hostposts: [{ id: 'host1', "startTime": 4, "endTime": 16 }]
+				id:10,
+				src:'videos/video10.mp4',
+				poster:'videos/video10.jpg',
+				hostposts:[{ id:'#host1', "startTime":4, "endTime":16 }]
 			}
 		]
 
 		var video, canvas, ctx, currentIndex = 0;
+
 		function setupVideo() {
 			video = document.getElementById("beckVideo");
-			canvas = document.getElementById('backCanvas');
-			ctx = canvas.getContext('2d');
-
-			ctx.restore();
 
 			video.addEventListener('loadedmetadata', function () {
-				canvas.width = video.videoWidth;
-				canvas.height = video.videoHeight;
+				this.play();
 			});
-
-			video.addEventListener('loadeddata', function () {
-				video.play();
-			});
-
-			video.addEventListener('play', function () {
-				$('.video-box').removeClass('open-poster');
-				var $this = this; //cache
-				(function loop() {
-					if (!$this.paused && !$this.ended) {
-						ctx.drawImage($this, 0, 0);
-						setTimeout(loop, 1000 / 30); // drawing at 30fps
-					}
-				})();
-			}, 0);
 
 			video.addEventListener('timeupdate', function () {
 				var vidCurrentTime = this.currentTime;
-				var hostpostId = null;
 				if (videoItems[currentIndex].hostposts && videoItems[currentIndex].hostposts.length > 0) {
 					if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].startTime && vidCurrentTime < videoItems[currentIndex].hostposts[0].endTime) {
-						hostpostId = videoItems[currentIndex].hostposts[0].id;
+						$(videoItems[currentIndex].hostposts[0].id).addClass('active');
 						this.pause();
-						$('#' + hostpostId).addClass('active');
-					} else if (vidCurrentTime >= videoItems[currentIndex].hostposts[0].endTime) {
-						hostpostId = videoItems[currentIndex].hostposts[0].id;
-						$('#' + hostpostId).removeClass('active');
+					} else {
+						$(videoItems[currentIndex].hostposts[0].id).removeClass('active');
 					}
 				}
 			});
@@ -290,24 +206,14 @@
 		}
 
 		function createVideo(index) {
-			$('.beck-poster').css({ 'background-image': 'url(' + videoItems[index].poster + ')' });
 			$('.hostposts-box div').removeClass('active');
-			$('.video-box').addClass('open-poster');
-			if (index > 0) {
-				setTimeout(function () {
-					currentIndex = index;
-					video.src = videoItems[index].src;
-				}, 0);
-
-			} else {
-				currentIndex = index;
-				video.src = videoItems[index].src;
-			}
-
-
+			video.src = videoItems[index].src;
+			video.poster = videoItems[index].poster;
+			currentIndex = index;
 		}
 
 		(function () {
+
 			setupVideo();
 
 			[].forEach.call(document.getElementsByClassName('btn'), function (btn) {
