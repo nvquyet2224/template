@@ -1,26 +1,3 @@
-.fs-section h2, .fs-section h3, .fs-section h4{
-    font-family: 'UTM Neo Sans Intel';
-    font-weight:bold;
-    font-size:2.5vw;
-    line-height:3.47vw;
-    letter-spacing:0.125vw;
-}
-
-.fs-section p {
-    font-weight:400;
-    font-style: normal;
-    font-size:1.38888vw;
-    /* line-height:1.6666vw; */
-    line-height:2vw;
-}
-.fs-section p.fs-note{
-    font-size:1.25vw;
-    line-height:1.527vw;
-}
-.fs-section strong{
-    font-weight:700;
-}
-
 .fs-but{
     display:inline-block;
     width:auto;
