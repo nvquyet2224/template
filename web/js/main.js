@@ -296,4 +296,10 @@ $(window).on('load', function () {
 	docEl = $('html, body');
 	pageWrap = $('.fs-page');
 	ImgLazyLoad(); // must be call here fisrt
+
+	$("#flipbook").turn({
+		width: 400,
+		height: 300,
+		autoCenter: true
+	  });
 })();
