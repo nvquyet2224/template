@@ -101,7 +101,7 @@ button, input, textarea{
 	width:100%;
 	height:auto;
 	padding:50px 0;
-	background-color:#ddd;
+	background-color:#fff;
 	text-align:center;
 }
 .editor-box {
@@ -109,12 +109,6 @@ button, input, textarea{
 	display:inline-block;
 	width:auto;
 	height:auto;
-}
-canvas{
-	/* position: relative;
-	display: block;
-	margin:0 auto;
-	background-color:#fff; */
 }
 .controls{
 	padding:20px 0;
