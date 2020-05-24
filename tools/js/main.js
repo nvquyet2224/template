@@ -33,18 +33,23 @@ function uploadFile(file) {
 				scaleX: xScale,
 				scaleY: yScale
 			});
+			
+			if(count == 0) {
+				obj.selectable = false;
+			}
+			if(count == 1) {
+				//obj.selectable = false;
+				//canvas.setOverlayImage('images/phone/iphone-6s-plus.png');
+			}
 
 			canvas.centerObject(obj);
-			canvas.add(obj);
-
-			if (count == 0) {
-				mash = obj;
-				mash.selectable = false;
-				//canvas.item(0).selectable = false;
+			if(count == 1) {
+				canvas.add(obj).setOverlayImage(obj);
 			}
-			// if (count == 1) {
-			// 	canvas.item(1).selectable = false;
-			// }
+			else {
+				canvas.add(obj);
+			}
+			
 			count++;
 		});
 
@@ -56,7 +61,8 @@ function uploadFile(file) {
 var down = false;
 // Page Ready
 (function () {
-	canvas = new fabric.Canvas('canvas');
+	canvas = new fabric.Canvas('canvas', { preserveObjectStacking: true});
+	//canvas.setOverlayImage('images/phone/iphone-6s-plus.png');
 	canvas.on({
 		'object:added': function (event) {
 			// console.log(count);
@@ -122,9 +128,9 @@ var down = false;
 		// 	console.log('update');
 		// 	//canvas.renderAll();
 		// }
-		var objcount = canvas.getObjects().length;
-		console.log(objcount);
-		canvas.moveTo(mash,objcount++);
+		//var objcount = canvas.getObjects().length;
+		//console.log(objcount);
+		//canvas.moveTo(mash,objcount++);
 		canvas.renderAll();
 		fabric.util.requestAnimFrame(render);
 	});
