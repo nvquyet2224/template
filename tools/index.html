@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="google" content="notranslate">
+    <meta name="language" content="vi_VN">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Techable Company">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title id="hdtitle">Techable</title>
+    <meta name="description" content="Techable">
+    <meta name="keywords" content="Techable">
+    <!--og-->
+    <meta property="og:title" content="Techable">
+    <meta property="og:description" content="Techable">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/thumbnail.jpg">
+    <meta property="og:site_name" content="Techable Company">
+    <meta property="og:locale" content="vi_VN">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Techable Company">
+    <!--link-->
+    <link rel="icon" href="images/favicon.png">
+    <link href="index.html" rel="canonical">
+    <meta name="theme-color" content="#fff" />
+</head>
+
+<body>
+
+    <div class="fs-page">
+        <div class="editor-content">
+            <div class="editor-box">
+                <canvas id="canvas" width="200" height="401"></canvas>
+            </div>
+        </div>
+        <div class="controls">
+            <input type="file" id="imageUpload">
+            <button type="button" id="addText" title="Add Text">Text</button>
+        </div>
+    </div>
+
+    <!--Dont remove-->
+    <!--normal style-->
+    <noscript id="normal-styles">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+    </noscript>
+    <script>
+        var normalStyles = function () {
+            var normalNode = document.getElementById("normal-styles");
+            var normalReplacement = document.createElement("div");
+            normalReplacement.innerHTML = normalNode.textContent;
+            document.body.appendChild(normalReplacement)
+            normalNode.parentElement.removeChild(normalNode);
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if (raf) raf(function () { window.setTimeout(normalStyles, 0) });
+        else window.addEventListener('load', normalStyles);
+    </script>
+    <!--normal style-->
+    <script src="js/jquery-min.js"></script>
+    <script src="js/fabric.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
