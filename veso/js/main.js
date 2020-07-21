@@ -697,13 +697,40 @@ var view = '1234_MyView';
 var technicianKey = '12345678-ABCD-EFGH-HIJK-910111213141';
 
 function loadSXKT(url) {
-	$.ajax({
-		url: url, cache: false, success: function (data) {
-			var doc = $(data);
-			//var stockArrDom = doc.find('#mn_kqngay_21072020 .block-main-content .livetn3');
-			$('.kq').html(doc);
-		}
+
+	/*
+	$.getJSON('http://www.whateverorigin.org/get?url=' + encodeURIComponent('http://www.vesodaiphat.com') + '&callback=?', function (data) {
+		console.log(data.contents);
+		var doc = $(data.contents);
+		var html = doc.find('#kq_miennam .kqxs_content table');
+		$('.kq').html(html);
+	});*/
+
+	//http://alloworigin.com/get?url=http://example.com
+	//http://alloworigin.com/get?url=http://example.com&callback=foo
+
+	$.getJSON('http://www.whateverorigin.org/get?url=' + encodeURIComponent('http://www.vesodaiphat.com') + '&callback=?', function (data) {
+		console.log(data.contents);
+		var doc = $(data.contents);
+		var html = doc.find('#kq_miennam .kqxs_content table');
+		$('.kq').html(html);
 	});
+	
+
+
+	// $.ajax({
+	// 	//url: url,
+	// 	url: 'https://www.xosominhngoc.com',
+	// 	cache: false,
+	// 	type: "get",
+	// 	dataType: "text",
+	// 	success: function (data) {
+	// 		var doc = $(data);
+	// 		//var stockArrDom = doc.find('#mn_kqngay_21072020 .block-main-content .livetn3');
+	// 		$('.kq').html(doc);
+	// 	}
+	// });
+
 }
 
 //  Page load
@@ -724,6 +751,7 @@ $(window).on('beforeunload', function () {
 	$(window).scrollTop(0);
 });
 
+
 // Page Ready
 (function () {
 
@@ -736,5 +764,7 @@ $(window).on('beforeunload', function () {
 			starPage();
 		}
 	}, 3000);*/
+
+
 
 })();
