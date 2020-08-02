@@ -312,7 +312,7 @@ $(window).on('load', function () {
 // Page Ready
 (function () {
 
-	includeHTML();
+	//includeHTML();
 
 	setTimeout(function () {
 		if (loading) {
