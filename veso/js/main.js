@@ -330,6 +330,6 @@ $(window).on('load', function () {
 		myClock.start();
 	}
 
-	//loadThongKeLo('/cau-mien-bac/_cau-bach-thu.html');
+	//loadThongKeLo('/cau-mien-bac/cau-bach-thu.html');
 
 })();
