@@ -3,6 +3,10 @@ var ua = navigator.userAgent;
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
 	ua
 );
+var dayofWeek = 0,
+	currentMonth = 0,
+	currentYear = 0;
+
 
 function includeHTML() {
 	var z, i, elmnt, file, xhttp;
@@ -28,195 +32,145 @@ function includeHTML() {
 }
 
 
+var daixoso = [
+	{
+		content: '<li class="selected" value="0">Miền Bắc</li><li value="29">Kiên Giang</li><li value="30">Tiền Giang</li><li value="31">Đà Lạt</li><li value="45">Kon Tum</li><li value="36">Khánh Hòa</li>'
+	}, {
+		content: '<li class="selected" value="0">Miền Bắc</li><li value="32">Huế</li><li value="33">Phú Yên</li><li value="13">Đồng Tháp</li><li value="14">TP.HCM</li><li value="15">Cà Mau</li>'
+	}, {
+		content: '<li class="selected" value="0">Miền Bắc</li><li value="10">Vũng Tàu</li><li value="16">Bến Tre</li><li value="17">Bạc Liêu</li><li value="34">Đắk Lắk</li><li value="35">Quảng Nam</li>'
+	}, {
+		content: '<li class="selected" value="0">Miền Bắc</li><li value="19">Đồng Nai</li><li value="18">Sóc Trăng</li><li value="11">Cần Thơ</li><li value="36">Khánh Hòa</li><li value="37">Đà Nẵng</li>'
+	}, {
+		content: '<li class="selected" value="0">Miền Bắc</li><li value="20">An Giang</li><li value="21">Tây Ninh</li><li value="22">Bình Thuận</li><li value="38">Bình Định</li><li value="39">Quảng Bình</li><li value="40">Quảng Trị</li>'
+	}, {
+		content: '<li class="selected" value="0">Miền Bắc</li><li value="23">Vĩnh Long</li><li value="24">Bình Dương</li><li value="25">Trà Vinh</li><li value="41">Ninh Thuận</li><li value="42">Gia Lai</li>'
+	}, {
+		content: '<li class="selected" value="0">Miền Bắc</li><li value="26">Long An</li><li value="14">TP.HCM</li><li value="27">Bình Phước</li><li value="28">Hậu Giang</li><li value="43">Quảng Ngãi</li><li value="37">Đà Nẵng</li><li value="44">Đắk Nông</li>'
+	}
+];
 
-function inputHolder() {
-	$('.fs-group input[type="text"], .fs-group input[type="password"]').focus(function (e) {
-		$(this).parent().parent().removeClass('fs-show-error');
+
+function laydaixoTheoNgayTrongTuan(dayofweek) {
+	return daixoso[dayofweek].content;
+}
+
+function percentChart() {
+	for (var i = 1; i < 101; i++) {
+		var percent = parseInt($('#percent-' + i).attr('data-percent'));
+		$('#progress-percent-' + i).css({ 'width': percent + '%' });
+	}
+}
+
+function LayNgayTheoNgayHienTai(currentDate) {
+	//currentDate = dayofweek + 1
+	var dateName = $('.chose-date ul li:nth-child(' + currentDate + ')').text();
+	$('.chose-date ul li').removeClass('selected');
+	$('.chose-date span').html(dateName);
+	$('.chose-date ul li:nth-child(' + currentDate + ')').addClass('selected');
+
+	// Lay daixoso theo ngay hien tai
+	$('.chose-city ul').html(laydaixoTheoNgayTrongTuan(currentDate - 1));
+}
+
+function loadThongKeLo(url) {
+
+	$.ajax({
+		url: url,
+		cache: false,
+		success: function (data) {
+			ajaxLoad = true;
+			$('.main-content').html(data);
+
+
+			// Chon Ngay cho box chose-date
+			if ($('.chose-date').length) {
+				LayNgayTheoNgayHienTai(dayofWeek + 1);
+			}
+
+			// Kiem tra thang hien tai
+			if ($('#month').length) {
+				var month = parseInt($('#month').text());
+				month = (month > currentMonth) ? currentMonth : month;
+				month = (month < 1) ? 1 : month;
+
+				if (month == currentMonth) {
+					$('.fa-caret-right').addClass('hide');
+				} else {
+					$('.fa-caret-right').removeClass('hide');
+				}
+				if (month == 1) {
+					$('.fa-caret-left').addClass('hide');
+				} else {
+					$('.fa-caret-left').removeClass('hide');
+				}
+			}
+
+			// Kiem tra nam hien tai
+			if ($('#year').length) {
+				var year = parseInt($('#year').text());
+				year = (year > currentYear) ? currentYear : year;
+
+				if (year == currentYear) {
+					$('.fa-caret-right').addClass('hide');
+				} else {
+					$('.fa-caret-right').removeClass('hide');
+				}
+			}
+
+			// Thong ke 00-99
+			if ($('.progress-bar').length) {
+				setTimeout(function () {
+					percentChart();
+				}, 250);
+			}
+
+
+		}
 	});
 }
 
 
-
-function scrollPopUp() {
-	$('.boxScroll').niceScroll();
+function AddMonth(number) {
+	var month = parseInt($('#month').text()) + number;
+	month = (month > currentMonth) ? currentMonth : month;
+	month = (month < 1) ? 1 : month;
+	if (month == currentMonth) {
+		$('.fa-caret-right').addClass('hide');
+	} else {
+		$('.fa-caret-right').removeClass('hide');
+	}
+	if (month == 1) {
+		$('.fa-caret-left').addClass('hide');
+	} else {
+		$('.fa-caret-left').removeClass('hide');
+	}
+	$('#month').html(month);
 }
 
-//Load catalog
-var isLoading = true;
 
+function AddYear(number) {
+	var year = parseInt($('#year').text()) + number;
+	year = (year > currentYear) ? currentYear : year;
+	if (year == currentYear) {
+		$('.fa-caret-right').addClass('hide');
+	} else {
+		console.log(year);
+		$('.fa-caret-right').removeClass('hide');
+	}
+	$('#year').html(year);
+}
 
-// Events Common
+var ajaxLoad = true;
 function fsEvent() {
-
-	// Faq event
-	$('.faq-title').on('click', function () {
+	// Open Side-menu
+	$(document).on('click', '.side-title', function () {
 		if ($(this).hasClass('active')) {
-			$(this).next().slideUp(150);
 			$(this).removeClass('active');
 		} else {
-			var box = $(this);
-			var oldBox = $('.faq-title.active').next();
-			$('.faq-title.active').removeClass('active');
-			oldBox.slideUp();
-			box.addClass('active');
-			box.next().slideDown(150);
-
+			$('.side-title').removeClass('active');
+			$(this).addClass('active');
 		}
-	});
-
-	// Open Popup
-	$('.open-popup').on('click', function () {
-		var url = $(this).attr('data-href');
-		if (isLoading) {
-			isLoading = false;
-			$('body').addClass('fs-no-scroll');
-			popupLoad(url);
-		}
-	});
-
-	$(document).on('click', '.js-show-signup', function (e) {
-		$('.js-signin').trigger('click');
-	});
-
-	$(document).on('click', '.js-show-popup-thankyou', function (e) {
-		var url = 'popup-thankyou.html';
-		if (isLoading) {
-			isLoading = false;
-			$('body').addClass('fs-no-scroll');
-			popupLoad(url);
-		}
-	});
-
-	$(document).on('click', '.js-show-forgot', function (e) {
-		var url = 'popup-forgot-password.html';
-		if (isLoading) {
-			isLoading = false;
-			$('body').addClass('fs-no-scroll');
-			popupLoad(url);
-		}
-	});
-
-	$(document).on('click', '.btnThank', function () {
-
-		var tempFlag = true;
-		var url = 'popup-verify.html';
-		$('.popup-overlay').addClass('bg-success');
-
-		if (!tempFlag) {
-			$('.popup-overlay').addClass('bg-false');
-			url = 'popup-verify-false.html';
-		}
-
-		if (isLoading) {
-			isLoading = false;
-			$('body').addClass('fs-no-scroll');
-			popupLoad(url);
-		}
-
-	});
-
-	$(document).on('click', '.js-show-otp', function () {
-		var url = 'popup-otp.html';
-		if (isLoading) {
-			isLoading = false;
-			$('body').addClass('fs-no-scroll');
-			popupLoad(url);
-		}
-	});
-
-	$(document).on('click', '.js-show-sample', function () {
-		var url = 'popup-guide.html';
-		if (isLoading) {
-			isLoading = false;
-			$('body').addClass('fs-no-scroll');
-			popupLoad(url);
-		}
-	});
-
-	$(document).on('click', '.js-voucher-read-more', function () {
-		var that = $('.control-text');
-		if (that.hasClass('hide-text')) {
-			that.removeClass('hide-text');
-			$('.read-more span').text('> Thu gọn');
-		} else {
-			that.addClass('hide-text');
-			$('.read-more span').text('> Xem toàn bộ thông tin');
-		}
-	});
-
-	$(document).on('click', '.js-show-success', function () {
-		var url = 'popup-success.html';
-		if (isLoading) {
-			isLoading = false;
-			$('body').addClass('fs-no-scroll');
-			popupLoad(url);
-		}
-	});
-
-	$(document).on('keyup', '.sms-otp .input-otp', function () {
-		if (this.value.length == this.maxLength) {
-			$(this).parent().parent().next().children().focus();
-		}
-	});
-
-
-	$(document).on('click', '.fs-btn-otp p', function () {
-		$('.fs-verify-otp').removeClass('hide-notify');
-	});
-
-
-	// Close PopUp
-	$('.popup-overlay').on('click', '.close-but', function () {
-		$('.popup-overlay').fadeOut(300, function () {
-			if ($('.boxScroll').length) {
-				$(".boxScroll").getNiceScroll().remove();
-			}
-			$('body').removeClass('fs-no-scroll');
-		});
-	});
-
-	// Go to block 
-
-	$('.about-nav li').on('click', function () {
-		var target = $(this).attr('data-target');
-		$('.about-nav li').removeClass('active');
-		$('.fs-dot li').removeClass('active');
-		$('.fs-dot li[data-target="' + target + '"]').addClass('active');
-		$('.about-nav li[data-target="' + target + '"]').addClass('active');
-		centerMenu();
-		var offetTop = $(target).offset().top - 40;
-		$('html, body').animate({ scrollTop: offetTop }, 1000);
-	});
-
-
-	// Open menu
-	$('.fs-nav-but').on('click', function () {
-		if ($('body').hasClass('open-menu')) {
-			$('body').removeClass('open-menu');
-		} else {
-			$('body').addClass('open-menu');
-		}
-	});
-	var videoId = '',
-		video = null;
-	$('.play-but').on('click', function (e) {
-		e.preventDefault();
-		$('body').addClass('open-modal');
-		videoId = $(this).attr('data-video');
-		if (videoId) {
-			video = document.getElementById('genVideo');
-			video.src = 'https://www.youtube.com/embed/' + videoId + '?rel=0&amp;autoplay=1&amp;playsinline=1';
-		}
-		$('.modal').stop().animate({ 'opacity': 1 }, 300, 'linear', function () { });
-	});
-	$('.close-modal, .overlay').on('click', function (e) {
-		e.preventDefault();
-		if (videoId) {
-			video.src = "";
-			videoId = null;
-		}
-		$('body').removeClass('open-modal');
-		$('.modal').stop().animate({ 'opacity': 0 }, 300, 'linear', function () { });
 	});
 
 	// Open select
@@ -231,154 +185,102 @@ function fsEvent() {
 		}
 	});
 
-	// Chose selected item
+	// Chose item select
 	$(document).on('click', '.fs-select-box li', function (e) {
 		var that = $(this);
 		var box = $(this).parent().parent().parent();
-		var target = $(this).attr('data-target');
 
-		if (target == 1) {
-			$('.byTriSue').removeClass('is-hide');
-		} else {
-			$('.byTriSue').addClass('is-hide');
-		}
 		if (!that.hasClass('selected')) {
+			var value = that.attr('value');
 			box.find('li').removeClass('selected');
 			that.addClass('selected');
 			box.removeClass('fs-open-select');
 			box.find('.fs-select-header span').html(that.text());
+
+			// Lay daixoso logan
+			if (box.hasClass('chose-date')) {
+				$('.chose-city span').html('Miền Bắc');
+				$('.chose-city ul').html(laydaixoTheoNgayTrongTuan(value));
+			}
+
+		}
+
+	});
+
+	//Close select
+	$(document).on('click touchstart', function (event) {
+		//Close select
+		if ($(".fs-select").has(event.target).length == 0 && !$(".fs-select").is(event.target)) {
+			$(".fs-select").removeClass("fs-open-select");
 		}
 	});
 
-	$('#txt_supersonicBill_thankyou').on('change', function () {
-		var reader = new FileReader();
-		var filename = $('#txt_supersonicBill_thankyou').val();
-		if (filename.substring(3, 11) == 'fakepath') {
-			filename = filename.substring(12);
-		}
-		$('.js-bill p').html(filename);
-
-		// change thumnail
-		reader.onload = function (e) {
-			$("#changeImageBill").attr('src', e.target.result);
-		};
-
-		reader.readAsDataURL(this.files[0]);
-
-	});
-
-	$('#txt_supersonicResult_thankyou').on('change', function () {
-		var reader = new FileReader();
-		var filename = $('#txt_supersonicResult_thankyou').val();
-		if (filename.substring(3, 11) == 'fakepath') {
-			filename = filename.substring(12);
-		}
-		$('.js-result p').html(filename);
-
-		// change thumnail
-		reader.onload = function (e) {
-			$("#changeImageResult").attr('src', e.target.result);
-		};
-		reader.readAsDataURL(this.files[0]);
-	});
-
-	$('#upload_avatar').on('change', function () {
-		var reader = new FileReader();
-		reader.onload = function (e) {
-			$("#changeAvarta").attr('src', e.target.result);
-		};
-		reader.readAsDataURL(this.files[0]);
-	});
-
-
-	//Open menu
-	$('.has-drop').on('click', function () {
-		if ($('.dropdown-menu').hasClass('active')) {
-			$('.dropdown-menu').removeClass('active');
-		} else {
-			$('.dropdown-menu').addClass('active');
+	// Chose Thong Ke
+	$(document).on('click', '.thong-ke a', function (e) {
+		if (ajaxLoad && !$(this).hasClass('current') && !$(this).hasClass('.outer-link')) {
+			ajaxLoad = false;
+			$('.thong-ke a').removeClass('current');
+			$(this).addClass('current');
+			if ($(this).hasClass('full-size')) {
+				$('.fs-container').addClass('full-size');
+			} else {
+				$('.fs-container').removeClass('full-size');
+			}
+			var url = $(this).attr('data-href');
+			loadThongKeLo(url);
 		}
 	});
 
-	$(document).on('click', '.js-get-code', function (e) {
-		var that = $(this);
-		var showTable = that.parent().parent().parent().next();
-		if (showTable.hasClass('active')) {
-			showTable.removeClass('active');
-		} else {
-			$('.chart-timeline-box.fs-sp').removeClass('active')
-			showTable.addClass('active');
+	// Get date
+	$("#datepicker").datepicker({
+		dateFormat: "dd-mm-yy",
+		onSelect: function () {
+
+			var dateString = $(this).val().split('-');
+			var selectDate = new Date(dateString[2], dateString[1] - 1, dateString[0]);
+
+			// Lay daixoso side menu
+			$('.side-city span').html('Miền Bắc');
+			$('.side-city ul').html(laydaixoTheoNgayTrongTuan(selectDate.getDay()));
+
 		}
-	});
-
-	inputHolder();
-
-	scrollTopGetCode();
-}
-
-function copyToClipboard(element) {
-	var $temp = $("<input>");
-	$("body").append($temp);
-	var codeString = $temp.val($(element).text().replace('Mã: ', '')).select();
-	document.execCommand("copy");
-	alert('Bạn đã copy mã code: ' + $(element).text().replace('Mã: ', ''));
-	codeString.remove();
-}
-
-function scrollTopGetCode() {
-	if ($('.fs-cnt-voucher').length) {
-		$(document).on('click', '.js-scroll-top', function (e) {
-			$("html, body").stop().animate({ scrollTop: 0 }, 1000);
-		});
-	}
-
-	$(document).on('click', '.change-voucher', function (e) {
-		var offsetVoucherGene = $('.by-gene').offset().top - 121;
-		$("html, body").stop().animate({ scrollTop: offsetVoucherGene }, 1000);
-	});
-}
-
-function centerMenu() {
-	if ($('.sub-nav').length && $('.sub-nav li.active').length) {
-		var size = $(window).width();
-		var pos = $('.sub-nav ul').offset().left;
-		var cur = $('.sub-nav li.active').offset().left;
-		var mid = (size - $('.sub-nav li.active').width()) / 2;
-		$('.sub-nav').stop().animate({ scrollLeft: cur - mid - pos }, '150');
-	}
-
-	if ($('.about-nav').length && $('.about-nav li.active').length) {
-		var size = $(window).width();
-		var pos = $('.about-nav ul').offset().left;
-		var cur = $('.about-nav li.active').offset().left;
-		var mid = (size - $('.about-nav li.active').width()) / 2;
-		$('.about-nav .fs-inr').stop().animate({ scrollLeft: cur - mid - pos }, '150');
-	}
-}
-
-// Create Slider
-var swiperInVietNam = null,
-	swiperFull = null;
-
-function fsSlider() {
+	}).datepicker("setDate", new Date(), $.datepicker.regional[ "vi" ]);
 
 }
 
-function fsEvent(){
-	$('.title-item').click(function(){
-		if($(this).hasClass('active')){
-			$(this).removeClass('active');
-		}else {
-			$('.title-item').removeClass('active');
-			$(this).addClass('active');
+
+var myClock = null;
+
+//SET LIMITED TIME FOR BOOT TICKET
+function setClock() {
+	//16:15
+	//17:15
+	//18:15
+	//var timeClock = 86400;
+	//var hour = day.getHours();
+	//console.log(day.getHours());
+
+	var day = new Date();
+	var dateEnd = day.getFullYear() + '/' + (day.getMonth() + 1) + '/' + day.getDate() + ' 16:15:00';
+
+	var timeNow = day.getTime(),
+		timeEnd = Date.parse(dateEnd);
+	var timeClock = (timeEnd - timeNow) / 1000;
+
+	myClock = $('.clock').FlipClock(timeClock, {
+		clockFace: 'HourlyCounter',
+		countdown: true,
+		autoStart: false,
+		callbacks: {
+			start: function () {
+				console.log('star');
+			},
+			stop: function () {
+				console.log('stop');
+			}
 		}
 	});
 }
-
-// Variables for Scroll
-var isCroll = false,
-	scrollPos = 0,
-	threshold = 100;
 
 
 var loading = true;
@@ -386,61 +288,26 @@ function starPage() {
 
 	if (loading) {
 		loading = false;
-		$('.fs-loading').fadeOut(150, function () {
+		$('.fs-loading').fadeOut(750, function () {
+			//loadThongKeLo('_thong-ke-00-99.html');
+			
+			// Lay Danh Sach Tinh Thanh Side Menu
+			$('.side-city ul').html(laydaixoTheoNgayTrongTuan(dayofWeek));
 
-			onScroll(); // must be call here fisrt
 			fsEvent();
 		});
 	}
 
 }
 
-// Func Scroll
-var oldPost = 0,
-	scrollPos = 0,
-	counting = true,
-	heightBanner = null;
-
-function onScroll() {
-	
-}
-
-// Func Resize
-function Resize() {
-
-	if (!isMobile) {
-	}
-
-}
-
-// Func Rotate
-function Rotate() {
-
-
-}
-
-// Set Scroll for Page
-$(window).on('scroll', onScroll);
-
-// Page Rezize
-$(window).on('resize', Resize);
-
-// Page Rotate
-$(window).on('orientationchange', Rotate);
-
 //  Page load
 $(window).on('load', function () {
-	
+
 	if (loading) {
 		starPage();
 	}
 
 });
-
-/*$(window).on('beforeunload', function () {
-	$(window).scrollTop(0);
-});*/
-
 
 // Page Ready
 (function () {
@@ -452,5 +319,17 @@ $(window).on('load', function () {
 			starPage();
 		}
 	}, 3000);
+
+	var nowDate = new Date();
+	dayofWeek = nowDate.getDay();
+	currentMonth = nowDate.getMonth() + 1;
+	currentYear = nowDate.getFullYear();
+
+	if ($('.clock').length) {
+		setClock();
+		myClock.start();
+	}
+
+	//loadThongKeLo('/cau-mien-bac/_cau-bach-thu.html');
 
 })();
