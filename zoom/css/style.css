@@ -15,8 +15,19 @@ html, body {
   }
   .turn{
     position:fixed;
-    right:20px;
     top:20px;
     padding:7px 10px;
     cursor:pointer;
+  }
+  #turnID{
+    right:10px;
+  }
+  #pkID{
+    right:70px;
+  }
+  #pbID{
+    right:184px;
+  }
+  #bcID{
+    right:284px;
   }
