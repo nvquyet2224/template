@@ -8,12 +8,15 @@
 	.fn-group {display:flex;justify-content:space-between;align-items:flex-start;margin:1.5vw 0;}
 	.fn-group .fn-list {width:48%;}
 	.fn-group .fn-list.fw {width:96%;}
-	.fn-icons a img {max-height:7vw;margin-top:7vw;}
+	.fn-icons a img {max-height:7vw;margin-top:3vw;}
 	.fn-group.inline {width:49%;display:inline-block;vertical-align:top;}
 	.fn-group.inline .fn-list {width:100%;display:block;margin-bottom:3vw;}
 	#footnote a, .fn-txt a, .fn-txt span{
 		padding:0.5vw 0;
 		font-size:2vw;
+	}
+	.fn-list .h2{
+		padding-bottom:1.5vw;
 	}
 }
 
