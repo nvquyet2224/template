@@ -2854,6 +2854,9 @@ button.swiper-pagination-bullet {
 
 
   /*Camera*/
+  .fs-camera{
+    background-color:#1b2336;
+  }
   .camera-txt{
     width:100%;
     bottom:auto;
@@ -3007,7 +3010,7 @@ button.swiper-pagination-bullet {
     width:88%;
   }
   .vos-txt .fs-txt p{
-    padding:0 15%;
+    padding:0 8%;
   }
   .vos-logo{
     width:21.2vw;
@@ -3098,15 +3101,15 @@ button.swiper-pagination-bullet {
 		width:2.458vw;
   }
   .is-parameter .fs-title {
-    padding: 6vw 0;
-    margin-bottom: 8vw;
+    padding:3vw 0 1vw 0;
+    margin-bottom:4vw;
   }
   .is-parameter .fs-title h2{
-    font-size: 3.4vw;
+    font-size:3.4vw;
   }
   .fs-parameter-title-icon {
-    width: 8vw;
-    margin-right: 4vw;
+    width:8vw;
+    margin-right:4vw;
   }
 
 
@@ -3160,9 +3163,9 @@ button.swiper-pagination-bullet {
 }
 
 @media screen and (max-width:520px) {
-	.is-parameter h3, .is-parameter p{
+	/* .is-parameter h3, .is-parameter p{
     font-size:2.6vw;
-  }
+  } */
 }
 
 @media screen and (max-width:520px) and (max-height:650px) {
@@ -3171,5 +3174,11 @@ button.swiper-pagination-bullet {
   }
   .fs-xoa-phong .fs-box{
     top:-78.5px !important;
+  }
+  .sac-nhanh-txt{
+    padding-top:16vw;
+  }
+  .sac-nhanh-center{
+    margin:7.4074vw auto 5.4074vw auto;
   }
 }
