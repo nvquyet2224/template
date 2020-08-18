@@ -22,20 +22,19 @@ function fsCompare() {
 		before_label: 'Camera thường', // Set a custom before label
 		after_label: 'Camera Live 4', // Set a custom after label
 	});
-
-	// if ($('.enType').length) {
-	//     $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({
-	//         default_offset_pct: 0.5,
-	//         before_label: 'Normal Mode', // Set a custom before label
-	//         after_label: 'Bokeh Mode', // Set a custom after label
-	//     });
-	// } else {
-	//     $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({
-	//         default_offset_pct: 0.5,
-	//         before_label: 'Chế độ thường', // Set a custom before label
-	//         after_label: 'Chế độ xóa phông', // Set a custom after label
-	//     });
-	// }
+	if ($('.enType').length) {
+		$(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({
+			default_offset_pct: 0.5,
+			before_label: 'Camera Normal', // Set a custom before label
+			after_label: 'Camera Live 4', // Set a custom after label
+		});
+	}else {
+		$(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({
+			default_offset_pct: 0.5,
+			before_label: 'Camera thường', // Set a custom before label
+			after_label: 'Camera Live 4', // Set a custom after label
+		});
+	}
 
 }
 
