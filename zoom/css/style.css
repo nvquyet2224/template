@@ -1,0 +1,33 @@
+html, body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	overflow-y:auto;
+  }
+  
+  #c {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+  }
+  .turn{
+    position:fixed;
+    top:20px;
+    padding:7px 10px;
+    cursor:pointer;
+  }
+  #turnID{
+    right:10px;
+  }
+  #pkID{
+    right:70px;
+  }
+  #pbID{
+    right:184px;
+  }
+  #bcID{
+    right:284px;
+  }
