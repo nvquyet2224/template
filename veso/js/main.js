@@ -267,19 +267,25 @@ function setClock() {
 		timeEnd = Date.parse(dateEnd);
 	var timeClock = (timeEnd - timeNow) / 1000;
 
-	myClock = $('.clock').FlipClock(timeClock, {
-		clockFace: 'HourlyCounter',
-		countdown: true,
-		autoStart: false,
-		callbacks: {
-			start: function () {
-				console.log('star');
-			},
-			stop: function () {
-				console.log('stop');
+	console.log(timeClock);
+	if(timeClock > 0) {
+		myClock = $('.clock').FlipClock(timeClock, {
+			clockFace: 'HourlyCounter',
+			countdown: true,
+			autoStart: true,
+			callbacks: {
+				start: function () {
+					console.log('star');
+				},
+				stop: function () {
+					console.log('stop');
+				}
 			}
-		}
-	});
+		});
+	}else{
+		$('.clock-box').css({'display': 'none'});
+	}
+
 }
 
 
@@ -327,9 +333,18 @@ $(window).on('load', function () {
 
 	if ($('.clock').length) {
 		setClock();
-		myClock.start();
+		//myClock.start();
 	}
 
 	//loadThongKeLo('/cau-mien-bac/cau-bach-thu.html');
+	// $.ajax({
+	// 		//url: url,
+	// 		url: 'http://www.minhngoc.net/free/index.php',
+	// 		cache: false,
+	// 		success: function (data) {
+	// 			console.log('asaasa');
+	// 			console.log(data);
+	// 		}
+	});
 
 })();
