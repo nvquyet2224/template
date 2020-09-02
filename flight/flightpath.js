@@ -93,11 +93,11 @@ function tick(startPoint, endPoint) {
 	trailPath.setPath([startPoint, nextPoint]);
 
 	// Move the plane
-	planePath.icons[0].offset=Math.min(animIndex,100)+'%';		
-	planePath.setPath(planePath.getPath());
+	//planePath.icons[0].offset=Math.min(animIndex,100)+'%';		
+	//planePath.setPath(planePath.getPath());
 
 	// Ensure the plane is in the center of the screen
-	mapObject.panTo(nextPoint);
+	//mapObject.panTo(nextPoint);
 
 	// We've reached the end, clear animLoop
 	if(animIndex>=100) {
