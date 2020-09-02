@@ -518,7 +518,6 @@ function getCommentMarker(id) {
 
 	$.each(datas, function (i, field) {
 
-
 		// Get Regions in by_source
 		for (var property in field.by_source) {
 
@@ -588,6 +587,29 @@ function getCommentMarker(id) {
 
 			}
 			
+			setTimeout(function(){
+				new Swiper('.avarta-slider', {
+					effect: 'slide',
+					loop: false,
+					speed: 1000,
+					slidesPerView: 5,
+					watchOverflow: true,
+					on: {
+						init: function () {
+						}, transitionStart: function () {
+						}, transitionEnd: function () {
+						}
+					},
+					// navigation: {
+					// 	nextEl: '.section-news .swiper-button-next',
+					// 	prevEl: '.section-news .swiper-button-prev',
+					// },
+					a11y: {
+						enabled: false
+					}
+				});
+
+			}, 350);
 		}
 
 	});
