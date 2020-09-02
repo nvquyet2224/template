@@ -259,12 +259,13 @@ function centerMap(lat, long) {
 }
 
 
+var citys = [];
 var markers = [];
 
-function newMarker(name) {
+function newCity(name) {
 	var result = true;
-	for (var i = 0; i < markers.length; i++) {
-		if (markers[i].name == name) {
+	for (var i = 0; i < citys.length; i++) {
+		if (citys[i].name == name) {
 			result = false;
 			break;
 		}
@@ -272,12 +273,13 @@ function newMarker(name) {
 	return result;
 }
 
+
 // 1 thành phố có lat, long là điểm bắt đầu
 var datas = null; // User for animation may be can call play again
 
 function createMarker() {
 
-	var infowindow = new google.maps.InfoWindow();
+	//var infowindow = new google.maps.InfoWindow();
 
 	$.getJSON("jsons/td.json", function (result) {
 
@@ -301,31 +303,30 @@ function createMarker() {
 				var logoReg = 'images/marker.png';
 
 				// Check Region exited
-				if (newMarker(property)) {
+				if (newCity(property)) {
 
 					if (latReg != undefined || lngReg != undefined) {
-						//console.log('add region');
 						// Add Region marker
 						var markerReg = new google.maps.Marker({
-							//storeid: locations[i].storeid,
+							type: 'region',
+							id: property,
 							position: {
 								lat: latReg,
 								lng: lngReg
 							},
 							icon: logoReg,
 							map: map,
-							//animation: google.maps.Animation.DROP,
-							info: '<p>' + property + '</p>'
 						});
 
 						markerReg.addListener('click', function () {
-							//var id = this.id;
-							//console.log(id);
-							infowindow.setContent(this.info);
-							infowindow.open(map, this);
+							var id = this.id;
+							console.log(this.type);
+							console.log(this.id);
+							getCommentMarker(id);
 						});
 
-						markers.push({ name: property });
+						markers.push(markerReg);
+						citys.push({ name: property });
 
 					}
 
@@ -334,36 +335,36 @@ function createMarker() {
 				// Add destinations marker
 				var countDes = 0;
 				for (var i = 0; i < field.by_source[property].destinations.length; i++) {
-					//console.log('add destinations');
 					countDes++;
+
 					var latDes = field.by_source[property].destinations[i].lat;
 					var lngDes = field.by_source[property].destinations[i].long;
 					var desName = field.by_source[property].destinations[i].name;
 
-					if (newMarker(desName)) {
+					if (newCity(desName)) {
 
 						if (latDes != undefined && lngDes != undefined) {
 
 							var markerDes = new google.maps.Marker({
-								//storeid: locations[i].storeid,
+								type: 'destination',
+								id: desName,
 								position: {
 									lat: latDes,
 									lng: lngDes
 								},
 								//icon: logoReg,
 								map: map,
-								//animation: google.maps.Animation.DROP,
-								info: '<p>' + field.by_source[property].destinations[i].name + '</p>'
 							});
 
 							markerDes.addListener('click', function () {
-								//var id = this.id;
-								//console.log(id);
-								infowindow.setContent(this.info);
-								infowindow.open(map, this);
+								var id = this.id;
+								console.log(this.id);
+								console.log(this.type);
+								getCommentMarker(id);
 							});
 
-							markers.push({ name: desName });
+							markers.push(markerDes);
+							citys.push({ name: desName });
 
 						}
 
@@ -376,7 +377,7 @@ function createMarker() {
 					// Make sure call 1 time
 					if (!playAnimation) {
 						console.log('star animation');
-						flightAnimation();
+						flightAni();
 					}
 					playAnimation = true;
 
@@ -392,58 +393,60 @@ function createMarker() {
 }
 
 var aniPlay = true;
-function flightAnimation() {
+function flightAni() {
 
 	stepAni(0);
 
 }
 
-function stepAni(k) {
+function stepAni(index) {
 
 	var objReg = Object.keys(datas);
+	var bySource = datas[objReg[index]].by_source;
+
+	for (var property in bySource) {
+
+		var latReg = bySource[property].lat;
+		var lngReg = bySource[property].long;
 
 
-	for (var property in datas[objReg[k]].by_source) {
-
-		var latReg = datas[objReg[k]].by_source[property].lat;
-		var lngReg = datas[objReg[k]].by_source[property].long;
-
-
-		if (datas[objReg[k]].by_source[property].destinations.length == 0) {
+		if (bySource[property].destinations.length == 0) {
 			aniPlay = false;
 		}
 
-		for (var i = 0; i < datas[objReg[k]].by_source[property].destinations.length; i++) {
+		for (var i = 0; i < bySource[property].destinations.length; i++) {
 
-			var latDes = datas[objReg[k]].by_source[property].destinations[i].lat;
-			var lngDes = datas[objReg[k]].by_source[property].destinations[i].long;
+			var latDes = bySource[property].destinations[i].lat;
+			var lngDes = bySource[property].destinations[i].long;
 
 			if (latReg != undefined && lngReg != undefined && latDes != undefined && lngDes != undefined) {
 				var startPoint = new google.maps.LatLng(latReg, lngReg);
 				var endPoint = new google.maps.LatLng(latDes, lngDes);
-				var opacity = datas[objReg[k]].by_source[property].destinations[i].opacity;
+				var opacity = bySource[property].destinations[i].opacity;
 
-				animateCircle(startPoint, endPoint, opacity);
+				drawAni(startPoint, endPoint, opacity);
 			}
 		}
 
 	}
 
 	var stepTimer = setTimeout(function () {
-		if (!aniPlay && k++ < Object.keys(datas).length - 1) {
-			stepAni(k++);
+		if (!aniPlay && index++ < Object.keys(datas).length - 1) {
+			stepAni(index++);
 		} else {
+			// When can not remove by animation
 			clearTimeout(stepTimer);
-			$('.map-overlay').css({'display': 'none'});
+			$('.map-overlay').css({ 'display': 'none' });
+			removeDesMarker();
 		}
-	}, 50);
+	}, 30);
 
 }
 
-function animateCircle(startPoint, endPoint, opacity) {
+function drawAni(startPoint, endPoint, opacity) {
 
 	var poly = new google.maps.Polyline({
-		strokeColor: "#cccc09",
+		strokeColor: "#e40001",
 		strokeOpacity: opacity,
 		strokeWeight: 3,
 		geodesic: true,
@@ -453,14 +456,15 @@ function animateCircle(startPoint, endPoint, opacity) {
 	var timer = 0;
 
 	var interval = window.setInterval(function () {
-		
+
 		timer += 0.5;
-		if (timer > 2) {
+		if (timer > 1.5) {
 			aniPlay = false;
+			removeMarker(endPoint);
 			clearInterval(interval);
 			poly.setMap(null);
 		} else {
-			nextPoint = google.maps.geometry.spherical.interpolate(startPoint, endPoint, timer / 2);
+			nextPoint = google.maps.geometry.spherical.interpolate(startPoint, endPoint, timer / 1.5);
 			poly.setPath([startPoint, nextPoint]);
 		}
 
@@ -468,8 +472,111 @@ function animateCircle(startPoint, endPoint, opacity) {
 
 }
 
+function removeMarker(endPoint) {
+
+	for (var i = 0; i < markers.length; i++) {
+
+		if (markers[i].getPosition().lat() == endPoint.lat() && markers[i].getPosition().lng() == endPoint.lng()) {
+			if (markers[i].type == 'destination') {
+				markers[i].setMap(null);
+				markers.splice(i, 1);
+			}
+			
+			break;
+		}
+	}
+}
+
+
+// When can not remove by animation
+function removeDesMarker() {
+
+	var isRemove = false;
+
+	for (var i = 0; i < markers.length; i++) {
+
+		if (markers[i].type == 'destination') {
+			markers[i].setMap(null);
+			markers.splice(i, 1);
+			isRemove = true;
+
+		}
+	}
+
+	var removeTimer = setTimeout(function(){
+		if(isRemove) {
+			removeDesMarker();
+		}else {
+			clearTimeout(removeTimer);
+		}
+	},50);
+}
+
+function getCommentMarker(id) {
+
+	$.each(datas, function (i, field) {
+
+
+		// Get Regions in by_source
+		for (var property in field.by_source) {
+
+			if(property == id) {
+				console.log('saa');
+			}
+			// property is Region name
+			
+			/*var latReg = field.by_source[property].lat;
+			var lngReg = field.by_source[property].long;
+			var logoReg = 'images/marker.png';
+
+			// Check Region exited
+			if (newCity(property)) {
+
+				if (latReg != undefined || lngReg != undefined) {
+					// Add Region marker
+					var markerReg = new google.maps.Marker({
+						type: 'region',
+						id: property,
+						position: {
+							lat: latReg,
+							lng: lngReg
+						},
+						icon: logoReg,
+						map: map,
+					});
+
+					markerReg.addListener('click', function () {
+						var id = this.id;
+						console.log(this.type);
+						console.log(this.id);
+						getCommentMarker(id);
+					});
+
+					markers.push(markerReg);
+					citys.push({ name: property });
+
+				}
+
+			}*/
+
+
+		}
+
+	});
+
+}
+
 
 // Page Ready
 (function () {
-
+	$('.zoom-in').click(function () {
+		map.setZoom(map.getZoom() - 1);
+	});
+	$('.zoom-out').click(function () {
+		map.setZoom(map.getZoom() + 1);
+	});
+	$('.full-screen').click(function () {
+		//map.requestFullscreen();
+		$('.gm-fullscreen-control').trigger('click');
+	});
 })();

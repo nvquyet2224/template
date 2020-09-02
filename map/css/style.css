@@ -51,3 +51,67 @@ html, body{
 	height:100%;
 	z-index:10;
 }
+.map-control{
+	position:absolute;
+	right:20px;
+	bottom:20px;
+	width:auto;
+	height:auto;
+	font-size:0;
+	z-index:5;
+}
+.map-control li{
+	display:inline-block;
+	vertical-align: top;
+	width:60px;
+	height:60px;
+	cursor:pointer;
+}
+.gm-fullscreen-control{
+	top:auto !important;
+	right:20px !important;
+	bottom:20px !important;
+	width:60px !important;
+	height:60px !important;
+	-webkit-border-radius:0 !important;
+	border-radius:0 !important;
+	background: url(../images/full-screen.png) no-repeat center center !important;
+	background-size:cover !important;
+	box-shadow:none !important;
+	outline: none !important;
+}
+.gm-fullscreen-control img{
+	opacity: 0!important;
+}
+
+.gm-bundled-control div{
+	background:none !important;
+}
+.gm-bundled-control button {
+	width:60px !important;
+	height:60px !important;
+}
+.gm-bundled-control button:nth-child(1){
+	left: auto !important;
+    top: auto !important;
+    right: 120px !important;
+    bottom: -15px !important;
+	background: url(../images/zoom-out.png) no-repeat center center !important;
+	background-size:cover !important;
+	outline: none !important;
+}
+.gm-bundled-control button:nth-child(3){
+	left: auto !important;
+    top: auto !important;
+    right: 184px !important;
+    bottom: 46px !important;
+	background: url(../images/zoom-in.png) no-repeat center center !important;
+	background-size:cover !important;
+	outline: none !important;
+}
+.gm-style-mtc, .gm-svpc{
+	display: none !important;
+}
+.gm-bundled-control button img{
+	display:none !important;
+}
