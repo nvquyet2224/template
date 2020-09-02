@@ -320,8 +320,8 @@ function createMarker() {
 
 						markerReg.addListener('click', function () {
 							var id = this.id;
-							console.log(this.type);
-							console.log(this.id);
+							//console.log(this.type);
+							//console.log(this.id);
 							getCommentMarker(id);
 						});
 
@@ -481,7 +481,7 @@ function removeMarker(endPoint) {
 				markers[i].setMap(null);
 				markers.splice(i, 1);
 			}
-			
+
 			break;
 		}
 	}
@@ -503,16 +503,18 @@ function removeDesMarker() {
 		}
 	}
 
-	var removeTimer = setTimeout(function(){
-		if(isRemove) {
+	var removeTimer = setTimeout(function () {
+		if (isRemove) {
 			removeDesMarker();
-		}else {
+		} else {
 			clearTimeout(removeTimer);
 		}
-	},50);
+	}, 50);
 }
 
 function getCommentMarker(id) {
+
+	$('.avarta-slider .swiper-wrapper, .info-content').html('');
 
 	$.each(datas, function (i, field) {
 
@@ -520,46 +522,72 @@ function getCommentMarker(id) {
 		// Get Regions in by_source
 		for (var property in field.by_source) {
 
-			if(property == id) {
-				console.log('saa');
-			}
-			// property is Region name
-			
-			/*var latReg = field.by_source[property].lat;
-			var lngReg = field.by_source[property].long;
-			var logoReg = 'images/marker.png';
+			var bySource = field.by_source[property].by_creator;
+			if (property == id) {
+				for (var property1 in bySource) {
 
-			// Check Region exited
-			if (newCity(property)) {
+					var bySource2 = bySource[property1];
+					for (var property2 in bySource2) {
 
-				if (latReg != undefined || lngReg != undefined) {
-					// Add Region marker
-					var markerReg = new google.maps.Marker({
-						type: 'region',
-						id: property,
-						position: {
-							lat: latReg,
-							lng: lngReg
-						},
-						icon: logoReg,
-						map: map,
-					});
+						console.log(bySource2[property2]);
 
-					markerReg.addListener('click', function () {
-						var id = this.id;
-						console.log(this.type);
-						console.log(this.id);
-						getCommentMarker(id);
-					});
+						var body = bySource2[property2].body;
+						var impresion = bySource2[property2].impressions;
 
-					markers.push(markerReg);
-					citys.push({ name: property });
+						console.log(impresion);
 
+						//console.log(bySource2[property2].creator);
+
+						var avtImg = bySource2[property2].creator.avatar_url;
+						var link = bySource2[property2].creator.link;
+						var name = bySource2[property2].creator.name;
+						var sns_id = bySource2[property2].creator.sns_id;
+						var sns_name = bySource2[property2].creator.sns_name;
+						var username = bySource2[property2].creator.username;
+
+						var medias = bySource2[property2].medias;
+
+						$('.avarta-slider .swiper-wrapper').append('<div class="swiper-slide"><div class="fs-pic" data-avatar=' + avtImg + ' data-name=\'' + name + '\' data-email=\'' + username + '\' data-body=\'' + body + '\'><img src=' + avtImg + ' alt=\'' + name + '\'></div></div>');
+
+						var html = '<div class="info-box">';
+						html += '<div class="info-top"><div class="impresion"><span>Impression</span><span class="impresion-number">' + impresion + '</span></div></div>';
+
+						html += '<div class="user-box"><div class="user-pic"><img src=' + avtImg + ' alt=\'' + name + '\'></div><div class="user-info"><span class="user-name">' + name + '</span><span class="user-email">' + username + '</span></div>';
+
+						if (sns_name == 'ins') {
+							html += '<div class="user-social"><ul><li class="ins-soc"><a href=' + link + '>ins</a></li></ul></div></div>';
+						}
+						if (sns_name == '"ins-s"') {
+							html += '<div class="user-social"><ul><li class="ins-s-soc"><a href=' + link + '>ins</a></li></ul></div></div>';
+						}
+						if (sns_name == 'fb') {
+							html += '<div class="user-social"><ul><li class="fb-soc"><a href=' + link + '>ins</a></li></ul></div></div>';
+						}
+
+						html += '<div class="galary-box"><div class="galary-slider swiper-container">';
+						for (var i = 0; i < medias.length; i++) {
+							if(medias[i].indexOf('.mov') > 0) {
+								html +=  '<div class="swiper-slide"><video id="sampleMovie" src=' + medias[i] + ' controls></video></div>';
+							}
+							else if(medias[i].indexOf('.mp4') > 0) {
+								html +=  '<div class="swiper-slide"><video width="320" height="240" controls><source src='+ medias[i] +' type="video/mp4"></video></div>';
+							}else {
+								html += '<div class="swiper-slide"><div class="fs-pic"><img src=' + medias[i] + ' alt="pic"></div></div>';
+							}
+							
+						}
+						html += '</div></div>';
+
+						html += '<div class="comment-box">'+ body +'</div>';
+
+						html += '</div>';
+
+						$('.info-content').append(html);
+					}
 				}
 
-			}*/
-
-
+			}
+			
 		}
 
 	});
