@@ -1,0 +1,272 @@
+.fs-teamwear{
+    padding:3.25vw 0 0 0;
+}
+.fs-teamwear .fs-title{
+    position:absolute;
+    left:5%;
+    top:-2vw;
+}
+.fs-teamwear h1{
+    font-size:4.1666vw;
+    font-weight:700;
+}
+.teamwear-inr, .othersay-inr{
+    padding:0 5%;
+}
+.teamwear-box{
+    display:flex;
+    width:91.59%;
+}
+.teamwear-left{
+    flex:0 0 57.2%;
+    max-width:57.2%;
+    padding:5.13vw 18.5% 0 0;
+}
+.teamwear-items{
+    position:relative;
+    padding:0 0 0 11%;
+    margin-bottom:7vw;
+}
+.teamwear-items::before{
+    content:'';
+    position: absolute;
+    left:15.2%;
+    top:2vw;
+    width:2px;
+    height:84%;
+    background-color:#323232;
+}
+.teamwear-item{
+    position:relative;
+    display:block;
+    width:100%;
+    height:auto;
+    margin-bottom:2.08333vw;
+    overflow: hidden;
+}
+.teamwear-number{
+    float:left;
+    background-color:#323232;
+    width:2.7777vw;
+    height:2.7777vw;
+    line-height:2.7777vw;
+    color:#fff;
+    font-size:1.25vw;
+    font-weight:700;
+    text-align:center;
+    -webkit-border-radius:50%;
+    border-radius:50%;
+}
+.teamwear-txt {
+    display:block;
+    padding:0.5vw 0 0 1.38888vw;
+    overflow: hidden;
+}
+.teamwear-txt h2{
+    color:#000;
+    font-size:1.25vw;
+    font-weight:700;
+}
+.teamwear-txt p{
+    font-size:0.972222vw;
+    color:#000;
+    font-weight:400;
+}
+.fs-teamwear .fs-but{
+    width:15.2vw;
+    text-align:left;
+}
+.teamwear-right{
+    position:relative;
+    flex:0 0 44%;
+    max-width:44%;
+}
+.teamwear-right .swiper-pagination{
+    left:100%;
+    bottom:2.08333vw;
+    width:16px;
+    margin-left:1.04vw;
+}
+.teamwear-right .swiper-pagination-bullet{
+    display:block;
+    margin:0 auto 10px auto;
+}
+.othersay-inr{
+    display:flex;
+    padding:6.94vw 5%;
+    align-items:center;
+}
+.fs-othersay .fs-title{
+    flex:0 0 46.45%;
+    max-width:46.45%;
+    padding:0 14% 0 10%;
+}
+.fs-othersay h2{
+    font-size:6.9444vw;
+    font-weight:700;
+    text-align:right;
+}
+.othersay-box{
+    position:relative;
+    flex:0 0 45.216%;
+    max-width:45.216%;
+}
+.othersay-box p{
+    font-size:0.97222vw;
+    color:#000;
+    font-weight:400;
+    margin-bottom:1.25vw;
+}
+.othersay-box .fs-txt{
+    position:relative;
+    padding:0 0 2.08vw 3.958333vw;
+}
+.othersay-box .fs-txt::before, .othersay-box .fs-txt::after{
+    content:'';
+    position: absolute;
+    width:2.638888vw;
+    height:1.73611111vw;
+    background:url(../images/qoute-icon.png) no-repeat center top;
+    background-size:100% auto;
+}
+.othersay-box .fs-txt::before{
+    left:0;
+    top:0;
+}
+.othersay-box .fs-txt::after{
+    right:0;
+    bottom:0;
+}
+.othersay-box p:last-child{
+    margin:0;
+}
+.othersay-box p.author{
+    font-size:1.25vw;
+}
+.othersay-box p.author strong{
+    font-weight:700;
+}
+.othersay-box .swiper-pagination{
+    left:3.8vw;
+    bottom:0;
+}
+
+@media screen and (max-width: 1100px){
+    .fs-teamwear {
+        padding: 7.2vw 0 0 0;
+        background-color: #EEEFF3;
+    }
+    .teamwear-inr, .othersay-inr {
+        padding: 0 5.3333vw;
+    }
+    .fs-teamwear .fs-title {
+        position: relative;
+        left: auto;
+        top: auto;
+        margin-bottom: 4vw;
+    }
+    .fs-teamwear h1 {
+        font-size: 9.6vw;
+    }
+    .teamwear-box {
+        width: 100%;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+    .teamwear-right {
+        position: relative;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 10.6666vw;
+        padding-right: 9.3333vw;
+    }
+    .teamwear-left {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0 9.3333vw 10.6666vw 0;
+    }
+    .teamwear-right .swiper-pagination {
+        left: 91%;
+        bottom: 2.08333vw;
+        width: 4.2666vw;
+        margin-left: 0;
+    }
+    .teamwear-right .swiper-pagination-bullet {
+        margin: 0 auto 1.3333vw auto;
+    }
+    .teamwear-items {
+        padding: 0;
+        margin-bottom: 9.3333vw;
+    }
+    .teamwear-items::before {
+        left: 3.85vw;
+        top: 2vw;
+        width: 0.5333vw;
+        height: 55vw;
+    }
+    .teamwear-item {
+        margin-bottom: 4.8vw;
+    }
+    .teamwear-number {
+        width: 8vw;
+        height: 8vw;
+        line-height: 8vw;
+        font-size: 3.7333vw;
+    }
+    .teamwear-txt {
+        padding: 2vw 0 0 2.666vw;
+    }
+    .teamwear-txt h2 {
+        font-size: 3.7333vw;
+    }
+    .teamwear-txt p {
+        font-size: 2.9333vw;
+    }
+    .fs-teamwear .fs-but {
+        width: 52.2666vw;
+    }
+    .othersay-inr {
+        display: block;
+        padding: 7.2vw 5.3333vw 10.666vw 5.3333vw;
+    }
+    .fs-othersay .fs-title {
+        flex: 0 0 auto;
+        max-width: 28vw;
+        padding: 0 0 8vw 0;
+    }
+    .fs-othersay h2 {
+        font-size: 9.6vw;
+    }
+    .othersay-box {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+    .othersay-box .fs-txt {
+        padding: 0 7vw 0 7vw;
+    }
+    .othersay-box p {
+        font-size: 2.9333vw;
+        margin-bottom: 2.133vw;
+    }
+    .othersay-box p.author {
+        font-size: 2.9333vw;
+    }
+    .othersay-box .fs-txt::before, .othersay-box .fs-txt::after {
+        width: 3.733vw;
+        height: 2.5333vw;
+    }
+    .othersay-box .fs-txt::before {
+        left: 1vw;
+        top: 0;
+    }
+    .othersay-box .fs-txt::after {
+        right: 1vw;
+        bottom: 0;
+    }
+    .othersay-box .swiper-pagination {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin-top: 3vw;
+    }
+}

@@ -1,0 +1,429 @@
+.fs-banner .fs-txt{
+    top:12.5vw;
+    left:4.86111vw;
+}
+.fs-banner .ta-c .fs-txt{
+    left:50%;
+    text-align:center;
+    -webkit-transform:translateX(-50%);
+    transform:translateX(-50%);
+}
+.fs-banner .ta-r .fs-txt {
+    top:12.5vw;
+    right:4.86111vw;
+    left:auto;
+    text-align:right;
+}
+.fs-banner h1, .fs-banner h2{
+    text-transform:uppercase;
+    margin-bottom:2.361vw;
+    font-size:5.5vw;
+    font-weight:700;
+}
+.fs-banner .swiper-pagination{
+    width:100%;
+    bottom:30px;
+    text-align: center;
+}
+.fs-banner .swiper-pagination-bullet{
+    border:1px solid #fff;
+}
+.fs-banner .swiper-pagination-bullet-active{
+    background-color:#fff;
+}
+.fuel-inr{
+    position:relative;
+    left:5vw;
+    display:flex;
+    padding:5.5555vw 0;
+    width:50%;
+    margin:0 auto;
+    align-items:center;
+}
+.fuel-txt{
+    flex:0 0 42%;
+    max-width:42%;
+    padding-right:1.527777vw;
+    text-align:right;
+}
+.fuel-box{
+    position:relative;
+    flex:0 0 58%;
+    max-width:58%;
+}
+.fuel-txt h2{
+    text-transform:uppercase;
+    font-size:6.94444vw;
+    color:#323232;
+    line-height:1;
+    font-weight:700;
+}
+.fuel-txt h2 .symbol{
+    position: relative;
+    top:-0.5vw;
+    font-weight:400;
+}
+.fuel-txt .fs-but{
+    text-align:left;
+}
+.fuel-slider{
+    width:100%;
+    height:auto;
+}
+.fuel-box .swiper-pagination{
+    left:100%;
+    bottom:2.08333vw;
+    width:16px;
+    margin-left:1.04vw;
+}
+.fuel-box .swiper-pagination-bullet{
+    display:block;
+    margin:0 auto 10px auto;
+}
+
+.fs-teamwear{
+    padding:5vw 0 3.47vw 0;
+}
+.teamwear-inr{
+    width:90%;
+    margin:0 auto;
+}
+.fs-teamwear .fs-txt{
+    position: absolute;
+    left:7.5vw;
+    top:7.5vw;
+    z-index:2;
+}
+.fs-teamwear h2{
+    text-transform:uppercase;
+    font-size:4.16666vw;
+    font-weight:700;
+}
+.fs-teamwear .fs-txt p{
+    margin:1.18vw 0 3.19vw 0;
+    font-size:0.97222vw;
+    color:#fff;
+    font-weight:500;
+}
+.feed-inr{
+    width:90%;
+    margin:0 auto;
+}
+.fs-feed .fs-title{
+    margin-bottom:4.3vw;
+    text-align:center;
+}
+.fs-feed .fs-title::before{
+    content:'';
+    position: absolute;
+    left:0;
+    top:2.3vw;
+    width:100%;
+    height:2px;
+    background-color:#323232;
+}
+.fs-feed h2{
+    position: relative;
+    display:inline-block;
+    padding:0 6.94444vw;
+    font-size:4.1666vw;
+    color:#000;
+    font-weight:700;
+    text-transform:uppercase;
+    z-index:2;
+    background-color:#fff;
+    line-height:1;
+}
+.fs-feed h2.fs-sp{
+    display: none;
+}
+.feed-box{
+    position: relative;
+    display: block;
+    width:100%;
+}
+.feed-box-inr{
+    position: relative;
+    flex-direction: row;
+    display:flex;
+    justify-content: space-between;
+}
+.feed-box .fs-box{
+    position: relative;
+    width:32%;
+}
+.feed-box .fs-bg::before{
+    padding-top:100%;
+}
+.feed-box .fs-bg img{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.feed-box .fs-txt{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    padding:8.5% 7% 8.5% 7%;
+    background-color:rgba(50,50,50,0.8);
+    color:#fff;
+    z-index:2;
+    opacity:0;
+    -webkit-transition:opacity 0.3s ease-in-out;
+    transition:opacity 0.3s ease-in-out;
+}
+.feed-box .fs-box:hover .fs-txt{
+    opacity:1;
+}
+.feed-date{
+    display:block;
+    font-size:0.972222vw;
+    margin-bottom:0.27vw;
+}
+.feed-box .fs-txt h3{
+    font-weight:700;
+    font-size:1.25vw;
+}
+.fs-links{
+    position: absolute;
+    left:7%;
+    bottom:8.5%;
+}
+.fs-link {
+    position:relative;
+    font-size:0.972222vw;
+    color:#fff;
+}
+.fs-link::after{
+    content: '';
+    position: absolute;
+    left:0;
+    bottom:-0.2vw;
+    width:45%;
+    height:1px;
+    background-color:#fff;
+}
+.fs-feed .fs-buts{
+    padding:2.7777vw 0 4.16666vw 0;
+    text-align:center;
+}
+
+.fs-follow .fs-title{
+    margin-bottom:-2vw;
+    text-align:center;
+    z-index:2;
+}
+.fs-follow h2{
+    display:inline-block;
+    font-size:4.16666vw;
+    font-weight:700;
+}
+.follow-box{
+    display:flex;
+    
+}
+.follow-box a{
+    position: relative;
+    display: block;
+    width:16.6666%;
+    font-size:0;
+}
+.follow-box .fs-bg::before{
+    padding-top:100%;
+}
+
+@media screen and (max-width: 1100px){
+    /* Banner */
+    .fs-banner .fs-txt {
+        top: 10.1333vw;
+        left: 5.3333vw;
+        width:80%;
+    }
+    .fs-banner h1, .fs-banner h2 {
+        margin-bottom: 3.2vw;
+        font-size: 9.6vw;
+    }
+    .fs-banner .swiper-pagination {
+        bottom: 2.6666vw;
+    }
+    .fs-banner .swiper-pagination-bullet-active {
+        background-color: #000;
+    }
+    .fs-banner .swiper-pagination-bullet {
+        border: 1px solid #000;
+    }
+    .fs-banner  .swiper-pagination-bullet {
+        width: 2.6666vw;
+        height: 2.6666vw;
+        margin: 0 1.3333vw;
+    }
+
+    /* fs-fuel */
+    .fuel-inr {
+        left: 0;
+        padding: 10.6666vw 0;
+        width: 82.6666%;
+    }
+    .fuel-txt {
+        flex: 0 0 38.7096%;
+        max-width: 38.7096%;
+        padding-right: 0;
+    }
+    .fuel-txt h2 {
+        font-size: 9.6vw;
+    }
+    .fuel-txt .fs-but{
+        width: 100%;
+    }
+    .fuel-box {
+        flex: 0 0 61.2903%;
+        max-width: 61.2903%;
+        padding-left: 3.225%;
+    }
+    .fuel-box .swiper-pagination {
+        bottom: 1.86666vw;
+        width: 2.6666vw;
+        margin-left: 1.333vw;
+    }
+    .fuel-box .swiper-pagination-bullet {
+        margin: 0 auto 2.6666vw auto;
+    }
+    .fuel-box .swiper-pagination-bullet:last-child{
+        margin: 0 auto;
+    }
+    .fuel-box .swiper-pagination-bullet {
+        width: 2.6666vw;
+        height: 2.6666vw;
+    }
+
+    /* fs-teamwear */
+    .fs-teamwear {
+        padding: 5.333vw 0 6.6666vw 0;
+    }
+    .teamwear-inr {
+        width: 89.3333%;
+    }
+    .fs-teamwear .fs-txt {
+        left: 5.3333vw;
+        top: 6.1333vw;
+    }
+    .fs-teamwear h2 {
+        font-size: 9.6vw;
+    }
+    .fs-teamwear .fs-txt p {
+        margin: 2.6666vw 0 5.333vw 0;
+        font-size: 2.9333vw;
+    }
+    .fs-teamwear .fs-but{
+        width: 42.1333vw;
+    }
+
+    /* fs-feed */
+    .feed-inr {
+        width: 89.333%;
+    }
+    .fs-feed::after{
+        content: '';
+        position: relative;
+        display: block;
+        width: 100%;
+        height: auto;
+        clear: both;
+    }
+    .fs-feed .fs-title {
+        margin-bottom: 5.333vw;
+    }
+    .fs-feed h2.fs-pc{
+        display: none;
+    }
+    .fs-feed h2.fs-sp{
+        display: inline-block;
+    }
+    .fs-feed h2 {
+        padding: 0 2.4vw;
+        font-size: 9.6vw;
+    }
+    .fs-feed .fs-title::before {
+        top: 5vw;
+    }
+    .feed-box{
+        left: 5.333vw;
+    }
+    .feed-outer{
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        overflow-x: auto;
+    }
+    .feed-box-inr {
+        flex-wrap: nowrap;
+    }
+    .feed-box .fs-box {
+        flex: 0 0 56.7164%;
+        width: 56.7164%;
+        padding-left: 5.95%;
+    }
+    .feed-box .fs-txt {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        padding: 2.6666vw 0 0 0;
+        background-color: transparent;
+        color: #323232;
+        opacity: 1;
+        -webkit-transition: none;
+        transition: none;
+    }
+    .feed-date {
+        font-size: 2.6666vw;
+        margin-bottom: 1.0666vw;
+    }
+    .feed-box .fs-txt h3 {
+        font-size: 3.2vw;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 2vw;
+    }
+    .fs-links {
+        position: relative;
+        left: auto;
+        bottom: auto;
+    }
+    .fs-link {
+        font-size: 2.9333vw;
+        color: #323232;
+    }
+    .fs-link::after {
+        width: 100%;
+        background-color: #323232;
+    }
+    .fs-feed .fs-buts {
+        padding: 4.5333vw 0 10.6666vw 0;
+    }
+
+    /* fs-follow */
+    .fs-follow .fs-title {
+        margin-bottom: -3vw;
+    }
+    .fs-follow h2 {
+        font-size: 9.6vw;
+    }
+    .follow-box {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    .follow-box a {
+        flex: 0 0 33.333%;
+        width: 33.333%;
+    }
+}

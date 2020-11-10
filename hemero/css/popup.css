@@ -1,0 +1,140 @@
+
+
+/* .popup-overlay{
+	display:none;
+	position:fixed;
+	left:0;
+	top:0;
+	width:100vw;
+	height:100vh;
+	background-color:rgba(0, 0, 0,0.9);
+    z-index: 12;
+	text-align:center;
+}
+.popup-overlay::before, .popup-overlay::after{
+	content:'';
+	position:relative;
+	display:inline-block;
+	width:0;
+	height:100%;
+	vertical-align:middle;
+}
+.popup-inr{
+	position:relative;
+	display:inline-block;
+	vertical-align:middle;
+	width:59.5833%;
+	height: auto;
+	max-height: 90vh;
+	background-color:#fff;
+	text-align:left;
+	z-index:3;
+}
+.popup-inr .fs-box{
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.popup-inr .fs-title{
+	text-align: center;
+}
+.popup-inr .small-title{
+	font-weight: 500;
+	font-style: normal;
+	font-size: 1.6666vw;
+	color: #323232;
+	margin-bottom: 10px;
+}
+.popup-inr .fs-group{
+	margin-bottom: 20px;
+}
+.popup-inr .fs-group:last-child{
+	margin-bottom: 0;
+}
+.close-but{
+	position: absolute;
+	top: 0;
+	right: 0;
+    width: 2.4vw;
+    height: 2.4vw;
+    line-height: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+.close-but img{
+	width: 100%;
+}
+
+.fs-caption{
+	position: relative;
+	display: block;
+	font-size: 16px;
+	font-weight: 500;
+	color: #464646;
+	margin-bottom: 12px;
+}
+.popup-inr .fs-group input[type='text'], 
+.popup-inr .fs-group input[type='password']{
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    border: 1px solid #cbcbcb;
+    padding: 0 15px;
+    color: #464646;
+}
+.popup-inr .fs-group input[type="password"]::placeholder,
+.popup-inr .fs-group input[type="text"]::placeholder{
+    color: #b1b1b1;
+	font-weight: 500;
+	font-style: italic;
+}
+.popup-inr .fs-but{
+	position: relative;
+    display: inline-block;
+    width: 27.2897%;
+    height: 43px;
+    line-height: 43px;
+    color: #ffffff;
+	font-size: 20px;
+    text-transform: uppercase;
+    background: #e91c27;
+    -webkit-border-radius: 5px;
+	border-radius: 5px;
+    cursor: pointer;
+} */
+
+/* popup size chart */
+
+
+
+
+/* @media screen and (min-width:1101px) and (max-height:840px) {
+
+}
+
+@media screen and (min-width:1101px) and (max-height:660px) {
+
+}
+
+@media screen and (min-width:1101px) {
+	.close-button, .chose-color-but{
+		-webkit-transition:all 0.3s ease-in-out;
+		transition:all 0.3s ease-in-out;
+	} 
+	.close-button:hover, .chose-color-but:hover{
+		background-color:#000;
+	}
+}
+
+@media screen and (max-width:1100px) {
+	
+}
+
+@media screen and (max-width:840px) {
+	
+}
+
+@media screen and (max-width:520px) {
+
+} */

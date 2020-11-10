@@ -1,0 +1,335 @@
+.fs-design .back-link{
+    position:relative;
+    left:auto;
+    top:auto;
+    margin-bottom:1.6vw;
+    display:inline-block;
+    text-decoration:underline;
+    font-size:0.83333vw;
+}
+.design-title {
+    display:flex;
+    color:#323232;
+    align-items:flex-end;
+    margin-bottom:1.4vw;
+}
+.design-title h1{
+    font-size:1.6666vw;
+    font-weight:700;
+    margin-right:1.4vw;
+}
+.design-title span{
+    font-size:0.972222vw;
+    font-weight:400;
+}
+
+.design-inr {
+    padding:2.25vw 5% 5.5555vw 5%;
+}
+
+.feedback-box {
+    position:relative;
+    display:block;
+    width:100%;
+    height:auto;
+    margin-left:-0.7vw;
+    margin-bottom:1.4vw;
+}
+.feedback-box.show-controls{
+    padding:0 2vw;
+    margin-left:auto;
+}
+.feedback-box .swiper-slide{
+    padding:0 0.7vw;
+}
+.feedback-box .fs-pic {
+    border:1px solid #323232;
+    opacity:50%;
+    cursor:pointer;
+}
+.feedback-box .fs-pic img{
+    position: absolute;
+    left:50%;
+    top:50%;
+    width:auto;
+    height:auto;
+    max-width:80%;
+    max-height:80%;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+}
+.feedback-box .fs-pic.current{
+    opacity:1;
+    cursor:default;
+}
+.feedback-box .fs-pic::before{
+    content:'';
+    position:relative;
+    display:block;
+    width:100%;
+    height:auto;
+    padding-top:71.42857%;
+}
+
+.feedback-box .swiper-button-next, .feedback-box .swiper-button-prev{
+    width:2.083333vw;
+    top:2.4vw;
+}
+.feedback-box .swiper-button-next{
+    background:url(../images/next-black-arrow.png) no-repeat center center;
+    background-size:86% auto;
+}
+.feedback-box .swiper-button-prev{
+    background:url(../images/prev-black-arrow.png) no-repeat center center;
+    background-size:86% auto;
+}
+
+
+
+.feedback-content {
+    display:flex;
+    border:1px solid #323232;
+}
+.feedback-comments {
+    position:relative;
+    flex:0 0 32%;
+    max-width:32%;
+    border-right:1px solid #323232;
+}
+.comment-item {
+    display:none;
+    width:100%;
+    height:auto;
+}
+.comment-item.current{
+    display:block;
+}
+
+.feedback-maps {
+    flex:0 0 68%;
+    max-width:68%;
+    padding:4.63% 0;
+    font-size:0;
+    text-align:center;
+}
+.map-items {
+    width:100%;
+    height:auto;
+}
+.map-item{
+    position:relative;
+    display:none;
+    width:auto;
+    height:30vw;
+    margin:0 auto;
+}
+.map-item.current{
+    display:inline-block;
+}
+.map-item::after{
+    content:'';
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:10;
+}
+.enabled .map-item::after{
+    display:none;
+}
+.map-pic {
+    display:block;
+    width:auto;
+    height:100%;
+}
+.map-pic img{
+    height:100%;
+    width:auto;
+}
+
+
+.dots{
+    counter-reset: my-sec-counter;
+}
+.dot{
+	position:absolute;
+	width:1.4vw;
+	height:1.4vw;
+	line-height:1.4vw;
+	text-align:center;
+	-webkit-border-radius:100%;
+	border-radius:100%;
+	background-color:#aaaaaa;
+    border:1px solid #fff;
+    text-align:center;
+    margin:-0.7vw 0 0 -0.7vw;
+}
+.dot::after{
+    counter-increment: my-sec-counter;
+    content: counter(my-sec-counter);
+    font-size:0.83333vw;
+    font-weight:700;
+    color:#fff;
+    line-height:1;
+    position: relative;
+    top:-0.1vw;
+    display:inline-block;
+    vertical-align:middle;
+}
+.dot.current{
+    background-color:#323232;
+}
+.fs-design .fs-buts{
+    text-align:right;
+    padding-top:2.7777vw;
+}
+.fs-design .fs-but{
+    width:auto;
+    padding:0 3.38888vw 0 1.38888vw;
+}
+
+.comments-items{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:calc(100% - 5vw);
+}
+.only-view .comments-items{
+    height:100%;
+}
+.comments-scroll{
+    position:relative;
+    display:block;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    overflow-y:auto
+}
+.comment-item{
+    padding:1.6vw 1.4vw 0 1.4vw;
+    counter-reset: my-sec-counter;
+}
+.comment-block {
+    position:relative;
+    display:block;
+    width:100%;
+    height:auto;
+    padding:0 2.36vw 1.6vw 2.36vw;
+    margin-bottom:1.6vw;
+    border-bottom:1px solid #eeeff3;
+    color:#323232;
+}
+.comment-block::before{
+    position:absolute;
+    left:0;
+    top:0.2vw;
+	width:1.4vw;
+	height:1.4vw;
+    line-height:1.4vw;
+    font-size:0.9375vw;
+	text-align:center;
+	-webkit-border-radius:100%;
+	border-radius:100%;
+    background-color:#323232;
+    color:#fff;
+    text-align:center;
+    counter-increment: my-sec-counter;
+    content: counter(my-sec-counter);
+}
+.comment-block:last-child{
+    border:none;
+}
+.comment-delete{
+    position: absolute;
+    top:0;
+    right:-1vw;
+    font-size:0.83333vw;
+    cursor: pointer;
+    text-decoration:underline;
+    font-weight:400;
+}
+
+.annotation-box {
+    position: absolute;
+    left:0;
+    bottom:0;
+    display:flex;
+    width:100%;
+    height:4.16666vw;
+    padding:0 1.6vw;
+    align-items:center;
+    justify-content: space-between;
+    font-size:0.8333vw;
+    color:#323232;
+    font-weight:400;
+    border-top:1px solid #323232;
+}
+
+.annotation-add {
+    padding:0.5vw 0 0.5vw 2vw;
+    background:url(../images/annotation-plus-icon.png) no-repeat left center;
+    background-size:1.4vw auto;
+}
+.annotation-add, .annotation-cancel{
+    text-decoration:underline;
+    cursor:pointer;
+}
+.annotation-cancel{
+    display:none;
+}
+.enabled .annotation-add{
+    background:url(../images/annotation-plus-icon-active.png) no-repeat left center;
+    background-size:1.4vw auto;
+    color:#007236;
+    font-weight:700;
+}
+.enabled .annotation-cancel {
+    display:block;
+}
+.feedback-input {
+    position: absolute;
+    width:20.083333vw;
+    height:auto;
+    padding:0.694444vw;
+    background-color:#fff;
+    box-shadow:0 0 5px 5px rgba(0,0,0,0.1);
+    z-index:2;
+    margin:-0.7vw 0 0 -0.7vw;
+    visibility: hidden;
+    opacity:0;
+}
+.feedback-input.show{
+    visibility:visible;
+    opacity:1;
+}
+
+.feedback-input textarea{
+    width:100%;
+    height:6.94444vw;
+    padding:12px;
+}
+.feedback-input .fs-group{
+    margin-bottom:0.69444vw;
+}
+.feedback-input .fs-group:last-child{
+    margin:0;
+}
+.feedback-input.show-error .feedback-area{
+    border:1px solid #e80909;
+}
+.feedback-but {
+    text-align:right;
+    font-size:0;
+}
+.fs-design .feedback-but .cancel-comment-but {
+    width:auto;
+    padding:0 0.8vw;
+    text-decoration:underline;
+    margin-right:0.5vw;
+}
+.fs-design .feedback-but .add-comment-but {
+    width:auto;
+    padding:0 3.38888vw 0 1.38888vw;
+}

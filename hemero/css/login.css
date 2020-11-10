@@ -1,0 +1,197 @@
+
+
+.no-message .fs-page{
+    padding:0;
+}
+.fs-login{
+    position:relative;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+}
+.fs-login .logo{
+	top:9vw;
+	width:14.3vw;
+	max-width:206px;
+	-webkit-transform:none;
+	transform:none;
+}
+.fs-login .fs-bg, .fs-login .fs-bg > div{
+	position: absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+}
+.fs-login .fs-bg::before{
+	display:none;
+}
+.fs-login .fs-bg > div{
+	background-size:cover;
+}
+.short-link{
+    margin-bottom:1vw;
+}
+.short-link li{
+	display:inline-block;
+	vertical-align:top;
+	margin-right:3.47vw;
+}
+.short-link li a{
+	font-size:0.97222vw;
+	color:#323232;
+	font-weight:400;
+}
+.short-link li.current a{
+	font-weight:700;
+	text-decoration:underline;
+}
+.fs-login .fs-form{
+	position:relative;
+    float:right;
+	width:66%;
+	height:auto;
+	min-height:100vh;
+	background-color:#fff;
+    padding:8vw 20.27777% 9vw 7.638888%;
+	z-index:1;
+}
+.fs-login .fs-group{
+    margin-bottom:2.03vh;
+}
+.fs-login .fs-checkbox label a{
+    color:#000;
+}
+.fs-login .fs-select-box{
+    top:auto;
+    bottom:100%;
+    margin:0 0 2px 0;
+}
+.forget-link{
+	font-size:0.972222vw;
+	color:#323232;
+	font-weight:400;
+	text-decoration:underline;
+}
+.fs-login .fs-but{
+	width:11.1vw;
+}
+.fs-login .fs-but.no-arrow{
+	text-align:center;
+	background:none;
+	background-color:#323232;
+}
+.ta-r{
+	text-align:right;
+}
+.ta-r a, .ta-r .fs-but{
+	display:inline-block;
+}
+.line-box{
+	position:relative;
+	text-align:center;
+}
+.line-box::before{
+	content:'';
+	position: absolute;
+	left:0;
+	top:0.7vw;
+	width:100%;
+	height:1px;
+	background-color:#323232;
+}
+.line-box span{
+	position: relative;
+	display:inline-block;
+	padding:0 4vw;
+	background-color:#fff;
+	font-size:0.972222vw;
+	font-weight:400;
+}
+.face-but, .google-but{
+	font-size:0.83333vw;
+	font-weight:700;
+	text-transform:uppercase;
+	color:#fff;
+	text-align:center;
+	height:2.7777vw;
+	line-height:2.7777vw;
+}
+.face-but{
+	background-color:#0054a6;
+}
+.google-but{
+	background-color:#a0410d;
+}
+.register-link{
+	padding-top:4vw;
+}
+.register-link p{
+	font-size:0.972222vw;
+	font-weight:400;
+	color:#323232;
+}
+.register-link p a{
+	font-weight:700;
+	color:#323232;
+	text-decoration:underline;
+}
+
+@media screen and (max-width: 1100px){
+	.fs-login .fs-bg, .fs-login .logo{
+		display: none;
+	}
+	.fs-login .fs-form {
+		float: none;
+		width: 100%;
+		min-height: auto;
+		padding: 6.9333vw 5.3333vw 9vw 5.3333vw;
+	}
+	.fs-form h1 {
+		font-size: 4.8vw;
+		margin-bottom: 4.2666vw;
+	}
+	.fs-login .fs-group {
+		margin-bottom: 2.1333vw;
+	}
+	.forget-link {
+		font-size: 2.9333vw;
+	}
+	.fs-login .fs-but {
+		width: 100%;
+	}
+	.fs-login .fs-but.color-grey-white{
+		background: none;
+		background-color: #323232;
+	}
+	.fs-login .fs-but{
+		text-align: center;
+	}
+	.register-link {
+		padding-top: 0;
+	}
+	.register-link p {
+		font-size: 2.933vw;
+	}
+	.short-link {
+		margin-bottom: 4vw;
+	}
+	.short-link li {
+		margin-right: 4vw;
+	}
+	.short-link li a {
+		font-size: 2.9333vw;
+	}
+	.line-box span {
+		padding: 0 5.8666vw;
+		font-size: 2.9333vw;
+	}
+	.line-box::before {
+		top: 2vw;
+	}
+	.face-but, .google-but {
+		font-size: 2.9333vw;
+		height: 10.6666vw;
+		line-height: 10.6666vw;
+	}
+}

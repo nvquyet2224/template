@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="google" content="notranslate">
+    <meta name="language" content="vi">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Hemero">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>Hemero</title>
+    <meta name="description" content="Hemero">
+    <meta name="keywords" content="Hemero">
+    <meta name="theme-color" content="#fff" />
+    <meta property="og:title" content="Hemero">
+    <meta property="og:description" content="Hemero">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/thumbnail.jpg">
+    <meta property="og:site_name" content="Hemero">
+    <meta property="og:locale" content="vi">
+    <meta property="og:url" content="http://ui.stg.techable.vn/hemero/affiliate-statistic.html">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Hemero" />
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="canonical" href="http://ui.stg.techable.vn/hemero/affiliate-statistic.html" />
+    <link rel="alternate" href="http://ui.stg.techable.vn/hemero/affiliate-statistic.html" hreflang="vi" />
+    <link rel="alternate" href="http://ui.stg.techable.vn/hemero/affiliate-statistic.html" hreflang="x-default" />
+    
+    <link href="css/layout-full.css" rel="stylesheet" rel="preload" as="style">
+    <link href="css/user-dashboard.css" rel="stylesheet" rel="preload" as="style">
+    <link href="css/chart.css" rel="stylesheet" rel="preload" as="style">
+    <link href="css/jquery-ui.css" rel="stylesheet" rel="preload" as="style">
+    <link rel="preload" href="fonts/Barlow-Light.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Barlow-LightItalic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Barlow-Italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Barlow-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Barlow-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Barlow-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Barlow-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Barlow-Black.woff2" as="font" type="font/woff2" crossorigin>
+    <script href="js/main.js" rel="preload" as="script"></script>
+</head>
+
+<body data-page="affiliate-statistic">
+    <div class="fs-page">
+
+        <!-- Header -->
+        <header class="fs-header" w3-include-html="_header3.html"></header>
+        <!-- Header -->
+
+        <!-- Content -->
+        <div class="fs-container">
+
+            <div class="fs-content fs-affiliate">
+                <div class="sub-content" w3-include-html="_side1.html"></div>
+                <div class="main-content">
+                    <div class="statistic-box">
+                        <div class="overview-box">
+                            <div class="side-menu js-show-side fs-sp">Side menu</div>
+                            <h3>OVERVIEW</h3>
+                            <div class="overview-top">
+                                <div class="item-overview">
+                                    <div class="dates">
+                                        <span>Start</span>
+                                        <div class="wrap-date">
+                                            <input type="text" class="datepicker">
+                                        </div>
+                                    </div>
+                                    <div class="dates">
+                                        <span>End</span>
+                                        <div class="wrap-date">
+                                            <input type="text" class="datepicker">
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="item-time filter-review fs-pc">
+                                    <li class="active" data-target="week">Week</li>
+                                    <li data-target="month">Month</li>
+                                    <li data-target="year">Year</li>
+                                    <li data-target="all-time">All time</li>
+                                </ul>
+                                <div class="fs-select sl-time fs-sp">
+                                    <div class="fs-select-header">
+                                        <span>Week</span>
+                                    </div>
+                                    <div class="fs-select-box">
+                                        <ul>
+                                            <li class="seleted" data-target="week">Week</li>
+                                            <li data-target="month">Month</li>
+                                            <li data-target="year">Year</li>
+                                            <li data-target="all-time">All time</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="transaction-box">
+                                <h4>Income</h4>
+                                <div class="view-items">
+                                    <div class="view-item active" data-tab="week">
+                                        <div class="chart">
+                                            <canvas id="myChart"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="view-item" data-tab="month">
+                                        <div class="chart">
+                                            <canvas id="chartMonth"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="view-item" data-tab="year">
+                                        <div class="chart">
+                                            <canvas id="chartYear"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="view-item" data-tab="all-time">
+                                        <div class="chart">
+                                            <canvas id="chartAllTime"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="transaction-box  spr-size3 sale-box">
+                            <div class="transaction-title">
+                                <h4>Sales count</h4>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item title">
+                                    <span>Items</span>
+                                    <span>Quantity sold</span>
+                                    <span>Earnings</span>
+                                </div>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span>Product A</span>
+                                    <span data-txt="Quantity sold">10</span>
+                                    <span data-txt="Earnings">1.123.000</span>
+                                </a>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span>Product A</span>
+                                    <span data-txt="Quantity sold">10</span>
+                                    <span data-txt="Earnings">1.123.000</span>
+                                </a>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span>Product A</span>
+                                    <span data-txt="Quantity sold">10</span>
+                                    <span data-txt="Earnings">1.123.000</span>
+                                </a>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span>Product A</span>
+                                    <span data-txt="Quantity sold">10</span>
+                                    <span data-txt="Earnings">1.123.000</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="transaction-box spr-size4">
+                            <div class="transaction-title">
+                                <h4>Transactions</h4>
+                                <span>70 transactions</span>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item title">
+                                    <span>Order ID</span>
+                                    <span>Timestamp</span>
+                                    <span>Status</span>
+                                    <span>Earnings</span>
+                                </div>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span data-txt="Order ID">HDFJSWW</span>
+                                    <span data-txt="Time stamp">17:09:09
+                                        <small class="day">07/09/2020</small>
+                                    </span>
+                                    <span>Return</span>
+                                    <span>-15.000</span>
+                                </a>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span data-txt="Order ID">HG23942R</span>
+                                    <span data-txt="Time stamp">16:17:09
+                                        <small class="day">07/09/2020</small>
+                                    </span>
+                                    <span>Pending</span>
+                                    <span>32.000</span>
+                                </a>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span data-txt="Order ID">3DE3DJW</span>
+                                    <span data-txt="Time stamp">18:23:12
+                                        <small class="day">07/09/2020</small>
+                                    </span>
+                                    <span>Complete</span>
+                                    <span>79.000</span>
+                                </a>
+                                <a class="order-item" href="javascript:void(0)">
+                                    <span data-txt="Order ID">23ORUEKF</span>
+                                    <span data-txt="Time stamp">18:23:12
+                                        <small class="day">07/09/2020</small>
+                                    </span>
+                                    <span>Complete</span>
+                                    <span>30.000</span>
+                                </a>
+                            </div>
+                            <div class="fs-buts">
+                                <button class="fs-but view-all">VIEW ALL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Content -->
+
+    <!-- Footer -->
+    <footer class="fs-footer" w3-include-html="_footer.html"></footer>
+    <!-- Footer -->
+
+    </div>
+    
+    <script src="js/jquery-min.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script defer src="js/main.js"></script>
+</body>
+
+</html>

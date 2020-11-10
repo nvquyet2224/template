@@ -1,0 +1,341 @@
+.fs-order-infomation{
+    padding:2.65vw 0 10vw 0;
+}
+.fs-order-infomation .back-link{
+    position: relative;
+    left: auto;
+    top:auto;
+    font-size:0.83333vw;
+    text-decoration:underline;
+    margin-bottom:1.52vw;
+    display:inline-block;
+}
+.order-infomation-inr{
+    padding:0 5%;
+}
+.fs-order-infomation h1{
+    font-size:1.6666vw;
+    font-weight:700;
+    color:#323232;
+    text-transform:uppercase;
+    margin-bottom:1vw;
+}
+.order-infomation-block{
+    position: relative;
+    display: block;
+}
+.order-infomation-inr .inputs-order{
+    width: 50.3645vw;
+}
+.order-infomation-block h2{
+    font-size:1.1111vw;
+    font-weight:700;
+    color:#323232;
+    text-transform:uppercase;
+    margin-bottom:1vw;
+}
+.fs-order-infomation .form-box h3{
+    font-size:0.88888vw;
+    font-weight:400;
+    color:#323232;
+    text-transform:uppercase;
+    margin-bottom:0.5vw;
+}
+.roster-wrap{
+    position: relative;
+    width:100%;
+    overflow:hidden ;
+}
+.roster-unter{
+    width:100%;
+}
+.roster-box {
+    display:flex;
+    align-items:center;
+    border:2px solid #323232;
+    color:#323232;
+    margin-bottom:0.694444vw;
+}
+.roster-box h3, .roster-box p{
+    text-align:center;
+}
+.roster-box h3{
+    font-size:1.1111vw;
+    font-weight:700;
+    text-transform:uppercase;
+}
+.roster-box p, .size-guide{
+    font-size:0.8333vw;
+    font-weight:400;
+}
+.size-guide{
+    display:inline-block;
+    text-decoration:underline;
+}
+.roster-name{
+    flex:0 0 32.5%;
+    max-width:32.5%;
+}
+.roster-number{
+    flex:0 0 12%;
+    max-width:12%;
+}
+.roster-name-item{
+    flex:0 0 28%;
+    max-width:28%;
+}
+.roster-initial{
+    flex:0 0 11.5%;
+    max-width:11.5%;
+}
+.roster-delete{
+    position: absolute;
+    right:0;
+    top:0;
+    width:2.7777vw;
+    height:2.7777vw;
+    background:url(../images/close-black.png) no-repeat center center;
+    background-size:1.18vw auto;
+    cursor: pointer;
+}
+.roster-select{
+    flex:0 0 16%;
+    max-width:16%;
+    padding:1.36vw 0;
+    background-color:#323232;
+    color:#fff;
+    text-align:center;
+    cursor:pointer;
+}
+.roster-select h3{
+    display:inline-block;
+    padding-left:1.805555vw;
+    background:url(../images/plus-white-icon.png) no-repeat left center;
+    background-size:1.1111vw auto;
+}
+.roster-over .roster-select h3{
+    background:url(../images/minus-white-icon.png) no-repeat left center;
+    background-size:1.1111vw auto;
+}
+.roster-form {
+    background-color:#eeeff3;
+    padding-bottom:2.08333vw;
+    margin-bottom:2vw;
+}
+
+.roster-items{
+    padding:2.08333vw 0 0.7vw 0;
+}
+.roster-item {
+    display:flex;
+    align-items:center;
+    margin-bottom:1.38888vw;
+}
+.roster-item > div {
+    position:relative;
+    margin-right:1.5%;
+}
+.roster-order {
+    flex:0 0 3%;
+    max-width:3%;
+    text-align:center;
+    font-size:0.83333vw;
+    font-weight:700;
+    color:#323232;
+}
+.roster-name-input, .roster-item-input {
+    flex:0 0 28%;
+    max-width:28%;
+}
+.roster-name-input input[type="text"]{
+    padding:0 2.5vw 0 1.25vw;
+}
+.roster-number-input, .roster-initial-input {
+    flex:0 0 9%;
+    max-width:9%;
+}
+.roster-check{
+    position: relative;
+    flex:0 0 15.5%;
+    max-width:15.5%;
+    text-align:center;
+    margin:0;
+}
+.roster-item div.roster-check{
+    margin:0;
+}
+.roster-check::before{
+    content:'';
+    position: relative;
+    display:inline-block;
+    width:1.4vw;
+    height:1.4vw;
+    border:1px solid #3b3b3b;
+    -webkit-border-radius:100%;
+    border-radius:100%;
+}
+.ready .roster-check::before{
+    border:none;
+    background:url(../images/check-active.png) no-repeat center center;
+    background-size:100% auto;
+}
+.add-player-but {
+    margin-left:1vw;
+    display:inline-block;
+    font-size:0.833333vw;
+    font-weight:700;
+    text-decoration:underline;
+    text-transform:uppercase;
+}
+.roster-summary {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:3.47vw 6.9444%;
+    background-color:#323232;
+    color:#fff;
+    margin-bottom:1.3888vw;
+}
+.roster-summary h2{
+    width:20%;
+    font-size:3.3333vw;
+    font-weight:700;
+    text-transform:uppercase;
+}
+.roster-total {
+    width:41.666%;
+    text-align:right;
+}
+.roster-package{
+    display:flex;
+    align-items: flex-end;
+    font-size:0.83333vw;
+    font-weight:400;
+    justify-content:space-between;
+    margin-bottom:1.25vw;
+    padding-bottom:1.25vw;
+    border-bottom:1px solid #fff;
+}
+.roster-title{
+    font-weight:700;
+    text-transform:uppercase;
+}
+.roster-value {
+    margin-top:1.777vw;
+}
+.roster-estimate {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:1.25vw;
+    font-weight:700;
+}
+
+.order-infomation-block .fs-buts{
+    text-align:right;
+    font-size:0;
+}
+.order-infomation-block .fs-but {
+    margin-left:1.3888vw;
+}
+
+
+.roster-over{
+    position:absolute;
+    right:0;
+    top:0;
+    width:66.8%;
+    height:auto;
+    -webkit-transform:translateX(100%);
+    transform:translateX(100%);
+    -webkit-transition:transform 0.5s ease-in-out;
+    transition:transform 0.5s ease-in-out;
+}
+.show .roster-over{
+    -webkit-transform:none;
+    transform:none;
+}
+.roster-products{
+    display:flex;
+    flex:0 0 80%;
+    max-width:80%;
+    align-items:center;
+}
+.roster-over .roster-box{
+    background-color:#323232;
+}
+.roster-over .roster-item > div{
+    margin:0 0 0 2%;
+}
+.roster-over .roster-item > div.roster-quantity{
+    margin:0 5.5% 0 2%;
+}
+.roster-over .roster-item > div.roster-check{
+    margin:0 0 0 11%;
+}
+.roster-quantity, .roster-size{
+    flex:0 0 13.8%;
+    max-width:13.8%;
+}
+.roster-quantity .cart-quantity{
+    width:100%;
+    padding:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.roster-quantity .cart-minus, 
+.roster-quantity .cart-plus, 
+.roster-quantity input[type='text'].cart-value {
+    width:33.3333%;
+    height:2.7777vw;
+}
+.roster-item .fs-select {
+    z-index:auto;
+}
+.roster-item .fs-select-box{
+    min-width: 100%;
+    z-index:10;
+}
+.roster-item .fs-select-box ul{
+    max-height: 7vw;
+}
+
+
+.roster-quantity-title{
+    flex:0 0 20%;
+    max-width:20%;
+}
+.rotser-products-outer {
+    position:relative;
+    flex:0 0 80%;
+    max-width:80%;
+    padding:0 5%;
+}
+.roster-quantity-title, .rotser-products-outer h3{
+    font-size:1.11111vw;
+    color:#fff;
+    font-weight:700;
+    text-align:center;
+}
+.rotser-products-outer .swiper-wrapper{
+    align-items:center;
+}
+.rotser-products-outer .swiper-slide{
+    background-color:transparent;
+}
+.rotser-products-outer .swiper-button-prev, .rotser-products-outer .swiper-button-next {
+    top:1.3vw;
+    width:1.4vw;
+    height:1.4vw;
+}
+.rotser-products-outer .swiper-button-prev{
+    left:0;
+    background:url(../images/prev-small-white.png) no-repeat center center;
+    background-size:0.7vw auto;
+}
+.rotser-products-outer .swiper-button-next{
+    right:3%;
+    background:url(../images/next-small-white.png) no-repeat center center;
+    background-size:0.7vw auto;
+}
