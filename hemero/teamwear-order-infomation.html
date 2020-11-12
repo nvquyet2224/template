@@ -31,6 +31,7 @@
 
     <link href="css/layout-full.css" rel="stylesheet" rel="preload" as="style">
     <link href="css/order-infomation.css" rel="stylesheet" rel="preload" as="style">
+    <link href="css/popup.css" rel="stylesheet" rel="preload" as="style">
     <link rel="preload" href="fonts/Barlow-Light.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/Barlow-LightItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/Barlow-Italic.woff2" as="font" type="font/woff2" crossorigin>
@@ -54,7 +55,7 @@
 
             <div class="fs-section fs-order-infomation">
                 <div class="fs-inr order-infomation-inr">
-                    <a class="back-link" href="javascript:void(0)">Back to order detail</a>
+                    <a class="back-link" href="teamwear-order-detail7.html">Back to order detail</a>
                     <h1>ORDER INFORMATION</h1>
 
                     <div class="order-infomation-block inputs-order">
@@ -71,12 +72,12 @@
                                     <label class="fs-hide-label"><input type="text" autocomplete="off"
                                             placeholder="">Team name</label>
                                 </div>
-                                <div class="col lv3">
+                                <div class="col lv5">
                                     <div class="fs-error-txt">
                                         <span>Error</span>
                                     </div>
                                     <div class="fs-caption">Team type</div>
-                                    <div class="fs-select sl-country lv2">
+                                    <div class="fs-select sl-country">
                                         <div class="fs-select-header">
                                             <span>Team type</span>
                                         </div>
@@ -93,7 +94,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col lv4">
                                     <div class="fs-error-txt">
                                         <span>Error</span>
                                     </div>
@@ -118,7 +119,7 @@
                             </div>
                             <h3>TEAM LOCATION</h3>
                             <div class="fs-group flex-spr3">
-                                <div class="col">
+                                <div class="col lv3">
                                     <div class="fs-error-txt">
                                         <span>Error</span>
                                     </div>
@@ -140,7 +141,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col lv2">
                                     <div class="fs-error-txt">
                                         <span>Error</span>
                                     </div>
@@ -177,7 +178,7 @@
                     <div class="order-infomation-block">
                         <h2>TEAM ROSTER</h2>
 
-                        <div class="roster-wrap">
+                        <div class="roster-wrap fs-pc">
                             <div class="roster-unter">
                                 <div class="roster-box">
                                     <div class="roster-name">
@@ -197,7 +198,7 @@
                                         <p>Max. 4 letters</p>
                                     </div>
                                     <div class="roster-select">
-                                        <div>
+                                        <div class="open-roster">
                                             <h3>SELECT SIZE</h3>
                                         </div>
                                         <span class="size-guide">Size guide</span>
@@ -294,7 +295,6 @@
                                     <div class="add-player-but">add player</div>
                                 </div>
                             </div>
-
                             <div class="roster-over">
                                 <div class="roster-box">
                                     <div class="roster-products">
@@ -327,7 +327,7 @@
                                         </div>
                                     </div>
                                     <div class="roster-select">
-                                        <div>
+                                        <div class="close-roster">
                                             <h3>SELECT SIZE</h3>
                                         </div>
                                         <span class="size-guide">Size guide</span>
@@ -339,7 +339,9 @@
                                             <div class="roster-quantity">
                                                 <div class="cart-quantity">
                                                     <span class="cart-minus"></span>
-                                                    <input type="text" class="cart-value" value="01">
+                                                    <label class="fs-hide-label">
+                                                        <input type="text" class="cart-value" value="01">
+                                                    </label>
                                                     <span class="cart-plus"></span>
                                                 </div>
                                             </div>
@@ -394,7 +396,9 @@
                                             <div class="roster-quantity">
                                                 <div class="cart-quantity">
                                                     <span class="cart-minus"></span>
-                                                    <input type="text" class="cart-value" value="01">
+                                                    <label class="fs-hide-label">
+                                                        <input type="text" class="cart-value" value="01">
+                                                    </label>
                                                     <span class="cart-plus"></span>
                                                 </div>
                                             </div>
@@ -449,7 +453,9 @@
                                             <div class="roster-quantity">
                                                 <div class="cart-quantity">
                                                     <span class="cart-minus"></span>
-                                                    <input type="text" class="cart-value" value="01">
+                                                    <label class="fs-hide-label">
+                                                        <input type="text" class="cart-value" value="01">
+                                                    </label>
                                                     <span class="cart-plus"></span>
                                                 </div>
                                             </div>
@@ -504,7 +510,9 @@
                                             <div class="roster-quantity">
                                                 <div class="cart-quantity">
                                                     <span class="cart-minus"></span>
-                                                    <input type="text" class="cart-value" value="01">
+                                                    <label class="fs-hide-label">
+                                                        <input type="text" class="cart-value" value="01">
+                                                    </label>
                                                     <span class="cart-plus"></span>
                                                 </div>
                                             </div>
@@ -559,7 +567,9 @@
                                             <div class="roster-quantity">
                                                 <div class="cart-quantity">
                                                     <span class="cart-minus"></span>
-                                                    <input type="text" class="cart-value" value="01">
+                                                    <label class="fs-hide-label">
+                                                        <input type="text" class="cart-value" value="01">
+                                                    </label>
                                                     <span class="cart-plus"></span>
                                                 </div>
                                             </div>
@@ -613,7 +623,557 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
+                        <div class="roster-wrap fs-sp">
+                            <div class="roster-collapse">
+                                <div class="rt-collapse-title active">
+                                    <span class="player-name">Nguyen Ngoc An</span>
+                                </div>
+                                <div class="rt-collapse-form">
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Player name</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="col size-05">
+                                            <label>
+                                                <div class="fs-caption">Player #</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="col size-07">
+                                            <label>
+                                                <div class="fs-caption">Initial</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Name on items</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <div class="fs-caption">Quantity</div>
+                                            <div class="cart-quantity">
+                                                <span class="cart-minus"></span>
+                                                <label class="fs-hide-label">
+                                                    <input type="text" class="cart-value" value="01">
+                                                </label>
+                                                <span class="cart-plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="group-wrap products-group size-07">
+                                            <div class="select-size-title">Select size</div>
+                                            <ul>
+                                                <li>Jersey</li>
+                                                <li>Short</li>
+                                                <li>Reversable Head tie</li>
+                                            </ul>
+                                        </div>
+                                        <div class="group-wrap size-group size-05">
+                                            <div class="size-guide">Select size</div>
+
+                                            <div class="fs-select sl-size lv4">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv3">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv2">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="fs-group fs-buts">
+                                        <div class="fs-but color-grey-white player-next-but">NEXT PLAYER</div>
+                                        <div class="fs-but player-delete-but">Delete this player</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="roster-collapse">
+                                <div class="rt-collapse-title">
+                                    <span class="player-name">Player 2</span>
+                                </div>
+                                <div class="rt-collapse-form">
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Player name</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="col size-05">
+                                            <label>
+                                                <div class="fs-caption">Player #</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="col size-07">
+                                            <label>
+                                                <div class="fs-caption">Initial</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Name on items</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <div class="fs-caption">Quantity</div>
+                                            <div class="cart-quantity">
+                                                <span class="cart-minus"></span>
+                                                <label class="fs-hide-label">
+                                                    <input type="text" class="cart-value" value="01">
+                                                </label>
+                                                <span class="cart-plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="group-wrap products-group size-07">
+                                            <div class="select-size-title">Select size</div>
+                                            <ul>
+                                                <li>Jersey</li>
+                                                <li>Short</li>
+                                                <li>Reversable Head tie</li>
+                                            </ul>
+                                        </div>
+                                        <div class="group-wrap size-group size-05">
+                                            <div class="size-guide">Select size</div>
+
+                                            <div class="fs-select sl-size lv4">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv3">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv2">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="fs-group fs-buts">
+                                        <div class="fs-but color-grey-white player-next-but">NEXT PLAYER</div>
+                                        <div class="fs-but player-delete-but">Delete this player</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="roster-collapse">
+                                <div class="rt-collapse-title">
+                                    <span class="player-name">Player 3</span>
+                                </div>
+                                <div class="rt-collapse-form">
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Player name</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="col size-05">
+                                            <label>
+                                                <div class="fs-caption">Player #</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="col size-07">
+                                            <label>
+                                                <div class="fs-caption">Initial</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Name on items</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <div class="fs-caption">Quantity</div>
+                                            <div class="cart-quantity">
+                                                <span class="cart-minus"></span>
+                                                <label class="fs-hide-label">
+                                                    <input type="text" class="cart-value" value="01">
+                                                </label>
+                                                <span class="cart-plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="group-wrap products-group size-07">
+                                            <div class="select-size-title">Select size</div>
+                                            <ul>
+                                                <li>Jersey</li>
+                                                <li>Short</li>
+                                                <li>Reversable Head tie</li>
+                                            </ul>
+                                        </div>
+                                        <div class="group-wrap size-group size-05">
+                                            <div class="size-guide">Select size</div>
+
+                                            <div class="fs-select sl-size lv4">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv3">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv2">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="fs-group fs-buts">
+                                        <div class="fs-but color-grey-white player-next-but">NEXT PLAYER</div>
+                                        <div class="fs-but player-delete-but">Delete this player</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="roster-collapse">
+                                <div class="rt-collapse-title">
+                                    <span class="player-name">Player 4</span>
+                                </div>
+                                <div class="rt-collapse-form">
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Player name</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="col size-05">
+                                            <label>
+                                                <div class="fs-caption">Player #</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="col size-07">
+                                            <label>
+                                                <div class="fs-caption">Initial</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Name on items</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <div class="fs-caption">Quantity</div>
+                                            <div class="cart-quantity">
+                                                <span class="cart-minus"></span>
+                                                <label class="fs-hide-label">
+                                                    <input type="text" class="cart-value" value="01">
+                                                </label>
+                                                <span class="cart-plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="group-wrap products-group size-07">
+                                            <div class="select-size-title">Select size</div>
+                                            <ul>
+                                                <li>Jersey</li>
+                                                <li>Short</li>
+                                                <li>Reversable Head tie</li>
+                                            </ul>
+                                        </div>
+                                        <div class="group-wrap size-group size-05">
+                                            <div class="size-guide">Select size</div>
+
+                                            <div class="fs-select sl-size lv4">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv3">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv2">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="fs-group fs-buts">
+                                        <div class="fs-but color-grey-white player-next-but">NEXT PLAYER</div>
+                                        <div class="fs-but player-delete-but">Delete this player</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="roster-collapse">
+                                <div class="rt-collapse-title">
+                                    <span class="player-name">Player 5</span>
+                                </div>
+                                <div class="rt-collapse-form">
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Player name</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="col size-05">
+                                            <label>
+                                                <div class="fs-caption">Player #</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                        <div class="col size-07">
+                                            <label>
+                                                <div class="fs-caption">Initial</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <label>
+                                                <div class="fs-caption">Name on items</div>
+                                                <input type="text" autocomplete="off" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group">
+                                        <div class="col">
+                                            <div class="fs-caption">Quantity</div>
+                                            <div class="cart-quantity">
+                                                <span class="cart-minus"></span>
+                                                <label class="fs-hide-label">
+                                                    <input type="text" class="cart-value" value="01">
+                                                </label>
+                                                <span class="cart-plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fs-group flex-spr2">
+                                        <div class="group-wrap products-group size-07">
+                                            <div class="select-size-title">Select size</div>
+                                            <ul>
+                                                <li>Jersey</li>
+                                                <li>Short</li>
+                                                <li>Reversable Head tie</li>
+                                            </ul>
+                                        </div>
+                                        <div class="group-wrap size-group size-05">
+                                            <div class="size-guide">Select size</div>
+
+                                            <div class="fs-select sl-size lv4">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv3">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="fs-select sl-size lv2">
+                                                <div class="fs-select-header">
+                                                    <span>Choose size</span>
+                                                </div>
+                                                <div class="fs-select-box">
+                                                    <ul>
+                                                        <li class="selected" data-target="00">Choose size</li>
+                                                        <li data-target="01">X</li>
+                                                        <li data-target="02">L</li>
+                                                        <li data-target="03">XL</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="fs-group fs-buts">
+                                        <div class="fs-but color-grey-white player-next-but">NEXT PLAYER</div>
+                                        <div class="fs-but player-delete-but">Delete this player</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="roster-add">
+                                <div class="add-player-but">add player</div>
+                            </div>
                         </div>
 
                         <div class="roster-summary">
@@ -658,8 +1218,32 @@
         <footer class="fs-footer" w3-include-html="footer.html"></footer>
         <!-- Footer -->
 
+        <!-- Popup -->
+        <div class="popup-overlay popup-size-chart">
+            <div class="popup-inr">
+                <div class="close-but"><img src="images/search-close.png" alt="Close"></div>
+                <div class="fs-title">
+                    <div class="small-title">HEMERO SIZE CHART</div>
+                </div>
+                <div class="fs-box boxScroll">
+                    <div class="box-size">
+                        <p>Find your suitable size</p>
+                        <div class="fs-pic">
+                            <img class="fs-pc pcPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/shop-detail/size-chart.png" alt="Table Size Chart">
+                            <img class="fs-sp spPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/shop-detail/size-chart-sp.png" alt="Table Size Chart">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Popup -->
+
     </div>
-    
+
     <script src="js/jquery-min.js"></script>
     <script src="js/swiper.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>

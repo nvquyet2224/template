@@ -1,18 +1,16 @@
 .shop-detail{
     background-color:#f8f8f8;
+    padding-bottom:3vw;
 }
 .detail-inr{
     padding:2.2222vw 5%;
 }
-.shop-box {
-    display:flex;
-}
-
 .shop-gallery{
-    flex:0 0 36%;
-    max-width:36%;
-    margin-left:10%;
+    display:inline-block;
+    vertical-align:middle;
+    width:36%;
     height:40.36vw;
+    margin-left:10%;
 }
 .gallery-box{
     position:relative;
@@ -27,9 +25,13 @@
     font-weight:400;
 }
 .shop-info{
-    flex:0 0 27.16%;
-    max-width:27.16%;
+    position:sticky;
+    top:7.16666vw;
+    display:inline-block;
+    vertical-align:middle;
+    width:27.16%;
     margin-left:10%;
+    z-index:2;
 }
 .main-box{
     width:100%;
@@ -305,16 +307,13 @@
     margin-left:1.5vw;
 }
 
-.fs-review{
-    background-color:#f8f8f8;
-}
 .review-inr{
     padding:3.47vw 5% 5.555vw 5%;
 }
-.fs-review .fs-title{
+.review-inr .fs-title{
     margin-bottom:1.3888vw;
 }
-.fs-review .fs-title h2{
+.review-inr .fs-title h2{
     font-size:1.6666vw;
     color:#000;
     text-transform:uppercase;
@@ -441,63 +440,10 @@
 }
 
 .by-shop-detail .fs-featured{
+    padding-top:5vw;
     background-color:#f3f3f3;
 }
 
-
-/* popup size chart */
-.popup-size-chart .close-but{
-	position:absolute;
-	top:1.25vw;
-	right:1.25vw;
-    width:1.5277vw;
-    height:1.5277vw;
-    line-height:0;
-    padding:0;
-    cursor:pointer;
-    z-index:3;
-}
-.popup-size-chart .close-but img{
-	width:100%;
-}
-.popup-size-chart{
-	background-color:rgba(0, 0, 0,0.9);
-}
-.popup-size-chart .popup-inr{
-	width:59.5833%;
-	max-height:35vw;
-}
-.popup-size-chart  .fs-title{
-	text-align:center;
-	padding:4.6620% 0 0 0;
-}
-.popup-size-chart .small-title{
-	font-weight:500;
-	font-style:normal;
-	font-size:1.6666vw;
-	color:#323232;
-	margin-bottom:0;
-}
-.popup-size-chart p{
-	font-size:0.9722vw;
-	font-weight:400;
-	margin-bottom:0.6944vw;
-}
-.popup-size-chart .fs-box{
-	position:relative;
-	display:block;
-	padding:0 10.4895% 0 8.1585%;
-	margin:5% 0;
-	overflow:hidden;
-	max-height:22vw;
-}
-.popup-size-chart .box-size{
-	position:relative;
-	display:block;
-}
-.popup-overlay.popup-size-chart .nicescroll-rails{
-	margin-left:-0.694vw!important;
-}
 
 @-webkit-keyframes rotate360 {
 	0%{
@@ -520,32 +466,24 @@
 	}
 }
 
-@media screen and (min-width:1101px) and (max-height:660px) {
-    .popup-size-chart .popup-inr {
-        max-height:30vw;
-    }
-    .popup-size-chart .fs-box {
-        max-height:19vw;
-    }
-}
-
 @media screen and (max-width:1100px){
     .detail-inr {
-        padding:5.3333vw 5.3333vw 6.93333vw 5.3333vw;
+        padding:5.3333vw 5.3333vw 10.93333vw 5.3333vw;
     }
     .shop-box {
         display:block;
     }
     .shop-gallery {
-        flex:0 0 auto;
-        max-width:100%;
+        display:block;
+        width:100%;
         margin-left:0;
         height:150vw;
         margin-bottom:8vw;
     }
     .shop-info {
-        flex:0 0 auto;
-        max-width:100%;
+        position:relative;
+        top:auto;
+        width:100%;
         margin-left:0;
     }
     .breadcrumb {
@@ -674,12 +612,12 @@
         margin:0 auto 0.8vw auto;
     }
     .review-inr {
-        padding:0 5.333vw 13.3333vw 5.3333vw;
+        padding:5.3333vw 0 0 0;
     }
-    .fs-review .fs-title {
+    .review-inr .fs-title {
         margin-bottom:4vw;
     }
-    .fs-review .fs-title h2 {
+    .review-inr .fs-title h2 {
         font-size:3.7333vw;
     }
     .review-box {
@@ -718,42 +656,14 @@
     .featured-inr {
         padding-bottom:5.333vw;
     }
+    .by-shop-detail .fs-featured{
+        padding:0;
+    }
     .fs-featured .fs-title {
         width:100%;
     }
     .fs-featured .fs-title h2 {
         font-size:8.6vw;
         top:-5vw;
-    }
-
-    /* Popup Size Chart*/
-    .popup-size-chart .popup-inr {
-        width:90%;
-        max-height:90vh;
-    }
-    .popup-size-chart .close-but {
-        top:5vw;
-        right:5%;
-        width:5.3333vw;
-        height:5.3333vw;
-    }
-    .popup-size-chart .fs-title {
-        text-align:left;
-        padding:5vw 5% 0 5%;
-    }
-    .popup-size-chart .small-title {
-        font-size:3.7333vw;
-    }
-    .popup-size-chart .fs-box {
-        padding:0 5% 0 5%;
-        margin:3.4666vw 0;
-        max-height:60vh;
-    }
-    .popup-size-chart p {
-        font-size:2.9333vw;
-        margin-bottom:3.7333vw;
-    }
-    .popup-overlay.popup-size-chart .nicescroll-rails {
-        margin-left:-1.5vw!important;
     }
 }

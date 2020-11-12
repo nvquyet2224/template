@@ -352,7 +352,7 @@
         top: 5vw;
     }
     .feed-box{
-        left: 5.333vw;
+        left: 5.333%;
     }
     .feed-outer{
         display: block;
@@ -366,7 +366,7 @@
     .feed-box .fs-box {
         flex: 0 0 56.7164%;
         width: 56.7164%;
-        padding-left: 5.95%;
+        padding-right: 5.95%;
     }
     .feed-box .fs-txt {
         position: relative;

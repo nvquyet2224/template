@@ -29,9 +29,8 @@
     <link rel="alternate" href="https://nvquyet2224.github.io/template/hemero/" hreflang="vi" />
     <link rel="alternate" href="https://nvquyet2224.github.io/template/hemero/" hreflang="x-default" />
 
-    <link href="css/layout-full.css" rel="stylesheet" rel="preload" as="style">
-    <link href="css/home.css" rel="stylesheet" rel="preload" as="style">
-    <link href="css/popup.css" rel="stylesheet" rel="preload" as="style">
+    <link href="css/layout-full-seo.css" rel="stylesheet" rel="preload" as="style">
+    <link href="css/home-seo.css" rel="stylesheet" rel="preload" as="style">
     <link rel="preload" href="fonts/Barlow-Light.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/Barlow-LightItalic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/Barlow-Italic.woff2" as="font" type="font/woff2" crossorigin>
@@ -40,14 +39,484 @@
     <link rel="preload" href="fonts/Barlow-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/Barlow-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/Barlow-Black.woff2" as="font" type="font/woff2" crossorigin>
-    <script href="js/main.js" rel="preload" as="script"></script>
+    <script href="js/main-seo.js" rel="preload" as="script"></script>
 </head>
 
 <body data-page="homepage">
     <div class="fs-page">
 
         <!-- Header -->
-        <header class="fs-header" w3-include-html="header.html"></header>
+        <header class="fs-header" w3-include-html="header3.html">
+            <div class="header-inr">
+                <div class="hrd-bot">
+                    <div class="logo">
+                        <a class="fs-pic" href="./" title="Hemero">
+                            <img width="164" height="20" sizes="(max-width: 520px) 136px, 17px" class="cmPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/logo.png" alt="Hemero">
+                        </a>
+                    </div>
+                    <div class="icon-menu-wrapper">
+                        <div class="icon-menu-item notification-icon">
+                            <div class="fs-pic">
+                                <img width="21" height="23" class="cmPic fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/hdr-icon-notification.png" alt="Cart Checkout">
+                                <img width="21" height="23" class="cmPic img-active fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/hdr-icon-notification-active.png" alt="Cart Checkout">
+                            </div>
+                            <span class="noti-number color-red">1</span>
+                        </div>
+                        <div class="icon-menu-item cart-icon">
+                            <a class="link-cart" href="cart.html" title="cart">
+                                <div class="fs-pic">
+                                    <img width="25" height="23" class="cmPic fs-lazy"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/hdr-icon-cart.png" alt="Cart Checkout">
+                                    <img width="25" height="23" class="cmPic img-active fs-lazy"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/hdr-icon-cart-active.png" alt="Cart Checkout">
+                                </div>
+                                <span class="noti-number">9</span>
+                            </a>
+                            <div class="cart-pop fs-pc">
+                                <div class="cart-inr">
+                                    <div class="item-total">
+                                        <div class="item-title">YOUR ITEMS</div>
+                                        <div class="item-amount"><span class="count-item">4</span> ITEMS</div>
+                                    </div>
+                                    <div class="cart-items">
+                                        <div class="cart-scroll">
+                                            <div class="cart-item">
+                                                <div class="fs-pic item-pic">
+                                                    <img width="137" height="159" class="fs-pc pcPic fs-lazy"
+                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                        data-src="images/img-1.jpg"
+                                                        alt="ÁO KHOÁC ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017">
+                                                </div>
+                                                <div class="item-info">
+                                                    <div class="item-txt">
+                                                        <h3>ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017</h3>
+                                                        <p class="item-price"><span>Price:</span>
+                                                            <span><strong>270.000</strong></span></p>
+                                                        <p class="item-size"><span>Size:</span>
+                                                            <span><strong>L</strong></span></p>
+                                                    </div>
+                                                    <div class="cart-quantity">
+                                                        <span class="cart-minus"></span>
+                                                        <label class="fs-hide-label">
+                                                            <input type="text" class="cart-value" value="01">
+                                                            quantity
+                                                        </label>
+                                                        <span class="cart-plus"></span>
+                                                    </div>
+                                                    <div class="cart-delete">Remove item</div>
+                                                </div>
+                                            </div>
+                                            <div class="cart-item">
+                                                <div class="fs-pic item-pic">
+                                                    <img width="137" height="159" class="fs-pc pcPic fs-lazy"
+                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                        data-src="images/img-2.jpg"
+                                                        alt="ÁO KHOÁC ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017">
+                                                </div>
+                                                <div class="item-info">
+                                                    <div class="item-txt">
+                                                        <h3>ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017</h3>
+                                                        <p class="item-price"><span>Price:</span>
+                                                            <span><strong>270.000</strong></span></p>
+                                                        <p class="item-size"><span>Size:</span>
+                                                            <span><strong>L</strong></span></p>
+                                                    </div>
+                                                    <div class="cart-quantity">
+                                                        <span class="cart-minus"></span>
+                                                        <label class="fs-hide-label">
+                                                            <input type="text" class="cart-value" value="01">
+                                                            quantity
+                                                        </label>
+                                                        <span class="cart-plus"></span>
+                                                    </div>
+                                                    <div class="cart-delete">Remove item</div>
+                                                </div>
+                                            </div>
+                                            <div class="cart-item">
+                                                <div class="fs-pic item-pic">
+                                                    <img width="137" height="159" class="fs-pc pcPic fs-lazy"
+                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                        data-src="images/img-11.jpg"
+                                                        alt="ÁO KHOÁC ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017">
+                                                </div>
+                                                <div class="item-info">
+                                                    <div class="item-txt">
+                                                        <h3>ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017</h3>
+                                                        <p class="item-price"><span>Price:</span>
+                                                            <span><strong>270.000</strong></span></p>
+                                                        <p class="item-size"><span>Size:</span>
+                                                            <span><strong>L</strong></span></p>
+                                                    </div>
+                                                    <div class="cart-quantity">
+                                                        <span class="cart-minus"></span>
+                                                        <label class="fs-hide-label">
+                                                            <input type="text" class="cart-value" value="01">
+                                                            quantity
+                                                        </label>
+                                                        <span class="cart-plus"></span>
+                                                    </div>
+                                                    <div class="cart-delete">Remove item</div>
+                                                </div>
+                                            </div>
+                                            <div class="cart-item">
+                                                <div class="fs-pic item-pic">
+                                                    <img width="137" height="159" class="fs-pc pcPic fs-lazy"
+                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                        data-src="images/img-15.jpg"
+                                                        alt="ÁO KHOÁC ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017">
+                                                </div>
+                                                <div class="item-info">
+                                                    <div class="item-txt">
+                                                        <h3>ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017</h3>
+                                                        <p class="item-price"><span>Price:</span>
+                                                            <span><strong>270.000</strong></span></p>
+                                                        <p class="item-size"><span>Size:</span>
+                                                            <span><strong>L</strong></span></p>
+                                                    </div>
+                                                    <div class="cart-quantity">
+                                                        <span class="cart-minus"></span>
+                                                        <label class="fs-hide-label">
+                                                            <input type="text" class="cart-value" value="01">
+                                                            quantity
+                                                        </label>
+                                                        <span class="cart-plus"></span>
+                                                    </div>
+                                                    <div class="cart-delete">Remove item</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-total">
+                                        <div class="total-title">SUBTOTAL</div>
+                                        <div class="total-amount">2.499.000 VND</div>
+                                    </div>
+                                    <div class="fs-buts fs-pc">
+                                        <a class="fs-but checkout-but color-grey-white"
+                                            href="checkout.html">CHECKOUT</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-menu-item user-icon fs-pc">
+                            <div class="fs-pic">
+                                <img width="23" height="23" class="cmPic fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/hdr-icon-user.png" alt="User">
+                                <img width="23" height="21" class="cmPic img-active fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/hdr-icon-user-active.png" alt="User">
+                            </div>
+                        </div>
+                        <div class="icon-menu-item search-icon fs-pc">
+                            <div class="fs-pic">
+                                <img width="23" height="23" class="cmPic fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/hdr-icon-search.png" alt="Search">
+                                <img width="23" height="21" class="cmPic img-active fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/hdr-icon-search-active.png" alt="Search">
+                            </div>
+                        </div>
+                        <div class="user-actions fs-pc">
+                            <ul>
+                                <li data-nav="order"><a href="order.html">MY ORDER</a></li>
+                                <li data-nav="personal"><a href="personal.html">PROFILE</a></li>
+                                <li data-nav="wishlist"><a href="wishlist.html">MY FAVOURITE</a></li>
+                                <li class="logout-link"><span>LOG OUT</span></li>
+                            </ul>
+                        </div>
+                        <div class="noti-pop">
+                            <div class="noti-inr">
+                                <div class="close-noti fs-sp"></div>
+                                <div class="noti-title">YOUR NOTIFICATION</div>
+                                <div class="noti-detail">
+                                    <div class="noti-scroll">
+                                        <div class="noti-items">
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis.</p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis.</p>
+                                                <div class="noti-link"><a href="notifyication.html">Read more</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                            <div class="noti-item">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor
+                                                    incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                                    ultrices
+                                                    gravida. Risus commodo viverra maecenas accumsan lacus vel
+                                                    facilisis. </p>
+                                                <div class="noti-link"><a href="notifyication.html">View order</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="fs-buts fs-pc">
+                                            <button class="fs-but color-black">VIEW ALL NOTIFICATIONS</button>
+                                        </div>
+                                    </div>
+                                    <div class="fs-buts fs-sp">
+                                        <button class="fs-but color-black">VIEW ALL NOTIFICATIONS</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-menu menu-open">
+                        <div class="fs-pic">
+                            <img width="80" height="30" class="fs-pc pcPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/hdr-icon-menu.png" alt="Open menu">
+                            <img width="50" height="28" class="fs-sp spPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/hdr-icon-menu-sp.png" alt="Open menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="fs-bg">
+                    <div class="fs-pc pcBg fs-lazy" data-src="images/menu-bg.jpg"></div>
+                    <div class="fs-sp spBg fs-lazy" data-src="images/menu-bg-sp.jpg"></div>
+                </div>
+                <div class="hrd-bot">
+                    <div class="hrd-pc">
+                        <div class="logo">
+                            <a class="fs-pic" href="./" title="Hemero">
+                                <img width="164" height="20" class="cmPic fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/logo-white.png" alt="Hemero">
+                            </a>
+                        </div>
+                        <div class="icon-menu-wrapper">
+                            <div class="icon-menu-item cart-icon">
+                                <div class="fs-pic">
+                                    <img width="25" height="22" class="cmPic fs-lazy"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/hdr-icon-cart-white.png" alt="Cart Checkout">
+                                </div>
+                            </div>
+                            <a class="icon-menu-item user-icon" href="register.html">
+                                <div class="fs-pic">
+                                    <img width="23" height="23" class="cmPic fs-lazy"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/hdr-icon-user-white.png" alt="User">
+                                </div>
+                            </a>
+                            <div class="icon-menu-item search-icon">
+                                <div class="fs-pic">
+                                    <img width="23" height="23" class="cmPic fs-lazy"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/hdr-icon-search-white.png" alt="Search">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- nếu đã login thì addclass is-login vào hrd-sp-->
+                    <div class="hrd-sp">
+                        <div class="nav-hrd-sp">
+                            <ul>
+                                <li><a href="sign-in.html" title="LOG IN">LOG IN</a></li>
+                                <li><a href="register.html" title="REGISTER">REGISTER</a></li>
+                                <li><a href="sign-in-affiliate.html" title="LOG IN AS AFFILIATE">LOG IN AS AFFILIATE</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="name-user">
+                            <p>Hello Khánh Chu</p>
+                            <div class="link-daskboard"><a href="notifyication.html" title="View dashboard">View
+                                    dashboard</a></div>
+                        </div>
+                    </div>
+                    <div class="icon-menu menu-close">
+                        <div class="fs-pic">
+                            <img width="80" height="30" class="fs-pc pcPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/close-menu.png" alt="Close menu">
+                            <img width="54" height="30" class="fs-sp spPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/close-menu-sp.png" alt="Close menu">
+                        </div>
+                    </div>
+                </div>
+                <div class="search-menu-sp">
+                    <div class="search-outer">
+                        <label class="fs-hide-label">
+                            <input type="text" value="" placeholder="Search" type="text">Search
+                            <div class="icon-search-sp"></div>
+                        </label>
+                    </div>
+                </div>
+                <div class="fs-navigation">
+                    <div class="nav-inr">
+                        <ul>
+                            <li data-nav="homepage"><a href="./" title="Homepage">HOMEPAGE</a></li>
+                            <li data-nav="about-us"><a href="about-us.html" title="About Us">ABOUT US</a></li>
+                            <li data-nav="shop"><a href="shop.html" title="Shop">SHOP</a></li>
+                            <li data-nav="teamwear"><a href="teamwear.html" title="Teamwear">TEAMWEAR</a></li>
+                            <li data-nav="the-feed"><a href="the-feed.html" title="The Feed">THE FEED</a></li>
+                            <li data-nav="contact"><a href="contact.html" title="Contact">CONTACT</a></li>
+                            <li data-nav="affiliate-program"><a href="affiliate-program.html"
+                                    title="Affiliate Program">AFFILIATE
+                                    PROGRAM</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bot">
+                    <div class="footer-bot-inr">
+                        <div class="footer-left">
+                            <div class="footer-contact">
+                                <div class="location-box">
+                                    <div class="small-title">VIETNAM</div>
+                                    <p>HOTLINE:<a href="tel:19001790">19001790</a></p>
+                                    <p>EMAIL:<a href="mailto:hello@hemero.vn">hello@hemero.vn</a></p>
+                                </div>
+                                <div class="location-box">
+                                    <div class="small-title">US & INTERNATIONAL</div>
+                                    <p>HOTLINE:<a href="tel:19001790">19001790</a></p>
+                                    <p>EMAIL:<a href="mailto:hello.us@hemero.vn">hello.us@hemero.vn</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-extra">
+                            <div class="copyright">
+                                <p>© 2020 Hemero - All rights reserved</p>
+                            </div>
+                            <ul class="fs-social">
+                                <li class="facebook">
+                                    <a class="fs-pic fs-hide-label" href="https://www.facebook.com/"
+                                        title="facebook"><img width="27" height="27" class="cmPic fs-lazy"
+                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/social-icon-facebook.png" alt="facebook">facebook</a>
+                                </li>
+                                <li class="youtube">
+                                    <a class="fs-pic fs-hide-label" href="https://www.youtube.com/" title="youtube"><img
+                                            class="cmPic fs-lazy" width="27" height="27"
+                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/social-icon-youtube.png" alt="youtube">youtube</a>
+                                </li>
+                                <li class="intagram">
+                                    <a class="fs-pic fs-hide-label" href="https://www.instagram.com/"
+                                        title="intagram"><img width="27" height="27" class="cmPic fs-lazy"
+                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/social-icon-intagram.png" alt="intagram">intagram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-top">
+                <div class="search-title">Search</div>
+                <div class="search-wrap">
+                    <label>
+                        <input type="text" value="">
+                        Hit enter to search or ESC to close
+                    </label>
+                </div>
+                <div class="search-close"><img width="44" height="44" class="cmPic fs-lazy"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        data-src="images/search-close.png" alt="Close search"></div>
+            </div>
+        </header>
         <!-- Header -->
 
         <!-- Content -->
@@ -58,10 +527,10 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="fs-pic banner-pic">
-                                <img class="fs-pc pcPic fs-lazy"
+                                <img width="1920" height="960" class="fs-pc pcPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/home/banner.jpg" alt="FUEL THE PRIDE">
-                                <img class="fs-sp spPic fs-lazy"
+                                <img width="414" height="243" class="fs-sp spPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/home/banner-sp.jpg" alt="FUEL THE PRIDE"></div>
                             <div class="fs-txt">
@@ -72,10 +541,10 @@
                             </div>
                         </div>
                         <div class="swiper-slide ta-c">
-                            <div class="fs-pic banner-pic"><img class="fs-pc pcPic fs-lazy"
+                            <div class="fs-pic banner-pic"><img width="1920" height="960" class="fs-pc pcPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/home/banner1.jpg" alt="FUEL THE PRIDE">
-                                <img class="fs-sp spPic fs-lazy"
+                                <img width="414" height="243" class="fs-sp spPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/home/banner1-sp.jpg" alt="FUEL THE PRIDE"></div>
                             <div class="fs-txt">
@@ -86,16 +555,17 @@
                             </div>
                         </div>
                         <div class="swiper-slide ta-r">
-                            <div class="fs-pic banner-pic"><img class="fs-pc pcPic fs-lazy"
+                            <div class="fs-pic banner-pic"><img width="1920" height="960" class="fs-pc pcPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/home/banner2.jpg" alt="FUEL THE PRIDE">
-                                <img class="fs-sp spPic fs-lazy"
+                                <img width="414" height="243" class="fs-sp spPic fs-lazy"
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="images/home/banner2-sp.jpg" alt="FUEL THE PRIDE"></div>
                             <div class="fs-txt">
                                 <h2 class="stroke-type">FUEL THE <br>PRIDE</h2>
                                 <div class="fs-buts">
-                                    <a class="fs-but color-white" href="affiliate-program.html" title="View more">View more</a>
+                                    <a class="fs-but color-white" href="affiliate-program.html" title="View more">View
+                                        more</a>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +577,8 @@
             <div class="fs-section fs-fuel">
                 <div class="fs-inr fuel-inr">
                     <div class="fuel-txt">
-                        <h2><span class="stroke-type color-black">FUEL THE</span> PRIDE <br class="fs-sp"><span class="symbol">®</span>
+                        <h2><span class="stroke-type color-black">FUEL THE</span> PRIDE <br class="fs-sp"><span
+                                class="symbol">®</span>
                         </h2>
                         <div class="fs-buts">
                             <a class="fs-but color-black" href="about-us.html">ABOUT US</a>
@@ -117,24 +588,28 @@
                         <div class="fuel-slider swiper-container">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <div class="fs-pic"><img class="cmPic fs-lazy"
+                                    <div class="fs-pic"><img width="552" height="685"
+                                            sizes="(max-width: 520px) 199px, 247px" class="cmPic fs-lazy"
                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                             data-src="images/home/the-pride-01.jpg" alt="Fuel pic"></div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <div class="fs-pic"><img class="cmPic fs-lazy"
+                                    <div class="fs-pic"><img width="552" height="685"
+                                            sizes="(max-width: 520px) 199px, 247px" class="cmPic fs-lazy"
                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                            data-src="images/home/the-pride-01.jpg" alt="Fuel pic"></div>
+                                            data-src="images/home/the-pride-02.jpg" alt="Fuel pic"></div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <div class="fs-pic"><img class="cmPic fs-lazy"
+                                    <div class="fs-pic"><img width="552" height="685"
+                                            sizes="(max-width: 520px) 199px, 247px" class="cmPic fs-lazy"
                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                            data-src="images/home/the-pride-01.jpg" alt="Fuel pic"></div>
+                                            data-src="images/home/the-pride-03.jpg" alt="Fuel pic"></div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <div class="fs-pic"><img class="cmPic fs-lazy"
+                                    <div class="fs-pic"><img width="552" height="685"
+                                            sizes="(max-width: 520px) 199px, 247px" class="cmPic fs-lazy"
                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                            data-src="images/home/the-pride-01.jpg" alt="Fuel pic"></div>
+                                            data-src="images/home/the-pride-04.jpg" alt="Fuel pic"></div>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +629,8 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-01.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -169,7 +645,8 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-02.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -185,7 +662,8 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-03.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -200,7 +678,8 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-04.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -215,7 +694,8 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-01.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -230,7 +710,8 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-02.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -246,7 +727,8 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-03.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -261,7 +743,8 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <a href="shop-detail.html">
-                                            <div class="fs-pic"><img class="cmPic fs-lazy"
+                                            <div class="fs-pic"><img width="427" height="503"
+                                                    sizes="(max-width: 520px) 158px, 188px" class="cmPic fs-lazy"
                                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                     data-src="images/home/featured-04.jpg"
                                                     alt="ÁO KHOÁC CHO ĐỘI TUYỂN BÓNG RỔ VIỆT NAM 2017"></div>
@@ -288,10 +771,10 @@
 
             <div class="fs-section fs-teamwear">
                 <div class="fs-inr teamwear-inr">
-                    <div class="fs-pic banner-pic"><img class="fs-pc pcPic fs-lazy"
+                    <div class="fs-pic banner-pic"><img width="1713" height="766" class="fs-pc pcPic fs-lazy"
                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                             data-src="images/home/teanwear-banner.jpg" alt="TEAMWEAR">
-                        <img class="fs-sp spPic fs-lazy"
+                        <img width="370" height="221" class="fs-sp spPic fs-lazy"
                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                             data-src="images/home/teanwear-banner-sp.jpg" alt="TEAMWEAR"></div>
                     <div class="fs-txt">
@@ -321,7 +804,8 @@
                                     </div>
                                     <div class="fs-txt">
                                         <span class="feed-date">07/09/2020</span>
-                                        <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed dolor sit </h3>
+                                        <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed dolor sit
+                                        </h3>
                                         <div class="fs-links">
                                             <span class="fs-link">read more</span>
                                         </div>
@@ -333,7 +817,8 @@
                                     </div>
                                     <div class="fs-txt">
                                         <span class="feed-date">07/09/2020</span>
-                                        <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed dolor sit </h3>
+                                        <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed dolor sit
+                                        </h3>
                                         <div class="fs-links">
                                             <span class="fs-link">read more</span>
                                         </div>
@@ -345,7 +830,8 @@
                                     </div>
                                     <div class="fs-txt">
                                         <span class="feed-date">07/09/2020</span>
-                                        <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed dolor sit </h3>
+                                        <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed dolor sit
+                                        </h3>
                                         <div class="fs-links">
                                             <span class="fs-link">read more</span>
                                         </div>
@@ -411,7 +897,104 @@
         <!-- Content -->
 
         <!-- Footer -->
-        <footer class="fs-footer" w3-include-html="footer.html"></footer>
+        <footer class="fs-footer" w3-include-html="footer.html">
+            <div class="footer-inr">
+                <div class="footer-top">
+                    <div class="logo-footer">
+                        <a class="fs-pic" href="./" title="Hemero">
+                            <img width="164" height="20" class="cmPic fs-lazy"
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="images/logo-white.png" alt="Hemero">
+                        </a>
+                    </div>
+                    <ul class="fs-social">
+                        <li class="facebook">
+                            <a class="fs-pic fs-hide-label" href="https://www.facebook.com/" title="facebook"><img
+                                    width="27" height="27" class="cmPic fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/social-icon-facebook.png" alt="facebook">facebook</a>
+                        </li>
+                        <li class="youtube">
+                            <a class="fs-pic fs-hide-label" href="https://www.youtube.com/" title="youtube"><img
+                                    class="cmPic fs-lazy" width="27" height="27"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/social-icon-youtube.png" alt="youtube">youtube</a>
+                        </li>
+                        <li class="intagram">
+                            <a class="fs-pic fs-hide-label" href="https://www.instagram.com/" title="intagram"><img
+                                    width="27" height="27" class="cmPic fs-lazy"
+                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/social-icon-intagram.png" alt="intagram">intagram</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-bot">
+                    <div class="footer-bot-inr">
+                        <div class="footer-left">
+                            <div class="slogan-footer">
+                                <p>SÀI GÒN / LOS ANGELES / SÀI GÒN / LOS ANGELES /</p>
+                            </div>
+                            <div class="form-footer">
+                                <div class="wrap-input">
+                                    <label class="fs-hide-label"><input type="text" name="txt_subscribe"
+                                            id="txt_subscribe" placeholder="Input your email to receive the latest news"
+                                            value="" autocomplete="off">
+                                        <button class="subscribe-but">SUBSCRIBE</button>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="footer-contact">
+                                <div class="location-box">
+                                    <div class="small-title">VIETNAM</div>
+                                    <p>HOTLINE:<a href="tel:19001790">19001790</a></p>
+                                    <p>EMAIL:<a href="mailto:hello@hemero.vn">hello@hemero.vn</a></p>
+                                </div>
+                                <div class="location-box">
+                                    <div class="small-title">US & INTERNATIONAL</div>
+                                    <p>HOTLINE:<a href="tel:19001790">19001790</a></p>
+                                    <p>EMAIL:<a href="mailto:hello.us@hemero.vn">hello.us@hemero.vn</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-right">
+                            <div class="nav-box">
+                                <div class="small-title">SUPPORT</div>
+                                <ul>
+                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="text-page.html">FAQ</a></li>
+                                    <li><a href="text-page.html">Shipments</a></li>
+                                    <li><a href="text-page.html">Payments</a></li>
+                                    <li><a href="text-page.html">Track your order</a></li>
+                                    <li><a href="text-page.html">Return your order</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-box">
+                                <div class="small-title">LEGAL INFO</div>
+                                <ul>
+                                    <li><a href="text-page.html">Privacy Policy</a></li>
+                                    <li><a href="text-page.html">Terms & Conditions</a></li>
+                                    <li><a href="text-page.html">Return Policy</a></li>
+                                    <li><a href="text-page.html">Cookie Policy</a></li>
+                                    <li><a href="text-page.html">Gift Card</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer-extra">
+                            <div class="payment-accept">
+                                <div class="fs-pic">
+                                    <img width="284" height="36" class="cmPic fs-lazy"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/card.png" alt="card payment">
+                                </div>
+                            </div>
+                            <div class="copyright">
+                                <p>© 2020 Hemero - All rights reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <!-- Footer -->
 
     </div>
@@ -419,7 +1002,7 @@
     <script src="js/jquery-min.js"></script>
     <script src="js/swiper.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
-    <script defer src="js/main.js"></script>
+    <script defer src="js/main-seo.js"></script>
 </body>
 
 </html>

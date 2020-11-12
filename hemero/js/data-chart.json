@@ -1,5 +1,6 @@
 {
-    "dataWeek": [{
+    "dataWeek": [
+    {
        "week": "Mon",
        "value": 1000
     },
@@ -17,7 +18,7 @@
      },
      {
         "week": "Fri",
-        "value": 4000
+        "value": 3800
      },
      {
         "week": "Sat",
@@ -35,11 +36,11 @@
         },
         {
             "month":"2",
-            "value": 1200
+            "value": 4000
         },
         {
             "month":"3",
-            "value": 1200
+            "value": 3000
         },
         {
             "month":"4",
@@ -51,7 +52,7 @@
         },
         {
             "month":"6",
-            "value": 1200
+            "value": 3500
         },
         {
             "month":"7",
@@ -66,7 +67,7 @@
         },
         {
             "month":"10",
-            "value": 1200
+            "value": 3800
         },
         {
             "month":"11",
@@ -76,7 +77,7 @@
             "value": 1200
         }, {
             "month":"13",
-            "value": 1200
+            "value": 2600
         },
         {
             "month":"14",
@@ -102,10 +103,132 @@
         },
         {
             "month":"20",
-            "value": 1200
-        }, {
+            "value": 4800
+        }, 
+        {
             "month":"21",
             "value": 1200
+        },
+        {
+            "month":"22",
+            "value": 1200
+        },
+        {
+            "month":"23",
+            "value": 1200
+        },
+        {
+            "month":"24",
+            "value": 1200
+        },
+        {
+            "month":"25",
+            "value": 1200
+        },
+        {
+            "month":"26",
+            "value": 1200
+        },
+        {
+            "month":"27",
+            "value": 1200
+        },{
+            "month":"28",
+            "value": 1200
+        },
+        {
+            "month":"29",
+            "value": 1200
+        },
+        {
+            "month":"30",
+            "value": 1200
+        },
+        {
+            "month":"31",
+            "value": 1200
+        }
+        
+    ],
+    "dataYear": [
+        {
+            "year": "Jan",
+            "value": 3000
+
+        },
+        {
+            "year": "Feb",
+            "value": 1500
+
+        },
+        {
+            "year": "Mar",
+            "value": 4000
+
+        },
+        {
+            "year": "Apr",
+            "value": 3500
+
+        },
+        {
+            "year": "May",
+            "value": 1400
+
+        },
+        {
+            "year": "Jun",
+            "value": 2000
+
+        },
+        {
+            "year": "Jul",
+            "value": 600
+
+        }, {
+            "year": "Aug",
+            "value": 3500
+
+        },
+        {
+            "year": "Sep",
+            "value": 4500
+
+        }
+        , {
+            "year": "Oct",
+            "value": 3600
+
+        },
+        {
+            "year": "Nov",
+            "value": 2000
+
+        },
+        {
+            "year": "Dec",
+            "value": 2000
+
+        }
+    ],
+    "dataAllTime": [
+        {
+            "allTime":"2017",
+            "value": 3800
+        },
+        {
+            "allTime": "2018",
+            "value": 3000
+
+        },
+        {
+            "allTime": "2019",
+            "value": 1500
+
+        },
+        {
+            "allTime": "2020",
+            "value": 4000
         }
     ]
  }

@@ -453,9 +453,11 @@
                                 <h3>Hemero logo</h3>
                             </div>
                             <div class="hemero-logo-request">
-                                <div class="fs-pic hemero-logo"><img class="cmPic fs-lazy"
+                                <div class="fs-pic hemero-logo">
+                                    <img class="cmPic fs-lazy"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                        data-src="images/headtie/hemero-logo.jpg" alt="Hemero"></div>
+                                        data-src="images/headtie/hemero-logo.jpg" alt="Hemero">
+                                    </div>
                                 <div class="radio-block">
                                     <div class="choice-cap">Please choose a position for “H” logo</div>
                                     <ul class="radio-box">
@@ -663,7 +665,7 @@
         <!-- Footer -->
 
         <!--Popup-->
-        <div class="popup-overlay bg-dark not-hide">
+        <div class="popup-overlay bg-dark not-hide full-size-sp">
             <div class="popup-inr is-color">
                 <div class="close-but"><img src="images/search-close.png" alt="Close"></div>
                 <div class="cl-blocks">
@@ -677,7 +679,7 @@
                             <div class="cl-col">
                                 <div class="cl-value" data-color="#000000" style="background-color:#000000"></div>
                                 <div class="cl-name">Black</div>
-                            </div>
+                            </div> 
                             <div class="cl-col">
                                 <div class="cl-value has-stroke" data-color="#ffffff" style="background-color:#ffffff">
                                 </div>
@@ -721,7 +723,7 @@
                             </div>
                         </div>
                         <div class="cl-row">
-                            <div class="cl-col">
+                            <div class="cl-col js-selected">
                                 <div class="cl-value" data-color="#7da1d4" style="background-color:#7da1d4"></div>
                                 <div class="cl-name">Sky blue</div>
                             </div>
@@ -804,7 +806,10 @@
                             Can't find your color? <br>Please give us the name and we will look for it.
                         </p>
                         <div class="cl-input">
-                            <input type="text" placeholder="Color name" value="">
+                            <label class="fs-hide-label">
+                                <input type="text" placeholder="Color name" value="">
+                                color
+                            </label>
                         </div>
                     </div>
                     <div class="fs-buts">

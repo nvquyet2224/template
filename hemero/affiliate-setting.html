@@ -19,16 +19,16 @@
     <meta property="og:image" content="images/thumbnail.jpg">
     <meta property="og:site_name" content="Hemero">
     <meta property="og:locale" content="vi">
-    <meta property="og:url" content="https://nvquyet2224.github.io/template/hemero/affiliate-dashboard.html">
+    <meta property="og:url" content="http://ui.stg.techable.vn/hemero/affiliate-setting.html">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Hemero" />
     <link rel="icon" href="images/favicon.ico">
-    <link rel="canonical" href="https://nvquyet2224.github.io/template/hemero/affiliate-dashboard.html" />
-    <link rel="alternate" href="https://nvquyet2224.github.io/template/hemero/affiliate-dashboard.html" hreflang="vi" />
-    <link rel="alternate" href="https://nvquyet2224.github.io/template/hemero/affiliate-dashboard.html" hreflang="x-default" />
-    
+    <link rel="canonical" href="http://ui.stg.techable.vn/hemero/affiliate-setting.html" />
+    <link rel="alternate" href="http://ui.stg.techable.vn/hemero/affiliate-setting.html" hreflang="vi" />
+    <link rel="alternate" href="http://ui.stg.techable.vn/hemero/affiliate-setting.html" hreflang="x-default" />
+
     <link href="css/layout-full.css" rel="stylesheet" rel="preload" as="style">
     <link href="css/user-dashboard.css" rel="stylesheet" rel="preload" as="style">
     <link rel="preload" href="fonts/Barlow-Light.woff2" as="font" type="font/woff2" crossorigin>
@@ -82,29 +82,32 @@
                                             </div>
                                         </div>
 
-                                        <div class="fs-group flex-spr2">
-                                            <div class="col">
-                                                <div class="fs-caption">Firstname</div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="fs-error-txt">
-                                                    <span>Error</span>
+                                        <div class="fs-group">
+                                            <div class="group-wrap flex-spr2">
+                                                <div class="col-wrap flex-spr2">
+                                                    <div class="col">
+                                                        <div class="fs-caption">Firstname</div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="fs-error-txt">
+                                                            <span>Error</span>
+                                                        </div>
+                                                        <label class="fs-hide-label"><input type="text"
+                                                                autocomplete="off" placeholder="">Firstname</label>
+                                                    </div>
                                                 </div>
-                                                <label class="fs-hide-label"><input type="text" autocomplete="off"
-                                                        placeholder="">Firstname</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="fs-group flex-spr2">
-                                            <div class="col">
-                                                <div class="fs-caption">Lastname</div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="fs-error-txt">
-                                                    <span>Error</span>
+                                                <div class="col-wrap flex-spr2">
+                                                    <div class="col">
+                                                        <div class="fs-caption">Lastname</div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="fs-error-txt">
+                                                            <span>Error</span>
+                                                        </div>
+                                                        <label class="fs-hide-label"><input type="text"
+                                                                autocomplete="off" placeholder="">Lastname</label>
+                                                    </div>
                                                 </div>
-                                                <label class="fs-hide-label"><input type="text" autocomplete="off"
-                                                        placeholder="">Lastname</label>
                                             </div>
                                         </div>
 
@@ -147,19 +150,26 @@
                                             </div>
                                         </div>
 
-                                        <div class="fs-group flex-spr2">
-                                            <div class="col">
+                                        <div class="fs-group flex-spr2 flex-start">
+                                            <div class="group-wrap">
                                                 <div class="fs-caption">Address</div>
                                             </div>
-                                            <div class="col">
-                                                <div class="fs-group size-small-column">
-                                                    <div class="fs-error-txt">
-                                                        <span>Error</span>
+                                            <div class="group-wrap">
+
+                                                <div class="col-wrap">
+                                                    <div class="col">
+                                                        <div class="fs-error-txt">
+                                                            <span>Error</span>
+                                                        </div>
+                                                        <div class="fs-caption">Address</div>
+                                                        <label class="fs-hide-label">
+                                                            <textarea></textarea>
+                                                            Address
+                                                        </label>
                                                     </div>
-                                                    <div class="fs-caption">Address</div>
-                                                    <textarea></textarea>
                                                 </div>
-                                                <div class="fs-group flex-spr2 size-small-column">
+
+                                                <div class="col-wrap flex-spr2">
                                                     <div class="col">
                                                         <div class="fs-error-txt">
                                                             <span>Error</span>
@@ -177,14 +187,19 @@
                                                                 autocomplete="off" placeholder="">District</label>
                                                     </div>
                                                 </div>
-                                                <div class="fs-group size-small-column">
-                                                    <div class="fs-error-txt">
-                                                        <span>Error</span>
+
+                                                <div class="col-wrap">
+                                                    <div class="col">
+                                                        <div class="fs-error-txt">
+                                                            <span>Error</span>
+                                                        </div>
+                                                        <div class="fs-caption">City / Province</div>
+                                                        <label class="fs-hide-label"><input type="text"
+                                                                autocomplete="off" placeholder="">City /
+                                                            Province</label>
                                                     </div>
-                                                    <div class="fs-caption">City / Province</div>
-                                                    <label class="fs-hide-label"><input type="text" autocomplete="off"
-                                                            placeholder="">City / Province</label>
                                                 </div>
+
                                             </div>
                                         </div>
 
@@ -201,7 +216,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="fs-group flex-spr2 your-link">
+                                        <div class="fs-group no-border flex-spr2 your-link">
                                             <div class="col">
                                                 <div class="fs-caption">Your link</div>
                                             </div>
@@ -214,8 +229,8 @@
                                                 <div class="copy-link">Copy link</div>
                                             </div>
                                         </div>
-                                        <div class="fs-group">
-                                            <div class="col fs-buts">
+                                        <div class="fs-group no-border fs-buts">
+                                            <div class="col">
                                                 <button class="fs-but no-icon" type="button">SAVE ALL CHANGE</button>
                                             </div>
                                         </div>
@@ -266,12 +281,13 @@
                                             </div>
                                         </div>
                                         <div class="download-link">
-                                            <a href="javascript:void(0)" title="Download IRS form w-9">Download IRS form
+                                            <a href="/images/home/feed-02.jpg" download
+                                                title="Download IRS form w-9">Download IRS form
                                                 w-9</a>
                                         </div>
                                     </div>
 
-                                    <div class="small-title">Bank Information</div>
+                                    <h4>Bank Information</h4>
 
                                     <div class="fs-group flex-spr2">
                                         <div class="col ">
@@ -321,7 +337,7 @@
                                                     placeholder="">Routing number</label>
                                         </div>
                                     </div>
-                                    <div class="fs-group flex-spr2 your-link">
+                                    <div class="fs-group no-border flex-spr2">
                                         <div class="col ">
                                             <div class="fs-caption">Account number</div>
                                         </div>
@@ -333,8 +349,8 @@
                                                     placeholder="">Account number</label>
                                         </div>
                                     </div>
-                                    <div class="fs-group">
-                                        <div class="col fs-buts">
+                                    <div class="fs-group no-border fs-buts">
+                                        <div class="col">
                                             <button class="fs-but no-icon" type="button">SAVE ALL CHANGE</button>
                                         </div>
                                     </div>
@@ -358,7 +374,7 @@
     <!-- Footer -->
 
     </div>
-  
+
     <script src="js/jquery-min.js"></script>
     <script src="js/swiper.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>

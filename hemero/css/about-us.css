@@ -1,3 +1,6 @@
+.fs-story{
+    overflow:hidden;
+}
 .fs-story .fs-title{
     position:absolute;
     left:5%;

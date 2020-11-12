@@ -180,73 +180,84 @@ function loadLookBook(url) {
 
 function fsEvent() {
 
-	// Open menu
-	$('.menu-open').on('click', function () {
-		$('body').addClass('open-menu');
-	});
+  // Open menu
+  $('.menu-open').on('click', function () {
+    $('body').addClass('open-menu');
+  });
 
-	// Close Menu
-	$('.menu-close').on('click', function () {
-		$('body').removeClass('open-menu');
-	});
+  // Close Menu
+  $('.menu-close').on('click', function () {
+    $('body').removeClass('open-menu');
+  });
 
-	// Open Search
-	$('.search-icon').on('click', function () {
-		$('body').addClass('open-search');
-		$('.search-wrap input').focus();
-	});
+  // Open Search
+  $('.search-icon').on('click', function () {
+    $('body').addClass('open-search');
+    $('.search-wrap input').focus();
+  });
 
 
-	// Close Search
-	$('.search-close').on('click', function () {
-		$('body').removeClass('open-search');
-		$('.search-wrap input').val('');
-		$('.search-wrap input').focusout();
-	});
+  // Close Search
+  $('.search-close').on('click', function () {
+    $('body').removeClass('open-search');
+    $('.search-wrap input').val('');
+    $('.search-wrap input').focusout();
+  });
 
-	$(document).keyup(function (e) {
-		if (e.keyCode === 27 && $('body').hasClass('open-search')) {
-			$('.search-close').trigger('click');
-		}
-		if (e.keyCode === 13 && $('body').hasClass('open-search')) {
-			//$('.search-close').trigger('click');
-			window.location.href = 'search.html';
-		}
-	});
+  $(document).keyup(function (e) {
+    if (e.keyCode === 27 && $('body').hasClass('open-search')) {
+      $('.search-close').trigger('click');
+    }
+    if (e.keyCode === 13 && $('body').hasClass('open-search')) {
+      //$('.search-close').trigger('click');
+      window.location.href = 'search.html';
+    }
+  });
 
-	// Open select
-	$(document).on('click', '.fs-select-header', function (e) {
-		var box = $(this).parent();
-		box.parent().removeClass('fs-show-error');
-		if (box.hasClass('fs-open-select')) {
-			box.removeClass('fs-open-select');
-		} else {
-			$('.fs-select').removeClass('fs-open-select');
-			box.addClass('fs-open-select');
-		}
-	});
+  // Open select
+  $(document).on('click', '.fs-select-header', function (e) {
+    var box = $(this).parent();
+    box.parent().removeClass('fs-show-error');
+    if (box.hasClass('fs-open-select')) {
+      box.removeClass('fs-open-select');
+    } else {
+      $('.fs-select').removeClass('fs-open-select');
+      box.addClass('fs-open-select');
+    }
+  });
 
-	// Chose selected item
-	$(document).on('click', '.fs-select-box li', function (e) {
-		var that = $(this);
-		var box = $(this).parent().parent().parent();
-		var target = $(this).attr('data-target');
-		if (!that.hasClass('selected')) {
-			box.find('li').removeClass('selected');
-			that.addClass('selected');
-			box.removeClass('fs-open-select');
-			box.find('.fs-select-header span').html(that.text());
-			if (target == '00') {
-				box.removeClass('not-default');
-			} else {
-				box.addClass('not-default');
-			}
+  // Chose selected item
+  $(document).on('click', '.fs-select-box li', function (e) {
+    var that = $(this);
+    var box = $(this).parent().parent().parent();
+    var target = $(this).attr('data-target');
+    if (!that.hasClass('selected')) {
+      box.find('li').removeClass('selected');
+      that.addClass('selected');
+      box.removeClass('fs-open-select');
+      box.find('.fs-select-header span').html(that.text());
+      if (target == '00') {
+        box.removeClass('not-default');
+      } else {
+        box.addClass('not-default');
+      }
 
-			// Change map
-			if (box.hasClass('sl-time')) {
-				$('.item-time li, .view-item').removeClass('active');
+      // Change map
+      if (box.hasClass('sl-time')) {
+        $('.item-time li, .view-item').removeClass('active');
         $('.item-time li[data-target=' + target + '], .view-item[data-tab=' + target + ']').addClass('active');
-        initChart(chartDatas.dataMonth, 'month');
+        if (target == 'week') {
+            initChart(chartDatas.dataWeek, 'week');
+        }
+        else if (target == 'month') {
+          initChart(chartDatas.dataMonth, 'month');
+        }
+        else if (target == 'year') {
+          initChart(chartDatas.dataYear, 'year');
+        }
+        else {
+          initChart(chartDatas.dataAllTime, 'allTime')
+        }
 			}
 		}
 	});
@@ -436,8 +447,6 @@ function fsEvent() {
 			$('.sl-time li[data-target=' + target + ']').trigger('click');
 		}
 	});
-
-
 
 	// Open User Actions
 	$('.user-icon').click(function () {
@@ -728,9 +737,9 @@ function fsSlider() {
         disableOnInteraction: false,
       },
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       pagination: {
         el: ".fs-banner .swiper-pagination",
@@ -756,9 +765,9 @@ function fsSlider() {
         disableOnInteraction: false,
       },
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       pagination: {
         el: ".fs-fuel .swiper-pagination",
@@ -794,9 +803,9 @@ function fsSlider() {
         },
       },
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       navigation: {
         nextEl: ".fs-featured .swiper-button-next",
@@ -824,9 +833,9 @@ function fsSlider() {
         disableOnInteraction: false,
       },
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       pagination: {
         el: ".teamwear-box .swiper-pagination",
@@ -854,9 +863,9 @@ function fsSlider() {
         disableOnInteraction: false,
       },
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       pagination: {
         el: ".othersay-box .swiper-pagination",
@@ -880,9 +889,9 @@ function fsSlider() {
       slidesPerView: 3,
       slidesPerGroup: 1,
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       navigation: {
         nextEl: ".rotser-products-outer .swiper-button-next",
@@ -906,9 +915,9 @@ function fsSlider() {
       slidesPerView: 8,
       slidesPerGroup: 1,
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       navigation: {
         nextEl: ".feedback-box .swiper-button-next",
@@ -938,9 +947,9 @@ function shopSlider() {
       slidesPerView: 4,
       slidesPerGroup: 1,
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       navigation: {
         nextEl: ".thumb-box .swiper-button-next",
@@ -967,9 +976,9 @@ function gallerySlider() {
       slidesPerGroup: 1,
       spaceBetween: 10,
       on: {
-        init: function () {},
-        transitionStart: function () {},
-        transitionEnd: function () {},
+        init: function () { },
+        transitionStart: function () { },
+        transitionEnd: function () { },
       },
       navigation: {
         nextEl: ".thumb-gallery .swiper-button-next",
@@ -997,11 +1006,11 @@ function createChart() {
 
 var chart;
 function initChart(dataArray, type) {
-  var labels, 
+  var labels,
       dataCharts,
       chartName;
-
-  if(type == 'week') {
+  if (type == 'week')
+  {
     chartName = 'Week';
     labels = dataArray.map(function (e) {
       return e.week;
@@ -1009,7 +1018,9 @@ function initChart(dataArray, type) {
     dataCharts = dataArray.map(function (e) {
       return e.value;
     });
-  }else if(type == 'month') {
+  } 
+  else if (type == 'month')
+  {
     chartName = 'Month';
     labels = dataArray.map(function (e) {
       return e.month;
@@ -1017,10 +1028,30 @@ function initChart(dataArray, type) {
     dataCharts = dataArray.map(function (e) {
       return e.value;
     });
+  } 
+  else if (type == 'year') 
+  {
+    chartName = 'Year';
+    labels = dataArray.map(function (e) {
+      return e.year;
+    });
+    dataCharts = dataArray.map(function (e) {
+      return e.value;
+    });
   }
-  
-  var ctx = document.getElementById("myChart").getContext("2d");
+  else 
+  {
+    chartName = 'All time';
+    labels = dataArray.map(function (e) {
+      return e.allTime;
+    });
+    dataCharts = dataArray.map(function (e) {
+      return e.value;
+    });
+  }
 
+
+  var ctx = document.getElementById("myChart").getContext("2d");
   var chartOption = {
     legend: {
       display: false,
@@ -1125,26 +1156,26 @@ function ImgLazyMenu() {
 var loading = true;
 function starPage() {
 
-	ImgLazyLoad();
+  ImgLazyLoad();
 
-	if (loading) {
-		loading = false;
-		ImgLazyLoad();
+  if (loading) {
+    loading = false;
+    ImgLazyLoad();
 
-		setTimeout(function () {
-			fsSlider();
-		}, 100);
+    setTimeout(function () {
+      fsSlider();
+    }, 100);
 
-		//var page = $('body').attr('data-page');
-		//$('.nav-inr li[data-nav=' + page + '], .sub-menu li[data-nav=' + page + '], .user-actions li[data-nav=' + page + ']').addClass('active');
+    //var page = $('body').attr('data-page');
+    //$('.nav-inr li[data-nav=' + page + '], .sub-menu li[data-nav=' + page + '], .user-actions li[data-nav=' + page + ']').addClass('active');
 
-		if (!$('.hrd-top').length) {
-			$('body').addClass('no-message');
-		}
+    if (!$('.hrd-top').length) {
+      $('body').addClass('no-message');
+    }
 
-		$('.fs-loading').fadeOut(550, function () {
-			var page = $('body').attr('data-page');
-			$('.nav-inr li[data-nav=' + page + '], .sub-menu li[data-nav=' + page + '], .user-actions li[data-nav=' + page + ']').addClass('active');
+    $('.fs-loading').fadeOut(550, function () {
+      var page = $('body').attr('data-page');
+      $('.nav-inr li[data-nav=' + page + '], .sub-menu li[data-nav=' + page + '], .user-actions li[data-nav=' + page + ']').addClass('active');
 
 			fsSlider();
 			ImgLazyLoad();
@@ -1154,11 +1185,11 @@ function starPage() {
 			scrollPopUp();
 			lookbookScroll();
 
-			isCroll = true;
-		});
+      isCroll = true;
+    });
 
 
-	}
+  }
 
 }
 
