@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ItelCinemaPageRoutingModule } from './itel-cinema-routing.module';
 
 import { ItelCinemaPage } from './itel-cinema.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ItelCinemaPageRoutingModule
+    ItelCinemaPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ItelCinemaPage]
 })

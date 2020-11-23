@@ -1,0 +1,25 @@
+
+<ion-card >
+  <ng-container *ngFor="let item of bannersList">
+    <img src="{{item.bannerImg}}" />
+    <ion-card-header class="ion-padding-start">
+      <ion-card-subtitle>{{item.bannerCaption}}</ion-card-subtitle>
+      <ion-card-title>{{item.bannerTitle}}</ion-card-title>
+      <p class="card-sub">{{item.bannerSub}}</p>
+    </ion-card-header>
+    <ion-buttons>
+      <ion-button class="fs-but">
+        Xem
+        <ion-icon slot="end" src="assets/icon/icon-play.svg"></ion-icon>
+      </ion-button>
+      <ion-button class="fs-but">
+        <ion-icon slot="start" src="assets/icon/icon-share.svg"></ion-icon>
+        Chia sẻ
+      </ion-button>
+    </ion-buttons>
+  </ng-container>
+</ion-card>
+
+<!-- <tr *ngFor="let item of bannersList">
+  <td>{{item.bannerTitle}}</td>
+</tr> -->

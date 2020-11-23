@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ItelGamePageRoutingModule } from './itel-game-routing.module';
 
 import { ItelGamePage } from './itel-game.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ItelGamePageRoutingModule
+    ItelGamePageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ItelGamePage]
 })

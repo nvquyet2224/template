@@ -6,4 +6,28 @@
 
 <ion-content>
 
+  <div *ngFor="let cat of items" class="category-block">
+    <ion-row class="ion-no-padding" class="category-banner">
+      <ion-col class="text-left button tappable align-self-item" (click)="cat.expanded = ! cat.expanded">
+        {{cat.category}}
+      </ion-col>
+    </ion-row>
+    
+    <ion-slides [options]= "slidesConfig">
+      <ion-slide *ngFor="let product of cat.products">
+       Lorem ipsum dolor sit amet.
+       <h1>{{product.name}}</h1>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  
+  <tr *ngFor="let item of categorysList">
+    <td>{{item.categoryName}}</td>
+    <ng-container *ngFor="let item1 of item.slides">
+      <h1>{{item1.slideTitle}}</h1>
+    </ng-container>
+  </tr>
+
+
 </ion-content>

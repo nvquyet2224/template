@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./itel-cinema.page.scss'],
 })
 export class ItelCinemaPage implements OnInit {
-
+  type: number;
   constructor() { }
 
   ngOnInit() {
   }
-
+  
 }

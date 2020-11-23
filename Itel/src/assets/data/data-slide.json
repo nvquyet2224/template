@@ -1,0 +1,68 @@
+[
+    {
+        "categoryName": "Game đề xuất",
+        "categoryType": 1,
+        "slides": [
+            {
+                "id": 1,
+                "slideImg": "assets/images/slide-game-1.png",
+                "slideTitle": "The battle",
+                "slideSubTitle": "Hành động"
+            },
+            {
+                "id": 2,
+                "slideImg": "assets/images/slide-game-1.png",
+                "slideTitle": "I Don't Care",
+                "slideSubTitle": "Ed Sheeran"
+            },
+            {
+                "id": 3,
+                "slideImg": "assets/images/slide-game-2.png",
+                "slideTitle": "I Don't Care",
+                "slideSubTitle": "Ed Sheeran"
+            },
+            {
+                "id": 4,
+                "slideImg": "assets/images/slide-game-1.png",
+                "slideTitle": "I Don't Care",
+                "slideSubTitle": "Ed Sheeran"
+            }
+        ]
+    },
+    {
+        "categoryName": "Game thể thao",
+        "categoryType": 2,
+        "slides": [
+            {
+                "id": 1,
+                "slideImg": "assets/images/slide-game-1.png",
+                "slideTitle": "The battle",
+                "slideSubTitle": "Hành động"
+            },
+            {
+                "id": 2,
+                "slideImg": "assets/images/slide-game-1.png",
+                "slideTitle": "I Don't Care",
+                "slideSubTitle": "Ed Sheeran"
+            }
+        ]
+    },
+    {
+        "categoryName": "Mới cập nhật",
+        "categoryType": 3,
+        "slides": [
+            {
+                "id": 1,
+                "slideImg": "assets/images/slide-game-1.png",
+                "slideTitle": "The battle",
+                "slideSubTitle": "Hành động"
+            },
+            {
+                "id": 2,
+                "slideImg": "assets/images/slide-game-1.png",
+                "slideTitle": "I Don't Care",
+                "slideSubTitle": "Ed Sheeran"
+            }
+        ]
+    }
+]

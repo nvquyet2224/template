@@ -1,0 +1,24 @@
+
+<ng-container *ngIf="musicsList != null">
+  <ion-list lines="none" class="ion-padding-bottom">
+    <ion-list-header>
+      Bảng xếp hạng
+    </ion-list-header>
+    <ng-container *ngFor="let item of musicsList">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="{{item.musicImg}}">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{item.musicName}}</h2>
+          <p>{{item.musicAuthor}}</p>
+        </ion-label>
+        <ion-label class="time">
+          {{item.musicTiming}}
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ng-container>
+
+

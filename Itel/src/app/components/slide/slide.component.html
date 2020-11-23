@@ -1,0 +1,52 @@
+
+<ng-container *ngFor="let item of slidesList">
+  <h1 class="fs-title">{{item.slideTitle}}</h1>
+<ion-slides  [pager]="true">
+  <ion-slide class="ion-justify-content-start">
+    <div class="slide">
+      <img src="{{item.slideImg}}" alt="">
+      <h2>{{item.slideTitle}}</h2>
+      <p class="ion-no-padding">{{item.slideSubTitle}}</p>
+    </div>
+    <div class="slide">
+      <img src="../../../assets/images/slide-game-2.png" alt="">
+      <h2>The king</h2>
+      <p class="ion-no-padding">Hành động</p>
+    </div>
+  </ion-slide>
+</ion-slides>
+</ng-container>
+
+<!-- <ng-container *ngFor="let item of slidesList">
+  <h1 class="fs-title">{{item.slideTitle}}</h1>
+<ion-slides  [pager]="true">
+  <ion-slide class="ion-justify-content-start">
+    <div class="slide">
+      <img src="../../../assets/images/slide-game-1.png" alt="">
+      <h2>The king</h2>
+      <p class="ion-no-padding">Hành động</p>
+    </div>
+    <div class="slide">
+      <img src="../../../assets/images/slide-game-2.png" alt="">
+      <h2>The king</h2>
+      <p class="ion-no-padding">Hành động</p>
+    </div>
+  </ion-slide>
+  <ion-slide class="ion-justify-content-start">
+    <div class="slide">
+      <img src="../../../assets/images/slide-movie.png" alt="">
+      <h2>The battle</h2>
+      <p>Hành động</p>
+    </div>
+  </ion-slide>
+  <ion-slide class="ion-justify-content-start">
+    <div class="slide">
+      <img src="../../../assets/images/slide-3.png" alt="">
+      <h2>The battle</h2>
+      <p>Hành động</p>
+    </div>
+  </ion-slide>
+</ion-slides>
+</ng-container> -->
+
+

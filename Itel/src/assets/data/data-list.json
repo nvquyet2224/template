@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "musicCaption": "Bảng xếp hạng",
+        "musicImg": "http://localhost:8100/assets/images/img-slide-1.jpg",
+        "musicName": "Closer (feat. Halsey)",
+        "musicAuthor": "The Chainsmokers feat. Halsey",
+        "musicTiming": "3:13",
+        "musicType": 1
+    },
+    {
+        "id": 2,
+        "musicCaption": "Bảng xếp hạng",
+        "musicImg": "http://localhost:8100/assets/images/img-slide-1.jpg",
+        "musicName": "TAKI TAKI",
+        "musicAuthor": "Ava Max",
+        "musicTiming": "3:13",
+        "musicType": 1
+    },
+    {
+        "id": 2,
+        "musicCaption": "Bảng xếp hạng",
+        "musicImg": "http://localhost:8100/assets/images/img-slide-1.jpg",
+        "musicName": "TAKI TAKI",
+        "musicAuthor": "Ava Max",
+        "musicTiming": "3:13",
+        "musicType": 1
+    },
+    {
+        "id": 2,
+        "musicCaption": "Bảng xếp hạng",
+        "musicImg": "http://localhost:8100/assets/images/img-slide-1.jpg",
+        "musicName": "TAKI TAKI",
+        "musicAuthor": "Ava Max",
+        "musicTiming": "3:13",
+        "musicType": 1
+    }
+]
