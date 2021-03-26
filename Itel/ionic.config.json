@@ -1,7 +1,0 @@
-{
-  "name": "Itel",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
