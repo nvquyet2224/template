@@ -13,6 +13,11 @@
 <body>
 <div id="container"></div>
 <script src="https://unpkg.com/konva@7.0.3/konva.min.js"></script>
+<!-- <script src="https://unpkg.com/konva@7.2.5/konva.min.js"></script> -->
+<script src="https://rawgit.com/konvajs/greensock-plugin/master/KonvaPlugin.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineLite.min.js"></script>
+<script src="https://www.snorkl.tv/dev/libs/greensock/plugins/ColorPropsPlugin.min.js"></script>
 
 <script>
 
@@ -55,10 +60,16 @@
         cornerRadius: 20
     });
 
-    innerRect.to({
+    TweenLite.to(innerRect, 1, {
+        konva: {
+            width: 300
+        }
+    });
+
+    /*innerRect.to({
         width: 300,
         duration: 1 
-    });
+    });*/
 
     var path = new Konva.Path({
         x: 0,
@@ -76,13 +87,19 @@
     layer.add(path);
 
     // create the tween
-    var tween = new Konva.Tween({
+    /*var tween = new Konva.Tween({
         node: path,
         dashOffset: 0,
         easing: Konva.Easings['Linear'],
         duration: 1.5
     });
-    tween.play();
+    tween.play();*/
+    TweenLite.to(path, 1.5, {
+        konva: {
+            dashOffset: 0,
+        },
+        ease: Power4.easeOut,
+    });
 
 
     // Line points to path
@@ -142,6 +159,18 @@
 
 
     // Loading arc
+    var arcStroke = new Konva.Arc({
+        x: stage.width() / 2,
+        y: stage.height() / 2,
+        innerRadius: 50,
+        outerRadius: 40,
+        angle: 360,
+        //fill: 'yellow',
+        stroke: 'black',
+        strokeWidth: 2,
+    });
+    layer.add(arcStroke);
+
     var arc = new Konva.Arc({
         x: stage.width() / 2,
         y: stage.height() / 2,
@@ -149,23 +178,25 @@
         outerRadius: 40,
         angle: 0,
         fill: 'yellow',
-        stroke: 'black',
-        strokeWidth: 0,
+        onUpdate: function(){
+            console.log('onUpdate');
+        },
     });
     layer.add(arc);
 
     var arcTween = new Konva.Tween({
         node: arc,
         angle: 360,
-        duration: 1.5
+        duration: 1.5,
+        onFinish: function(){
+            console.log('onFinish');
+        }
     });
     arcTween.play();
 
     // After
     stage.add(layer);
 
-       
- 
 </script>
  
 </body>
