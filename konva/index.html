@@ -55,18 +55,6 @@
         cornerRadius: 20
     });
 
-    // var innerRect = new Konva.Rect({
-    //     x: 150,
-    //     y: 40,
-    //     width: 100,
-    //     height: 50,
-    //     fill: 'red',
-    //     shadowBlur: 10,
-    //     cornerRadius: 10,
-    // });
-    
-    layer.add(innerRect);
-    
     innerRect.to({
         width: 300,
         duration: 1 
@@ -120,27 +108,58 @@
     });
     lineTween.play();
     
-
-
-    
+    // Circle
     var circle = new Konva.Circle({
         x: width/2,
         y: height/2,
-        radius: 0,
+        radius: 50,
         stroke: 'red'
     })
     layer.add(circle);
 
-    var tCircle = new Konva.Tween({
-        node: circle,
-        radius: 50,
-        easing: Konva.Easings['Linear'],
+    // var tCircle = new Konva.Tween({
+    //     node: circle,
+    //     radius: 50,
+    //     easing: Konva.Easings['Linear'],
+    //     duration: 1.5
+    // });
+    // tCircle.play();
+
+
+
+    // Rectangle and border animation
+    var rect = new Konva.Rect({
+        x: width/2 - 200,
+        y: height/2 - 50,
+        width: 100,
+        height: 100,
+        stroke: 'red',
+        strokeWidth: 5,
+        cornerRadius: 10,
+    });
+    
+    layer.add(rect);
+
+
+    // Loading arc
+    var arc = new Konva.Arc({
+        x: stage.width() / 2,
+        y: stage.height() / 2,
+        innerRadius: 50,
+        outerRadius: 40,
+        angle: 0,
+        fill: 'yellow',
+        stroke: 'black',
+        strokeWidth: 0,
+    });
+    layer.add(arc);
+
+    var arcTween = new Konva.Tween({
+        node: arc,
+        angle: 360,
         duration: 1.5
     });
-    tCircle.play();
-
-
-
+    arcTween.play();
 
     // After
     stage.add(layer);
