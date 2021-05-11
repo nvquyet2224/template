@@ -50,7 +50,7 @@
     });
 
     var layer = new Konva.Layer();
-
+    /*
     var innerRect = new Konva.Rect({
         x: 100,
         y: 100,
@@ -66,10 +66,6 @@
         }
     });
 
-    /*innerRect.to({
-        width: 300,
-        duration: 1 
-    });*/
 
     var path = new Konva.Path({
         x: 0,
@@ -87,20 +83,12 @@
     layer.add(path);
 
     // create the tween
-    /*var tween = new Konva.Tween({
-        node: path,
-        dashOffset: 0,
-        easing: Konva.Easings['Linear'],
-        duration: 1.5
-    });
-    tween.play();*/
     TweenLite.to(path, 1.5, {
         konva: {
             dashOffset: 0,
         },
         ease: Power4.easeOut,
     });
-
 
     // Line points to path
     var linePath = new Konva.Path({
@@ -117,32 +105,13 @@
 
     layer.add(linePath);
 
-    var lineTween = new Konva.Tween({
-        node: linePath,
-        dashOffset: 0,
-        easing: Konva.Easings['Linear'],
-        duration: 0.5
+    TweenLite.to(linePath, 1.5, {
+        konva: {
+            dashOffset: 0,
+        },
+        ease: Power4.easeOut,
     });
-    lineTween.play();
     
-    // Circle
-    var circle = new Konva.Circle({
-        x: width/2,
-        y: height/2,
-        radius: 50,
-        stroke: 'red'
-    })
-    layer.add(circle);
-
-    // var tCircle = new Konva.Tween({
-    //     node: circle,
-    //     radius: 50,
-    //     easing: Konva.Easings['Linear'],
-    //     duration: 1.5
-    // });
-    // tCircle.play();
-
-
 
     // Rectangle and border animation
     var rect = new Konva.Rect({
@@ -165,11 +134,10 @@
         innerRadius: 50,
         outerRadius: 40,
         angle: 360,
-        //fill: 'yellow',
         stroke: 'black',
         strokeWidth: 2,
     });
-    layer.add(arcStroke);
+    layer.add(arcStroke);*/
 
     var arc = new Konva.Arc({
         x: stage.width() / 2,
@@ -177,25 +145,47 @@
         innerRadius: 50,
         outerRadius: 40,
         angle: 0,
-        fill: 'yellow',
-        onUpdate: function(){
-            console.log('onUpdate');
-        },
+        fill: 'yellow'
     });
     layer.add(arc);
 
-    var arcTween = new Konva.Tween({
-        node: arc,
-        angle: 360,
-        duration: 1.5,
-        onFinish: function(){
-            console.log('onFinish');
+   
+    //var tl = new TimelineLite();
+    // tl.to(arc, 1.5, {
+    //     konva: {
+    //         angle: 360
+    //     },  
+    //     ease: Power4.easeOut,
+    //     repeat:-1
+    // });
+    TweenLite.fromTo(arc, 1.5, { 
+        konva: { 
+            angle: 0
+        } 
+    }, {   
+        konva: { 
+            angle: 360 
+        },
+        repeat:-1,
+        //yoyo: true,
+        onUpdate: drawLayer,
+        onComplete: function(){
+            console.log('onComplete');
+            layer.draw();
         }
     });
-    arcTween.play();
+
+
+    
+    
 
     // After
     stage.add(layer);
+    //layer.batchDraw();
+    function drawLayer() {
+        console.log('drawLayer');
+        layer.draw();
+    }
 
 </script>
  
