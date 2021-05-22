@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Aframe</title>
+  <link rel="icon" href="favicon.png">
+  <script src="js/aframe.min.js"></script>
+  <script src="js/aframe-extras.min.js"></script>
+
+  <!-- <script src='js/aframe-ar-nft.js'></script> -->
+  <!-- <script src="js/aframe-particle-system-component.min.js"></script>
+  <script src="js/gesture-detector.js"></script>
+  <script src="js/gesture-handler.js"></script> -->
+  <link href="styles.css" rel="stylesheet" rel="preload" as="style">
+</head>
+
+<body>
+
+  <a-scene>
+
+    <a-assets>
+      <a-asset-item id="kshmr" src="object/kshmr/Heniken_Heaven.gltf"></a-asset-item>
+      <a-asset-item id="quintino" src="object/quintino/Heniken_Quintino.gltf"></a-asset-item>
+      <a-asset-item id="tiesto" src="object/tiesto/Heniken_TheBusiness.gltf"></a-asset-item>
+      <a-asset-item id="vegas" src="object/vegas/Heniken_Mike.gltf"></a-asset-item>
+
+    </a-assets>
+
+    <a-entity light="type: hemisphere"></a-entity>
+
+    <!--kshmr
+    <a-entity id="kshmr_wrap" position="0 -0.3 0">
+
+      <a-entity position="0 0 3">
+        <a-entity camera="fov: 60" rotation="0 0 0" look-controls="enabled:false"></a-entity>
+      </a-entity>
+
+      <a-entity position="0 -0.3 0">
+
+        <a-entity id="kshmr_light" target="#kshmr_pivot" position="-2 4 2"
+          light="castShadow: true; shadowMapHeight: 1024; shadowMapWidth: 1024; shadowCameraLeft: -7; intensity: 4">
+        </a-entity>
+
+        <a-entity id="kshmr_pivot" rotation="0 0 0">
+
+          <a-entity id="kshmr_model" gltf-model='#kshmr' animation-mixer="clip: Animation;" position="0 0.2 1.015"
+            rotation="10 0 0" scale="0.02 0.02 0.02">
+          </a-entity>
+
+        </a-entity>
+
+      </a-entity>
+
+    </a-entity>
+
+    kshmr-->
+
+    <!--quintino-->
+    <a-entity id="quintino_wrap">
+
+      <a-entity position="0 0 3">
+        <a-entity camera="fov: 60" rotation="0 0 0" look-controls="enabled:false"></a-entity>
+      </a-entity>
+
+      <a-entity position="0 -0.3 0">
+
+        <a-entity id="quintino_light" target="#quintino_pivot" position="-2 4 2"
+          light="castShadow: true; shadowMapHeight: 1024; shadowMapWidth: 1024; shadowCameraLeft: -7; intensity: 4">
+        </a-entity>
+
+        <a-entity id="quintino_pivot" rotation="0 0 0">
+
+          <a-entity id="quintino_model" gltf-model='#quintino' animation-mixer="clip: AnimationQuin;" position="0 0.2 1.015"
+            rotation="10 0 0" scale="0.02 0.02 0.02">
+          </a-entity>
+
+        </a-entity>
+
+      </a-entity>
+
+    </a-entity>
+    <!--quintino-->
+
+    <!--tiesto
+    <a-entity id="tiesto_wrap">
+
+      <a-entity position="0 0 3">
+        <a-entity camera="fov: 60" rotation="0 0 0" look-controls="enabled:false"></a-entity>
+      </a-entity>
+
+      <a-entity position="0 -0.3 0">
+
+        <a-entity id="tiesto_light" target="#tiesto_pivot" position="-2 4 2"
+          light="castShadow: true; shadowMapHeight: 1024; shadowMapWidth: 1024; shadowCameraLeft: -7; intensity: 4">
+        </a-entity>
+
+        <a-entity id="tiesto_pivot" rotation="0 0 0">
+
+          <a-entity id="tiesto_model" gltf-model='#tiesto' animation-mixer="clip: Animation;" position="0 0.2 1.015"
+            rotation="10 0 0" scale="0.02 0.02 0.02">
+          </a-entity>
+
+        </a-entity>
+
+      </a-entity>
+
+    </a-entity>
+    tiesto-->
+
+    <!--vegas
+    <a-entity id="vegas_wrap">
+
+      <a-entity position="0 0 3">
+        <a-entity camera="fov: 60" rotation="0 0 0" look-controls="enabled:false"></a-entity>
+      </a-entity>
+
+      <a-entity position="0 -0.3 0">
+
+        <a-entity id="vegas_light" target="#vegas_pivot" position="-2 4 2"
+          light="castShadow: true; shadowMapHeight: 1024; shadowMapWidth: 1024; shadowCameraLeft: -7; intensity: 4">
+        </a-entity>
+
+        <a-entity id="vegas_pivot" rotation="0 0 0">
+
+          <a-entity id="vegas_model" gltf-model='#vegas' animation-mixer="clip: Animation;" position="0 0.2 1.015"
+            rotation="10 0 0" scale="0.02 0.02 0.02">
+          </a-entity>
+
+
+        </a-entity>
+
+      </a-entity>
+
+    </a-entity>
+  /vegas-->
+    <a-sky color="#000000"></a-sky>
+  </a-scene>
+
+</body>
+
+</html>

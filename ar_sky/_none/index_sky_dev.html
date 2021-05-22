@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Aframe</title>
+  <link rel="icon" href="favicon.png">
+  <script src="js/aframe.min.js"></script>
+  <script src="js/aframe-extras.min.js"></script>
+  <script src="js/aframe-particle-system-component.min.js"></script>
+
+  <script>
+    var isMarkerVisible = false;
+    AFRAME.registerComponent('videohandler', {
+      init: function () {
+        var marker = this.el;
+
+        marker.addEventListener('markerFound', function () {
+          isMarkerVisible = true;
+          document.querySelector('.say-hi-button').classList.add('found');
+
+        }.bind(this));
+
+        marker.addEventListener('markerLost', function () {
+          isMarkerVisible = false;
+          document.querySelector('.say-hi-button').classList.remove('found');
+        }.bind(this));
+
+      },
+    });
+
+    AFRAME.registerComponent('blendmode', {
+      schema: {
+        mode: { default: 'AdditiveBlending' }
+        //default: 'AdditiveBlending'
+        //Available Modes are: var blendings = 
+        //[ "NoBlending", 
+        //"NormalBlending", 
+        //"AdditiveBlending", 
+        //"SubtractiveBlending", 
+        //"MultiplyBlending" ];
+      },
+      dependencies: ['material'],
+      update: function () {
+        // entity data
+        var el = this.el;
+        var data = this.data;
+
+        if (el.components.hasOwnProperty("material")) {
+          var mat = el.components.material.material;
+          mat.blending = THREE[data.mode];
+        }
+      }
+    });
+
+    var totalFrames = 43;
+    var animationDuration = 1300;
+    var timePerFrame = animationDuration / totalFrames;
+    var timeWhenLastUpdate;
+    var timeFromLastUpdate;
+    var frameNumber = 1;
+
+    function step(startTime) {
+      if (!timeWhenLastUpdate) timeWhenLastUpdate = startTime;
+
+      timeFromLastUpdate = startTime - timeWhenLastUpdate;
+
+      if (timeFromLastUpdate > timePerFrame) {
+
+        var srcImg = '#laser' + frameNumber;
+        document.querySelector('#light_can').setAttribute('src', srcImg);
+
+        timeWhenLastUpdate = startTime;
+
+        if (frameNumber >= totalFrames) {
+          frameNumber = 1;
+        } else {
+          frameNumber = frameNumber + 1;
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+
+  </script>
+  <link href="styles.css" rel="stylesheet" rel="preload" as="style">
+</head>
+
+<body>
+
+  <div class="buttons">
+    <button class="say-hi-button">SAY HI!</button>
+  </div>
+
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="heineken" src="object/heineken/Heniken_Mike.gltf"></a-asset-item>
+      <img id="talent" src="assets/talent.png">
+      <img id="wave" src="assets/wave_can.png">
+      <img id="light" src="assets/light.png">
+      <img id="name" src="assets/name.png">
+
+      <!--lasers-->
+      <img id="laser1" src="assets/laser_1.png">
+      <img id="laser2" src="assets/laser_2.png">
+      <img id="laser3" src="assets/laser_3.png">
+      <img id="laser4" src="assets/laser_4.png">
+      <img id="laser5" src="assets/laser_5.png">
+      <img id="laser6" src="assets/laser_6.png">
+      <img id="laser7" src="assets/laser_7.png">
+      <img id="laser8" src="assets/laser_8.png">
+      <img id="laser9" src="assets/laser_9.png">
+      <img id="laser10" src="assets/laser_10.png">
+      <img id="laser11" src="assets/laser_11.png">
+      <img id="laser12" src="assets/laser_12.png">
+      <img id="laser13" src="assets/laser_13.png">
+      <img id="laser14" src="assets/laser_14.png">
+      <img id="laser15" src="assets/laser_15.png">
+      <img id="laser16" src="assets/laser_16.png">
+      <img id="laser17" src="assets/laser_17.png">
+      <img id="laser18" src="assets/laser_18.png">
+      <img id="laser19" src="assets/laser_19.png">
+      <img id="laser20" src="assets/laser_20.png">
+      <img id="laser21" src="assets/laser_21.png">
+      <img id="laser22" src="assets/laser_22.png">
+
+      <img id="laser23" src="assets/laser_21.png">
+      <img id="laser24" src="assets/laser_20.png">
+      <img id="laser25" src="assets/laser_19.png">
+      <img id="laser26" src="assets/laser_18.png">
+      <img id="laser27" src="assets/laser_17.png">
+      <img id="laser28" src="assets/laser_16.png">
+      <img id="laser29" src="assets/laser_15.png">
+      <img id="laser30" src="assets/laser_14.png">
+      <img id="laser31" src="assets/laser_13.png">
+      <img id="laser32" src="assets/laser_12.png">
+      <img id="laser33" src="assets/laser_11.png">
+      <img id="laser34" src="assets/laser_10.png">
+      <img id="laser35" src="assets/laser_9.png">
+      <img id="laser36" src="assets/laser_8.png">
+      <img id="laser37" src="assets/laser_7.png">
+      <img id="laser38" src="assets/laser_6.png">
+      <img id="laser39" src="assets/laser_5.png">
+      <img id="laser40" src="assets/laser_4.png">
+      <img id="laser41" src="assets/laser_3.png">
+      <img id="laser42" src="assets/laser_2.png">
+      <img id="laser43" src="assets/laser_1.png">
+
+      <!--/lasers-->
+
+    </a-assets>
+
+    <a-entity light="type: hemisphere"></a-entity>
+
+    <a-entity position="0 0 3">
+      <a-entity camera="fov: 60" rotation="0 0 0" look-controls="enabled:false"></a-entity>
+    </a-entity>
+
+    <a-entity position="0 -0.3 0">
+
+      <a-entity id="light" target="#modelPivot" position="-2 4 2"
+        light="castShadow: true; shadowMapHeight: 1024; shadowMapWidth: 1024; shadowCameraLeft: -7; intensity: 4">
+      </a-entity>
+
+      <a-entity id="modelPivot" rotation="0 0 0">
+        <a-entity id="model" gltf-model='#heineken' animation-mixer="clip: Animation;" position="0 0.2 1.015"
+          rotation="10 0 0" scale="0.02 0.02 0.02">
+        </a-entity>
+
+        <a-entity id="particle_can" position="0 0.9 0.978" scale="0.01 0.01 0.01" texture="assets/star2.png"
+          particle-system="color:#fff, #6af837; texture: assets/star2.png; particleCount:10; type: 3; 
+          direction: 1; velocitySpread:50 43.5 50; maxAge:2; 
+          duration:NaN; blending:1">
+        </a-entity>
+
+        <a-image id="light_can" src="#laser1" blendmode position="-0.02 0.844 0.978" scale="1 0.66 1" color="#fff">
+        </a-image>
+        
+        <a-image id="wave_can_under" src="#wave" position="-0.02 0.6 0.978" scale="1.5 0.4 1">
+          <a-animation attribute="scale" to="1.5 0.8 1" dur="50" repeat="indefinite" direction="alternate">
+          </a-animation>
+        </a-image>
+        <a-image id="wave_can" src="#wave" position="-0.02 0.6 0.978" scale="1.5 0.4 1">
+          <a-animation attribute="scale" to="1.875 0.5 1" dur="350" repeat="indefinite" direction="alternate">
+          </a-animation>
+        </a-image>
+
+        <a-image id="talent_can" src="#talent" position="-0.007 0.44 0.978" scale="0.32 0.608 1"></a-image>
+        <a-image id="name_can" src="#name" position="-0.048 0.314 0.978" scale="0 0 1">
+          <a-animation attribute="scale" to="0.88 0.13 1" dur="1500" delay="2000">
+          </a-animation>
+        </a-image>
+
+      </a-entity>
+
+    </a-entity>
+
+    <a-sky color="#072b07"></a-sky>
+
+  </a-scene>
+
+</body>
+
+</html>

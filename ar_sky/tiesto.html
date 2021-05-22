@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Aframe</title>
+  <link rel="icon" href="favicon.png">
+  <script src="js/aframe.min.js"></script>
+  <script src="js/aframe-extras.min.js"></script>
+  <link href="styles.css" rel="stylesheet" rel="preload" as="style">
+</head>
+
+<body>
+
+  <a-scene>
+
+    <a-assets>
+      <a-asset-item id="tiesto" src="/ar_sky/object/tiesto/Heniken_TheBusiness.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-entity light="type: hemisphere"></a-entity>
+
+    <!--tiesto-->
+    <a-entity>
+
+      <a-entity position="0 0 3">
+        <a-entity camera="fov: 60" rotation="0 0 0" look-controls="enabled:false"></a-entity>
+      </a-entity>
+
+      <a-entity position="0 -0.3 0">
+
+        <a-entity id="tiesto_light" target="#tiesto_pivot" position="-2 4 2"
+          light="castShadow: true; shadowMapHeight: 1024; shadowMapWidth: 1024; shadowCameraLeft: -7; intensity: 4">
+        </a-entity>
+
+        <a-entity id="tiesto_pivot" rotation="0 0 0">
+
+          <a-entity id="tiesto_model" gltf-model='#tiesto' animation-mixer="clip: Animation;" position="0 0.2 1.015"
+            rotation="10 0 0" scale="0.02 0.02 0.02">
+          </a-entity>
+
+        </a-entity>
+
+      </a-entity>
+
+    </a-entity>
+    <!--/tiesto-->
+
+  </a-scene>
+
+</body>
+
+</html>

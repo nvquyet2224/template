@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Aframe</title>
+  <link rel="icon" href="favicon.png">
+  <script src="js/aframe.min.js"></script>
+  <script src="js/aframe-extras.min.js"></script>
+  <script src='js/aframe-ar-nft.js'></script>
+
+  <script src="js/gesture-detector.js"></script>
+  <script src="js/gesture-handler.js"></script>
+
+  <script>
+    var isMarkerVisible = false;
+    AFRAME.registerComponent('videohandler', {
+      init: function () {
+        var marker = this.el;
+
+        marker.addEventListener('markerFound', function () {
+          isMarkerVisible = true;
+          document.querySelector('.say-hi-button').classList.add('found');
+
+        }.bind(this));
+
+        marker.addEventListener('markerLost', function () {
+          isMarkerVisible = false;
+          document.querySelector('.say-hi-button').classList.remove('found');
+        }.bind(this));
+
+      },
+    });
+  </script>
+  <link href="styles.css" rel="stylesheet" rel="preload" as="style">
+</head>
+
+<body>
+
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+
+  <div class="buttons">
+    <button class="say-hi-button">SAY HI!</button>
+  </div>
+
+  <a-scene videohandler vr-mode-ui='enabled: false;' renderer="logarithmicDepthBuffer: true;" embedded
+    arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' gesture-detector>
+
+    <a-assets>
+      <a-asset-item id="tiesto" src="/ar_sky/object/tiesto/Heniken_TheBusiness.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-entity light="type: hemisphere"></a-entity>
+
+    <!--tiesto-->
+    <a-nft type='nft' url='/ar_sky/markers/he' smooth='true' smoothCount='10' smoothTolerance='0.01'
+      smoothThreshold='5'>
+
+      <a-entity position="0 0 3">
+        <a-entity camera="fov: 60" rotation="0 0 0" look-controls="enabled:false"></a-entity>
+      </a-entity>
+
+      <a-entity position="0 -0.3 0" gesture-handler>
+
+        <a-entity id="tiesto_light" target="#tiesto_pivot" position="-2 4 2"
+          light="castShadow: true; shadowMapHeight: 1024; shadowMapWidth: 1024; shadowCameraLeft: -7; intensity: 4">
+        </a-entity>
+
+        <a-entity id="tiesto_pivot" rotation="0 0 0">
+
+          <a-entity id="tiesto_model" gltf-model='#tiesto' animation-mixer="clip: Animation;" position="0 0.2 1.015"
+            rotation="10 0 0" scale="0.02 0.02 0.02">
+          </a-entity>
+
+        </a-entity>
+
+      </a-entity>
+
+    </a-nft>
+    <!--/tiesto-->
+
+  </a-scene>
+
+</body>
+
+</html>

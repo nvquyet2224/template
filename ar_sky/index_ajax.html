@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Aframe</title>
+  <link rel="icon" href="favicon.png">
+  <script src="js/aframe.min.js"></script>
+  <script src="js/aframe-extras.min.js"></script>
+  <script src='js/aframe-ar-nft.js'></script>
+  <script src="js/aframe-particle-system-component.min.js"></script>
+  <script src="js/gesture-detector.js"></script>
+  <script src="js/gesture-handler.js"></script>
+
+  <script>
+    var isMarkerVisible = false;
+    var loading = false;
+
+    AFRAME.registerComponent('videohandler', {
+      init: function () {
+        var marker = this.el;
+
+        marker.addEventListener('markerFound', function () {
+          isMarkerVisible = true;
+          document.querySelector('.say-hi-button').classList.add('found');
+
+          var url = marker.getAttribute('data-url');
+          document.querySelector('.say-hi-button').innerHTML = url;
+
+          if (!loading) {
+            loadModel('vegas_model.html');
+          }
+          requestAnimationFrame(step);
+
+        }.bind(this));
+
+        marker.addEventListener('markerLost', function () {
+          isMarkerVisible = false;
+          document.querySelector('.say-hi-button').classList.remove('found');
+          //document.querySelector('#nft_vegas').innerHTML = '';
+          
+        }.bind(this));
+
+
+      },
+    });
+
+    var totalFrames = 43;
+    var animationDuration = 1300;
+    var timePerFrame = animationDuration / totalFrames;
+    var timeWhenLastUpdate;
+    var timeFromLastUpdate;
+    var frameNumber = 1;
+
+    function step(startTime) {
+      console.log(startTime);
+      if (!timeWhenLastUpdate) timeWhenLastUpdate = startTime;
+
+      timeFromLastUpdate = startTime - timeWhenLastUpdate;
+
+      if (timeFromLastUpdate > timePerFrame) {
+
+        var srcImg = '#laser' + frameNumber;
+
+        if (document.querySelector('#light_can') !== null) {
+          document.querySelector('#light_can').setAttribute('src', srcImg);
+        }
+
+        timeWhenLastUpdate = startTime;
+
+        if (frameNumber >= totalFrames) {
+          frameNumber = 1;
+        } else {
+          frameNumber = frameNumber + 1;
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+
+    function loadModel(ajaxLink) {
+      loading = true;
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+
+          if (xmlhttp.status == 200) {
+            document.querySelector('#nft_vegas').innerHTML = xmlhttp.responseText;
+          }
+          else if (xmlhttp.status == 400) {
+            alert('There was an error 400');
+          }
+          else {
+            alert('something else other than 200 was returned');
+          }
+        }
+
+      };
+
+      xmlhttp.open("GET", ajaxLink, true);
+      xmlhttp.send();
+
+    }
+
+
+  </script>
+  <link href="styles.css" rel="stylesheet" rel="preload" as="style">
+</head>
+
+<body>
+
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+
+  <div class="buttons">
+    <button class="say-hi-button">SAY HI!</button>
+  </div>
+
+  <a-scene videohandler vr-mode-ui='enabled: false;' renderer="logarithmicDepthBuffer: true;" embedded
+    arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;' gesture-detector>
+    <a-assets>
+      <a-asset-item id="heineken" src="/ar_sky/object/vegas/Heniken_Mike.gltf"></a-asset-item>
+      <img id="wave" src="assets/wave_can.png">
+      <img id="light" src="assets/light.png">
+      <img id="talent" src="assets/talent.png">
+      <img id="name" src="assets/name.png">
+
+      <!--lasers-->
+      <img id="laser1" src="assets/laser_1.png">
+      <img id="laser2" src="assets/laser_2.png">
+      <img id="laser3" src="assets/laser_3.png">
+      <img id="laser4" src="assets/laser_4.png">
+      <img id="laser5" src="assets/laser_5.png">
+      <img id="laser6" src="assets/laser_6.png">
+      <img id="laser7" src="assets/laser_7.png">
+      <img id="laser8" src="assets/laser_8.png">
+      <img id="laser9" src="assets/laser_9.png">
+      <img id="laser10" src="assets/laser_10.png">
+      <img id="laser11" src="assets/laser_11.png">
+      <img id="laser12" src="assets/laser_12.png">
+      <img id="laser13" src="assets/laser_13.png">
+      <img id="laser14" src="assets/laser_14.png">
+      <img id="laser15" src="assets/laser_15.png">
+      <img id="laser16" src="assets/laser_16.png">
+      <img id="laser17" src="assets/laser_17.png">
+      <img id="laser18" src="assets/laser_18.png">
+      <img id="laser19" src="assets/laser_19.png">
+      <img id="laser20" src="assets/laser_20.png">
+      <img id="laser21" src="assets/laser_21.png">
+      <img id="laser22" src="assets/laser_22.png">
+
+      <img id="laser23" src="assets/laser_21.png">
+      <img id="laser24" src="assets/laser_20.png">
+      <img id="laser25" src="assets/laser_19.png">
+      <img id="laser26" src="assets/laser_18.png">
+      <img id="laser27" src="assets/laser_17.png">
+      <img id="laser28" src="assets/laser_16.png">
+      <img id="laser29" src="assets/laser_15.png">
+      <img id="laser30" src="assets/laser_14.png">
+      <img id="laser31" src="assets/laser_13.png">
+      <img id="laser32" src="assets/laser_12.png">
+      <img id="laser33" src="assets/laser_11.png">
+      <img id="laser34" src="assets/laser_10.png">
+      <img id="laser35" src="assets/laser_9.png">
+      <img id="laser36" src="assets/laser_8.png">
+      <img id="laser37" src="assets/laser_7.png">
+      <img id="laser38" src="assets/laser_6.png">
+      <img id="laser39" src="assets/laser_5.png">
+      <img id="laser40" src="assets/laser_4.png">
+      <img id="laser41" src="assets/laser_3.png">
+      <img id="laser42" src="assets/laser_2.png">
+      <img id="laser43" src="assets/laser_1.png">
+
+      <!--/lasers-->
+    </a-assets>
+
+    <a-entity light="type: hemisphere"></a-entity>
+
+    <a-nft type='nft' url='/ar_sky/markers/ei' smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'
+      data-url="vegas_model.html" id="nft_vegas">
+    </a-nft>
+
+  </a-scene>
+
+</body>
+
+</html>
