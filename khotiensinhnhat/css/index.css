@@ -1,1 +1,992 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:"";content:none}table{border-collapse:collapse;border-spacing:0}*{-webkit-box-sizing:border-box;box-sizing:border-box}strong{font-weight:bold}@font-face{font-family:"Roboto";src:url(../fonts/Roboto-Regular.woff2) format("woff2"),url(../fonts/Roboto-Regular.woff) format("woff"),url(../fonts/Roboto-Regular.ttf) format("truetype");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Roboto";src:url(../fonts/Roboto-Bold.woff2) format("woff2"),url(../fonts/Roboto-Bold.woff) format("woff"),url(../fonts/Roboto-Bold.ttf) format("truetype");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:"NHL Washington";src:url(../fonts/NHLWashington.woff2) format("woff2"),url(../fonts/NHLWashington.woff) format("woff"),url(../fonts/NHLWashington.ttf) format("truetype");font-weight:normal;font-style:normal;font-display:swap}@font-face{font-family:"Abel";src:url(../fonts/Abel-Regular.woff2) format("woff2"),url(../fonts/Abel-Regular.woff) format("woff"),url(../fonts/Abel-Regular.ttf) format("truetype");font-weight:normal;font-style:normal;font-display:swap}html,body{font-family:"Roboto";font-weight:400}body{background-color:#ffc72c;color:#000;line-height:1;-webkit-user-select:none;user-select:none}*,*::before,*::after{-webkit-text-size-adjust:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-tap-highlight-color:transparent}.header,.container,.section,.section__inr,.footer,.page{position:relative;width:100%;height:auto}.pic{display:block;line-height:0}.pic img{width:100%;height:auto}.no__scroll{overflow:hidden;height:100%}input,button{-webkit-appearance:none;appearance:none;outline:none;border:none;background-color:transparent;padding:0;margin:0}.display__flex{display:flex}.justify{justify-content:space-between}.justify__center{justify-content:center}.justify__right{justify-content:flex-end}.justify__left{justify-content:flex-start}.align__center{align-items:center}.flex__wrap{flex-wrap:wrap}.hide__label{display:block;font-size:0}.title__page{font-size:2.875rem;padding:2.5rem 0rem 1.875rem 0rem;text-align:center;color:#fff;font-weight:700}.size__01{width:8.3333%}.size__02{width:16.6666%}.size__03{width:25%}.size__04{width:33.3333%}.size__05{width:41.6666%}.size__06{width:50%}.size__07{width:58.3333%}.size__08{width:66.6666%}.size__09{width:75%}.size__10{width:83.3333%}.size__11{width:91.6666%}.size__12{width:100%}@media screen and (max-width: 900px){.size__01,.size__02,.size__03,.size__04,.size__05,.size__06,.size__07,.size__08,.size__09,.size__10,.size__11,.size__12{width:100%}.title__page{font-size:4.9666vw}}form{width:100%;height:auto}.form__group{width:100%;margin-bottom:0.625rem}.form__group:last-child{margin-bottom:0}.form__col{position:relative;margin-bottom:0.3125rem}.caption__field{font-weight:600;color:#fff;font-size:0.875rem;margin-bottom:0.3125rem;line-height:1.4}.error__field{display:none;font-weight:400;color:red;font-size:0.75rem;margin-top:0.3125rem}.full_error{margin:0;padding:0.9375rem 0rem 0.9375rem 0rem;font-size:1rem;text-align:center;text-transform:uppercase}.show__error .error__field{display:block}.input__txt{width:100%;height:2.75rem;line-height:2.625rem;font-size:0.875rem;-webkit-border-radius:0rem;-o-border-radius:0rem;-moz-border-radius:0rem;-ms-border-radius:0rem;border-radius:0rem;padding:0.3125rem 0.9375rem 0.3125rem 0.9375rem;border:1px solid #fff;font-family:"Roboto";font-weight:400;color:#fff}.input__txt::placeholder{color:#fff}.input__txt:focus{border:1px solid #fff;box-shadow:0 0 3px #fff inset}.select{position:relative;display:block;width:100%;height:auto}.select .select__input{width:100%}.select .select__box{position:absolute;top:100%;left:0;display:none;width:100%;height:auto;max-height:16.25rem;padding:0rem 0rem 0rem 0rem;overflow:hidden;overflow-y:auto;z-index:2}.select .select__box.select__box--show{display:block;position:relative;left:auto;top:auto}.select .select__list{position:relative;display:block;background-color:#fff;border:1px solid #ddd;-webkit-border-radius:0rem;-o-border-radius:0rem;-moz-border-radius:0rem;-ms-border-radius:0rem;border-radius:0rem}.select .select__item{padding:0.4375rem 0.9375rem 0.4375rem 0.9375rem;font-weight:400;color:#000;font-size:0.8125rem;border-bottom:1px solid #ddd;cursor:pointer}.select .select__item:last-child{border:none}.select .select__item.selected{color:#ffc72c}.select .select__item.hide{display:none}.select .open__select+.select__box{display:block}.radio__list .radio__item{width:100%;margin-bottom:0.625rem}.radio__list:not(.align__center):last-child{margin-bottom:0}.radio__list .radio__wrap{position:relative;width:100%;display:flex;align-items:center;cursor:pointer}.radio__list .radio__caption{font-family:"Roboto";font-weight:400;color:#fff;font-size:0.875rem;padding-left:0.625rem;cursor:pointer}.radio__list .radio__caption::before,.radio__list .radio__caption::after{content:"";position:absolute;left:0;top:0;border:solid #fff;border-width:1px;-webkit-border-radius:50%;border-radius:50%;cursor:pointer}.radio__list .radio__caption::after{opacity:0;background-color:#fff;-webkit-transform:scale(0);transform:scale(0)}.radio__list .radio__input{cursor:pointer;opacity:0}.radio__list .radio__input:checked+.radio__caption::after{-webkit-transform:scale(0.6);transform:scale(0.6);opacity:1}.radio__list .radio__input,.radio__list .radio__caption::before,.radio__list .radio__caption::after{width:1.5rem;height:1.5rem}.check__list .check__item{width:auto;margin-bottom:0.625rem}.check__list .check__item:last-child{margin-bottom:0}.check__list .check__wrap{position:relative;width:100%;display:flex;align-items:center;cursor:pointer}.check__list .check__caption{font-family:"Roboto";font-weight:400;color:#000;font-size:0.875rem;padding-left:0.625rem;cursor:pointer}.check__list .check__caption::before,.check__list .check__caption::after{content:"";position:absolute;cursor:pointer;-webkit-box-sizing:border-box;box-sizing:border-box}.check__list .check__caption::before{left:0;top:0;border:solid #000;border-width:1px;-webkit-border-radius:0.1875rem;-o-border-radius:0.1875rem;-moz-border-radius:0.1875rem;-ms-border-radius:0.1875rem;border-radius:0.1875rem}.check__list .check__caption::after{opacity:0;left:6px;top:5px;border-left:2px solid;border-bottom:2px solid;border-color:#000}.check__list .check__input{cursor:pointer;opacity:0}.check__list .check__input:checked+.check__caption::before{background-color:#ffc72c;border-color:#ffc72c}.check__list .check__input:checked+.check__caption::after{opacity:1;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.check__list .check__input,.check__list .check__caption::before{width:1.25rem;height:1.25rem}.check__list .check__caption::after{width:0.625rem;height:0.375rem}.btns{width:100%}.btns .btn{display:block;padding:0.3125rem 1.5625rem 0.3125rem 1.5625rem;height:2.75rem;margin-bottom:0.9375rem;-webkit-border-radius:0rem;-o-border-radius:0rem;-moz-border-radius:0rem;-ms-border-radius:0rem;border-radius:0rem;border:1px solid #fff;font-family:"Roboto";font-weight:700;color:#fff;font-size:1.125rem;text-align:center;cursor:pointer}.btns .btn:last-child{margin-bottom:0}.btns .btn.ta__left{text-align:left}.btns .btn.ta__right{text-align:right}.btns.display__flex .btn{margin-left:0.625rem}@media screen and (max-width: 900px){.select .select__box{max-height:200px}}@media screen and (max-width: 580px){.caption__field,.input__txt,.check__list .check__caption,.radio__list .radio__caption{font-size:0.8125rem}.check__list .check__input,.check__list .check__caption::before,.radio__list .radio__input,.radio__list .radio__caption::before,.radio__list .radio__caption::after{width:1.25rem;height:1.25rem}.check__list .check__caption::after{left:5px}.check__list .check__caption,.radio__list .radio__caption{padding-left:0.4375rem}.btns .btn{font-size:0.9375rem}}.container{min-height:80vh}.money__box,.content__box{width:94%;max-width:71.25rem}.size__manual{width:26%}.size__manual--last{width:14%}.size__manual--last .btn{width:100%;padding:0}.result__box{padding:1.875rem 0rem 1.875rem 0rem}.result__box .money{position:relative;width:49%;padding:0.625rem 0.625rem 2.5rem 0.625rem;margin-bottom:2%;background-color:#fff}.result__box .money .seri__info{color:#000;font-weight:700;text-align:center;padding:0.625rem 0rem 0.5rem 0rem}.result__box .money .money__pic{position:relative}.result__box .money .money__pic img{width:100%;height:auto}.result__box .money .money__info{position:absolute;left:0;bottom:0;width:100%;height:auto;padding:0.625rem;align-items:center}.result__box .money .seri{position:absolute;display:flex;align-items:baseline;line-height:1.4}.result__box .money .seri.money__500,.result__box .money .seri.money__1k,.result__box .money .seri.money__2k,.result__box .money .seri.money__5k{color:#c23927}.result__box .money .seri.seri__vt.money__500,.result__box .money .seri.seri__vt.money__1k,.result__box .money .seri.seri__vt.money__2k{display:none}.result__box .money .seri.seri__vt.money__5k{font-size:1.1875rem}.result__box .money .seri.seri__vt.money__5k .seri__txt{font-family:"NHL Washington";font-weight:normal;text-transform:uppercase}.result__box .money .seri.seri__vt.money__5k .seri__txt:nth-child(2){margin-right:0.75rem}.result__box .money .seri.seri__vt.money__5k .seri__number{font-family:"Abel";font-weight:normal;margin-left:1px}.result__box .money .seri.seri__vt.money__5k{bottom:29.6%;left:14%}.result__box .money .seri.seri__vt.money__10k,.result__box .money .seri.seri__vt.money__20k,.result__box .money .seri.seri__vt.money__50k{color:#cb441d;display:block;font-size:0.9375rem}.result__box .money .seri.seri__vt.money__10k span,.result__box .money .seri.seri__vt.money__20k span,.result__box .money .seri.seri__vt.money__50k span{display:block;line-height:1;margin-bottom:1px}.result__box .money .seri.seri__vt.money__10k,.result__box .money .seri.seri__vt.money__20k{top:18%;left:1.6%}.result__box .money .seri.seri__vt.money__50k{top:22%;left:1.6%}.result__box .money .seri.seri__hr.money__500,.result__box .money .seri.seri__hr.money__1k,.result__box .money .seri.seri__hr.money__2k,.result__box .money .seri.seri__hr.money__5k{font-size:1.1875rem}.result__box .money .seri.seri__hr.money__500 .seri__txt,.result__box .money .seri.seri__hr.money__1k .seri__txt,.result__box .money .seri.seri__hr.money__2k .seri__txt,.result__box .money .seri.seri__hr.money__5k .seri__txt{font-family:"NHL Washington";font-weight:normal;text-transform:uppercase}.result__box .money .seri.seri__hr.money__500 .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__1k .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__2k .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__5k .seri__txt:nth-child(2){margin-right:0.75rem}.result__box .money .seri.seri__hr.money__500 .seri__number,.result__box .money .seri.seri__hr.money__1k .seri__number,.result__box .money .seri.seri__hr.money__2k .seri__number,.result__box .money .seri.seri__hr.money__5k .seri__number{font-family:"Abel";font-weight:normal;margin-left:1px}.result__box .money .seri.seri__hr.money__500{bottom:33%;left:4%}.result__box .money .seri.seri__hr.money__1k{top:29%;left:8%}.result__box .money .seri.seri__hr.money__2k{top:26%;left:40%}.result__box .money .seri.seri__hr.money__5k{top:23%;left:38%}.result__box .money .seri.seri__hr.money__10k,.result__box .money .seri.seri__hr.money__20k,.result__box .money .seri.seri__hr.money__50k{right:5%;bottom:3%;font-family:"Roboto";font-weight:400;font-size:1.375rem;color:#2c2730}.result__box .money .seri.seri__hr.money__10k .seri__txt,.result__box .money .seri.seri__hr.money__20k .seri__txt,.result__box .money .seri.seri__hr.money__50k .seri__txt{font-size:88%}.result__box .money .seri.seri__hr.money__10k .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__20k .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__50k .seri__txt:nth-child(2){margin-right:8px}.result__box .money .seri.seri__hr.money__10k .seri__number,.result__box .money .seri.seri__hr.money__20k .seri__number,.result__box .money .seri.seri__hr.money__50k .seri__number{margin-left:1px}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(10),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(10),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(10){font-size:100%}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(9),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(9),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(9){font-size:97%}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(8),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(8),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(8){font-size:94%}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(7),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(7),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(7){font-size:91%}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(6),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(6),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(6){font-size:88%}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(5),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(5),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(5){font-size:85%}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(4),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(4),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(4){font-size:82%}.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(3),.result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(3),.result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(3){font-size:79%}.footer{padding:2.5rem 0rem 2.5rem 0rem}.content__box{margin:0 auto;font-size:1rem}.content__box h2{font-size:1.25rem;font-weight:700;color:#1956b9;margin-bottom:0.9375rem;color:#fff}.content__box .info__item{display:flex;align-items:center;margin-bottom:0.9375rem;color:#fff}.content__box .info__item:last-child{margin:0}.content__box .info__item svg{fill:currentColor;margin-right:0.9375rem}.content__box a{text-decoration:none;color:#fff}.package__but{position:fixed;right:1.25rem;top:1.25rem;width:3.75rem;height:3.75rem;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;background:url(../images/close.png) no-repeat center center;background-size:64% auto;z-index:10}.package__but svg{width:100%}.package__box{display:flex;width:100%;max-width:420px;position:fixed;right:0;top:0;z-index:5;height:100vh;background-color:#ffc72c;padding:1.25rem;align-items:center;box-shadow:0 0 30px rgba(0,0,0,.5);-webkit-transform:translateX(130%);transform:translateX(130%)}.package__box .small__title{font-size:1rem;color:#000;margin-bottom:1.25rem}.package__box .small__title small{font-size:80%;padding:10px}.package__box .small__title.small__title--product{margin-bottom:0.625rem;font-weight:700}.package__box .input__txt{border-color:#000;color:#000}.package__box .input__txt::placeholder{color:#000}.package__box .btn{border-color:#000;color:#000;font-size:0.9375rem}.package__box .products{display:flex}.package__box .product__list{display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:0.625rem}.package__box .product__list .product__item{width:32%;font-size:0.6875rem;color:#000;font-weight:700;border:1px solid #000;padding:0.4375rem;margin-bottom:0.3125rem;text-align:center}.package__box .product__list .product__item:last-child{margin-right:0}.open__cart{height:100%;overflow:hidden}.open__cart .package__but svg{opacity:0}.open__cart .package__box{-webkit-transform:none;transform:none}@media screen and (max-width: 1100px){.result__box .money .seri.seri__vt.money__5k{font-size:1.5vw}.result__box .money .seri.seri__vt.money__10k,.result__box .money .seri.seri__vt.money__20k,.result__box .money .seri.seri__vt.money__50k{font-size:1.3vw}.result__box .money .seri.seri__hr.money__500,.result__box .money .seri.seri__hr.money__1k,.result__box .money .seri.seri__hr.money__2k,.result__box .money .seri.seri__hr.money__5k{font-size:1.5vw}.result__box .money .seri.seri__hr.money__500 .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__1k .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__2k .seri__txt:nth-child(2),.result__box .money .seri.seri__hr.money__5k .seri__txt:nth-child(2){margin-right:.5vw}.result__box .money .seri.seri__hr.money__10k,.result__box .money .seri.seri__hr.money__20k,.result__box .money .seri.seri__hr.money__50k{font-size:2vw}}@media screen and (max-width: 900px){.result__box .money{width:100%}.result__box .money .seri.seri__vt.money__5k{font-size:3.8vw}.result__box .money .seri.seri__vt.money__10k,.result__box .money .seri.seri__vt.money__20k,.result__box .money .seri.seri__vt.money__50k{font-size:2.58vw}.result__box .money .seri.seri__hr.money__500,.result__box .money .seri.seri__hr.money__1k,.result__box .money .seri.seri__hr.money__2k,.result__box .money .seri.seri__hr.money__5k{font-size:3.4vw}.result__box .money .seri.seri__hr.money__10k,.result__box .money .seri.seri__hr.money__20k,.result__box .money .seri.seri__hr.money__50k{font-size:4vw}.site__info{width:100%;margin-bottom:1.875rem}.site__info h2{font-size:4.6vw;margin-bottom:1.25rem}.site__facebook{width:100%}.site__facebook iframe{width:100%}.size__manual{width:26%}.size__manual--last{width:16%}.money__box .input__txt{padding:0.3125rem 0.625rem 0.3125rem 0.625rem}}@media screen and (max-width: 580px){.seri__info,.info__item{font-size:15px}.result__box{padding:1.25rem 0rem 1.25rem 0rem}.money__box .input__txt{padding:0rem;text-align:center}.size__manual{width:24.6666%}.size__manual--last{width:24%;margin-left:2%}.package__but{width:1.875rem;height:1.875rem;right:0.625rem;top:0.625rem}}@media screen and (max-width: 370px){.package__box{padding:0.9375rem}.package__box .small__title{font-size:0.9375rem}.package__box .product__list .product__item{padding:0.3125rem 0rem 0.3125rem 0rem;font-size:0.5625rem}}body{visibility:visible;opacity:1}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+strong {
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Regular.woff2) format("woff2"), url(../fonts/Roboto-Regular.woff) format("woff"), url(../fonts/Roboto-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Bold.woff2) format("woff2"), url(../fonts/Roboto-Bold.woff) format("woff"), url(../fonts/Roboto-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NHL Washington";
+  src: url(../fonts/NHLWashington.woff2) format("woff2"), url(../fonts/NHLWashington.woff) format("woff"), url(../fonts/NHLWashington.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Abel";
+  src: url(../fonts/Abel-Regular.woff2) format("woff2"), url(../fonts/Abel-Regular.woff) format("woff"), url(../fonts/Abel-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+html, body {
+  font-family: "Roboto";
+  font-weight: 400;
+}
+
+body {
+  background-color: #ffc72c;
+  color: #000;
+  line-height: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+*, *::before, *::after {
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header,
+.container,
+.section,
+.section__inr,
+.footer,
+.page {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.pic {
+  display: block;
+  line-height: 0;
+}
+.pic img {
+  width: 100%;
+  height: auto;
+}
+
+.no__scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+input,
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.display__flex {
+  display: flex;
+}
+
+.justify {
+  justify-content: space-between;
+}
+
+.justify__center {
+  justify-content: center;
+}
+
+.justify__right {
+  justify-content: flex-end;
+}
+
+.justify__left {
+  justify-content: flex-start;
+}
+
+.align__center {
+  align-items: center;
+}
+
+.flex__wrap {
+  flex-wrap: wrap;
+}
+
+.hide__label {
+  display: block;
+  font-size: 0;
+}
+
+.title__page {
+  font-size: 2.875rem;
+  padding: 2.5rem 0rem 1.875rem 0rem;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.size__01 {
+  width: 8.3333%;
+}
+
+.size__02 {
+  width: 16.6666%;
+}
+
+.size__03 {
+  width: 25%;
+}
+
+.size__04 {
+  width: 33.3333%;
+}
+
+.size__05 {
+  width: 41.6666%;
+}
+
+.size__06 {
+  width: 50%;
+}
+
+.size__07 {
+  width: 58.3333%;
+}
+
+.size__08 {
+  width: 66.6666%;
+}
+
+.size__09 {
+  width: 75%;
+}
+
+.size__10 {
+  width: 83.3333%;
+}
+
+.size__11 {
+  width: 91.6666%;
+}
+
+.size__12 {
+  width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .size__01,
+.size__02,
+.size__03,
+.size__04,
+.size__05,
+.size__06,
+.size__07,
+.size__08,
+.size__09,
+.size__10,
+.size__11,
+.size__12 {
+    width: 100%;
+  }
+
+  .title__page {
+    font-size: 4.9666vw;
+  }
+}
+form {
+  width: 100%;
+  height: auto;
+}
+
+.form__group {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
+.form__group:last-child {
+  margin-bottom: 0;
+}
+
+.form__col {
+  position: relative;
+  margin-bottom: 0.3125rem;
+}
+
+.caption__field {
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.875rem;
+  margin-bottom: 0.3125rem;
+  line-height: 1.4;
+}
+
+.error__field {
+  display: none;
+  font-weight: 400;
+  color: #f00;
+  font-size: 0.75rem;
+  margin-top: 0.3125rem;
+}
+
+.full_error {
+  margin: 0;
+  padding: 0.9375rem 0rem 0.9375rem 0rem;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.show__error .error__field {
+  display: block;
+}
+
+.input__txt {
+  width: 100%;
+  height: 2.75rem;
+  line-height: 2.625rem;
+  font-size: 0.875rem;
+  -webkit-border-radius: 0rem;
+  -o-border-radius: 0rem;
+  -moz-border-radius: 0rem;
+  -ms-border-radius: 0rem;
+  border-radius: 0rem;
+  padding: 0.3125rem 0.9375rem 0.3125rem 0.9375rem;
+  border: 1px solid #fff;
+  font-family: "Roboto";
+  font-weight: 400;
+  color: #fff;
+}
+.input__txt::placeholder {
+  color: #fff;
+}
+.input__txt:focus {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px #fff inset;
+}
+
+.select {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.select .select__input {
+  width: 100%;
+}
+.select .select__box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: auto;
+  max-height: 16.25rem;
+  padding: 0rem 0rem 0rem 0rem;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 2;
+}
+.select .select__box.select__box--show {
+  display: block;
+  position: relative;
+  left: auto;
+  top: auto;
+}
+.select .select__list {
+  position: relative;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 0rem;
+  -o-border-radius: 0rem;
+  -moz-border-radius: 0rem;
+  -ms-border-radius: 0rem;
+  border-radius: 0rem;
+}
+.select .select__item {
+  padding: 0.4375rem 0.9375rem 0.4375rem 0.9375rem;
+  font-weight: 400;
+  color: #000;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.select .select__item:last-child {
+  border: none;
+}
+.select .select__item.selected {
+  color: #ffc72c;
+}
+.select .select__item.hide {
+  display: none;
+}
+.select .open__select + .select__box {
+  display: block;
+}
+
+.radio__list .radio__item {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
+.radio__list:not(.align__center):last-child {
+  margin-bottom: 0;
+}
+.radio__list .radio__wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.radio__list .radio__caption {
+  font-family: "Roboto";
+  font-weight: 400;
+  color: #fff;
+  font-size: 0.875rem;
+  padding-left: 0.625rem;
+  cursor: pointer;
+}
+.radio__list .radio__caption::before, .radio__list .radio__caption::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: solid #fff;
+  border-width: 1px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.radio__list .radio__caption::after {
+  opacity: 0;
+  background-color: #fff;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.radio__list .radio__input {
+  cursor: pointer;
+  opacity: 0;
+}
+.radio__list .radio__input:checked + .radio__caption::after {
+  -webkit-transform: scale(0.6);
+  transform: scale(0.6);
+  opacity: 1;
+}
+.radio__list .radio__input,
+.radio__list .radio__caption::before,
+.radio__list .radio__caption::after {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.check__list .check__item {
+  width: auto;
+  margin-bottom: 0.625rem;
+}
+.check__list .check__item:last-child {
+  margin-bottom: 0;
+}
+.check__list .check__wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.check__list .check__caption {
+  font-family: "Roboto";
+  font-weight: 400;
+  color: #000;
+  font-size: 0.875rem;
+  padding-left: 0.625rem;
+  cursor: pointer;
+}
+.check__list .check__caption::before, .check__list .check__caption::after {
+  content: "";
+  position: absolute;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.check__list .check__caption::before {
+  left: 0;
+  top: 0;
+  border: solid #000;
+  border-width: 1px;
+  -webkit-border-radius: 0.1875rem;
+  -o-border-radius: 0.1875rem;
+  -moz-border-radius: 0.1875rem;
+  -ms-border-radius: 0.1875rem;
+  border-radius: 0.1875rem;
+}
+.check__list .check__caption::after {
+  opacity: 0;
+  left: 6px;
+  top: 5px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  border-color: #000;
+}
+.check__list .check__input {
+  cursor: pointer;
+  opacity: 0;
+}
+.check__list .check__input:checked + .check__caption::before {
+  background-color: #ffc72c;
+  border-color: #ffc72c;
+}
+.check__list .check__input:checked + .check__caption::after {
+  opacity: 1;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.check__list .check__input,
+.check__list .check__caption::before {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.check__list .check__caption::after {
+  width: 0.625rem;
+  height: 0.375rem;
+}
+
+.btns {
+  width: 100%;
+}
+.btns .btn {
+  display: block;
+  padding: 0.3125rem 1.5625rem 0.3125rem 1.5625rem;
+  height: 2.75rem;
+  margin-bottom: 0.9375rem;
+  -webkit-border-radius: 0rem;
+  -o-border-radius: 0rem;
+  -moz-border-radius: 0rem;
+  -ms-border-radius: 0rem;
+  border-radius: 0rem;
+  border: 1px solid #fff;
+  font-family: "Roboto";
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.125rem;
+  text-align: center;
+  cursor: pointer;
+}
+.btns .btn:last-child {
+  margin-bottom: 0;
+}
+.btns .btn.ta__left {
+  text-align: left;
+}
+.btns .btn.ta__right {
+  text-align: right;
+}
+.btns.display__flex .btn {
+  margin-left: 0.625rem;
+}
+
+@media screen and (max-width: 900px) {
+  .select .select__box {
+    max-height: 200px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .caption__field,
+.input__txt,
+.check__list .check__caption,
+.radio__list .radio__caption {
+    font-size: 0.8125rem;
+  }
+
+  .check__list .check__input,
+.check__list .check__caption::before,
+.radio__list .radio__input,
+.radio__list .radio__caption::before,
+.radio__list .radio__caption::after {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .check__list .check__caption::after {
+    left: 5px;
+  }
+
+  .check__list .check__caption,
+.radio__list .radio__caption {
+    padding-left: 0.4375rem;
+  }
+
+  .btns .btn {
+    font-size: 0.9375rem;
+  }
+}
+.container {
+  min-height: 80vh;
+}
+
+.money__box,
+.content__box {
+  width: 94%;
+  max-width: 71.25rem;
+}
+
+.size__manual {
+  width: 26%;
+}
+
+.size__manual--last {
+  width: 14%;
+}
+.size__manual--last .btn {
+  width: 100%;
+  padding: 0;
+}
+
+.result__box {
+  padding: 1.875rem 0rem 1.875rem 0rem;
+}
+.result__box .money {
+  position: relative;
+  width: 49%;
+  padding: 0.625rem 0.625rem 2.5rem 0.625rem;
+  margin-bottom: 2%;
+  background-color: #fff;
+}
+.result__box .money .seri__info {
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.625rem 0rem 0.5rem 0rem;
+}
+.result__box .money .money__pic {
+  position: relative;
+}
+.result__box .money .money__pic img {
+  width: 100%;
+  height: auto;
+}
+.result__box .money .money__info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  padding: 0.625rem;
+  align-items: center;
+}
+.result__box .money .seri {
+  position: absolute;
+  display: flex;
+  align-items: baseline;
+  line-height: 1.4;
+}
+.result__box .money .seri.money__500, .result__box .money .seri.money__1k, .result__box .money .seri.money__2k, .result__box .money .seri.money__5k {
+  color: #c23927;
+}
+.result__box .money .seri.seri__vt.money__500, .result__box .money .seri.seri__vt.money__1k, .result__box .money .seri.seri__vt.money__2k {
+  display: none;
+}
+.result__box .money .seri.seri__vt.money__5k {
+  font-size: 1.1875rem;
+}
+.result__box .money .seri.seri__vt.money__5k .seri__txt {
+  font-family: "NHL Washington";
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.result__box .money .seri.seri__vt.money__5k .seri__txt:nth-child(2) {
+  margin-right: 0.75rem;
+}
+.result__box .money .seri.seri__vt.money__5k .seri__number {
+  font-family: "Abel";
+  font-weight: normal;
+  margin-left: 1px;
+}
+.result__box .money .seri.seri__vt.money__5k {
+  bottom: 29.6%;
+  left: 14%;
+}
+.result__box .money .seri.seri__vt.money__10k, .result__box .money .seri.seri__vt.money__20k, .result__box .money .seri.seri__vt.money__50k {
+  color: #cb441d;
+  display: block;
+  font-size: 0.9375rem;
+}
+.result__box .money .seri.seri__vt.money__10k span, .result__box .money .seri.seri__vt.money__20k span, .result__box .money .seri.seri__vt.money__50k span {
+  display: block;
+  line-height: 1;
+  margin-bottom: 1px;
+}
+.result__box .money .seri.seri__vt.money__10k, .result__box .money .seri.seri__vt.money__20k {
+  top: 18%;
+  left: 1.6%;
+}
+.result__box .money .seri.seri__vt.money__50k {
+  top: 22%;
+  left: 1.6%;
+}
+.result__box .money .seri.seri__hr.money__500, .result__box .money .seri.seri__hr.money__1k, .result__box .money .seri.seri__hr.money__2k, .result__box .money .seri.seri__hr.money__5k {
+  font-size: 1.1875rem;
+}
+.result__box .money .seri.seri__hr.money__500 .seri__txt, .result__box .money .seri.seri__hr.money__1k .seri__txt, .result__box .money .seri.seri__hr.money__2k .seri__txt, .result__box .money .seri.seri__hr.money__5k .seri__txt {
+  font-family: "NHL Washington";
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.result__box .money .seri.seri__hr.money__500 .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__1k .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__2k .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__5k .seri__txt:nth-child(2) {
+  margin-right: 0.75rem;
+}
+.result__box .money .seri.seri__hr.money__500 .seri__number, .result__box .money .seri.seri__hr.money__1k .seri__number, .result__box .money .seri.seri__hr.money__2k .seri__number, .result__box .money .seri.seri__hr.money__5k .seri__number {
+  font-family: "Abel";
+  font-weight: normal;
+  margin-left: 1px;
+}
+.result__box .money .seri.seri__hr.money__500 {
+  bottom: 33%;
+  left: 4%;
+}
+.result__box .money .seri.seri__hr.money__1k {
+  top: 29%;
+  left: 8%;
+}
+.result__box .money .seri.seri__hr.money__2k {
+  top: 26%;
+  left: 40%;
+}
+.result__box .money .seri.seri__hr.money__5k {
+  top: 23%;
+  left: 38%;
+}
+.result__box .money .seri.seri__hr.money__10k, .result__box .money .seri.seri__hr.money__20k, .result__box .money .seri.seri__hr.money__50k {
+  right: 5%;
+  bottom: 3%;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1.375rem;
+  color: #2c2730;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__txt, .result__box .money .seri.seri__hr.money__20k .seri__txt, .result__box .money .seri.seri__hr.money__50k .seri__txt {
+  font-size: 88%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__20k .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__50k .seri__txt:nth-child(2) {
+  margin-right: 8px;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number, .result__box .money .seri.seri__hr.money__20k .seri__number, .result__box .money .seri.seri__hr.money__50k .seri__number {
+  margin-left: 1px;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(10), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(10), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(10) {
+  font-size: 100%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(9), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(9), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(9) {
+  font-size: 97%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(8), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(8), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(8) {
+  font-size: 94%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(7), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(7), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(7) {
+  font-size: 91%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(6), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(6), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(6) {
+  font-size: 88%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(5), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(5), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(5) {
+  font-size: 85%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(4), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(4), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(4) {
+  font-size: 82%;
+}
+.result__box .money .seri.seri__hr.money__10k .seri__number:nth-child(3), .result__box .money .seri.seri__hr.money__20k .seri__number:nth-child(3), .result__box .money .seri.seri__hr.money__50k .seri__number:nth-child(3) {
+  font-size: 79%;
+}
+
+.footer {
+  padding: 2.5rem 0rem 2.5rem 0rem;
+}
+
+.content__box {
+  margin: 0 auto;
+  font-size: 1rem;
+}
+.content__box h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1956B9;
+  margin-bottom: 0.9375rem;
+  color: #fff;
+}
+.content__box .info__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.9375rem;
+  color: #fff;
+}
+.content__box .info__item:last-child {
+  margin: 0;
+}
+.content__box .info__item svg {
+  fill: currentColor;
+  margin-right: 0.9375rem;
+}
+.content__box a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.package__but {
+  position: fixed;
+  right: 1.25rem;
+  top: 1.25rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: url(../images/close.png) no-repeat center center;
+  background-size: 64% auto;
+  z-index: 10;
+}
+.package__but svg {
+  width: 100%;
+}
+
+.package__box {
+  display: flex;
+  width: 100%;
+  max-width: 420px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  height: 100vh;
+  background-color: #ffc72c;
+  padding: 1.25rem;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  -webkit-transform: translateX(130%);
+  transform: translateX(130%);
+}
+.package__box .small__title {
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 1.25rem;
+}
+.package__box .small__title small {
+  font-size: 80%;
+  padding: 10px;
+}
+.package__box .small__title.small__title--product {
+  margin-bottom: 0.625rem;
+  font-weight: 700;
+}
+.package__box .input__txt {
+  border-color: #000;
+  color: #000;
+}
+.package__box .input__txt::placeholder {
+  color: #000;
+}
+.package__box .btn {
+  border-color: #000;
+  color: #000;
+  font-size: 0.9375rem;
+}
+.package__box .products {
+  display: flex;
+}
+.package__box .product__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 0.625rem;
+}
+.package__box .product__list .product__item {
+  width: 32%;
+  font-size: 0.6875rem;
+  color: #000;
+  font-weight: 700;
+  border: 1px solid #000;
+  padding: 0.4375rem;
+  margin-bottom: 0.3125rem;
+  text-align: center;
+}
+.package__box .product__list .product__item:last-child {
+  margin-right: 0;
+}
+
+.open__cart {
+  height: 100%;
+  overflow: hidden;
+}
+.open__cart .package__but svg {
+  opacity: 0;
+}
+.open__cart .package__box {
+  -webkit-transform: none;
+  transform: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .result__box .money .seri.seri__vt.money__5k {
+    font-size: 1.5vw;
+  }
+  .result__box .money .seri.seri__vt.money__10k, .result__box .money .seri.seri__vt.money__20k, .result__box .money .seri.seri__vt.money__50k {
+    font-size: 1.3vw;
+  }
+  .result__box .money .seri.seri__hr.money__500, .result__box .money .seri.seri__hr.money__1k, .result__box .money .seri.seri__hr.money__2k, .result__box .money .seri.seri__hr.money__5k {
+    font-size: 1.5vw;
+  }
+  .result__box .money .seri.seri__hr.money__500 .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__1k .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__2k .seri__txt:nth-child(2), .result__box .money .seri.seri__hr.money__5k .seri__txt:nth-child(2) {
+    margin-right: 0.5vw;
+  }
+  .result__box .money .seri.seri__hr.money__10k, .result__box .money .seri.seri__hr.money__20k, .result__box .money .seri.seri__hr.money__50k {
+    font-size: 2vw;
+  }
+}
+@media screen and (max-width: 900px) {
+  .result__box .money {
+    width: 100%;
+  }
+  .result__box .money .seri.seri__vt.money__5k {
+    font-size: 3.8vw;
+  }
+  .result__box .money .seri.seri__vt.money__10k, .result__box .money .seri.seri__vt.money__20k, .result__box .money .seri.seri__vt.money__50k {
+    font-size: 2.58vw;
+  }
+  .result__box .money .seri.seri__hr.money__500, .result__box .money .seri.seri__hr.money__1k, .result__box .money .seri.seri__hr.money__2k, .result__box .money .seri.seri__hr.money__5k {
+    font-size: 3.4vw;
+  }
+  .result__box .money .seri.seri__hr.money__10k, .result__box .money .seri.seri__hr.money__20k, .result__box .money .seri.seri__hr.money__50k {
+    font-size: 4vw;
+  }
+
+  .site__info {
+    width: 100%;
+    margin-bottom: 1.875rem;
+  }
+  .site__info h2 {
+    font-size: 4.6vw;
+    margin-bottom: 1.25rem;
+  }
+
+  .site__facebook {
+    width: 100%;
+  }
+  .site__facebook iframe {
+    width: 100%;
+  }
+
+  .size__manual {
+    width: 26%;
+  }
+
+  .size__manual--last {
+    width: 16%;
+  }
+
+  .money__box .input__txt {
+    padding: 0.3125rem 0.625rem 0.3125rem 0.625rem;
+  }
+}
+@media screen and (max-width: 580px) {
+  .seri__info,
+.info__item {
+    font-size: 15px;
+  }
+
+  .result__box {
+    padding: 1.25rem 0rem 1.25rem 0rem;
+  }
+
+  .money__box .input__txt {
+    padding: 0rem;
+    text-align: center;
+  }
+
+  .size__manual {
+    width: 24.6666%;
+  }
+
+  .size__manual--last {
+    width: 24%;
+    margin-left: 2%;
+  }
+
+  .package__but {
+    width: 1.875rem;
+    height: 1.875rem;
+    right: 0.625rem;
+    top: 0.625rem;
+  }
+}
+@media screen and (max-width: 370px) {
+  .package__box {
+    padding: 0.9375rem;
+  }
+  .package__box .small__title {
+    font-size: 0.9375rem;
+  }
+  .package__box .product__list .product__item {
+    padding: 0.3125rem 0rem 0.3125rem 0rem;
+    font-size: 0.5625rem;
+  }
+}
+body {
+  visibility: visible;
+  opacity: 1;
+}
