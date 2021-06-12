@@ -40,7 +40,7 @@
         "purpose": "any maskable"
       }
     ],
-    "start_url": "/",
+    "start_url": "/template/khotiensinhnhat/",
     "background_color": "#ffc72c",
     "display": "standalone",
     "scope": "/",
