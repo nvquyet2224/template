@@ -1,48 +1,48 @@
 {
-    "short_name": "Tiền sinh nhật",
-    "name": "Tiền sinh nhật - món quà ý nghĩa lớn",
-    "description": "Tiền sinh nhật món quà ý nghĩa trong những dịp sinh nhật",
-    "icons": [
-      {
-        "src": "./48.png",
-        "sizes": "48x48",
-        "type": "image/png",
-        "purpose": "any maskable"
-      },
-      {
-        "src": "./72.png",
-        "sizes": "72x72",
-        "type": "image/png",
-        "purpose": "any maskable"
-      },
-      {
-        "src": "./96.png",
-        "sizes": "96x96",
-        "type": "image/png",
-        "purpose": "any maskable"
-      },
-      {
-        "src": "./144.png",
-        "sizes": "144x144",
-        "type": "image/png",
-        "purpose": "any maskable"
-      },
-      {
-        "src": "./192.png",
-        "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "any maskable"
-      },
-      {
-        "src": "./512.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }
-    ],
-    "start_url": "/template/khotiensinhnhat/",
-    "background_color": "#ffc72c",
-    "display": "standalone",
-    "scope": "/template/khotiensinhnhat/",
-    "theme_color": "#ffc72c"
-  }
+  "short_name": "Tiền sinh nhật",
+  "name": "Tien sinh nhat",
+  "description": "Tiền sinh nhật món quà ý nghĩa trong những dịp sinh nhật",
+  "icons": [
+    {
+      "src": "./48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/template/khotiensinhnhat/",
+  "background_color": "#ffc72c",
+  "display": "standalone",
+  "scope": "/template/khotiensinhnhat/",
+  "theme_color": "#ffc72c"
+}
