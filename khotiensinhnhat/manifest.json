@@ -43,6 +43,6 @@
     "start_url": "/template/khotiensinhnhat/",
     "background_color": "#ffc72c",
     "display": "standalone",
-    "scope": "/",
+    "scope": "/template/khotiensinhnhat/",
     "theme_color": "#ffc72c"
   }
