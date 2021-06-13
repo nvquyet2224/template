@@ -3,7 +3,7 @@ const butInstall = document.getElementById('butInstall');
 
 /* Put code here */
 window.addEventListener('beforeinstallprompt', (event) => {
-  //console.log('👍', 'beforeinstallprompt', event);
+  console.log('👍', 'beforeinstallprompt', event);
   // Stash the event so it can be triggered later.
   window.deferredPrompt = event;
   // Remove the 'hidden' class from the install button container
@@ -12,7 +12,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
 
 
 butInstall.addEventListener('click', async () => {
-  //console.log('👍', 'butInstall-clicked');
+  console.log('👍', 'butInstall-clicked');
   const promptEvent = window.deferredPrompt;
   if (!promptEvent) {
     // The deferred prompt isn't available.
@@ -22,7 +22,7 @@ butInstall.addEventListener('click', async () => {
   promptEvent.prompt();
   // Log the result
   const result = await promptEvent.userChoice;
-  //console.log('👍', 'userChoice', result);
+  console.log('👍', 'userChoice', result);
   // Reset the deferred prompt variable, since
   // prompt() can only be called once.
   window.deferredPrompt = null;
@@ -31,7 +31,7 @@ butInstall.addEventListener('click', async () => {
 });
 
 window.addEventListener('appinstalled', (event) => {
-  //console.log('👍', 'appinstalled', event);
+  console.log('👍', 'appinstalled', event);
   // Clear the deferredPrompt so it can be garbage collected
   window.deferredPrompt = null;
 });
@@ -47,9 +47,9 @@ if ('serviceWorker' in navigator) {
  * Installability requires a service worker with a fetch event handler, and
  * if the page isn't served over HTTPS, the service worker won't load.
  */
-/*if (window.location.protocol === 'http:') {
+if (window.location.protocol === 'http:') {
   const requireHTTPS = document.getElementById('requireHTTPS');
   const link = requireHTTPS.querySelector('a');
   link.href = window.location.href.replace('http://', 'https://');
   requireHTTPS.classList.remove('hidden');
-}*/
+}
