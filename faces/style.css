@@ -1,0 +1,55 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+video {
+    display: block;
+}
+
+.video__box {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.camView {
+    position: relative;
+    width: 90%;
+    height: auto;
+    cursor:pointer;
+    max-width:640px;
+    border:1px solid #ccc;
+}
+
+.camView::before {
+    content: '';
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-top: 75%;
+}
+
+video {
+    width:100% !important;
+    height:100% !important;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:2;
+}
+
+.loading__message {
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    z-index:1;
+}

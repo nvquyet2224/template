@@ -1,0 +1,55 @@
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+==============================================================================-->
+
+<head>
+    <!-- Load three.js -->
+
+    <script src="js/tf-core.js"></script>
+    <script src="js/tf-converter.js"></script>
+
+    <!-- You must explicitly require a TF.js backend if you're not using the tfjs union bundle. -->
+    <script src="js/tf-backend-webgl.js"></script>
+
+    <!-- Require face-landmarks-detection itself. -->
+    <script src="js/face-landmarks-detection.js"></script>
+
+    <script src="js/three.min.js"></script>
+
+    <!-- Load scatter-gl.js -->
+    <script src="js/scatter-gl.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet" rel="preload" as="style">
+</head>
+
+<body>
+    <div id="main">
+        <div class="container">
+            <div class="canvas-wrapper">
+                <canvas id="output"></canvas>
+                <video id="video" playsinline style="
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            visibility: hidden;
+            width: auto;
+            height: auto;
+            ">
+                </video>
+            </div>
+            <div id="scatter-gl-container"></div>
+        </div>
+    </div>
+</body>
+<script src="js/dat.gui.min.js"></script>
+<script src="js/index_bk.js" type="module"></script>

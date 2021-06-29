@@ -1,0 +1,32 @@
+<head>
+
+    <script src="js/tf.min.js"></script>
+    <!-- <script src="js/tf-core.js"></script> -->
+    <!-- <script src="js/tf-converter.js"></script> -->
+    <!-- <script src="js/tf-backend-webgl.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/face-landmarks-detection.js"></script>
+    <link href="css/styles.css" rel="stylesheet" rel="preload" as="style">
+
+</head>
+
+<body>
+    
+    <div id="main">
+        <div class="container">
+            <div class="canvas-wrapper">
+                <canvas id="output"></canvas>
+                <video id="video" playsinline></video>
+                <div class="detect__info">
+                    <div class="detect__item">Mouth: <span id="mouth__info"></span>
+                    </div>
+                    <div class="detect__item">Blink: <span id="blink__info"></span>
+                    </div>
+                    <div class="detect__item">Emotion: <span id="emotion__info"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/index.js" type="module"></script>

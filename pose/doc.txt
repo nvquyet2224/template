@@ -1,0 +1,3 @@
+- npm init -y
+- npm i -D webpack webpack-cli
+[ run: npm run build]

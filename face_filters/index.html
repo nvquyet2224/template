@@ -1,37 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Multiple object detection using pre trained model in TensorFlow.js</title>
-    <meta charset="utf-8">
-    <!-- Import the webpage's stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <title>PoseNet - Camera Feed Demo</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .canvas-container {
+            width: 800px;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .camera-canvas {
+            position: absolute;
+            transform: scale(0.5, 0.5);
+            transform-origin: 0 0;
+            left: 10px;
+            top: 10px;
+        }
+
+        #main {
+            left: 0;
+            top: 0;
+            position: absolute;
+        }
+
+        .illustration-canvas {
+            border: 1px solid #eeeeee;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: black;
+        }
+
+        .footer-text {
+            max-width: 600px;
+            text-align: center;
+            margin: auto;
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            .footer-text,
+            .dg {
+                display: none;
+            }
+        }
+
+        /*
+         *  The following loading spinner CSS is from SpinKit project
+         *  https://github.com/tobiasahlin/SpinKit
+         */
+        .sk-spinner-pulse {
+            width: 20px;
+            height: 20px;
+            margin: auto 10px;
+            float: left;
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
+            animation: sk-pulseScaleOut 1s infinite ease-in-out;
+        }
+
+        @-webkit-keyframes sk-pulseScaleOut {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sk-pulseScaleOut {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
+        }
+
+        .spinner-text {
+            float: left;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
-
-    <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become
-        visible to use.</p>
-
-    <section id="demos" class="invisible">
-
-        <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam"
-            below and accept access to the webcam when the browser asks (check the top left of your window)</p>
-
-        <div id="liveView" class="camView">
-            <button id="webcamButton">Enable Webcam</button>
-            <video id="webcam" autoplay width="640" height="480"></video>
+    <div id="info" style='display:none'>
+    </div>
+    <div id="loading" style='position: relative; left: 0'>
+        <span class="spinner-text" id="status">
+            Loading PoseNet model...
+        </span>
+        <div class="sk-spinner sk-spinner-pulse"></div>
+    </div>
+    <div class="canvas-container">
+        <!-- <div id='main' style='display:none'> -->
+        <div id='main' style='display:none'>
+            <video id="video" playsinline style=" -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            display: none;
+            ">
+            </video>
+            <canvas id="output" class="camera-canvas"></canvas>
+            <canvas id="keypoints" class="camera-canvas"></canvas>
         </div>
-    </section>
-
-    <!-- Import TensorFlow.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
-    <!-- Load the coco-ssd model to use to recognize things in images -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
-
-    <!-- Import the page's JavaScript to do some stuff -->
-    <script src="script.js" defer></script>
+        <canvas class="illustration-canvas"></cavnas>
+    </div>
+    <div class="footer">
+        <div class="footer-text">
+          <p>
+            Pose Animator runs TF.js <strong>FaceMesh</strong> and <strong>PoseNet</strong> models to animate SVG illustrations with camera feed / static images.<br>
+            It currently supports <strong>single-pose</strong>, <strong>single-face</strong> detection, and has been tested on Destkop Chrome & iOS Safari.
+            <br>
+            (PoseNet model config - MobileNetV1, output stride 16, quant bytes 2)
+          </p>
+        </div>
+      </div>
+    <script src="camera.js" type="module"></script>
 </body>
 
 </html>

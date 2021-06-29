@@ -1,0 +1,264 @@
+<html>
+    <head>
+
+        <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> 
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Require the peer dependencies of facemesh. -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@2.6.0/dist/tf-core.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter@2.6.0/dist/tf-converter.min.js"></script>
+
+        <!-- You must explicitly require a TF.js backend if you're not using the tfs union bundle. -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@2.6.0/dist/tf-backend-wasm.min.js"></script>
+
+        <!-- Pretrained facemesh model. -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection@0.0.2/dist/face-landmarks-detection.min.js"></script>
+
+        <!-- https://medium.com/swlh/how-to-access-webcam-and-take-picture-with-javascript-b9116a983d78 -->
+        <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+
+    </head>
+    <body>
+
+        <div id="webcam-control">
+            <input type="checkbox" id="webcam-switch">
+            <span id="webcam-caption">Click to Start Camera</span>
+        </div>
+
+        <div id="video-container" class="container" style="display: none;">
+            <video id="webcam" autoplay playsinline width="640" height="480"></video>
+            <div>
+                <button id="start-capture" class="btn"><i class="fa fa-camera fa-3x fa-fw"></i></button>
+                <button id="capture-running" class="btn" style="display: none;"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></button>
+                <span id="info-text" style="display: none;">Aguarde</span>
+            </div>
+            <canvas id="canvas" class="d-none"></canvas>
+        </div>
+
+        <script>
+
+            const webcamElement = document.getElementById('webcam');
+            const canvasElement = document.getElementById('canvas');
+            const webcam = new Webcam(webcamElement, 'user', canvasElement);
+
+            let model = null;
+            let cameraFrame = null;
+            let running = false
+            let timeout = null;
+
+            $("#start-capture").click(function () {
+                startCaptura();
+            });
+
+            $("#webcam-switch").change(function () {
+                if(this.checked){
+                    webcam.start()
+                        .then(result =>{
+                            $('#webcam-caption').text('Click to Stop Camera');
+                            $("#video-container").show();
+                            console.log("webcam started");
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                }
+                else {      
+                    stopCaptura();
+                    webcam.stop();
+                    $('#webcam-caption').text('Click to Start Camera');
+                    $("#video-container").hide();
+                    console.log("webcam stopped");
+                }        
+            });
+
+            async function stopCaptura() {
+                if (running) {
+                    $("#capture-running").hide();
+                    $("#start-capture").show();
+                    $("#info-text").hide();
+
+                    running = false;
+
+                    if(cameraFrame!= null){
+                        cancelAnimationFrame(cameraFrame);
+                    }
+                }
+            }
+
+            async function startCaptura() {
+
+                $("#start-capture").hide();
+                $('#info-text').text('Aguarde.');
+                $("#info-text").show();
+
+                // Load the MediaPipe Facemesh package.
+                faceLandmarksDetection.load(
+
+                    faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,
+                    {maxFaces: 1}
+
+                ).then(mdl => {
+
+                    $("#capture-running").show();
+                    $('#info-text').text('Pisque para a camera.');
+
+                    model = mdl;
+                    cameraFrame = detectKeyPoints();
+
+                    timeout = setTimeout(() => {
+                        stopCaptura();
+                    }, 5000);                
+
+                    running = true;
+
+                }).catch(err => {
+
+                    console.log(err);
+                    stopCaptura();
+
+                });
+
+            }
+
+            async function main() {
+
+                await setupFaceLandmarkDetection()
+            }
+
+            async function setupFaceLandmarkDetection() {
+
+                // Setup TF Backend type
+                await tf.setBackend('wasm');
+                
+            }
+
+            async function detectaPiscada(keypoints) {
+                return true;
+            }
+
+            async function detectKeyPoints() {
+
+                // Pass in a video stream (or an image, canvas, or 3D tensor) to obtain an
+                // array of detected faces from the MediaPipe graph. If passing in a video
+                // stream, a single prediction per frame will be returned.
+                const predictions = await model.estimateFaces({
+                    input: document.querySelector("video"),
+                    returnTensors: false,
+                    flipHorizontal: true,
+                    predictIrises: true
+                });
+
+                if (predictions.length > 0) {
+
+                    /*
+
+                    `predictions` is an array of objects describing each detected face, for example:
+
+                    [
+                        {
+                            faceInViewConfidence: 1, // The probability of a face being present.
+                            boundingBox: { // The bounding box surrounding the face.
+                                topLeft: [232.28, 145.26],
+                                bottomRight: [449.75, 308.36],
+                            },
+                            mesh: [ // The 3D coordinates of each facial landmark.
+                                [92.07, 119.49, -17.54],
+                                [91.97, 102.52, -30.54],
+                                ...
+                            ],
+                            scaledMesh: [ // The 3D coordinates of each facial landmark, normalized.
+                                [322.32, 297.58, -17.54],
+                                [322.18, 263.95, -30.54]
+                            ],
+                            annotations: { // Semantic groupings of the `scaledMesh` coordinates.
+                                silhouette: [
+                                    [326.19, 124.72, -3.82],
+                                    [351.06, 126.30, -3.00],
+                                    ...
+                                ],
+                                ...
+                            }
+                        }
+                    ]
+
+                    */
+
+                    // if (detectPiscada && verificando) {
+
+                    //     snapshot = webcam.snapShot();
+                    //     $("#snapShot").setImage(snapShot);
+                    //     verificando = false;
+
+                    // }
+
+                    // for (let i = 0; i < predictions.length; i++) {
+                    //     const keypoints = predictions[i].scaledMesh;
+
+                    //     // Log facial keypoints.
+                    //     for (let i = 0; i < keypoints.length; i++) {
+                    //         const [x, y, z] = keypoints[i];
+
+                    //         console.log(`Keypoint ${i}: [${x}, ${y}, ${z}]`);
+                    //     }
+                    // }
+
+                    // Somente 1 face
+                    const keypoints = predictions[0].scaledMesh;
+
+                    if (detectarPiscada(keypoints)) {
+                        console.log('-----> Piscou');
+                        clearTimeout(timeout);
+                        stopCaptura();
+
+                        let picture = webcam.snap();
+                        document.querySelector('#download-photo').href = picture;                        
+
+                        return null;
+                    }
+
+                }
+
+                cameraFrame = requestAnimationFrame(detectKeyPoints);
+            }
+
+            function detectarPiscada(keypoints) {
+
+                leftEye_l = 263
+                    leftEye_r = 362
+                    leftEye_t = 386
+                    leftEye_b = 374
+
+                    rightEye_l = 133
+                    rightEye_r = 33
+                    rightEye_t = 159
+                    rightEye_b = 145
+
+                    aL = euclidean_dist(keypoints[leftEye_t][0], keypoints[leftEye_t][1], keypoints[leftEye_b][0], keypoints[leftEye_b][1]);
+                    bL = euclidean_dist(keypoints[leftEye_l][0], keypoints[leftEye_l][1], keypoints[leftEye_r][0], keypoints[leftEye_r][1]);
+                    earLeft = aL / (2 * bL);
+
+                    aR = euclidean_dist(keypoints[rightEye_t][0], keypoints[rightEye_t][1], keypoints[rightEye_b][0], keypoints[rightEye_b][1]);
+                    bR = euclidean_dist(keypoints[rightEye_l][0], keypoints[rightEye_l][1], keypoints[rightEye_r][0], keypoints[rightEye_r][1]);
+                    earRight = aR / (2 * bR);
+
+                    console.log('-----> ' + earLeft + '\t' + earRight);
+
+                    if ((earLeft < 0.1) || (earRight < 0.1)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+            }
+
+            function euclidean_dist (x1, y1, x2, y2) {
+                return Math.sqrt( Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2) );
+            };
+
+            main();
+
+        </script>
+
+    </body>
+</html>
