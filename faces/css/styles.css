@@ -21,6 +21,15 @@ body{
     position: absolute;
     left:0;
     top:0;
+    z-index:3;
+}
+.loading {
+    position:absolute;
+    left:0;
+    bottom:0;
+    padding:10px;
+    z-index:2;
+    font-size:16px;
 }
 .canvas-wrapper video{
     -webkit-transform: scaleX(-1);
@@ -47,12 +56,13 @@ body{
         align-items:flex-start;
     }
     .detect__info {
-        position: relative;
-        left:auto;
-        top:auto;
+        position: absolute;
+        left:0;
+        top:0;
         width:100%;
         padding:15px 0;
         width:100%;
+        z-index:10;
     }
     .detect__item {
         padding:5px 20px;

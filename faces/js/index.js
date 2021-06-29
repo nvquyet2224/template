@@ -34,7 +34,7 @@ function drawPath(ctx, points, closePath) {
 let model, ctx, videoWidth, videoHeight, video, canvas,
     scatterGLHasInitialized = false, scatterGL, rafID;
 
-const VIDEO_SIZE = 500;
+const VIDEO_SIZE = 300;
 const mobile = isMobile();
 
 // Don't render the point cloud on mobile in order to maximize performance and
@@ -62,8 +62,10 @@ async function setupCamera() {
             facingMode: 'user',
             // Only setting the video to a specified size in order to accommodate a
             // point cloud, so on mobile devices accept the default size.
-            width: mobile ? undefined : VIDEO_SIZE,
-            height: mobile ? undefined : VIDEO_SIZE
+            //width: mobile ? undefined : VIDEO_SIZE,
+            //height: mobile ? undefined : VIDEO_SIZE
+            width: mobile ? 320 : VIDEO_SIZE,
+            height: mobile ? 240 : VIDEO_SIZE
         },
     });
     video.srcObject = stream;
